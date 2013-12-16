@@ -1,0 +1,20 @@
+@(head: Html, footer: Html, end_scripts: Html = Html(""))(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        @head
+    </head>
+    <body>
+        
+        @content
+        
+        <div id="footer" class="container">
+            @footer
+        </div>
+        
+        @end_scripts
+        
+    </body>
+</html>

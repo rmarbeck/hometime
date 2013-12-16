@@ -1,0 +1,174 @@
+# Messages en francais
+
+# Glogal high level texts
+global.text.project.name=hometime
+global.home.html.title=hometime, le meilleur de l''horlogerie chez vous !
+global.home.html.description=hometime, le meilleur de l''horlogerie chez vous !
+global.home.html.author=hometime
+global.text.brand.name=hometime
+global.text.site.name=hometime
+global.text.copyright=© hometime 2013
+global.text.brand.baseline=
+global.navbar.link.text.home=Home
+global.navbar.link.text.service=Entretenir sa montre
+global.navbar.link.text.services=Les services Hometime
+global.navbar.link.text.services.service=Entretien & révisions
+global.navbar.link.text.services.loan=Prêt de montres
+global.navbar.link.text.services.at.home=Déplacements à domicile
+global.navbar.link.text.services.other=Et tout le reste...
+global.navbar.link.text.who.are.we=En savoir plus...
+global.navbar.link.text.contact=Avis, remarques ?
+global.navbar.link.text.order=Prendre rendez-vous
+global.text.this.is.an.experiment=est une expérimentation, aidez nous !
+global.text.this.is.an.experiment.long=Le service <strong>hometime</strong> est actuellement dans une phase expérimentale.<br />En l''utilisant vous contribuez à encourager l''équipe à l''améliorer.
+global.text.this.is.an.experiment.long.call.to.action=En savoir plus...
+global.text.this.is.an.experiment.long.call.to.action.feedback=Avis, remarques ?
+global.text.privacy=Vie privée
+global.text.terms=Conditions générales
+global.text.back.to.top=Haut de page
+global.action.logout=Se déconnecter
+
+
+
+# Home page
+home.caption.1.head=Entrenez votre montre, c''est votre patrimoine !
+home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Découvrez pourquoi !
+home.caption.1.call.to.action=Pourquoi entrenir ma montre ?
+
+home.caption.2.head=Portez une montre de rêve pendant l''entretien de la votre !
+home.caption.2.body=Hometime vous propose de porter une icône pendant toute la durée de l''entretien de votre montre. <b>Rolex submariner, Omega Speedmaster, Tag Heuer Monaco</b>, elles sont toutes là.
+home.caption.2.call.to.action=Choisissez votre préférée !
+
+home.caption.3.head=Ne vous déplacez plus !
+home.caption.3.body=Hometime vient chercher votre montre chez vous et vous la ramène dès qu''elle est prête. C''est bien le moins que l''on puisse faire.
+home.caption.3.call.to.action=Prendre rendez-vous.
+
+home.promise.1.alt=Mouvement
+home.promise.1.head=Raison
+home.promise.1.body=Une montre mécanique a été conçue pour durer longtemps et se transmettre de génération en génération. Mais en battant plus de <b>200 millions de fois en une année</b>, son mouvement doit être entretenu. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique.
+home.promise.1.call.to.action=Tout savoir sur l''entretien.
+
+home.promise.2.alt=Iconic
+home.promise.2.head=Passion
+home.promise.2.body=L''histoire de l''horlogerie est pavée de modèles élevés au rang d''icône. Et si Hometime vous proposez d''en portez une ? 
+home.promise.2.call.to.action=Découvrez ces icônes !
+
+home.promise.3.alt=AtHome
+home.promise.3.head=Confort
+home.promise.3.body=Pour vous apporter le meilleur, Hometime vous propose tous ses services à domicile.
+home.promise.3.call.to.action=Tous les services Hometime.
+
+# Service page
+service.html.title=Entretenir sa montre
+service.content.1.head=Pourquoi <span class="text-muted">une montre s''use-t-elle ?</span>
+service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mécanique est constituée de nombreuses pièces en mouvement <span class="text-muted">(entre 100 et 1000 en fonction du modèle)</span>. \
+ Au cours de son fonctionnement, deux phénomènes vont conduire progressivement à un encrassement du mouvement :\
+ <ul><li>La production de <b>micro-particules métalliques</b> générées par le frottement des pièces les unes contre les autres,</li>\
+ <li>Le <b>séchage progressif du lubrifiant</b> présent dans le mouvement.</li></ul>\
+ Ces deux phénomènes se combinent pour altérer le fonctionnement de la montre, ce qui va dégrader ses performances (prise de retard ou d''avance de plus de 10 secondes par jours, durée de marche après remontage), mais qui peut à terme entrainer la casse d''une pièce.\
+ <div class="sub-title">Le boitier :</div>\
+ A l''usage, le boitier reçoit des petits coups ou se retrouve en contact avec des objets susceptibles de le rayer. Cette usure est visible, cependant le boitier peut aussi souffrir d''une usure beaucoup moins visible, celle qui touche à l''<b>étancheïté de la montre</b>.\
+ Les joints garantissant à la montre une parfaite résistance à l''humidité perdent de leur efficacité avec le temps. De même, dans le cas des chronographes par exemple, les boutons de déclenchement ou de remise à zéro peuvent s''user et perdre de leur étanchéïté.\
+ <div class="sub-title">Mais aussi :</div>\
+ D''autres composants de la montre s''usent aussi :\
+ <ul><li>Le bracelet et les attaches qui le maintiennent,</li>\
+ <li>Le verre, si celui-ci n''est pas en saphir,</li>\
+ <li>Les index luminescents...</li></ul>
+
+service.content.2.head=Comment <span class="text-muted">entretient-on une montre ?</span>
+service.content.2.body=<div class="sub-title">L''entretien quotidien :</div>L''entretien soigneux de sa montre au jour le jour est un gage de pérennité, d''autant qu''il peut se résumer à quelques réflexes simples \
+ : éviter de porter sa montre lors d''activités l''exposant aux chocs, éviter les bains ou les douches - <span class="text-muted">même pour les montres étanches, le problème étant lié à l''écart de température brutal</span>, ne pas utiliser de produits chimiques pour la nettoyer, ne pas changer la date en dehors des heures mentionnées dans le manuel. Cet entretien ne peut suffire à garantir le bon fonctionnement de la montre à long terme, il doit s''accompagner de révisions régulières.\
+ <div class="sub-title">La révision régulière :</div> Seul un horloger peut entretenir le mouvement d''une montre.\
+ Si aucun élément de la montre n''est cassé, un horloger qualifié, qu''il soit dédié à la marque ou généraliste, réalise une <b>révision complète du mouvement</b>. Pour cela, il réalise les opérations suivantes :\
+ <ul><li>Ouverture du boitier,</li>\
+ <li>Retrait du mouvement du boitier & démontage du mouvement,</li>\
+ <li>Vérification et nettoyage de chacune des pièces,</li>\
+ <li>Contrôle des éléments du cadran (aiguilles, index...),</li>\
+ <li>Remontage et huilage de l'ensemble des composants</li>\
+ <li>Changement des joints et fermeture du boitier & contrôle d''étanchéïté</li>\
+ <li>Contrôle des performances chronométriques</li></ul>\
+ Si nécessaire, l''horloger peut remplacer une pièce défectueuse par une pièce rigoureusement identique. L''horloger peut aussi intervenir pour redonner au boitier et au verre (cas des verres non saphir) leur aspect neuf par un polissage approprié.\
+ <br />Après une révision, <b>la montre fonctionne comme au premier jour</b>.
+
+service.content.3.head=Quand <span class="text-muted">faut-il entretenir une montre ?</span>
+service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisions dépend de très nombreux paramètres (marque et technologie employée dans le mouvement, fréquence de portée, utilisation d''un remontoir pour une montre automatique, ancienneté de la montre). <i>Hometime vous proposera très bientôt un outil pour évaluer précisément quand vous devez faire entretenir votre montre.</i>\
+ <br />Quoiqu''il en soit, pour la plupart des montres, il est nécessaire de procéder à une révision au bout de <b>5 à 7 ans</b>.\
+ <br />Cette durée doit être raccourcie si jamais vous décelez ou suspectez un dysfonctionnement comme :\
+ <ul><li>Prise d''avance ou de retard supérieur à 10 secondes par jour (vous pouvez synchroniser votre montre de façon précise sur : <a target="_blank" href="http://wwp.greenwich-mean-time.ca/">GMT</a>),</li>\
+ <li>Problème lors du passage de date,</li>\
+ <li>Comportement étrange du chronographe,</li>\
+ <li>Arrêt rapide de la montre après remontage (cas d''une montre manuelle) ou après l''avoir portée (cas d''une montre automatique),</li></ul>\
+ <br />De plus, si vous devenez propriétaire d''une montre sans connaitre la date de sa dernière révision, une révision est hautement recommandée.
+
+service.content.4.head=Combien <span class="text-muted">ça coûte ?</span> Combien de temps <span class="text-muted">cela dure-t-il ?</span>
+service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horloger, marque) est libre de fixer le prix de ses prestations, cependant il est fréquent de constater des prix compris entre <b>200€ et 500€</b>.\
+ Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proporionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
+ Il faut bien entendu prendre en compte l''ensemble des services pouvant accompagner la révision (notamment la garantie d''étanchéïté, ou la prise en charge à domicile). Dans le cas où la montre a subi des dommages et nécessite le remplacement de pièces, les prix peuvent dépasser cette limite des 20%. \
+ <div class="sub-title">Les délais :</div>Lors d''une révision, il existe des opérations pour lesquelles les délais sont incompressibles et d''autres pouvant être optimisés. Ainsi, le démontage, l''huilage et le remontage sont des opérations relativement rapide pouvant être réalisées en une journée.\
+ En revanche, le contrôle du bon fonctionnement de la montre dans différentes positions (notamment pour les montres certifiées chronomètre) prend plusieurs jours, voire plusieurs semaines en fonction des marques.\
+ En fonction de l''endroit où est réalisée la révision, il faut ajouter les délais de transport.\
+ <br />Les délais peuvent ainsi varier de <b>1 semaine à 3 mois</b>.
+
+service.content.5.head=Y-a-t-il des risques liés à l''entretien ?
+service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à proprement parlé. Les montres sont toutes conçues pour être entretnues à intervalles réguliers.\
+ Il existe beaucoup <b>plus de risques à ne pas faire entretenir</b> sa montre qu''à la faire entretenir. En effet, il peut arriver qu''une pièce cassée dans une montre ancienne ne puisse être remplacée et qu''un entretien aurait pu éviter la casse.\
+ <br />Il faut malgré tout être attentifs à certains points :\
+ <ul><li>Confier sa montre à un acteur sérieux,</li>\
+ <li>Connaitre les conditions de transport et les garanties en cas d''égarement ou de vol,</li>\
+ <li>Se renseigner sur le caractère ferme et définitif du devis,</li>\
+ <li>Connaitre les éventuels intermédiaires intervenant dans la réalisation du service.</li></ul>\
+
+service.why.call.to.action=Découvrez comment Hometime peut vous aider !
+
+# User pages
+user.profile.title=Mon profil aBOOKadabra
+user.favorites.title=Mes favoris
+user.link.to.favorites=Mes favoris
+user.link.to.profile=Mon profil
+user.profile.personnalinfos=Mes infos
+user.profile.likes=Mes goûts
+user.profile.likes.searches=Mes précédentes recherches
+user.profile.likes.searches.empty=Aucune recherche pour l''instant.
+user.profile.likes.categories=Les genres que j'apprécie (basé sur l''historique de recherches)
+user.profile.likes.categories.empty=Aucun genre pour l''instant.
+user.profile.label.name=Nom
+user.profile.label.firstname=Prénom
+user.profile.label.email=Adresse e-mail
+user.profile.label.connection.method=Connecté avec
+user.profile.connection.method.facebook=Facebook
+
+user.favorites.books.head=Mes livres à lire
+user.favorites.books.explanation=Retrouvez ici les livres que vous avez choisi de mettre de côté.
+user.favorites.books.empty=Aucun livre à lire pour l''instant (pour en ajouter, cliquer sur l''étoile dans la fiche d''un livre).
+user.favorites.authors.head=Mes auteurs préférés
+user.favorites.authors.explanation=Vos auteurs préférés figurent ici.
+user.favorites.authors.empty=Cette fonctionnalité arrive très bientôt...
+
+
+
+# Data unavailable
+data.publicationdate.unknown=inconnue
+data.unavailable=inconnue
+
+# Errors
+error.notfound.text.html.title=Oops... la page demandée n''a pas été trouvée
+error.notfound.text.head=Oops, il semblerait qu''il y ait un petit problème.
+error.notfound.text.sorry=Nous sommes désolés, la page demandée n''existe pas.
+error.generic.text.html.title=Oops... une erreur s''est produite
+error.generic.text.head=Oops, une erreur vient de se produire.
+error.generic.text.sorry=Nous sommes désolés, il s''agit peut être d''un problème transitoire. Vous pouvez retenter votre chance un peu plus tard.
+
+
+# TAGS
+tags.date.unknown=inconnue
+tags.writer.unknown=inconnu
+tags.check.null=N/A
+tags.price.pre.text=A partir de :
+tags.price.unknown=
+tags.remove.book.from.favorites=Supprimer des souhaits
+tags.add.book.to.favorites=Mettre de côté ce livre
+tags.add.book.to.favorites.should.log=Pour mettre des livres de côté vous devez vous connecter en utilisant le bouton de connexion avec Facebook 
+tags.remove.author.from.favorites=Supprimer des auteurs préférés
+tags.add.author.to.favorites=Ajouter aux auteurs préférés
+tags.add.author.to.favorites.should.log=Pour ajouter des auteurs vous devez vous connecter en utilisant le bouton de connexion avec Facebook
+

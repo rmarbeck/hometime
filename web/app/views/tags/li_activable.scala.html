@@ -1,0 +1,18 @@
+@**
+ * Generate a li with active class if target == current.
+ *
+ * Example:
+ * {{{
+ * @li_activable(target = 1, current = 1,args = 'class -> "myLink") {
+ *   ...
+ * }
+ * }}}
+ *
+ * @param target When to set class to active.
+ * @param current Current value to test.
+ * @param args Set of extra HTML attributes.
+ * @param body The form body.
+ *@
+@(target: Integer, current: Integer, args: (Symbol,String)*)(body: => Html) 
+
+<li class="@if(current == target) {active} @args.toMap.get('class)" @toHtmlArgs(args.toMap)>@body</a>

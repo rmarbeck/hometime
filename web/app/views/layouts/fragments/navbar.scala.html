@@ -1,0 +1,41 @@
+@(index: Integer = 1)
+@import tags._
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">@Messages("global.text.brand.name")</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                @li_activable(1, index) {<a href="@routes.Application.index()">@Messages("global.navbar.link.text.home")</a>}
+                @li_activable(2, index) {<a href="@routes.Application.service()">@Messages("global.navbar.link.text.service")</a>}
+                @li_activable(3, index, args = 'class -> "dropdown") {
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Messages("global.navbar.link.text.services") <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">@Messages("global.navbar.link.text.services.service")</a></li>
+                    <li><a href="#">@Messages("global.navbar.link.text.services.loan")</a></li>
+                    <li><a href="#">@Messages("global.navbar.link.text.services.at.home")</a></li>
+                    <li><a href="#">@Messages("global.navbar.link.text.services.other")</a></li>
+                  </ul>
+                }
+                @li_activable(4, index) {<a href="#order">@Messages("global.navbar.link.text.order")</a>}
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                @li_activable(5, index) {<a href="#about">@Messages("global.navbar.link.text.who.are.we")</a>}
+                <li><a href="#contact">@Messages("global.navbar.link.text.contact")</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>

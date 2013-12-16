@@ -1,0 +1,19 @@
+@**
+ * Generate an anchor tracked as an external link by Google analytics.
+ *
+ * Example:
+ * {{{
+ * @a_tracked(action = src, name = "name of link", typeoflink = "type of link", args = 'class -> "myLink") {
+ *   ...
+ * }
+ * }}}
+ *
+ * @param action Url to follow.
+ * @param name Name of the link in GA.
+ * @param typeoflink Type of the link in GA.
+ * @param args Set of extra HTML attributes.
+ * @param body The form body.
+ *@
+@(href: String, name: String, typeoflink: String, args: (Symbol,String)*)(body: => Html) 
+
+<a href="@(href)"  class="tracked @args.toMap.get('class)" data-category="@(typeoflink)" data-action="@(name)" data-label="@args.toMap.get('datalabel)" data-value="@args.toMap.get('datavalue)" @toHtmlArgs(args.toMap)>@body</a>

@@ -1,0 +1,10 @@
+@**
+ * Generate the code for pushing custom vars in flash scope for Google analytics.
+ *
+ *@
+@if(flash.containsKey("push_ga_vars")) {
+    @defining(flash.get("pgv_size").toInt) { size =>
+        @for(index <- 0 to (size-1)) {
+          ga('set', 'dimension@flash.get("pgv_"+index+".slot")', '@flash.get("pgv_"+index+".value")');}
+    }
+}

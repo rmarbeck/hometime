@@ -1,0 +1,23 @@
+@()(content: Html)
+
+@import tags._
+
+@head = {
+    @layouts.fragments.head_min(Messages("global.home.html.title"))
+        @layouts.fragments.bootstrap_css()
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/home.min.css")">
+}
+
+@footer = {
+    @layouts.fragments.footer_min()
+}
+
+@end_scripts = {
+    @layouts.fragments.end_scripts()
+    <script src="@routes.Assets.at("javascripts/home.min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/holder.js")"></script>
+}
+
+@layouts.root(head, footer, end_scripts) {
+    @content
+}
