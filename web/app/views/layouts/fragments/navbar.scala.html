@@ -12,12 +12,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">@Messages("global.text.brand.name")</a>
+              <a class="navbar-brand" href="@routes.Application.index()">@Messages("global.text.brand.name")</a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 @li_activable(1, index) {<a href="@routes.Application.index()">@Messages("global.navbar.link.text.home")</a>}
-                @li_activable(2, index) {<a href="@routes.Application.service()">@Messages("global.navbar.link.text.service")</a>}
                 @li_activable(3, index, args = 'class -> "dropdown") {
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Messages("global.navbar.link.text.services") <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -27,6 +26,7 @@
                     <li><a href="#">@Messages("global.navbar.link.text.services.other")</a></li>
                   </ul>
                 }
+                @li_activable(2, index) {<a href="@routes.Application.service()">@Messages("global.navbar.link.text.service")</a>}
                 @li_activable(4, index) {<a href="#order">@Messages("global.navbar.link.text.order")</a>}
               </ul>
               <ul class="nav navbar-nav navbar-right">

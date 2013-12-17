@@ -16,13 +16,13 @@ global.navbar.link.text.services.service=Entretien & révisions
 global.navbar.link.text.services.loan=Prêt de montres
 global.navbar.link.text.services.at.home=Déplacements à domicile
 global.navbar.link.text.services.other=Et tout le reste...
-global.navbar.link.text.who.are.we=En savoir plus...
+global.navbar.link.text.who.are.we=Qui sommes nous ?
 global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Prendre rendez-vous
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
 global.text.this.is.an.experiment.long=Le service <strong>hometime</strong> est actuellement dans une phase expérimentale.<br />En l''utilisant vous contribuez à encourager l''équipe à l''améliorer.
 global.text.this.is.an.experiment.long.call.to.action=En savoir plus...
-global.text.this.is.an.experiment.long.call.to.action.feedback=Avis, remarques ?
+global.text.this.is.an.experiment.long.call.to.action.feedback=Un avis, une remarque...
 global.text.privacy=Vie privée
 global.text.terms=Conditions générales
 global.text.back.to.top=Haut de page
@@ -65,7 +65,7 @@ service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mé
  Au cours de son fonctionnement, deux phénomènes vont conduire progressivement à un encrassement du mouvement :\
  <ul><li>La production de <b>micro-particules métalliques</b> générées par le frottement des pièces les unes contre les autres,</li>\
  <li>Le <b>séchage progressif du lubrifiant</b> présent dans le mouvement.</li></ul>\
- Ces deux phénomènes se combinent pour altérer le fonctionnement de la montre, ce qui va dégrader ses performances (prise de retard ou d''avance de plus de 10 secondes par jours, durée de marche après remontage), mais qui peut à terme entrainer la casse d''une pièce.\
+ Ces deux phénomènes se combinent pour altérer le fonctionnement de la montre, ce qui va dégrader ses performances (prise de retard ou d''avance de plus de 10 secondes par jour, diminution de la durée de marche après remontage), mais qui peut à terme entrainer la casse d''une pièce.\
  <div class="sub-title">Le boitier :</div>\
  A l''usage, le boitier reçoit des petits coups ou se retrouve en contact avec des objets susceptibles de le rayer. Cette usure est visible, cependant le boitier peut aussi souffrir d''une usure beaucoup moins visible, celle qui touche à l''<b>étancheïté de la montre</b>.\
  Les joints garantissant à la montre une parfaite résistance à l''humidité perdent de leur efficacité avec le temps. De même, dans le cas des chronographes par exemple, les boutons de déclenchement ou de remise à zéro peuvent s''user et perdre de leur étanchéïté.\
@@ -104,13 +104,13 @@ service.content.4.head=Combien <span class="text-muted">ça coûte ?</span> Comb
 service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horloger, marque) est libre de fixer le prix de ses prestations, cependant il est fréquent de constater des prix compris entre <b>200€ et 500€</b>.\
  Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proporionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
  Il faut bien entendu prendre en compte l''ensemble des services pouvant accompagner la révision (notamment la garantie d''étanchéïté, ou la prise en charge à domicile). Dans le cas où la montre a subi des dommages et nécessite le remplacement de pièces, les prix peuvent dépasser cette limite des 20%. \
- <div class="sub-title">Les délais :</div>Lors d''une révision, il existe des opérations pour lesquelles les délais sont incompressibles et d''autres pouvant être optimisés. Ainsi, le démontage, l''huilage et le remontage sont des opérations relativement rapide pouvant être réalisées en une journée.\
- En revanche, le contrôle du bon fonctionnement de la montre dans différentes positions (notamment pour les montres certifiées chronomètre) prend plusieurs jours, voire plusieurs semaines en fonction des marques.\
+ <div class="sub-title">Les délais :</div>Lors d''une révision, il existe des opérations pour lesquelles les délais sont incompressibles et d''autres pour lesquelles ils peuvent être optimisés. Ainsi, le démontage, l''huilage et le remontage sont des opérations relativement rapides pouvant être réalisées en une journée.\
+ En revanche, le contrôle du bon fonctionnement de la montre dans différentes positions (notamment pour les montres certifiées chronomètre) prend plusieurs jours, voire plusieurs semaines pour certaines marques.\
  En fonction de l''endroit où est réalisée la révision, il faut ajouter les délais de transport.\
  <br />Les délais peuvent ainsi varier de <b>1 semaine à 3 mois</b>.
 
 service.content.5.head=Y-a-t-il des risques liés à l''entretien ?
-service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à proprement parlé. Les montres sont toutes conçues pour être entretnues à intervalles réguliers.\
+service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à proprement parlé. Les montres sont toutes conçues pour être entretenues à intervalles réguliers.\
  Il existe beaucoup <b>plus de risques à ne pas faire entretenir</b> sa montre qu''à la faire entretenir. En effet, il peut arriver qu''une pièce cassée dans une montre ancienne ne puisse être remplacée et qu''un entretien aurait pu éviter la casse.\
  <br />Il faut malgré tout être attentifs à certains points :\
  <ul><li>Confier sa montre à un acteur sérieux,</li>\
@@ -119,6 +119,11 @@ service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à 
  <li>Connaitre les éventuels intermédiaires intervenant dans la réalisation du service.</li></ul>\
 
 service.why.call.to.action=Découvrez comment Hometime peut vous aider !
+
+service.content.6.head=Vous hésitez encore ?
+service.content.6.body=<div class="sub-title">Votre montre fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérée comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
+ Si cela est évident pour une catégorie très particulière de montres (Rolex, Patek Philippe notamment), il faut noter que certaines montres peu cotées il y a quelques années s''apprécient très rapidement aujourd'hui (cas des montres Heuer par exemple, ou des Panerai).\
+ <br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent transporter une valeur sentimentale très forte.
 
 # User pages
 user.profile.title=Mon profil aBOOKadabra
@@ -157,6 +162,7 @@ error.notfound.text.sorry=Nous sommes désolés, la page demandée n''existe pas
 error.generic.text.html.title=Oops... une erreur s''est produite
 error.generic.text.head=Oops, une erreur vient de se produire.
 error.generic.text.sorry=Nous sommes désolés, il s''agit peut être d''un problème transitoire. Vous pouvez retenter votre chance un peu plus tard.
+error.text.back.to.home=Retour sur la Home
 
 
 # TAGS
