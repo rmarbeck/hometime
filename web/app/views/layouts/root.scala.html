@@ -7,16 +7,17 @@
         @head
     </head>
     <body>
-        
-        @content
-        
-        @if_body_not_empty(footer) {
-        <div id="footer" class="container">
-            @footer
-        </div>
-        }
-        
-        @end_scripts
-        
+      @layouts.fragments.google_analytics()
+
+      @content
+
+      @if_body_not_empty(footer) {
+      <div id="footer" class="container">
+        @footer
+      </div>
+      }
+
+      @end_scripts
+
     </body>
 </html>
