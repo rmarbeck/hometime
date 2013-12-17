@@ -21,9 +21,9 @@
           <img src="http://static.squarespace.com/static/4fa14d3ce4b08a53fa26468e/500881b0e4b0634b00d359ed/524d7929e4b05018590cf983/1380809173703/Tudor7924USNavy-1.jpg?format=920w" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>@Messages("home.caption.1.head")</h1>
-              <p>@Html(Messages("home.caption.1.body"))</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">@Messages("home.caption.1.call.to.action")</a></p>
+              <div class="caption-title">@Html(Messages("home.caption.1.head"))</div>
+              <div class="caption-body hidden-xs">@Html(Messages("home.caption.1.body"))</div>
+              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.service()" role="button">@Messages("home.caption.1.call.to.action")</a></div>
             </div>
           </div>
         </div>
@@ -31,9 +31,9 @@
           <img src="http://static.squarespace.com/static/4fa14d3ce4b08a53fa26468e/500881b0e4b0634b00d359ed/52a09897e4b0ee6849000f73/1386370208913/_MG_8245.jpg?format=920w" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>@Messages("home.caption.2.head")</h1>
-              <p>@Html(Messages("home.caption.2.body"))</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">@Messages("home.caption.2.call.to.action")</a></p>
+              <div class="caption-title">@Html(Messages("home.caption.2.head"))</div>
+              <div class="caption-body hidden-xs">@Html(Messages("home.caption.2.body"))</div>
+              <div class="caption-body"><a class="btn btn-primary" href="#" role="button">@Messages("home.caption.2.call.to.action")</a></div>
             </div>
           </div>
         </div>
@@ -41,9 +41,9 @@
           <img src="http://static.squarespace.com/static/4fa14d3ce4b08a53fa26468e/500881b0e4b0634b00d359ed/529e0b54e4b0e7dbabb01a9b/1386296573101/ALS_C.jpg?format=920w" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>@Messages("home.caption.3.head")</h1>
-              <p>@Html(Messages("home.caption.3.body"))</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">@Messages("home.caption.3.call.to.action")</a></p>
+              <div class="caption-title">@Html(Messages("home.caption.3.head"))</div>
+              <div class="caption-body hidden-xs">@Html(Messages("home.caption.3.body"))</div>
+              <div class="caption-body"><a class="btn btn-primary" href="#" role="button">@Messages("home.caption.3.call.to.action")</a></div>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
           <img class="head" src="http://i48.photobucket.com/albums/f249/VINGOXE/Omega8500Mouvement2.gif" alt="@Messages("home.promise.1.alt")">
           <h2>@Messages("home.promise.1.head")</h2>
           <p>@Html(Messages("home.promise.1.body"))</p>
-          <p><a class="btn btn-default" href="#" role="button">@Messages("home.promise.1.call.to.action")</a></p>
+          <p><a class="btn btn-default" href="@routes.Application.service()" role="button">@Messages("home.promise.1.call.to.action")</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle head" src="http://professionalwatches.com/assets_c/2013/08/Rolex-Submariner-thumb-960xauto-19283.jpg" alt="@Messages("home.promise.2.alt")">

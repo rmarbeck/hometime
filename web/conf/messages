@@ -11,11 +11,12 @@ global.text.copyright=© hometime 2013
 global.text.brand.baseline=
 global.navbar.link.text.home=Home
 global.navbar.link.text.service=Entretenir sa montre
-global.navbar.link.text.services=Les services Hometime
+global.navbar.link.text.services=Les services
 global.navbar.link.text.services.service=Entretien & révisions
 global.navbar.link.text.services.loan=Prêt de montres
 global.navbar.link.text.services.at.home=Déplacements à domicile
 global.navbar.link.text.services.other=Et tout le reste...
+global.navbar.link.text.wacth.collection=Les montres
 global.navbar.link.text.who.are.we=Qui sommes nous ?
 global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Prendre rendez-vous
@@ -33,15 +34,15 @@ global.action.logout=Se déconnecter
 
 
 # Home page
-home.caption.1.head=Entrenez votre montre, c''est votre patrimoine !
+home.caption.1.head=Entrenez votre montre, c''est votre patrimoine&nbsp;!
 home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Découvrez pourquoi !
 home.caption.1.call.to.action=Pourquoi entrenir ma montre ?
 
-home.caption.2.head=Portez une montre de rêve pendant l''entretien de la votre !
+home.caption.2.head=Portez une montre de rêve pendant l''entretien de la vôtre&nbsp;!
 home.caption.2.body=Hometime vous propose de porter une icône pendant toute la durée de l''entretien de votre montre. <b>Rolex submariner, Omega Speedmaster, Tag Heuer Monaco</b>, elles sont toutes là.
 home.caption.2.call.to.action=Choisissez votre préférée !
 
-home.caption.3.head=Ne vous déplacez plus !
+home.caption.3.head=Ne vous déplacez plus&nbsp;!
 home.caption.3.body=Hometime vient chercher votre montre chez vous et vous la ramène dès qu''elle est prête. C''est bien le moins que l''on puisse faire.
 home.caption.3.call.to.action=Prendre rendez-vous.
 
@@ -57,7 +58,7 @@ home.promise.2.call.to.action=Découvrez ces icônes !
 
 home.promise.3.alt=AtHome
 home.promise.3.head=Confort
-home.promise.3.body=Pour vous apporter le meilleur, Hometime vous propose <b>tous ses services à domicile</b>. Vous n''avez pas à vous adapter à des contraintes d'horaires ou de distance, nous nous adaptons aux votres.
+home.promise.3.body=Pour vous apporter le meilleur, Hometime vous propose <b>tous ses services à domicile</b>. Vous n''avez pas à vous adapter à des contraintes d''horaires ou de distance, nous nous adaptons aux vôtres.
 home.promise.3.call.to.action=Tous les services Hometime.
 
 # Service page
@@ -126,6 +127,9 @@ service.content.6.head=Vous hésitez encore ?
 service.content.6.body=<div class="sub-title">Votre montre fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérée comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
  Si cela est évident pour une catégorie très particulière de montres (Rolex, Patek Philippe notamment), il faut noter que certaines montres peu cotées il y a quelques années s''apprécient très rapidement aujourd'hui (cas des montres Heuer par exemple, ou des Panerai).\
  <br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent transporter une valeur sentimentale très forte.
+
+# Watch collection page
+watch.collection.html.title=Les montres Hometime
 
 # User pages
 user.profile.title=Mon profil aBOOKadabra

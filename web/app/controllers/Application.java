@@ -15,5 +15,8 @@ public class Application extends Controller {
         return ok(service.render(""));
     }
 
-    
+    public static Result watch_collection() {
+        return ok(watch_collection.render(""));
+    }
+
 }

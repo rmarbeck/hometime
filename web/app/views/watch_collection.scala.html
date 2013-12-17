@@ -1,0 +1,101 @@
+@(message: String = "")
+
+@layouts.main(Messages("watch.collection.html.title")) {
+    @layouts.fragments.navbar(20)
+      
+    <div class="container container-watch-collection">
+    
+        <div class="row">
+            <div class="col-md-3">
+              <div class="bs-sidebar affix" role="complementary">
+                <ul class="nav bs-sidenav">
+                    <li><a href="#submariner">Rolex - Submariner</a></li>
+                    <li><a href="#speedmaster">Omega - Speedmaster</a></li>
+                    <li><a href="#monaco">Tag Heuer - Monaco</a></li>
+                    <li><a href="#luminor">Panerai - Luminor</a></li>
+                    <li><a href="#portugaise">IWC - Portugaise Chrono</a></li>
+                    <li><a href="#snowflakes">Tudor - Submariner snowflakes</a></li>
+                    <li><a href="#seamaster">Omega - Seamaster 300</a></li>
+                </ul>
+              </div>
+            </div>
+            <div id="collection" class="col-md-9" role="main">
+              <div id="submariner" class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                    <div class="watch-box">
+                      <div class="caption">Rolex - Submariner</div>
+                      <div class="image"><img class="img-responsive" src="http://3.bp.blogspot.com/-aKpk-sy4BUg/T_r7ntrF3LI/AAAAAAAADYI/wlDE1FYhEG0/s1600/Rolex+114060+37+LR.jpg" alt="Generic placeholder image"></div>
+                      <div class="sub-caption">1 exemplaire disponbible - référence <a href="#">14060M</a></div>
+                    </div>
+                </div>
+              </div>
+              <hr class="featurette-divider">
+              <div id="speedmaster" class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                    <div class="watch-box">
+                      <div class="caption">Omega - Speedmaster</div>
+                      <div class="image"><img class="img-responsive" src="http://upload.wikimedia.org/wikipedia/commons/d/db/OMEGA-Speedmaster-Professional-Front.jpg" alt="Generic placeholder image"></div>
+                      <div class="sub-caption">2 exemplaires disponbibles - références <a href="#">3590.50</a> & <a href="#">3510.50.00</a></div>
+                    </div>
+                </div>
+              </div>
+              <hr class="featurette-divider">
+              <div id="monaco" class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                    <div class="watch-box">
+                      <div class="caption">Tag Heuer - Monaco</div>
+                      <div class="image"><img class="img-responsive" src="http://www.winluxurywatches.com/img/media/Tag_Heuer_Monaco_1300740385.jpg" alt="Generic placeholder image"></div>
+                      <div class="sub-caption">1 exemplaire disponbible - référence <a href="#">CW 2113</a></div>
+                    </div>
+                </div>
+              </div>
+              <hr class="featurette-divider">
+              <div id="luminor" class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                    <div class="watch-box">
+                      <div class="caption">Panerai - Luminor</div>
+                      <div class="image"><img class="img-responsive" src="http://truetimetools.files.wordpress.com/2010/09/panerai-luminor-base-logo-44-mm-05.jpg" alt="Generic placeholder image"></div>
+                    </div>>
+                </div>
+              </div>
+              <hr class="featurette-divider">
+              <div id="portugaise" class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                    <div class="watch-box">
+                      <div class="caption">IWC - Portugaise Chrono</div>
+                      <div class="image"><img class="img-responsive" src="http://195.154.205.140/mesIMG/imgStd/29950.jpg" alt="Generic placeholder image"></div>
+                    </div>
+                 </div>
+              </div>
+              <hr class="featurette-divider">
+              <div id="snowflakes" class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                    <div class="watch-box">
+                      <div class="caption">Tudor - Submariner snowflakes</div>
+                      <div class="image"><img class="img-responsive" src="http://www.jaegraphy.com/lightroom/black_snowflake/content/images/large/_DSC0092.jpg" alt="Generic placeholder image"></div>
+                    </div>
+                 </div>
+              </div>
+              <hr class="featurette-divider">
+              <div id="seamaster" class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                    <div class="watch-box">
+                      <div class="caption">Omega - Seamaster 300</div>
+                      <div class="image"><img class="img-responsive" src="http://howtobeswell.files.wordpress.com/2012/02/omega-seamaster-222080-james-bond-watch-casino-royale-2006.jpg" alt="Generic placeholder image"></div>
+                    </div>
+                 </div>
+              </div>
+            </div>
+            </div>
+        </div>
+        
+        
+
+    </div><!-- /.container -->
+    
+    <script>
+        $('body').attr('data-spy', 'scroll' );
+        $('body').attr('data-target', '.bs-sidebar' );
+        $('body').attr('data-offset', '10' );
+    </script>
+}

@@ -3,19 +3,42 @@
 ------------------------- */
 
 .featurette-divider {
-  margin: 50px 0; /* Space out the Bootstrap <hr> more */
+  margin: 20px 0; /* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
 .featurette-heading {
+  font-size: 20px;
   font-weight: 300;
   line-height: 1;
   letter-spacing: -1px;
 }
 
+.featurette-body, .featurette-action a {
+    font-size: 14px;
+}
+
+.featurette-action {
+    margin-top: 30px;
+}
+
+.featurette-body .sub-title {
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
 .featurette-body {
   font-weight: 300;
   line-height: 1,5;
+}
+
+.marketing .featurette:first-child {
+  margin-top: 50px;
+}
+
+.featurette img {
+  margin-bottom: 15px;
 }
 
 
@@ -23,6 +46,11 @@
 -------------------------------------------------- */
 
 @media (min-width: 768px) {
+
+
+  .marketing .featurette:first-child {
+    margin-top: 130px;
+  }
 
   .featurette-heading {
     font-size: 35px;

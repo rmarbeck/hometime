@@ -1,27 +1,33 @@
 @(message: String = "")
 
 @layouts.main(Messages("service.html.title")) {
-    @layouts.fragments.navbar(2)
+    @layouts.fragments.navbar(80)
       
     <div class="container marketing">
       
       <div class="row featurette">
-        <div class="col-md-9">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="col-sm-3 col-sm-push-9 col-xs-8">
+          <img class="featurette-image img-responsive" src="http://www.timeslug.com/wp-content/uploads/2009/02/el-primero1.jpg" alt="Generic placeholder image">
+        </div>
+        <div class="visible-xs col-xs-2"></div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-sm-9 col-sm-pull-3">
           <div class="featurette-heading">@Html(Messages("service.content.1.head"))</div>
           <div class="featurette-body">@Html(Messages("service.content.1.body"))</div>
-        </div>
-        <div class="col-md-3">
-          <img class="featurette-image img-responsive" src="http://www.timeslug.com/wp-content/uploads/2009/02/el-primero1.jpg" alt="Generic placeholder image">
         </div>
       </div>
 
       <hr class="featurette-divider">
 
       <div class="row featurette">
-        <div class="col-md-3">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="col-sm-3 col-xs-8">
           <img class="featurette-image img-responsive" src="http://www.highgradewatchinc.com/wp-content/uploads/2011/03/rolex-watch-repair.jpg" alt="Generic placeholder image">
         </div>
-        <div class="col-md-9">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-sm-9">
           <div class="featurette-heading">@Html(Messages("service.content.2.head"))</div>
           <div class="featurette-body">@Html(Messages("service.content.2.body"))</div>
         </div>
@@ -30,22 +36,28 @@
       <hr class="featurette-divider">
 
       <div class="row featurette">
-        <div class="col-md-9">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="col-sm-3 col-sm-push-9 col-xs-8">
+          <img class="featurette-image img-responsive" src="http://igniteyourlifebook.com/wp-content/uploads/2011/02/Carpe-Diem-When.jpg" alt="Generic placeholder image">
+        </div>
+        <div class="visible-xs col-xs-2"></div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-sm-9 col-sm-pull-3">
           <div class="featurette-heading">@Html(Messages("service.content.3.head"))</div>
           <div class="featurette-body">@Html(Messages("service.content.3.body"))</div>
-        </div>
-        <div class="col-md-3">
-          <img class="featurette-image img-responsive" src="http://igniteyourlifebook.com/wp-content/uploads/2011/02/Carpe-Diem-When.jpg" alt="Generic placeholder image">
         </div>
       </div>
 
       <hr class="featurette-divider">
       
       <div class="row featurette">
-        <div class="col-md-3">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="col-sm-3 col-xs-8">
           <img class="featurette-image img-responsive" src="http://blog.eversmoke.com/wp-content/uploads/2012/06/tumblr_kxleacohvD1qagrrf.jpg" alt="Generic placeholder image">
         </div>
-        <div class="col-md-9">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-sm-9">
           <div class="featurette-heading">@Html(Messages("service.content.4.head"))</div>
           <div class="featurette-body">@Html(Messages("service.content.4.body"))</div>
         </div>
@@ -54,23 +66,29 @@
       <hr class="featurette-divider">
 
       <div class="row featurette">
-        <div class="col-md-9">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="col-sm-3 col-sm-push-9 col-xs-8">
+          <img class="featurette-image img-responsive" src="http://p2pbucks.com/wp-content/uploads/2013/10/dice-risk.jpg" alt="Generic placeholder image">
+        </div>
+        <div class="visible-xs col-xs-2"></div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-sm-9 col-sm-pull-3">
           <div class="featurette-heading">@Html(Messages("service.content.5.head"))</div>
           <div class="featurette-body">@Html(Messages("service.content.5.body"))</div>
           <div class="featurette-action text-center"><a class="btn btn-primary" href="#" role="button">@Messages("service.why.call.to.action")</a></div>
-        </div>
-        <div class="col-md-3">
-          <img class="featurette-image img-responsive" src="http://p2pbucks.com/wp-content/uploads/2013/10/dice-risk.jpg" alt="Generic placeholder image">
         </div>
       </div>
 
       <hr class="featurette-divider">
       
       <div class="row featurette">
-        <div class="col-md-3">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="col-sm-3 col-xs-8">
           <img class="featurette-image img-responsive" src="http://nolossmicroinvestments.com/assets/Uploads/why-invest-with-us-.jpg" alt="Generic placeholder image">
         </div>
-        <div class="col-md-9">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-sm-9">
           <div class="featurette-heading">@Html(Messages("service.content.6.head"))</div>
           <div class="featurette-body">@Html(Messages("service.content.6.body"))</div>
         </div>
