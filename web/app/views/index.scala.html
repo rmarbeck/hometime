@@ -53,30 +53,62 @@
     </div><!-- /.carousel -->
 
     <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-md-4">
           <img class="head" src="http://i48.photobucket.com/albums/f249/VINGOXE/Omega8500Mouvement2.gif" alt="@Messages("home.promise.1.alt")">
           <h2>@Messages("home.promise.1.head")</h2>
           <p>@Html(Messages("home.promise.1.body"))</p>
           <p><a class="btn btn-default" href="@routes.Application.service()" role="button">@Messages("home.promise.1.call.to.action")</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
+        </div>
+        <div class="col-md-4">
           <img class="img-circle head" src="http://professionalwatches.com/assets_c/2013/08/Rolex-Submariner-thumb-960xauto-19283.jpg" alt="@Messages("home.promise.2.alt")">
           <h2>@Messages("home.promise.2.head")</h2>
           <p>@Html(Messages("home.promise.2.body"))</p>
-          <p><a class="btn btn-default" href="#" role="button">@Messages("home.promise.2.call.to.action")</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
+          <p><a class="btn btn-default" href="@routes.Application.watch_collection()" role="button">@Messages("home.promise.2.call.to.action")</a></p>
+        </div>
+        <div class="col-md-4">
           <img class="img-circle head" src="http://www2.psd100.com/ppp/2013/11/0601/home-icon-1106102533.png" alt="@Messages("home.promise.3.alt")">
           <h2>@Messages("home.promise.3.head")</h2>
           <p>@Html(Messages("home.promise.3.body"))</p>
-          <p><a class="btn btn-default" href="#" role="button">@Messages("home.promise.3.call.to.action")</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
+          <p><a class="btn btn-default" href="@routes.Application.offer()" role="button">@Messages("home.promise.3.call.to.action")</a></p>
+        </div>
+      </div>
       
       <hr>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12"><h4>@Messages("home.text.supports.brands")</h4></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/baume_and_mercier.png")" alt="Logo Baume & Mercier"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/bell_and_ross.png")" alt="Logo Bell & Ross"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/breitling.png")" alt="Logo Breitling"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/chanel.png")" alt="Logo Chanel"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/chopard.png")" alt="Logo Chopard"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/frederique_constant.png")" alt="Logo Frédérique Constant"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/hamilton.png")" alt="Logo Hamilton"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/hublot.png")" alt="Logo Hublot"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/iwc.png")" alt="Logo IWC"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/jaeger_lecoultre.png")" alt="Logo Jeager LeCoultre"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/longines.png")" alt="Logo Longines"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/omega.png")" alt="Logo Omega"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/panerai.png")" alt="Logo Panerai"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/rado.png")" alt="Logo Rado"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/rolex.png")" alt="Logo Rolex"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/tag_heuer.png")" alt="Logo Tag Heuer"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/tissot.png")" alt="Logo Tissot"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/tudor.png")" alt="Logo Tudor"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/zenith.png")" alt="Logo Zenith"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/more.png")" alt="Logo More"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.offer()" role="button">@Messages("home.tell.more.call.to.action")</a></div>
+        <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="#" role="button">@Messages("home.order.call.to.action")</a></div>
+      </div>
 
-    </div><!-- /.container -->
+      <hr>
+
+    </div>
 }

@@ -1,0 +1,148 @@
+@(message: String = "")
+
+@layouts.main(Messages("watch.collection.html.title")) {
+    @layouts.fragments.navbar(50)
+      
+    <div class="container container-offer">
+        <div class="row">
+            <div class="col-md-3">
+              <div class="bs-sidebar affix" role="complementary">
+                <ul class="nav bs-sidenav">
+                    <li><a href="#service">@Messages("offer.menu.text.service")</a></li>
+                    <li><a href="#loan">@Messages("offer.menu.text.loan")</a></li>
+                    <li><a href="#home">@Messages("offer.menu.text.home")</a></li>
+                    <li><a href="#more">@Messages("offer.menu.text.more")</a></li>
+                    <li><a href="#prices">@Messages("offer.menu.text.prices")</a></li>
+                </ul>
+              </div>
+            </div>
+            <div id="offers" class="col-md-9" role="main">
+              <div id="service" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="offer-box">
+                    <div class="title"><blockquote>@Html(Messages("offer.service.head"))</blockquote></div>
+                    <div class="body">@Html(Messages("offer.service.body"))</div>
+                    <div class="row action">
+                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.offer()" role="button">@Messages("offer.service.call.to.action.more")</a></div>
+                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="#" role="button">@Messages("offer.service.call.to.action.order")</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="loan" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="offer-box">
+                    <div class="title"><blockquote>@Html(Messages("offer.loan.head"))</blockquote></div>
+                    <div class="body">@Html(Messages("offer.loan.body"))</div>
+                    <div class="row action">
+                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.offer()" role="button">@Messages("offer.loan.call.to.action.collection")</a></div>
+                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="#" role="button">@Messages("offer.service.call.to.action.order")</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="home" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="offer-box">
+                    <div class="title"><blockquote>@Html(Messages("offer.home.head"))</blockquote></div>
+                    <div class="body">@Html(Messages("offer.home.body"))</div>
+                    <div class="row action">
+                      <div class="col-xs-12 text-center"><a class="btn btn-primary order-action" href="#" role="button">@Messages("offer.home.call.to.action.order")</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="more" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="offer-box">
+                    <div class="title"><blockquote>@Html(Messages("offer.more.head"))</blockquote></div>
+                    <div class="body">@Html(Messages("offer.more.body"))</div>
+                    <div class="row images">
+                        <div class="col-xs-1 visible-xs"></div>
+                        <div class="col-xs-3 col-sm-2 col-sm-offset-3"><img class="img-responsive" src="@routes.Assets.at("images/accessories/nato.jpg")" alt="Nato"></div>
+                        <div class="col-xs-3 col-sm-2"><img class="img-responsive" src="@routes.Assets.at("images/accessories/box.jpg")" alt="Boîte à montre"></div>
+                        <div class="col-xs-3 col-sm-2"><img class="img-responsive" src="@routes.Assets.at("images/accessories/remontoir.jpg")" alt="Remontoir"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="prices" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="offer-box">
+                    <div class="title"><blockquote>@Html(Messages("offer.prices.head"))</blockquote></div>
+                    <div class="body">@Html(Messages("offer.prices.body"))</div>
+                    <div class="row price-table">
+                      <table class="table table-striped table-hover table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Service</th>
+                            <th>Détail</th>
+                            <th>Tarif</th>
+                            <th>Remarque</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td colspan="4">Révision</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>Montres de catégorie 1*</td>
+                            <td>Entre 200€ et 400€</td>
+                            <td rowspan="3" width="30%">Prix à affiner par téléphone. Le prix dépend de votre choix de faire réviser la montre par un horloger généraliste ou par le réseau de la marque.</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>Montres de catégorie 2**</td>
+                            <td>Entre 300€ et 600€</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>Montres de catégorie 3***</td>
+                            <td>Entre 300€ et 700€</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">Réparation</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">Sur devis gratuit uniquement.</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">Prêt de montre dans le cadre d'une révision</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">Entre 50€ et 200€.Voir les prix sur la fiche de chaque montre.</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">Frais de déplacement</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">Gratuits.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="footnote">* Montres de catégorie 1 : Baume & Mercier, Bell & Ross, Frédérique Constant, Hamilton, Longines, Tissot, Rado</div>
+                    <div class="footnote">** Montres de catégorie 2 : Breitling, Chopard, Chanel, Omega, Tag Heuer, Tudor, Zenith</div>
+                    <div class="footnote">*** Montres de catégorie 3 : Hublot, IWC, Jeager LeCoultre, Panerai, Rolex</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div><!-- /.container -->
+    
+    <script>
+        $('body').attr('data-spy', 'scroll' );
+        $('body').attr('data-target', '.bs-sidebar' );
+        $('body').attr('data-offset', '10' );
+    </script>
+}

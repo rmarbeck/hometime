@@ -20,10 +20,12 @@
                 @li_activable(50, index, args = 'class -> "dropdown") {
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Messages("global.navbar.link.text.services") <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">@Messages("global.navbar.link.text.services.service")</a></li>
-                    <li><a href="#">@Messages("global.navbar.link.text.services.loan")</a></li>
-                    <li><a href="#">@Messages("global.navbar.link.text.services.at.home")</a></li>
-                    <li><a href="#">@Messages("global.navbar.link.text.services.other")</a></li>
+                    <li><a href="@routes.Application.offer()">@Messages("global.navbar.link.text.services.service")</a></li>
+                    <li><a href="@routes.Application.offer()#loan">@Messages("global.navbar.link.text.services.loan")</a></li>
+                    <li><a href="@routes.Application.offer()#home">@Messages("global.navbar.link.text.services.at.home")</a></li>
+                    <li><a href="@routes.Application.offer()#more">@Messages("global.navbar.link.text.services.other")</a></li>
+                    <li class="divider"></li>
+                    <li><a href="@routes.Application.offer()#prices">@Messages("global.navbar.link.text.services.prices")</a></li>
                   </ul>
                 }
                 @li_activable(20, index) {<a href="@routes.Application.watch_collection()">@Messages("global.navbar.link.text.wacth.collection")</a>}
