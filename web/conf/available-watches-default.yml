@@ -1,0 +1,337 @@
+﻿watches:
+    - &RolexSub !!models.Watch
+         brand:                 Rolex
+         full_name:             Submariner
+         short_name:            Submariner
+         movement:              Rolex Calibre 3130 - remontage automatique
+         case_infos:            Rolex Oyster de 40mm, verre saphir
+         functions:             Montre 3 aiguilles, lunette tournante 120 positions, couronne vissée
+         water_resistance:      300 m
+         specials:              Version sans date
+         production_period:     Modèle produit entre 2000 et 2005
+         item_year:             Mis en circulation en 2001
+         item_strap:            Rolex 93150 d'origine
+         item_reference:        14060M
+         price:                 200
+         main_picture_url:      watches/main_sub.jpg
+         main_thumbnail_url:    watches/thumbs/main_sub.jpg
+         model_history:         Mythe absolu de l'horlogerie. C'est certainement la montre la plus connue dans le monde et la plus imitée. Elle a été portée par de nombreux explorateurs des fonds marins, militaires ou encore par James Bond. Depuis plus d'un demi siècle elle se renouvelle par petites touches en restant fidèle aux codes qu'elle a créés.
+         item_history:          Ce modèle est la version sans date, préférée des puristes qui n'apprécient pas la loupe surplombant la date de sa grande soeur. Cet exemplaire est en parfait état, sur son bracelet oyster d'origine.
+         reason_why:            Parce qu'il faut en avoir porté une pour comprendre pourquoi c'est une légende.
+
+    - &TagHeuerMonaco !!models.Watch
+         brand:                 Tag Heuer
+         full_name:             Monaco
+         short_name:            Monaco
+         movement:              Tag Heuer Calibre 12 - remontage automatique (base ETA 2892 + module Dubois Depraz)
+         case_infos:            Carré 40mm, verre saphir des deux côtés
+         functions:             Chronographe, date
+         water_resistance:      100 m
+         specials:
+         production_period:     La version actuelle (taille et fond saphir) date de 2009
+         item_year:             Mis en circulation en 2009
+         item_strap:            En cuir d'origine
+         item_reference:        CW 2113
+         price:                 100
+         main_picture_url:      watches/main_monaco.jpg
+         main_thumbnail_url:    watches/thumbs/main_monaco.jpg
+         model_history:         Rendue célèbre par Steve McQueen qui la portait dans le film Le Mans, cette montre est la montre carré la plus connue. Initialement créée par Heuer dans les années 1960, Tag Heuer lui a redonné vie depuis 1998 en l'agrandissant légèrement.
+         item_history:          C'est le modèle le plus récent. Elle dispose d'un cadran bleu et d'aiguilles rouges.
+         reason_why:            Parce que c'est la reine des montres carré.
+
+    - &OmegaSpeedmaster !!models.Watch
+         brand:                 Omega
+         full_name:             Speedmaster Professional
+         short_name:            Speedmaster
+         movement:              Omega 1861 - remontage manuel
+         case_infos:            42mm, verre plexiglass
+         functions:             Chronographe
+         water_resistance:      100 m
+         specials:              Attention, il s'agit d'une montre manuelle. Il faut la remonter tous les deux jours.
+         production_period:     Depuis 1959
+         item_year:             2000
+         item_strap:            Omega d'origine
+         item_reference:        3570.50.00
+         price:                 100
+         main_picture_url:      watches/main_speedmaster.jpg
+         main_thumbnail_url:    watches/thumbs/main_speedmaster.jpg
+         model_history:         Cette montre était au poignet des plus célèbres astronautes. Elle avait été choisie par la NASA après une batterie de tests très spécifiques. Elle a marché sur la Lune.
+         item_history: |
+             Il s'agit d'un modèle assez récent. Elle conserve les caractéristiques principales de la montre qui est allée plusieurs fois sur la lune : remontage manuel, verre en plexiglas (pour éviter d'éventuels bris de verre coupants en pleine mission). Le bracelet est d'origine.
+         reason_why:            Parce que c'est le roi des chronographe.
+
+    - &OmegaSeamaster !!models.Watch
+         brand:                 Omega
+         full_name:             Seamaster Professional 300m
+         short_name:            Seamaster
+         movement:              Omega 2500 Co-axial - remontage automatique
+         case_infos:            41mm, verre saphir
+         functions:             Date, lunette tournante, couronne vissée, valve à helium
+         water_resistance:      300 m
+         specials:              Certifiée chronomètre COSC
+         production_period:     La version actuelle date de 2000
+         item_year:             Mis en circulation en 2006
+         item_strap:            Omega d'origine
+         item_reference:        2531.80.00
+         price:                 100
+         main_picture_url:      watches/main_seamaster.jpg
+         main_thumbnail_url:    watches/thumbs/main_seamaster.jpg
+         model_history:         James Bond l'a portée. Il s'agit d'un classique d'Omega qui existe depuis les années 1960 et qui a progressivement évolué esthétiquement depuis. C'est l'un des premiers modèles à disposer d'un mouvement Co-Axial cher à la marque.
+         item_history:          Il s'agit d'une version au cadran bleu avec des motifs de vague. Ces motifs ont disparu de la nouvelle version sortie en 2011, au grand dam de certains. Le bracelet est d'origine.
+         reason_why:            Parce que c'est une expression parfaite de la montre du quotidien.
+
+    - &IWCPortugaise !!models.Watch
+         brand:                 IWC
+         full_name:             Portugaise Chrono
+         short_name:            Portugaise
+         movement:              IWC Calibre 79350 - remontage automatique (base Valjoux 7750)
+         case_infos:            41mm, verre saphir des deux côtés
+         functions:             Chronographe, date
+         water_resistance:      30 m
+         specials:
+         production_period:     La version actuelle (taille et fond saphir) date de 2009
+         item_year:             Mis en circulation en 2007
+         item_strap:            En cuir d'origine
+         item_reference:        3714
+         price:                 200
+         main_picture_url:      watches/main_portugaise.jpg
+         main_thumbnail_url:    watches/thumbs/main_portugaise.jpg
+         model_history:         Elle tire son nom des navigateurs portugais pour lesquels elle a été conçue à l'origine. Aujourd'hui elle est la montre préférée dans le monde de la finance.
+         item_history:          C'est le modèle qui a précédé le modèle actuellement disponible chez IWC. Son cadran est noir et son bracelet d'origine.
+         reason_why:            Parce qu'elle a une classe folle.
+
+    - &PaneraiLuminor !!models.Watch
+         brand:                 Panerai
+         full_name:             Luminor Base Logo
+         short_name:            Luminor
+         movement:              Panerai Calibre OP I (base Unitas)
+         case_infos:            44mm, verre saphir
+         functions:             Deux aiguilles
+         water_resistance:      300 m
+         specials:              Cadran sandwich. Attention, il s'agit d'une montre manuelle. Il faut la remonter tous les deux jours.
+         production_period:     La version actuelle date de 2006
+         item_year:             Mis en circulation en 2006
+         item_strap:            Cuir
+         item_reference:        PAM 112
+         price:                 200
+         main_picture_url:      watches/main_luminor.jpg
+         main_thumbnail_url:    watches/thumbs/main_luminor.jpg
+         model_history:         Tous les gènes de Panerai sont présents dans cette montre. Elle dispose d'un design intemporel que beaucoup tentes d'imiter. Le protège couronne propre au modèle Luminor la distingue de sa cousine la Radiomir.
+         item_history:          Modèle PAM 112.
+         reason_why:            Parce que vous voulez que l'on remarque votre montre.
+
+    - &TudorSnowflake !!models.Watch
+         brand:                 Tudor
+         full_name:             Submariner Snowflake
+         short_name:            Submariner Snowflake
+         movement:              Tudor Calibre 2784 - remontage automatique (base ETA)
+         case_infos:            TBC
+         functions:             Date, lunette tournante 120 positions, couronne vissée
+         water_resistance:      300 m
+         specials:
+         production_period:     TBC
+         item_year:             TBC
+         item_strap:            TBC
+         item_reference:        TBC
+         price:                 100
+         main_picture_url:      watches/main_snowflake.jpg
+         main_thumbnail_url:    watches/thumbs/main_snowflake.jpg
+         model_history:         TBC
+         item_history:          TBC
+         reason_why:            Parce qu'elle a tout d'une submariner.
+
+pictures:
+    - !!models.Picture
+         url:                   watches/sub_1.jpg
+         thumbnail_url:         watches/thumbs/sub_1.jpg
+         alt:                   Submariner
+         description:           Submariner
+         watch:                 *RolexSub
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/sub_2.jpg
+         thumbnail_url:         watches/thumbs/sub_2.jpg
+         alt:                   Submariner
+         description:           Submariner
+         watch:                 *RolexSub
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/sub_3.jpg
+         thumbnail_url:         watches/thumbs/sub_3.jpg
+         alt:                   Submariner
+         description:           Submariner
+         watch:                 *RolexSub
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/sub_1.jpg
+         thumbnail_url:         watches/thumbs/sub_1.jpg
+         alt:                   Submariner
+         description:           Submariner
+         watch:                 *RolexSub
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/sub_2.jpg
+         thumbnail_url:         watches/thumbs/sub_2.jpg
+         alt:                   Submariner
+         description:           Submariner
+         watch:                 *RolexSub
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/sub_3.jpg
+         thumbnail_url:         watches/thumbs/sub_3.jpg
+         alt:                   Submariner
+         description:           Submariner
+         watch:                 *RolexSub
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/monaco_1.jpg
+         thumbnail_url:         watches/thumbs/monaco_1.jpg
+         alt:                   Monaco
+         description:           Monaco
+         watch:                 *TagHeuerMonaco
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/monaco_2.jpg
+         thumbnail_url:         watches/thumbs/monaco_2.jpg
+         alt:                   Monaco
+         description:           Monaco
+         watch:                 *TagHeuerMonaco
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/monaco_3.jpg
+         thumbnail_url:         watches/thumbs/monaco_3.jpg
+         alt:                   Monaco
+         description:           Monaco
+         watch:                 *TagHeuerMonaco
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/speedmaster_1.jpg
+         thumbnail_url:         watches/thumbs/speedmaster_1.jpg
+         alt:                   Speedmaster
+         description:           Speedmaster Professional
+         watch:                 *OmegaSpeedmaster
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/speedmaster_2.jpg
+         thumbnail_url:         watches/thumbs/speedmaster_2.jpg
+         alt:                   Speedmaster
+         description:           Speedmaster Professional
+         watch:                 *OmegaSpeedmaster
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/speedmaster_3.jpg
+         thumbnail_url:         watches/thumbs/speedmaster_3.jpg
+         alt:                   Speedmaster
+         description:           Speedmaster Professional
+         watch:                 *OmegaSpeedmaster
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/portugaise_1.jpg
+         thumbnail_url:         watches/thumbs/portugaise_1.jpg
+         alt:                   Portugaise
+         description:           Portugaise Chrono
+         watch:                 *IWCPortugaise
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/portugaise_2.jpg
+         thumbnail_url:         watches/thumbs/portugaise_2.jpg
+         alt:                   Portugaise
+         description:           Portugaise Chrono
+         watch:                 *IWCPortugaise
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/portugaise_3.jpg
+         thumbnail_url:         watches/thumbs/portugaise_3.jpg
+         alt:                   Portugaise
+         description:           Portugaise Chrono
+         watch:                 *IWCPortugaise
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/seamaster_1.jpg
+         thumbnail_url:         watches/thumbs/seamaster_1.jpg
+         alt:                   Seamaster
+         description:           Seamaster Professional 300m
+         watch:                 *OmegaSeamaster
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/seamaster_2.jpg
+         thumbnail_url:         watches/thumbs/seamaster_2.jpg
+         alt:                   Seamaster
+         description:           Seamaster Professional 300m
+         watch:                 *OmegaSeamaster
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/seamaster_3.jpg
+         thumbnail_url:         watches/thumbs/seamaster_3.jpg
+         alt:                   Seamaster
+         description:           Seamaster Professional 300m
+         watch:                 *OmegaSeamaster
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/luminor_1.jpg
+         thumbnail_url:         watches/thumbs/luminor_1.jpg
+         alt:                   Luminor
+         description:           Luminor Base
+         watch:                 *PaneraiLuminor
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/luminor_2.jpg
+         thumbnail_url:         watches/thumbs/luminor_2.jpg
+         alt:                   Luminor
+         description:           Luminor Base
+         watch:                 *PaneraiLuminor
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/luminor_3.jpg
+         thumbnail_url:         watches/thumbs/luminor_3.jpg
+         alt:                   Luminor
+         description:           Luminor Base
+         watch:                 *PaneraiLuminor
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/snowflake_1.jpg
+         thumbnail_url:         watches/thumbs/snowflake_1.jpg
+         alt:                   Submariner
+         description:           Submariner Snowflake
+         watch:                 *TudorSnowflake
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/snowflake_2.jpg
+         thumbnail_url:         watches/thumbs/snowflake_2.jpg
+         alt:                   Submariner
+         description:           Submariner Snowflake
+         watch:                 *TudorSnowflake
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/snowflake_3.jpg
+         thumbnail_url:         watches/thumbs/snowflake_3.jpg
+         alt:                   Submariner
+         description:           Submariner Snowflake
+         watch:                 *TudorSnowflake
+         display_order:         30
+
+#Fin
+

@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
+import models.Watch;
 import play.Application;
 import play.GlobalSettings;
 import play.Logger;
@@ -18,18 +19,40 @@ import play.mvc.SimpleResult;
 
 import com.avaje.ebean.Ebean;
 import com.typesafe.config.ConfigFactory;
+
 import play.api.mvc.EssentialFilter;
 import play.filters.gzip.GzipFilter;
 
+@SuppressWarnings("unchecked")
 public class Global extends GlobalSettings {
 	public <T extends EssentialFilter> Class<T>[] filters() {
         return new Class[]{GzipFilter.class};
     }
 	
+	static class InitialData {
+		public static void insert(Application app) {
+			if (app.isDev() || forceReload()) {
+				if(Ebean.find(Watch.class).findRowCount() == 0) {
+
+					Map<String,List<Object>> all = (Map<String,List<Object>>)Yaml.load("available-watches-default.yml");
+
+					Ebean.save(all.get("watches"));
+
+					Ebean.save(all.get("pictures"));
+
+					Map<String,List<Object>> liveConfig = (Map<String,List<Object>>)Yaml.load("liveconfig-default.yml");
+					Ebean.save(liveConfig.get("liveConfig"));
+				}
+			}
+		}
+
+	}
+	
 	@Override
     public void onStart(Application app) {
 		if (!app.isTest()) {
 			Logger.info("Application has started");
+		InitialData.insert(app);
 		} else {
 			Logger.info("Application has started in test mode.");
 		}
@@ -64,5 +87,13 @@ public class Global extends GlobalSettings {
     @Override
     public Promise<SimpleResult> onBadRequest(RequestHeader request, String error) {
         return Promise.<SimpleResult>pure(badRequest("Don't try to hack the URI!"));
+    }
+    
+    private static boolean forceReload() {
+    	try {
+    		return ConfigFactory.load().getBoolean("force.initial.data.reload");
+    	} catch (Throwable t) {
+    		return false;
+    	}
     }
 }

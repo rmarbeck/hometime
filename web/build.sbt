@@ -1,8 +1,9 @@
 name := "web"
 
-version := "1.0-SNAPSHOT"
+version := "0.8"
 
 libraryDependencies ++= Seq(
+  "postgresql" % "postgresql" % "9.1-901-1.jdbc4",
   javaJdbc,
   javaEbean,
   filters,

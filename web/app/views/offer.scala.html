@@ -1,6 +1,14 @@
 @(message: String = "")
 
-@layouts.main(Messages("watch.collection.html.title")) {
+@end_scripts_bottom = {
+    <script>
+        $('body').attr('data-spy', 'scroll' );
+        $('body').attr('data-target', '.bs-sidebar' );
+        $('body').attr('data-offset', '10' );
+    </script>
+}
+
+@layouts.main(Messages("offer.html.title"), end_scripts_bottom) {
     @layouts.fragments.navbar(50)
       
     <div class="container container-offer">

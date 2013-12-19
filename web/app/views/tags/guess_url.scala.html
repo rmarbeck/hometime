@@ -1,0 +1,2 @@
+@(url: String)
+@if(url.startsWith("http")) {@url} else {@routes.Assets.at("images/"+url)}

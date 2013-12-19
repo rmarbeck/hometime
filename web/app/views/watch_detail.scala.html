@@ -1,0 +1,129 @@
+@(message: String = "", watch: Watch, pictures: List[Picture], displayable_watches: List[Watch])
+@import tags._
+@end_scripts_bottom = {
+    <script>
+        $('#blueimp-gallery').data('useBootstrapModal', false);
+    </script>
+}
+
+@layouts.with_gallery(Messages("watch.detail.html.title", message), end_scripts_bottom) {
+
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+        <!-- The container for the modal slides -->
+        <div class="slides"></div>
+        <!-- Controls for the borderless lightbox -->
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+        <!-- The modal dialog, which will be used to wrap the lightbox content -->
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body next"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left prev">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                            Previous
+                        </button>
+                        <button type="button" class="btn btn-primary next">
+                            Next
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    @layouts.fragments.navbar(20)
+      
+    <div class="container marketing watch-detail-container">
+      
+      <div class="row featurette">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="col-sm-4 col-xs-8">
+            <div id="links">
+                <div class="row">
+                    @for(picture <- pictures) {
+                    <div class="col-xs-4">
+                        <a href="@guess_url(picture.url)" title="@picture.description" data-gallery>
+                            <img class="img-responsive" src="@guess_url(picture.thumbnail_url)" alt="@picture.alt">
+                        </a>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="visible-xs col-xs-2"></div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-sm-8">
+            <div class="watch_detail">
+                <div class="title"><span class="brand">@watch.brand</span> - <span class="model">@watch.full_name</span></div>
+                <div class="data">
+                    <dl class="dl-horizontal">
+                      <dt>@Messages("watch.detail.data.movement")</dt>
+                      <dd>@watch.movement</dd>
+                      <dt>@Messages("watch.detail.data.case")</dt>
+                      <dd>@watch.case_infos</dd>
+                      <dt>@Messages("watch.detail.data.functions")</dt>
+                      <dd>@watch.functions</dd>
+                      <dt>@Messages("watch.detail.data.water.resistance")</dt>
+                      <dd>@watch.water_resistance</dd>
+                      <dt>@Messages("watch.detail.data.special")</dt>
+                      <dd>@watch.specials</dd>
+                      <dt>@Messages("watch.detail.data.model.years")</dt>
+                      <dd>@watch.production_period</dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>@Messages("watch.detail.data.this.one.year")</dt>
+                      <dd>@watch.item_year</dd>
+                      <dt>@Messages("watch.detail.data.this.one.strap")</dt>
+                      <dd>@watch.item_strap</dd>
+                      <dt>@Messages("watch.detail.data.this.one.reference")</dt>
+                      <dd>@watch.item_reference</dd>
+                      <dt>@Messages("watch.detail.data.hometime.price")</dt>
+                      <dd>@display_price(watch.price)</dd>
+                      <dt>@Messages("watch.detail.data.this.one.available")</dt>
+                      <dd>@display_availability(watch.is_available, "watch.detail.data.this.one.available.yes", "watch.detail.data.this.one.available.no")</dd>
+                    </dl>
+                </div>
+          </div>
+        </div>
+      </div>
+      <div class="row featurette">
+        <div class="col-xs-12">
+            <div class="watch_detail">                
+                <div class="history"><div class="head">@Messages("watch.detail.model.history")</div><div class="body">@watch.model_history</div></div>
+                <div class="history"><div class="head">@Messages("watch.detail.item.history")</div><div class="body">@watch.item_history</div></div>
+                <div class="why"><div class="head">@Messages("watch.detail.reason.why")</div><div class="body">@watch.reason_why</div></div>
+            </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-12 text-center"><a class="btn btn-primary watch-detail-action" href="@routes.Application.offer()" role="button">@Messages("watch.detail.order.this.call.to.action")</a></div>
+      </div>
+      <hr>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12"><h4>@Messages("watch.detail.other.watches")</h4></div>
+      </div>
+      <div class="row">
+         @for(watch <- displayable_watches) {
+            <div class="col-xs-3 col-sm-2 col-md-1"><a href="@routes.Application.watch_detail(watch.id)"><img class="img-responsive" src="@guess_url(watch.main_thumbnail_url)" alt="@watch.short_name"></a></div> 
+         } 
+      </div>
+
+      <hr>
+
+    </div>
+}

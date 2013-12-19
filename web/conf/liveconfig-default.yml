@@ -1,0 +1,27 @@
+liveConfig:
+    - !!models.LiveConfig
+         key:                   home_background_how_many
+         valuelong:             5                
+
+    - !!models.LiveConfig
+         key:                   home_background_1
+         valuestring:           images/home_background_1.jpg
+
+    - !!models.LiveConfig
+         key:                   home_background_2
+         valuestring:           images/home_background_2.jpg
+
+    - !!models.LiveConfig
+         key:                   home_background_3
+         valuestring:           http://www.psdgraphics.com/file/fire-bokeh-background.jpg
+
+    - !!models.LiveConfig
+         key:                   home_background_4
+         valuestring:           http://www.iammusic.tv/wp-content/uploads/2012/11/Black-background-set-wood-on-chanconsultants-jpg.jpg
+
+    - !!models.LiveConfig
+         key:                   home_background_5
+         valuestring:           http://www.hdwallpaperstop.com/wp-content/uploads/2013/11/best-background-wallpaper.jpg
+
+#Fin
+

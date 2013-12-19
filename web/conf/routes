@@ -11,8 +11,11 @@ GET     /service                    controllers.Application.service()
 # Watches
 GET     /watches                    controllers.Application.watch_collection()
 
+# Single watch
+GET     /watch/:id                  controllers.Application.watch_detail(id: Long)
+
 # Offer
-GET     /offer                    controllers.Application.offer()
+GET     /offer                      controllers.Application.offer()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -135,9 +135,32 @@ service.content.6.body=<div class="sub-title">Votre montre fait partie de votre 
 
 # Watch collection page
 watch.collection.html.title=Les montres Hometime
+watch.collection.display.watch.call.to.action=Voir la fiche
+
+# Watch detail
+watch.detail.html.title=Détail - {0}
+watch.detail.data.movement=Mouvement
+watch.detail.data.model.years=Production
+watch.detail.data.this.one.year=Cet exemplaire
+watch.detail.data.functions=Fonctions
+watch.detail.data.this.one.strap=Bracelet
+watch.detail.data.case=Boitier
+watch.detail.data.this.one.reference=Référence
+watch.detail.data.special=Particularités
+watch.detail.data.water.resistance=Entanchéïté
+watch.detail.data.hometime.price=Tarif prêt
+watch.detail.data.new.price=Prix neuf
+watch.detail.model.history=L''histoire du modèle
+watch.detail.item.history=L''histoire de cet exemplaire
+watch.detail.reason.why=Pourquoi la choisir ?
+watch.detail.other.watches=Les autres montres disponibles
+watch.detail.order.this.call.to.action=Choisir cette montre
+watch.detail.data.this.one.available=Disponibilité
+watch.detail.data.this.one.available.yes=La montre est disponible
+watch.detail.data.this.one.available.no=La montre est actuellement prêtée à un client
 
 # Offer page
-
+offer.html.title=Les services Hometime
 offer.menu.text.service=Révision & réparations
 offer.menu.text.loan=Prêt de montre de luxe
 offer.menu.text.home=Déplacement à domicile
