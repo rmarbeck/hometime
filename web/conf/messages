@@ -10,7 +10,7 @@ global.text.site.name=hometime
 global.text.copyright=© hometime 2013
 global.text.brand.baseline=
 global.navbar.link.text.home=Home
-global.navbar.link.text.service=Entretenir sa montre
+global.navbar.link.text.service=L''entretien d''une montre
 global.navbar.link.text.services=Les services
 global.navbar.link.text.services.service=Entretien & révisions
 global.navbar.link.text.services.loan=Prêt de montres
@@ -35,30 +35,32 @@ global.action.logout=Se déconnecter
 
 
 # Home page
-home.caption.1.head=Entrenez votre montre, c''est votre patrimoine&nbsp;!
-home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Découvrez pourquoi !
+home.caption.1.head=Vous avez une belle montre, entrenez la&nbsp;!
+home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
 home.caption.1.call.to.action=Pourquoi entrenir ma montre ?
 
 home.caption.2.head=Portez une montre de rêve pendant l''entretien de la vôtre&nbsp;!
-home.caption.2.body=Hometime vous propose de porter une icône pendant toute la durée de l''entretien de votre montre. <b>Rolex submariner, Omega Speedmaster, Tag Heuer Monaco</b>, elles sont toutes là.
+home.caption.2.body=Hometime vous prête une montre de rêve pendant toute la durée de l''entretien de la votre. <b>Rolex submariner, Omega Speedmaster, Tag Heuer Monaco</b>, elles sont toutes là.
 home.caption.2.call.to.action=Choisissez votre préférée !
 
 home.caption.3.head=Ne vous déplacez plus&nbsp;!
-home.caption.3.body=Hometime vient chercher votre montre chez vous et vous la ramène dès qu''elle est prête. C''est bien le moins que l''on puisse faire.
-home.caption.3.call.to.action=Prendre rendez-vous.
+home.caption.3.body=Hometime vient chercher votre montre chez vous et vous la ramène dès qu''elle est prête.
+home.caption.3.call.to.action=Prenez rendez-vous !
+
+home.baseline=Hometime : une montre légende à votre poignet pendant l''entretien de votre montre mécanique
 
 home.promise.1.alt=Mouvement
-home.promise.1.head=Raison
-home.promise.1.body=Une montre mécanique a été conçue pour durer longtemps et se transmettre de génération en génération. Mais en battant plus de <b>200 millions de fois en une année</b>, son mouvement doit être entretenu. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique.
+home.promise.1.head=Entretenir
+home.promise.1.body=Une montre mécanique a été conçue pour <b>durer longtemps</b> et se transmettre de génération en génération. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique.
 home.promise.1.call.to.action=Tout savoir sur l''entretien.
 
 home.promise.2.alt=Iconic
-home.promise.2.head=Passion
-home.promise.2.body=L''histoire de l''horlogerie est pavée de modèles élevés au rang d''icône. Hometime vous propose d''en choisir une et de <b>la porter pendant toute la durée de la révision</b> ou de la réparation <b>de votre montre</b>. Découvrez vite la montre qui vous plaît le plus. 
+home.promise.2.head=Prêter
+home.promise.2.body=Hometime vous propose de <b>porter pendant toute la durée de la révision</b> ou de la réparation <b>de votre montre</b> une icône de l''horologerie.  Découvrez vite la montre qui vous plaît le plus. 
 home.promise.2.call.to.action=Toutes nos montres !
 
 home.promise.3.alt=AtHome
-home.promise.3.head=Confort
+home.promise.3.head=A domicile
 home.promise.3.body=Pour vous apporter le meilleur, Hometime vous propose <b>tous ses services à domicile</b>. Vous n''avez pas à vous adapter à des contraintes d''horaires ou de distance, nous nous adaptons aux vôtres.
 home.promise.3.call.to.action=Tous les services Hometime.
 
@@ -126,7 +128,7 @@ service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à 
  <li>Se renseigner sur le caractère ferme et définitif du devis,</li>\
  <li>Connaitre les éventuels intermédiaires intervenant dans la réalisation du service.</li></ul>\
 
-service.why.call.to.action=Découvrez comment Hometime peut vous aider !
+service.why.call.to.action=Faire entretenir ma montre !
 
 service.content.6.head=Vous hésitez encore ?
 service.content.6.body=<div class="sub-title">Votre montre fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérée comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
@@ -136,6 +138,7 @@ service.content.6.body=<div class="sub-title">Votre montre fait partie de votre 
 # Watch collection page
 watch.collection.html.title=Les montres Hometime
 watch.collection.display.watch.call.to.action=Voir la fiche
+watch.collection.baseline=Le catalogue des montres Hometime disponibles pour le prêt
 
 # Watch detail
 watch.detail.html.title=Détail - {0}
@@ -166,6 +169,8 @@ offer.menu.text.loan=Prêt de montre de luxe
 offer.menu.text.home=Déplacement à domicile
 offer.menu.text.more=Les autres prestations
 offer.menu.text.prices=Les tarifs
+
+offer.baseline=Les services et les prestations Hometime
 
 offer.service.head=Révision & réparations
 offer.service.body=Hometime prend en charge la révision ou la réparation de votre montre. L''ensemble des opérations sont réalisées soit par un <b>horloger indépendant</b>, soit directement par <b>la marque elle-même</b>. Hometime vous conseille, et <b>c''est vous qui choisissez</b>.\
@@ -218,9 +223,26 @@ offer.more.body=A l''occasion d''un déplacement au domicile pour la prise en ch
  <li>Conseils autour de la vente</li></ul>\
  <br /><br />Si vous pensez que nous pouvons vous apporter d''autres services, n''hésitez pas à nous le suggérer en nous <a href="mailto:contact@hometime.fr">envoyant un mail</a> !
 
-offer.prices.head=Les tarifs
-offer.prices.body=Nos tarifs de révision et de réparation sont présentés sous forme de fourchette car un nombre important de facteurs peut faire varier la durée et la complexité de la prestation.\
- Dès la prise de contact avec vous, nous vous fournirons une évaluation beaucoup plus précise à partir des informations que vous nous donnerez. 
+
+prices.baseline=Les tarifs des prestations Hometime
+prices.head=Les tarifs
+prices.body=Nos tarifs de révision et de réparation sont présentés sous forme de fourchette car un nombre important de facteurs peut faire varier la durée et la complexité de la prestation.\
+ Dès la prise de contact avec vous, nous vous fournirons une évaluation beaucoup plus précise à partir des informations que vous nous donnerez.
+ 
+prices.table.head.service=Service
+prices.table.head.details=Détails
+prices.table.head.tariff=Tarif
+prices.table.head.remarks=Remarques
+prices.table.body.service=Révision
+prices.table.body.watch.of.category=Montres de catégorie {0}
+prices.table.body.service.prices=Entre {0} et {1}
+prices.table.body.service.details=Prix à affiner par téléphone. Le prix dépend de votre choix de faire réviser la montre par un horloger généraliste ou par le réseau de la marque.
+prices.table.body.repair=Réparation
+prices.table.body.repair.prices=Sur devis gratuit uniquement.
+prices.table.body.loan=Prêt de montre dans le cadre d''une révision
+prices.table.body.loan.prices=Entre {0} et {1}.Voir les prix sur la fiche de chaque montre.
+prices.table.body.moving=Frais de déplacement
+prices.table.body.moving.prices=Gratuits
 
 # Data unavailable
 data.publicationdate.unknown=inconnue

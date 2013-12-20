@@ -1,0 +1,84 @@
+@(message: String = "")
+
+@layouts.main(Messages("offer.html.title")) {
+    @layouts.fragments.navbar(50)
+      
+    <div class="container container-prices">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="page-baseline">@Messages("prices.baseline")</div>
+          </div>
+        </div>
+        <div class="row">
+            <div id="offers" class="col-md-12" role="main">
+              <div id="prices" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="offer-box">
+                    <div class="title"><blockquote>@Html(Messages("prices.head"))</blockquote></div>
+                    <div class="body">@Html(Messages("prices.body"))</div>
+                    <div class="row price-table">
+                      <table class="table table-striped table-hover table-bordered">
+                        <thead>
+                          <tr>
+                            <th>@Html(Messages("prices.table.head.service"))</th>
+                            <th>@Html(Messages("prices.table.head.details"))</th>
+                            <th>@Html(Messages("prices.table.head.tariff"))</th>
+                            <th>@Html(Messages("prices.table.head.remarks"))</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.service"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>@Html(Messages("prices.table.body.watch.of.category", "1"))*</td>
+                            <td>@Html(Messages("prices.table.body.service.prices", "200€", "400€"))</td>
+                            <td rowspan="3" width="30%">@Html(Messages("prices.table.body.service.details"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>@Html(Messages("prices.table.body.watch.of.category", "2"))**</td>
+                            <td>@Html(Messages("prices.table.body.service.prices", "300€", "600€"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>@Html(Messages("prices.table.body.watch.of.category", "3"))***</td>
+                            <td>@Html(Messages("prices.table.body.service.prices", "300€", "700€"))</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.repair"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.repair.prices"))</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.loan"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.loan.prices", "50€", "200€"))</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.moving"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.moving.prices"))</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="footnote">* @Html(Messages("prices.table.body.watch.of.category", "1")) : Baume & Mercier, Bell & Ross, Frédérique Constant, Hamilton, Longines, Tissot, Rado</div>
+                    <div class="footnote">** @Html(Messages("prices.table.body.watch.of.category", "2")) : Breitling, Chopard, Chanel, Omega, Tag Heuer, Tudor, Zenith</div>
+                    <div class="footnote">*** @Html(Messages("prices.table.body.watch.of.category", "3")) : Hublot, IWC, Jeager LeCoultre, Panerai, Rolex</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+    </div><!-- /.container -->
+}

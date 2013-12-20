@@ -3,9 +3,18 @@
     margin-bottom: 60px;
 }
 
+.container-watch-collection .baseline {
+  width: 90%;
+  position: absolute;
+  text-align: center;
+  font-size: 16px;
+  font-weight:bold;
+  margin-top: 65px;
+}
+
 @media (min-width: 992px) {
     #collection .row:first-child {
-        padding-top: 100px;
+        padding-top: @content-top-margin;
     }
 }
 
@@ -48,5 +57,10 @@
 
   .watch-box .sub-caption {
     font-size: 16px;
+  }
+  
+   .container-watch-collection .baseline {
+    font-size: 20px;
+    margin-top: 80px;
   }
 }

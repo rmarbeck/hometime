@@ -26,6 +26,10 @@ public class Application extends Controller {
         return ok(offer.render(""));
     }
 
+    public static Result prices() {
+        return ok(prices.render(""));
+    }
+    
     public static Result watch_detail(Long id) {
     	try {
 	    	Watch currentWatch = Watch.findById(id);

@@ -11,6 +11,7 @@ body {
 /* CUSTOMIZE THE HEADER TITLE
 -------------------------------------------------- */
 #header-title a {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   position: absolute;
   top: 50px;
   left: 0;
@@ -23,14 +24,25 @@ body {
   letter-spacing: 9px;
 }
 
+.baseline {
+  text-align: center;
+  font-size: 16px;
+  font-weight:bold;
+  margin-top: -30px;
+  margin-bottom: 45px;
+}
+
 .order-action, .more-action {
   margin-top: 15px;
 }
 
 @media (min-width: 768px) {
-#header-title a {
+  #header-title a {
   top: 100px;
-}
+  }
+  .baseline {
+    font-size: 20px;
+  }
 }
 
 @import "_common.less";

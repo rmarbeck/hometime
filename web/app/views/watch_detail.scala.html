@@ -117,7 +117,7 @@
       <div class="row">
         <div class="col-xs-12"><h4>@Messages("watch.detail.other.watches")</h4></div>
       </div>
-      <div class="row">
+      <div class="row displayable-watches">
          @for(watch <- displayable_watches) {
             <div class="col-xs-3 col-sm-2 col-md-1"><a href="@routes.Application.watch_detail(watch.id)"><img class="img-responsive" src="@guess_url(watch.main_thumbnail_url)" alt="@watch.short_name"></a></div> 
          } 

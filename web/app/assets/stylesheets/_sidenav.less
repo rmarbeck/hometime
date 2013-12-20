@@ -12,7 +12,7 @@
 
 /* First level of nav */
 .bs-sidenav {
-  margin-top: 60px;
+  margin-top: @content-top-margin-small;
   margin-bottom: 30px;
   padding-top:    10px;
   padding-bottom: 10px;
@@ -23,7 +23,7 @@
 
 @media (min-width: 768px) {
   .bs-sidenav {
-    margin-top: 100px;
+    margin-top: @content-top-margin;
   }
 }
 
@@ -72,7 +72,7 @@
   }
   .bs-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
-    top: 100px;
+    top: @content-top-margin;
   }
   .bs-sidebar.affix-bottom {
     position: absolute; /* Undo the static from mobile first approach */
