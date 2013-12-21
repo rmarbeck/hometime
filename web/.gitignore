@@ -11,6 +11,9 @@ dist
 /.idea_modules
 /.classpath
 /.project
+
 /RUNNING_PID
 /.settings
 /.target
+Thumbs.db
+/launch_play.bat
