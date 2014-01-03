@@ -80,8 +80,8 @@ service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mé
  <li>Le <b>séchage progressif du lubrifiant</b> présent dans le mouvement.</li></ul>\
  Ces deux phénomènes se combinent pour altérer le fonctionnement de la montre, ce qui va dégrader ses performances (prise de retard ou d''avance de plus de 10 secondes par jour, diminution de la durée de marche après remontage), mais qui peut à terme entrainer la casse d''une pièce.\
  <div class="sub-title">Le boitier :</div>\
- A l''usage, le boitier reçoit des petits coups ou se retrouve en contact avec des objets susceptibles de le rayer. Cette usure est visible, cependant le boitier peut aussi souffrir d''une usure beaucoup moins visible, celle qui touche à l''<b>étancheïté de la montre</b>.\
- Les joints garantissant à la montre une parfaite résistance à l''humidité perdent de leur efficacité avec le temps. De même, dans le cas des chronographes par exemple, les boutons de déclenchement ou de remise à zéro peuvent s''user et perdre de leur étanchéïté.\
+ A l''usage, le boitier reçoit des petits coups ou se retrouve en contact avec des objets susceptibles de le rayer. Cette usure est visible, cependant le boitier peut aussi souffrir d''une usure beaucoup moins visible, celle qui touche à l''<b>étanchéité de la montre</b>.\
+ Les joints garantissant à la montre une parfaite résistance à l''humidité perdent de leur efficacité avec le temps. De même, dans le cas des chronographes par exemple, les boutons de déclenchement ou de remise à zéro peuvent s''user et perdre de leur étanchéité.\
  <div class="sub-title">Mais aussi :</div>\
  D''autres composants de la montre s''usent aussi :\
  <ul><li>Le bracelet et les attaches qui le maintiennent,</li>\
@@ -98,7 +98,7 @@ service.content.2.body=<div class="sub-title">L''entretien quotidien :</div>L''e
  <li>Vérification et nettoyage de chacune des pièces,</li>\
  <li>Contrôle des éléments du cadran (aiguilles, index...),</li>\
  <li>Remontage et huilage de l''ensemble des composants</li>\
- <li>Changement des joints et fermeture du boitier & contrôle d''étanchéïté</li>\
+ <li>Changement des joints et fermeture du boitier & contrôle d''étanchéité</li>\
  <li>Contrôle des performances chronométriques</li></ul>\
  Si nécessaire, l''horloger peut remplacer une pièce défectueuse par une pièce rigoureusement identique. L''horloger peut aussi intervenir pour redonner au boitier et au verre (cas des verres non saphir) leur aspect neuf par un polissage approprié.\
  <br />Après une révision, <b>la montre fonctionne comme au premier jour</b>.
@@ -116,11 +116,12 @@ service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisi
 service.content.4.head=Combien <span class="text-muted">ça coûte ?</span> Combien de temps <span class="text-muted">cela dure-t-il ?</span>
 service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horloger, marque) est libre de fixer le prix de ses prestations, cependant il est fréquent de constater des prix compris entre <b>200€ et 500€</b>.\
  <br/>Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proportionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
- Il faut bien entendu prendre en compte l''ensemble des services pouvant accompagner la révision (notamment la garantie d''étanchéïté, ou la prise en charge à domicile). Dans le cas où la montre a subi des dommages et nécessite le remplacement de pièces, les prix peuvent dépasser cette limite des 20%. \
+ Il faut bien entendu prendre en compte l''ensemble des services pouvant accompagner la révision (notamment la garantie d''étanchéité, ou la prise en charge à domicile). Dans le cas où la montre a subi des dommages et nécessite le remplacement de pièces, les prix peuvent dépasser cette limite des 20%. \
  <div class="sub-title">Les délais :</div>Lors d''une révision, il existe des opérations pour lesquelles les délais sont incompressibles et d''autres pour lesquelles ils peuvent être optimisés. Ainsi, le démontage, l''huilage et le remontage sont des opérations relativement rapides pouvant être réalisées en une journée.\
  En revanche, le contrôle du bon fonctionnement de la montre dans différentes positions (notamment pour les montres certifiées chronomètre) prend plusieurs jours, voire plusieurs semaines pour certaines marques.\
  En fonction de l''endroit où est réalisée la révision, il faut ajouter les délais de transport.\
- <br />Les délais peuvent ainsi varier de <b>1 semaine à 3 mois</b>.
+ <br />Les délais peuvent ainsi varier de <b>1 semaine à 3 mois</b>. \
+ <br /><br /><b>Pour toutes les prestations qui lui sont confiées, Hometime se charge de minimiser coûts et délais.</b>
 
 service.content.5.head=Y-a-t-il des risques liés à l''entretien ?
 service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à proprement parler. Les montres sont toutes conçues pour être entretenues à intervalles réguliers.\
@@ -138,7 +139,7 @@ service.invest.call.to.action=Demander un devis
 service.content.6.head=Vous hésitez encore ?
 service.content.6.body=<div class="sub-title">Votre montre fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérées comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
  Si cela est évident pour une catégorie très particulière de montres (Rolex, Patek Philippe notamment), il faut noter que certaines montres peu cotées il y a quelques années s''apprécient très rapidement aujourd''hui (cas des montres Heuer par exemple, ou des Panerai).\
- <br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent transporter une valeur sentimentale très forte.
+ <br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent représenter une valeur sentimentale très forte.
 
 # Watch collection page
 watch.collection.html.title=Les montres Hometime
@@ -155,7 +156,7 @@ watch.detail.data.this.one.strap=Bracelet
 watch.detail.data.case=Boitier
 watch.detail.data.this.one.reference=Référence
 watch.detail.data.special=Particularités
-watch.detail.data.water.resistance=Entanchéïté
+watch.detail.data.water.resistance=Entanchéité
 watch.detail.data.hometime.price=Tarif prêt
 watch.detail.data.new.price=Prix neuf
 watch.detail.model.history=L''histoire du modèle
@@ -183,7 +184,7 @@ offer.service.body=Hometime prend en charge la révision ou la réparation de vo
  <ul><li>Vous apporter toutes les informations et conseils préalables à l''intervention</li>\
  <li>Prendre en <b>photo</b> votre montre afin de faire un <b>état des lieux précis avant la prise en charge</b></li>\
  <li>Faire parvenir la montre en toute sécurité auprès de l''atelier qui réalisera les opérations</li>\
- <li>Suivre au plus près le déroulement de la remise en état de votre montre et de vous tenir informé par <b>e-mail</b> ou par <b>SMS</b></li>\
+ <li>Suivre au plus près le déroulement de la remise en état de votre montre et vous tenir informé par <b>e-mail</b> ou par <b>SMS</b></li>\
  <li>Prendre rendez-vous avec vous pour la restitution de votre montre dès qu''elle est prête</li>\
  <li>Vous remettre les documents décrivant les opérations effectuées et la nouvelle garantie</li></ul>\
  <br />Pendant tout le temps de l''intervention, Hometime est à votre disposition pour vous donner les informations que vous souhaitez ou pour annuler une opération.\
@@ -288,55 +289,55 @@ order.form.label.your.city=* Votre lieu de résidence
 order.form.placeholder.your.city=Ville
 order.form.mandatory.mark.explanation=* Champ obligatoire
 order.success.panel.heading=Demande de devis prise en compte
-order.success.panel.body=Merci de votre confiance.<br><br>Nous avons bien enregistré votre demande. Nous vous recontactons très vite pour vous faire une évaluation précise. <br><br>A très bientôt.
+order.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre demande. Nous vous recontactons très vite pour vous faire une évaluation précise. <br /><br />A très bientôt.
 
 # About page
 about.html.title=Hometime - Qui sommes nous ?
 about.baseline=Qui sommes nous ?
 about.head.1=En deux mots
-about.body.1=Hometime est une jeune société installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
+about.body.1=Hometime est une jeune entreprise installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
 about.head.2=Notre mission
 about.body.2=Hometime a été créé pour que l''horlogerie ne soit que du plaisir. Notre objectif est de faire disparaitre toutes les contraintes liées à l''entretien de votre montre mais aussi de vous faire découvrir le monde passionnant de l''horlogerie.
 about.head.3=Comment procédons-nous ?
 about.body.3=L''ensemble des interventions réalisées sur les montres de nos clients sont sous-traitées à des ateliers experts reconnus et sélectionnés avec un soin particulier.\
- Toutes les montres que nous mettons à disposition de nos clients appartiennent à la société Hometime. Elles sont achetées sur les places de marché les plus sérieuses en fonction des besoins manifestés par nos clients. 
+ Toutes les montres que nous mettons à disposition de nos clients appartiennent à l''entreprise Hometime. Elles sont achetées sur les places de marché les plus sérieuses en fonction des besoins manifestés par nos clients. 
 
 # CGV page
 cgv.html.title=Hometime - Conditions générales de vente
 cgv.baseline=Conditions générales de vente
 cgv.head.1=Article 1 : Objet
 cgv.body.1=Les conditions générales de ventes décrites ci-après détaillent les droits et obligations de l''entreprise Hometime et de ses clients dans le cadre de la fourniture du service d''entretien et de prêt de montres mécaniques. \
- <br ><br >Toute prestation accomplie par la société Hometime implique l''adhésion sans réserve de l''acheteur aux présentes conditions générales de vente.
+ <br /><br />Toute prestation accomplie par l''entreprise Hometime implique l''adhésion sans réserve de l''acheteur aux présentes conditions générales de vente.
 cgv.head.2=Article 2 : Présentation des services
 cgv.body.2=Les caractéristiques des services proposés sont présentées dans la rubrique " Les services " de notre site. Les photographies n''entrent pas dans le champ contractuel. \
- La responsabilité de la société Hometime ne peut être engagée si des erreurs s''y sont introduites. \
- <br><br>Tous les textes et images présentés sur le site de la société Hometime sont réservés, pour le monde entier, au titre des droits d''auteur et de propriété intellectuelle; \
+ La responsabilité de l''entreprise Hometime ne peut être engagée si des erreurs s''y sont introduites. \
+ <br /><br />Tous les textes et images présentés sur le site de l''entreprise Hometime sont réservés, pour le monde entier, au titre des droits d''auteur et de propriété intellectuelle; \
  leur reproduction, même partielle, est strictement interdite.
 cgv.head.3=Article 3 : Durée de validité des offres
 cgv.body.3=Dans le cadre des montres prêtées, les produits sont proposés lorsqu''ils sont effectivement disponibles. En cas d''indisponibilité temporaire, une date de disponibilité prévisionnelle est indiquée. Il n''est pas possible à l''heure actuelle de poser une option sur un produit non disponible.
 cgv.head.4=Article 4 : Tarifs des services
 cgv.body.4=La rubrique " Les tarifs " de notre site indique les prix en euros toutes taxes comprises. Il s''agit de prix indicatifs. Un devis personnalisé est réalisé avant chaque commande. \
- <br><br>La société Hometime se réserve le droit de modifier ses prix à tout moment mais les services commandés sont facturés au prix en vigueur lors de l''enregistrement de la commande. \
- <br><br>Aucun escompte ne sera accordé en cas de paiement anticipé.
+ <br /><br />La entreprise Hometime se réserve le droit de modifier ses prix à tout moment mais les services commandés sont facturés au prix en vigueur lors de l''enregistrement de la commande. \
+ <br /><br />Aucun escompte ne sera accordé en cas de paiement anticipé.
 cgv.head.5=Article 5 : Commande
-cgv.body.5=Le client valide sa commande par mail après avoir reçu une proposition faisant suite à une demande de devis. Le mail contenant la proposition commerciale, contient un lien vers les présentes et indique que l''acceptation de la proposition vaut acceptation des conditions de vente. \
- <br><br>La société Hometime confirme la commande par courrier électronique; cette information reprend notamment tous les éléments de la commande et le droit de rétractation du client jusqu''à la date du rendez-vous convenu dans la proposition. \
- <br><br>Les données enregistrées par la société Hometime constituent la preuve de la nature, du contenu et de la date de la commande. Celle-ci est archivée par la société Hometime dans les conditions et les délais légaux; le client peut accéder à cet archivage en contactant le service Relations Clients indiqué sur le site.
+cgv.body.5=Le client valide sa commande par mail après avoir reçu une proposition faisant suite à une demande de devis. Le mail contenant la proposition commerciale contient un lien vers les présentes et indique que l''acceptation de la proposition vaut acceptation de celles-ci. \
+ <br /><br />La entreprise Hometime confirme la commande par courrier électronique; cette information reprend notamment tous les éléments de la commande et le droit de rétractation du client jusqu''à la date du rendez-vous convenu dans la proposition. \
+ <br /><br />Les données enregistrées par l''entreprise Hometime constituent la preuve de la nature, du contenu et de la date de la commande. Celle-ci est archivée par l''entreprise Hometime dans les conditions et les délais légaux; le client peut accéder à cet archivage en contactant le service Relations Clients indiqué sur le site.
 cgv.head.6=Article 6 : Modalités de paiement
 cgv.body.6=Le règlement des commandes s''effectue par chèque ou paiement paypal. \
  Lors du déplacement à domicile, l''acheteur devra verser un acompte de 50 % du montant global de la facture, le solde devant être payé lors du rendez-vous de restistution.
 cgv.head.7=Article 7 : Retard de paiement
 cgv.body.7=En cas de défaut de paiement total ou partiel le jour de la prise en charge, la commande sera annulée et la prestation n''aura pas lieu. \
  En cas de défaut de paiement total ou partiel le jour de la restitution, un deuxième rendez-vous sera fixé et l''acheteur devra verser à l''entreprise Hometime une pénalité de retard égale à une fois et demi le taux de l''intérêt légal ainsi qu''un montant forfaitaire de 50€ pour frais de déplacement. \
- <br><br>Le taux de l'intérêt légal retenu est celui en vigueur au jour du premier rendez-vous de restitution. \
- <br><br>Cette pénalité est calculée sur le montant hors taxes de la somme restant due, et court à compter de la date d''échéance du prix sans qu''aucune mise en demeure préalable ne soit nécessaire. \
- <br><br>Conformément aux articles 441-6 c. com. et D. 441-5 c. com., tout retard de paiement entraine de plein droit, outre les pénalités de retard, une obligation pour le débiteur de payer une indemnité forfaitaire de 40€ pour frais de recouvrement. \
- <br><br>Une indemnité complémentaire pourra être réclamée, sur justificatifs, lorsque les frais de recouvrement exposés sont supérieurs au montant de l''indemnité forfaitaire.
+ <br /><br />Le taux de l''intérêt légal retenu est celui en vigueur au jour du premier rendez-vous de restitution. \
+ <br /><br />Cette pénalité est calculée sur le montant hors taxes de la somme restant due, et court à compter de la date d''échéance du prix sans qu''aucune mise en demeure préalable ne soit nécessaire. \
+ <br /><br />Conformément aux articles 441-6 c. com. et D. 441-5 c. com., tout retard de paiement entraine de plein droit, outre les pénalités de retard, une obligation pour le débiteur de payer une indemnité forfaitaire de 40€ pour frais de recouvrement. \
+ <br /><br />Une indemnité complémentaire pourra être réclamée, sur justificatifs, lorsque les frais de recouvrement exposés sont supérieurs au montant de l''indemnité forfaitaire.
 cgv.head.8=Article 8 : Déplacements
-cgv.body.8=La société Hometime se déplace au domicile du client pour l''exécution de l''ensemble des prestations. Les dates de rendez-vous sont fixées dans les créneaux précisés sur le site dans la rubrique " Les services ".
+cgv.body.8=La entreprise Hometime se déplace au domicile du client pour l''exécution de l''ensemble des prestations. Les dates de rendez-vous sont fixées dans les créneaux précisés sur le site dans la rubrique " Les services ".
 cgv.head.9=Article 9 : Relations clients - Service après-vente
-cgv.body.9=Pour toute information, question ou réclamation, le client peut s''adresser du lundi au vendredi, de 9 h à 18 h au service Relations Clients de la société par email : \
-  <br><br>e-mail: contact@hometime.fr
+cgv.body.9=Pour toute information, question ou réclamation, le client peut s''adresser du lundi au vendredi, de 9 h à 18 h au service Relations Clients de l''entreprise par email : \
+  <br /><br />e-mail: contact@hometime.fr
 
 # Privacy page
 privacy.html.title=Hometime - Confidentialité et vie privée
@@ -348,13 +349,13 @@ privacy.body.1=Hometime porte une attention particulière au respect de la vie p
      <li>Hometime ne pratique pas le re-targeting publicitaire.</li></ul>
 privacy.head.2=Utilisation des cookies
 privacy.body.2=Le site Hometime nécessite l''utilisation de cookies anonymes pour fonctionner. \
- <br><br>Ces cookies sont effacés à l''issue de chaque session de navigation sur le site. \
- <br><br>Ils ne contiennent aucune information sensible. 
+ <br /><br />Ces cookies sont effacés à l''issue de chaque session de navigation sur le site. \
+ <br /><br />Ils ne contiennent aucune information sensible. 
 privacy.head.3=Suivi statistique des usages
 privacy.body.3=Afin de suivre et de comprendre les usages réalisés sur son site, Hometime utilise le service de suivi statistique Google Analytics. \
- <br><br>Ce service de suivi statistique met en oeuvre des cookies qui ne sont pas maitrisés par Hometime directement. \
- <br><br>Pour plus d''informations sur Google Analytics, veuillez cliquer ici : <a href="http://www.google.com/intl/fr/analytics/privacyoverview.html">Google Analytics</a>. \
- <br><br>Pour empêcher le suivi de votre activité sur le site, rendez-vous sur la page : <a href="https://tools.google.com/dlpage/gaoptout?hl=fr">Désactivation de Google Analytics</a>.
+ <br /><br />Ce service de suivi statistique met en oeuvre des cookies qui ne sont pas maitrisés par Hometime directement. \
+ <br /><br />Pour plus d''informations sur Google Analytics, veuillez cliquer ici : <a href="http://www.google.com/intl/fr/analytics/privacyoverview.html">Google Analytics</a>. \
+ <br /><br />Pour empêcher le suivi de votre activité sur le site, rendez-vous sur la page : <a href="https://tools.google.com/dlpage/gaoptout?hl=fr">Désactivation de Google Analytics</a>.
 
 # Data unavailable
 data.publicationdate.unknown=inconnue
