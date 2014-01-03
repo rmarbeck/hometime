@@ -94,7 +94,7 @@ service.content.2.body=<div class="sub-title">L''entretien quotidien :</div>L''e
  <li>Retrait du mouvement du boitier & démontage du mouvement,</li>\
  <li>Vérification et nettoyage de chacune des pièces,</li>\
  <li>Contrôle des éléments du cadran (aiguilles, index...),</li>\
- <li>Remontage et huilage de l'ensemble des composants</li>\
+ <li>Remontage et huilage de l''ensemble des composants</li>\
  <li>Changement des joints et fermeture du boitier & contrôle d''étanchéïté</li>\
  <li>Contrôle des performances chronométriques</li></ul>\
  Si nécessaire, l''horloger peut remplacer une pièce défectueuse par une pièce rigoureusement identique. L''horloger peut aussi intervenir pour redonner au boitier et au verre (cas des verres non saphir) leur aspect neuf par un polissage approprié.\
@@ -112,7 +112,7 @@ service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisi
 
 service.content.4.head=Combien <span class="text-muted">ça coûte ?</span> Combien de temps <span class="text-muted">cela dure-t-il ?</span>
 service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horloger, marque) est libre de fixer le prix de ses prestations, cependant il est fréquent de constater des prix compris entre <b>200€ et 500€</b>.\
- <br/>Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proporionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
+ <br/>Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proportionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
  Il faut bien entendu prendre en compte l''ensemble des services pouvant accompagner la révision (notamment la garantie d''étanchéïté, ou la prise en charge à domicile). Dans le cas où la montre a subi des dommages et nécessite le remplacement de pièces, les prix peuvent dépasser cette limite des 20%. \
  <div class="sub-title">Les délais :</div>Lors d''une révision, il existe des opérations pour lesquelles les délais sont incompressibles et d''autres pour lesquelles ils peuvent être optimisés. Ainsi, le démontage, l''huilage et le remontage sont des opérations relativement rapides pouvant être réalisées en une journée.\
  En revanche, le contrôle du bon fonctionnement de la montre dans différentes positions (notamment pour les montres certifiées chronomètre) prend plusieurs jours, voire plusieurs semaines pour certaines marques.\
@@ -284,6 +284,8 @@ order.form.placeholder.phone.number=06xxxxxx
 order.form.label.your.city=* Votre lieu de résidence
 order.form.placeholder.your.city=Ville
 order.form.mandatory.mark.explanation=* Champ obligatoire
+order.success.panel.heading=Demande de devis prise en compte
+order.success.panel.body=Merci de votre confiance.<br><br>Nous avons bien enregistré votre demande. Nous vous recontactons très vite pour vous faire une évaluation précise. <br><br>A très bientôt.
 
 # About page
 about.html.title=Hometime - Qui sommes nous ?

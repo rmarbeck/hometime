@@ -11,6 +11,18 @@
             <div class="page-baseline">@Messages("order.baseline")</div>
           </div>
       </div>
+      @if(flash.containsKey("success")) {
+      <div class="row success">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="panel panel-success">
+              <div class="panel-heading">@Html(Messages("order.success.panel.heading"))</div>
+              <div class="panel-body">
+                @Html(Messages("order.success.panel.body"))
+              </div>
+            </div>
+        </div>
+      </div>
+      } else {
       <div class="row explanation">
           <div class="col-sm-10 col-sm-offset-1">
             <div class="explanation-body">@Html(Messages("order.text.explanation"))</div>
@@ -89,6 +101,7 @@
             }
         </div>
       </div>
+      }
      <hr>
     </div><!-- /.container -->
     

@@ -49,7 +49,7 @@
          water_resistance:      100 m
          specials:              Attention, il s'agit d'une montre manuelle. Il faut la remonter tous les deux jours.
          production_period:     Depuis 1959
-         item_year:             2000
+         item_year:             Exemplaire datant de 2000
          item_strap:            Omega d'origine
          item_reference:        3570.50.00
          price:                 100
@@ -116,7 +116,7 @@
          price:                 200
          main_picture_url:      watches/main_luminor.jpg
          main_thumbnail_url:    watches/thumbs/main_luminor.jpg
-         model_history:         Tous les gènes de Panerai sont présents dans cette montre. Elle dispose d'un design intemporel que beaucoup tentes d'imiter. Le protège couronne propre au modèle Luminor la distingue de sa cousine la Radiomir.
+         model_history:         Tous les gènes de Panerai sont présents dans cette montre. Elle dispose d'un design intemporel que beaucoup tentent d'imiter. Le protège couronne propre au modèle Luminor la distingue de sa cousine la Radiomir.
          item_history:          Modèle PAM 112.
          reason_why:            Parce que vous voulez que l'on remarque votre montre.
 
@@ -124,21 +124,23 @@
          brand:                 Tudor
          full_name:             Submariner Snowflake
          short_name:            Submariner Snowflake
-         movement:              Tudor Calibre 2784 - remontage automatique (base ETA)
-         case_infos:            TBC
+         movement:              Tudor Calibre 2483 - remontage automatique (base ETA)
+         case_infos:            40mm, Boitier Rolex Oyster Pro
          functions:             Date, lunette tournante 120 positions, couronne vissée
          water_resistance:      300 m
-         specials:
-         production_period:     TBC
-         item_year:             TBC
-         item_strap:            TBC
-         item_reference:        TBC
+         specials:              L'aiguille des heures en forme de flocon de neige.
+         production_period:     Depuis 1968
+         item_year:             Montre de 1978
+         item_strap:            Nato
+         item_reference:        9411/0
          price:                 100
          main_picture_url:      watches/main_snowflake.jpg
          main_thumbnail_url:    watches/thumbs/main_snowflake.jpg
-         model_history:         TBC
-         item_history:          TBC
-         reason_why:            Parce qu'elle a tout d'une submariner.
+         model_history: |
+              La marque Tudor est indissociable de Rolex, la majeur partie des montres Tudor est équipée d'un boitier Rolex et d'un mouvement moins exclusif. La submariner snowflake emprunte beaucoup à la Rolex Submariner, mais y ajoute la fameuse aiguille en forme de flocon de neige.
+              Cette coquetterie lui donne un statut à part entière que Tudor cultive depuis de nombreuses années. Une nouvelle déclinaison est d'ailleurs sortie en 2013.
+         item_history:          Le modèle disponible pour le prêt est un modèle datant de 1978, sur bracelet nato noir, dans un superbe état. Elle est magnifique.
+         reason_why:            Parce que l'on peut porter une submariner sans que ce soit une submariner.
 
 pictures:
     - !!models.Picture
@@ -166,28 +168,12 @@ pictures:
          display_order:         30
 
     - !!models.Picture
-         url:                   watches/sub_1.jpg
-         thumbnail_url:         watches/thumbs/sub_1.jpg
+         url:                   watches/sub_4.jpg
+         thumbnail_url:         watches/thumbs/sub_4.jpg
          alt:                   Submariner
          description:           Submariner
          watch:                 *RolexSub
-         display_order:         10
-
-    - !!models.Picture
-         url:                   watches/sub_2.jpg
-         thumbnail_url:         watches/thumbs/sub_2.jpg
-         alt:                   Submariner
-         description:           Submariner
-         watch:                 *RolexSub
-         display_order:         20
-
-    - !!models.Picture
-         url:                   watches/sub_3.jpg
-         thumbnail_url:         watches/thumbs/sub_3.jpg
-         alt:                   Submariner
-         description:           Submariner
-         watch:                 *RolexSub
-         display_order:         30
+         display_order:         40
 
     - !!models.Picture
          url:                   watches/monaco_1.jpg

@@ -18,6 +18,7 @@ import play.data.Form;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
+import play.i18n.Messages;
 import play.mvc.*;
 import views.html.*;
 
@@ -135,18 +136,10 @@ public class Application extends Controller {
 			
 			ActionHelper.tryToNotifyTeamByEmail("Nouvelle demande de devis", orderRequest.toString());
 			
-			/*Logger.debug(orderRequest.brand.display_name);
-			Logger.debug(orderRequest.model);
-			Logger.debug(orderRequest.remark);
-			if (orderRequest.watchChosen != null)
-				Logger.debug(orderRequest.watchChosen.full_name);
-			Logger.debug(orderRequest.nameOfCustomer);
-			Logger.debug(orderRequest.email);
-			Logger.debug(orderRequest.phoneNumber);
-			Logger.debug(orderRequest.city);*/
+			flash("success", "OK");
 			
 			return redirect(
-					routes.Application.index()
+					routes.Application.order()
 					);
 		}
 	}
@@ -154,7 +147,7 @@ public class Application extends Controller {
     public static Result watch_detail(Long id) {
     	try {
 	    	Watch currentWatch = Watch.findById(id);
-	        return ok(watch_detail.render("Submariner", currentWatch, Picture.findPicturesForWatch(currentWatch), getDisplayableWatchesExceptOne(currentWatch)));
+	        return ok(watch_detail.render(currentWatch.short_name, currentWatch, Picture.findPicturesForWatch(currentWatch), getDisplayableWatchesExceptOne(currentWatch)));
     	} catch (Exception e) {
     		return badRequest();
     	}
