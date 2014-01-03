@@ -33,7 +33,6 @@ global.text.back.to.top=Haut de page
 global.action.logout=Se déconnecter
 
 
-
 # Home page
 home.caption.1.head=Vous avez une belle montre, entrenez&nbsp;la&nbsp;!
 home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
@@ -67,6 +66,10 @@ home.promise.3.call.to.action=Les services Hometime
 home.text.supports.brands=Hometime entretient les marques suivantes :
 home.order.call.to.action=Demander un devis
 home.tell.more.call.to.action=En savoir plus...
+
+home.title.for.facebook=Hometime
+home.type.for.facebook=website
+home.description.for.facebook=Hometime, entretien et prêt de montres de luxe
 
 # Service page
 service.html.title=Entretenir sa montre

@@ -6,6 +6,7 @@
     @layouts.fragments.head_min(Messages("global.home.html.title"))
         @layouts.fragments.bootstrap_css()
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/home.min.css")">
+        @layouts.fragments.facebook_meta(Messages("home.title.for.facebook"), Messages("home.type.for.facebook"), routes.Assets.at("images/logo_for_facebook.jpg").absoluteURL(), Messages("home.description.for.facebook"))
 }
 
 @footer = {
@@ -19,5 +20,6 @@
 }
 
 @layouts.root(head, footer, end_scripts) {
+    @layouts.fragments.facebook_for_like()
     @content
 }
