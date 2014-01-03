@@ -25,10 +25,10 @@ global.text.this.is.an.experiment=est une expérimentation, aidez nous !
 global.text.this.is.an.experiment.long=Le service <strong>hometime</strong> est actuellement dans une phase expérimentale.<br />En l''utilisant vous contribuez à encourager l''équipe à l''améliorer.
 global.text.this.is.an.experiment.long.call.to.action=En savoir plus...
 global.text.this.is.an.experiment.long.call.to.action.feedback=Un avis, une remarque...
-global.text.privacy=Vie privée
-global.text.terms=Conditions générales
-global.text.who.are.we=Qui sommes nous ?
-global.text.contact=Un avis, une remarque...
+global.text.privacy=Vie&nbsp;privée
+global.text.terms=Conditions&nbsp;générales
+global.text.who.are.we=Qui&nbsp;sommes&nbsp;nous&nbsp;?
+global.text.contact=Un&nbsp;avis,&nbsp;une&nbsp;remarque...
 global.text.back.to.top=Haut de page
 global.action.logout=Se déconnecter
 
@@ -332,6 +332,24 @@ cgv.body.8=La société Hometime se déplace au domicile du client pour l''exéc
 cgv.head.9=Article 9 : Relations clients - Service après-vente
 cgv.body.9=Pour toute information, question ou réclamation, le client peut s''adresser du lundi au vendredi, de 9 h à 18 h au service Relations Clients de la société par email : \
   <br><br>e-mail: contact@hometime.fr
+
+# Privacy page
+privacy.html.title=Hometime - Confidentialité et vie privée
+privacy.baseline=Confidentialité et vie privée
+privacy.head.1=Généralités
+privacy.body.1=Hometime porte une attention particulière au respect de la vie privée et à ce titre : \
+ <ul><li>Hometime ne stocke, ni n''utilise de données à caractère personnel.</li> \
+     <li>Aucune utilisation (achat, location ou vente) de fichiers client n''est réalisée par Hometime.</li> \
+     <li>Hometime ne pratique pas le re-targeting publicitaire.</li></ul>
+privacy.head.2=Utilisation des cookies
+privacy.body.2=Le site Hometime nécessite l''utilisation de cookies anonymes pour fonctionner. \
+ <br><br>Ces cookies sont effacés à l''issue de chaque session de navigation sur le site. \
+ <br><br>Ils ne contiennent aucune information sensible. 
+privacy.head.3=Suivi statistique des usages
+privacy.body.3=Afin de suivre et de comprendre les usages réalisés sur son site, Hometime utilise le service de suivi statistique Google Analytics. \
+ <br><br>Ce service de suivi statistique met en oeuvre des cookies qui ne sont pas maitrisés par Hometime directement. \
+ <br><br>Pour plus d''informations sur Google Analytics, veuillez cliquer ici : <a href="http://www.google.com/intl/fr/analytics/privacyoverview.html">Google Analytics</a>. \
+ <br><br>Pour empêcher le suivi de votre activité sur le site, rendez-vous sur la page : <a href="https://tools.google.com/dlpage/gaoptout?hl=fr">Désactivation de Google Analytics</a>.
 
 # Data unavailable
 data.publicationdate.unknown=inconnue

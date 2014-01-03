@@ -118,7 +118,7 @@ public class Application extends Controller {
     }
     
     public static Result privacy() {
-        return ok(about.render(""));
+        return ok(privacy.render(""));
     }
     
     public static Result cgv() {
