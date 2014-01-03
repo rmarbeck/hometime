@@ -11,14 +11,10 @@ import models.Brand;
 import models.OrderRequest;
 import models.Picture;
 import models.Watch;
-import models.OrderRequest.MethodTypes;
-import play.*;
-import play.data.DynamicForm;
+
 import play.data.Form;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
-import play.data.validation.ValidationError;
-import play.i18n.Messages;
 import play.mvc.*;
 import views.html.*;
 

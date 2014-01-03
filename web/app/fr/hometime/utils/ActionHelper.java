@@ -7,7 +7,6 @@ import com.typesafe.plugin.MailerPlugin;
 
 import play.Logger;
 import play.Play;
-import play.mvc.Http.Session;
 
 
 /**

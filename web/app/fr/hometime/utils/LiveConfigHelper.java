@@ -1,8 +1,6 @@
 package fr.hometime.utils;
 
 
-import java.text.Normalizer;
-
 
 /**
  * Helper for Live Config operations.
