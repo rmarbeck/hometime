@@ -28,9 +28,11 @@ create table live_config (
 create table order_request (
   id                        bigint not null,
   type                      integer,
+  brand_id                  bigint,
   model                     varchar(1000),
   method                    integer,
   remark                    varchar(1000),
+  watch_chosen_id           bigint,
   name_of_customer          varchar(255),
   email                     varchar(255),
   phone_number              varchar(255),
@@ -86,8 +88,12 @@ create sequence picture_seq;
 
 create sequence watch_seq;
 
-alter table picture add constraint fk_picture_watch_1 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
-create index ix_picture_watch_1 on picture (watch_id);
+alter table order_request add constraint fk_order_request_brand_1 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_order_request_brand_1 on order_request (brand_id);
+alter table order_request add constraint fk_order_request_watchChosen_2 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
+create index ix_order_request_watchChosen_2 on order_request (watch_chosen_id);
+alter table picture add constraint fk_picture_watch_3 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
+create index ix_picture_watch_3 on picture (watch_id);
 
 
 

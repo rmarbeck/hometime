@@ -2,9 +2,11 @@ package models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import play.db.ebean.Model;
 
@@ -68,6 +70,7 @@ public class OrderRequest extends Model {
 
 	public OrderTypes type;
 
+	@ManyToOne
 	public Brand brand;
 	
 	@Column(length = 1000)
@@ -78,6 +81,7 @@ public class OrderRequest extends Model {
 	@Column(length = 1000)
 	public String remark;
 	
+	@ManyToOne
 	public Watch watchChosen = null;
 
 	public String nameOfCustomer;
