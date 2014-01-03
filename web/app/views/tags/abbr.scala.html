@@ -1,0 +1,16 @@
+@**
+ * Generate an abbr html tag
+ *
+ * Example:
+ * {{{
+ * @abbr(title = "Meaning", text = "Text displayed", args = 'class -> "myLink") {
+ *   ...
+ * }
+ * }}}
+ *
+ * @param title Meaning of the abbreviation.
+ * @param text Text displayed.
+ * @param args Set of extra HTML attributes.
+ *@
+@(title: String, text: String, args: (Symbol,String)*) 
+<abbr class="@args.toMap.get('class)" title="@(title)" @toHtmlArgs(args.toMap)>@(text)</abbr>

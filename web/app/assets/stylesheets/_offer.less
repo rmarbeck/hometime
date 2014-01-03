@@ -3,7 +3,11 @@
     margin-bottom: 60px;
 }
 
-@media (min-width: 992px) {
+.container-prices #offers .row:first-child, .container-more #offers .row:first-child {
+    padding-top: @content-top-margin-small;
+}
+
+@media (min-width: @bootstrap-screen-md-min) {
     #offers .row:first-child {
         padding-top: @content-top-margin;
     }
@@ -41,6 +45,6 @@
     margin-bottom: 1px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: @bootstrap-screen-sm-min) {
 
 }

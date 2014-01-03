@@ -23,7 +23,8 @@
                     <li><a href="@routes.Application.offer()">@Messages("global.navbar.link.text.services.service")</a></li>
                     <li><a href="@routes.Application.offer()#loan">@Messages("global.navbar.link.text.services.loan")</a></li>
                     <li><a href="@routes.Application.offer()#home">@Messages("global.navbar.link.text.services.at.home")</a></li>
-                    <li><a href="@routes.Application.offer()#more">@Messages("global.navbar.link.text.services.other")</a></li>
+                    <li class="divider"></li>
+                    <li><a href="@routes.Application.more()">@Messages("global.navbar.link.text.services.other")</a></li>
                     <li class="divider"></li>
                     <li><a href="@routes.Application.prices()">@Messages("global.navbar.link.text.services.prices")</a></li>
                   </ul>
@@ -32,7 +33,7 @@
                 @li_activable(80, index) {<a href="@routes.Application.service()">@Messages("global.navbar.link.text.service")</a>}
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                @li_activable(100, index) {<a href="#order">@Messages("global.navbar.link.text.order")</a>}
+                @li_activable(100, index) {<a href="@routes.Application.order()">@Messages("global.navbar.link.text.order")</a>}
               </ul>
             </div>
           </div>

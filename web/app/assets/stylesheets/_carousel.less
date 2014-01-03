@@ -1,10 +1,11 @@
 
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
-  height: 300px;
+  height: @carousel-height-small;
   margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
@@ -20,7 +21,7 @@
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 300px;
+  height: @carousel-height-small;
   background-color: #777;
 }
 .carousel-inner > .item > img {
@@ -28,7 +29,7 @@
   top: 0;
   left: 0;
   min-width: 100%;
-  min-height: 300px;
+  min-height: @carousel-height-small;
 }
 
 .carousel-caption .caption-title {
@@ -37,7 +38,7 @@
 }
 
 .carousel .btn {
-  font-size: 1em;
+  font-size: 1.4em;
   margin-bottom: 5px;
 }
 
@@ -48,7 +49,7 @@
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
-@media (min-width: 768px) {
+@media (min-width: @bootstrap-screen-sm-min) {
 
   .carousel-caption {
     margin-left: -80px;
@@ -56,37 +57,71 @@
   }
 
   .carousel {
-    height: 500px;
+    height: @carousel-height;
     margin-bottom: 60px;
   }
 
  .carousel .item {
-   height: 500px;
+   height: @carousel-height;
   }
 
   .carousel-inner > .item > img {
   position: absolute;
-    min-height: 500px;
+    min-height: @carousel-height;
   }
   
   /* Bump up size of carousel content */
   .carousel-caption .caption-title {
     margin-bottom: 15px;
-    font-size: 28px;
+    font-size: 22px;
   }
 
   .carousel-caption .caption-body {
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
   }
   
   .carousel .btn {
     padding: 10px 16px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.33;
     border-radius: 6px;
     margin-bottom: 0;
+  }
+
+}
+
+@media (min-width: @bootstrap-screen-md-min) {
+  .carousel-caption .caption-title {
+    font-size: 24px;
+  }
+
+  .carousel-caption .caption-body {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+  
+  .carousel .btn {
+    font-size: 17px;
+    line-height: 1.33;
+  }
+
+}
+
+@media (min-width: @bootstrap-screen-lg-min) {
+  .carousel-caption .caption-title {
+    font-size: 28px;
+  }
+
+  .carousel-caption .caption-body {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  
+  .carousel .btn {
+    font-size: 18px;
+    line-height: 1.33;
   }
 
 }

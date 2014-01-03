@@ -8,6 +8,9 @@ body {
   color: #5a5a5a;
 }
 
+
+@import "_common.less";
+
 /* CUSTOMIZE THE HEADER TITLE
 -------------------------------------------------- */
 #header-title a {
@@ -24,6 +27,18 @@ body {
   letter-spacing: 9px;
 }
 
+@media (min-width: @bootstrap-screen-sm-min) {
+  #header-title a {
+    top: 80px;
+    letter-spacing: 15px;
+  }
+}
+
+@carousel-height: 400px;
+@carousel-height-small: 250px;
+
+@import "_carousel.less";
+
 .baseline {
   text-align: center;
   font-size: 16px;
@@ -32,24 +47,39 @@ body {
   margin-bottom: 45px;
 }
 
-.order-action, .more-action {
-  margin-top: 15px;
+.promise {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-@media (min-width: 768px) {
-  #header-title a {
-  top: 100px;
-  }
+.promise-head {
+  font-size: 28px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.promise-body, .promise-action {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.order-action, .more-action {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+@media (min-width: @bootstrap-screen-sm-min) {
   .baseline {
     font-size: 20px;
   }
+  
+  .order-action, .more-action {
+    font-size: 14px;
+  }
 }
 
-@import "_common.less";
-
 @import "_navbar.less";
-
-@import "_carousel.less";
 
 @import "_marketing.less";
 

@@ -8,19 +8,6 @@
   padding-right: 15px;
 }
 
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4, .marketing .col-md-4 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.marketing h2 {
-  font-weight: normal;
-}
-.marketing .col-lg-4 p, .marketing .col-md-4 p {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
 .marketing img.head {
   height: 140px;
 } 
@@ -28,7 +15,7 @@
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
-@media (min-width: 768px) {
+@media (min-width: @bootstrap-screen-sm-min) {
 
   /* Remove the edge padding needed for mobile */
   .marketing {

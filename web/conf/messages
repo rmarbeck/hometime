@@ -10,17 +10,17 @@ global.text.site.name=hometime
 global.text.copyright=© hometime 2013
 global.text.brand.baseline=
 global.navbar.link.text.home=Home
-global.navbar.link.text.service=L''entretien d''une montre
+global.navbar.link.text.service=L''entretien des montres
 global.navbar.link.text.services=Les services
 global.navbar.link.text.services.service=Entretien & révisions
 global.navbar.link.text.services.loan=Prêt de montres
 global.navbar.link.text.services.at.home=Déplacements à domicile
-global.navbar.link.text.services.other=Et tout le reste...
+global.navbar.link.text.services.other=Les prestations complémentaires
 global.navbar.link.text.services.prices=Les tarifs
 global.navbar.link.text.wacth.collection=Les montres
 global.navbar.link.text.who.are.we=Qui sommes nous ?
 global.navbar.link.text.contact=Avis, remarques ?
-global.navbar.link.text.order=Prendre rendez-vous
+global.navbar.link.text.order=Demander un devis
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
 global.text.this.is.an.experiment.long=Le service <strong>hometime</strong> est actuellement dans une phase expérimentale.<br />En l''utilisant vous contribuez à encourager l''équipe à l''améliorer.
 global.text.this.is.an.experiment.long.call.to.action=En savoir plus...
@@ -35,34 +35,34 @@ global.action.logout=Se déconnecter
 
 
 # Home page
-home.caption.1.head=Vous avez une belle montre, entrenez la&nbsp;!
+home.caption.1.head=Vous avez une belle montre, entrenez&nbsp;la&nbsp;!
 home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
 home.caption.1.call.to.action=Pourquoi entrenir ma montre ?
 
 home.caption.2.head=Portez une montre de rêve pendant l''entretien de la vôtre&nbsp;!
-home.caption.2.body=Hometime vous prête une montre de rêve pendant toute la durée de l''entretien de la votre. <b>Rolex submariner, Omega Speedmaster, Tag Heuer Monaco</b>, elles sont toutes là.
+home.caption.2.body=Hometime vous prête une très belle montre pendant toute la durée de l''entretien de la vôtre. <b>Rolex submariner, Omega Speedmaster, Tag Heuer Monaco</b>...
 home.caption.2.call.to.action=Choisissez votre préférée !
 
 home.caption.3.head=Ne vous déplacez plus&nbsp;!
 home.caption.3.body=Hometime vient chercher votre montre chez vous et vous la ramène dès qu''elle est prête.
-home.caption.3.call.to.action=Prenez rendez-vous !
+home.caption.3.call.to.action=Demandez un devis !
 
-home.baseline=Hometime : une montre mythique à votre poignet pendant l''entretien de votre montre mécanique
+home.baseline=Hometime : <i>une montre mythique à votre poignet pendant l''entretien de votre montre mécanique</i>
 
 home.promise.1.alt=Mouvement
 home.promise.1.head=Entretenir
 home.promise.1.body=Une montre mécanique a été conçue pour <b>durer longtemps</b> et se transmettre de génération en génération. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique.
-home.promise.1.call.to.action=Tout savoir sur l''entretien.
+home.promise.1.call.to.action=Tout savoir sur l''entretien
 
 home.promise.2.alt=Iconic
 home.promise.2.head=Prêter
 home.promise.2.body=Hometime vous propose de <b>porter pendant toute la durée de la révision</b> ou de la réparation <b>de votre montre</b> une icône de l''horologerie.  Découvrez vite la montre qui vous plaît le plus. 
-home.promise.2.call.to.action=Toutes nos montres !
+home.promise.2.call.to.action=Les montres disponibles
 
 home.promise.3.alt=AtHome
 home.promise.3.head=A domicile
 home.promise.3.body=Pour vous apporter le meilleur, Hometime vous propose <b>tous ses services à domicile</b>. Vous n''avez pas à vous adapter à des contraintes d''horaires ou de distance, nous nous adaptons aux vôtres.
-home.promise.3.call.to.action=Tous les services Hometime.
+home.promise.3.call.to.action=Les services Hometime
 
 home.text.supports.brands=Hometime entretient les marques suivantes :
 home.order.call.to.action=Demander un devis
@@ -72,7 +72,7 @@ home.tell.more.call.to.action=En savoir plus...
 service.html.title=Entretenir sa montre
 service.content.1.head=Pourquoi <span class="text-muted">une montre s''use-t-elle ?</span>
 service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mécanique est constituée de nombreuses pièces en mouvement <span class="text-muted">(entre 100 et 1000 en fonction du modèle)</span>. \
- Au cours de son fonctionnement, deux phénomènes vont conduire progressivement à un encrassement du mouvement :\
+ Au cours de son fonctionnement <span class="text-muted">(environ 200 millions d''oscillations en une année)</span> deux phénomènes vont conduire progressivement à un encrassement du mouvement :\
  <ul><li>La production de <b>micro-particules métalliques</b> générées par le frottement des pièces les unes contre les autres,</li>\
  <li>Le <b>séchage progressif du lubrifiant</b> présent dans le mouvement.</li></ul>\
  Ces deux phénomènes se combinent pour altérer le fonctionnement de la montre, ce qui va dégrader ses performances (prise de retard ou d''avance de plus de 10 secondes par jour, diminution de la durée de marche après remontage), mais qui peut à terme entrainer la casse d''une pièce.\
@@ -87,7 +87,7 @@ service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mé
 
 service.content.2.head=Comment <span class="text-muted">entretient-on une montre ?</span>
 service.content.2.body=<div class="sub-title">L''entretien quotidien :</div>L''entretien soigneux de sa montre au jour le jour est un gage de pérennité, d''autant qu''il peut se résumer à quelques réflexes simples \
- : éviter de porter sa montre lors d''activités l''exposant aux chocs, éviter les bains ou les douches - <span class="text-muted">même pour les montres étanches, le problème étant lié à l''écart de température brutal</span>, ne pas utiliser de produits chimiques pour la nettoyer, ne pas changer la date en dehors des heures mentionnées dans le manuel. Cet entretien ne peut suffire à garantir le bon fonctionnement de la montre à long terme, il doit s''accompagner de révisions régulières.\
+ : éviter de porter sa montre lors d''activités l''exposant aux chocs, éviter les bains ou les douches - <span class="text-muted">même pour les montres étanches, les risques étant liés à l''écart de température brutal</span>, ne pas utiliser de produits chimiques pour la nettoyer, ne pas changer la date en dehors des heures mentionnées dans le manuel. Cet entretien ne peut suffire à garantir le bon fonctionnement de la montre à long terme, il doit s''accompagner de révisions régulières.\
  <div class="sub-title">La révision régulière :</div> Seul un horloger peut entretenir le mouvement d''une montre.\
  Si aucun élément de la montre n''est cassé, un horloger qualifié, qu''il soit dédié à la marque ou généraliste, réalise une <b>révision complète du mouvement</b>. Pour cela, il réalise les opérations suivantes :\
  <ul><li>Ouverture du boitier,</li>\
@@ -112,7 +112,7 @@ service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisi
 
 service.content.4.head=Combien <span class="text-muted">ça coûte ?</span> Combien de temps <span class="text-muted">cela dure-t-il ?</span>
 service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horloger, marque) est libre de fixer le prix de ses prestations, cependant il est fréquent de constater des prix compris entre <b>200€ et 500€</b>.\
- Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proporionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
+ <br/>Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proporionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
  Il faut bien entendu prendre en compte l''ensemble des services pouvant accompagner la révision (notamment la garantie d''étanchéïté, ou la prise en charge à domicile). Dans le cas où la montre a subi des dommages et nécessite le remplacement de pièces, les prix peuvent dépasser cette limite des 20%. \
  <div class="sub-title">Les délais :</div>Lors d''une révision, il existe des opérations pour lesquelles les délais sont incompressibles et d''autres pour lesquelles ils peuvent être optimisés. Ainsi, le démontage, l''huilage et le remontage sont des opérations relativement rapides pouvant être réalisées en une journée.\
  En revanche, le contrôle du bon fonctionnement de la montre dans différentes positions (notamment pour les montres certifiées chronomètre) prend plusieurs jours, voire plusieurs semaines pour certaines marques.\
@@ -120,25 +120,27 @@ service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horl
  <br />Les délais peuvent ainsi varier de <b>1 semaine à 3 mois</b>.
 
 service.content.5.head=Y-a-t-il des risques liés à l''entretien ?
-service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à proprement parlé. Les montres sont toutes conçues pour être entretenues à intervalles réguliers.\
- Il existe beaucoup <b>plus de risques à ne pas faire entretenir</b> sa montre qu''à la faire entretenir. En effet, il peut arriver qu''une pièce cassée dans une montre ancienne ne puisse être remplacée et qu''un entretien aurait pu éviter la casse.\
- <br />Il faut malgré tout être attentifs à certains points :\
+service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à proprement parler. Les montres sont toutes conçues pour être entretenues à intervalles réguliers.\
+ Il existe beaucoup <b>plus de risques à ne pas faire entretenir</b> sa montre qu''à la faire entretenir. En effet, il peut arriver qu''une pièce cassée dans une montre ancienne ne puisse être remplacée alors qu''un entretien régulier aurait pu permettre d''éviter cette casse.\
+ <br /><br />Il faut malgré tout être attentifs à certains points :\
  <ul><li>Confier sa montre à un acteur sérieux,</li>\
  <li>Connaitre les conditions de transport et les garanties en cas d''égarement ou de vol,</li>\
  <li>Se renseigner sur le caractère ferme et définitif du devis,</li>\
  <li>Connaitre les éventuels intermédiaires intervenant dans la réalisation du service.</li></ul>\
+ <br /><b>La mission de Hometime est de s''occuper de tout pour vous garantir le meilleur.</b>
 
 service.why.call.to.action=Faire entretenir ma montre !
+service.invest.call.to.action=Demander un devis
 
 service.content.6.head=Vous hésitez encore ?
-service.content.6.body=<div class="sub-title">Votre montre fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérée comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
- Si cela est évident pour une catégorie très particulière de montres (Rolex, Patek Philippe notamment), il faut noter que certaines montres peu cotées il y a quelques années s''apprécient très rapidement aujourd'hui (cas des montres Heuer par exemple, ou des Panerai).\
+service.content.6.body=<div class="sub-title">Votre montre fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérées comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
+ Si cela est évident pour une catégorie très particulière de montres (Rolex, Patek Philippe notamment), il faut noter que certaines montres peu cotées il y a quelques années s''apprécient très rapidement aujourd''hui (cas des montres Heuer par exemple, ou des Panerai).\
  <br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent transporter une valeur sentimentale très forte.
 
 # Watch collection page
 watch.collection.html.title=Les montres Hometime
 watch.collection.display.watch.call.to.action=Voir la fiche
-watch.collection.baseline=Le catalogue des montres Hometime disponibles pour le prêt
+watch.collection.baseline=Le catalogue des montres disponibles pour le prêt
 
 # Watch detail
 watch.detail.html.title=Détail - {0}
@@ -175,7 +177,7 @@ offer.baseline=Les services et les prestations Hometime
 offer.service.head=Révision & réparations
 offer.service.body=Hometime prend en charge la révision ou la réparation de votre montre. L''ensemble des opérations sont réalisées soit par un <b>horloger indépendant</b>, soit directement par <b>la marque elle-même</b>. Hometime vous conseille, et <b>c''est vous qui choisissez</b>.\
  <br /><br />Hometime se charge pour vous de :\
- <ul><li>Vous apporter toutes les informations et conseils préalable à l''intervention</li>\
+ <ul><li>Vous apporter toutes les informations et conseils préalables à l''intervention</li>\
  <li>Prendre en <b>photo</b> votre montre afin de faire un <b>état des lieux précis avant la prise en charge</b></li>\
  <li>Faire parvenir la montre en toute sécurité auprès de l''atelier qui réalisera les opérations</li>\
  <li>Suivre au plus près le déroulement de la remise en état de votre montre et de vous tenir informé par <b>e-mail</b> ou par <b>SMS</b></li>\
@@ -183,17 +185,17 @@ offer.service.body=Hometime prend en charge la révision ou la réparation de vo
  <li>Vous remettre les documents décrivant les opérations effectuées et la nouvelle garantie</li></ul>\
  <br />Pendant tout le temps de l''intervention, Hometime est à votre disposition pour vous donner les informations que vous souhaitez ou pour annuler une opération.\
  <br /><br />Hometime peut prendre en charge les montres des marques suivantes : <b>Baume & Mercier, Bell & Ross, Chanel, Chopard, Breitling, Frédérique Constant, Hamilton, Hublot, IWC, Jaeger LeCoultre, Longines, Omega, Panerai, Tag Heuer, Tissot, Tudor, Rado, Rolex, Zenith</b>.\
- <br /><br />Si la marque de votre montre ne figure pas dans cette liste, vous pouvez nous <a href="mailto:contact@hometime.fr">contacter par mail</a> pour que nous puissions évaluer si nous pouvons intervenir.
+ <br /><br />Si la marque de votre montre ne figure pas dans cette liste, vous pouvez nous <a href="mailto:contact@hometime.fr">contacter par mail</a> pour que nous puissions déterminer si nous pouvons intervenir.
 
 offer.service.call.to.action.more=Pourquoi une révision ?
 offer.service.call.to.action.order=Demander un devis
 
 
 offer.loan.head=Prêt de montres de luxe
-offer.loan.body=Parce que vous n''avez qu''une seule montre, ou que vous souhaitez porter une nouvelle montre, Hometime vous propose le <b>prêt d''une de ses montres iconiques</b> pendant toute la durée de l''intervention (<a href="#service">révision ou réparation</a>) sur votre montre.\
+offer.loan.body=Parce que vous n''avez qu''une seule montre, ou que vous souhaitez porter une nouvelle montre, Hometime vous propose le <b>prêt d''une de ses montres mythiques</b> pendant toute la durée de l''intervention (<a href="#service">révision ou réparation</a>) sur votre montre.\
  <br />Que l''opération dure 1 semaine ou quelques mois, vous portez la montre que vous avez choisie tant que votre montre n''est pas prête.\
  <br /><br />Pour que cela soit du <b>pur plaisir</b>, Hometime vous propose des montres en excellent état esthétique et fonctionnant parfaitement.\
- La grande majorité des montres proposées sont des icônes du monde horloger. Vous avez l''assurance de pouvoir déclencher des discussions passionnées avec vos amis ou vos collègues.\
+ La grande majorité des montres proposées sont des icônes du monde horloger. Vous avez l''assurance de déclencher des discussions passionnées avec vos amis ou vos collègues.\
  <br /><br />Pour vous en convaincre, allez voir notre catalogue dès maintenant ! 
 
 offer.loan.call.to.action.collection=Toutes nos montres !
@@ -212,10 +214,16 @@ offer.home.body=Toutes les prestations ont lieu à votre domicile.\
  <ul><li><b>Du Lundi au samedi</b>,</li>\
  <li><b>De 7h30 à 11h</b> et <b>de 16h30 à 23h</b></li></ul>
 
-offer.home.call.to.action.order=Prendre rendez-vous
+offer.home.call.to.action.contact=Nous contacter
+offer.home.call.to.action.order=Demander un devis
 
-offer.more.head=Mais aussi...
-offer.more.body=A l''occasion d''un déplacement au domicile pour la prise en charge ou la restitution de votre montre, Hometime peut vous proposer sur votre demande les services suivants :\
+# More offer page
+more.html.title=Les services Hometime
+
+more.baseline=Les services et les prestations Hometime
+
+more.head=Les autres services à domicile
+more.body=A l''occasion d''un déplacement au domicile pour la prise en charge ou la restitution de votre montre, Hometime peut vous proposer sur votre demande les services suivants :\
  <ul><li>Vente et installation de bracelet <i>(sur demande préalable)</i></li>\
  <li>Vente d''accessoires horlogers (boites à montres, remontoirs, outils horlogers, coffres forts...) <i>(sur demande préalable)</i></li>\
  <li>Expertise, évaluation de vos montres</li>\
@@ -223,7 +231,8 @@ offer.more.body=A l''occasion d''un déplacement au domicile pour la prise en ch
  <li>Conseils autour de la vente</li></ul>\
  <br /><br />Si vous pensez que nous pouvons vous apporter d''autres services, n''hésitez pas à nous le suggérer en nous <a href="mailto:contact@hometime.fr">envoyant un mail</a> !
 
-
+# Prices page
+prices.html.title=Les tarifs Hometime
 prices.baseline=Les tarifs des prestations Hometime
 prices.head=Les tarifs
 prices.body=Nos tarifs de révision et de réparation sont présentés sous forme de fourchette car un nombre important de facteurs peut faire varier la durée et la complexité de la prestation.\
@@ -243,6 +252,86 @@ prices.table.body.loan=Prêt de montre dans le cadre d''une révision
 prices.table.body.loan.prices=Entre {0} et {1}.Voir les prix sur la fiche de chaque montre.
 prices.table.body.moving=Frais de déplacement
 prices.table.body.moving.prices=Gratuits
+
+# Order page
+order.html.title=Devis et prise de rendez-vous
+order.baseline=Demander un devis gratuit
+order.text.explanation=Pour obtenir un devis, veuillez renseigner les informations ci-dessous. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
+
+order.form.label.type.of.service=Type d''entretien
+order.form.value.type.of.service.1=Révision (ma montre fonctionne)
+order.form.value.type.of.service.2=Réparation (ma montre ne fonctionne pas)
+order.form.label.cat.your.watch=Votre montre
+order.form.label.brand=* Marque
+order.form.value.brand.default=Sélectionnez la marque de votre montre
+order.form.label.model=* Modèle
+order.form.placeholder.model=Nom du modèle - Année
+order.form.label.method=* Réseau
+order.form.help.method=Un horloger indépendant sélectionné par Hometime sera plus rapide et moins cher.
+order.form.value.method.1=Je souhaite que ma montre soit entretenue par son fabriquant
+order.form.value.method.2=Je souhaite que ma montre soit entretenue par un horloger indépendant
+order.form.label.remark=Remarques
+order.form.placeholder.remark=Vous souhaitez préciser quelque-chose
+order.form.label.choice=Choix de la montre que nous vous prêtons
+order.form.value.choice.default=Je ne souhaite pas de montre de prêt
+order.form.cat.label.you=Vous
+order.form.label.your.name=* Votre Nom
+order.form.placeholder.your.name=Prénom Nom
+order.form.label.your.email=* Votre email
+order.form.placeholder.your.email=exemple@nomdedomaine.fr
+order.form.label.phone.number=Votre numéro de téléphone
+order.form.placeholder.phone.number=06xxxxxx
+order.form.label.your.city=* Votre lieu de résidence
+order.form.placeholder.your.city=Ville
+order.form.mandatory.mark.explanation=* Champ obligatoire
+
+# About page
+about.html.title=Hometime - Qui sommes nous ?
+about.baseline=Qui sommes nous ?
+about.head.1=En deux mots
+about.body.1=Hometime est une toute jeune société installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
+about.head.2=Notre mission
+about.body.2=Hometime a été créé pour que l''horlogerie ne soit que du plaisir. Notre objectif est de faire disparaitre toutes les contraintes liées à l''entretien de votre montre mais aussi de vous faire découvrir le monde passionnant de l''horlogerie.
+about.head.3=Comment procédons-nous ?
+about.body.3=L''ensemble des interventions réalisées sur les montres de nos clients sont sous-traitées à des ateliers experts reconnus et sélectionnés avec un soin particulier.\
+ Toutes les montres que nous mettons à disposition de nos clients appartiennent à la société Hometime. Elles sont achetées sur les places de marché les plus sérieuses en fonction des besoins manifestés par nos clients. 
+
+# CGV page
+cgv.html.title=Hometime - Conditions générales de vente
+cgv.baseline=Conditions générales de vente
+cgv.head.1=Article 1 : Objet
+cgv.body.1=Les conditions générales de ventes décrites ci-après détaillent les droits et obligations de l''entreprise Hometime et de ses clients dans le cadre de la fourniture du service d''entretien et de prêt de montres mécaniques. \
+ <br ><br >Toute prestation accomplie par la société Hometime implique l''adhésion sans réserve de l''acheteur aux présentes conditions générales de vente.
+cgv.head.2=Article 2 : Présentation des services
+cgv.body.2=Les caractéristiques des services proposés sont présentées dans la rubrique " Les services " de notre site. Les photographies n''entrent pas dans le champ contractuel. \
+ La responsabilité de la société Hometime ne peut être engagée si des erreurs s''y sont introduites. \
+ <br><br>Tous les textes et images présentés sur le site de la société Hometime sont réservés, pour le monde entier, au titre des droits d''auteur et de propriété intellectuelle; \
+ leur reproduction, même partielle, est strictement interdite.
+cgv.head.3=Article 3 : Durée de validité des offres
+cgv.body.3=Dans le cadre des montres prêtées, les produits sont proposés lorsqu''ils sont effectivement disponibles. En cas d''indisponibilité temporaire, une date de disponibilité prévisionnelle est indiquée. Il n''est pas possible à l''heure actuelle de poser une option sur un produit non disponible.
+cgv.head.4=Article 4 : Tarifs des services
+cgv.body.4=La rubrique " Les tarifs " de notre site indique les prix en euros toutes taxes comprises. Il s''agit de prix indicatifs. Un devis personnalisé est réalisé avant chaque commande. \
+ <br><br>La société Hometime se réserve le droit de modifier ses prix à tout moment mais les services commandés sont facturés au prix en vigueur lors de l''enregistrement de la commande. \
+ <br><br>Aucun escompte ne sera accordé en cas de paiement anticipé.
+cgv.head.5=Article 5 : Commande
+cgv.body.5=Le client valide sa commande par mail après avoir reçu une proposition faisant suite à une demande de devis. Le mail contenant la proposition commerciale, contient un lien vers les présentes et indique que l''acceptation de la proposition vaut acceptation des conditions de vente. \
+ <br><br>La société Hometime confirme la commande par courrier électronique; cette information reprend notamment tous les éléments de la commande et le droit de rétractation du client jusqu''à la date du rendez-vous convenu dans la proposition. \
+ <br><br>Les données enregistrées par la société Hometime constituent la preuve de la nature, du contenu et de la date de la commande. Celle-ci est archivée par la société Hometime dans les conditions et les délais légaux; le client peut accéder à cet archivage en contactant le service Relations Clients indiqué sur le site.
+cgv.head.6=Article 6 : Modalités de paiement
+cgv.body.6=Le règlement des commandes s''effectue par chèque ou paiement paypal. \
+ Lors du déplacement à domicile, l''acheteur devra verser un acompte de 50 % du montant global de la facture, le solde devant être payé lors du rendez-vous de restistution.
+cgv.head.7=Article 7 : Retard de paiement
+cgv.body.7=En cas de défaut de paiement total ou partiel le jour de la prise en charge, la commande sera annulée et la prestation n''aura pas lieu. \
+ En cas de défaut de paiement total ou partiel le jour de la restitution, un deuxième rendez-vous sera fixé et l''acheteur devra verser à l''entreprise Hometime une pénalité de retard égale à une fois et demi le taux de l''intérêt légal ainsi qu''un montant forfaitaire de 50€ pour frais de déplacement. \
+ <br><br>Le taux de l'intérêt légal retenu est celui en vigueur au jour du premier rendez-vous de restitution. \
+ <br><br>Cette pénalité est calculée sur le montant hors taxes de la somme restant due, et court à compter de la date d''échéance du prix sans qu''aucune mise en demeure préalable ne soit nécessaire. \
+ <br><br>Conformément aux articles 441-6 c. com. et D. 441-5 c. com., tout retard de paiement entraine de plein droit, outre les pénalités de retard, une obligation pour le débiteur de payer une indemnité forfaitaire de 40€ pour frais de recouvrement. \
+ <br><br>Une indemnité complémentaire pourra être réclamée, sur justificatifs, lorsque les frais de recouvrement exposés sont supérieurs au montant de l''indemnité forfaitaire.
+cgv.head.8=Article 8 : Déplacements
+cgv.body.8=La société Hometime se déplace au domicile du client pour l''exécution de l''ensemble des prestations. Les dates de rendez-vous sont fixées dans les créneaux précisés sur le site dans la rubrique " Les services ".
+cgv.head.9=Article 9 : Relations clients - Service après-vente
+cgv.body.9=Pour toute information, question ou réclamation, le client peut s''adresser du lundi au vendredi, de 9 h à 18 h au service Relations Clients de la société par email : \
+  <br><br>e-mail: contact@hometime.fr
 
 # Data unavailable
 data.publicationdate.unknown=inconnue
@@ -271,3 +360,47 @@ tags.remove.author.from.favorites=Supprimer des auteurs préférés
 tags.add.author.to.favorites=Ajouter aux auteurs préférés
 tags.add.author.to.favorites.should.log=Pour ajouter des auteurs vous devez vous connecter en utilisant le bouton de connexion avec Facebook
 
+# Forms messages
+# --- Constraints
+constraint.required=Champ obligatoire
+constraint.min=Valeur minimale : {0}
+constraint.max=Valeur maximale : {0}
+constraint.minLength=Au moins {0} caractères
+constraint.maxLength=Jusqu''à {0} caractères
+constraint.email=Adresse email
+
+# --- Formats
+format.date=Date (''{0}'')
+format.numeric=Valeur numérique
+format.real=Nombre réel
+
+# --- Errors
+error.invalid=Valeur incorrecte
+error.invalid.java.util.Date=Date incorrecte
+error.required=Ce champ est obligatoire
+error.number=Valeur numérique seulement
+error.real=Nombre réel seulement
+error.real.precision=Nombre réel avec {0} chiffres et {1} après la virgule obligatoire
+error.min=Doit être supérieur à {0}
+error.min.strict=Doit être strictement supérieur à {0}
+error.max=Doit être inférieur à {0}
+error.max.strict=Doit être strictement inférieur à {0}
+error.minLength=Doit contenir au moins {0} caractères
+error.maxLength=Ne peut contenir plus de {0} caractères
+error.email=Doit être une adresse email valide
+error.pattern=Doit satisfaire {0}
+
+error.expected.date=Date attendue
+error.expected.date.isoformat=Date au format iso attendue
+error.expected.jodadate.format=Date au format Joda attendue
+error.expected.jsarray=Tableau attendu
+error.expected.jsboolean=Valeur booléenne attendue
+error.expected.jsnumber=Valeur numérique attendue
+error.expected.jsobject=Objet attendu
+error.expected.jsstring=Chaine de caractères attendue
+error.expected.jsnumberorjsstring=Chaine de caractères ou valeur numérique attendue
+error.expected.keypathnode=Node attendu
+
+error.path.empty=Chemin vide
+error.path.missing=Chemin non spécifié
+error.path.result.multiple=Plusieurs résultat pour le chemin spécifié

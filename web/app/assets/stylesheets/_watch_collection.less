@@ -1,4 +1,17 @@
 
+#collection .row {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 0;
+}
+
+#collection .row .watch-box {
+  text-align: center;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
 .container-watch-collection {
     margin-bottom: 60px;
 }
@@ -12,50 +25,28 @@
   margin-top: 65px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: @bootstrap-screen-md-min) {
     #collection .row:first-child {
-        padding-top: @content-top-margin;
+        margin-top: @content-top-margin;
     }
 }
 
 .watch-box .caption {
-    position: absolute;
-    top: 30px;
-    left: 0;
-    right: 0;
-    color: #ffffff;
-    z-index: 20;
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    margin-right: 50px;
-    margin-left: 50px;
+    font-weight:bold;
+    font-size: 15px;
 }
 
-.watch-box .sub-caption {
-    position: absolute;
-    bottom: 10px;
-    right: 0;
-    color: #ffffff;
-    z-index: 20;
-    text-align: center;
-    font-size: 12px;
-    letter-spacing: 2px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    margin-right: 50px;
-    padding-right: 10px;
-    padding-left: 10px;
+.watch-box .sub-caption, .watch-box .data {
+    font-size: 13px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: @bootstrap-screen-sm-min) {
   .watch-box .caption {
-    font-size: 30px;
+    font-size: 22px;
+    margin-bottom: 2em;
   }
 
-  .watch-box .sub-caption {
+  .watch-box .sub-caption, .watch-box .data {
     font-size: 16px;
   }
   

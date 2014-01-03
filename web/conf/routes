@@ -17,8 +17,25 @@ GET     /watch/:id                  controllers.Application.watch_detail(id: Lon
 # Offer
 GET     /offer                      controllers.Application.offer()
 
+# More offer
+GET     /more                       controllers.Application.more()
+
 # Prices
 GET     /prices                     controllers.Application.prices()
+
+# Order
+GET     /order                      controllers.Application.order()
+POST    /order                      controllers.Application.manageOrder()
+
+# About
+GET     /about                      controllers.Application.about()
+
+# Privacy
+
+GET     /privacy                    controllers.Application.privacy()
+
+# CGV
+GET     /cgv                        controllers.Application.cgv()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

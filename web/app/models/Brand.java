@@ -18,7 +18,10 @@ public class Brand extends Model {
 	@Id
 	public Long id;
 
-	public String name;
+	@Column(unique=true)
+	public String internal_name;
+	
+	public String display_name;
 
 	public String logo_url;
 	
@@ -32,8 +35,8 @@ public class Brand extends Model {
 	@Column(length = 10000)
 	public String remarks;
 	
-	public Brand(String name) {
-		this.name = name;
+	public Brand(String internal_name) {
+		this.internal_name = internal_name;
 	}
     
     // -- Queries

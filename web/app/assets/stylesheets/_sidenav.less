@@ -21,7 +21,7 @@
   border-radius: 5px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: @bootstrap-screen-sm-min) {
   .bs-sidenav {
     margin-top: @content-top-margin;
   }
@@ -61,7 +61,7 @@
 }
 
 /* Show and affix the side nav when space allows it */
-@media (min-width: 992px) {
+@media (min-width: @bootstrap-screen-md-min) {
   .bs-sidebar .nav > .active > ul {
     display: block;
   }
@@ -83,7 +83,7 @@
     margin-bottom: 0;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: @bootstrap-screen-lg-min) {
   /* Widen the fixed sidebar again */
   .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {

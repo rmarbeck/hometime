@@ -24,7 +24,7 @@
                     <li><a href="#service">@Messages("offer.menu.text.service")</a></li>
                     <li><a href="#loan">@Messages("offer.menu.text.loan")</a></li>
                     <li><a href="#home">@Messages("offer.menu.text.home")</a></li>
-                    <li><a href="#more">@Messages("offer.menu.text.more")</a></li>
+                    <li><a href="@routes.Application.more()">@Messages("offer.menu.text.more")</a></li>
                 </ul>
               </div>
             </div>
@@ -35,8 +35,8 @@
                     <div class="title"><blockquote>@Html(Messages("offer.service.head"))</blockquote></div>
                     <div class="body">@Html(Messages("offer.service.body"))</div>
                     <div class="row action">
-                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.offer()" role="button">@Messages("offer.service.call.to.action.more")</a></div>
-                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="#" role="button">@Messages("offer.service.call.to.action.order")</a></div>
+                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.service()" role="button">@Messages("offer.service.call.to.action.more")</a></div>
+                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.order()" role="button">@Messages("offer.service.call.to.action.order")</a></div>
                     </div>
                   </div>
                 </div>
@@ -48,8 +48,8 @@
                     <div class="title"><blockquote>@Html(Messages("offer.loan.head"))</blockquote></div>
                     <div class="body">@Html(Messages("offer.loan.body"))</div>
                     <div class="row action">
-                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.offer()" role="button">@Messages("offer.loan.call.to.action.collection")</a></div>
-                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="#" role="button">@Messages("offer.service.call.to.action.order")</a></div>
+                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.watch_collection()" role="button">@Messages("offer.loan.call.to.action.collection")</a></div>
+                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.order()" role="button">@Messages("offer.service.call.to.action.order")</a></div>
                     </div>
                   </div>
                 </div>
@@ -61,22 +61,8 @@
                     <div class="title"><blockquote>@Html(Messages("offer.home.head"))</blockquote></div>
                     <div class="body">@Html(Messages("offer.home.body"))</div>
                     <div class="row action">
-                      <div class="col-xs-12 text-center"><a class="btn btn-primary order-action" href="#" role="button">@Messages("offer.home.call.to.action.order")</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div id="more" class="row">
-                <div class="col-md-10 col-md-offset-1">
-                  <div class="offer-box">
-                    <div class="title"><blockquote>@Html(Messages("offer.more.head"))</blockquote></div>
-                    <div class="body">@Html(Messages("offer.more.body"))</div>
-                    <div class="row images">
-                        <div class="col-xs-1 visible-xs"></div>
-                        <div class="col-xs-3 col-sm-2 col-sm-offset-3"><img class="img-responsive" src="@routes.Assets.at("images/accessories/nato.jpg")" alt="Nato"></div>
-                        <div class="col-xs-3 col-sm-2"><img class="img-responsive" src="@routes.Assets.at("images/accessories/box.jpg")" alt="Boîte à montre"></div>
-                        <div class="col-xs-3 col-sm-2"><img class="img-responsive" src="@routes.Assets.at("images/accessories/remontoir.jpg")" alt="Remontoir"></div>
+                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="mailto:contact@@hometime.fr" role="button">@Messages("offer.home.call.to.action.contact")</a></div>
+                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.order()" role="button">@Messages("offer.home.call.to.action.order")</a></div>
                     </div>
                   </div>
                 </div>

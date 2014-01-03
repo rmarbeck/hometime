@@ -25,17 +25,10 @@
     text-transform:capitalize;
 }
 
-ul.navbar-right li:last-child {
-  margin-right: 15px;
-}
-
-
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
-@media (min-width: 768px) {
-
-  /* Navbar positioning foo */
+@media (min-width: @bootstrap-screen-sm-min) {
   .navbar-wrapper {
     margin-top: 20px;
   }
@@ -51,6 +44,10 @@ ul.navbar-right li:last-child {
   /* The navbar becomes detached from the top, so we round the corners */
   .navbar-wrapper .navbar {
     border-radius: 4px;
+  }
+  
+  ul.navbar-right li:last-child {
+    margin-right: 25px;
   }
 
 }
