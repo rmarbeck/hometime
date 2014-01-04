@@ -1,0 +1,25 @@
+@(message: String = "", requests: List[OrderRequest])
+@import tags._
+@layouts.admin() {
+    <div class="container">
+    @for(request <- requests) {
+        <div class="row">
+            <div class="col-xs-2">
+                @display_date(request.requestDate, "dd/MM/yyyy HH:mm")
+            </div>
+            <div class="col-xs-2">
+                @request.orderType.name()
+            </div>
+            <div class="col-xs-2">
+                @request.brand.display_name - @request.model
+            </div>
+            <div class="col-xs-2">
+                @request.method.name()
+            </div>
+            <div class="col-xs-2">
+                @request.watchChosen.brand - @request.watchChosen.full_name
+            </div>
+        </div>
+    }
+    </div>
+}

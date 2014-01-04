@@ -35,9 +35,9 @@
          price:                 100
          main_picture_url:      watches/main_monaco.jpg
          main_thumbnail_url:    watches/thumbs/main_monaco.jpg
-         model_history:         Rendue célèbre par Steve McQueen qui la portait dans le film Le Mans, cette montre est la montre carré la plus connue. Initialement créée par Heuer dans les années 1960, Tag Heuer lui a redonné vie depuis 1998 en l'agrandissant légèrement.
+         model_history:         Rendue célèbre par Steve McQueen qui la portait dans le film Le Mans, cette montre est la montre carrée la plus connue. Initialement créée par Heuer dans les années 1960, Tag Heuer lui a redonné vie depuis 1998 en l'agrandissant légèrement.
          item_history:          C'est le modèle le plus récent. Elle dispose d'un cadran bleu et d'aiguilles rouges.
-         reason_why:            Parce que c'est la reine des montres carré.
+         reason_why:            Parce que c'est la reine des montres carrées.
 
     - &OmegaSpeedmaster !!models.Watch
          brand:                 Omega
@@ -141,6 +141,50 @@
               Cette coquetterie lui donne un statut à part entière que Tudor cultive depuis de nombreuses années. Une nouvelle déclinaison est d'ailleurs sortie en 2013.
          item_history:          Le modèle disponible pour le prêt est un modèle datant de 1978, sur bracelet nato noir, dans un superbe état. Elle est magnifique.
          reason_why:            Parce que l'on peut porter une submariner sans que ce soit une submariner.
+
+    - &TagCarrera !!models.Watch
+         brand:                 Tag Heuer
+         full_name:             Carrera calibre 16
+         short_name:            Carrera
+         movement:              Tag Heuer Calibre 16 - remontage automatique (base Valjoux 7750)
+         case_infos:            41mm, verre saphir des deux côtés
+         functions:             Chronographe à minutes sautantes, date
+         water_resistance:      50 m
+         specials:              Version sportive avec l'aiguille rouge
+         production_period:     Depuis 1963
+         item_year:             Montre de 2008
+         item_strap:            Tag heuer en acier d'origine
+         item_reference:        CV2014
+         price:                 100
+         main_picture_url:      watches/main_carrera.jpg
+         main_thumbnail_url:    watches/thumbs/main_carrera.jpg
+         model_history: |
+              La Carrera incarne le chronographe depuis 50 ans. Avec la daytona de Rolex ou la speedmaster d'Omega, elle a posé les bases des chronographes modernes : position des registres en 6, 9, 12, index bâton, typographie des compteurs, lunette tachymétrique...
+              De très nombreuses déclinaisons se sont succédées pendant un demi siècle, mais l'essentiel demeure : un chronographe intemporel et attirant.
+         item_history:          Le modèle disponible pour le prêt est un modèle récent de 2008 sur bracelet métal et aiguilles de chrono rouges.
+         reason_why:            Parce que la passion commence par des choses simples.
+
+    - &MeistersingerN3 !!models.Watch
+         brand:                 Meistersinger
+         full_name:             N°3
+         short_name:            N°3
+         movement:              ETA 2824-2
+         case_infos:            38mm ou 43mm,  verre saphir des deux côtés
+         functions:             Une seule aiguille
+         water_resistance:      50 m
+         specials:              
+         production_period:     Depuis 2010
+         item_year:             Montre de 2013
+         item_strap:            Cuir marron
+         item_reference:        AM903
+         price:                 75
+         main_picture_url:      watches/main_meistersinger.jpg
+         main_thumbnail_url:    watches/thumbs/main_meistersinger.jpg
+         model_history: |
+              Meistersinger est une marque très récente, mais qui a réussi a marquer très vite les esprits. La majeure partie de la production se compose de montres sans aiguilles des minutes.
+              Seule l'aiguille des heures est présente, ce qui permet de lire l'heure, mais au quart d'heure près. Alors que beaucoup de marques cherchent à produire des montres compliquées, Meistersinger vise la simplicité extrême.
+         item_history:          Le modèle disponible pour le prêt est un modèle de 2013 avec un boitier de 38 mm sur bracelet en cuir marron. 38mm peut paraître petit par les temps qui courent, mais cette taille lui confère un look vintage irrésistible. 
+         reason_why:            Pour faire passer le temps plus lentement.
 
 pictures:
     - !!models.Picture
@@ -318,6 +362,79 @@ pictures:
          description:           Submariner Snowflake
          watch:                 *TudorSnowflake
          display_order:         30
+
+    - !!models.Picture
+         url:                   watches/carrera_1.jpg
+         thumbnail_url:         watches/thumbs/carrera_1.jpg
+         alt:                   Carrera
+         description:           Carrera
+         watch:                 *TagCarrera
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/carrera_2.jpg
+         thumbnail_url:         watches/thumbs/carrera_2.jpg
+         alt:                   Carrera
+         description:           Carrera
+         watch:                 *TagCarrera
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/carrera_3.jpg
+         thumbnail_url:         watches/thumbs/carrera_3.jpg
+         alt:                   Carrera
+         description:           Carrera
+         watch:                 *TagCarrera
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/carrera_4.jpg
+         thumbnail_url:         watches/thumbs/carrera_4.jpg
+         alt:                   Carrera
+         description:           Carrera
+         watch:                 *TagCarrera
+         display_order:         40
+
+    - !!models.Picture
+         url:                   watches/carrera_5.jpg
+         thumbnail_url:         watches/thumbs/carrera_5.jpg
+         alt:                   Carrera
+         description:           Carrera
+         watch:                 *TagCarrera
+         display_order:         50
+
+    - !!models.Picture
+         url:                   watches/meistersinger_1.jpg
+         thumbnail_url:         watches/thumbs/meistersinger_1.jpg
+         alt:                   Meistersinger
+         description:           Meistersinger N°3
+         watch:                 *MeistersingerN3
+         display_order:         10
+
+    - !!models.Picture
+         url:                   watches/meistersinger_2.jpg
+         thumbnail_url:         watches/thumbs/meistersinger_2.jpg
+         alt:                   Meistersinger
+         description:           Meistersinger N°3
+         watch:                 *MeistersingerN3
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/meistersinger_3.jpg
+         thumbnail_url:         watches/thumbs/meistersinger_3.jpg
+         alt:                   Meistersinger
+         description:           Meistersinger N°3
+         watch:                 *MeistersingerN3
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/meistersinger_4.jpg
+         thumbnail_url:         watches/thumbs/meistersinger_4.jpg
+         alt:                   Meistersinger
+         description:           Meistersinger N°3
+         watch:                 *MeistersingerN3
+         display_order:         40
+
 
 brands:
     - !!models.Brand

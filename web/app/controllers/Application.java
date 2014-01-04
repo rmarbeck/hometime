@@ -23,7 +23,7 @@ public class Application extends Controller {
 	public static class OrderForm {
 
 		@Constraints.Required
-		public String type = OrderRequest.OrderTypes.SERVICE.toString();
+		public String orderType = OrderRequest.OrderTypes.SERVICE.toString();
 		@Constraints.Required
 		public String brand;
 		@Constraints.Required
@@ -51,7 +51,7 @@ public class Application extends Controller {
 	    
 	    public OrderForm() {
 	    	super();
-	    	type = OrderRequest.OrderTypes.SERVICE.toString();
+	    	orderType = OrderRequest.OrderTypes.SERVICE.toString();
 	    }
 	    
 	    public OrderForm(String watchChosenId) {
@@ -64,7 +64,7 @@ public class Application extends Controller {
 	    	request.brand = Brand.findById(Long.valueOf(this.brand));
 	    	if (!"".equals(this.watchChosen))
 	    		request.watchChosen =  Watch.findById(Long.valueOf(this.watchChosen));
-	    	request.type = OrderRequest.OrderTypes.fromString(this.type);
+	    	request.orderType = OrderRequest.OrderTypes.fromString(this.orderType);
 	    	request.method = OrderRequest.MethodTypes.fromString(this.method);
 	    	request.city = this.city;
 	    	request.email = this.email;

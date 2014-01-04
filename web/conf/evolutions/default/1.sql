@@ -27,7 +27,8 @@ create table live_config (
 
 create table order_request (
   id                        bigint not null,
-  type                      integer,
+  request_date              timestamp,
+  order_type                integer,
   brand_id                  bigint,
   model                     varchar(1000),
   method                    integer,
@@ -37,7 +38,7 @@ create table order_request (
   email                     varchar(255),
   phone_number              varchar(255),
   city                      varchar(255),
-  constraint ck_order_request_type check (type in (0,1)),
+  constraint ck_order_request_order_type check (order_type in (0,1)),
   constraint ck_order_request_method check (method in (0,1)),
   constraint pk_order_request primary key (id))
 ;

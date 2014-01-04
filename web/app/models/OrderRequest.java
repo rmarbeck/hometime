@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -67,8 +68,10 @@ public class OrderRequest extends Model {
 
 	@Id
 	public Long id;
+	
+	public Date requestDate;
 
-	public OrderTypes type;
+	public OrderTypes orderType;
 
 	@ManyToOne
 	public Brand brand;
@@ -94,6 +97,7 @@ public class OrderRequest extends Model {
 	
 	public OrderRequest() {
 		super();
+		requestDate = new Date();
 	}
 
     // -- Queries
@@ -111,7 +115,7 @@ public class OrderRequest extends Model {
     public String toString() {
     	StringBuilder content = new StringBuilder();
     	content.append(this.getClass().getSimpleName() + " : [");
-    	content.append(" Type is : " + this.type.name());
+    	content.append(" Type is : " + this.orderType.name());
     	content.append(", Brand is : " + this.brand.display_name);
     	content.append(", for model : " + this.model);
     	content.append(". Watch chosen : " + ((this.watchChosen==null)?("none"):(this.watchChosen.short_name)));

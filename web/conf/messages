@@ -55,7 +55,7 @@ home.promise.1.call.to.action=Tout savoir sur l''entretien
 
 home.promise.2.alt=Iconic
 home.promise.2.head=Prêter
-home.promise.2.body=Hometime vous propose de <b>porter pendant toute la durée de la révision</b> ou de la réparation <b>de votre montre</b> une icône de l''horologerie.  Découvrez vite la montre qui vous plaît le plus. 
+home.promise.2.body=Hometime vous propose de <b>porter pendant toute la durée de la révision</b> ou de la réparation <b>de votre montre</b> une icône de l''horlogerie.  Découvrez vite la montre qui vous plaît le plus. 
 home.promise.2.call.to.action=Les montres disponibles
 
 home.promise.3.alt=AtHome
@@ -216,7 +216,7 @@ offer.home.body=Toutes les prestations ont lieu à votre domicile.\
  <div class="sub-title">Horaires :</div>\
  Hometime vous propose des horaires étendus pour votre plus grand confort :\
  <ul><li><b>Du Lundi au samedi</b>,</li>\
- <li><b>De 7h30 à 11h</b> et <b>de 16h30 à 23h</b></li></ul>
+ <li><b>De 7h30 à 23h</b></li></ul>
 
 offer.home.call.to.action.contact=Nous contacter
 offer.home.call.to.action.order=Demander un devis

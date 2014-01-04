@@ -32,7 +32,7 @@
       <div class="row content">
         <div class="col-xs-12 col-sm-9 col-sm-offset-1">
 		@helper.form(action = routes.Application.manageOrder(), 'class -> "form-horizontal", 'role -> "form") {
-                @tags.myInputRadioGroup(order("type"),
+                @tags.myInputRadioGroup(order("orderType"),
                               Seq( OrderRequest.OrderTypes.SERVICE.toString -> Messages("order.form.value.type.of.service.1"), OrderRequest.OrderTypes.REPAIR.toString -> Messages("order.form.value.type.of.service.2")), '_label -> Messages("order.form.label.type.of.service"),
                               '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
