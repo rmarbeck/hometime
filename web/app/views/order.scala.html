@@ -3,6 +3,7 @@
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
 @in_head = {
+        @if(flash.containsKey("success")) {
         <script type="text/javascript">
         var fb_param = {};
         fb_param.pixel_id = '6014879251989';
@@ -17,6 +18,7 @@
         })();
         </script>
         <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6014879251989&amp;value=0&amp;currency=EUR" /></noscript>
+        }
 }
 @end_scripts = {}
 
