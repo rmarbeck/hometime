@@ -111,15 +111,15 @@ public class Application extends Controller {
     }
 
     public static Result about() {
-        return ok(about.render(""));
+        return ok(about.render());
     }
     
     public static Result privacy() {
-        return ok(privacy.render(""));
+        return ok(privacy.render());
     }
     
     public static Result cgv() {
-        return ok(cgv.render(""));
+        return ok(cgv.render());
     }
 
 	public static Result manageOrder() {

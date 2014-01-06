@@ -2,8 +2,8 @@
 
 # Glogal high level texts
 global.text.project.name=hometime
-global.home.html.title=hometime, le meilleur de l''horlogerie chez vous !
-global.home.html.description=hometime, le meilleur de l''horlogerie chez vous !
+global.home.html.title=Hometime, le meilleur de l''horlogerie chez vous !
+global.home.html.description=Hometime, le meilleur de l''horlogerie chez vous !
 global.home.html.author=hometime
 global.text.brand.name=hometime
 global.text.site.name=hometime
@@ -356,6 +356,10 @@ privacy.body.3=Afin de suivre et de comprendre les usages réalisés sur son sit
  <br /><br />Ce service de suivi statistique met en oeuvre des cookies qui ne sont pas maitrisés par Hometime directement. \
  <br /><br />Pour plus d''informations sur Google Analytics, veuillez cliquer ici : <a href="http://www.google.com/intl/fr/analytics/privacyoverview.html">Google Analytics</a>. \
  <br /><br />Pour empêcher le suivi de votre activité sur le site, rendez-vous sur la page : <a href="https://tools.google.com/dlpage/gaoptout?hl=fr">Désactivation de Google Analytics</a>.
+privacy.head.4=Mesure d''efficacité de la publicité
+privacy.body.4=Dans le but de suivre la performance des investissements publicitaires, le site met en oeuvre des outils de collecte de données complémentaires à ceux déjà cités. \
+ <br /><br />Le site utilise à ce titre les outils de suivi des conversions Facebook permettant de confirmer la consultation d''une page précise du site. Ces technologies sont conformes à la politique d''utilisation des données de faceebook disponibles ici : \
+ <a href="https://www.facebook.com/about/privacy/">Politique d'’utilisation des données de facebook</>.
 
 # Data unavailable
 data.publicationdate.unknown=inconnue
