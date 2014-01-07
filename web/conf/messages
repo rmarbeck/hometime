@@ -3,7 +3,7 @@
 # Glogal high level texts
 global.text.project.name=hometime
 global.home.html.title=Hometime, le meilleur de l''horlogerie chez vous !
-global.home.html.description=Hometime, le meilleur de l''horlogerie chez vous !
+global.home.html.description=global.home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) et prêt d''une montre de légende pendant toute la durée de l''entretien.
 global.home.html.author=hometime
 global.text.brand.name=hometime
 global.text.site.name=hometime
@@ -295,7 +295,7 @@ order.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien en
 about.html.title=Hometime - Qui sommes nous ?
 about.baseline=Qui sommes nous ?
 about.head.1=En deux mots
-about.body.1=Hometime est une jeune entreprise installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
+about.body.1=Hometime est une jeune entreprise (enregistrement de la société en cours) installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
 about.head.2=Notre mission
 about.body.2=Hometime a été créé pour que l''horlogerie ne soit que du plaisir. Notre objectif est de faire disparaitre toutes les contraintes liées à l''entretien de votre montre mais aussi de vous faire découvrir le monde passionnant de l''horlogerie.
 about.head.3=Comment procédons-nous ?
