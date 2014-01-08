@@ -36,6 +36,7 @@ global.action.logout=Se déconnecter
 # Home page
 home.html.title=Le meilleur de l''horlogerie chez vous !
 home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) et prêt d''une montre de légende pendant toute la durée de l''entretien.
+home.html.keywords=révision, réparation, montres mécaniques, montres automatiques, rolex, omega, panerai, tag heuer
 home.caption.1.head=Vous avez une belle montre, entretenez&nbsp;la&nbsp;!
 home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
 home.caption.1.call.to.action=Pourquoi entrenir ma montre ?
@@ -76,6 +77,7 @@ home.description.for.facebook=Hometime, entretien et prêt de montres de luxe
 # Service page
 service.html.title=Entretenir sa montre
 service.html.description=Tout savoir sur l''entretien, simple révision ou réparation, d''une montre mécanique à remontage manuel ou automatique : pourquoi le faire, la durée, le prix.
+service.html.keywords=entretien, révision, réparation, montre mécanique, délai, durée, prix
 service.content.1.head=Pourquoi <span class="text-muted">une montre s''use-t-elle ?</span>
 service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mécanique est constituée de nombreuses pièces en mouvement <span class="text-muted">(entre 100 et 1000 en fonction du modèle)</span>. \
  Au cours de son fonctionnement <span class="text-muted">(environ 200 millions d''oscillations en une année)</span> deux phénomènes vont conduire progressivement à un encrassement du mouvement :\
@@ -154,12 +156,14 @@ service.invest.alt=Votre montre c''est votre partimoine
 # Watch collection page
 watch.collection.html.title=Les montres Hometime
 watch.collection.html.description=Présentation des montres du catalogue de prêt Hometime. Choisissez l''une de ces montres à porter pendant la révision de la votre.
+watch.collection.html.keywords=montre, prêt, location, rolex, tag heuer, omega, IWC, panerai
 watch.collection.display.watch.call.to.action=Voir la fiche
 watch.collection.baseline=Le catalogue des montres disponibles pour le prêt
 
 # Watch detail
 watch.detail.html.title=Détail - {0}
 watch.detail.html.description=Fiche descriptive de la montre {0}.
+watch.detail.html.keywords=montre, mouvement, bracelet, dates, fonctions, histoire
 watch.detail.data.movement=Mouvement
 watch.detail.data.model.years=Production
 watch.detail.data.this.one.year=Cet exemplaire
@@ -183,6 +187,7 @@ watch.detail.data.this.one.available.no=La montre est actuellement prêtée à u
 # Offer page
 offer.html.title=Les services Hometime
 offer.html.description=Présentation des services Hometime : révision et réparation, prêt de montre, déplacement à domicile.
+offer.html.keywords=révision, réparation, prêt, montres mécaniques, montres automatiques, domicile
 offer.menu.text.service=Révision & réparations
 offer.menu.text.loan=Prêt de montre de luxe
 offer.menu.text.home=Déplacement à domicile
@@ -237,6 +242,7 @@ offer.home.call.to.action.order=Demander un devis
 # More offer page
 more.html.title=Les services complémentaires
 more.html.description=Présentation des services Hometime complémentaires : achat et vente de montre d''occasion, vente d''accessoires horlogers.
+more.html.keywords=montres occasion, achat, ventes, remontoirs, boite à montre, expertise
 more.baseline=Les services et les prestations Hometime
 
 more.head=Les autres services à domicile
@@ -255,6 +261,7 @@ more.accessories.winder.alt=Remontoir à montre
 # Prices page
 prices.html.title=Les tarifs
 prices.html.description=Liste des tarifs des prestations.
+prices.html.keywords=tarifs, prix, devis
 prices.baseline=Les tarifs des prestations Hometime
 prices.head=Les tarifs
 prices.body=Nos tarifs de révision et de réparation sont présentés sous forme de fourchette car un nombre important de facteurs peut faire varier la durée et la complexité de la prestation.\
@@ -278,6 +285,7 @@ prices.table.body.moving.prices=Gratuits
 # Order page
 order.html.title=Devis et prise de rendez-vous
 order.html.description=Formulaire de demande de devis gratuit pour révision ou réparation avec choix en option d''une montre de prêt.
+order.html.keywords=devis gratuit, évaluation, horloger indépendant, révision, réparation, montre
 order.baseline=Demander un devis gratuit
 order.text.explanation=Pour obtenir un devis, veuillez renseigner les informations ci-dessous. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
 
@@ -313,6 +321,7 @@ order.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien en
 # About page
 about.html.title=Qui sommes nous ?
 about.html.description=Description de l''entreprise, de sa mission et de ses valeurs.
+about.html.keywords=description, hometime, watchnext, contact
 about.baseline=Qui sommes nous ?
 about.head.1=En deux mots
 about.body.1=Hometime est une jeune entreprise (enregistrement de la société en cours) installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
@@ -330,6 +339,7 @@ about.body.4=Etant une toute jeune entreprise, nous ne pouvons pas compter sur u
 # CGV page
 cgv.html.title=Conditions générales de vente
 cgv.html.description=Conditions générales de vente du service Hometime
+cgv.html.keywords=conditions générales, vente
 cgv.baseline=Conditions générales de vente
 cgv.head.1=Article 1 : Objet
 cgv.body.1=Les conditions générales de ventes décrites ci-après détaillent les droits et obligations de l''entreprise Hometime et de ses clients dans le cadre de la fourniture du service d''entretien et de prêt de montres mécaniques. \
@@ -368,6 +378,7 @@ cgv.body.9=Pour toute information, question ou réclamation, le client peut s''a
 # Privacy page
 privacy.html.title=Confidentialité et vie privée
 privacy.html.description=Information sur la confidentialité et sur les mesures prises en faveur du respect de la vie privée.
+privacy.html.keywords=vie privée, confidentialité
 privacy.baseline=Confidentialité et vie privée
 privacy.head.1=Généralités
 privacy.body.1=Hometime porte une attention particulière au respect de la vie privée et à ce titre : \
@@ -395,11 +406,13 @@ data.unavailable=inconnue
 # Errors
 error.notfound.html.title=Oops... la page demandée n''a pas été trouvée
 error.notfound.html.description=Erreur, accès à une page introuvable.
+error.notfound.html.keywords=erreur
 error.notfound.text.head=Oops, il semblerait qu''il y ait un petit problème.
 error.notfound.text.sorry=Nous sommes désolés, la page demandée n''existe pas.
 
 error.generic.html.title=Oops... une erreur s''est produite
 error.generic.html.description=Erreur, impossible d''afficher la page.
+error.generic.html.keywords=erreur
 error.generic.text.head=Oops, une erreur vient de se produire.
 error.generic.text.sorry=Nous sommes désolés, il s''agit peut être d''un problème transitoire. Vous pouvez retenter votre chance un peu plus tard.
 error.text.back.to.home=Retour sur la Home

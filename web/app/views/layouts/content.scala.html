@@ -1,21 +1,17 @@
 @(page: String, nbArticles: Integer)
-
+@import tags._
 @layouts.main(page) {
     @layouts.fragments.navbar(0)
       
     <div class="container container-@page">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="page-baseline">@Messages(page+".baseline")</div>
-          </div>
-        </div>
+        @baseline(page+".baseline")
         <div class="row">
             <div id="content" class="col-md-12" role="main">
             @for(i <- 1 to nbArticles) {
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="content-box">
-                    <div class="title"><blockquote>@Html(Messages(page+".head."+i))</blockquote></div>
+                    <div class="title"><blockquote><h2>@Html(Messages(page+".head."+i))</h2></blockquote></div>
                     <div class="body">@Html(Messages(page+".body."+i))</div>
                   </div>
                 </div>

@@ -26,11 +26,7 @@
     @layouts.fragments.navbar(100)
 
     <div class="container order">
-      <div class="row">
-          <div class="col-xs-12">
-            <div class="page-baseline">@Messages("order.baseline")</div>
-          </div>
-      </div>
+      @baseline("order.baseline")
       @if(flash.containsKey("success")) {
       <div class="row success">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1">

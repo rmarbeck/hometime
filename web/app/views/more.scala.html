@@ -1,21 +1,17 @@
 @(message: String = "")
-
+@import tags._
 @layouts.main("more") {
     @layouts.fragments.navbar(50)
       
     <div class="container container-more">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="page-baseline">@Messages("more.baseline")</div>
-          </div>
-        </div>
+        @baseline("more.baseline")
         <div class="row">
             <div id="offers" class="col-md-12" role="main">
 
               <div id="more" class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="offer-box">
-                    <div class="title"><blockquote>@Html(Messages("more.head"))</blockquote></div>
+                    <div class="title"><blockquote><h2>@Html(Messages("more.head"))</h2></blockquote></div>
                     <div class="body">@Html(Messages("more.body"))</div>
                     <div class="row images">
                         <div class="col-xs-1 visible-xs"></div>

@@ -1,5 +1,5 @@
 @(message: String = "")
-
+@import tags._
 @end_scripts_bottom = {
     <script>
         $('body').attr('data-spy', 'scroll' );
@@ -12,11 +12,7 @@
     @layouts.fragments.navbar(50)
       
     <div class="container container-offer">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="page-baseline">@Messages("offer.baseline")</div>
-          </div>
-        </div>
+        @baseline("offer.baseline")
         <div class="row">
             <div class="col-md-3">
               <div class="bs-sidebar affix" role="complementary">
@@ -34,7 +30,7 @@
               <div id="service" class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="offer-box">
-                    <div class="title"><blockquote>@Html(Messages("offer.service.head"))</blockquote></div>
+                    <div class="title"><blockquote><h2>@Html(Messages("offer.service.head"))</h2></blockquote></div>
                     <div class="body">@Html(Messages("offer.service.body"))</div>
                     <div class="row action">
                       <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.service()" role="button">@Messages("offer.service.call.to.action.more")</a></div>
@@ -47,7 +43,7 @@
               <div id="loan" class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="offer-box">
-                    <div class="title"><blockquote>@Html(Messages("offer.loan.head"))</blockquote></div>
+                    <div class="title"><blockquote><h2>@Html(Messages("offer.loan.head"))</h2></blockquote></div>
                     <div class="body">@Html(Messages("offer.loan.body"))</div>
                     <div class="row action">
                       <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.watch_collection()" role="button">@Messages("offer.loan.call.to.action.collection")</a></div>
@@ -60,7 +56,7 @@
               <div id="home" class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="offer-box">
-                    <div class="title"><blockquote>@Html(Messages("offer.home.head"))</blockquote></div>
+                    <div class="title"><blockquote><h2>@Html(Messages("offer.home.head"))</h2></blockquote></div>
                     <div class="body">@Html(Messages("offer.home.body"))</div>
                     <div class="row action">
                       <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="mailto:contact@@hometime.fr" role="button">@Messages("offer.home.call.to.action.contact")</a></div>
