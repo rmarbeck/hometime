@@ -22,7 +22,7 @@
 }
 @end_scripts = {}
 
-@layouts.main(Messages("order.html.title"), end_scripts, in_head) {
+@layouts.main("order", end_scripts, in_head) {
     @layouts.fragments.navbar(100)
 
     <div class="container order">

@@ -1,6 +1,6 @@
 @(page: String, nbArticles: Integer)
 
-@layouts.main(Messages(page+".html.title")) {
+@layouts.main(page) {
     @layouts.fragments.navbar(0)
       
     <div class="container container-@page">

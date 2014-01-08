@@ -1,9 +1,9 @@
-@(title: String, end_scripts_bottom: Html = Html(""))(content: Html)
+@(key: String, title_option: String, description_option: String, end_scripts_bottom: Html = Html(""))(content: Html)
 
 @import tags._
 
 @head = {
-    @layouts.fragments.head_min(title)
+    @layouts.fragments.head_min(key, title_option, description_option)
         @layouts.fragments.bootstrap_css()
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.min.css")">
         <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
