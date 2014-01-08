@@ -6,39 +6,47 @@
 GET     /                           controllers.Application.index()
 
 # Service page
-GET     /service                    controllers.Application.service()
+GET     /entretien-reparation       controllers.Application.service()
 
 # Watches
-GET     /watches                    controllers.Application.watch_collection()
+GET     /les-montres                controllers.Application.watch_collection()
 
 # Single watch
-GET     /watch/:id                  controllers.Application.watch_detail(id: Long)
+GET     /montre/:id                 controllers.Application.watch_detail(id: Long)
 
 # Offer
-GET     /offer                      controllers.Application.offer()
+GET     /les-services/l-offre       controllers.Application.offer()
 
 # More offer
-GET     /more                       controllers.Application.more()
+GET     /les-services/les-autres-prestations     controllers.Application.more()
 
 # Prices
-GET     /prices                     controllers.Application.prices()
+GET     /les-services/les-prix      controllers.Application.prices()
 
 # Order
-GET     /order                      controllers.Application.order()
-POST    /order                      controllers.Application.manageOrder()
+GET     /demande-de-devis           controllers.Application.order()
+POST    /demande-de-devis           controllers.Application.manageOrder()
 
 # About
-GET     /about                      controllers.Application.about()
+GET     /a-propos                   controllers.Application.about()
+GET     /about                      controllers.Default.redirect(to = "/a-propos")
 
 # Privacy
 
-GET     /privacy                    controllers.Application.privacy()
+GET     /vie-prive                  controllers.Application.privacy()
 
 # CGV
 GET     /cgv                        controllers.Application.cgv()
 
 # ADMIN
 GET     /orStats                    controllers.Admin.index()
+
+# Sitemap
+GET     /sitemap.xml                controllers.Application.sitemap()
+GET     /plan-du-site               controllers.Application.siteplan()
+
+# Map specifically to robots.txt
+GET     /robots.txt                 controllers.Assets.at(path="/public", file="robots.txt")
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

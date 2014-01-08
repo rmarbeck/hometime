@@ -1,0 +1,77 @@
+@(displayable_watches: List[Watch])
+@import tags._
+
+@layouts.main("site.plan") {
+    @layouts.fragments.navbar(0)
+      
+    <div class="container container-site-plan">
+        @baseline("site.plan.baseline")
+        <div class="row">
+            <div id="content" class="col-md-8 col-md-offset-2" role="main">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.index()">@Messages("site.plan.home.title")</a></h2></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2>@Messages("site.plan.offer.section.title")</h2></a></div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="entry"><h3><a href="@routes.Application.offer()">@Messages("site.plan.offer.title")</a></h3></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="entry"><h3><a href="@routes.Application.more()">@Messages("site.plan.more.title")</a></h3></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="entry"><h3><a href="@routes.Application.prices()">@Messages("site.plan.prices.title")</a></h3></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.order()">@Messages("site.plan.order.title")</a></h2></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.service()">@Messages("site.plan.service.title")</a></h2></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.watch_collection()">@Messages("site.plan.watch.collection.title")</a></h2></div>
+                        @for(watch <- displayable_watches) {
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="entry"><h3><a href="@routes.Application.watch_detail(watch.id)">@Messages("site.plan.watch.title", watch.brand,  watch.short_name)</a></h3></div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.about()">@Messages("site.plan.about.title")</a></h2></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.cgv()">@Messages("site.plan.cgv.title")</a></h2></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.privacy()">@Messages("site.plan.privacy.title")</a></h2></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div><!-- /.container -->
+}

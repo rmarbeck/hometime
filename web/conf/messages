@@ -1,6 +1,7 @@
 # Messages en francais
 
 # Glogal high level texts
+global.code.lang.head=fr
 global.text.project.name=hometime
 global.home.html.title=Le meilleur de l''horlogerie chez vous !
 global.home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) et prêt d''une montre de légende pendant toute la durée de l''entretien.
@@ -28,6 +29,7 @@ global.text.this.is.an.experiment.long.call.to.action.feedback=Un avis, une rema
 global.text.privacy=Vie&nbsp;privée
 global.text.terms=Conditions&nbsp;générales
 global.text.who.are.we=Qui&nbsp;sommes&nbsp;nous&nbsp;?
+global.text.site.plan=Plan&nbsp;du&nbsp;site
 global.text.contact=Un&nbsp;avis,&nbsp;une&nbsp;remarque...
 global.text.back.to.top=Haut de page
 global.action.logout=Se déconnecter
@@ -398,6 +400,27 @@ privacy.head.4=Mesure d''efficacité de la publicité
 privacy.body.4=Dans le but de suivre la performance des investissements publicitaires, le site met en oeuvre des outils de collecte de données complémentaires à ceux déjà cités. \
  <br /><br />Le site utilise à ce titre les outils de suivi des conversions Facebook permettant de confirmer la consultation d''une page précise du site. Ces technologies sont conformes à la politique d''utilisation des données de faceebook disponibles ici : \
  <a href="https://www.facebook.com/about/privacy/">Politique d'’utilisation des données de facebook</>.
+
+
+# Privacy page
+site.plan.html.title=Plan du site
+site.plan.html.description=Le plan du site
+site.plan.html.keywords=plan, montres, révision, réparation, tarifs, devis gratuit
+site.plan.baseline=Plan du site
+site.plan.home.title=Home
+site.plan.offer.section.title=Les services Hometime
+site.plan.offer.title=Les services principaux
+site.plan.more.title=Les prestations complémentaires
+site.plan.prices.title=Les tarifs
+site.plan.order.title=Demande de devis gratuit
+site.plan.service.title=Tout savoir sur l''entretien
+site.plan.watch.collection.title=Les montres disponibles pour le prêt
+site.plan.watch.title=Fiche {0} - {1}
+site.plan.about.title=Qui sommes nous ?
+site.plan.cgv.title=Conditions générales de vente
+site.plan.privacy.title=Confidentialité et vie privée
+
+
 
 # Data unavailable
 data.publicationdate.unknown=inconnue

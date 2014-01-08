@@ -149,7 +149,14 @@ public class Application extends Controller {
     	}
     }
 
+    public static Result sitemap() {
+    	return ok(views.xml.sitemap.render(getDisplayableWatches()));
+    }
     
+    public static Result siteplan() {
+    	return ok(site_plan.render(getDisplayableWatches()));
+    }
+
     private static List<Watch> getDisplayableWatches() {
     	return Watch.findDisplayable();
     }
