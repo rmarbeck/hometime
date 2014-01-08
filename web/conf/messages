@@ -50,17 +50,17 @@ home.caption.3.call.to.action=Demandez un devis !
 
 home.baseline=Hometime : <i>une montre mythique à votre poignet pendant l''entretien de votre montre mécanique</i>
 
-home.promise.1.alt=Mouvement
+home.promise.1.alt=Mouvement de montre
 home.promise.1.head=Entretenir
 home.promise.1.body=Une montre mécanique a été conçue pour <b>durer longtemps</b> et se transmettre de génération en génération. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique.
 home.promise.1.call.to.action=Tout savoir sur l''entretien
 
-home.promise.2.alt=Iconic
+home.promise.2.alt=Montre de légende - Rolex Submariner
 home.promise.2.head=Prêter
 home.promise.2.body=Hometime vous propose de <b>porter pendant toute la durée de la révision</b> ou de la réparation <b>de votre montre</b> une icône de l''horlogerie.  Découvrez vite la montre qui vous plaît le plus. 
 home.promise.2.call.to.action=Les montres disponibles
 
-home.promise.3.alt=AtHome
+home.promise.3.alt=Déplacement à domicile
 home.promise.3.head=A domicile
 home.promise.3.body=Pour vous apporter le meilleur, Hometime vous propose <b>tous ses services à domicile</b>. Vous n''avez pas à vous adapter à des contraintes d''horaires ou de distance, nous nous adaptons aux vôtres.
 home.promise.3.call.to.action=Les services Hometime
@@ -143,6 +143,13 @@ service.content.6.head=Vous hésitez encore ?
 service.content.6.body=<div class="sub-title">Votre montre fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérées comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
  Si cela est évident pour une catégorie très particulière de montres (Rolex, Patek Philippe notamment), il faut noter que certaines montres peu cotées il y a quelques années s''apprécient très rapidement aujourd''hui (cas des montres Heuer par exemple, ou des Panerai).\
  <br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent représenter une valeur sentimentale très forte.
+
+service.why.alt=Pourquoi faire entretenir sa montre
+service.how.alt=Comment entretient-on une montre
+service.when.alt=Quand faut-il entretenir une montre
+service.how.long.alt=Combien ça coûte et combien de temps ça dure
+service.risky.alt=Y-a-t-il des risques liés à l''entretien
+service.invest.alt=Votre montre c''est votre partimoine
 
 # Watch collection page
 watch.collection.html.title=Les montres Hometime
@@ -240,6 +247,10 @@ more.body=A l''occasion d''un déplacement au domicile pour la prise en charge o
  <li>Conseils autour de l''achat neuf ou occasion</li>\
  <li>Conseils autour de la vente</li></ul>\
  <br /><br />Si vous pensez que nous pouvons vous apporter d''autres services, n''hésitez pas à nous le suggérer en nous <a href="mailto:contact@hometime.fr">envoyant un mail</a> !
+
+more.accessories.nato.alt=Bracelet nato
+more.accessories.box.alt=Boite à montre
+more.accessories.winder.alt=Remontoir à montre
 
 # Prices page
 prices.html.title=Les tarifs
