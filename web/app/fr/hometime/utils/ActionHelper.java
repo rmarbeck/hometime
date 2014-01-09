@@ -52,7 +52,7 @@ public class ActionHelper {
 	    		for (int i = 1; i <= numberOfRecepients ; i++) {
 	    			recipients.add(LiveConfig.getString(NBTE_TO+"_"+i));
 	    		}
-	    		mail.setRecipient((String[]) recipients.toArray());
+	    		mail.setRecipient((String[]) (recipients.toArray()));
 	    	}
 
 	    	Logger.info("About to send a mail");
