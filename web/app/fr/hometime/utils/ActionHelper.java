@@ -1,5 +1,8 @@
 package fr.hometime.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import models.LiveConfig;
 
 import com.typesafe.plugin.MailerAPI;
@@ -45,16 +48,13 @@ public class ActionHelper {
 	    	if (numberOfRecepients == null) {
 	    		mail.setRecipient(TEAM_ADDRESS_1);
 	    	} else {
-	    		StringBuilder builder = new StringBuilder();
+	    		List<String> recipients = new ArrayList<String>();
 	    		for (int i = 1; i <= numberOfRecepients ; i++) {
-	    			if (i!=1)
-	    				builder.append(",");
-	    			builder.append(LiveConfig.getString(NBTE_TO+"_"+i));
+	    			recipients.add(LiveConfig.getString(NBTE_TO+"_"+i));
 	    		}
-	    		mail.setRecipient(builder.toString());
+	    		mail.setRecipient((String[]) recipients.toArray());
 	    	}
 
-	    	//mail.setReplyTo("xx@yy");
 	    	Logger.info("About to send a mail");
 	    	mail.send(message);
 
