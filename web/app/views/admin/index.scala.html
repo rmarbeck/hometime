@@ -17,7 +17,11 @@
                 @request.method.name()
             </div>
             <div class="col-xs-2">
+                @if(request.watchChosen != null) {
                 @request.watchChosen.brand - @request.watchChosen.full_name
+                } else {
+                    none
+                }
             </div>
         </div>
     }
