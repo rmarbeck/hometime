@@ -7,24 +7,30 @@ GET     /                           controllers.Application.index()
 
 # Service page
 GET     /entretien-reparation       controllers.Application.service()
+GET     /service                    controllers.Default.redirect(to = "/entretien-reparation")
 
 # Watches
 GET     /les-montres                controllers.Application.watch_collection()
+GET     /watches                    controllers.Default.redirect(to = "/les-montres")
 
 # Single watch
 GET     /montre/:id                 controllers.Application.watch_detail(id: Long)
 
 # Offer
 GET     /les-services/l-offre       controllers.Application.offer()
+GET     /offer                      controllers.Default.redirect(to = "/les-services/l-offre")
 
 # More offer
 GET     /les-services/les-autres-prestations     controllers.Application.more()
+GET     /more                       controllers.Default.redirect(to = "/les-services/les-autres-prestations")
 
 # Prices
 GET     /les-services/les-prix      controllers.Application.prices()
+GET     /prices                     controllers.Default.redirect(to = "/les-services/les-prix")
 
 # Order
 GET     /demande-de-devis           controllers.Application.order()
+GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
 
 # About
@@ -32,8 +38,8 @@ GET     /a-propos                   controllers.Application.about()
 GET     /about                      controllers.Default.redirect(to = "/a-propos")
 
 # Privacy
-
 GET     /vie-prive                  controllers.Application.privacy()
+GET     /privacy                      controllers.Default.redirect(to = "/vie-prive")
 
 # CGV
 GET     /cgv                        controllers.Application.cgv()
