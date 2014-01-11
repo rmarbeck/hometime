@@ -3,8 +3,8 @@
 # Glogal high level texts
 global.code.lang.head=fr
 global.text.project.name=hometime
-global.home.html.title=Le meilleur de l''horlogerie chez vous - Hometime
-global.home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) et prêt d''une montre de légende pendant toute la durée de l''entretien.
+global.home.html.title=Entretien et essai de montres à domicile - Hometime
+global.home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) et l''essai d''une montre de légende pendant toute la durée de l''entretien.
 global.home.html.author=hometime
 global.text.brand.name=hometime
 global.text.site.name=hometime
@@ -14,7 +14,7 @@ global.navbar.link.text.home=Home
 global.navbar.link.text.service=L''entretien des montres
 global.navbar.link.text.services=Les services
 global.navbar.link.text.services.service=Entretien & révisions
-global.navbar.link.text.services.loan=Prêt de montres
+global.navbar.link.text.services.loan=Essai de montres
 global.navbar.link.text.services.at.home=Déplacements à domicile
 global.navbar.link.text.services.other=Les prestations complémentaires
 global.navbar.link.text.services.prices=Les tarifs
@@ -36,15 +36,15 @@ global.action.logout=Se déconnecter
 
 
 # Home page
-home.html.title=Le meilleur de l''horlogerie chez vous !
-home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) et prêt d''une montre de légende pendant toute la durée de l''entretien.
+home.html.title=Entretien et essai de montres à domicile - Hometime
+home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) et l''essai d''une montre de légende pendant toute la durée de l''entretien.
 home.html.keywords=révision, réparation, montres mécaniques, montres automatiques, rolex, omega, panerai, tag heuer
 home.caption.1.head=Vous avez une belle montre, entretenez&nbsp;la&nbsp;!
 home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
 home.caption.1.call.to.action=Pourquoi entrenir ma montre ?
 
 home.caption.2.head=Portez une montre de rêve pendant l''entretien de la vôtre&nbsp;!
-home.caption.2.body=Hometime vous prête une très belle montre pendant toute la durée de l''entretien de la vôtre. <b>Rolex submariner, Omega Speedmaster, Tag Heuer Monaco</b>...
+home.caption.2.body=Hometime vous permet d''essayer une belle montre pendant toute la durée de l''entretien de la vôtre. <b>Rolex submariner, Omega Speedmaster, Tag Heuer Monaco</b>...
 home.caption.2.call.to.action=Choisissez votre préférée !
 
 home.caption.3.head=Ne vous déplacez plus&nbsp;!
@@ -74,7 +74,7 @@ home.tell.more.call.to.action=En savoir plus...
 
 home.title.for.facebook=Hometime
 home.type.for.facebook=website
-home.description.for.facebook=Hometime, entretien et prêt de montres de luxe
+home.description.for.facebook=Hometime, entretien et essai prolongé de montres de luxe
 
 # Service page
 service.html.title=Entretenir sa montre
@@ -157,10 +157,10 @@ service.invest.alt=Votre montre c''est votre partimoine
 
 # Watch collection page
 watch.collection.html.title=Les montres Hometime
-watch.collection.html.description=Présentation des montres du catalogue de prêt Hometime. Choisissez l''une de ces montres à porter pendant la révision de la votre.
-watch.collection.html.keywords=montre, prêt, location, rolex, tag heuer, omega, IWC, panerai
+watch.collection.html.description=Présentation des montres du catalogue Hometime. Choisissez l''une de ces montres à porter pendant la révision de la votre.
+watch.collection.html.keywords=montre, essai, prêt, location, rolex, tag heuer, omega, IWC, panerai
 watch.collection.display.watch.call.to.action=Voir la fiche
-watch.collection.baseline=Le catalogue des montres disponibles pour le prêt
+watch.collection.baseline=Le catalogue des montres disponibles pour un essai
 
 # Watch detail
 watch.detail.html.title=Détail - {0}
@@ -175,7 +175,7 @@ watch.detail.data.case=Boitier
 watch.detail.data.this.one.reference=Référence
 watch.detail.data.special=Particularités
 watch.detail.data.water.resistance=Entanchéité
-watch.detail.data.hometime.price=Tarif prêt
+watch.detail.data.hometime.price=Tarif de l''essai
 watch.detail.data.new.price=Prix neuf
 watch.detail.model.history=L''histoire du modèle
 watch.detail.item.history=L''histoire de cet exemplaire
@@ -184,14 +184,14 @@ watch.detail.other.watches=Les autres montres disponibles
 watch.detail.order.this.call.to.action=Choisir cette montre
 watch.detail.data.this.one.available=Disponibilité
 watch.detail.data.this.one.available.yes=La montre est disponible
-watch.detail.data.this.one.available.no=La montre est actuellement prêtée à un client
+watch.detail.data.this.one.available.no=La montre est actuellement essayée par un client
 
 # Offer page
 offer.html.title=Les services Hometime
-offer.html.description=Présentation des services Hometime : révision et réparation, prêt de montre, déplacement à domicile.
-offer.html.keywords=révision, réparation, prêt, montres mécaniques, montres automatiques, domicile
+offer.html.description=Présentation des services Hometime : révision et réparation, essai de montre, déplacement à domicile.
+offer.html.keywords=révision, réparation, essai, prêt, montres mécaniques, montres automatiques, domicile
 offer.menu.text.service=Révision & réparations
-offer.menu.text.loan=Prêt de montre de luxe
+offer.menu.text.loan=Essai de montre de luxe
 offer.menu.text.home=Déplacement à domicile
 offer.menu.text.more=Les autres prestations
 offer.menu.text.prices=Les tarifs
@@ -215,8 +215,8 @@ offer.service.call.to.action.more=Pourquoi une révision ?
 offer.service.call.to.action.order=Demander un devis
 
 
-offer.loan.head=Prêt de montres de luxe
-offer.loan.body=Parce que vous n''avez qu''une seule montre, ou que vous souhaitez porter une nouvelle montre, Hometime vous propose le <b>prêt d''une de ses montres mythiques</b> pendant toute la durée de l''intervention (<a href="#service">révision ou réparation</a>) sur votre montre.\
+offer.loan.head=Essai de montres de luxe
+offer.loan.body=Parce que vous n''avez qu''une seule montre, ou que vous souhaitez porter une nouvelle montre, Hometime vous propose <b>d''essayer l''une de ses montres mythiques</b> pendant toute la durée de l''intervention (<a href="#service">révision ou réparation</a>) sur votre montre.\
  <br />Que l''opération dure 1 semaine ou quelques mois, vous portez la montre que vous avez choisie tant que votre montre n''est pas prête.\
  <br /><br />Pour que cela soit du <b>pur plaisir</b>, Hometime vous propose des montres en excellent état esthétique et fonctionnant parfaitement.\
  La grande majorité des montres proposées sont des icônes du monde horloger. Vous avez l''assurance de déclencher des discussions passionnées avec vos amis ou vos collègues.\
@@ -279,14 +279,14 @@ prices.table.body.service.prices=Entre {0} et {1}
 prices.table.body.service.details=Prix à affiner par téléphone. Le prix dépend de votre choix de faire réviser la montre par un horloger généraliste ou par le réseau de la marque.
 prices.table.body.repair=Réparation
 prices.table.body.repair.prices=Sur devis gratuit uniquement.
-prices.table.body.loan=Prêt de montre dans le cadre d''une révision
+prices.table.body.loan=Essai de montre dans le cadre d''une révision
 prices.table.body.loan.prices=Entre {0} et {1}.Voir les prix sur la fiche de chaque montre.
 prices.table.body.moving=Frais de déplacement
 prices.table.body.moving.prices=Gratuits
 
 # Order page
 order.html.title=Devis et prise de rendez-vous
-order.html.description=Formulaire de demande de devis gratuit pour révision ou réparation avec choix en option d''une montre de prêt.
+order.html.description=Formulaire de demande de devis gratuit pour révision ou réparation avec choix en option l''essai d''une montre .
 order.html.keywords=devis gratuit, évaluation, horloger indépendant, révision, réparation, montre
 order.baseline=Demander un devis gratuit
 order.text.explanation=Pour obtenir un devis, veuillez renseigner les informations ci-dessous. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
@@ -305,8 +305,8 @@ order.form.value.method.1=Je souhaite que ma montre soit entretenue par son fabr
 order.form.value.method.2=Je souhaite que ma montre soit entretenue par un horloger indépendant
 order.form.label.remark=Remarques
 order.form.placeholder.remark=Vous souhaitez préciser quelque-chose
-order.form.label.choice=Choix de la montre que nous vous prêtons
-order.form.value.choice.default=Je ne souhaite pas de montre de prêt
+order.form.label.choice=Choix de la montre que vous souhaitez essayer
+order.form.value.choice.default=Je ne souhaite pas essayer de montre
 order.form.cat.label.you=Vous
 order.form.label.your.name=* Votre Nom
 order.form.placeholder.your.name=Prénom Nom
@@ -344,7 +344,7 @@ cgv.html.description=Conditions générales de vente du service Hometime
 cgv.html.keywords=conditions générales, vente
 cgv.baseline=Conditions générales de vente
 cgv.head.1=Article 1 : Objet
-cgv.body.1=Les conditions générales de ventes décrites ci-après détaillent les droits et obligations de l''entreprise Hometime et de ses clients dans le cadre de la fourniture du service d''entretien et de prêt de montres mécaniques. \
+cgv.body.1=Les conditions générales de ventes décrites ci-après détaillent les droits et obligations de l''entreprise Hometime et de ses clients dans le cadre de la fourniture du service d''entretien et d''essai de montres mécaniques. \
  <br /><br />Toute prestation accomplie par l''entreprise Hometime implique l''adhésion sans réserve de l''acheteur aux présentes conditions générales de vente.
 cgv.head.2=Article 2 : Présentation des services
 cgv.body.2=Les caractéristiques des services proposés sont présentées dans la rubrique " Les services " de notre site. Les photographies n''entrent pas dans le champ contractuel. \
@@ -352,7 +352,7 @@ cgv.body.2=Les caractéristiques des services proposés sont présentées dans l
  <br /><br />Tous les textes et images présentés sur le site de l''entreprise Hometime sont réservés, pour le monde entier, au titre des droits d''auteur et de propriété intellectuelle; \
  leur reproduction, même partielle, est strictement interdite.
 cgv.head.3=Article 3 : Durée de validité des offres
-cgv.body.3=Dans le cadre des montres prêtées, les produits sont proposés lorsqu''ils sont effectivement disponibles. En cas d''indisponibilité temporaire, une date de disponibilité prévisionnelle est indiquée. Il n''est pas possible à l''heure actuelle de poser une option sur un produit non disponible.
+cgv.body.3=Dans le cadre des montres proposées à l''essai, les produits sont proposés lorsqu''ils sont effectivement disponibles. En cas d''indisponibilité temporaire, une date de disponibilité prévisionnelle est indiquée. Il n''est pas possible à l''heure actuelle de poser une option sur un produit non disponible.
 cgv.head.4=Article 4 : Tarifs des services
 cgv.body.4=La rubrique " Les tarifs " de notre site indique les prix en euros toutes taxes comprises. Il s''agit de prix indicatifs. Un devis personnalisé est réalisé avant chaque commande. \
  <br /><br />La entreprise Hometime se réserve le droit de modifier ses prix à tout moment mais les services commandés sont facturés au prix en vigueur lors de l''enregistrement de la commande. \
@@ -414,7 +414,7 @@ site.plan.more.title=Les prestations complémentaires
 site.plan.prices.title=Les tarifs
 site.plan.order.title=Demande de devis gratuit
 site.plan.service.title=Tout savoir sur l''entretien
-site.plan.watch.collection.title=Les montres disponibles pour le prêt
+site.plan.watch.collection.title=Les montres disponibles à l''essai
 site.plan.watch.title=Fiche {0} - {1}
 site.plan.about.title=Qui sommes nous ?
 site.plan.cgv.title=Conditions générales de vente
