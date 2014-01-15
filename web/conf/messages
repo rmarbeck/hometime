@@ -37,8 +37,8 @@ global.action.logout=Se déconnecter
 
 # Home page
 home.html.title=Entretien et essai de montres à domicile - Hometime
-home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) et l''essai d''une montre de légende pendant toute la durée de l''entretien.
-home.html.keywords=révision, réparation, montres mécaniques, montres automatiques, rolex, omega, panerai, tag heuer
+home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) sur Paris et proche banlieue et l''essai d''une montre de légende pendant toute la durée de l''entretien.
+home.html.keywords=révision, réparation, montres mécaniques, montres automatiques, rolex, omega, panerai, tag heuer, paris, yvelines, hauts de seine, devis
 home.caption.1.head=Vous avez une belle montre, entretenez&nbsp;la&nbsp;!
 home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
 home.caption.1.call.to.action=Pourquoi entrenir ma montre ?
@@ -79,21 +79,16 @@ home.description.for.facebook=Hometime, entretien et essai prolongé de montres 
 # Service page
 service.html.title=Entretenir sa montre
 service.html.description=Tout savoir sur l''entretien, simple révision ou réparation, d''une montre mécanique à remontage manuel ou automatique : pourquoi le faire, la durée, le prix.
-service.html.keywords=entretien, révision, réparation, montre mécanique, délai, durée, prix
+service.html.keywords=entretien, révision, réparation, montre mécanique, délai, durée, prix, étanchéité, manuelle, automatique
 service.content.1.head=Pourquoi <span class="text-muted">une montre s''use-t-elle ?</span>
-service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mécanique est constituée de nombreuses pièces en mouvement <span class="text-muted">(entre 100 et 1000 en fonction du modèle)</span>. \
- Au cours de son fonctionnement <span class="text-muted">(environ 200 millions d''oscillations en une année)</span> deux phénomènes vont conduire progressivement à un encrassement du mouvement :\
+service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mécanique est constituée de nombreuses pièces en mouvement. \
+ Au cours de son fonctionnement deux phénomènes vont conduire progressivement à un encrassement du mouvement :\
  <ul><li>La production de <b>micro-particules métalliques</b> générées par le frottement des pièces les unes contre les autres,</li>\
  <li>Le <b>séchage progressif du lubrifiant</b> présent dans le mouvement.</li></ul>\
  Ces deux phénomènes se combinent pour altérer le fonctionnement de la montre, ce qui va dégrader ses performances (prise de retard ou d''avance de plus de 10 secondes par jour, diminution de la durée de marche après remontage), mais qui peut à terme entrainer la casse d''une pièce.\
  <div class="sub-title">Le boitier :</div>\
  A l''usage, le boitier reçoit des petits coups ou se retrouve en contact avec des objets susceptibles de le rayer. Cette usure est visible, cependant le boitier peut aussi souffrir d''une usure beaucoup moins visible, celle qui touche à l''<b>étanchéité de la montre</b>.\
  Les joints garantissant à la montre une parfaite résistance à l''humidité perdent de leur efficacité avec le temps. De même, dans le cas des chronographes par exemple, les boutons de déclenchement ou de remise à zéro peuvent s''user et perdre de leur étanchéité.\
- <div class="sub-title">Mais aussi :</div>\
- D''autres composants de la montre s''usent aussi :\
- <ul><li>Le bracelet et les attaches qui le maintiennent,</li>\
- <li>Le verre, si celui-ci n''est pas en saphir,</li>\
- <li>Les index luminescents...</li></ul>
 
 service.content.2.head=Comment <span class="text-muted">entretient-on une montre ?</span>
 service.content.2.body=<div class="sub-title">L''entretien quotidien :</div>L''entretien soigneux de sa montre au jour le jour est un gage de pérennité, d''autant qu''il peut se résumer à quelques réflexes simples \
@@ -112,8 +107,8 @@ service.content.2.body=<div class="sub-title">L''entretien quotidien :</div>L''e
 
 service.content.3.head=Quand <span class="text-muted">faut-il entretenir une montre ?</span>
 service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisions dépend de très nombreux paramètres (marque et technologie employée dans le mouvement, fréquence de portée, utilisation d''un remontoir pour une montre automatique, ancienneté de la montre). <i>Hometime vous proposera très bientôt un outil pour évaluer précisément quand vous devez faire entretenir votre montre.</i>\
- <br />Quoiqu''il en soit, pour la plupart des montres, il est nécessaire de procéder à une révision au bout de <b>5 à 7 ans</b>.\
- <br />Cette durée doit être raccourcie si jamais vous décelez ou suspectez un dysfonctionnement comme :\
+ <br /><br />Quoiqu''il en soit, pour la plupart des montres, il est nécessaire de procéder à une révision au bout de <b>5 à 7 ans</b>.\
+ <br /><br />Cette durée doit être raccourcie si jamais vous décelez ou suspectez un dysfonctionnement comme :\
  <ul><li>Prise d''avance ou de retard supérieur à 10 secondes par jour (vous pouvez synchroniser votre montre de façon précise sur : <a target="_blank" href="http://wwp.greenwich-mean-time.ca/">GMT</a>),</li>\
  <li>Problème lors du passage de date,</li>\
  <li>Comportement étrange du chronographe,</li>\
@@ -122,7 +117,7 @@ service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisi
 
 service.content.4.head=Combien <span class="text-muted">ça coûte ?</span> Combien de temps <span class="text-muted">cela dure-t-il ?</span>
 service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horloger, marque) est libre de fixer le prix de ses prestations, cependant il est fréquent de constater des prix compris entre <b>200€ et 500€</b>.\
- <br/>Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proportionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
+ <br/><br/>Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proportionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
  Il faut bien entendu prendre en compte l''ensemble des services pouvant accompagner la révision (notamment la garantie d''étanchéité, ou la prise en charge à domicile). Dans le cas où la montre a subi des dommages et nécessite le remplacement de pièces, les prix peuvent dépasser cette limite des 20%. \
  <div class="sub-title">Les délais :</div>Lors d''une révision, il existe des opérations pour lesquelles les délais sont incompressibles et d''autres pour lesquelles ils peuvent être optimisés. Ainsi, le démontage, l''huilage et le remontage sont des opérations relativement rapides pouvant être réalisées en une journée.\
  En revanche, le contrôle du bon fonctionnement de la montre dans différentes positions (notamment pour les montres certifiées chronomètre) prend plusieurs jours, voire plusieurs semaines pour certaines marques.\
@@ -140,13 +135,13 @@ service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à 
  <li>Connaitre les éventuels intermédiaires intervenant dans la réalisation du service.</li></ul>\
  <br /><b>La mission de Hometime est de s''occuper de tout pour vous garantir le meilleur.</b>
 
-service.why.call.to.action=Faire entretenir ma montre !
+service.why.call.to.action=Entretenir ma montre !
 service.invest.call.to.action=Demander un devis
 
 service.content.6.head=Vous hésitez encore ?
 service.content.6.body=<div class="sub-title">Votre montre fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérées comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
  Si cela est évident pour une catégorie très particulière de montres (Rolex, Patek Philippe notamment), il faut noter que certaines montres peu cotées il y a quelques années s''apprécient très rapidement aujourd''hui (cas des montres Heuer par exemple, ou des Panerai).\
- <br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent représenter une valeur sentimentale très forte.
+ <br /><br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent représenter une valeur sentimentale très forte.
 
 service.why.alt=Pourquoi faire entretenir sa montre
 service.how.alt=Comment entretient-on une montre
@@ -154,6 +149,10 @@ service.when.alt=Quand faut-il entretenir une montre
 service.how.long.alt=Combien ça coûte et combien de temps ça dure
 service.risky.alt=Y-a-t-il des risques liés à l''entretien
 service.invest.alt=Votre montre c''est votre partimoine
+service.1.to.action=En savoir plus...
+service.2.to.action=En savoir plus...
+service.4.to.action=En savoir plus...
+service.5.to.action=En savoir plus...
 
 # Watch collection page
 watch.collection.html.title=Les montres Hometime
@@ -188,8 +187,8 @@ watch.detail.data.this.one.available.no=La montre est actuellement essayée par 
 
 # Offer page
 offer.html.title=Les services Hometime
-offer.html.description=Présentation des services Hometime : révision et réparation, essai de montre, déplacement à domicile.
-offer.html.keywords=révision, réparation, essai, prêt, montres mécaniques, montres automatiques, domicile
+offer.html.description=Présentation des services Hometime : révision et réparation, essai de montre, déplacement à domicile sur Paris et proche banlieue.
+offer.html.keywords=révision, réparation, essai, prêt, montres mécaniques, montres automatiques, domicile, paris, yvelines, hauts de seine
 offer.menu.text.service=Révision & réparations
 offer.menu.text.loan=Essai de montre de luxe
 offer.menu.text.home=Déplacement à domicile
@@ -262,8 +261,8 @@ more.accessories.winder.alt=Remontoir à montre
 
 # Prices page
 prices.html.title=Les tarifs
-prices.html.description=Liste des tarifs des prestations.
-prices.html.keywords=tarifs, prix, devis
+prices.html.description=Liste des tarifs des prestations pour intervention sur Paris et proche banlieue.
+prices.html.keywords=tarifs, prix, devis, paris, yvelines, hauts de seine
 prices.baseline=Les tarifs des prestations Hometime
 prices.head=Les tarifs
 prices.body=Nos tarifs de révision et de réparation sont présentés sous forme de fourchette car un nombre important de facteurs peut faire varier la durée et la complexité de la prestation.\
@@ -287,7 +286,7 @@ prices.table.body.moving.prices=Gratuits
 # Order page
 order.html.title=Devis et prise de rendez-vous
 order.html.description=Formulaire de demande de devis gratuit pour révision ou réparation avec choix en option l''essai d''une montre .
-order.html.keywords=devis gratuit, évaluation, horloger indépendant, révision, réparation, montre
+order.html.keywords=devis gratuit, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine
 order.baseline=Demander un devis gratuit
 order.text.explanation=Pour obtenir un devis, veuillez renseigner les informations ci-dessous. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
 
