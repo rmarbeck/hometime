@@ -53,7 +53,6 @@ GET     /plan-du-site               controllers.Application.siteplan()
 
 # Map specifically to robots.txt
 GET     /robots.txt                 controllers.Assets.at(path="/public", file="robots.txt")
-GET     /88348a75ec8978e7e01c0a006447014c.txt                 controllers.Assets.at(path="/public", file="88348a75ec8978e7e01c0a006447014c.txt")
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
