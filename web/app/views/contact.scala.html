@@ -1,0 +1,71 @@
+@(message: String = "", contact: Form[Application.ContactForm])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+
+@layouts.main("contact") {
+    @layouts.fragments.navbar(0)
+
+    <div class="container contact">
+      @baseline("contact.baseline")
+      @if(flash.containsKey("success")) {
+      <div class="row success">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="panel panel-success">
+              <div class="panel-heading">@Html(Messages("contact.success.panel.heading"))</div>
+              <div class="panel-body">
+                @Html(Messages("contact.success.panel.body"))
+              </div>
+            </div>
+        </div>
+      </div>
+      } else {
+      <div class="row explanation">
+          <div class="col-sm-10 col-sm-offset-1">
+            <div class="explanation-body">@Html(Messages("contact.text.explanation"))</div>
+            <hr>
+          </div>
+      </div>
+      <div class="row content">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+		@helper.form(action = routes.Application.manageContact(), 'class -> "form-horizontal", 'role -> "form") {
+
+                @helper.inputText(contact("title"),
+                                'placeholder -> Messages("contact.form.placeholder.title"), '_label -> Messages("contact.form.label.title"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.textarea(contact("message"),
+                                'placeholder -> Messages("contact.form.placeholder.message"), '_label -> Messages("contact.form.label.message"),
+                                'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                <div class="form-group">
+                  <label for="catYou" class="col-xs-3 control-label">@Messages("contact.form.cat.label.you")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                      @helper.inputText(contact("name"),
+                                        'placeholder -> Messages("contact.form.placeholder.your.name"), '_label -> Messages("contact.form.label.your.name"),
+                                        'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                      
+                      @helper.inputText(contact("email"),
+                                        'placeholder -> Messages("contact.form.placeholder.your.email"), '_label -> Messages("contact.form.label.your.email"),
+                                        'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                    @Html(Messages("contact.form.mandatory.mark.explanation"))
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-9 text-center">
+                    <button type="submit" class="btn btn-primary">@Html(Messages("contact.action.submit"))</button>
+                  </div>
+                </div>
+            }
+        </div>
+      </div>
+      }
+     <hr>
+    </div><!-- /.container -->
+    
+}

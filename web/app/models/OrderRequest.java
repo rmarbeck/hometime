@@ -120,6 +120,9 @@ public class OrderRequest extends Model {
     	content.append(", for model : " + this.model);
     	content.append(". Watch chosen : " + ((this.watchChosen==null)?("none"):(this.watchChosen.short_name)));
     	content.append(", for : " + this.email);
+    	content.append(", in : " + this.city);
+    	content.append(", phonenumber given ? : " + ((this.phoneNumber==null || "".equals(this.phoneNumber))?("no"):("yes")));
+    	content.append(", precisions : " + ((this.remark==null)?("none"):(this.remark)));
     	content.append("]");
     	return content.toString();
     }

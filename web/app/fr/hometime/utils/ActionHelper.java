@@ -26,7 +26,7 @@ public class ActionHelper {
 	public static String NBTE_FROM = "notify_team_by_email_from";
 	
 	private static String TEAM_ADDRESS_1 = "contact@hometime.fr";
-	private static String TEAM_FROM_ADDRESS = "rmarbeck@gmail.com";
+	private static String TEAM_FROM_ADDRESS = "watchnextforsmtp@gmail.com";
 
 	/**
 	 * Send a mail to the team

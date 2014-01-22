@@ -77,6 +77,42 @@ public class Application extends Controller {
 	    }
 	}
 	
+	public static class ContactForm {
+
+		@Constraints.Required
+		@Formats.NonEmpty
+		public String title;
+		@Constraints.Required
+		@Column(length = 1000)
+		@Formats.NonEmpty
+		public String message;
+		@Constraints.Required
+		@Formats.NonEmpty
+	    @Constraints.MaxLength(60)
+		public String name;
+		@Constraints.Email
+		@Constraints.MaxLength(60)
+		public String email;
+		
+	    public String validate() {
+	        return null;
+	    }
+	    
+	    public ContactForm() {
+	    	super();
+	    }
+	    
+	    public String toString() {
+	    	StringBuilder content = new StringBuilder();
+	    	content.append(this.getClass().getSimpleName() + " : [");
+	    	content.append(" Title is : " + this.title);
+	    	content.append(", Message is : " + this.message);
+	    	content.append(", from : " + this.name + ((this.email==null || "".equals(this.email))?(" (none)"):(" ("+this.email+")")));
+	    	content.append("]");
+	    	return content.toString();
+	    }
+	}
+	
 
     public static Result index() {
         return ok(index.render("", getSupportedBrands()));
@@ -109,6 +145,14 @@ public class Application extends Controller {
     		return internalServerError();
     	}
     }
+    
+    public static Result contact() {
+    	try {
+	        return ok(contact.render("", Form.form(ContactForm.class).fill(new ContactForm())));
+    	} catch (Exception e) {
+    		return internalServerError();
+    	}
+    }
 
     public static Result about() {
         return ok(about.render());
@@ -136,6 +180,22 @@ public class Application extends Controller {
 			
 			return redirect(
 					routes.Application.order()
+					);
+		}
+	}
+	
+	public static Result manageContact() {
+		Form<ContactForm> contactForm = Form.form(ContactForm.class).bindFromRequest();
+		if(contactForm.hasErrors()) {
+			return badRequest(contact.render("", contactForm));
+		} else {
+
+			ActionHelper.tryToNotifyTeamByEmail("Prise de contact", contactForm.get().toString());
+			
+			flash("success", "OK");
+			
+			return redirect(
+					routes.Application.contact()
 					);
 		}
 	}

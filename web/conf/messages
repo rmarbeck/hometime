@@ -8,7 +8,7 @@ global.home.html.description=Hometime propose la révision ou la réparation de 
 global.home.html.author=hometime
 global.text.brand.name=hometime
 global.text.site.name=hometime
-global.text.copyright=© hometime 2013
+global.text.copyright=© Watch Next 2013-2014
 global.text.brand.baseline=
 global.navbar.link.text.home=Home
 global.navbar.link.text.service=L''entretien des montres
@@ -20,17 +20,18 @@ global.navbar.link.text.services.other=Les prestations complémentaires
 global.navbar.link.text.services.prices=Les tarifs
 global.navbar.link.text.wacth.collection=Les montres
 global.navbar.link.text.who.are.we=Qui sommes nous ?
-global.navbar.link.text.contact=Avis, remarques ?
+#   global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Demander un devis
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
 global.text.this.is.an.experiment.long=Le service <strong>hometime</strong> est actuellement dans une phase expérimentale.<br />En l''utilisant vous contribuez à encourager l''équipe à l''améliorer.
 global.text.this.is.an.experiment.long.call.to.action=En savoir plus...
-global.text.this.is.an.experiment.long.call.to.action.feedback=Un avis, une remarque...
+global.text.this.is.an.experiment.long.call.to.action.feedback=Nous contacter
 global.text.privacy=Vie&nbsp;privée
 global.text.terms=Conditions&nbsp;générales
 global.text.who.are.we=Qui&nbsp;sommes&nbsp;nous&nbsp;?
 global.text.site.plan=Plan&nbsp;du&nbsp;site
-global.text.contact=Un&nbsp;avis,&nbsp;une&nbsp;remarque...
+global.text.contact=Nous&nbsp;contacter
+global.text.issue=Signaler&nbsp;un&nbsp;problème
 global.text.back.to.top=Haut de page
 global.action.logout=Se déconnecter
 
@@ -160,6 +161,7 @@ watch.collection.html.description=Présentation des montres du catalogue Hometim
 watch.collection.html.keywords=montre, essai, prêt, location, rolex, tag heuer, omega, IWC, panerai
 watch.collection.display.watch.call.to.action=Voir la fiche
 watch.collection.baseline=Le catalogue des montres disponibles pour un essai
+watch.collection.text.explanation=Découvrez les montres que vous pouvez essayer pendant la durée de la révision ou de la réparation de votre montre. 
 
 # Watch detail
 watch.detail.html.title=Détail - {0}
@@ -318,6 +320,28 @@ order.form.placeholder.your.city=Ville
 order.form.mandatory.mark.explanation=* Champ obligatoire
 order.success.panel.heading=Demande de devis prise en compte
 order.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre demande. Nous vous recontactons très vite pour vous faire une évaluation précise. <br /><br />A très bientôt.
+order.action.submit=Envoyer
+
+# Contact page
+contact.html.title=Nous contacter
+contact.html.description=Formulaire de contact, poser une question ou signaler un problème.
+contact.html.keywords=Nous contacter, question, information, signaler un problème
+contact.baseline=Nous contacter
+contact.text.explanation=Vous souhaitez nous contacter pour nous poser une question, nous signaler un problème, nous soutenir ou pour toute autre raison, veuillez remplir le formulaire ci-dessous. Nous prendrons connaissance de votre message très vite.
+
+contact.form.label.title=* Titre
+contact.form.placeholder.title=Titre de votre message
+contact.form.label.message=* Message
+contact.form.placeholder.message=Votre message
+contact.form.cat.label.you=A propos de vous
+contact.form.label.your.name=* Votre Nom
+contact.form.placeholder.your.name=Prénom Nom
+contact.form.label.your.email=Votre email
+contact.form.placeholder.your.email=exemple@nomdedomaine.fr
+contact.form.mandatory.mark.explanation=* Champ obligatoire
+contact.success.panel.heading=Message envoyé
+contact.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre message et allons en prendre connaissance. <br /><br />A très bientôt.
+contact.action.submit=Envoyer
 
 # About page
 about.html.title=Qui sommes nous ?
@@ -325,7 +349,7 @@ about.html.description=Description de l''entreprise, de sa mission et de ses val
 about.html.keywords=description, hometime, watchnext, contact
 about.baseline=Qui sommes nous ?
 about.head.1=En deux mots
-about.body.1=Hometime est une jeune entreprise (enregistrement de la société en cours) installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
+about.body.1=Hometime est un service de la société Watch Next (enregistrement de la société en cours auprès du RCS de Versailles) installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
 about.head.2=Notre mission
 about.body.2=Hometime a été créé pour que l''horlogerie ne soit que du plaisir. Notre objectif est de faire disparaitre toutes les contraintes liées à l''entretien de votre montre mais aussi de vous faire découvrir le monde passionnant de l''horlogerie.
 about.head.3=Comment procédons-nous ?
@@ -336,6 +360,9 @@ about.body.4=Etant une toute jeune entreprise, nous ne pouvons pas compter sur u
  <br /><br />Pour vous convaincre de notre sérieux, n''hésitez surtout pas à nous contacter par mail, nous saurons répondre à vos questions et dissiper vos doutes. \
  Les montres que nous vous prêtons sont le gage de la confiance mutuelle qui s''établit entre vous et nous. De plus, l''ensemble des documents fournis avant le début de la prestation vous apporteront toutes les garanties que vous êtes en droit d''attendre. \
  <br /><br />Alors à très bientôt.  
+about.head.5=Représentant et siège social
+about.body.5=La société Watch Next est une Société par Actions Simplifiée au capital de 20 000€ représentée par son président Raphaël Marbeck.\
+ <br /><br />Le siège social est établi 11 bis, rue Pierre Curie, 78600 Maisons-Laffitte.
 
 # CGV page
 cgv.html.title=Conditions générales de vente

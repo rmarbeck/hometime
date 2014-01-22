@@ -33,13 +33,17 @@ GET     /demande-de-devis           controllers.Application.order()
 GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
 
+# Order
+GET     /nous-contacter             controllers.Application.contact()
+POST    /nous-contacter             controllers.Application.manageContact()
+
 # About
 GET     /a-propos                   controllers.Application.about()
 GET     /about                      controllers.Default.redirect(to = "/a-propos")
 
 # Privacy
 GET     /vie-prive                  controllers.Application.privacy()
-GET     /privacy                      controllers.Default.redirect(to = "/vie-prive")
+GET     /privacy                    controllers.Default.redirect(to = "/vie-prive")
 
 # CGV
 GET     /cgv                        controllers.Application.cgv()
