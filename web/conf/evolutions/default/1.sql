@@ -16,6 +16,16 @@ create table brand (
   constraint pk_brand primary key (id))
 ;
 
+create table contact_request (
+  id                        bigint not null,
+  title                     varchar(255),
+  message                   varchar(1000),
+  name                      varchar(255),
+  email                     varchar(255),
+  request_date              timestamp,
+  constraint pk_contact_request primary key (id))
+;
+
 create table live_config (
   key                       varchar(255) not null,
   valuestring               varchar(255),
@@ -54,6 +64,26 @@ create table picture (
   constraint pk_picture primary key (id))
 ;
 
+create table service_test (
+  id                        bigint not null,
+  request_date              timestamp,
+  movement_type             integer,
+  build_period              integer,
+  last_service_year         integer,
+  performance_issue         boolean,
+  power_reserve_issue       boolean,
+  water_issue               boolean,
+  usage_frequency           integer,
+  model                     varchar(1000),
+  name_of_customer          varchar(255),
+  email                     varchar(255),
+  constraint ck_service_test_movement_type check (movement_type in (0,1)),
+  constraint ck_service_test_build_period check (build_period in (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)),
+  constraint ck_service_test_last_service_year check (last_service_year in (0,1,2,3,4,5,6,7,8,9,10,11,12,13)),
+  constraint ck_service_test_usage_frequency check (usage_frequency in (0,1,2,3)),
+  constraint pk_service_test primary key (id))
+;
+
 create table watch (
   id                        bigint not null,
   should_display            boolean,
@@ -81,11 +111,15 @@ create table watch (
 
 create sequence brand_seq;
 
+create sequence contact_request_seq;
+
 create sequence live_config_seq;
 
 create sequence order_request_seq;
 
 create sequence picture_seq;
+
+create sequence service_test_seq;
 
 create sequence watch_seq;
 
@@ -104,11 +138,15 @@ SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists brand;
 
+drop table if exists contact_request;
+
 drop table if exists live_config;
 
 drop table if exists order_request;
 
 drop table if exists picture;
+
+drop table if exists service_test;
 
 drop table if exists watch;
 
@@ -116,11 +154,15 @@ SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists brand_seq;
 
+drop sequence if exists contact_request_seq;
+
 drop sequence if exists live_config_seq;
 
 drop sequence if exists order_request_seq;
 
 drop sequence if exists picture_seq;
+
+drop sequence if exists service_test_seq;
 
 drop sequence if exists watch_seq;
 

@@ -1,9 +1,12 @@
 
 #collection .row {
+  margin: 0;
+}
+
+#collection .row .watch-container {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
-  margin: 0;
 }
 
 #collection .row .watch-box {
@@ -38,8 +41,12 @@
 }
 
 @media (min-width: @bootstrap-screen-md-min) {
+    #collection {
+        margin-top: -200px;
+    }
+    
     #collection .row:first-child {
-        margin-top: @content-top-margin - 140px;
+        padding-top: 200px;
     }
 }
 

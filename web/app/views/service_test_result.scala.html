@@ -1,0 +1,47 @@
+@(message: String = "", result: ServiceTest.TestResult, customizedAnswerRequested: Boolean, foremail: String)
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+
+@layouts.main("service.test.result") {
+    @layouts.fragments.navbar(0)
+
+    <div class="container service-test-result">
+      @baseline("service.test.result.baseline")
+      <div class="row result">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            @if(customizedAnswerRequested) {
+              <div class="alert alert-info alert-dismissable">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  @Html(Messages("service.test.result.followup", foremail))
+              </div>
+            }
+            <div class="panel panel-@Messages("service.test.result.panel.style."+result.toString)">
+              <div class="text-center panel-heading">@Html(Messages("service.test.result.panel.heading."+result.toString))@if(result.intValue() > 0 && result.intValue() < 6) {@add_service_to_google_calendar(result)}</div>
+              <div class="panel-body">
+                @Html(Messages("service.test.result.panel.body."+result.toString))
+              </div>
+            </div>
+            <div class="warning-message">@Html(Messages("service.test.result.warning"))</div>
+            @if(result.intValue() > 0 && result.intValue() < 6) {
+                <div class="warning-message">
+                    @Html(Messages("service.test.result.panel.add.to.google.agenda.option"))
+                    @add_service_to_google_calendar(result)
+                </div>
+            }
+            @if(customizedAnswerRequested == false) {
+               <div class="warning-message">@Html(Messages("service.test.result.warning.ask.customized.test"))</div>
+            }
+        </div>
+      </div>
+      <div class="row actions">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="text-center">
+                @if(result.intValue >= 5) {<a class="btn btn-primary" href="@routes.Application.order()">@Html(Messages("service.test.result.action.order"))</a>} else {<a class="btn btn-default" href="@routes.Application.service_test()">@Html(Messages("service.test.result.action.back.to.form"))</a>}
+            </div>
+        </div>
+      </div>
+     <hr>
+    </div>
+    
+}

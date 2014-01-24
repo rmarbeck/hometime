@@ -33,27 +33,30 @@
             <div id="collection" class="col-md-9" role="main">
               @for(watch <- displayable_watches) {
               <div id="@watch.id" class="row">
-                <div class="col-sm-8 text-center">
-                    <div class="watch-box">
-                      <div class="image"><img class="img-responsive" src="@guess_url(watch.main_picture_url)" alt="@watch.short_name"></div>
+                <div class="watch-container">
+                    <div class="col-sm-8 text-center">
+                        <div class="watch-box">
+                          <div class="image"><img class="img-responsive" src="@guess_url(watch.main_picture_url)" alt="@watch.short_name"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <div class="watch-box">
-                      <div class="caption"><h2>@watch.brand - @watch.full_name</h2></div>
-                      <div class="data">
-                        <dl>
-                          <dt>@Messages("watch.detail.data.this.one.reference")</dt>
-                          <dd>@watch.item_reference</dd>
-                          <dt>@Messages("watch.detail.data.hometime.price")</dt>
-                          <dd>@display_price(watch.price)</dd>
-                          <dt>@Messages("watch.detail.data.this.one.available")</dt>
-                          <dd>@display_availability(watch.is_available, "watch.detail.data.this.one.available.yes", "watch.detail.data.this.one.available.no")</dd>
-                        </dl>
-                      </div>
-                      <div class="sub-caption"><a class="btn btn-primary" href="@routes.Application.watch_detail(watch.id)">@Messages("watch.collection.display.watch.call.to.action")</a></div>
+                    <div class="col-sm-4 text-center">
+                        <div class="watch-box">
+                          <div class="caption"><h2>@watch.brand - @watch.full_name</h2></div>
+                          <div class="data">
+                            <dl>
+                              <dt>@Messages("watch.detail.data.this.one.reference")</dt>
+                              <dd>@watch.item_reference</dd>
+                              <dt>@Messages("watch.detail.data.hometime.price")</dt>
+                              <dd>@display_price(watch.price)</dd>
+                              <dt>@Messages("watch.detail.data.this.one.available")</dt>
+                              <dd>@display_availability(watch.is_available, "watch.detail.data.this.one.available.yes", "watch.detail.data.this.one.available.no")</dd>
+                            </dl>
+                          </div>
+                          <div class="sub-caption"><a class="btn btn-primary" href="@routes.Application.watch_detail(watch.id)">@Messages("watch.collection.display.watch.call.to.action")</a></div>
+                        </div>
                     </div>
-                </div>
+                    <div class="clearfix"></div>
+                 </div>
               </div>
               <hr class="featurette-divider">
               }

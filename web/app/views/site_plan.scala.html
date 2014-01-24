@@ -45,6 +45,11 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.service_test()">@Messages("site.plan.service.test.title")</a></h2></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
                         <div class="title"><h2><a href="@routes.Application.watch_collection()">@Messages("site.plan.watch.collection.title")</a></h2></div>
                         @for(watch <- displayable_watches) {
                         <div class="row">

@@ -1,0 +1,28 @@
+@(result: ServiceTest.TestResult, args: (Symbol,String)*)
+@defining(Calendar.getInstance()) { calculatedStartDay =>
+    @result match {
+      case ServiceTest.TestResult.IN_5_YEARS => {
+        @calculatedStartDay.add(Calendar.MONTH, 12*5)
+      }
+      case ServiceTest.TestResult.IN_4_YEARS => {
+        @calculatedStartDay.add(Calendar.MONTH, 12*4)
+      }
+      case ServiceTest.TestResult.IN_2_TO_3_YEARS => {
+        @calculatedStartDay.add(Calendar.MONTH, 12*2)
+      }
+      case ServiceTest.TestResult.NEXT_YEAR => {
+        @calculatedStartDay.add(Calendar.MONTH, 11)
+      }
+      case ServiceTest.TestResult.THIS_YEAR => {
+        @calculatedStartDay.add(Calendar.MONTH, 6)
+      }
+      case default => {
+        @calculatedStartDay.add(Calendar.MONTH, 0)
+      }
+    }
+    @defining(Calendar.getInstance()) { calculatedEndDay =>
+        @calculatedEndDay.setTime(calculatedStartDay.getTime())
+        @calculatedEndDay.add(Calendar.DAY_OF_MONTH, 1)
+@add_to_google_calendar(Messages("tags.google.calendar.service.text"), Messages("tags.google.calendar.service.details"), calculatedStartDay.getTime(), calculatedEndDay.getTime(), "www.hometime.fr", false, "Hometime", "www.hometime.fr")
+}
+}

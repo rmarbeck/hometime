@@ -30,7 +30,14 @@
                   </ul>
                 }
                 @li_activable(20, index) {<a href="@routes.Application.watch_collection()">@Messages("global.navbar.link.text.wacth.collection")</a>}
-                @li_activable(80, index) {<a href="@routes.Application.service()">@Messages("global.navbar.link.text.service")</a>}
+                @li_activable(80, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Messages("global.navbar.link.text.service") <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="@routes.Application.service()">@Messages("global.navbar.link.text.service.content")</a></li>
+                    <li class="divider"></li>
+                    <li><a href="@routes.Application.service_test()">@Messages("global.navbar.link.text.service.service.test")</a></li>
+                  </ul>
+                }
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 @li_activable(100, index) {<a href="@routes.Application.order()">@Messages("global.navbar.link.text.order")</a>}

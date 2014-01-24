@@ -11,7 +11,9 @@ global.text.site.name=hometime
 global.text.copyright=© Watch Next 2013-2014
 global.text.brand.baseline=
 global.navbar.link.text.home=Home
-global.navbar.link.text.service=L''entretien des montres
+global.navbar.link.text.service=L''entretien
+global.navbar.link.text.service.content=Tout savoir sur l''entretien des montres
+global.navbar.link.text.service.service.test=Quand faire réviser ma montre ?
 global.navbar.link.text.services=Les services
 global.navbar.link.text.services.service=Entretien & révisions
 global.navbar.link.text.services.loan=Essai de montres
@@ -107,7 +109,7 @@ service.content.2.body=<div class="sub-title">L''entretien quotidien :</div>L''e
  <br />Après une révision, <b>la montre fonctionne comme au premier jour</b>.
 
 service.content.3.head=Quand <span class="text-muted">faut-il entretenir une montre ?</span>
-service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisions dépend de très nombreux paramètres (marque et technologie employée dans le mouvement, fréquence de portée, utilisation d''un remontoir pour une montre automatique, ancienneté de la montre). <i>Hometime vous proposera très bientôt un outil pour évaluer précisément quand vous devez faire entretenir votre montre.</i>\
+service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisions dépend de très nombreux paramètres (marque et technologie employée dans le mouvement, fréquence de portée, utilisation d''un remontoir pour une montre automatique, ancienneté de la montre).\
  <br /><br />Quoiqu''il en soit, pour la plupart des montres, il est nécessaire de procéder à une révision au bout de <b>5 à 7 ans</b>.\
  <br /><br />Cette durée doit être raccourcie si jamais vous décelez ou suspectez un dysfonctionnement comme :\
  <ul><li>Prise d''avance ou de retard supérieur à 10 secondes par jour (vous pouvez synchroniser votre montre de façon précise sur : <a target="_blank" href="http://wwp.greenwich-mean-time.ca/">GMT</a>),</li>\
@@ -152,6 +154,7 @@ service.risky.alt=Y-a-t-il des risques liés à l''entretien
 service.invest.alt=Votre montre c''est votre partimoine
 service.1.to.action=En savoir plus...
 service.2.to.action=En savoir plus...
+service.3.to.action=Outil de calcul personnalisé
 service.4.to.action=En savoir plus...
 service.5.to.action=En savoir plus...
 
@@ -343,6 +346,138 @@ contact.success.panel.heading=Message envoyé
 contact.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre message et allons en prendre connaissance. <br /><br />A très bientôt.
 contact.action.submit=Envoyer
 
+# Service Test page
+service.test.html.title=Dois-je faire réviser ma montre ?
+service.test.html.description=Formulaire d''évaluation du meilleur moment pour faire réviser sa montre
+service.test.html.keywords=Quand, délai, durée, révision, montre
+service.test.baseline=Dois-je faire réviser ma montre ?
+service.test.text.explanation=Ce formulaire vous permet de connaitre le meilleur moment pour faire réviser votre montre. Renseignez les différentes informations ci-dessous et validez, le résultat apparaîtra immédiatement.
+
+service.test.form.label.type.of.movement=* Type de mouvement
+service.test.form.value.type.of.movement.1=A remontage manuel (je dois la remonter avant de la porter)
+service.test.form.value.type.of.movement.2=A remontage automatique
+service.test.form.label.build.year=* Période de fabrication
+service.test.form.value.build.year.default=Saisissez quand a été fabriquée votre montre
+service.test.form.label.build.year.value.0={0,number,####}
+service.test.form.label.build.year.value.1={0,number,####}
+service.test.form.label.build.year.value.2={0,number,####}
+service.test.form.label.build.year.value.3={0,number,####}
+service.test.form.label.build.year.value.4={0,number,####}
+service.test.form.label.build.year.value.5={0,number,####}
+service.test.form.label.build.year.value.6={0,number,####}
+service.test.form.label.build.year.value.7={0,number,####}
+service.test.form.label.build.year.value.8={0,number,####}
+service.test.form.label.build.year.value.9={0,number,####}
+service.test.form.label.build.year.value.10={0,number,####}
+service.test.form.label.build.year.value.11=entre {1,number,####} et {2,number,####}
+service.test.form.label.build.year.value.12=entre {1,number,####} et {2,number,####}
+service.test.form.label.build.year.value.13=entre {1,number,####} et {2,number,####}
+service.test.form.label.build.year.value.14=entre {1,number,####} et {2,number,####}
+service.test.form.label.build.year.value.15=entre {1,number,####} et {2,number,####}
+service.test.form.label.build.year.value.16=avant {2,number,####}
+service.test.form.label.last.service.value.0=Il y a moins d''1 an
+service.test.form.label.last.service.value.1=Il y a entre 1 an et 2 ans
+service.test.form.label.last.service.value.2=Il y a entre 2 ans et 3 ans
+service.test.form.label.last.service.value.3=Il y a entre 3 ans et 4 ans
+service.test.form.label.last.service.value.4=Il y a entre 4 ans et 5 ans
+service.test.form.label.last.service.value.5=Il y a entre 5 ans et 6 ans
+service.test.form.label.last.service.value.6=Il y a entre 6 ans et 7 ans
+service.test.form.label.last.service.value.7=Il y a entre 7 ans et 8 ans
+service.test.form.label.last.service.value.8=Il y a entre 8 ans et 9 ans
+service.test.form.label.last.service.value.9=Il y a entre 9 ans et 10 ans
+service.test.form.label.last.service.value.10=Il y a entre 10 ans et 11 ans
+service.test.form.label.last.service.value.11=Il y a plus de 11 ans
+service.test.form.label.last.service.value.12=Aucune révision depuis l''achat de la montre neuve
+service.test.form.label.last.service.value.13=Je ne sais pas
+service.test.form.label.last.service.year=* Année de la dernière révision
+service.test.form.value.last.service.year.default=Saisissez l''année de la dernière révision connue
+service.test.form.label.perfs=* Performances chronométriques
+service.test.form.value.perfs.nofailure=Ma montre fonctionne correctement
+service.test.form.value.perfs.failure=Ma montre prend plus de 20 secondes d''avance ou de retard par jour
+service.test.form.label.power.reserve=* Durée de fonctionnement
+service.test.form.value.power.reserve.nofailure=Ma montre ne s''arrête pas inopinément
+service.test.form.value.power.reserve.failure=Ma montre s''arrête la nuit et/ou je suis obligé de la remonter plus souvent qu''avant
+service.test.form.label.frequency=* Fréquence de portée
+service.test.form.label.frequency.value.default=Comment qualifieriez-vous vos habitudes avec cette montre 
+service.test.form.label.frequency.value.0=Je porte la montre tous les jours
+service.test.form.label.frequency.value.1=Je porte la montre fréquemment et la pose sur un remontoir le reste du temps
+service.test.form.label.frequency.value.2=Je porte la montre occasionnellement et elle est rangée dans un tiroir lorsque je ne la porte pas
+service.test.form.label.frequency.value.3=La montre n'a pas été portée ni remontée pendant plus de 6 mois
+service.test.form.label.water=Etanchéité 
+service.test.form.value.water.nofailure=Ma montre ne montre aucun signe de présence d''eau dans le boitier
+service.test.form.value.water.failure=De la buée se forme de temps en temps à l''intérieur de ma montre
+service.test.form.cat.label.custom=Si vous souhaitez un évaluation personnalisée
+service.test.form.label.model=** Marque et modèle
+service.test.form.placeholder.model=Marque, nom du modèle, références
+service.test.form.label.your.name=** Votre Nom
+service.test.form.placeholder.your.name=Prénom Nom
+service.test.form.label.your.email=** Votre email
+service.test.form.placeholder.your.email=exemple@nomdedomaine.fr
+service.test.form.mandatory.mark.explanation=* Champ obligatoire<br />** Champ obligatoire pour une évaluation personnalisée
+service.test.action.submit=Envoyer
+service.test.validation.error.email.mandatory=Ce champ est obligatoire pour une évaluation personnalisée
+service.test.validation.error.model.mandatory=Ce champ est obligatoire pour une évaluation personnalisée
+service.test.validation.error.name.mandatory=Ce champ est obligatoire pour une évaluation personnalisée
+
+# Service Test Result page
+service.test.result.html.title=Résultat de l''analyse de votre montre
+service.test.result.html.description=Résultat de l''évaluation du meilleur moment pour faire réviser votre montre à partir des informations fournies
+service.test.result.html.keywords=Quand, délai, durée, révision, montre, résultat, personnalisé, critères
+service.test.result.baseline=Résultat de l''analyse de votre montre
+service.test.result.text.explanation=Sur la base des différents critères fournis, voici notre recommandation
+
+service.test.result.panel.style.0=success
+service.test.result.panel.style.1=success
+service.test.result.panel.style.2=success
+service.test.result.panel.style.3=success
+service.test.result.panel.style.4=info
+service.test.result.panel.style.5=warning
+service.test.result.panel.style.6=danger
+service.test.result.panel.style.7=danger
+
+service.test.result.panel.heading.0=Profitez de votre montre&nbsp;*
+service.test.result.panel.heading.1=Entretien recommandé dans environ 5 ans&nbsp;*
+service.test.result.panel.heading.2=Entretien recommandé dans environ 4 ans&nbsp;*
+service.test.result.panel.heading.3=Entretien recommandé dans 2 ou 3 ans&nbsp;*
+service.test.result.panel.heading.4=Entretien recommandé cette année&nbsp;*
+service.test.result.panel.heading.5=Entretien recommandé à court terme&nbsp;*
+service.test.result.panel.heading.6=Entretien partiel fortement conseillé&nbsp;*
+service.test.result.panel.heading.7=Entretien complet recommandé en urgence&nbsp;*
+
+service.test.result.panel.body.0=Votre montre est récente et n''a pas besoin d''une révision à court terme.\
+ <br /><br />Pensez cependant à faire vérifier l''étanchéité une fois <strong>tous les 2 ans</strong> s''il vous arrive de l''immerger ou de l''exposer à l''eau&nbsp;!\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.result.panel.body.1=La révision ne s''impose pas à court terme, nous vous conseillons de prévoir un entetien d''ici à <strong>5 ans</strong>.\
+ <br /><br />Pensez cependant à faire vérifier l''étanchéité une fois <strong>tous les 2 ans</strong> s''il vous arrive de l''immerger ou de l''exposer à l''eau&nbsp;!\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.result.panel.body.2=La révision ne s''impose pas à court terme, nous vous conseillons de prévoir un entetien d''ici à <strong>4 ans</strong>.\
+ <br /><br />Pensez cependant à faire vérifier l''étanchéité une fois <strong>tous les 2 ans</strong> s''il vous arrive de l''immerger ou de l''exposer à l''eau&nbsp;!\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.result.panel.body.3=Il n''y a pas d''urgence pour réaliser une révision pour votre montre.\
+ <br /><br />Nous vous conseillons de le faire d'ici à <strong>2 ou 3 ans</strong>.\
+ <br /><br />Pensez cependant à faire vérifier l''étanchéité s''il vous arrive d''immerger votre montre ou de l''exposer à l''eau&nbsp;!\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.result.panel.body.4=La prochaine révision de votre montre devrait être réalisée cette année ou l''année prochaine.\
+ <br /><br />L''entretien régulier de votre montre par un horloger qualifié est un gage de pérennité.\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.result.panel.body.5=Nous vous conseillons de faire réviser votre montre dans les mois qui viennent.\
+<br /><br />N''hésitez pas à nous demander un devis, c''est rapide et gratuit&nbsp;!
+service.test.result.panel.body.6=Nous vous conseillons de consulter un horloger pour faire vérifier votre montre.\
+<br /><br />Sans faire de révision complète, il pourrait certainement régler le mouvement pour améliorer ses performance.<br /><br />De plus, à cette occasion nous vous conseillons de faire vérifier l''étanchéité de votre montre pour éviter tout risque.\
+<br /><br />N''hésitez pas à nous demander un devis, c''est rapide et gratuit&nbsp;!
+service.test.result.panel.body.7=Nous vous conseillons un entretien d''urgence. Celui-ci s''impose pour votre montre. \
+<br /><br />Cet entretien est important pour éviter une dégradation du mouvement qui pourrait causer des dommages importants.\
+<br /><br />N''hésitez pas à nous demander un devis, c''est rapide et gratuit&nbsp;! 
+
+service.test.result.panel.add.to.google.agenda.option=Si vous disposez d''un compte google, cliquez sur  l''icône pour créer un rappel dans votre agenda :
+
+service.test.result.warning=* Cette évaluation est approximative et n''a qu''une valeur indicative. Elle ne peut remplacer une analyse personnalisée, montre en main par un horloger.
+service.test.result.warning.ask.customized.test=Pour obtenir une évaluation plus précise, vous pouvez remplir à nouveau le formulaire en indiquant la marque et le modèle de votre montre et en nous laissant vos coordonnées.
+
+service.test.result.followup=Vous avez demandé une analyse personnalisée approfondie, nous allons vous répondre rapidement à l''adresse suivante : <strong>{0}</strong>.
+service.test.result.action.back.to.form=Faire une autre évaluation
+service.test.result.action.order=Demander un devis
+
 # About page
 about.html.title=Qui sommes nous ?
 about.html.description=Description de l''entreprise, de sa mission et de ses valeurs.
@@ -440,6 +575,7 @@ site.plan.more.title=Les prestations complémentaires
 site.plan.prices.title=Les tarifs
 site.plan.order.title=Demande de devis gratuit
 site.plan.service.title=Tout savoir sur l''entretien
+site.plan.service.test.title=Quand faire réviser ma montre ?
 site.plan.watch.collection.title=Les montres disponibles à l''essai
 site.plan.watch.title=Fiche {0} - {1}
 site.plan.about.title=Qui sommes nous ?
@@ -479,6 +615,8 @@ tags.add.book.to.favorites.should.log=Pour mettre des livres de côté vous deve
 tags.remove.author.from.favorites=Supprimer des auteurs préférés
 tags.add.author.to.favorites=Ajouter aux auteurs préférés
 tags.add.author.to.favorites.should.log=Pour ajouter des auteurs vous devez vous connecter en utilisant le bouton de connexion avec Facebook
+tags.google.calendar.service.text=Entretien montre
+tags.google.calendar.service.details=Faire entretenir ma montre auprès d''un horloger
 
 # Forms messages
 # --- Constraints

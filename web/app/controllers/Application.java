@@ -2,19 +2,28 @@ package controllers;
 
 import static play.data.Form.form;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 
 import fr.hometime.utils.ActionHelper;
+import fr.hometime.utils.ServiceTestHelper;
 import models.Brand;
+import models.ContactRequest;
 import models.OrderRequest;
 import models.Picture;
+import models.ServiceTest;
 import models.Watch;
-
+import models.ServiceTest.BuildPeriod;
+import models.ServiceTest.LastServiceYear;
+import models.ServiceTest.MovementTypes;
+import models.ServiceTest.UsageFrequency;
 import play.data.Form;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
+import play.data.validation.ValidationError;
+import play.i18n.Messages;
 import play.mvc.*;
 import views.html.*;
 
@@ -77,6 +86,63 @@ public class Application extends Controller {
 	    }
 	}
 	
+	public static class ServiceTestForm {
+		@Constraints.Required
+		public String movementType;
+		@Constraints.Required
+		public String buildPeriod;
+		@Constraints.Required
+		public String lastServiceYear;
+		@Constraints.Required
+		public String performanceIssue = "";
+		@Constraints.Required		
+		public String powerReserveIssue = "";
+		@Constraints.Required
+		public String waterIssue = "";
+		@Constraints.Required
+		public String usageFrequency;
+		@Column(length = 1000)
+		public String model;
+		public String nameOfCustomer;
+		@Constraints.Email
+		public String email;
+
+	    public List<ValidationError> validate() {
+	    	List<ValidationError> errors = new ArrayList<ValidationError>();
+	        if (email != null && !"".equals(email)) {
+	        	if (nameOfCustomer == null || "".equals(nameOfCustomer))
+	        		errors.add(new ValidationError("nameOfCustomer", Messages.get("service.test.validation.error.name.mandatory")));
+	        	if (model == null || "".equals(model))
+	        		errors.add(new ValidationError("model", Messages.get("service.test.validation.error.model.mandatory")));
+	        } else {
+	        	if ((nameOfCustomer != null && !"".equals(nameOfCustomer)) ||
+	        			(model != null && !"".equals(model)))
+	        		errors.add(new ValidationError("email", Messages.get("service.test.validation.error.email.mandatory")));
+	        }
+	        return errors.isEmpty() ? null : errors;
+	    }
+	    
+	    public ServiceTestForm() {
+	    	super();
+	    }
+	    
+	    public ServiceTest getRequest() {
+	    	ServiceTest request = new ServiceTest();
+	    	request.movementType = ServiceTest.MovementTypes.fromString(this.movementType);
+	    	request.buildPeriod = ServiceTest.BuildPeriod.fromString(this.buildPeriod);
+	    	request.lastServiceYear = ServiceTest.LastServiceYear.fromString(this.lastServiceYear);
+	    	request.performanceIssue = ("0".equals(this.performanceIssue))?false:true;
+	    	request.powerReserveIssue = ("0".equals(this.powerReserveIssue))?false:true;
+	    	request.waterIssue = ("0".equals(this.waterIssue))?false:true;
+	    	request.usageFrequency = ServiceTest.UsageFrequency.fromString(this.usageFrequency);
+	    	request.model = this.model;
+	    	request.nameOfCustomer = this.nameOfCustomer;
+	    	request.email = this.email;
+	    	
+	    	return request;
+	    }
+	}
+	
 	public static class ContactForm {
 
 		@Constraints.Required
@@ -102,14 +168,15 @@ public class Application extends Controller {
 	    	super();
 	    }
 	    
-	    public String toString() {
-	    	StringBuilder content = new StringBuilder();
-	    	content.append(this.getClass().getSimpleName() + " : [");
-	    	content.append(" Title is : " + this.title);
-	    	content.append(", Message is : " + this.message);
-	    	content.append(", from : " + this.name + ((this.email==null || "".equals(this.email))?(" (none)"):(" ("+this.email+")")));
-	    	content.append("]");
-	    	return content.toString();
+	    public ContactRequest getRequest() {
+	    	ContactRequest request = new ContactRequest();
+	    	request.title = this.title;
+	    	request.message = this.message;
+	    	request.name = this.name;
+	    	if (this.email != null && "".equals(this.email))
+	    		request.email = this.email;
+	    	
+	    	return request;
 	    }
 	}
 	
@@ -153,6 +220,22 @@ public class Application extends Controller {
     		return internalServerError();
     	}
     }
+    
+    public static Result service_test() {
+    	try {
+	        return ok(service_test.render("", Form.form(ServiceTestForm.class).fill(new ServiceTestForm())));
+    	} catch (Exception e) {
+    		return internalServerError();
+    	}
+    }
+    
+    public static Result checkServiceTestResult(Integer id, boolean custom, String email) {
+    	try {
+    		return ok(service_test_result.render("", ServiceTest.TestResult.fromString(""+id), custom, email));
+    	} catch (Exception e) {
+    		return internalServerError();
+    	}
+    }
 
     public static Result about() {
         return ok(about.render());
@@ -189,14 +272,31 @@ public class Application extends Controller {
 		if(contactForm.hasErrors()) {
 			return badRequest(contact.render("", contactForm));
 		} else {
+			ContactRequest contactRequest = contactForm.get().getRequest();
+			contactRequest.save();
 
-			ActionHelper.tryToNotifyTeamByEmail("Prise de contact", contactForm.get().toString());
+			ActionHelper.tryToNotifyTeamByEmail("Prise de contact : "+contactRequest.title, contactRequest.toString());
 			
 			flash("success", "OK");
 			
-			return redirect(
-					routes.Application.contact()
-					);
+			return contact();
+		}
+	}
+	
+	public static Result manageServiceTest() {
+		Form<ServiceTestForm> serviceTestForm = Form.form(ServiceTestForm.class).bindFromRequest();
+		if(serviceTestForm.hasErrors()) {
+			return badRequest(service_test.render("", serviceTestForm));
+		} else {
+			ServiceTest serviceTest = serviceTestForm.get().getRequest();
+			boolean isCustomisedTestAsked = false; 
+			if (serviceTest.email != null && !"".equals(serviceTest.email)) {
+				isCustomisedTestAsked = true;
+				serviceTest.save();
+				ActionHelper.tryToNotifyTeamByEmail("Evaluation personnalisée", serviceTest.toString());
+			}
+			
+			return ok(service_test_result.render("", ServiceTestHelper.whenDoServiceIsRecommended(serviceTest), isCustomisedTestAsked, serviceTest.email));
 		}
 	}
     

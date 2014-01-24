@@ -37,6 +37,11 @@ POST    /demande-de-devis           controllers.Application.manageOrder()
 GET     /nous-contacter             controllers.Application.contact()
 POST    /nous-contacter             controllers.Application.manageContact()
 
+# ServiceTest
+GET     /quand-faire-la-revision    controllers.Application.service_test()
+POST    /quand-faire-la-revision    controllers.Application.manageServiceTest()
+GET     /checkResults/:id           controllers.Application.checkServiceTestResult(id: Integer, custom: Boolean ?= false, email: String ?= "toto@titi.fr")
+
 # About
 GET     /a-propos                   controllers.Application.about()
 GET     /about                      controllers.Default.redirect(to = "/a-propos")

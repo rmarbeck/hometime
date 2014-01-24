@@ -551,5 +551,11 @@ brands:
          supported:             true
          logo_url:              brands/zenith.png
 
+    - !!models.Brand
+         internal_name:         Autre
+         display_name:          Autre marque
+         supported:             true
+         logo_url:              brands/more.png
+
 #Fin
 

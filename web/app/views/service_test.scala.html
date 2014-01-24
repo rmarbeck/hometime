@@ -1,0 +1,90 @@
+@(message: String = "", serviceTest: Form[Application.ServiceTestForm])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+
+@layouts.main("service.test") {
+    @layouts.fragments.navbar(0)
+
+    <div class="container service-test">
+      @baseline("service.test.baseline")
+      <div class="row explanation">
+          <div class="col-sm-10 col-sm-offset-1">
+            <div class="explanation-body">@Html(Messages("service.test.text.explanation"))</div>
+            <hr>
+          </div>
+      </div>
+      <div class="row content">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+		@helper.form(action = routes.Application.manageServiceTest(), 'class -> "form-horizontal", 'role -> "form") {
+		
+		        @tags.myInputRadioGroup(serviceTest("movementType"),
+                                Seq( ServiceTest.MovementTypes.MANUAL.toString -> Messages("service.test.form.value.type.of.movement.1"), ServiceTest.MovementTypes.AUTO.toString -> Messages("service.test.form.value.type.of.movement.2")), '_label -> Messages("service.test.form.label.type.of.movement"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.select(serviceTest("buildPeriod"),
+                                     for (y <- ServiceTest.BuildPeriod.values) yield y.toString -> Messages("service.test.form.label.build.year.value."+y, (Calendar.getInstance.get(Calendar.YEAR) - y.intValue()), (Calendar.getInstance.get(Calendar.YEAR) - ((y.intValue() - 9) * 10)), (Calendar.getInstance.get(Calendar.YEAR) - ((y.intValue() - 9) * 10)) + 9),
+                                     '_default -> Messages("service.test.form.value.build.year.default"),
+                                     'placeholder -> Messages("service.test.form.placeholder.build.year"), '_label -> Messages("service.test.form.label.build.year"),
+                                     'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.select(serviceTest("lastServiceYear"),
+                                     for (y <- (ServiceTest.LastServiceYear.values).reverse) yield y.toString -> Messages("service.test.form.label.last.service.value."+y),
+                                     '_default -> Messages("service.test.form.value.last.service.year.default"),
+                                     'placeholder -> Messages("service.test.form.placeholder.last.service.year"), '_label -> Messages("service.test.form.label.last.service.year"),
+                                     'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @tags.myInputRadioGroup(serviceTest("performanceIssue"),
+                                Seq( "0" -> Messages("service.test.form.value.perfs.nofailure"), "1" -> Messages("service.test.form.value.perfs.failure")), '_label -> Messages("service.test.form.label.perfs"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @tags.myInputRadioGroup(serviceTest("powerReserveIssue"),
+                                Seq( "0" -> Messages("service.test.form.value.power.reserve.nofailure"), "1" -> Messages("service.test.form.value.power.reserve.failure")), '_label -> Messages("service.test.form.label.power.reserve"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @tags.myInputRadioGroup(serviceTest("waterIssue"),
+                                Seq( "0" -> Messages("service.test.form.value.water.nofailure"), "1" -> Messages("service.test.form.value.water.failure")), '_label -> Messages("service.test.form.label.water"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.select(serviceTest("usageFrequency"),
+                                     for (y <- ServiceTest.UsageFrequency.values) yield y.toString  -> Messages("service.test.form.label.frequency.value."+y),
+                                     '_default -> Messages("service.test.form.label.frequency.value.default"),
+                                     'placeholder -> Messages("service.test.form.placeholder.build.year"), '_label -> Messages("service.test.form.label.frequency"),
+                                     'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                <div class="form-group">
+                  <label for="catYou" class="col-xs-3 control-label">@Messages("service.test.form.cat.label.custom")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                      @helper.textarea(serviceTest("model"),
+                                         'placeholder -> Messages("service.test.form.placeholder.model"), '_label -> Messages("service.test.form.label.model"),
+                                         'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                      @helper.inputText(serviceTest("nameOfCustomer"),
+                                        'placeholder -> Messages("service.test.form.placeholder.your.name"), '_label -> Messages("service.test.form.label.your.name"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                      
+                      @helper.inputText(serviceTest("email"),
+                                        'placeholder -> Messages("service.test.form.placeholder.your.email"), '_label -> Messages("service.test.form.label.your.email"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <div>
+                    @Html(Messages("service.test.form.mandatory.mark.explanation"))
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-9 text-center">
+                    <button type="submit" class="btn btn-primary">@Html(Messages("service.test.action.submit"))</button>
+                  </div>
+                </div>
+            }
+        </div>
+      </div>
+     <hr>
+    </div><!-- /.container -->
+    
+}

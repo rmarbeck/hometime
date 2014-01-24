@@ -95,7 +95,6 @@
         @for(brand <- supported_brands) {
         <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@guess_url(brand.logo_url)" alt="Logo @brand.display_name"></div>
         }
-        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@routes.Assets.at("images/brands/more.png")" alt="Logo More"></div>
       </div>
       <div class="row">
         <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.offer()" role="button">@Messages("home.tell.more.call.to.action")</a></div>

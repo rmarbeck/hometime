@@ -3,7 +3,10 @@ package fr.hometime.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.spi.ServiceRegistry;
+
 import models.LiveConfig;
+import models.ServiceTest;
 
 import com.typesafe.plugin.MailerAPI;
 import com.typesafe.plugin.MailerPlugin;
