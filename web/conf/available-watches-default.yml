@@ -3,6 +3,7 @@
          brand:                 Rolex
          full_name:             Submariner
          short_name:            Submariner
+         seo_name:              rolex-submariner
          movement:              Rolex Calibre 3130 - remontage automatique
          case_infos:            Rolex Oyster de 40mm, verre saphir
          functions:             Montre 3 aiguilles, lunette tournante 120 positions, couronne vissée
@@ -23,6 +24,7 @@
          brand:                 Tag Heuer
          full_name:             Monaco
          short_name:            Monaco
+         seo_name:              tag-heuer-monaco
          movement:              Tag Heuer Calibre 12 - remontage automatique (base ETA 2892 + module Dubois Depraz)
          case_infos:            Carré 40mm, verre saphir des deux côtés
          functions:             Chronographe, date
@@ -43,6 +45,7 @@
          brand:                 Omega
          full_name:             Speedmaster Professional
          short_name:            Speedmaster
+         seo_name:              omega-speedmaster-professional
          movement:              Omega 1861 - remontage manuel
          case_infos:            42mm, verre plexiglass
          functions:             Chronographe
@@ -64,6 +67,7 @@
          brand:                 Omega
          full_name:             Seamaster Professional 300m
          short_name:            Seamaster
+         seo_name:              omega-seamaster-professional-300m
          movement:              Omega 2500 Co-axial - remontage automatique
          case_infos:            41mm, verre saphir
          functions:             Date, lunette tournante, couronne vissée, valve à helium
@@ -84,6 +88,7 @@
          brand:                 IWC
          full_name:             Portugaise Chrono
          short_name:            Portugaise
+         seo_name:              iwc-portugaise-chrono
          movement:              IWC Calibre 79350 - remontage automatique (base Valjoux 7750)
          case_infos:            41mm, verre saphir des deux côtés
          functions:             Chronographe, date
@@ -104,6 +109,7 @@
          brand:                 Panerai
          full_name:             Luminor Base Logo
          short_name:            Luminor
+         seo_name:              panerai-luminor-base-logo
          movement:              Panerai Calibre OP I (base Unitas)
          case_infos:            44mm, verre saphir
          functions:             Deux aiguilles
@@ -124,6 +130,7 @@
          brand:                 Tudor
          full_name:             Submariner Snowflake
          short_name:            Submariner Snowflake
+         seo_name:              tudor-submariner-snowflake
          movement:              Tudor Calibre 2483 - remontage automatique (base ETA)
          case_infos:            40mm, Boitier Rolex Oyster Pro
          functions:             Date, lunette tournante 120 positions, couronne vissée
@@ -146,6 +153,7 @@
          brand:                 Tag Heuer
          full_name:             Carrera calibre 16
          short_name:            Carrera
+         seo_name:              tag-heuer-carrera-calibre-16
          movement:              Tag Heuer Calibre 16 - remontage automatique (base Valjoux 7750)
          case_infos:            41mm, verre saphir des deux côtés
          functions:             Chronographe à minutes sautantes, date
@@ -168,6 +176,7 @@
          brand:                 Meistersinger
          full_name:             N°3
          short_name:            N°3
+         seo_name:              meistersinger-numero-3
          movement:              ETA 2824-2
          case_infos:            38mm ou 43mm,  verre saphir des deux côtés
          functions:             Une seule aiguille

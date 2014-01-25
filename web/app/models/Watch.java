@@ -33,6 +33,8 @@ public class Watch extends Model {
 	
 	public String short_name;
 	
+	public String seo_name;
+	
 	@Column(length = 1000)
 	public String movement;
 	
@@ -82,15 +84,19 @@ public class Watch extends Model {
         return find.all();
     }
 
+    public static Watch findBySeoName(String seoName) {
+        return find.where().eq("seo_name", seoName).findUnique();
+    }
+    
     public static List<Watch> findDisplayable() {
-    	List<Watch> displayableWatches = find.where().eq("should_display", true).findList();
+    	List<Watch> displayableWatches = find.where().eq("should_display", true).orderBy("id ASC").findList();
     	if (displayableWatches == null)
     		return new ArrayList<Watch>();
         return displayableWatches;
     }
 
     public static List<Watch> findAvailable() {
-    	List<Watch> avalaibleWatches = find.where().eq("is_available", true).eq("should_display", true).findList();
+    	List<Watch> avalaibleWatches = find.where().eq("is_available", true).eq("should_display", true).orderBy("id ASC").findList();
     	if (avalaibleWatches == null)
     		return new ArrayList<Watch>();
         return avalaibleWatches;

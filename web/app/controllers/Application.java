@@ -301,12 +301,21 @@ public class Application extends Controller {
 		}
 	}
     
-    public static Result watch_detail(Long id) {
+    public static Result watch_detail_byId(Long id) {
     	try {
 	    	Watch currentWatch = Watch.findById(id);
 	        return ok(watch_detail.render(currentWatch.short_name, currentWatch, Picture.findPicturesForWatch(currentWatch), getDisplayableWatchesExceptOne(currentWatch)));
     	} catch (Exception e) {
-    		return badRequest();
+    		return badRequest(views.html.error.notfound.render(request().uri()));
+    	}
+    }
+    
+    public static Result watch_detail(String seoName) {
+    	try {
+	    	Watch currentWatch = Watch.findBySeoName(seoName);
+	    	return watch_detail_byId(currentWatch.id);
+    	} catch (Exception e) {
+    		return badRequest(views.html.error.notfound.render(request().uri()));
     	}
     }
 

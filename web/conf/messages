@@ -169,7 +169,7 @@ watch.collection.text.explanation=Découvrez les montres que vous pouvez essayer
 
 # Watch detail
 watch.detail.html.title=Détail - {0}
-watch.detail.html.description=Fiche descriptive de la montre {0}.
+watch.detail.html.description=Fiche descriptive de la montre {0}, cette montre peut être essayée pendant l''entretien de votre montre.
 watch.detail.html.keywords=montre, mouvement, bracelet, dates, fonctions, histoire
 watch.detail.data.movement=Mouvement
 watch.detail.data.model.years=Production
@@ -691,7 +691,7 @@ privacy.body.4=Dans le but de suivre la performance des investissements publicit
 
 # Privacy page
 site.plan.html.title=Plan du site
-site.plan.html.description=Le plan du site
+site.plan.html.description=Le plan du site hometime avec l''ensemble des rubriques
 site.plan.html.keywords=plan, montres, révision, réparation, tarifs, devis gratuit
 site.plan.baseline=Plan du site
 site.plan.home.title=Home

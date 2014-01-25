@@ -64,7 +64,7 @@
     </url>
     @for(watch <- displayable_watches) {
     <url>
-      <loc>http://@{request.host()}@routes.Application.watch_detail(watch.id)</loc>
+      <loc>http://@{request.host()}@routes.Application.watch_detail(watch.seo_name)</loc>
       <changefreq>daily</changefreq>
       <priority>0.6</priority>
     </url>

@@ -119,7 +119,7 @@
       </div>
       <div class="row displayable-watches">
          @for(watch <- displayable_watches) {
-            <div class="col-xs-3 col-sm-2 col-md-1"><a href="@routes.Application.watch_detail(watch.id)"><img class="img-responsive img-thumbnail" src="@guess_url(watch.main_thumbnail_url)" alt="@watch.short_name"></a></div> 
+            <div class="col-xs-3 col-sm-2 col-md-1"><a href="@routes.Application.watch_detail(watch.seo_name)"><img class="img-responsive img-thumbnail" src="@guess_url(watch.main_thumbnail_url)" alt="@watch.short_name"></a></div> 
          } 
       </div>
 

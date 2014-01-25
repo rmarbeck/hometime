@@ -10,11 +10,13 @@ GET     /entretien-reparation       controllers.Application.service()
 GET     /service                    controllers.Default.redirect(to = "/entretien-reparation")
 
 # Watches
-GET     /les-montres                controllers.Application.watch_collection()
+GET     /les-montres-disponibles-a-l-essai       controllers.Application.watch_collection()
 GET     /watches                    controllers.Default.redirect(to = "/les-montres")
+GET     /les-montres                    controllers.Default.redirect(to = "/les-montres-disponibles-a-l-essai")
 
 # Single watch
-GET     /montre/:id                 controllers.Application.watch_detail(id: Long)
+GET     /montre/:id                 controllers.Application.watch_detail_byId(id: Long)
+GET     /montre-disponible-a-l-essai/:watch_seo_name      controllers.Application.watch_detail(watch_seo_name)
 
 # Offer
 GET     /les-services/l-offre       controllers.Application.offer()

@@ -92,6 +92,7 @@ create table watch (
   brand                     varchar(255),
   full_name                 varchar(255),
   short_name                varchar(255),
+  seo_name                  varchar(255),
   movement                  varchar(1000),
   case_infos                varchar(1000),
   functions                 varchar(1000),
