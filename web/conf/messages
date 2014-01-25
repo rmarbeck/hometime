@@ -3,8 +3,8 @@
 # Glogal high level texts
 global.code.lang.head=fr
 global.text.project.name=hometime
-global.home.html.title=Entretien et essai de montres à domicile - Hometime
-global.home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) et l''essai d''une montre de légende pendant toute la durée de l''entretien.
+global.home.html.title=Révision, réparation et essai de montres à domicile sur Paris - Hometime
+global.home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) sur Paris et sa région et l''essai d''une montre de légende pendant toute la durée de l''entretien.
 global.home.html.author=hometime
 global.text.brand.name=hometime
 global.text.site.name=hometime
@@ -39,7 +39,7 @@ global.action.logout=Se déconnecter
 
 
 # Home page
-home.html.title=Entretien et essai de montres à domicile - Hometime
+home.html.title=Révision, réparation et essai de montres à domicile sur Paris - Hometime
 home.html.description=Hometime propose la révision ou la réparation de votre montre de marque avec intervention à domicile (ou au bureau) sur Paris et proche banlieue et l''essai d''une montre de légende pendant toute la durée de l''entretien.
 home.html.keywords=révision, réparation, montres mécaniques, montres automatiques, rolex, omega, panerai, tag heuer, paris, yvelines, hauts de seine, devis
 home.caption.1.head=Vous avez une belle montre, entretenez&nbsp;la&nbsp;!
