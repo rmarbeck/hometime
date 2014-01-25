@@ -327,7 +327,7 @@ public class Application extends Controller {
     }
 
     private static List<Brand> getSupportedBrands() {
-    	return Brand.findAll();
+    	return Brand.findAllByAscId();
     }
 
     private static List<Watch> getDisplayableWatchesExceptOne(Watch currentWatch) {

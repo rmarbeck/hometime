@@ -48,6 +48,10 @@ public class Brand extends Model {
     public static List<Brand> findAll() {
         return find.all();
     }
+    
+    public static List<Brand> findAllByAscId() {
+        return find.orderBy("id ASC").findList();
+    }
 
     public static Brand findById(Long id) {
         return find.byId(id.toString());
