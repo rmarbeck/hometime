@@ -37,7 +37,7 @@
       <div class="row actions">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
             <div class="text-center">
-                @if(result.intValue >= 5) {<a class="btn btn-primary" href="@routes.Application.order()">@Html(Messages("service.test.result.action.order"))</a>} else {<a class="btn btn-default" href="@routes.Application.service_test()">@Html(Messages("service.test.result.action.back.to.form"))</a>}
+                @if(result.intValue >= 5) {<a class="btn btn-primary" href="@routes.Application.order(null)">@Html(Messages("service.test.result.action.order"))</a>} else {<a class="btn btn-default" href="@routes.Application.service_test()">@Html(Messages("service.test.result.action.back.to.form"))</a>}
             </div>
         </div>
       </div>

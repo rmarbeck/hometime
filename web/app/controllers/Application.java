@@ -205,9 +205,10 @@ public class Application extends Controller {
         return ok(prices.render(""));
     }
 
-    public static Result order() {
+    public static Result order(String brandName) {
     	try {
-	        return ok(order.render("", fillFormWithQueryParams(), getSupportedBrands(), getDisplayableWatches()));
+    		
+	        return ok(order.render("", fillFormWithQueryParams(brandName), getSupportedBrands(), getDisplayableWatches()));
     	} catch (Exception e) {
     		return internalServerError();
     	}
@@ -262,7 +263,7 @@ public class Application extends Controller {
 			flash("success", "OK");
 			
 			return redirect(
-					routes.Application.order()
+					routes.Application.order(orderRequest.brand.seo_name)
 					);
 		}
 	}
@@ -310,11 +311,11 @@ public class Application extends Controller {
     }
 
     public static Result sitemap() {
-    	return ok(views.xml.sitemap.render(getDisplayableWatches()));
+    	return ok(views.xml.sitemap.render(getDisplayableWatches(), getSupportedBrands()));
     }
     
     public static Result siteplan() {
-    	return ok(site_plan.render(getDisplayableWatches()));
+    	return ok(site_plan.render(getDisplayableWatches(), getSupportedBrands()));
     }
 
     private static List<Watch> getDisplayableWatches() {
@@ -336,10 +337,13 @@ public class Application extends Controller {
     	return displayableWatches;
     }
     
-    private static Form<OrderForm> fillFormWithQueryParams() {
+    private static Form<OrderForm> fillFormWithQueryParams(String brandName) {
+    	OrderForm orderForm = new OrderForm();
+    	if (isBrandParamValid(brandName))
+    		orderForm.brand = Brand.findBySeoName(brandName).id.toString();
     	if (isWatchParamFoundAndValid())
-    		return Form.form(OrderForm.class).fill(new OrderForm(form().bindFromRequest().get("watch")));
-    	return Form.form(OrderForm.class).fill(new OrderForm());
+    		orderForm.watchChosen = form().bindFromRequest().get("watch");
+    	return Form.form(OrderForm.class).fill(orderForm);
     }
     
     private static boolean isWatchParamFoundAndValid() {
@@ -352,6 +356,16 @@ public class Application extends Controller {
     private static boolean isWatchParamValid(String value) {
     	try {
 	    	if (Watch.findById(Long.valueOf(value)) != null)
+	    		return true;
+	    	return false;
+    	} catch (NumberFormatException e) {
+    		return false;
+    	}
+    }
+    
+    private static boolean isBrandParamValid(String brandName) {
+    	try {
+	    	if (Brand.findBySeoName(brandName) != null)
 	    		return true;
 	    	return false;
     	} catch (NumberFormatException e) {

@@ -439,120 +439,140 @@ pictures:
 brands:
     - !!models.Brand
          internal_name:         Baume
+         seo_name:              baume-et-mercier
          display_name:          Baume & Mercier
          supported:             true
          logo_url:              brands/baume_and_mercier.png
 
     - !!models.Brand
          internal_name:         BR
+         seo_name:              bell-and-ross
          display_name:          Bell & Ross
          supported:             true
          logo_url:              brands/bell_and_ross.png
 
     - !!models.Brand
          internal_name:         Breitling
+         seo_name:              breitling
          display_name:          Breitling
          supported:             true
          logo_url:              brands/breitling.png
 
     - !!models.Brand
          internal_name:         Chanel
+         seo_name:              chanel
          display_name:          Chanel
          supported:             true
          logo_url:              brands/chanel.png
 
     - !!models.Brand
          internal_name:         Chopard
+         seo_name:              chopard
          display_name:          Chopard
          supported:             true
          logo_url:              brands/chopard.png
 
     - !!models.Brand
          internal_name:         FC
+         seo_name:              frederique-constant
          display_name:          Frédérique Constant
          supported:             true
          logo_url:              brands/frederique_constant.png
 
     - !!models.Brand
          internal_name:         Hamilton
+         seo_name:              hamilton
          display_name:          Hamilton
          supported:             true
          logo_url:              brands/hamilton.png
 
     - !!models.Brand
          internal_name:         Hublot
+         seo_name:              hublot
          display_name:          Hublot
          supported:             true
          logo_url:              brands/hublot.png
 
     - !!models.Brand
          internal_name:         IWC
+         seo_name:              iwc
          display_name:          IWC
          supported:             true
          logo_url:              brands/iwc.png
 
     - !!models.Brand
          internal_name:         Jaeger
+         seo_name:              jaeger-lecoultre
          display_name:          Jaeger LeCoultre
          supported:             true
          logo_url:              brands/jaeger_lecoultre.png
 
     - !!models.Brand
          internal_name:         Longines
+         seo_name:              longines
          display_name:          Longines
          supported:             true
          logo_url:              brands/longines.png
 
     - !!models.Brand
          internal_name:         Omega
+         seo_name:              omega
          display_name:          Omega
          supported:             true
          logo_url:              brands/omega.png
 
     - !!models.Brand
          internal_name:         Panerai
+         seo_name:              panerai
          display_name:          Panerai
          supported:             true
          logo_url:              brands/panerai.png
 
     - !!models.Brand
          internal_name:         Rado
+         seo_name:              rado
          display_name:          Rado
          supported:             true
          logo_url:              brands/rado.png
 
     - !!models.Brand
          internal_name:         Rolex
+         seo_name:              rolex
          display_name:          Rolex
          supported:             true
          logo_url:              brands/rolex.png
 
     - !!models.Brand
          internal_name:         Tag
+         seo_name:              tag-heuer
          display_name:          Tag Heuer
          supported:             true
          logo_url:              brands/tag_heuer.png
 
     - !!models.Brand
          internal_name:         Tissot
+         seo_name:              tissot
          display_name:          Tissot
          supported:             true
          logo_url:              brands/tissot.png
 
     - !!models.Brand
          internal_name:         Tudor
+         seo_name:              tudor
          display_name:          Tudor
          supported:             true
          logo_url:              brands/tudor.png
 
     - !!models.Brand
          internal_name:         Zenith
+         seo_name:              zenith
          display_name:          Zenith
          supported:             true
          logo_url:              brands/zenith.png
 
     - !!models.Brand
          internal_name:         Autre
+         seo_name:              autre-marque-de-montres
          display_name:          Autre marque
          supported:             true
          logo_url:              brands/more.png

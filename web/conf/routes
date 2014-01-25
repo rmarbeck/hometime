@@ -29,7 +29,8 @@ GET     /les-services/les-prix      controllers.Application.prices()
 GET     /prices                     controllers.Default.redirect(to = "/les-services/les-prix")
 
 # Order
-GET     /demande-de-devis           controllers.Application.order()
+GET     /demande-de-devis           controllers.Application.order(brand = null)
+GET     /demande-de-devis/montre/reparation/revision/:brand    controllers.Application.order(brand)
 GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
 

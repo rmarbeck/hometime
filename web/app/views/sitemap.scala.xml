@@ -1,4 +1,4 @@
-@(displayable_watches: List[Watch])<?xml version="1.0" encoding="UTF-8"?>
+@(displayable_watches: List[Watch], supported_brands: List[Brand])<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
       <loc>http://@{request.host()}/</loc>
@@ -36,10 +36,17 @@
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.order()</loc>
+      <loc>http://@{request.host()}@routes.Application.order(null)</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
+    @for(brand <- supported_brands) {
+    <url>
+      <loc>http://@{request.host()}@routes.Application.order(brand.seo_name)</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+    }
     <url>
       <loc>http://@{request.host()}@routes.Application.cgv()</loc>
       <changefreq>daily</changefreq>

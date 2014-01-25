@@ -43,7 +43,9 @@
 }
 @end_scripts = {}
 
-@layouts.main("order", end_scripts, in_head) {
+@defining(if(order("brand").value!=null) {"order."+Brand.findById(Long.valueOf(order("brand").value)).internal_name.toLowerCase} else {"order"}) { key =>
+
+@layouts.main(key, end_scripts, in_head) {
     @layouts.fragments.navbar(100)
 
     <div class="container order">
@@ -141,5 +143,5 @@
       }
      <hr>
     </div><!-- /.container -->
-    
+}    
 }

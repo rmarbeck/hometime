@@ -7,6 +7,7 @@ create table brand (
   id                        bigint not null,
   internal_name             varchar(255),
   display_name              varchar(255),
+  seo_name                  varchar(255),
   logo_url                  varchar(255),
   alt                       varchar(255),
   supported                 boolean,

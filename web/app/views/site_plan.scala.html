@@ -1,4 +1,4 @@
-@(displayable_watches: List[Watch])
+@(displayable_watches: List[Watch], supported_brands: List[Brand])
 @import tags._
 
 @layouts.main("site.plan") {
@@ -35,11 +35,6 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="title"><h2><a href="@routes.Application.order()">@Messages("site.plan.order.title")</a></h2></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
                         <div class="title"><h2><a href="@routes.Application.service()">@Messages("site.plan.service.title")</a></h2></div>
                     </div>
                 </div>
@@ -55,6 +50,18 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="entry"><h3><a href="@routes.Application.watch_detail(watch.id)">@Messages("site.plan.watch.title", watch.brand,  watch.short_name)</a></h3></div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.order(null)">@Messages("site.plan.order.title")</a></h2></div>
+                        @for(brand <- supported_brands) {
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="entry"><h3><a href="@routes.Application.order(brand.seo_name)">@Messages("site.plan.order.brand.title", brand.display_name)</a></h3></div>
                             </div>
                         </div>
                         }

@@ -22,6 +22,8 @@ public class Brand extends Model {
 	public String internal_name;
 	
 	public String display_name;
+	
+	public String seo_name;
 
 	public String logo_url;
 	
@@ -38,7 +40,7 @@ public class Brand extends Model {
 	public Brand(String internal_name) {
 		this.internal_name = internal_name;
 	}
-    
+
     // -- Queries
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Model.Finder<String,Brand> find = new Model.Finder(String.class, Brand.class);
@@ -49,6 +51,10 @@ public class Brand extends Model {
 
     public static Brand findById(Long id) {
         return find.byId(id.toString());
+    }
+    
+    public static Brand findBySeoName(String seoName) {
+    	return find.where().eq("seo_name", seoName).findUnique();
     }
 }
 

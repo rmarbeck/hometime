@@ -43,7 +43,7 @@
             <div class="carousel-caption">
               <div class="caption-title"><h1>@Html(Messages("home.caption.3.head"))</h1></div>
               <div class="caption-body hidden-xs">@Html(Messages("home.caption.3.body"))</div>
-              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.order()" role="button">@Messages("home.caption.3.call.to.action")</a></div>
+              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.order(null)" role="button">@Messages("home.caption.3.call.to.action")</a></div>
             </div>
           </div>
         </div>
@@ -93,12 +93,12 @@
       </div>
       <div class="row">
         @for(brand <- supported_brands) {
-        <div class="col-xs-3 col-sm-2 col-md-1"><img class="img-responsive" src="@guess_url(brand.logo_url)" alt="Logo @brand.display_name"></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><a href="@routes.Application.order(brand.seo_name)" title="@Messages("home.order.links.by.brand.title", brand.display_name)"><img class="img-responsive" src="@guess_url(brand.logo_url)" alt="Logo @brand.display_name"></a></div>
         }
       </div>
       <div class="row">
         <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.offer()" role="button">@Messages("home.tell.more.call.to.action")</a></div>
-        <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.order()" role="button">@Messages("home.order.call.to.action")</a></div>
+        <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.order(null)" role="button">@Messages("home.order.call.to.action")</a></div>
       </div>
 
       <hr>
