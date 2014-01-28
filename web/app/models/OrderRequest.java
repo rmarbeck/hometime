@@ -20,7 +20,9 @@ public class OrderRequest extends Model {
 
 	public enum OrderTypes {
 	    SERVICE ("1"),
-	    REPAIR ("2");
+	    REPAIR ("2"),
+	    INTERMEDIATE ("3"),
+	    SETTINGUP ("4");
 	    
 		private String name = "";
 		    
@@ -44,7 +46,8 @@ public class OrderRequest extends Model {
 	
 	public enum MethodTypes {
 		BRAND ("1"),
-		OUTLET ("2");
+		OUTLET ("2"),
+		BOTH ("3"),;
 
 		private String name = "";
 

@@ -16,17 +16,42 @@ public class ServiceTestHelperTest {
 		serviceTest.waterIssue = false;
 		serviceTest.powerReserveIssue = false;
 		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
 		serviceTest.buildPeriod = ServiceTest.BuildPeriod.THIS_YEAR;
 		
 		for (ServiceTest.MovementTypes mouvementtype : ServiceTest.MovementTypes.values())
 			for (ServiceTest.LastServiceYear lastserviceyear : ServiceTest.LastServiceYear.values())
 				for (ServiceTest.UsageFrequency usagefrequency : ServiceTest.UsageFrequency.values())
-					if (usagefrequency != ServiceTest.UsageFrequency.NEVER) {
-							serviceTest.lastServiceYear = lastserviceyear;
-							serviceTest.movementType = mouvementtype;
-							serviceTest.usageFrequency = usagefrequency;
-							assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_MORE_THAN_5_YEARS);
-					}
+					for (ServiceTest.MovementComplexity movementComplexity : ServiceTest.MovementComplexity.values())
+						if (usagefrequency != ServiceTest.UsageFrequency.NEVER) {
+								serviceTest.lastServiceYear = lastserviceyear;
+								serviceTest.movementType = mouvementtype;
+								serviceTest.usageFrequency = usagefrequency;
+								serviceTest.movementComplexity = movementComplexity;
+								assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_MORE_THAN_5_YEARS);
+						}
+	}
+	
+	@Test
+	public void newWatchWithNoProblemTestDoingSport() {
+		ServiceTest serviceTest = new ServiceTest();
+		serviceTest.waterIssue = false;
+		serviceTest.powerReserveIssue = false;
+		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = true;
+		serviceTest.buildPeriod = ServiceTest.BuildPeriod.THIS_YEAR;
+		
+		for (ServiceTest.MovementTypes mouvementtype : ServiceTest.MovementTypes.values())
+			for (ServiceTest.LastServiceYear lastserviceyear : ServiceTest.LastServiceYear.values())
+				for (ServiceTest.UsageFrequency usagefrequency : ServiceTest.UsageFrequency.values())
+					for (ServiceTest.MovementComplexity movementComplexity : ServiceTest.MovementComplexity.values())
+						if (usagefrequency != ServiceTest.UsageFrequency.NEVER) {
+								serviceTest.lastServiceYear = lastserviceyear;
+								serviceTest.movementType = mouvementtype;
+								serviceTest.usageFrequency = usagefrequency;
+								serviceTest.movementComplexity = movementComplexity;
+								assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_2_TO_3_YEARS);
+						}
 	}
 	
 	@Test
@@ -35,13 +60,15 @@ public class ServiceTestHelperTest {
 		serviceTest.waterIssue = false;
 		serviceTest.powerReserveIssue = false;
 		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
 		
 		serviceTest.buildPeriod = ServiceTest.BuildPeriod.THIS_YEAR_MINUS_6;
 		serviceTest.lastServiceYear = ServiceTest.LastServiceYear.NONE_AFTER_BUYING;
 		serviceTest.movementType = ServiceTest.MovementTypes.AUTO;
 		serviceTest.usageFrequency = ServiceTest.UsageFrequency.MOST_OF_TIME;
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.THREE_HANDS;
 		
-		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_2_TO_3_YEARS);
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.NOW_FOR_FULL_SERVICE);
 	}
 	
 	@Test
@@ -50,13 +77,15 @@ public class ServiceTestHelperTest {
 		serviceTest.waterIssue = false;
 		serviceTest.powerReserveIssue = false;
 		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
 		
 		serviceTest.buildPeriod = ServiceTest.BuildPeriod.THIS_YEAR_MINUS_7;
 		serviceTest.lastServiceYear = ServiceTest.LastServiceYear.NONE_AFTER_BUYING;
 		serviceTest.movementType = ServiceTest.MovementTypes.AUTO;
 		serviceTest.usageFrequency = ServiceTest.UsageFrequency.MOST_OF_TIME;
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.THREE_HANDS;
 		
-		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.NEXT_YEAR);
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.NOW_FOR_FULL_SERVICE);
 	}
 	
 	@Test
@@ -65,13 +94,17 @@ public class ServiceTestHelperTest {
 		serviceTest.waterIssue = false;
 		serviceTest.powerReserveIssue = false;
 		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
 		
 		serviceTest.buildPeriod = ServiceTest.BuildPeriod.THIS_YEAR_MINUS_3;
 		serviceTest.lastServiceYear = ServiceTest.LastServiceYear.NONE_AFTER_BUYING;
 		serviceTest.movementType = ServiceTest.MovementTypes.AUTO;
 		serviceTest.usageFrequency = ServiceTest.UsageFrequency.MOST_OF_TIME;
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.THREE_HANDS;
 		
-		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_5_YEARS);
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_2_TO_3_YEARS);
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.CHRONO;
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.NEXT_YEAR);
 	}
 	
 	
@@ -81,11 +114,13 @@ public class ServiceTestHelperTest {
 		serviceTest.waterIssue = false;
 		serviceTest.powerReserveIssue = false;
 		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
 		
 		serviceTest.buildPeriod = ServiceTest.BuildPeriod.THIS_YEAR;
 		serviceTest.lastServiceYear = ServiceTest.LastServiceYear.THIS_YEAR_MINUS_3;
 		serviceTest.movementType = ServiceTest.MovementTypes.AUTO;
 		serviceTest.usageFrequency = ServiceTest.UsageFrequency.MOST_OF_TIME;
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.CHRONO;
 		
 		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_MORE_THAN_5_YEARS);
 	}
@@ -96,13 +131,18 @@ public class ServiceTestHelperTest {
 		serviceTest.waterIssue = false;
 		serviceTest.powerReserveIssue = false;
 		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
 		
 		serviceTest.buildPeriod = ServiceTest.BuildPeriod.THIS_YEAR_MINUS_10;
 		serviceTest.lastServiceYear = ServiceTest.LastServiceYear.THIS_YEAR;
 		serviceTest.movementType = ServiceTest.MovementTypes.AUTO;
 		serviceTest.usageFrequency = ServiceTest.UsageFrequency.MOST_OF_TIME;
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.THREE_HANDS;
 		
-		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_MORE_THAN_5_YEARS);
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_4_YEARS);
+		
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.CHRONO;
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_2_TO_3_YEARS);
 	}
 	
 	@Test
@@ -111,13 +151,18 @@ public class ServiceTestHelperTest {
 		serviceTest.waterIssue = false;
 		serviceTest.powerReserveIssue = false;
 		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
 		
 		serviceTest.buildPeriod = ServiceTest.BuildPeriod.THIS_YEAR_MINUS_11_20;
 		serviceTest.lastServiceYear = ServiceTest.LastServiceYear.THIS_YEAR;
 		serviceTest.movementType = ServiceTest.MovementTypes.AUTO;
 		serviceTest.usageFrequency = ServiceTest.UsageFrequency.MOST_OF_TIME;
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.THREE_HANDS;
 		
-		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_5_YEARS);
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_4_YEARS);
+		
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.CHRONO;
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_2_TO_3_YEARS);
 	}
 	
 	@Test
@@ -126,18 +171,25 @@ public class ServiceTestHelperTest {
 		serviceTest.waterIssue = false;
 		serviceTest.powerReserveIssue = false;
 		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
 		
 		serviceTest.buildPeriod = ServiceTest.BuildPeriod.THIS_YEAR_MINUS_10;
 		serviceTest.lastServiceYear = ServiceTest.LastServiceYear.THIS_YEAR;
 		serviceTest.movementType = ServiceTest.MovementTypes.MANUAL;
 		serviceTest.usageFrequency = ServiceTest.UsageFrequency.RARELY;
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.THREE_HANDS;
 		
-		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_MORE_THAN_5_YEARS);
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_4_YEARS);
+		
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.CHRONO;
+		assertThat(ServiceTestHelper.whenDoServiceIsRecommended(serviceTest)).isEqualTo(ServiceTest.TestResult.IN_2_TO_3_YEARS);
 	}
 	
 	@Test
 	public void serviceForOldWatchesTest() {
 		serviceForWatches(ServiceTestHelper.DELAY_FOR_WATCH_TO_BECOME_OLD + 1, ServiceTest.BuildPeriod.values().length, ServiceTestHelper.DELAY_FOR_OLD_WATCH_BETWEEN_SERVICES);
+		
+		serviceForChrono(ServiceTestHelper.DELAY_FOR_WATCH_TO_BECOME_OLD + 1, ServiceTest.BuildPeriod.values().length, ServiceTestHelper.DELAY_FOR_OLD_WATCH_BETWEEN_SERVICES);
 	}
 	
 	
@@ -150,6 +202,9 @@ public class ServiceTestHelperTest {
 		serviceTest.waterIssue = false;
 		serviceTest.powerReserveIssue = false;
 		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
+		
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.THREE_HANDS;
 		
 		for (ServiceTest.MovementTypes mouvementtype : ServiceTest.MovementTypes.values())
 			for (int buildValue = startYear ; buildValue < endYear ; buildValue++)
@@ -165,6 +220,35 @@ public class ServiceTestHelperTest {
 									nbOfYearsAfterRecommendedService = delay - buildValue;
 								else
 									nbOfYearsAfterRecommendedService = delay - lastserviceyear.intValue();
+								if (nbOfYearsAfterRecommendedService >= 0)
+									testServiceInGivenNbOfYears(nbOfYearsAfterRecommendedService, serviceTest);
+
+						}
+	}
+	
+	public void serviceForChrono(int startYear, int endYear, int delay) {
+		ServiceTest serviceTest = new ServiceTest();
+		serviceTest.waterIssue = false;
+		serviceTest.powerReserveIssue = false;
+		serviceTest.performanceIssue = false;
+		serviceTest.doingSport = false;
+		
+		serviceTest.movementComplexity = ServiceTest.MovementComplexity.CHRONO;
+		
+		for (ServiceTest.MovementTypes mouvementtype : ServiceTest.MovementTypes.values())
+			for (int buildValue = startYear ; buildValue < endYear ; buildValue++)
+				for (ServiceTest.LastServiceYear lastserviceyear : ServiceTest.LastServiceYear.values())
+					for (ServiceTest.UsageFrequency usagefrequency : ServiceTest.UsageFrequency.values())
+						if (usagefrequency != ServiceTest.UsageFrequency.NEVER) {
+								serviceTest.buildPeriod = ServiceTest.BuildPeriod.fromString(""+buildValue);
+								serviceTest.lastServiceYear = lastserviceyear;
+								serviceTest.movementType = mouvementtype;
+								serviceTest.usageFrequency = usagefrequency;
+								int nbOfYearsAfterRecommendedService;
+								if (lastserviceyear.intValue() >= buildValue)
+									nbOfYearsAfterRecommendedService = delay - buildValue - 1;
+								else
+									nbOfYearsAfterRecommendedService = delay - lastserviceyear.intValue() - 1;
 								if (nbOfYearsAfterRecommendedService >= 0)
 									testServiceInGivenNbOfYears(nbOfYearsAfterRecommendedService, serviceTest);
 

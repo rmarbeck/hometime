@@ -72,7 +72,7 @@
         <div class="col-xs-12 col-sm-9 col-sm-offset-1">
 		@helper.form(action = routes.Application.manageOrder(), 'class -> "form-horizontal", 'role -> "form") {
                 @tags.myInputRadioGroup(order("orderType"),
-                              Seq( OrderRequest.OrderTypes.SERVICE.toString -> Messages("order.form.value.type.of.service.1"), OrderRequest.OrderTypes.REPAIR.toString -> Messages("order.form.value.type.of.service.2")), '_label -> Messages("order.form.label.type.of.service"),
+                              Seq( OrderRequest.OrderTypes.SETTINGUP.toString -> abbr(Messages("order.form.value.type.of.service.setting.up.help"), Messages("order.form.value.type.of.service.setting.up")).toString, OrderRequest.OrderTypes.INTERMEDIATE.toString -> Messages("order.form.value.type.of.service.intermediate"), OrderRequest.OrderTypes.SERVICE.toString -> Messages("order.form.value.type.of.service.service"), OrderRequest.OrderTypes.REPAIR.toString -> Messages("order.form.value.type.of.service.repair")), '_label -> Html(Messages("order.form.label.type.of.service", routes.Application.service_test())),
                               '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 <div class="form-group">
@@ -90,7 +90,7 @@
                                        'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                       @tags.myInputRadioGroup(order("method"),
-                                              Seq( OrderRequest.MethodTypes.BRAND.toString -> Messages("order.form.value.method.1"), OrderRequest.MethodTypes.OUTLET.toString -> Messages("order.form.value.method.2")), '_label -> abbr(Messages("order.form.help.method"), Messages("order.form.label.method")),
+                                              Seq( OrderRequest.MethodTypes.BRAND.toString -> Messages("order.form.value.method.brand"), OrderRequest.MethodTypes.OUTLET.toString -> Messages("order.form.value.method.outlet"), OrderRequest.MethodTypes.BOTH.toString -> Messages("order.form.value.method.both")), '_label -> abbr(Messages("order.form.help.method"), Messages("order.form.label.method")),
                                               '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                     </div>

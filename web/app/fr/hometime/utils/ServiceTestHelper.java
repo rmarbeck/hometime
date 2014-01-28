@@ -12,9 +12,9 @@ import models.ServiceTest;
 
 public class ServiceTestHelper {
 	
-	protected static int DELAY_FOR_WATCH_TO_BECOME_OLD = 10;
-	protected static int DELAY_FOR_OLD_WATCH_BETWEEN_SERVICES = 5;
-	protected static int DELAY_FOR_NEW_WATCH_BETWEEN_SERVICES = 8;
+	protected static int DELAY_FOR_WATCH_TO_BECOME_OLD = 5;
+	protected static int DELAY_FOR_OLD_WATCH_BETWEEN_SERVICES = 4;
+	protected static int DELAY_FOR_NEW_WATCH_BETWEEN_SERVICES = 5;
 	private static int LAST_SERVICE_NB_OF_YEARS_MAX = 11;
 	
 	private ServiceTest serviceToTest = null;
@@ -34,7 +34,7 @@ public class ServiceTestHelper {
 		if (shouldDoItNowForSoftService(serviceToTest))
 			return ServiceTest.TestResult.NOW_FOR_SOFT_SERVICE;
 		
-		switch(calculateNumberOfYearsBeforeRecommendedService()) {
+		switch(calculateNumberOfYearsBeforeRecommendedServiceTakingSportAndMovementComplexityIntoAccount()) {
 			case 0:
 				return ServiceTest.TestResult.NOW_FOR_FULL_SERVICE;
 			case 1:
@@ -75,9 +75,19 @@ public class ServiceTestHelper {
 		return false;
 	}
 	
+	private int calculateNumberOfYearsBeforeRecommendedServiceTakingSportAndMovementComplexityIntoAccount() {
+		if (doingSport())
+			return calculateNumberOfYearsBeforeRecommendedService() / 2;
+		if (isItAChronoOrComplexWatch())
+			return calculateNumberOfYearsBeforeRecommendedService() - 1;
+		return calculateNumberOfYearsBeforeRecommendedService();
+	}
+	
 	private int calculateNumberOfYearsBeforeRecommendedService() {
 		if (watchIsOld() && lastServiceIsNOTOutdatedForAnOldWatch())
 			return DELAY_FOR_OLD_WATCH_BETWEEN_SERVICES - getNbOfYearsFromLastService();
+		if (isItABrandNewWatch())
+			return DELAY_FOR_NEW_WATCH_BETWEEN_SERVICES + 2;
 		if (watchIsNew() && lastServiceIsNOTOutdatedForANewWatch())
 			return DELAY_FOR_NEW_WATCH_BETWEEN_SERVICES - getNbOfYearsFromLastService();
 		return 0;
@@ -89,6 +99,18 @@ public class ServiceTestHelper {
 	
 	private boolean watchIsNew() {
 		return !watchIsOld();
+	}
+	
+	private boolean doingSport() {
+		return serviceToTest.doingSport;
+	}
+	
+	private boolean isItAChronoOrComplexWatch() {
+		return serviceToTest.movementComplexity.intValue() > 0;
+	}
+	
+	private boolean isItABrandNewWatch() {
+		return serviceToTest.buildPeriod.equals(ServiceTest.BuildPeriod.THIS_YEAR);
 	}
 	
 	private boolean lastServiceIsOutdatedForAnOldWatch() {

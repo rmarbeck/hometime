@@ -6,9 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
-import models.OrderRequest.MethodTypes;
 import play.db.ebean.Model;
 
 /**
@@ -151,6 +149,35 @@ public class ServiceTest extends Model {
 	    }
 	}
 	
+	public enum MovementComplexity {
+	    THREE_HANDS ("0"),
+	    CHRONO ("1"),
+	    OTHER ("2");
+	    
+		private String name = "";
+		    
+		MovementComplexity(String name){
+		    this.name = name;
+		}
+
+		public String toString(){
+		    return name;
+		}
+		
+		public int intValue() {
+			return Integer.valueOf(name);
+		}
+		
+		public static MovementComplexity fromString(String name) {
+	        for (MovementComplexity complexity : MovementComplexity.values()) {
+	            if (complexity.name.equals(name)) {
+	                return complexity;
+	            }
+	        }
+	        throw new IllegalArgumentException("Illegal type name: " + name);
+	    }
+	}
+	
 	public enum TestResult {
 	    IN_MORE_THAN_5_YEARS ("0"),
 	    IN_5_YEARS ("1"),
@@ -192,6 +219,8 @@ public class ServiceTest extends Model {
 
 	public MovementTypes movementType;
 	
+	public MovementComplexity movementComplexity;
+	
 	public BuildPeriod buildPeriod;
 	
 	public LastServiceYear lastServiceYear;
@@ -201,6 +230,8 @@ public class ServiceTest extends Model {
 	public boolean powerReserveIssue;
 	
 	public boolean waterIssue;
+	
+	public boolean doingSport;
 	
 	public UsageFrequency usageFrequency;
 
@@ -235,9 +266,11 @@ public class ServiceTest extends Model {
     	content.append(", LastServiceYear is : " + this.lastServiceYear.name());
     	content.append(", usageFrequency is : " + this.usageFrequency.name());
     	content.append(", MovementTypes is : " + this.movementType);
+    	content.append(", MovementComplexity is : " + this.movementComplexity);
     	content.append(", PerformanceIssue is : " + this.performanceIssue);
     	content.append(", PowerReserveIssue is : " + this.powerReserveIssue);
     	content.append(", WaterIssue is : " + this.waterIssue);
+    	content.append(", DoingSport is : " + this.doingSport);
     	content.append("]");
     	return content.toString();
     }

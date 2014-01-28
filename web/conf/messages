@@ -421,9 +421,12 @@ order.autre.html.keywords=devis gratuit,devis en ligne, entretien, horloger agr�
 order.baseline=Demander un devis gratuit
 order.text.explanation=Pour obtenir un devis, veuillez renseigner les informations ci-dessous. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
 
-order.form.label.type.of.service=Type d''entretien
-order.form.value.type.of.service.1=Révision (ma montre fonctionne)
-order.form.value.type.of.service.2=Réparation (ma montre ne fonctionne pas)
+order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)
+order.form.value.type.of.service.repair=Réparation (ma montre ne fonctionne pas)
+order.form.value.type.of.service.service=Révision complète (démontage, nettoyage, huilage, <abbr class="" title="Si vous le souhaitez" >polissage</abbr>), à pévoir tous les 5 ans environ
+order.form.value.type.of.service.intermediate=Entretien intermédiaire (étanchéité et léger <abbr class="" title="Si vous le souhaitez" >polissage</abbr>), à prévoir tous les 2 à 4 ans
+order.form.value.type.of.service.setting.up=Réglage de la précision du mouvement
+order.form.value.type.of.service.setting.up.help=Si votre montre est récente ou si sa dernière révision date de quelques mois et que vous constatez une prise d''avance de quelques dizaines de secondes par jour, cet entretien peut résoudre ce problème avec une intervention simple et rapide.
 order.form.label.cat.your.watch=Votre montre
 order.form.label.brand=* Marque
 order.form.value.brand.default=Sélectionnez la marque de votre montre
@@ -431,14 +434,15 @@ order.form.label.model=* Modèle
 order.form.placeholder.model=Nom du modèle - Année
 order.form.label.method=* Réseau
 order.form.help.method=Un horloger indépendant sélectionné par Hometime sera plus rapide et moins cher.
-order.form.value.method.1=Je souhaite que ma montre soit entretenue par son fabriquant
-order.form.value.method.2=Je souhaite que ma montre soit entretenue par un horloger indépendant
+order.form.value.method.brand=Je souhaite que ma montre soit entretenue par son fabriquant
+order.form.value.method.outlet=Je souhaite que ma montre soit entretenue par un <abbr class="" title="Hometime ne travaille qu''avec des professionnels réputés disposant d''ateliers dans Paris" >horloger indépendant</abbr>
+order.form.value.method.both=Je souhaite un devis comparant les deux modes d''entretien
 order.form.label.remark=Remarques
 order.form.placeholder.remark=Vous souhaitez préciser quelque-chose
 order.form.label.choice=Choix de la montre que vous souhaitez essayer
-order.form.value.choice.default=Je ne souhaite pas essayer de montre
+order.form.value.choice.default=Je ne souhaite pas essayer de montre pendant l''entretien
 order.form.cat.label.you=Vous
-order.form.label.your.name=* Votre Nom
+order.form.label.your.name=* Vos nom et prénom
 order.form.placeholder.your.name=Prénom Nom
 order.form.label.your.email=* Votre email
 order.form.placeholder.your.email=exemple@nomdedomaine.fr
@@ -482,6 +486,10 @@ service.test.text.explanation=Ce formulaire vous permet de connaitre le meilleur
 service.test.form.label.type.of.movement=* Type de mouvement
 service.test.form.value.type.of.movement.1=A remontage manuel (je dois la remonter avant de la porter)
 service.test.form.value.type.of.movement.2=A remontage automatique
+service.test.form.value.type.of.movement.complexity.three.hands=Montre 3 aiguilles ou GMT
+service.test.form.value.type.of.movement.complexity.chrono=Chronographe
+service.test.form.value.type.of.movement.complexity.other=Montre à complications
+service.test.form.label.type.of.movement.complexity=* Fonctionnalités 
 service.test.form.label.build.year=* Période de fabrication
 service.test.form.value.build.year.default=Saisissez quand a été fabriquée votre montre
 service.test.form.label.build.year.value.0={0,number,####}
@@ -528,8 +536,11 @@ service.test.form.label.frequency.value.default=Comment qualifieriez-vous vos ha
 service.test.form.label.frequency.value.0=Je porte la montre tous les jours
 service.test.form.label.frequency.value.1=Je porte la montre fréquemment et la pose sur un remontoir le reste du temps
 service.test.form.label.frequency.value.2=Je porte la montre occasionnellement et elle est rangée dans un tiroir lorsque je ne la porte pas
-service.test.form.label.frequency.value.3=La montre n'a pas été portée ni remontée pendant plus de 6 mois
-service.test.form.label.water=Etanchéité 
+service.test.form.label.frequency.value.3=La montre n'a pas été portée ni remontée pendant plus de 18 mois
+service.test.form.value.doing.sport.no=Je ne porte pas ma montre pendant des activités l''exposant aux chocs ou aux vibrations
+service.test.form.value.doing.sport.yes=Il m''arrive de porter ma montre pendant des activités telles que le tennis, le karting...
+service.test.form.label.doing.sport=* Exposition aux vibrations et aux chocs
+service.test.form.label.water=* Etanchéité 
 service.test.form.value.water.nofailure=Ma montre ne montre aucun signe de présence d''eau dans le boitier
 service.test.form.value.water.failure=De la buée se forme de temps en temps à l''intérieur de ma montre
 service.test.form.cat.label.custom=Si vous souhaitez un évaluation personnalisée
@@ -603,6 +614,9 @@ service.test.result.warning.ask.customized.test=Pour obtenir une évaluation plu
 service.test.result.followup=Vous avez demandé une analyse personnalisée approfondie, nous allons vous répondre rapidement à l''adresse suivante : <strong>{0}</strong>.
 service.test.result.action.back.to.form=Faire une autre évaluation
 service.test.result.action.order=Demander un devis
+service.test.result.action.order.intermediate=Devis pour étanchéité
+service.test.result.action.order.full.service=Devis pour révision complète
+service.test.result.action.order.soft.service=Devis pour révision partielle
 
 # About page
 about.html.title=Qui sommes nous ?

@@ -22,7 +22,7 @@
   <div class="radio">
       <label>
       <input type="radio" id="@(id)_@v._1" name="@name" value="@v._1" @(if(value == Some(v._1)) "checked" else "") @toHtmlArgs(htmlArgs)>
-      @v._2
+      @Html(v._2)
       </label>
   </div>
   }

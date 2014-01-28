@@ -15,10 +15,6 @@ import models.OrderRequest;
 import models.Picture;
 import models.ServiceTest;
 import models.Watch;
-import models.ServiceTest.BuildPeriod;
-import models.ServiceTest.LastServiceYear;
-import models.ServiceTest.MovementTypes;
-import models.ServiceTest.UsageFrequency;
 import play.data.Form;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
@@ -32,7 +28,7 @@ public class Application extends Controller {
 	public static class OrderForm {
 
 		@Constraints.Required
-		public String orderType = OrderRequest.OrderTypes.SERVICE.toString();
+		public String orderType;
 		@Constraints.Required
 		public String brand;
 		@Constraints.Required
@@ -60,7 +56,6 @@ public class Application extends Controller {
 	    
 	    public OrderForm() {
 	    	super();
-	    	orderType = OrderRequest.OrderTypes.SERVICE.toString();
 	    }
 	    
 	    public OrderForm(String watchChosenId) {
@@ -90,6 +85,8 @@ public class Application extends Controller {
 		@Constraints.Required
 		public String movementType;
 		@Constraints.Required
+		public String movementComplexity;
+		@Constraints.Required
 		public String buildPeriod;
 		@Constraints.Required
 		public String lastServiceYear;
@@ -99,6 +96,8 @@ public class Application extends Controller {
 		public String powerReserveIssue = "";
 		@Constraints.Required
 		public String waterIssue = "";
+		@Constraints.Required
+		public String doingSport = "";
 		@Constraints.Required
 		public String usageFrequency;
 		@Column(length = 1000)
@@ -129,11 +128,13 @@ public class Application extends Controller {
 	    public ServiceTest getRequest() {
 	    	ServiceTest request = new ServiceTest();
 	    	request.movementType = ServiceTest.MovementTypes.fromString(this.movementType);
+	    	request.movementComplexity = ServiceTest.MovementComplexity.fromString(this.movementComplexity);
 	    	request.buildPeriod = ServiceTest.BuildPeriod.fromString(this.buildPeriod);
 	    	request.lastServiceYear = ServiceTest.LastServiceYear.fromString(this.lastServiceYear);
 	    	request.performanceIssue = ("0".equals(this.performanceIssue))?false:true;
 	    	request.powerReserveIssue = ("0".equals(this.powerReserveIssue))?false:true;
 	    	request.waterIssue = ("0".equals(this.waterIssue))?false:true;
+	    	request.doingSport = ("0".equals(this.doingSport))?false:true;
 	    	request.usageFrequency = ServiceTest.UsageFrequency.fromString(this.usageFrequency);
 	    	request.model = this.model;
 	    	request.nameOfCustomer = this.nameOfCustomer;
@@ -352,6 +353,8 @@ public class Application extends Controller {
     		orderForm.brand = Brand.findBySeoName(brandName).id.toString();
     	if (isWatchParamFoundAndValid())
     		orderForm.watchChosen = form().bindFromRequest().get("watch");
+    	if (isOrderTypeParamFoundAndValid())
+    		orderForm.orderType = form().bindFromRequest().get("type");
     	return Form.form(OrderForm.class).fill(orderForm);
     }
     
@@ -362,12 +365,29 @@ public class Application extends Controller {
     	return false;
     }
     
+    private static boolean isOrderTypeParamFoundAndValid() {
+    	String valueFound = form().bindFromRequest().get("type");
+    	if (valueFound!= null)
+    		return isOrderTypeParamValid(valueFound);
+    	return false;
+    }
+    
     private static boolean isWatchParamValid(String value) {
     	try {
 	    	if (Watch.findById(Long.valueOf(value)) != null)
 	    		return true;
 	    	return false;
     	} catch (NumberFormatException e) {
+    		return false;
+    	}
+    }
+    
+    private static boolean isOrderTypeParamValid(String value) {
+    	try {
+	    	if (OrderRequest.OrderTypes.fromString(value) != null)
+	    		return true;
+	    	return false;
+    	} catch (IllegalArgumentException e) {
     		return false;
     	}
     }

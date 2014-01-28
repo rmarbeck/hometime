@@ -37,7 +37,32 @@
       <div class="row actions">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
             <div class="text-center">
-                @if(result.intValue >= 5) {<a class="btn btn-primary" href="@routes.Application.order(null)">@Html(Messages("service.test.result.action.order"))</a>} else {<a class="btn btn-default" href="@routes.Application.service_test()">@Html(Messages("service.test.result.action.back.to.form"))</a>}
+            @result match {
+              case ServiceTest.TestResult.IN_5_YEARS => {
+                <a class="btn btn-default" href="@routes.Application.service_test()">@Html(Messages("service.test.result.action.back.to.form"))</a>
+              }
+              case ServiceTest.TestResult.IN_4_YEARS => {
+                <a class="btn btn-primary" href="@routes.Application.order(null)?type=@OrderRequest.OrderTypes.INTERMEDIATE">@Html(Messages("service.test.result.action.order.intermediate"))</a>
+              }
+              case ServiceTest.TestResult.IN_2_TO_3_YEARS => {
+                <a class="btn btn-primary" href="@routes.Application.order(null)?type=@OrderRequest.OrderTypes.INTERMEDIATE">@Html(Messages("service.test.result.action.order.intermediate"))</a>
+              }
+              case ServiceTest.TestResult.NEXT_YEAR => {
+                <a class="btn btn-primary" href="@routes.Application.order(null)?type=@OrderRequest.OrderTypes.SERVICE">@Html(Messages("service.test.result.action.order.full.service"))</a>
+              }
+              case ServiceTest.TestResult.THIS_YEAR => {
+                <a class="btn btn-primary" href="@routes.Application.order(null)?type=@OrderRequest.OrderTypes.SERVICE">@Html(Messages("service.test.result.action.order.full.service"))</a>
+              }
+              case ServiceTest.TestResult.NOW_FOR_SOFT_SERVICE => {
+                <a class="btn btn-primary" href="@routes.Application.order(null)?type=@OrderRequest.OrderTypes.SETTINGUP">@Html(Messages("service.test.result.action.order.soft.service"))</a>
+              }
+              case ServiceTest.TestResult.NOW_FOR_FULL_SERVICE => {
+                <a class="btn btn-primary" href="@routes.Application.order(null)?type=@OrderRequest.OrderTypes.SERVICE">@Html(Messages("service.test.result.action.order.full.service"))</a>
+              }
+              case default => {
+                <a class="btn btn-default" href="@routes.Application.service_test()">@Html(Messages("service.test.result.action.back.to.form"))</a>
+              }
+            }
             </div>
         </div>
       </div>

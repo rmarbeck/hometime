@@ -22,6 +22,10 @@
                                 Seq( ServiceTest.MovementTypes.MANUAL.toString -> Messages("service.test.form.value.type.of.movement.1"), ServiceTest.MovementTypes.AUTO.toString -> Messages("service.test.form.value.type.of.movement.2")), '_label -> Messages("service.test.form.label.type.of.movement"),
                                 '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
+                @tags.myInputRadioGroup(serviceTest("movementComplexity"),
+                                Seq( ServiceTest.MovementComplexity.THREE_HANDS.toString -> Messages("service.test.form.value.type.of.movement.complexity.three.hands"), ServiceTest.MovementComplexity.CHRONO.toString -> Messages("service.test.form.value.type.of.movement.complexity.chrono"), ServiceTest.MovementComplexity.OTHER.toString -> Messages("service.test.form.value.type.of.movement.complexity.other")), '_label -> Messages("service.test.form.label.type.of.movement.complexity"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
                 @helper.select(serviceTest("buildPeriod"),
                                      for (y <- ServiceTest.BuildPeriod.values) yield y.toString -> Messages("service.test.form.label.build.year.value."+y, (Calendar.getInstance.get(Calendar.YEAR) - y.intValue()), (Calendar.getInstance.get(Calendar.YEAR) - ((y.intValue() - 9) * 10)), (Calendar.getInstance.get(Calendar.YEAR) - ((y.intValue() - 9) * 10)) + 9),
                                      '_default -> Messages("service.test.form.value.build.year.default"),
@@ -51,6 +55,10 @@
                                      '_default -> Messages("service.test.form.label.frequency.value.default"),
                                      'placeholder -> Messages("service.test.form.placeholder.build.year"), '_label -> Messages("service.test.form.label.frequency"),
                                      'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @tags.myInputRadioGroup(serviceTest("doingSport"),
+                                Seq( "0" -> Messages("service.test.form.value.doing.sport.no"), "1" -> Messages("service.test.form.value.doing.sport.yes")), '_label -> Messages("service.test.form.label.doing.sport"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 <div class="form-group">
                   <label for="catYou" class="col-xs-3 control-label">@Messages("service.test.form.cat.label.custom")</label>
