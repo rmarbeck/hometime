@@ -64,22 +64,33 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4 promise">
+        <div class="col-sm-4 promise">
           <img class="head" src="@routes.Assets.at("images/home/to-serve.png")" alt="@Messages("home.promise.1.alt")">
           <div class="promise-head">@Messages("home.promise.1.head")</div>
           <div class="promise-body">@Html(Messages("home.promise.1.body"))</div>
-          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.service()" role="button">@Messages("home.promise.1.call.to.action")</a></div>
+          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.service()" role="button">@Messages("home.promise.1.call.to.action")</a></div>
         </div>
-        <div class="col-md-4 promise">
+        <div class="col-sm-4 promise">
           <img class="img-circle head" src="@routes.Assets.at("images/home/to-loan.jpg")" alt="@Messages("home.promise.2.alt")">
           <div class="promise-head">@Messages("home.promise.2.head")</div>
           <div class="promise-body">@Html(Messages("home.promise.2.body"))</div>
-          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.watch_collection()" role="button">@Messages("home.promise.2.call.to.action")</a></div>
+          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.watch_collection()" role="button">@Messages("home.promise.2.call.to.action")</a></div>
         </div>
-        <div class="col-md-4 promise">
+        <div class="col-sm-4 promise">
           <img class="img-circle head" src="@routes.Assets.at("images/home/at-home.png")" alt="@Messages("home.promise.3.alt")">
           <div class="promise-head">@Messages("home.promise.3.head")</div>
           <div class="promise-body">@Html(Messages("home.promise.3.body"))</div>
+          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.offer()" role="button">@Messages("home.promise.3.call.to.action")</a></div>
+        </div>
+      </div>
+      <div class="row hidden-xs actions">
+        <div class="col-sm-4 promise">
+          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.service()" role="button">@Messages("home.promise.1.call.to.action")</a></div>
+        </div>
+        <div class="col-sm-4 promise">
+          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.watch_collection()" role="button">@Messages("home.promise.2.call.to.action")</a></div>
+        </div>
+        <div class="col-sm-4 promise">
           <div class="promise-action"><a class="btn btn-default" href="@routes.Application.offer()" role="button">@Messages("home.promise.3.call.to.action")</a></div>
         </div>
       </div>

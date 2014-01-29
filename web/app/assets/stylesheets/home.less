@@ -59,7 +59,6 @@ body {
 
 .promise {
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .promise-head {
@@ -72,6 +71,10 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
+}
+
+.promise-action {
+  margin-bottom: 20px;
 }
 
 .order-action, .more-action {
@@ -90,6 +93,14 @@ body {
 }
 
 @import "_navbar.less";
+
+
+@media (min-width: @bootstrap-screen-sm-min) {
+  .navbar-inverse {
+    background-color: rgba(0, 0, 0, @transparency-for-header-and-carousel );
+  }
+}
+
 
 @import "_marketing.less";
 

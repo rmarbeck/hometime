@@ -13,7 +13,7 @@
   z-index: 10;
   padding-right: 20px;
   padding-left: 20px;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, @transparency-for-header-and-carousel);
   border-radius: 8px;
   margin-left: -5px;
   margin-right: -5px;
@@ -23,13 +23,6 @@
 .carousel .item {
   height: @carousel-height-small;
   background-color: #777;
-}
-.carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: @carousel-height-small;
 }
 
 .carousel-caption .caption-title h1 {
@@ -49,6 +42,24 @@
 .carousel-caption .caption-body {
     font-size: 0.7em;
 }
+
+/* POSITIONNING AND SIZING CAROUSEL IMAGES
+-------------------------------------------------- */
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  min-width: 100%;
+  min-height: @carousel-height-small;
+}
+
+@media (min-width: @bootstrap-screen-sm-min) {
+  .carousel-inner > .item > img {
+    top: 0;
+    min-height: @carousel-height;
+  }
+}
+
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
@@ -70,14 +81,14 @@
   }
 
   .carousel-inner > .item > img {
-  position: absolute;
-    min-height: @carousel-height;
+      position: absolute;
+      top: 0;
   }
   
   /* Bump up size of carousel content */
   .carousel-caption .caption-title {
     margin-bottom: 15px;
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .carousel-caption .caption-body {

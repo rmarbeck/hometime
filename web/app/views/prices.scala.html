@@ -30,7 +30,7 @@
                             <td></td>
                             <td>@Html(Messages("prices.table.body.watch.of.category", "1"))*</td>
                             <td>@Html(Messages("prices.table.body.service.prices", "200€", "400€"))</td>
-                            <td rowspan="3" width="30%">@Html(Messages("prices.table.body.service.details"))</td>
+                            <td rowspan="3" width="30%">@Html(Messages("prices.table.body.service.details", routes.Application.order(null)))</td>
                           </tr>
                           <tr>
                             <td></td>
@@ -50,12 +50,27 @@
                             <td colspan="3">@Html(Messages("prices.table.body.repair.prices"))</td>
                           </tr>
                           <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.soft.service"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.soft.service.prices", "50€", "200€"))</td>
+                          </tr>
+                          <tr>
                             <td colspan="4">@Html(Messages("prices.table.body.loan"))</td>
                           </tr>
                           <tr>
                             <td></td>
                             <td colspan="3">@Html(Messages("prices.table.body.loan.prices", "50€", "200€"))</td>
                           </tr>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.other"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.other.prices"))</td>
+                          </tr>
+                          
                           <tr>
                             <td colspan="4">@Html(Messages("prices.table.body.moving"))</td>
                           </tr>
@@ -69,6 +84,7 @@
                     <div class="footnote">* @Html(Messages("prices.table.body.watch.of.category", "1")) : Baume & Mercier, Bell & Ross, Frédérique Constant, Hamilton, Longines, Tissot, Rado</div>
                     <div class="footnote">** @Html(Messages("prices.table.body.watch.of.category", "2")) : Breitling, Chopard, Chanel, Omega, Tag Heuer, Tudor, Zenith</div>
                     <div class="footnote">*** @Html(Messages("prices.table.body.watch.of.category", "3")) : Hublot, IWC, Jeager LeCoultre, Panerai, Rolex</div>
+                    <div class="footnote">@Html(Messages("prices.table.body.footnote.4"))</div>
                   </div>
                 </div>
               </div>
