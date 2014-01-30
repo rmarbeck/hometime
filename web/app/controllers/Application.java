@@ -174,7 +174,7 @@ public class Application extends Controller {
 	    	request.title = this.title;
 	    	request.message = this.message;
 	    	request.name = this.name;
-	    	if (this.email != null && "".equals(this.email))
+	    	if (this.email != null && !"".equals(this.email))
 	    		request.email = this.email;
 	    	
 	    	return request;
