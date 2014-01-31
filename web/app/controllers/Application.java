@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Column;
 
 import fr.hometime.utils.ActionHelper;
+import fr.hometime.utils.GoogleAnalyticsHelper;
 import fr.hometime.utils.ServiceTestHelper;
 import models.Brand;
 import models.ContactRequest;
@@ -263,6 +264,8 @@ public class Application extends Controller {
 			
 			flash("success", "OK");
 			
+			GoogleAnalyticsHelper.pushEvent("order", "sent", ctx());
+			
 			return redirect(
 					routes.Application.order(orderRequest.brand.seo_name)
 					);
@@ -281,6 +284,8 @@ public class Application extends Controller {
 			
 			flash("success", "OK");
 			
+			GoogleAnalyticsHelper.pushEvent("contact", "sent", ctx());
+			
 			return contact();
 		}
 	}
@@ -297,6 +302,8 @@ public class Application extends Controller {
 				serviceTest.save();
 				ActionHelper.tryToNotifyTeamByEmail("Evaluation personnalisée", serviceTest.toString());
 			}
+			
+			GoogleAnalyticsHelper.pushEvent("serviceTest", "sent", ctx());
 			
 			return ok(service_test_result.render("", ServiceTestHelper.whenDoServiceIsRecommended(serviceTest), isCustomisedTestAsked, serviceTest.email));
 		}

@@ -1,0 +1,11 @@
+@**
+ * Generate the code for pushing events in flash scope for Google analytics.
+ *
+ *@
+@if(flash.containsKey("push_ga_events")) {
+    @defining(flash.get("pgv_event_size").toInt) { size =>
+        @if(size > 0) {
+           @for(index <- 0 to (size-1)) {ga('send', 'event', '@flash.get("pgv_event_"+index+".category")', '@flash.get("pgv_event_"+index+".action")');}
+        }
+    }
+}
