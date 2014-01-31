@@ -54,7 +54,7 @@ home.caption.3.head=Ne vous déplacez plus&nbsp;!
 home.caption.3.body=Hometime vient chercher votre montre chez vous et vous la ramène dès qu''elle est prête.
 home.caption.3.call.to.action=Demandez un devis !
 
-home.baseline=Hometime : <i>une montre mythique à votre poignet pendant l''entretien de votre montre mécanique</i>
+home.baseline=<i>Portez une montre mythique à votre poignet pendant l''entretien de votre montre mécanique</i>
 
 home.promise.1.alt=Mouvement de montre
 home.promise.1.head=Entretenir
@@ -79,6 +79,16 @@ home.title.for.facebook=Hometime
 home.type.for.facebook=website
 home.description.for.facebook=Hometime, entretien et essai prolongé de montres de luxe
 home.order.links.by.brand.title=Demander un devis gratuit pour une réparation ou une révision d''une montre {0}
+
+home.text.reasons=Pourquoi choisir Hometime&nbsp;?
+home.reason.1.body=Je ne fais plus la queue pour déposer ou récupérer ma montre&nbsp;!
+home.reason.4.body=Je peux faire entretenir plusieurs montres à la fois&nbsp;!
+home.reason.3.body=Je peux juste vérifier l''étanchéité ou faire régler ma montre&nbsp;!
+home.reason.2.body=Je peux porter une montre de légende pendant quelques semaines&nbsp;!
+home.reason.5.body=Pour un entretien au sein du réseau officiel, hometime s''occupe de tout&nbsp;!
+home.reason.6.body=Pour un entretien chez un horloger, hometime sélectionne les meilleurs&nbsp;!
+home.reason.7.body=Si je suis pressé, hometime me propose une solution en quelques jours seulement&nbsp;!
+home.reason.8.body=Hometime peut m''aider quelque soit le type de montre que je possède&nbsp;!
 
 # Service page
 service.html.title=Entretenir sa montre
