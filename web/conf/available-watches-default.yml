@@ -195,6 +195,28 @@
          item_history:          Le modèle disponible pour le prêt est un modèle de 2013 avec un boitier de 38 mm sur bracelet en cuir marron. 38mm peut paraître petit par les temps qui courent, mais cette taille lui confère un look vintage irrésistible. 
          reason_why:            Pour faire passer le temps plus lentement.
 
+    - &OmegaSpeedmasterMarkII !!models.Watch
+         brand:                 Omega
+         full_name:             Speedmaster Professional Mark II
+         short_name:            Speedmaster Mark II
+         seo_name:              omega-speedmaster-professional-mark-ii
+         movement:              Omega 861 - remontage manuel
+         case_infos:            41.5mm, verre plexiglass
+         functions:             Chronographe
+         water_resistance:      100 m
+         specials:              Attention, il s'agit d'une montre manuelle. Il faut la remonter tous les deux jours.
+         production_period:     Depuis 1969
+         item_year:             Exemplaire datant de début 70 
+         item_strap:            Bracelet métal souple
+         item_reference:        145.014
+         price:                 100
+         main_picture_url:      watches/main_speedmaster_mark_ii.jpg
+         main_thumbnail_url:    watches/thumbs/main_speedmaster_mark_ii.jpg
+         model_history:         "Cette montre a succédé à la speedmaster originale, lui apportant un design très futuriste pour l'époque : les années 70. Elle conserve la plupart des caractéristiques de la speedmaster originale : mouvement à chronographe manuel, disposition des sous-commpteurs, tachymètre... Très vite elle va cohabiter avec la mark III qui est équipée d'un mouvement automatique." 
+         item_history: |
+             Il s'agit d'un modèle d'époque très bien entretenu qui tient parfaitement l'heure. Le bracelet est très agréable à porter.
+         reason_why:            Parce que sa remplacante arrive cette année chez Omega, c'est le moment de frimer avec la "vraie".
+
 pictures:
     - !!models.Picture
          url:                   watches/sub_1.jpg
@@ -444,6 +466,29 @@ pictures:
          watch:                 *MeistersingerN3
          display_order:         40
 
+    - !!models.Picture
+         url:                   watches/speedmaster_mark_ii_1.jpg
+         thumbnail_url:         watches/thumbs/speedmaster_mark_ii_1.jpg
+         alt:                   Omega
+         description:           Omega Speedmaster Mark II
+         watch:                 *OmegaSpeedmasterMarkII
+         display_order:         20
+
+    - !!models.Picture
+         url:                   watches/speedmaster_mark_ii_2.jpg
+         thumbnail_url:         watches/thumbs/speedmaster_mark_ii_2.jpg
+         alt:                   Omega
+         description:           Omega Speedmaster Mark II
+         watch:                 *OmegaSpeedmasterMarkII
+         display_order:         30
+
+    - !!models.Picture
+         url:                   watches/speedmaster_mark_ii_3.jpg
+         thumbnail_url:         watches/thumbs/speedmaster_mark_ii_3.jpg
+         alt:                   Omega
+         description:           Omega Speedmaster Mark II
+         watch:                 *OmegaSpeedmasterMarkII
+         display_order:         40
 
 brands:
     - !!models.Brand
