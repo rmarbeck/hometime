@@ -43,7 +43,7 @@
 }
 @end_scripts = {}
 
-@defining(if(order("brand").value!=null) {"order."+Brand.findById(Long.valueOf(order("brand").value)).internal_name.toLowerCase} else {"order"}) { key =>
+@defining(if(order("brand").value!=null && !"".equals(order("brand").value)) {"order."+Brand.findById(Long.valueOf(order("brand").value)).internal_name.toLowerCase} else {"order"}) { key =>
 
 @layouts.main(key, end_scripts, in_head) {
     @layouts.fragments.navbar(100)
