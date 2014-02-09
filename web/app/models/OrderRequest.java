@@ -110,6 +110,10 @@ public class OrderRequest extends Model {
     public static List<OrderRequest> findAll() {
         return find.all();
     }
+    
+    public static List<OrderRequest> findAllLatestFirst() {
+        return find.orderBy("requestDate DESC").findList();
+    }
 
     public static OrderRequest findById(Long id) {
         return find.byId(id.toString());

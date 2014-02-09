@@ -262,6 +262,8 @@ public class ServiceTest extends Model {
     public String toString() {
     	StringBuilder content = new StringBuilder();
     	content.append(this.getClass().getSimpleName() + " : [");
+    	if (email!= null && !"".equals(email))
+    		content.append("for : "+email+",");
     	content.append(" BuildPeriod is : " + this.buildPeriod.name());
     	content.append(", LastServiceYear is : " + this.lastServiceYear.name());
     	content.append(", usageFrequency is : " + this.usageFrequency.name());

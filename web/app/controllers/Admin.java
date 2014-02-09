@@ -21,6 +21,6 @@ import views.html.admin.*;
 public class Admin extends Controller {
 
 	public static Result index() {
-        return ok(index.render("", OrderRequest.findAll()));
+        return ok(index.render("", OrderRequest.findAllLatestFirst()));
     }
 }
