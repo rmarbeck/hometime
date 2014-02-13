@@ -1,0 +1,1 @@
+@(year: ServiceTest.BuildPeriod, message_key: String = "service.test.form.label.build.year.value.")@Messages(message_key+year, (Calendar.getInstance.get(Calendar.YEAR) - year.intValue()), (Calendar.getInstance.get(Calendar.YEAR) - ((year.intValue() - 9) * 10)), (Calendar.getInstance.get(Calendar.YEAR) - ((year.intValue() - 9) * 10)) + 9)

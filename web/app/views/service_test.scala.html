@@ -27,7 +27,7 @@
                                 '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 @helper.select(serviceTest("buildPeriod"),
-                                     for (y <- ServiceTest.BuildPeriod.values) yield y.toString -> Messages("service.test.form.label.build.year.value."+y, (Calendar.getInstance.get(Calendar.YEAR) - y.intValue()), (Calendar.getInstance.get(Calendar.YEAR) - ((y.intValue() - 9) * 10)), (Calendar.getInstance.get(Calendar.YEAR) - ((y.intValue() - 9) * 10)) + 9),
+                                     for (y <- ServiceTest.BuildPeriod.values) yield y.toString -> display_build_period(y).toString,
                                      '_default -> Messages("service.test.form.value.build.year.default"),
                                      'placeholder -> Messages("service.test.form.placeholder.build.year"), '_label -> Messages("service.test.form.label.build.year"),
                                      'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)

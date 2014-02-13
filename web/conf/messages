@@ -611,7 +611,7 @@ service.test.result.panel.body.4=La prochaine révision de votre montre devrait 
 service.test.result.panel.body.5=Nous vous conseillons de faire réviser votre montre dans les mois qui viennent.\
 <br /><br />N''hésitez pas à nous demander un devis, c''est rapide et gratuit&nbsp;!
 service.test.result.panel.body.6=Nous vous conseillons de consulter un horloger pour faire vérifier votre montre.\
-<br /><br />Sans faire de révision complète, il pourrait certainement régler le mouvement pour améliorer ses performance.<br /><br />De plus, à cette occasion nous vous conseillons de faire vérifier l''étanchéité de votre montre pour éviter tout risque.\
+<br /><br />Sans faire de révision complète, il pourrait certainement régler le mouvement pour améliorer ses performances.<br /><br />De plus, à cette occasion nous vous conseillons de faire vérifier l''étanchéité de votre montre pour éviter tout risque.\
 <br /><br />N''hésitez pas à nous demander un devis, c''est rapide et gratuit&nbsp;!
 service.test.result.panel.body.7=Nous vous conseillons un entretien d''urgence. Celui-ci s''impose pour votre montre. \
 <br /><br />Cet entretien est important pour éviter une dégradation du mouvement qui pourrait causer des dommages importants.\
@@ -814,3 +814,10 @@ error.expected.keypathnode=Node attendu
 error.path.empty=Chemin vide
 error.path.missing=Chemin non spécifié
 error.path.result.multiple=Plusieurs résultat pour le chemin spécifié
+
+
+# ADMIN
+admin.text.home=Admin
+admin.navbar.link.text.orders=Demandes de devis
+admin.navbar.link.text.service.tests=Evaluations personnalisées
+admin.navbar.link.text.logout=Logout

@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.avaje.ebean.Expr;
+import com.avaje.ebean.Page;
+
 import play.db.ebean.Model;
 
 /**
@@ -257,6 +260,14 @@ public class ServiceTest extends Model {
 
     public static ServiceTest findById(Long id) {
         return find.byId(id.toString());
+    }
+    
+    public static Page<ServiceTest> page(int page, int pageSize, String sortBy, String order, String filter) {
+        return
+	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("nameOfCustomer", "%" + filter + "%"))
+	            .orderBy(sortBy + " " + order)
+	            .findPagingList(pageSize)
+	            .getPage(page);
     }
     
     public String toString() {

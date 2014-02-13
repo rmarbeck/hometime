@@ -1,0 +1,111 @@
+@(service: ServiceTest, result: ServiceTest.TestResult)
+@import tags._
+
+@layouts.admin() {
+  <div class="container">
+    <div class="row">
+        <div class="title"><h3>@service.nameOfCustomer le @display_date(service.requestDate, "dd/MM/yyyy")</h3></div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <colgroup>
+                <col class="col-xs-2">
+                <col class="col-xs-7">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Champ</th>
+                  <th>Valeur</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Date
+                  </td>
+                  <td>@display_date(service.requestDate, "dd/MM/yyyy HH:mm:ss")</td>
+                </tr>
+                <tr>
+                  <td>
+                    Type de mouvement
+                  </td>
+                  <td>@service.movementType.name()</td>
+                </tr>
+                <tr>
+                  <td>
+                    Complications
+                  </td>
+                  <td>@service.movementComplexity.name()</td>
+                </tr>
+                <tr>
+                  <td>
+                    Fréquence
+                  </td>
+                  <td>@Messages("service.test.form.label.frequency.value."+service.usageFrequency)</td>
+                </tr>
+                <tr>
+                  <td>
+                    Date de la montre
+                  </td>
+                  <td>@display_build_period(service.buildPeriod)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Dernière révision
+                  </td>
+                  <td>@Messages("service.test.form.label.last.service.value."+service.lastServiceYear)</td>
+                </tr>
+                <tr @if(service.performanceIssue) {class="danger"}>
+                  <td>
+                    Performance issue
+                  </td>
+                  <td>@service.performanceIssue</td>
+                </tr>
+                <tr @if(service.powerReserveIssue) {class="danger"}>
+                  <td>
+                    Power reserve issue
+                  </td>
+                  <td>@service.powerReserveIssue</td>
+                </tr>
+                <tr @if(service.waterIssue) {class="danger"}>
+                  <td>
+                    Water issue
+                  </td>
+                  <td>@service.waterIssue</td>
+                </tr>
+                <tr @if(service.doingSport) {class="warning"}>
+                  <td>
+                    Doing Sport
+                  </td>
+                  <td>@service.doingSport</td>
+                </tr>
+                <tr>
+                  <td>
+                    Modèle
+                  </td>
+                  <td>@service.model</td>
+                </tr>
+                <tr>
+                  <td>
+                    Client
+                  </td>
+                  <td>@service.nameOfCustomer</td>
+                </tr>
+                <tr>
+                  <td>
+                    Email
+                  </td>
+                  <td>@service.email</td>
+                </tr>
+                <tr>
+                  <td>
+                    Résultat
+                  </td>
+                  <td>@Html(Messages("service.test.result.panel.body."+result.toString))</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+}
