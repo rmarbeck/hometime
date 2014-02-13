@@ -15,7 +15,7 @@ public class Admin extends Controller {
     }
 	
 	public static Result LIST_ORDERS = redirect(
-			routes.Admin.displayOrders(0, "requestDate", "asc", "")
+			routes.Admin.displayOrders(0, "requestDate", "desc", "")
 			);
 	
 	public static Result displayOrders(int page, String sortBy, String order, String filter) {
@@ -30,7 +30,7 @@ public class Admin extends Controller {
     }
 	
 	public static Result LIST_SERVICE_TESTS = redirect(
-			routes.Admin.displayServiceTests(0, "requestDate", "asc", "")
+			routes.Admin.displayServiceTests(0, "requestDate", "desc", "")
 			);
 	
 	public static Result displayServiceTests(int page, String sortBy, String order, String filter) {

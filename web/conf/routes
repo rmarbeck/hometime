@@ -61,9 +61,9 @@ GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()
 GET     /orStats                    controllers.Admin.index()
-GET     /admin/order/all            controllers.Admin.displayOrders(p:Int ?= 0, s ?= "requestDate", o ?= "asc", f ?= "")
+GET     /admin/order/all            controllers.Admin.displayOrders(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/order/:id            controllers.Admin.displayOrder(id: Long)
-GET     /admin/service/all          controllers.Admin.displayServiceTests(p:Int ?= 0, s ?= "requestDate", o ?= "asc", f ?= "")
+GET     /admin/service/all          controllers.Admin.displayServiceTests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/service/:id          controllers.Admin.displayServiceTest(id: Long)
 
 # Sitemap
