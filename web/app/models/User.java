@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import fr.hometime.utils.SecurityHelper;
 import play.Logger;
@@ -13,7 +14,8 @@ import play.db.ebean.Model;
 /**
  * Definition of a Brand
  */
-@Entity 
+@Entity
+@Table(name = "user_table")
 public class User extends Model {
 	private static final long serialVersionUID = -6051070381002940159L;
 

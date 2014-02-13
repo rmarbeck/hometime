@@ -88,7 +88,7 @@ create table service_test (
   constraint pk_service_test primary key (id))
 ;
 
-create table user (
+create table user_table (
   id                        bigint not null,
   email                     varchar(255),
   password                  varchar(255),
@@ -96,9 +96,9 @@ create table user (
   firstname                 varchar(255),
   name                      varchar(255),
   active                    boolean,
-  constraint ck_user_role check (role in (0,1,2,3)),
-  constraint uq_user_email unique (email),
-  constraint pk_user primary key (id))
+  constraint ck_user_table_role check (role in (0,1,2,3)),
+  constraint uq_user_table_email unique (email),
+  constraint pk_user_table primary key (id))
 ;
 
 create table watch (
@@ -139,7 +139,7 @@ create sequence picture_seq;
 
 create sequence service_test_seq;
 
-create sequence user_seq;
+create sequence user_table_seq;
 
 create sequence watch_seq;
 
@@ -168,7 +168,7 @@ drop table if exists picture;
 
 drop table if exists service_test;
 
-drop table if exists user;
+drop table if exists user_table;
 
 drop table if exists watch;
 
@@ -186,7 +186,7 @@ drop sequence if exists picture_seq;
 
 drop sequence if exists service_test_seq;
 
-drop sequence if exists user_seq;
+drop sequence if exists user_table_seq;
 
 drop sequence if exists watch_seq;
 
