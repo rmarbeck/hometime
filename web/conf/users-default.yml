@@ -1,0 +1,35 @@
+﻿users:
+    - &admin1 !!models.User
+         email:                 admin@hometime.fr
+         password:              default
+         role:                  ADMIN
+         firstname:             administrateur
+         name:                  principal
+         active:                true
+
+    - &admin2 !!models.User
+         email:                 admin2@hometime.fr
+         password:              default
+         role:                  ADMIN
+         firstname:             administrateur
+         name:                  secondaire
+         active:                true
+
+    - &user1 !!models.User
+         email:                 user@hometime.fr
+         password:              default
+         role:                  CUSTOMER
+         firstname:             utilisateur
+         name:                  numéro 1
+         active:                true
+
+    - &user2 !!models.User
+         email:                 user2@hometime.fr
+         password:              default
+         role:                  CUSTOMER
+         firstname:             utilisateur
+         name:                  numéro 2
+         active:                false
+
+#Fin
+

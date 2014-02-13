@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.avaje.ebean.Expr;
+import com.avaje.ebean.Page;
+
 import play.db.ebean.Model;
 
 /**
@@ -117,6 +120,14 @@ public class OrderRequest extends Model {
 
     public static OrderRequest findById(Long id) {
         return find.byId(id.toString());
+    }
+    
+    public static Page<OrderRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
+        return
+	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("nameOfCustomer", "%" + filter + "%"))
+	            .orderBy(sortBy + " " + order)
+	            .findPagingList(pageSize)
+	            .getPage(page);
     }
     
     public String toString() {

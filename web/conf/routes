@@ -57,7 +57,12 @@ GET     /privacy                    controllers.Default.redirect(to = "/vie-priv
 GET     /cgv                        controllers.Application.cgv()
 
 # ADMIN
+GET     /login                      controllers.Application.login()
+POST    /login                      controllers.Application.authenticate()
+GET     /logout                     controllers.Application.logout()
 GET     /orStats                    controllers.Admin.index()
+GET     /admin/order/all            controllers.Admin.displayOrders(p:Int ?= 0, s ?= "requestDate", o ?= "asc", f ?= "")
+GET     /admin/order/:id            controllers.Admin.displayOrder(id: Long)
 
 # Sitemap
 GET     /sitemap.xml                controllers.Application.sitemap()

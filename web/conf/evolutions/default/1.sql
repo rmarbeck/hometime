@@ -88,6 +88,19 @@ create table service_test (
   constraint pk_service_test primary key (id))
 ;
 
+create table user (
+  id                        bigint not null,
+  email                     varchar(255),
+  password                  varchar(255),
+  role                      integer,
+  firstname                 varchar(255),
+  name                      varchar(255),
+  active                    boolean,
+  constraint ck_user_role check (role in (0,1,2,3)),
+  constraint uq_user_email unique (email),
+  constraint pk_user primary key (id))
+;
+
 create table watch (
   id                        bigint not null,
   should_display            boolean,
@@ -126,6 +139,8 @@ create sequence picture_seq;
 
 create sequence service_test_seq;
 
+create sequence user_seq;
+
 create sequence watch_seq;
 
 alter table order_request add constraint fk_order_request_brand_1 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
@@ -153,6 +168,8 @@ drop table if exists picture;
 
 drop table if exists service_test;
 
+drop table if exists user;
+
 drop table if exists watch;
 
 SET REFERENTIAL_INTEGRITY TRUE;
@@ -168,6 +185,8 @@ drop sequence if exists order_request_seq;
 drop sequence if exists picture_seq;
 
 drop sequence if exists service_test_seq;
+
+drop sequence if exists user_seq;
 
 drop sequence if exists watch_seq;
 

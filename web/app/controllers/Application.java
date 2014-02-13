@@ -15,7 +15,9 @@ import models.ContactRequest;
 import models.OrderRequest;
 import models.Picture;
 import models.ServiceTest;
+import models.User;
 import models.Watch;
+import play.Logger;
 import play.data.Form;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
@@ -23,8 +25,26 @@ import play.data.validation.ValidationError;
 import play.i18n.Messages;
 import play.mvc.*;
 import views.html.*;
+import views.html.admin.login;
 
 public class Application extends Controller {
+	
+	public static class LoginForm {
+		@Constraints.Email
+		@Constraints.Required
+	    public String email;
+		@Constraints.Required
+	    public String password;
+	    
+	    public String validate() {
+	    	Logger.debug("Validating credentials : [{}]:[{}]", email, password);
+	        if (User.authenticate(email, password) == null) {
+	        	Logger.debug("Authentication failed");
+	        	return "Invalid user or password";
+	        }
+	        return null;
+	    }
+	}
 	
 	public static class OrderForm {
 
@@ -186,7 +206,33 @@ public class Application extends Controller {
     public static Result index() {
         return ok(index.render("", getSupportedBrands()));
     }
-
+	
+    public static Result login() {
+        return ok(login.render(Form.form(LoginForm.class)));
+    }
+    
+    public static Result logout() {
+        session().clear();
+        flash("success", "You've been logged out");
+        return redirect(
+            routes.Application.login()
+        );
+    }
+    
+    public static Result authenticate() {
+        Form<LoginForm> loginForm = Form.form(LoginForm.class).bindFromRequest();
+        if (loginForm.hasErrors()) {
+        	Logger.info("Login failed");
+            return badRequest(login.render(loginForm));
+        } else {
+            session().clear();
+            session("token", loginForm.get().email);
+            return redirect(
+                routes.Admin.index()
+            );
+        }
+    }
+    
     public static Result service() {
         return ok(service.render(""));
     }

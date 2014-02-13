@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
+import models.User;
 import models.Watch;
 import play.Application;
 import play.GlobalSettings;
@@ -44,6 +45,9 @@ public class Global extends GlobalSettings {
 
 					Map<String,List<Object>> liveConfig = (Map<String,List<Object>>)Yaml.load("liveconfig-default.yml");
 					Ebean.save(liveConfig.get("liveConfig"));
+					
+					Map<String,List<Object>> users = (Map<String,List<Object>>)Yaml.load("users-default.yml");
+					Ebean.save(users.get("users"));
 				}
 			}
 		}
