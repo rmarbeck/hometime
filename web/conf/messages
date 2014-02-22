@@ -631,18 +631,18 @@ service.test.result.action.order.soft.service=Devis pour révision partielle
 
 # About page
 about.html.title=Qui sommes nous ?
-about.html.description=Description de l''entreprise, de sa mission et de ses valeurs.
+about.html.description=Description de la société, de sa mission et de ses valeurs.
 about.html.keywords=description, hometime, watchnext, contact
 about.baseline=Qui sommes nous ?
 about.head.1=En deux mots
-about.body.1=Hometime est un service de la société Watch Next (enregistrement de la société en cours auprès du RCS de Versailles) installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
+about.body.1=Hometime est un service de la société Watch Next (Siret : 80019841800017) installée en région parisienne. Nous commençons notre activité en 2014 avec beaucoup d''enthousiasme.
 about.head.2=Notre mission
 about.body.2=Hometime a été créé pour que l''horlogerie ne soit que du plaisir. Notre objectif est de faire disparaitre toutes les contraintes liées à l''entretien de votre montre mais aussi de vous faire découvrir le monde passionnant de l''horlogerie.
 about.head.3=Comment procédons-nous ?
 about.body.3=L''ensemble des interventions réalisées sur les montres de nos clients sont sous-traitées à des ateliers experts reconnus et sélectionnés avec un soin particulier.\
- Toutes les montres que nous mettons à disposition de nos clients appartiennent à l''entreprise Hometime. Elles sont achetées sur les places de marché les plus sérieuses en fonction des besoins manifestés par nos clients. 
+ Toutes les montres que nous mettons à disposition de nos clients appartiennent à la société Watch next. Elles sont achetées sur les places de marché les plus sérieuses en fonction des besoins manifestés par nos clients. 
 about.head.4=Pourquoi nous faire confiance ?
-about.body.4=Etant une toute jeune entreprise, nous ne pouvons pas compter sur une notoriété flatteuse ou sur un réseau de clients promoteurs, mais nous l''espérons cela ne va pas durer. \
+about.body.4=Etant une toute jeune société, nous ne pouvons pas compter sur une notoriété flatteuse ou sur un réseau de clients promoteurs, mais nous l''espérons cela ne va pas durer. \
  <br /><br />Pour vous convaincre de notre sérieux, n''hésitez surtout pas à nous contacter par mail, nous saurons répondre à vos questions et dissiper vos doutes. \
  Les montres que nous vous prêtons sont le gage de la confiance mutuelle qui s''établit entre vous et nous. De plus, l''ensemble des documents fournis avant le début de la prestation vous apporteront toutes les garanties que vous êtes en droit d''attendre. \
  <br /><br />Alors à très bientôt.  
@@ -656,37 +656,37 @@ cgv.html.description=Conditions générales de vente du service Hometime
 cgv.html.keywords=conditions générales, vente
 cgv.baseline=Conditions générales de vente
 cgv.head.1=Article 1 : Objet
-cgv.body.1=Les conditions générales de ventes décrites ci-après détaillent les droits et obligations de l''entreprise Hometime et de ses clients dans le cadre de la fourniture du service d''entretien et d''essai de montres mécaniques. \
- <br /><br />Toute prestation accomplie par l''entreprise Hometime implique l''adhésion sans réserve de l''acheteur aux présentes conditions générales de vente.
+cgv.body.1=Les conditions générales de ventes décrites ci-après détaillent les droits et obligations de la société Watch next et de ses clients dans le cadre de la fourniture du service d''entretien et d''essai de montres mécaniques. \
+ <br /><br />Toute prestation accomplie par la société Watch next implique l''adhésion sans réserve de l''acheteur aux présentes conditions générales de vente.
 cgv.head.2=Article 2 : Présentation des services
 cgv.body.2=Les caractéristiques des services proposés sont présentées dans la rubrique " Les services " de notre site. Les photographies n''entrent pas dans le champ contractuel. \
- La responsabilité de l''entreprise Hometime ne peut être engagée si des erreurs s''y sont introduites. \
- <br /><br />Tous les textes et images présentés sur le site de l''entreprise Hometime sont réservés, pour le monde entier, au titre des droits d''auteur et de propriété intellectuelle; \
+ La responsabilité de la société Watch next ne peut être engagée si des erreurs s''y sont introduites. \
+ <br /><br />Tous les textes et images présentés sur le site de la société Watch next sont réservés, pour le monde entier, au titre des droits d''auteur et de propriété intellectuelle; \
  leur reproduction, même partielle, est strictement interdite.
 cgv.head.3=Article 3 : Durée de validité des offres
 cgv.body.3=Dans le cadre des montres proposées à l''essai, les produits sont proposés lorsqu''ils sont effectivement disponibles. En cas d''indisponibilité temporaire, une date de disponibilité prévisionnelle est indiquée. Il n''est pas possible à l''heure actuelle de poser une option sur un produit non disponible.
 cgv.head.4=Article 4 : Tarifs des services
 cgv.body.4=La rubrique " Les tarifs " de notre site indique les prix en euros toutes taxes comprises. Il s''agit de prix indicatifs. Un devis personnalisé est réalisé avant chaque commande. \
- <br /><br />La entreprise Hometime se réserve le droit de modifier ses prix à tout moment mais les services commandés sont facturés au prix en vigueur lors de l''enregistrement de la commande. \
+ <br /><br />La société Watch next se réserve le droit de modifier ses prix à tout moment mais les services commandés sont facturés au prix en vigueur lors de l''enregistrement de la commande. \
  <br /><br />Aucun escompte ne sera accordé en cas de paiement anticipé.
 cgv.head.5=Article 5 : Commande
 cgv.body.5=Le client valide sa commande par mail après avoir reçu une proposition faisant suite à une demande de devis. Le mail contenant la proposition commerciale contient un lien vers les présentes et indique que l''acceptation de la proposition vaut acceptation de celles-ci. \
- <br /><br />La entreprise Hometime confirme la commande par courrier électronique; cette information reprend notamment tous les éléments de la commande et le droit de rétractation du client jusqu''à la date du rendez-vous convenu dans la proposition. \
- <br /><br />Les données enregistrées par l''entreprise Hometime constituent la preuve de la nature, du contenu et de la date de la commande. Celle-ci est archivée par l''entreprise Hometime dans les conditions et les délais légaux; le client peut accéder à cet archivage en contactant le service Relations Clients indiqué sur le site.
+ <br /><br />La société Watch next confirme la commande par courrier électronique; cette information reprend notamment tous les éléments de la commande et le droit de rétractation du client jusqu''à la date du rendez-vous convenu dans la proposition. \
+ <br /><br />Les données enregistrées par la société Watch next constituent la preuve de la nature, du contenu et de la date de la commande. Celle-ci est archivée par la société Watch next dans les conditions et les délais légaux; le client peut accéder à cet archivage en contactant le service Relations Clients indiqué sur le site.
 cgv.head.6=Article 6 : Modalités de paiement
 cgv.body.6=Le règlement des commandes s''effectue par chèque ou paiement paypal. \
  Lors du déplacement à domicile, l''acheteur devra verser un acompte de 50 % du montant global de la facture, le solde devant être payé lors du rendez-vous de restistution.
 cgv.head.7=Article 7 : Retard de paiement
 cgv.body.7=En cas de défaut de paiement total ou partiel le jour de la prise en charge, la commande sera annulée et la prestation n''aura pas lieu. \
- En cas de défaut de paiement total ou partiel le jour de la restitution, un deuxième rendez-vous sera fixé et l''acheteur devra verser à l''entreprise Hometime une pénalité de retard égale à une fois et demi le taux de l''intérêt légal ainsi qu''un montant forfaitaire de 50€ pour frais de déplacement. \
+ En cas de défaut de paiement total ou partiel le jour de la restitution, un deuxième rendez-vous sera fixé et l''acheteur devra verser à la société Watch next une pénalité de retard égale à une fois et demi le taux de l''intérêt légal ainsi qu''un montant forfaitaire de 50€ pour frais de déplacement. \
  <br /><br />Le taux de l''intérêt légal retenu est celui en vigueur au jour du premier rendez-vous de restitution. \
  <br /><br />Cette pénalité est calculée sur le montant hors taxes de la somme restant due, et court à compter de la date d''échéance du prix sans qu''aucune mise en demeure préalable ne soit nécessaire. \
  <br /><br />Conformément aux articles 441-6 c. com. et D. 441-5 c. com., tout retard de paiement entraine de plein droit, outre les pénalités de retard, une obligation pour le débiteur de payer une indemnité forfaitaire de 40€ pour frais de recouvrement. \
  <br /><br />Une indemnité complémentaire pourra être réclamée, sur justificatifs, lorsque les frais de recouvrement exposés sont supérieurs au montant de l''indemnité forfaitaire.
 cgv.head.8=Article 8 : Déplacements
-cgv.body.8=La entreprise Hometime se déplace au domicile du client pour l''exécution de l''ensemble des prestations. Les dates de rendez-vous sont fixées dans les créneaux précisés sur le site dans la rubrique " Les services ".
+cgv.body.8=La société Watch next se déplace au domicile du client pour l''exécution de l''ensemble des prestations. Les dates de rendez-vous sont fixées dans les créneaux précisés sur le site dans la rubrique " Les services ".
 cgv.head.9=Article 9 : Relations clients - Service après-vente
-cgv.body.9=Pour toute information, question ou réclamation, le client peut s''adresser du lundi au vendredi, de 9 h à 18 h au service Relations Clients de l''entreprise par email : \
+cgv.body.9=Pour toute information, question ou réclamation, le client peut s''adresser du lundi au vendredi, de 9 h à 18 h au service Relations Clients de la société par email : \
   <br /><br />e-mail: contact@hometime.fr
 
 # Privacy page
