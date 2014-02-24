@@ -46,8 +46,9 @@ POST    /quand-faire-la-revision    controllers.Application.manageServiceTest()
 GET     /checkResults/:id           controllers.Application.checkServiceTestResult(id: Integer, custom: Boolean ?= false, email: String ?= "toto@titi.fr")
 
 # About
-GET     /a-propos                   controllers.Application.about()
-GET     /about                      controllers.Default.redirect(to = "/a-propos")
+GET     /mentions-legales            controllers.Application.about()
+GET     /a-propos                   controllers.Default.redirect(to = "/mentions-legales")
+GET     /about                      controllers.Default.redirect(to = "/mentions-legales")
 
 # Privacy
 GET     /vie-prive                  controllers.Application.privacy()
