@@ -37,6 +37,10 @@ public class OrderRequest extends Model {
 		    return name;
 		}
 		
+		public int intValue() {
+			return Integer.valueOf(name);
+		}
+		
 		public static OrderTypes fromString(String name) {
 	        for (OrderTypes type : OrderTypes.values()) {
 	            if (type.name.equals(name)) {

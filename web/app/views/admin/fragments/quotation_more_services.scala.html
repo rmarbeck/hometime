@@ -1,0 +1,21 @@
+@(quotation: Quotation)
+@import tags._
+<u>Prestations complémentaires :<br></u>
+<br>
+Si vous le souhaitez, nous pouvons vous présenter une sélection d’accessoires horlogers lors du premier rendez-vous :
+<ul class="main">
+    <li>Bracelets,</li>
+    <li>Boites à montre,</li>
+    <li>Remontoirs automatiques,</li>
+    <li>Produits d’entretien,</li>
+    <li>Livres.</li>
+</ul>
+N’hésitez pas à nous l’indiquer dans votre réponse !
+@quotation.typeOfNetwork match {
+  case Quotation.TypesOfNetwork.OUT_ONLY | Quotation.TypesOfNetwork.OUT_BOTH => {
+<br><br>
+De plus, si vous possédez des montres à quartz nécessitant un changement de pile avec contrôle d’étanchéité, nous pouvons vous proposer une prise en charge de ces montres dans le même délai.
+  }
+  case default => {
+  }
+}

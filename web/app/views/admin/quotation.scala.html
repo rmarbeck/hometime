@@ -1,0 +1,193 @@
+@(quotation: Quotation)
+@import tags._
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Proposition de devis Hometime</title>
+<style type="text/css">
+    a { border: none; }
+    img { border: none; }
+    p { margin: 0; line-height: 1.3em; }
+    #footer-msg a { color: #F3A836; }
+    h1,h2,h3,h4,h5,h6 {font-size:100%;margin:0;}
+    ul.main {line-height: 1.5em;}
+    ul.no-bullet {list-style-type: none;}
+    .to-change {color: red; }
+</style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #eeeeee" bgcolor="#eeeeee">
+	<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+		<tr>
+			<td align="center" style="padding: 37px 0; background-color: #eeeeee;" bgcolor="#eeeeee">
+				<div style="padding: 0 0 10px"><a href="[[PERMALINK]]" style="line-height: 1;vertical-align: bottom;color: #000000; font-family: arial; font-size: 11px; ;border: none;">Voir la version en ligne</a></div>
+                <table cellpadding="0" cellspacing="0" border="0" style="margin: 0; border: 1px solid #dddddd; color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff; " width="600">
+					<tr>
+						<td>
+							<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								<tr>
+									<td>
+										<img width="600" alt="" style="display: block; width: 600px;border: none;" src="http://xiv.r.mailjet.com/img/1kmh/x2r93/xxkxx.png">
+									</td>
+								</tr>
+							</table>
+							<table cellpadding="0" cellspacing="0" border="0" style="margin: 0; border-collapse: collapse;" width="100%">
+								<tr>
+									<td style="color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff;  padding: 5px 0;" align="left"><table style="margin: 0 0 0 10px;border-collapse:collapse;color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff; "><tr><td width="580" style="vertical-align: top; padding: 5px 0; "><table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:565px;color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff; " width="565"><tr><td style="padding:5px 0 5px 5px;line-height:normal;color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff; ">
+										<p style="margin: 0 0 10px;line-height: 1.3em;">
+										@quotation.typeOfNetwork match {
+										  case Quotation.TypesOfNetwork.IN_ONLY | Quotation.TypesOfNetwork.IN_BOTH => {
+											Bonjour,<br><br>Veuillez trouver ci-dessous le devis Hometime correspondant à votre demande pour une intervention dans le réseau officiel @quotation.brand. Nous vous en souhaitons bonne réception.<br>Pouvez-vous nous confirmer la bonne réception de ce mail ? Merci d'avance.<br><br>
+										  }
+										  case Quotation.TypesOfNetwork.OUT_ONLY => {
+											Bonjour,<br><br>Veuillez trouver ci-dessous le devis Hometime correspondant à un entretien auprès d'un horloger partenaire de grande qualité. Nous vous en souhaitons bonne réception.<br>Pouvez-vous nous confirmer la bonne réception de ce mail ? Merci d'avance.<br><br>
+										  }
+										  case Quotation.TypesOfNetwork.OUT_BOTH => {
+											Bonjour,<br><br>Veuillez trouver ci-dessous un devis Hometime alternatif correspondant à un entretien auprès d'un horloger partenaire de grande qualité. Nous vous en souhaitons bonne réception.<br><br>
+										  }
+										}
+										</p>
+										<u>Rappel de la demande :</u>
+										<ul class="main">
+											<li>@Html(Messages("admin.quotation.request.service.type.value."+quotation.serviceType.intValue, quotation.watch)).</li>
+										@quotation.typeOfNetwork match {
+										  case Quotation.TypesOfNetwork.IN_ONLY | Quotation.TypesOfNetwork.IN_BOTH => {
+											<li>Entretien dans le réseau officiel @quotation.brand.</li>
+										  }
+										  case default => {
+											<li>Entretien chez un horloger indépendant.</li>
+										  }
+										}
+										@if(quotation.watchChosen != null) {
+											<li>Essai d'une @quotation.watchChosen pendant toute la durée de l'entretien.</li>
+										} else {
+											<li>Pas d'essai de montre pendant l'entretien.</li>
+										}
+										</ul>
+										<br>
+										@if(quotation.infosGivenByCustomer1 != null) {
+                                        @if(quotation.infosGivenByCustomer2 != null) {<u>Précisions apportées par le client :</u>} else {<u>Précision apportée par le client :</u>}
+                                        <ul class="main">
+                                            <li>@quotation.infosGivenByCustomer1</li>
+                                            @if(quotation.infosGivenByCustomer2 != null) {<li>@quotation.infosGivenByCustomer2</li>}
+                                            @if(quotation.infosGivenByCustomer3 != null) {<li>@quotation.infosGivenByCustomer3</li>}
+                                        </ul>
+                                        <br>
+                                        }
+										@if(quotation.hypothesis1 != null) {
+                                        <u>Hypothèses prises :</u>
+                                        <ul class="main">
+                                            <li>@quotation.hypothesis1</li>
+                                            @if(quotation.hypothesis2 != null) {<li>@quotation.hypothesis2</li>}
+                                            @if(quotation.hypothesis3 != null) {<li>@quotation.hypothesis3</li>}
+                                        </ul>
+                                        <br>
+                                        }
+										@if(quotation.remark1 != null) {
+										@if(quotation.remark2 != null) {<u>Remarques particulières :</u>} else {<u>Remarque particulière :</u>}
+										<ul class="main">
+											<li>@quotation.remark1</li>
+											@if(quotation.remark2 != null) {<li>@quotation.remark2</li>}
+											@if(quotation.remark3 != null) {<li>@quotation.remark3</li>}
+										</ul>
+										<br>
+										}
+										<u>Prestations proposées :</u>
+										<ul class="main">
+											<li>Prise en charge à domicile</li>
+										</ul>
+										<ul>
+											<ul>
+												<li>Premier rendez-vous :
+													<ul>
+														<li>Déplacement pour la collecte de la montre,</li>
+														<li>Photographie de la montre lors de la prise en charge et mise à disposition des photos au client,</li>
+														@if(quotation.watchChosen != null) {
+														<li>Remise en main de la montre de prêt (avec mise à la taille du bracelet) : @quotation.watchChosen,</li>
+														<li>Signature du contrat incluant l’ensemble des remarques formulées sur l’état des montres.</li>
+														} else {
+														<li>Signature du contrat incluant l’ensemble des remarques formulées sur l’état de la montre.</li>
+														}
+													</ul>
+												</li>
+												<li>Deuxième rendez-vous :
+													<ul>
+													@if(quotation.watchChosen != null) {
+														<li>Retour de la montre entretenue et restitution de la montre de prêt,</li>
+														} else {
+														<li>Retour de la montre entretenue,</li>
+														}
+														<li>Dépôt des documents certifiant les opérations menées durant l'entretien et de la garantie (yc étanchéité).</li>
+													</ul>
+												</li>
+												@quotation.typeOfNetwork match {
+												  case Quotation.TypesOfNetwork.OUT_ONLY | Quotation.TypesOfNetwork.OUT_BOTH => {
+												<li>Tout au long de l'entretien :
+													<ul>
+														<li>Information sur l'avancement des travaux.</li>
+													</ul>
+												</li>
+												  }
+												  case default => {
+												  }
+												}
+											</ul>
+										</ul>
+										
+										@quotation.typeOfNetwork match {
+										  case Quotation.TypesOfNetwork.IN_ONLY | Quotation.TypesOfNetwork.IN_BOTH => {
+										      @admin.fragments.quotation_official_service(quotation)
+										  }
+										  case default => {
+										      @admin.fragments.quotation_partner_service(quotation)
+										  }
+										}
+										
+										@admin.fragments.quotation_validity_time_and_limits(quotation)
+
+										@quotation.typeOfNetwork match {
+												  case Quotation.TypesOfNetwork.OUT_ONLY | Quotation.TypesOfNetwork.OUT_BOTH => {
+                                                    @admin.fragments.quotation_partners_description(quotation)
+										  }
+										  case default => {
+                                          }
+										}
+										
+										@admin.fragments.quotation_outside_zone(quotation)
+										
+										@admin.fragments.quotation_more_services(quotation)
+										
+										@admin.fragments.quotation_end_part(quotation)
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table cellpadding="10" cellspacing="0" border="0" style="margin: 0; border-collapse: collapse;" width="600">
+		<tr>
+			<td style="color: #444444; background-color: #eeeeee; border-color: #eeeeee; align: left; font-family: arial; font-size: 11px; ">
+				<table cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin: 0; border-collapse: collapse;" width="100%">
+					<tr>
+						<td align="left" valign="top" style="vertical-align: top; text-align: left; color: #444444; background-color: #eeeeee; border-color: #eeeeee; align: left; font-family: arial; font-size: 11px; ">
+							<div id="nl_footer" style="display: block; text-align: left; margin: 0;">Cet email a été envoyé à <a href="mailto:[[EMAIL_TO]]" style="color:#000000;border: none;">[[EMAIL_TO]]</a>, <a href="[[UNSUB_LINK_FR]]" style="color:#000000;border: none;">cliquez ici pour vous désabonner</a>.</div>
+							<div id="footer_address" style="display: block; text-align: left; margin: 5px 0 0;">Watch next SAS, N° SIRET : 800 198 418 00017 RCS de Versailles<br>
+								Représentée par son président, Raphaël Marbeck
+								<br>
+								Siège social : 11 bis rue Pierre Curie, 78600 Maisons Laffitte
+								<br>
+							</div>
+						</td>
+						<td align="right" valign="top" style="vertical-align: top; text-align: right">
+							<a href="http://www.mailjet.com" style="border: none;border: none;"><img class="nl_footer_logo" alt="" style="border: none;" src="http://www.mailjet.com/images/theme/v1/logos/nl_logo.png"></a>
+						</td>
+					</tr>
+				</table>
+			</td>
+        </tr>
+	</table>
+</body>
+</html>

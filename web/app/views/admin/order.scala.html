@@ -100,5 +100,13 @@
             </table>
         </div>
       </div>
+      <div class="row">
+        @if(request.method.equals(OrderRequest.MethodTypes.BOTH)) {
+        <div class="col-xs-6 text-right"><a class="btn btn-default" href="@routes.Admin.prepareQuotationFromOrder(request.id)?inNetwork=true" role="button">@Messages("admin.quotation.prepare.in.network.call.to.action")</a></div>
+        <div class="col-xs-6 text-left"><a class="btn btn-primary" href="@routes.Admin.prepareQuotationFromOrder(request.id)?inNetwork=false" role="button">@Messages("admin.quotation.prepare.out.call.to.action")</a></div>
+        } else {
+        <div class="col-xs-12 text-center"><a class="btn btn-primary" href="@routes.Admin.prepareQuotationFromOrder(request.id)" role="button">@Messages("admin.quotation.prepare.call.to.action")</a></div>
+        }
+      </div>
     </div>
 }

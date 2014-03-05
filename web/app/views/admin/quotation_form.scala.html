@@ -1,0 +1,148 @@
+@(quotation: Form[Admin.QuotationForm], available_watches: List[Watch])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@layouts.admin() {
+    <div class="container">
+            @helper.form(action = routes.Admin.displayQuotation(), 'class -> "form-horizontal", 'role -> "form") {
+        
+                @tags.myInputRadioGroup(quotation("serviceType"),
+                                Seq( OrderRequest.OrderTypes.SETTINGUP.toString -> Messages("admin.quotation.form.value.type.of.service.setting.up"), OrderRequest.OrderTypes.INTERMEDIATE.toString -> Messages("admin.quotation.form.value.type.of.service.intermediate"), OrderRequest.OrderTypes.SERVICE.toString -> Messages("admin.quotation.form.value.type.of.service.service"), OrderRequest.OrderTypes.REPAIR.toString -> Messages("admin.quotation.form.value.type.of.service.repair")), '_label -> Messages("admin.quotation.form.label.type.of.service"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @tags.myInputRadioGroup(quotation("typeOfNetwork"),
+                                Seq( Quotation.TypesOfNetwork.IN_BOTH.toString -> Messages("admin.quotation.form.value.type.of.network.in.both"), Quotation.TypesOfNetwork.IN_ONLY.toString -> Messages("admin.quotation.form.value.type.of.network.in.only"), Quotation.TypesOfNetwork.OUT_BOTH.toString -> Messages("admin.quotation.form.value.type.of.network.out.both"), Quotation.TypesOfNetwork.OUT_ONLY.toString -> Messages("admin.quotation.form.value.type.of.network.out.only")), '_label -> Messages("admin.quotation.form.label.type.of.network"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("watch"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.watch"), '_label -> Messages("admin.quotation.form.label.watch"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("brand"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.brand"), '_label -> Messages("admin.quotation.form.label.brand"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.select(quotation("watchChosen"),
+                                     for (w <- available_watches) yield w.id.toString -> (w.brand ++ " - " ++ w.short_name),
+                                     '_default -> Messages("admin.quotation.form.value.watch.chosen.default"),
+                                     '_label -> Messages("admin.quotation.form.label.watch.chosen"),
+                                     'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("delay"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.delay"), '_label -> Messages("admin.quotation.form.label.delay"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @tags.myInputRadioGroup(quotation("delayCanBeReduced"),
+                                Seq( "0" -> Messages("admin.quotation.form.value.delay.can.be.reduced.no"), "1" -> Messages("admin.quotation.form.value.delay.can.be.reduced.yes")), '_label -> Messages("admin.quotation.form.label.delay.can.be.reduced"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @tags.myInputRadioGroup(quotation("delayIsNotSure"),
+                                Seq( "0" -> Messages("admin.quotation.form.value.delay.is.sure"), "1" -> Messages("admin.quotation.form.value.delay.is.not.sure")), '_label -> Messages("admin.quotation.form.label.delay.is.not.sure"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("delayReturn"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.delay.return"), '_label -> Messages("admin.quotation.form.label.delay.return"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("delayBrand1"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.delay.brand.1"), '_label -> Messages("admin.quotation.form.label.delay.brand.1"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("delayBrand2"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.delay.brand.2"), '_label -> Messages("admin.quotation.form.label.delay.brand.2"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("price"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.price"), '_label -> Messages("admin.quotation.form.label.price"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @tags.myInputRadioGroup(quotation("priceIsNotFinal"),
+                                Seq( "0" -> Messages("admin.quotation.form.value.price.is.final"), "1" -> Messages("admin.quotation.form.value.price.is.not.final")), '_label -> Messages("admin.quotation.form.label.price.is.not.final"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("priceService"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.price.service"), '_label -> Messages("admin.quotation.form.label.price.service"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("priceLoan"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.price.loan"), '_label -> Messages("admin.quotation.form.label.price.loan"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @helper.inputText(quotation("warantyTime"),
+                                'placeholder -> Messages("admin.quotation.form.placeholder.waranty"), '_label -> Messages("admin.quotation.form.label.waranty"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                @tags.myInputRadioGroup(quotation("outsideZone"),
+                                Seq( "0" -> Messages("admin.quotation.form.value.outside.zone.inside"), "1" -> Messages("admin.quotation.form.value.outside.zone.outside")), '_label -> Messages("admin.quotation.form.label.outside.zone"),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                <div class="form-group">
+                  <label for="infosGivenByCustomer" class="col-xs-3 control-label">@Messages("admin.quotation.form.label.cat.infos.given.by.customer")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                        @helper.inputText(quotation("infosGivenByCustomer1"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.infos.given.by.customer.1"), '_label -> Messages("admin.quotation.form.label.infos.given.by.customer.1"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                        @helper.inputText(quotation("infosGivenByCustomer2"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.infos.given.by.customer.2"), '_label -> Messages("admin.quotation.form.label.infos.given.by.customer.2"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                        @helper.inputText(quotation("infosGivenByCustomer3"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.infos.given.by.customer.3"), '_label -> Messages("admin.quotation.form.label.infos.given.by.customer.3"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="hypothesis" class="col-xs-3 control-label">@Messages("admin.quotation.form.label.cat.hypothesis")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                        @helper.inputText(quotation("hypothesis1"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.hypothesis.1"), '_label -> Messages("admin.quotation.form.label.hypothesis.1"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                        @helper.inputText(quotation("hypothesis2"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.hypothesis.2"), '_label -> Messages("admin.quotation.form.label.hypothesis.2"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                        @helper.inputText(quotation("hypothesis3"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.hypothesis.3"), '_label -> Messages("admin.quotation.form.label.hypothesis.3"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="remark" class="col-xs-3 control-label">@Messages("admin.quotation.form.label.cat.remark")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                        @helper.inputText(quotation("remark1"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.remark.1"), '_label -> Messages("admin.quotation.form.label.remark.1"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                        @helper.inputText(quotation("remark2"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.remark.2"), '_label -> Messages("admin.quotation.form.label.remark.2"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                        @helper.inputText(quotation("remark3"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.remark.3"), '_label -> Messages("admin.quotation.form.label.remark.3"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="remark" class="col-xs-3 control-label">@Messages("admin.quotation.form.label.cat.partner.asset")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                        @helper.inputText(quotation("partnerAsset"),
+                                        'placeholder -> Messages("admin.quotation.form.placeholder.partner.asset"), '_label -> Messages("admin.quotation.form.label.partner.asset"),
+                                        'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11", '_showConstraints -> false)
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-9 text-center">
+                    <button type="submit" class="btn btn-primary">@Html(Messages("admin.quotation.action.submit"))</button>
+                  </div>
+                </div>
+            }
+    </div>
+}

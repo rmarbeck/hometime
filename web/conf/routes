@@ -46,7 +46,7 @@ POST    /quand-faire-la-revision    controllers.Application.manageServiceTest()
 GET     /checkResults/:id           controllers.Application.checkServiceTestResult(id: Integer, custom: Boolean ?= false, email: String ?= "toto@titi.fr")
 
 # About
-GET     /mentions-legales            controllers.Application.about()
+GET     /mentions-legales           controllers.Application.about()
 GET     /a-propos                   controllers.Default.redirect(to = "/mentions-legales")
 GET     /about                      controllers.Default.redirect(to = "/mentions-legales")
 
@@ -66,6 +66,9 @@ GET     /admin/order/all            controllers.Admin.displayOrders(p:Int ?= 0, 
 GET     /admin/order/:id            controllers.Admin.displayOrder(id: Long)
 GET     /admin/service/all          controllers.Admin.displayServiceTests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/service/:id          controllers.Admin.displayServiceTest(id: Long)
+GET     /admin/quotation            controllers.Admin.prepareQuotation()
+GET     /admin/quotation/:id        controllers.Admin.prepareQuotationFromOrder(id: Long, inNetwork: Boolean ?= false)
+POST    /admin/quotation            controllers.Admin.displayQuotation()
 
 # Sitemap
 GET     /sitemap.xml                controllers.Application.sitemap()

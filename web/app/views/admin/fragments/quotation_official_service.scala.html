@@ -1,0 +1,74 @@
+@(quotation: Quotation)
+@import tags._
+
+<ul class="main"><li>Entretien dans le réseau @quotation.brand</li></ul>
+<ul>
+    <ul>
+    @if(quotation.priceIsNotFinal) {
+        <li>Dépôt de la montre auprès du service après vente de la marque,</li>
+        <li>Envoi de la montre à l’atelier pour élaboration d’un devis,</li>
+        <li>Si accord sur le devis, réalisation des travaux proposés,</li>
+        @if(quotation.serviceType.equals(OrderRequest.OrderTypes.SERVICE)) {
+        <li>Au minimum, une révision complète de la montre et un traitement de rénovation complète du boitier et du bracelet sont réalisés,</li>
+        }
+        <li>Retour de la montre.</li>
+    } else {
+        <li>Dépôt de la montre auprès d'un centre d'entretien agréé @quotation.brand,</li>
+        <li>Diagnostic exhaustif préalable visant à vérifier la prise en charge dans le forfait prévu,</li>
+        @if(quotation.serviceType.equals(OrderRequest.OrderTypes.SERVICE)) {
+        <li>Révision complète du mouvement (la montre et le mouvement sont intégralement démontés, nettoyés, huilés et remontés),</li>
+        } else {
+        <li>Réalisation des opérations,</li>
+        }
+        <li>Contrôle du bon fonctionnement et des performances chronométriques,</li>
+        <li>Retour de la montre.</li>
+    }
+    </ul>
+</ul>
+<br><br>
+<u>Durée et tarifs :<br></u>
+<br>
+@if(quotation.delayIsNotSure) {
+Hometime ne peut vous donner d’engagement ferme sur la durée de l’intervention dans le cadre d’une prise en charge par le réseau de la marque, car ceux-ci dépendent de @quotation.brand. Cependant, les délais habituels sont les suivants :
+<ul>
+    <li>Emission du devis @quotation.brand : @quotation.delayBrand1,</li>
+    <li>Réalisation des opérations : @quotation.delayBrand2.</li>
+</ul>
+Ainsi, sans pouvoir s’engager formellement, Hometime envisage un délai <strong>@quotation.delay</strong>.                                     
+} else {
+  Hometime vous propose de réaliser la prestation sous un délai <strong>@quotation.delay</strong>.
+  @if(quotation.delayCanBeReduced) {Ce délai peut être légèrement raccourci si vous le souhaitez.}
+}
+<br><br>
+@if(quotation.priceIsNotFinal) {
+  @if(quotation.delayIsNotSure) {De la même façon, }Hometime ne peut s’engager formellement sur le tarif de l’ensemble des prestations tant que le devis n'a pas été fourni par @quotation.brand.
+   @if(quotation.watchChosen != null) {
+Cependant, Hometime vous propose pour la prestation de prise en charge à domicile et de révision un tarif @{quotation.priceService}.
+<br><br>
+Pour le prêt de la montre à l'essai, le tarif est ferme :
+<ul>
+    <li>Essai @quotation.watchChosen pendant toute la durée de l’entretien : @{quotation.priceLoan}.</li>
+</ul>
+Ainsi, nous vous proposons un tarif total <strong>@{quotation.price}</strong>.
+   } else {
+Cependant, Hometime vous propose pour la prestation de prise en charge à domicile et de révision un tarif <strong>@{quotation.price}</strong>.
+  }
+<br><br>
+Le tarif précis vous sera communiqué dès réception du devis @quotation.brand. Nous nous engageons à vous faire bénéficier du meilleur prix.
+} else {
+  @if(quotation.watchChosen != null) {
+Hometime vous propose pour l'ensemble de la prestation les tarifs suivants :
+<ul>
+    <li>@Html(Messages("admin.quotation.request.service.type.value."+quotation.serviceType.intValue, quotation.watch)) : @{quotation.priceService}.</li>
+    <li>Essai @quotation.watchChosen pendant toute la durée de l’entretien : @{quotation.priceLoan}.</li>
+</ul>
+Ainsi, nous vous proposons un tarif total <strong>@{quotation.price}</strong>.
+  } else {
+Pour l’ensemble des prestations ci-dessus, Hometime vous propose un tarif <strong>@{quotation.price}</strong>.
+  }
+}
+<br><br>
+Les opérations sont garanties @quotation.warantyTime par @quotation.brand.
+<br><br>
+Sur accord de principe de votre part par e-mail, nous éditerons un devis formel que nous vous ferons parvenir pour signature et pourrons convenir avec vous d’une date pour le premier rendez-vous.
+<br><br>
