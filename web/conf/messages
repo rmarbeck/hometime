@@ -434,7 +434,7 @@ order.autre.html.keywords=devis gratuit,devis en ligne, entretien, horloger agr�
 
 order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)
 order.form.value.type.of.service.repair=Réparation (ma montre ne fonctionne pas)
-order.form.value.type.of.service.service=Révision complète (démontage, nettoyage, huilage, <abbr class="" title="Si vous le souhaitez" >polissage</abbr>), à pévoir tous les 5 ans environ
+order.form.value.type.of.service.service=Révision complète (démontage, nettoyage, huilage, <abbr class="" title="Si vous le souhaitez" >polissage</abbr>), à prévoir tous les 5 ans environ
 order.form.value.type.of.service.intermediate=Entretien intermédiaire (étanchéité et léger <abbr class="" title="Si vous le souhaitez" >polissage</abbr>), à prévoir tous les 2 à 4 ans
 order.form.value.type.of.service.setting.up=Réglage de la précision du mouvement
 order.form.value.type.of.service.setting.up.help=Si votre montre est récente ou si sa dernière révision date de quelques mois et que vous constatez une prise d''avance de quelques dizaines de secondes par jour, cet entretien peut résoudre ce problème avec une intervention simple et rapide.
