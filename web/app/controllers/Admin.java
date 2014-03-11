@@ -147,8 +147,8 @@ public class Admin extends Controller {
 	    	quotation.outsideZone = ("0".equals(this.outsideZone))?false:true;
 	    	quotation.delayCanBeReduced = ("0".equals(this.delayCanBeReduced))?false:true;
 	    	quotation.infosGivenByCustomer1 = getStringValue(this.infosGivenByCustomer1);
-	    	quotation.infosGivenByCustomer1 = getStringValue(this.infosGivenByCustomer1);
-	    	quotation.infosGivenByCustomer1 = getStringValue(this.infosGivenByCustomer1);
+	    	quotation.infosGivenByCustomer2 = getStringValue(this.infosGivenByCustomer2);
+	    	quotation.infosGivenByCustomer3 = getStringValue(this.infosGivenByCustomer3);
 	    	quotation.remark1 = getStringValue(this.remark1);
 	    	quotation.remark2 = getStringValue(this.remark2);
 	    	quotation.remark3 = getStringValue(this.remark3);

@@ -23,6 +23,23 @@ body {
   font-size: 13px;
 }
 
+// Bug in chrome when displaying donwloaded fonts
+body {
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-name: fontfix;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.5s;
+}
+
+// Bug in chrome when displaying donwloaded fonts
+@-webkit-keyframes fontfix{
+    from{   opacity: 1; }
+    50%{    opacity: 0.8; }
+    to{ opacity: 1; }
+}
+
+
 @import "_footer.less";
 
 @import "_page_baseline.less";
