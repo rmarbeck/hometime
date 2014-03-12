@@ -1,6 +1,6 @@
 @(quotation: Quotation)
 @import tags._
-<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="fr">
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -102,42 +102,44 @@
 										<ul class="main">
 											<li>Prise en charge à domicile</li>
 										</ul>
-										<ul>
-											<ul>
-												<li>Premier rendez-vous :
-													<ul>
-														<li>Déplacement pour la collecte de la montre,</li>
-														<li>Photographie de la montre lors de la prise en charge et mise à disposition des photos au client,</li>
-														@if(quotation.watchChosen != null) {
-														<li>Remise en main de la montre de prêt (avec mise à la taille du bracelet) : @quotation.watchChosen,</li>
-														<li>Signature du contrat incluant l’ensemble des remarques formulées sur l’état des montres.</li>
-														} else {
-														<li>Signature du contrat incluant l’ensemble des remarques formulées sur l’état de la montre.</li>
-														}
-													</ul>
-												</li>
-												<li>Deuxième rendez-vous :
-													<ul>
-													@if(quotation.watchChosen != null) {
-														<li>Retour de la montre entretenue et restitution de la montre de prêt,</li>
-														} else {
-														<li>Retour de la montre entretenue,</li>
-														}
-														<li>Dépôt des documents certifiant les opérations menées durant l'entretien et de la garantie (yc étanchéité).</li>
-													</ul>
-												</li>
-												@quotation.typeOfNetwork match {
-												  case Quotation.TypesOfNetwork.OUT_ONLY | Quotation.TypesOfNetwork.OUT_BOTH => {
-												<li>Tout au long de l'entretien :
-													<ul>
-														<li>Information sur l'avancement des travaux.</li>
-													</ul>
-												</li>
-												  }
-												  case default => {
-												  }
-												}
-											</ul>
+										<ul class="no-bullet">
+                                            <li>
+											     <ul>
+    												<li>Premier rendez-vous :
+    													<ul>
+    														<li>Déplacement pour la collecte de la montre,</li>
+    														<li>Photographie de la montre lors de la prise en charge et mise à disposition des photos au client,</li>
+    														@if(quotation.watchChosen != null) {
+    														<li>Remise en main de la montre de prêt (avec mise à la taille du bracelet) : @quotation.watchChosen,</li>
+    														<li>Signature du contrat incluant l’ensemble des remarques formulées sur l’état des montres.</li>
+    														} else {
+    														<li>Signature du contrat incluant l’ensemble des remarques formulées sur l’état de la montre.</li>
+    														}
+    													</ul>
+    												</li>
+    												<li>Deuxième rendez-vous :
+    													<ul>
+    													@if(quotation.watchChosen != null) {
+    														<li>Retour de la montre entretenue et restitution de la montre de prêt,</li>
+    														} else {
+    														<li>Retour de la montre entretenue,</li>
+    														}
+    														<li>Dépôt des documents certifiant les opérations menées durant l'entretien et de la garantie (yc étanchéité).</li>
+    													</ul>
+    												</li>
+    												@quotation.typeOfNetwork match {
+    												  case Quotation.TypesOfNetwork.OUT_ONLY | Quotation.TypesOfNetwork.OUT_BOTH => {
+    												<li>Tout au long de l'entretien :
+    													<ul>
+    														<li>Information sur l'avancement des travaux.</li>
+    													</ul>
+    												</li>
+    												  }
+    												  case default => {
+    												  }
+    												}
+    											</ul>
+    										</li>
 										</ul>
 										
 										@quotation.typeOfNetwork match {

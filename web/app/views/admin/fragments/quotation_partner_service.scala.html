@@ -2,7 +2,8 @@
 @import tags._
 
 <ul class="main"><li>Entretien auprès d'un excellent atelier partenaire parisien</li></ul>
-<ul>
+<ul class="no-bullet">
+  <li>
     <ul>
     @quotation.serviceType match {
       case OrderRequest.OrderTypes.SERVICE => {
@@ -93,6 +94,7 @@
       }
     }
     </ul>
+  </li>
 </ul>
 <br><br>
 <u>Durée et tarifs :<br></u>
