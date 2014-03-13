@@ -36,9 +36,13 @@ GET     /demande-de-devis/montre/reparation/revision/:brand    controllers.Appli
 GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
 
-# Order
+# Contact
 GET     /nous-contacter             controllers.Application.contact()
 POST    /nous-contacter             controllers.Application.manageContact()
+
+# CallRequest
+GET     /demande-de-rappel          controllers.Application.callRequest()
+POST    /demande-de-rappel          controllers.Application.manageCallRequest()
 
 # ServiceTest
 GET     /quand-faire-la-revision    controllers.Application.service_test()

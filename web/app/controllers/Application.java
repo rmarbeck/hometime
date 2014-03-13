@@ -202,6 +202,34 @@ public class Application extends Controller {
 	    }
 	}
 	
+	public static class CallForm {
+
+		@Constraints.Required
+		@Formats.NonEmpty
+		public String number;
+		@Constraints.Required
+		@Column(length = 1000)
+		@Formats.NonEmpty
+		public String reason;
+		
+	    public String validate() {
+	        return null;
+	    }
+	    
+	    public CallForm() {
+	    	super();
+	    }
+	    
+	    public String toString() {
+	    	StringBuilder content = new StringBuilder();
+	    	content.append(this.getClass().getSimpleName() + " : [");
+	    	content.append(" Number is : " + this.number);
+	    	content.append(", Message is : " + this.reason);
+	    	content.append("]");
+	    	return content.toString();
+	    }
+	}
+	
 
     public static Result index() {
         return ok(index.render("", getSupportedBrands()));
@@ -265,6 +293,14 @@ public class Application extends Controller {
     public static Result contact() {
     	try {
 	        return ok(contact.render("", Form.form(ContactForm.class).fill(new ContactForm())));
+    	} catch (Exception e) {
+    		return internalServerError();
+    	}
+    }
+    
+    public static Result callRequest() {
+    	try {
+	        return ok(call.render("", Form.form(CallForm.class).fill(new CallForm())));
     	} catch (Exception e) {
     		return internalServerError();
     	}
@@ -335,6 +371,24 @@ public class Application extends Controller {
 			return contact();
 		}
 	}
+	
+	
+	public static Result manageCallRequest() {
+		Form<CallForm> callForm = Form.form(CallForm.class).bindFromRequest();
+		if(callForm.hasErrors()) {
+			return badRequest(call.render("", callForm));
+		} else {
+			ActionHelper.tryToNotifyTeamByEmail("Demande de rappel", callForm.toString());
+			
+			flash("success", "OK");
+			
+			GoogleAnalyticsHelper.pushEvent("contact", "sent", ctx());
+			
+			return contact();
+		}
+	}
+	
+	
 	
 	public static Result manageServiceTest() {
 		Form<ServiceTestForm> serviceTestForm = Form.form(ServiceTestForm.class).bindFromRequest();

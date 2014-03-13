@@ -69,4 +69,14 @@
       <priority>0.6</priority>
     </url>
     }
+    <url>
+      <loc>http://@{request.host()}@routes.Application.contact()</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.3</priority>
+    </url>
+    <url>
+      <loc>http://@{request.host()}@routes.Application.callRequest()</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.3</priority>
+    </url>
 </urlset>

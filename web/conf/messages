@@ -33,6 +33,7 @@ global.text.terms=Conditions&nbsp;générales&nbsp;de&nbsp;vente
 global.text.who.are.we=Mentions&nbsp;légales
 global.text.site.plan=Plan&nbsp;du&nbsp;site
 global.text.contact=Nous&nbsp;contacter
+global.text.call.request=Etre&nbsp;rappelé
 global.text.issue=Signaler&nbsp;un&nbsp;problème
 global.text.back.to.top=Haut de page
 global.action.logout=Se déconnecter
@@ -487,6 +488,22 @@ contact.success.panel.heading=Message envoyé
 contact.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre message et allons en prendre connaissance. <br /><br />A très bientôt.
 contact.action.submit=Envoyer
 
+# Call request page
+call.request.html.title=Etre rappelé
+call.request.html.description=Formulaire de contact, poser une question ou demander un renseignement, nous vous rappelons par téléphone.
+call.request.html.keywords=Nous contacter, question, information, renseignement, téléphone, rappel
+call.request.baseline=Demandez nous de vous rappeler
+call.request.text.explanation=Vous souhaitez nous poser une question ou pour toute autre raison, veuillez remplir le formulaire ci-dessous. Nous vous rappellerons le plus rapidement possible.
+
+call.request.form.label.title=* Votre numéro de téléphone
+call.request.form.placeholder.title=06xxxxxxxx
+call.request.form.label.message=* Motif (donné à titre indicatif)
+call.request.form.placeholder.message=Le motif de votre demande de contact
+call.request.form.mandatory.mark.explanation=* Champ obligatoire
+call.request.success.panel.heading=Demande prise en compte
+call.request.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre demande et allons vous rappeler très rapidement. <br /><br />A très bientôt.
+call.request.action.submit=Envoyer
+
 # Service Test page
 service.test.html.title=Dois-je faire réviser ma montre ?
 service.test.html.description=Formulaire d''évaluation du meilleur moment pour faire réviser sa montre
@@ -771,6 +788,8 @@ site.plan.watch.title=Fiche {0} - {1}
 site.plan.about.title=Mentions légales
 site.plan.cgv.title=Conditions générales de vente
 site.plan.privacy.title=Confidentialité et vie privée
+site.plan.contact.title=Prise de contact
+site.plan.call.request.title=Rappel téléphonique
 
 
 
