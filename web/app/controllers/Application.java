@@ -384,7 +384,7 @@ public class Application extends Controller {
 			
 			GoogleAnalyticsHelper.pushEvent("contact", "sent", ctx());
 			
-			return contact();
+			return callRequest();
 		}
 	}
 	
