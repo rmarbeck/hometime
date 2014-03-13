@@ -245,16 +245,14 @@ offer.home.body=Toutes les prestations ont lieu à votre domicile.\
  <div class="sub-title">Région couverte :</div>\
  Hometime couvre aujourd''hui :\
  <ul><li>l''ensemble des arrondissements de <b>Paris</b></li>\
- <li>les alentours de <b>Neuilly</b></li>\
- <li>les alentours de <b>Saint-Germain en Laye</b></li>\
- <li>les alentours de <b>Versailles</b></li>\
- <li>les alentours de <b>Maisons Laffitte</b></li></ul>\
+ <li>la banlieue parisienne.</li></ul>\
  <div class="sub-title">Horaires :</div>\
  Hometime vous propose des horaires étendus pour votre plus grand confort :\
  <ul><li><b>Du Lundi au samedi</b>,</li>\
  <li><b>De 7h30 à 23h</b></li></ul>
 
 offer.home.call.to.action.contact=Nous contacter
+offer.home.call.to.action.call.request=Etre rappelé
 offer.home.call.to.action.order=Demander un devis
 
 # More offer page
@@ -270,7 +268,7 @@ more.body=A l''occasion d''un déplacement au domicile pour la prise en charge o
  <li>Expertise, évaluation de vos montres</li>\
  <li>Conseils autour de l''achat neuf ou occasion</li>\
  <li>Conseils autour de la vente</li></ul>\
- <br /><br />Si vous pensez que nous pouvons vous apporter d''autres services, n''hésitez pas à nous le suggérer en nous <a href="mailto:contact@hometime.fr">envoyant un mail</a> !
+ <br /><br />Si vous pensez que nous pouvons vous apporter d''autres services, n''hésitez pas à nous le suggérer en nous <a href="{0}">envoyant un mail</a> !
 
 more.accessories.nato.alt=Bracelet nato
 more.accessories.box.alt=Boite à montre

@@ -59,8 +59,8 @@
                     <div class="title"><blockquote><h2>@Html(Messages("offer.home.head"))</h2></blockquote></div>
                     <div class="body">@Html(Messages("offer.home.body"))</div>
                     <div class="row action">
-                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="mailto:contact@@hometime.fr" role="button">@Messages("offer.home.call.to.action.contact")</a></div>
-                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.order(null)" role="button">@Messages("offer.home.call.to.action.order")</a></div>
+                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.contact()" role="button">@Messages("offer.home.call.to.action.contact")</a></div>
+                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.callRequest()" role="button">@Messages("offer.home.call.to.action.call.request")&nbsp;<span class="glyphicon glyphicon-earphone"></span></a></div>
                     </div>
                   </div>
                 </div>
