@@ -113,8 +113,19 @@ Ainsi, nous vous proposons un tarif total <strong>@{quotation.price}</strong>.
 } else {
 Pour l’ensemble des prestations ci-dessus, Hometime vous propose un tarif <strong>@{quotation.price}</strong>.
 }
+@quotation.serviceType match {
+  case OrderRequest.OrderTypes.SETTINGUP => {
+
+  }
+  case OrderRequest.OrderTypes.INTERMEDIATE => {
+<br><br>
+L'étanchéité est garantie pendant 2 ans.
+  }
+  case default => {
 <br><br>
 Les opérations sont garanties 1 an, l'étanchéité pendant 2 ans.
+  }
+}
 <br><br>
 Sur accord de principe de votre part par e-mail, nous éditerons un devis formel que nous vous ferons parvenir pour signature et pourrons convenir avec vous d’une date pour le premier rendez-vous.
 <br><br>

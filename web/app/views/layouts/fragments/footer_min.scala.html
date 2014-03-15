@@ -4,14 +4,32 @@
             <div class="col-sm-3">
                 <a href="@routes.Application.about()">@Html(Messages("global.text.who.are.we"))</a>
                 <br />
+                <a href="@routes.Application.legal()">@Html(Messages("global.text.legal"))</a>
+                <br />
                 <a href="@routes.Application.cgv()">@Html(Messages("global.text.terms"))</a>
                 <br />
                 <a href="@routes.Application.privacy()">@Html(Messages("global.text.privacy"))</a>
-            </div>
-            <div class="col-sm-3">
+                <br />
                 <a href="@routes.Application.siteplan()">@Html(Messages("global.text.site.plan"))</a>
             </div>
             <div class="col-sm-3">
+                <a href="@routes.Application.offer()">@Messages("global.text.services.service")</a>
+                <br />
+                <a href="@routes.Application.offer()#loan">@Messages("global.text.services.loan")</a>
+                <br />
+                <a href="@routes.Application.offer()#home">@Messages("global.text.services.at.home")</a>
+                <br />
+                <a href="@routes.Application.more()">@Messages("global.text.services.other")</a>
+                <br />
+                <a href="@routes.Application.prices()">@Messages("global.text.services.prices")</a>
+                <br />
+                <a href="@routes.Application.service()">@Messages("global.text.service.content")</a>
+                <br />
+                <a href="@routes.Application.service_test()">@Messages("global.text.service.service.test")</a>
+            </div>
+            <div class="col-sm-3">
+                <a href="@routes.Application.faq()">@Html(Messages("global.text.faq"))</span></a>
+                <br />
                 <a href="@routes.Application.contact()">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a>
                 <br />
                 <a href="@routes.Application.callRequest()">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
@@ -31,7 +49,9 @@
             <a href="@routes.Application.privacy()">@Html(Messages("global.text.privacy"))</a> &middot;
             <a href="@routes.Application.cgv()">@Html(Messages("global.text.terms"))</a> &middot; 
             <a href="@routes.Application.about()">@Html(Messages("global.text.who.are.we"))</a> &middot; 
+            <a href="@routes.Application.legal()">@Html(Messages("global.text.legal"))</a>
             <a href="@routes.Application.siteplan()">@Html(Messages("global.text.site.plan"))</a> &middot;
+            <a href="@routes.Application.faq()">@Html(Messages("global.text.faq"))</span></a> &middot;
             <a href="@routes.Application.contact()">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a> &middot;
             <a href="@routes.Application.callRequest()">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a> &middot;
             <a href="@routes.Application.contact()">@Html(Messages("global.text.issue"))</a></p>

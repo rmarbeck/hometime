@@ -326,6 +326,14 @@ public class Application extends Controller {
         return ok(about.render());
     }
     
+    public static Result faq() {
+        return ok(faq.render());
+    }
+
+    public static Result legal() {
+        return ok(legal.render());
+    }
+    
     public static Result privacy() {
         return ok(privacy.render());
     }

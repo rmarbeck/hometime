@@ -50,9 +50,17 @@ POST    /quand-faire-la-revision    controllers.Application.manageServiceTest()
 GET     /checkResults/:id           controllers.Application.checkServiceTestResult(id: Integer, custom: Boolean ?= false, email: String ?= "toto@titi.fr")
 
 # About
-GET     /mentions-legales           controllers.Application.about()
-GET     /a-propos                   controllers.Default.redirect(to = "/mentions-legales")
-GET     /about                      controllers.Default.redirect(to = "/mentions-legales")
+GET     /qui-sommes-nous            controllers.Application.about()
+GET     /a-propos                   controllers.Default.redirect(to = "/qui-sommes-nous")
+GET     /about                      controllers.Default.redirect(to = "/qui-sommes-nous")
+
+# Legal
+GET     /mentions-legales           controllers.Application.legal()
+GET     /legal                      controllers.Default.redirect(to = "/mentions-legales")
+
+# FAQ
+GET     /questions-frequentes       controllers.Application.faq()
+GET     /faq                        controllers.Default.redirect(to = "/questions-frequentes")
 
 # Privacy
 GET     /vie-prive                  controllers.Application.privacy()

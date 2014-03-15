@@ -22,7 +22,7 @@
           <div class="container">
             <div class="carousel-caption">
               <div class="caption-title"><h1>@Html(Messages("home.caption.1.head"))</h1></div>
-              <div class="caption-body hidden-xs">@Html(Messages("home.caption.1.body"))</div>
+              <div class="caption-body hidden-xs"><h2>@Html(Messages("home.caption.1.body"))</h2></div>
               <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.service()" role="button">@Messages("home.caption.1.call.to.action")</a></div>
             </div>
           </div>
@@ -32,7 +32,7 @@
           <div class="container">
             <div class="carousel-caption">
               <div class="caption-title"><h1>@Html(Messages("home.caption.2.head"))</h1></div>
-              <div class="caption-body hidden-xs">@Html(Messages("home.caption.2.body"))</div>
+              <div class="caption-body hidden-xs"><h2>@Html(Messages("home.caption.2.body"))</h2></div>
               <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.watch_collection()" role="button">@Messages("home.caption.2.call.to.action")</a></div>
             </div>
           </div>
@@ -42,7 +42,7 @@
           <div class="container">
             <div class="carousel-caption">
               <div class="caption-title"><h1>@Html(Messages("home.caption.3.head"))</h1></div>
-              <div class="caption-body hidden-xs">@Html(Messages("home.caption.3.body"))</div>
+              <div class="caption-body hidden-xs"><h2>@Html(Messages("home.caption.3.body"))</h2></div>
               <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.order(null)" role="button">@Messages("home.caption.3.call.to.action")</a></div>
             </div>
           </div>
@@ -66,20 +66,20 @@
       <div class="row">
         <div class="col-sm-4 promise">
           <img class="head" src="@routes.Assets.at("images/home/to-serve.png")" alt="@Messages("home.promise.1.alt")">
-          <div class="promise-head">@Messages("home.promise.1.head")</div>
-          <div class="promise-body">@Html(Messages("home.promise.1.body"))</div>
+          <div class="promise-head"><h1>@Messages("home.promise.1.head")</h1></div>
+          <div class="promise-body"><h2>@Html(Messages("home.promise.1.body"))</h2></div>
           <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.service()" role="button">@Messages("home.promise.1.call.to.action")</a></div>
         </div>
         <div class="col-sm-4 promise">
           <img class="img-circle head" src="@routes.Assets.at("images/home/to-loan.jpg")" alt="@Messages("home.promise.2.alt")">
-          <div class="promise-head">@Messages("home.promise.2.head")</div>
-          <div class="promise-body">@Html(Messages("home.promise.2.body"))</div>
+          <div class="promise-head"><h1>@Messages("home.promise.2.head")</h1></div>
+          <div class="promise-body"><h2>@Html(Messages("home.promise.2.body"))</h2></div>
           <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.watch_collection()" role="button">@Messages("home.promise.2.call.to.action")</a></div>
         </div>
         <div class="col-sm-4 promise">
           <img class="img-circle head" src="@routes.Assets.at("images/home/at-home.png")" alt="@Messages("home.promise.3.alt")">
-          <div class="promise-head">@Messages("home.promise.3.head")</div>
-          <div class="promise-body">@Html(Messages("home.promise.3.body"))</div>
+          <div class="promise-head"><h1>@Messages("home.promise.3.head")</h1></div>
+          <div class="promise-body"><h2>@Html(Messages("home.promise.3.body"))</h2></div>
           <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.offer()" role="button">@Messages("home.promise.3.call.to.action")</a></div>
         </div>
       </div>
@@ -94,51 +94,37 @@
           <div class="promise-action"><a class="btn btn-default" href="@routes.Application.offer()" role="button">@Messages("home.promise.3.call.to.action")</a></div>
         </div>
       </div>
-      
-      <hr>
     </div>
-    
+
     <div class="container">
+      <hr>
       <div class="row">
-        <div class="col-xs-12"><h4>@Html(Messages("home.text.reasons"))</h4></div>
+        <div class="col-xs-12"><h3>@Html(Messages("home.text.what.is.it"))</h3></div>
       </div>
       <div class="row">
-        <div class="col-xs-6 col-sm-3 reason">
-          <div class="reason-body"><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.1.body"))</div>
+        <div class="col-xs-12 what-is-it">
+          <div class="what-is-it-body"><h4><span class="glyphicon glyphicon-home">&nbsp;</span>@Html(Messages("home.what.is.it.1.body"))</h4></div>
         </div>
-        <div class="col-xs-6 col-sm-3 reason">
-          <div class="reason-body"><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.2.body"))</div>
+        <div class="col-xs-12 what-is-it">
+          <div class="what-is-it-body"><h4><span class="glyphicon glyphicon-thumbs-up">&nbsp;</span>@Html(Messages("home.what.is.it.2.body"))</h4></div>
         </div>
         <div class="clearfix visible-xs"></div>
-        <div class="col-xs-6 col-sm-3 reason">
-          <div class="reason-body"><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.3.body"))</div>
+        <div class="col-xs-12 what-is-it">
+          <div class="what-is-it-body"><h4><span class="glyphicon glyphicon-euro">&nbsp;</span>@Html(Messages("home.what.is.it.3.body"))</h4></div>
         </div>
-        <div class="col-xs-6 col-sm-3 reason">
-          <div class="reason-body"><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.4.body"))</div>
-        </div>
-      </div>
-      <div class="row hidden-xs">
-        <div class="col-xs-6 col-sm-3 reason">
-          <div class="reason-body"><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.5.body"))</div>
-        </div>
-        <div class="col-xs-6 col-sm-3 reason">
-          <div class="reason-body"><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.6.body"))</div>
-        </div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-xs-6 col-sm-3 reason">
-          <div class="reason-body"><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.7.body"))</div>
-        </div>
-        <div class="col-xs-6 col-sm-3 reason">
-          <div class="reason-body"><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.8.body"))</div>
+        <div class="col-xs-12 what-is-it">
+          <div class="what-is-it-body"><h4><span class="glyphicon glyphicon-leaf">&nbsp;</span>@Html(Messages("home.what.is.it.4.body"))</h4></div>
         </div>
       </div>
-    </div>
-    
+      <div class="row">
+        <div class="col-xs-12 text-center"><a class="btn btn-default more-action" href="@routes.Application.offer()" role="button">@Messages("home.tell.more.call.to.action")</a></div>
+      </div>
+    </div>    
     
     <div class="container">
       <hr>
       <div class="row">
-        <div class="col-xs-12"><h4>@Messages("home.text.supports.brands")</h4></div>
+        <div class="col-xs-12"><h3>@Messages("home.text.supports.brands")</h3></div>
       </div>
       <div class="row">
         @for(brand <- supported_brands) {
@@ -146,11 +132,47 @@
         }
       </div>
       <div class="row">
-        <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.offer()" role="button">@Messages("home.tell.more.call.to.action")</a></div>
-        <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.order(null)" role="button">@Messages("home.order.call.to.action")</a></div>
+        <div class="col-xs-12 text-center"><a class="btn btn-primary order-action" href="@routes.Application.order(null)" role="button">@Messages("home.order.call.to.action")</a></div>
       </div>
-
-      <hr>
-
     </div>
+    
+   <div class="container">
+      <hr>
+      <div class="row">
+        <div class="col-xs-12"><h3>@Html(Messages("home.text.reasons"))</h3></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-3 reason">
+          <div class="reason-body"><h4><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.1.body"))</h4></div>
+        </div>
+        <div class="col-xs-6 col-sm-3 reason">
+          <div class="reason-body"><h4><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.2.body"))</h4></div>
+        </div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-xs-6 col-sm-3 reason">
+          <div class="reason-body"><h4><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.3.body"))</h4></div>
+        </div>
+        <div class="col-xs-6 col-sm-3 reason">
+          <div class="reason-body"><h4><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.4.body"))</h4></div>
+        </div>
+      </div>
+      <div class="row hidden-xs">
+        <div class="col-xs-6 col-sm-3 reason">
+          <div class="reason-body"><h4><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.5.body"))</h4></div>
+        </div>
+        <div class="col-xs-6 col-sm-3 reason">
+          <div class="reason-body"><h4><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.6.body"))</h4></div>
+        </div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-xs-6 col-sm-3 reason">
+          <div class="reason-body"><h4><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.7.body"))</h4></div>
+        </div>
+        <div class="col-xs-6 col-sm-3 reason">
+          <div class="reason-body"><h4><span class="glyphicon glyphicon-ok">&nbsp;</span>@Html(Messages("home.reason.8.body"))</h4></div>
+        </div>
+      </div>
+      
+      <hr>
+    </div>
+    
 }

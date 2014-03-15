@@ -58,6 +58,16 @@
       <priority>0.5</priority>
     </url>
     <url>
+      <loc>http://@{request.host()}@routes.Application.legal()</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.5</priority>
+    </url>
+    <url>
+      <loc>http://@{request.host()}@routes.Application.faq()</loc>
+      <changefreq>daily</changefreq>
+      <priority>1</priority>
+    </url>
+    <url>
       <loc>http://@{request.host()}@routes.Application.privacy()</loc>
       <changefreq>daily</changefreq>
       <priority>0.4</priority>
