@@ -1,59 +1,62 @@
+      @import tags._
       <!--minimum footer-->
       <footer>
         <div class="row hidden-xs text-left">
             <div class="col-sm-3">
-                <a href="@routes.Application.about()">@Html(Messages("global.text.who.are.we"))</a>
+                @a_(routes.Application.about().url, "global.text.who.are.we")
                 <br />
-                <a href="@routes.Application.legal()">@Html(Messages("global.text.legal"))</a>
+                @a_(routes.Application.legal().url, "global.text.legal")
                 <br />
-                <a href="@routes.Application.cgv()">@Html(Messages("global.text.terms"))</a>
+                @a_(routes.Application.cgv().url, "global.text.terms")
                 <br />
-                <a href="@routes.Application.privacy()">@Html(Messages("global.text.privacy"))</a>
+                @a_(routes.Application.privacy().url, "global.text.privacy")
                 <br />
-                <a href="@routes.Application.siteplan()">@Html(Messages("global.text.site.plan"))</a>
+                @a_(routes.Application.siteplan().url, "global.text.site.plan")
             </div>
             <div class="col-sm-3">
-                <a href="@routes.Application.offer()">@Html(Messages("global.text.services.service"))</a>
+                @a_(routes.Application.offer().url, "global.text.services.service")
                 <br />
-                <a href="@routes.Application.offer()#loan">@Html(Messages("global.text.services.loan"))</a>
+                @a_(routes.Application.offer().url+"#loan", "global.text.services.loan")
                 <br />
-                <a href="@routes.Application.offer()#home">@Html(Messages("global.text.services.at.home"))</a>
+                @a_(routes.Application.offer().url+"#home", "global.text.services.at.home")
                 <br />
-                <a href="@routes.Application.more()">@Html(Messages("global.text.services.other"))</a>
+                @a_(routes.Application.more().url, "global.text.services.other")
                 <br />
-                <a href="@routes.Application.prices()">@Html(Messages("global.text.services.prices"))</a>
+                @a_(routes.Application.prices().url, "global.text.services.prices")
                 <br />
-                <a href="@routes.Application.service()">@Html(Messages("global.text.service.content"))</a>
+                @a_(routes.Application.service().url, "global.text.service.content")
                 <br />
-                <a href="@routes.Application.service_test()">@Html(Messages("global.text.service.service.test"))</a>
+                @a_(routes.Application.service_test().url, "global.text.service.service.test")
             </div>
             <div class="col-sm-3">
-                <a href="@routes.Application.faq()">@Html(Messages("global.text.faq"))</a>
+                @a_(routes.Application.faq().url, "global.text.faq")
                 <br />
-                <a href="@routes.Application.contact()">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a>
+                <a href="@routes.Application.contact()" title="@Messages("global.text.contact.title")">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a>
                 <br />
-                <a href="@routes.Application.callRequest()">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
+                <a href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
                 <br />
-                <a href="@routes.Application.contact()">@Html(Messages("global.text.issue"))</a>
+                @a_(routes.Application.contact().url, "global.text.issue")
+                <br />
+                @a_("http://watchnext.fr/blog", "global.text.blog")
             </div>
             <div class="col-sm-3">
-                <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;@Messages("global.text.back.to.top")</a></p>
+                <p class="pull-right"><a href="#" title="@Messages("global.text.back.to.top.title")"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;@Messages("global.text.back.to.top")</a></p>
             </div>
         </div>
         <div class="row hidden-xs text-center" id="copyright">
             <div class="col-sm-12">@Messages("global.text.copyright")</div>
         </div>
         <div class="visible-xs">
-            <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;@Messages("global.text.back.to.top")</a></p>
+            <p class="pull-right"><a href="#" title="@Messages("global.text.back.to.top.title")"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;@Messages("global.text.back.to.top")</a></p>
             <p>@Messages("global.text.copyright") &middot;
-            <a href="@routes.Application.privacy()">@Html(Messages("global.text.privacy"))</a> &middot;
-            <a href="@routes.Application.cgv()">@Html(Messages("global.text.terms"))</a> &middot; 
-            <a href="@routes.Application.about()">@Html(Messages("global.text.who.are.we"))</a> &middot; 
-            <a href="@routes.Application.legal()">@Html(Messages("global.text.legal"))</a>
-            <a href="@routes.Application.siteplan()">@Html(Messages("global.text.site.plan"))</a> &middot;
-            <a href="@routes.Application.faq()">@Html(Messages("global.text.faq"))</a> &middot;
-            <a href="@routes.Application.contact()">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a> &middot;
-            <a href="@routes.Application.callRequest()">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a> &middot;
-            <a href="@routes.Application.contact()">@Html(Messages("global.text.issue"))</a></p>
+            @a_(routes.Application.privacy().url, "global.text.privacy") &middot;
+            @a_(routes.Application.cgv().url, "global.text.terms") &middot; 
+            @a_(routes.Application.about().url, "global.text.who.are.we") &middot; 
+            @a_(routes.Application.legal().url, "global.text.legal") &middot;
+            @a_(routes.Application.siteplan().url, "global.text.site.plan") &middot;
+            @a_(routes.Application.faq().url, "global.text.faq") &middot;
+            <a href="@routes.Application.contact()" title="@Messages("global.text.contact.title")">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a> &middot;
+            <a href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a> &middot;
+            @a_(routes.Application.contact().url, "global.text.issue")
         </div>
       </footer>

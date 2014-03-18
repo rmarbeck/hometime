@@ -1,0 +1,15 @@
+@**
+ * Generate an anchor with a title from messages.
+ *
+ * Example:
+ * {{{
+ * @a_(action = src, labelkey = "key in messages", args = 'class -> "myLink")
+ * }}}
+ *
+ * @param action Url to follow.
+ * @param labelkey Key in messages for label.
+ * @param args Set of extra HTML attributes.
+ *@
+@(href: String, labelkey: String, args: (Symbol,String)*)
+@defining( if(Messages(labelkey+".title").contains(".title")) Html(Messages(labelkey)) else Messages(labelkey+".title") ) { title =>
+<a href="@(href)" title="@title" @toHtmlArgs(args.toMap)>@Html(Messages(labelkey))</a>}
