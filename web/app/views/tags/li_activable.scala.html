@@ -3,7 +3,7 @@
  *
  * Example:
  * {{{
- * @li_activable(target = 1, current = 1,args = 'class -> "myLink") {
+ * @li_activable(target = 1, current = 1,args = '_class -> "myLink") {
  *   ...
  * }
  * }}}
@@ -15,4 +15,4 @@
  *@
 @(target: Integer, current: Integer, args: (Symbol,String)*)(body: => Html) 
 
-<li class="@if(current == target) {active} @args.toMap.get('class)" @toHtmlArgs(args.toMap)>@body</li>
+<li class="@if(current == target) {active} @args.toMap.get('class)" @toHtmlArgs(args.filter(_.equals("class")).toMap)>@body</li>
