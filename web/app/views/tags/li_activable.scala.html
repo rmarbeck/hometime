@@ -15,4 +15,4 @@
  *@
 @(target: Integer, current: Integer, args: (Symbol,String)*)(body: => Html) 
 
-<li class="@if(current == target) {active} @args.toMap.get('class)" @toHtmlArgs(args.toMap)>@body</a>
+<li class="@if(current == target) {active} @args.toMap.get('class)" @toHtmlArgs(args.toMap)>@body</li>
