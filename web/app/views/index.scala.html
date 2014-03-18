@@ -21,8 +21,8 @@
           <img src="@routes.Assets.at("images/home/black.jpg")" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <div class="caption-title"><h1>@Html(Messages("home.caption.1.head"))</h1></div>
-              <div class="caption-body hidden-xs"><h2>@Html(Messages("home.caption.1.body"))</h2></div>
+              <div class="caption-title"><h2>@Html(Messages("home.caption.1.head"))</h2></div>
+              <div class="caption-body hidden-xs"><h3>@Html(Messages("home.caption.1.body"))</h3></div>
               <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.service()" role="button">@Messages("home.caption.1.call.to.action")</a></div>
             </div>
           </div>
@@ -31,8 +31,8 @@
           <img src="@routes.Assets.at("images/home/vintages.jpg")" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <div class="caption-title"><h1>@Html(Messages("home.caption.2.head"))</h1></div>
-              <div class="caption-body hidden-xs"><h2>@Html(Messages("home.caption.2.body"))</h2></div>
+              <div class="caption-title"><h2>@Html(Messages("home.caption.2.head"))</h2></div>
+              <div class="caption-body hidden-xs"><h3>@Html(Messages("home.caption.2.body"))</h3></div>
               <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.watch_collection()" role="button">@Messages("home.caption.2.call.to.action")</a></div>
             </div>
           </div>
@@ -41,8 +41,8 @@
           <img src="@routes.Assets.at("images/home/tudor-red.jpg")" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <div class="caption-title"><h1>@Html(Messages("home.caption.3.head"))</h1></div>
-              <div class="caption-body hidden-xs"><h2>@Html(Messages("home.caption.3.body"))</h2></div>
+              <div class="caption-title"><h2>@Html(Messages("home.caption.3.head"))</h2></div>
+              <div class="caption-body hidden-xs"><h3>@Html(Messages("home.caption.3.body"))</h3></div>
               <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.order(null)" role="button">@Messages("home.caption.3.call.to.action")</a></div>
             </div>
           </div>
@@ -66,20 +66,20 @@
       <div class="row">
         <div class="col-sm-4 promise">
           <img class="head" src="@routes.Assets.at("images/home/to-serve.png")" alt="@Messages("home.promise.1.alt")">
-          <div class="promise-head"><h1>@Html(Messages("home.promise.1.head"))</h1></div>
-          <div class="promise-body"><h2>@Html(Messages("home.promise.1.body"))</h2></div>
+          <div class="promise-head"><h2>@Html(Messages("home.promise.1.head"))</h2></div>
+          <div class="promise-body"><h3>@Html(Messages("home.promise.1.body"))</h3></div>
           <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.service()" role="button">@Messages("home.promise.1.call.to.action")</a></div>
         </div>
         <div class="col-sm-4 promise">
           <img class="img-circle head" src="@routes.Assets.at("images/home/to-loan.jpg")" alt="@Messages("home.promise.2.alt")">
-          <div class="promise-head"><h1>@Html(Messages("home.promise.2.head"))</h1></div>
-          <div class="promise-body"><h2>@Html(Messages("home.promise.2.body"))</h2></div>
+          <div class="promise-head"><h2>@Html(Messages("home.promise.2.head"))</h2></div>
+          <div class="promise-body"><h3>@Html(Messages("home.promise.2.body"))</h3></div>
           <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.watch_collection()" role="button">@Messages("home.promise.2.call.to.action")</a></div>
         </div>
         <div class="col-sm-4 promise">
           <img class="img-circle head" src="@routes.Assets.at("images/home/at-home.png")" alt="@Messages("home.promise.3.alt")">
-          <div class="promise-head"><h1>@Html(Messages("home.promise.3.head"))</h1></div>
-          <div class="promise-body"><h2>@Html(Messages("home.promise.3.body"))</h2></div>
+          <div class="promise-head"><h2>@Html(Messages("home.promise.3.head"))</h2></div>
+          <div class="promise-body"><h3>@Html(Messages("home.promise.3.body"))</h3></div>
           <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.offer()" role="button">@Messages("home.promise.3.call.to.action")</a></div>
         </div>
       </div>
@@ -99,7 +99,7 @@
     <div class="container">
       <hr>
       <div class="row">
-        <div class="col-xs-12"><h3>@Html(Messages("home.text.what.is.it"))</h3></div>
+        <div class="col-xs-12 what-is-it-head"><h3>@Html(Messages("home.text.what.is.it"))</h3></div>
       </div>
       <div class="row">
         <div class="col-xs-12 what-is-it">
@@ -124,7 +124,7 @@
     <div class="container">
       <hr>
       <div class="row">
-        <div class="col-xs-12"><h3>@Messages("home.text.supports.brands")</h3></div>
+        <div class="col-xs-12 brands-head"><h3>@Messages("home.text.supports.brands")</h3></div>
       </div>
       <div class="row">
         @for(brand <- supported_brands) {
@@ -139,7 +139,7 @@
    <div class="container">
       <hr>
       <div class="row">
-        <div class="col-xs-12"><h3>@Html(Messages("home.text.reasons"))</h3></div>
+        <div class="col-xs-12 reason-head"><h3>@Html(Messages("home.text.reasons"))</h3></div>
       </div>
       <div class="row">
         <div class="col-xs-6 col-sm-3 reason">
