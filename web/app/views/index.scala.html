@@ -154,7 +154,21 @@
         }
       </div>
       <div class="row">
-        <div class="col-xs-12 text-center"><a class="btn btn-primary order-action" href="@routes.Application.order(null)" title="@Messages("home.order.call.to.action.title")" role="button">@Messages("home.order.call.to.action")</a></div>
+        <div class="col-xs-12 text-center order-action">
+            <!-- Split button -->
+            <div class="btn-group text-left">
+              <a type="button" class="btn btn-primary" href="@routes.Application.order(null)" title="@Messages("home.order.call.to.action.title")" role="button">@Messages("home.order.call.to.action")</a>
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+              @for(brand <- supported_brands) {
+                <li><a href="@routes.Application.order(brand.seo_name)" title="@Messages("home.order.links.by.brand.title", brand.display_name)">@Messages("home.order.links.by.brand", brand.display_name)</a></li>
+              }
+              </ul>
+            </div>
+        </div>
       </div>
     </div>
     
