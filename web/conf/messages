@@ -74,9 +74,9 @@ global.text.blog.title=Le Blog Hometime
 # Home page
 home.html.title=Révision, réparation et essai de montres à domicile sur Paris
 home.html.description=Révision et réparation de montres de marque avec intervention à domicile sur Paris et sa région, avec possilité d''essai prolongé d''une montre de légende.
-home.html.keywords=révision, réparation, révision montre, réparation montre, montres mécaniques, montres automatiques, rolex, omega, panerai, tag heuer, paris, yvelines, hauts de seine, devis gratuit, essai, à domicile, devis en ligne
+home.html.keywords=entretien, entretien montre, révision, réparation, révision montre, réparation montre, montre mécanique, montre automatique, sav, service après vente, rolex, omega, panerai, tag heuer, paris, région parisienne, 75, yvelines, hauts de seine, devis gratuit, essai, à domicile, devis en ligne
 home.caption.1.head=Vous avez une belle montre, entretenez&nbsp;la&nbsp;!
-home.caption.1.body=Votre montre mécanique est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
+home.caption.1.body=Votre montre est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
 home.caption.1.call.to.action=Pourquoi entrenir ma montre ?
 
 home.caption.2.head=Portez une montre de rêve pendant l''entretien de la vôtre&nbsp;!
@@ -84,14 +84,14 @@ home.caption.2.body=Hometime vous permet d''essayer une belle montre pendant tou
 home.caption.2.call.to.action=Choisissez votre préférée !
 
 home.caption.3.head=Ne vous déplacez plus&nbsp;!
-home.caption.3.body=Hometime vient chercher votre montre chez vous et vous la ramène dès qu''elle est prête.
+home.caption.3.body=Hometime intervient à domicile et confie votre montre au <b>service après vente officiel</b> ou à l''un des <b>meilleurs horlogers de Paris</b>, c''est vous qui choisissez.
 home.caption.3.call.to.action=Demandez un devis !
 
-home.baseline=<i>Portez une montre mythique à votre poignet pendant l''entretien de votre montre mécanique</i>
+home.baseline=<i>Portez une montre mythique à votre poignet pendant l''entretien de votre montre</i>
 
 home.promise.1.alt=Mouvement de montre
 home.promise.1.head=Entretenez&nbsp;!
-home.promise.1.body=Une montre mécanique est conçue pour <b>durer longtemps</b> et se transmettre de génération en génération. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique.
+home.promise.1.body=Une montre est conçue pour <b>durer longtemps</b> et se transmettre de génération en génération. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique.
 home.promise.1.call.to.action=Tout savoir sur l''entretien
 home.promise.1.call.to.action.title=Comprendre l''entretien et la révision d''une montre
 
