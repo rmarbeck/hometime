@@ -4,6 +4,7 @@ import static play.data.Form.form;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.Column;
 
@@ -23,6 +24,7 @@ import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.i18n.Messages;
+import play.libs.WS;
 import play.mvc.*;
 import views.html.*;
 import views.html.admin.login;
@@ -515,5 +517,42 @@ public class Application extends Controller {
     	} catch (NumberFormatException e) {
     		return false;
     	}
+    }
+    
+    public static Result autoHead(String originalPath) throws IllegalAccessException {
+    	Logger.debug("In autoHead with {}", originalPath);
+        WS.WSRequestHolder forwardedRequest = WS.url("http://" + request().host() + request().path());
+        // this header will allow you to make additional choice i.e. avoid tracking the request or something else
+        // see condition in index() action
+        forwardedRequest.setHeader("X_FORWARD_FROM_HEAD", "true");
+
+        // Forward original headers
+        for (String header : request().headers().keySet()) {
+            forwardedRequest.setHeader(header, request().getHeader(header));
+        }
+
+        // Forward original queryString
+        for (String key : request().queryString().keySet()) {
+            for (String val : request().queryString().get(key)) {
+                forwardedRequest.setQueryParameter(key, val);
+            }
+        }
+
+        // Call the same path but with GET
+        WS.Response wsResponse = forwardedRequest.get().get(1000L, TimeUnit.MILLISECONDS);
+
+        // Set returned headers to the response
+        for (java.lang.reflect.Field f : Http.HeaderNames.class.getFields()) {
+            String headerName = f.get(null).toString();
+            if (wsResponse.getHeader(headerName) != null) {
+                response().setHeader(headerName, wsResponse.getHeader(headerName));
+            }
+        }
+
+        return status(wsResponse.getStatus());
+    }
+
+    public static boolean forwardedFromHead() {
+        return (request().getHeader("X_FORWARD_FROM_HEAD") != null && "true".equals(request().getHeader("X_FORWARD_FROM_HEAD")));
     }
 }
