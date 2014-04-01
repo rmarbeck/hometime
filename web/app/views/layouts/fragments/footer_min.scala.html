@@ -1,6 +1,11 @@
       @import tags._
       <!--minimum footer-->
       <footer>
+          <div class="row hidden-xs text-left">
+            <div class="col-sm-3 col-sm-offset-9">
+                <p class="pull-right"><a href="#" title="@Messages("global.text.back.to.top.title")"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;@Messages("global.text.back.to.top")</a></p>
+            </div>
+        </div>
         <div class="row hidden-xs text-left">
             <div class="col-sm-3">
                 @a_(routes.Application.about().url, "global.text.who.are.we")
@@ -12,6 +17,16 @@
                 @a_(routes.Application.privacy().url, "global.text.privacy")
                 <br />
                 @a_(routes.Application.siteplan().url, "global.text.site.plan")
+             </div>
+             <div class="col-sm-3">
+                @a_(routes.Application.faq().url, "global.text.faq")
+                <br />
+                <a href="@routes.Application.contact()" title="@Messages("global.text.contact.title")">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a>
+                <br />
+                <a href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
+                <br />
+                @a_(routes.Application.contact().url, "global.text.issue")
+                <br />
             </div>
             <div class="col-sm-3">
                 @a_(routes.Application.offer().url, "global.text.services.service")
@@ -29,18 +44,8 @@
                 @a_(routes.Application.service_test().url, "global.text.service.service.test")
             </div>
             <div class="col-sm-3">
-                @a_(routes.Application.faq().url, "global.text.faq")
-                <br />
-                <a href="@routes.Application.contact()" title="@Messages("global.text.contact.title")">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a>
-                <br />
-                <a href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
-                <br />
-                @a_(routes.Application.contact().url, "global.text.issue")
-                <br />
-                @a_("http://watchnext.fr/blog/", "global.text.blog")
-            </div>
-            <div class="col-sm-3">
-                <p class="pull-right"><a href="#" title="@Messages("global.text.back.to.top.title")"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;@Messages("global.text.back.to.top")</a></p>
+                @a_("http://watchnext.fr/blog/", "global.text.blog", 'target -> "_blank")
+                <div id="feeddiv"></div>
             </div>
         </div>
         <div class="row hidden-xs text-center" id="copyright">
@@ -60,3 +65,37 @@
             @a_(routes.Application.contact().url, "global.text.issue")
         </div>
       </footer>
+       <script type="text/javascript">
+
+            google.load("feeds", "1");
+            
+            function Truncate(str, maxLength, suffix)
+            {
+                if(str.length > maxLength)
+                {
+                    str = str.substring(0, maxLength + 1); 
+                    str = str.substring(0, Math.min(str.length, str.lastIndexOf(" ")));
+                    str = str + suffix;
+                }
+                return str;
+            }
+        
+            function initialize() {
+              var feed = new google.feeds.Feed("http://watchnext.fr/blog/feed/");
+              var rssoutput="";
+              feed.setNumEntries(7);
+              feed.load(function(result) {
+                if (!result.error) {
+                  var container = document.getElementById("feeddiv");
+                  for (var i = 0; i < result.feed.entries.length; i++) {
+                    var entry = result.feed.entries[i];
+                    rssoutput+=" &nbsp;&gt;&nbsp; <a href='" + entry.link + "' target='_blank' title='" + entry.title + "'>" + Truncate(entry.title, 30, "...") + "</a>"
+                    rssoutput+="<br />"
+                    container.innerHTML=rssoutput
+                  }
+                }
+              });
+            }
+            google.setOnLoadCallback(initialize);
+
+        </script>
