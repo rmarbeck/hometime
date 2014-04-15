@@ -510,7 +510,9 @@ order.form.placeholder.your.city=Ville
 order.form.mandatory.mark.explanation=* Champ obligatoire
 order.success.panel.heading=Demande de devis prise en compte
 order.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre demande. Nous vous recontactons très vite pour vous faire une évaluation précise. <br /><br />A très bientôt.
-order.action.submit=Envoyer
+order.action.submit=Envoyer la demande
+order.action.alternative.separator=ou bien
+order.action.alternative=Etre rappelé
 
 # Contact page
 contact.html.title=Nous contacter
