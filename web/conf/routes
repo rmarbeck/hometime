@@ -69,6 +69,9 @@ GET     /privacy                    controllers.Default.redirect(to = "/vie-priv
 # CGV
 GET     /cgv                        controllers.Application.cgv()
 
+# Autour
+GET     /autour-de-hometime         controllers.Application.around()
+
 # ADMIN
 GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()

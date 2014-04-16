@@ -343,6 +343,10 @@ public class Application extends Controller {
     public static Result cgv() {
         return ok(cgv.render());
     }
+    
+    public static Result around() {
+        return ok(around.render());
+    }
 
 	public static Result manageOrder() {
 		Form<OrderForm> orderForm = Form.form(OrderForm.class).bindFromRequest();
