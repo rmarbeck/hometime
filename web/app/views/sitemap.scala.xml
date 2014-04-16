@@ -68,6 +68,11 @@
       <priority>1</priority>
     </url>
     <url>
+      <loc>http://@{request.host()}@routes.Application.around()</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.5</priority>
+    </url>
+    <url>
       <loc>http://@{request.host()}@routes.Application.privacy()</loc>
       <changefreq>daily</changefreq>
       <priority>0.4</priority>
