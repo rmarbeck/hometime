@@ -522,7 +522,7 @@ contact.html.title=Nous contacter
 contact.html.description=Formulaire de contact, poser une question ou signaler un problème.
 contact.html.keywords=Nous contacter, question, information, signaler un problème
 contact.baseline=Nous contacter
-contact.text.explanation=Vous souhaitez nous contacter pour nous poser une question, nous signaler un problème, nous soutenir ou pour toute autre raison, veuillez remplir le formulaire ci-dessous. Nous prendrons connaissance de votre message très vite.
+contact.text.explanation=Vous souhaitez nous contacter pour nous poser une question, nous signaler un problème, nous soutenir ou pour toute autre raison, veuillez remplir le formulaire ci-dessous. Nous prendrons connaissance de votre message très vite. Vous préférez nous appeler, composez le <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).
 
 contact.form.label.title=* Titre
 contact.form.placeholder.title=Titre de votre message
@@ -543,7 +543,7 @@ call.request.html.title=Etre rappelé
 call.request.html.description=Formulaire de contact, poser une question ou demander un renseignement, nous vous rappelons par téléphone.
 call.request.html.keywords=Nous contacter, question, information, renseignement, téléphone, rappel
 call.request.baseline=Demandez nous de vous rappeler
-call.request.text.explanation=Vous souhaitez nous poser une question ou pour toute autre raison, veuillez remplir le formulaire ci-dessous. Nous vous rappellerons le plus rapidement possible.
+call.request.text.explanation=Vous souhaitez nous poser une question ou pour toute autre raison, veuillez remplir le formulaire ci-dessous. Nous vous rappellerons le plus rapidement possible. Vous préférez nous appeler, composez le <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).
 
 call.request.form.label.title=* Votre numéro de téléphone
 call.request.form.placeholder.title=06xxxxxxxx
@@ -706,7 +706,9 @@ about.body.1=Hometime a été créée pour faciliter la vie de tous les possesse
  <br /><br />Que ce soit lors de l''achat, de l''entretien ou de la revente, Hometime vous accompagne pour faire les bons choix au meilleur prix et dans le plus grand confort. \
  <br /><br />Pour cela, nous attachons une importance particulière à vous écouter et à vous proposer des solutions personnalisées correspondant à vos attentes. \
  <br /><br />Hometime est un service de la société Watch next enregistrée au RCS de Versailles.
-
+about.head.2=Nous contacter
+about.body.2=Vous pouvez nous joindre par téléphone au <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).\
+ <br /><br />Par email : contact [@] hometime.fr
 
 # About page
 legal.html.title=Mentions légales
@@ -805,8 +807,9 @@ cgv.body.7=En cas de défaut de paiement total ou partiel le jour de la prise en
 cgv.head.8=Article 8 : Déplacements
 cgv.body.8=La société Watch next se déplace au domicile du client pour l''exécution de l''ensemble des prestations. Les dates de rendez-vous sont fixées dans les créneaux précisés sur le site dans la rubrique " Les services ".
 cgv.head.9=Article 9 : Relations clients - Service après-vente
-cgv.body.9=Pour toute information, question ou réclamation, le client peut s''adresser du lundi au vendredi, de 9 h à 18 h au service Relations Clients de la société par email : \
-  <br /><br />e-mail: contact@hometime.fr
+cgv.body.9=Pour toute information, question ou réclamation, le client peut s''adresser du lundi au vendredi, de 9 h à 18 h au service Relations Clients de la société : \
+  <br /><br />e-mail: contact [@] hometime.fr\
+  <br /><br />téléphone (numéro de mobile standard) : 07&nbsp;82&nbsp;43&nbsp;47&nbsp;51
 
 # Privacy page
 privacy.html.title=Confidentialité et vie privée
@@ -880,6 +883,9 @@ faq.body.11=Même s''il n''est pas possible d''être sûr à 100% des travaux à
  <br /><br />Si notre devis doit être modifié à la hausse, le nouveau devis est gratuit et la montre vous est restituée sans frais si vous le refusez.
 faq.head.12=Pouvez-vous intervenir en dehors de la région parisienne&nbsp;? Y a-t-il un surcoût&nbsp;?
 faq.body.12=Pour les interventions en dehors de la région parisienne, nous essayons de trouver la solution la plus pertinente avec nos clients. Si cette solution existe, les frais de déplacement sont évalués au plus juste et intégrés dans le devis formel remis au client pour accord.
+faq.head.13=Peut-on vous joindre par téléphone&nbsp;?
+faq.body.13=Nous sommes joignables au 07&nbsp;82&nbsp;43&nbsp;47&nbsp;51 (numéro de mobile standard).
+
 
 # Around Hometime
 around.html.title=Autour d'Hometime - Bons plans et partenaires
