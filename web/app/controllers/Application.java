@@ -234,9 +234,13 @@ public class Application extends Controller {
 	
 
     public static Result index() {
-        return ok(index.render("", getSupportedBrands()));
+        return ok(index.render("", getSupportedBrands(), ""));
     }
-	
+
+    public static Result indexAlternate() {
+        return ok(index.render("", getSupportedBrands(), "alt"));
+    }
+    
     public static Result login() {
         return ok(login.render(Form.form(LoginForm.class)));
     }

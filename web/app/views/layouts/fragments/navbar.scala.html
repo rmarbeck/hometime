@@ -16,11 +16,12 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                @li_activable(1, index) {<a href="@routes.Application.index()"><span class="glyphicon glyphicon-home"></span></a>}
+                @li_activable(1, index, args = 'class -> "hidden-xs") {<a href="@routes.Application.index()"><span class="glyphicon glyphicon-home"></span></a>}
                 @li_activable(50, index, args = 'class -> "dropdown") {
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Messages("global.navbar.link.text.services") <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="@routes.Application.offer()">@Messages("global.navbar.link.text.services.service")</a></li>
+                    <li><a href="@routes.Application.offer()#restore">@Messages("global.navbar.link.text.services.restore")</a></li>
                     <li><a href="@routes.Application.offer()#loan">@Messages("global.navbar.link.text.services.loan")</a></li>
                     <li><a href="@routes.Application.offer()#home">@Messages("global.navbar.link.text.services.at.home")</a></li>
                     <li class="divider"></li>

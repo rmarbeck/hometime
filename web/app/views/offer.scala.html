@@ -18,6 +18,7 @@
               <div class="bs-sidebar affix" role="complementary">
                 <ul class="nav bs-sidenav">
                     <li><a href="#service">@Messages("offer.menu.text.service")</a></li>
+                    <li><a href="#restore">@Messages("offer.menu.text.restore")</a></li>
                     <li><a href="#loan">@Messages("offer.menu.text.loan")</a></li>
                     <li><a href="#home">@Messages("offer.menu.text.home")</a></li>
                     <li>&nbsp;</li>
@@ -35,6 +36,18 @@
                     <div class="row action">
                       <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.service()" role="button">@Messages("offer.service.call.to.action.more")</a></div>
                       <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.order(null)" role="button">@Messages("offer.service.call.to.action.order")</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="restore" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="offer-box">
+                    <div class="title"><blockquote><h2>@Html(Messages("offer.restore.head"))</h2></blockquote></div>
+                    <div class="body">@Html(Messages("offer.restore.body"))</div>
+                    <div class="row action">
+                      <div class="col-xs-12 text-center"><a class="btn btn-primary order-action" href="@routes.Application.order(null)?type=@OrderRequest.OrderTypes.REPAIR" role="button">@Messages("offer.restore.call.to.action.order")</a></div>
                     </div>
                   </div>
                 </div>
