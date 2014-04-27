@@ -241,7 +241,8 @@ watch.collection.html.description=Présentation des montres du catalogue Hometim
 watch.collection.html.keywords=montre, essai, prêt, location, rolex, tag heuer, omega, IWC, panerai
 watch.collection.display.watch.call.to.action=Voir la fiche
 watch.collection.baseline=Le catalogue des montres disponibles pour un essai
-watch.collection.text.explanation=Découvrez les montres que vous pouvez essayer pendant la durée de la révision ou de la réparation de votre montre. 
+watch.collection.text.explanation=Découvrez les montres que vous pouvez essayer pendant la durée de la révision ou de la réparation de votre montre.
+watch.collection.display.watch.title=Voir la fiche de la : {0} 
 
 # Watch detail
 watch.detail.html.title=Détail - {0}
