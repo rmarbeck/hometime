@@ -242,7 +242,8 @@ watch.collection.html.keywords=montre, essai, prêt, location, rolex, tag heuer,
 watch.collection.display.watch.call.to.action=Voir la fiche
 watch.collection.baseline=Le catalogue des montres disponibles pour un essai
 watch.collection.text.explanation=Découvrez les montres que vous pouvez essayer pendant la durée de la révision ou de la réparation de votre montre.
-watch.collection.display.watch.title=Voir la fiche de la : {0} 
+watch.collection.display.watch.title=Voir la fiche de la {0} 
+
 
 # Watch detail
 watch.detail.html.title=Détail - {0}
@@ -267,6 +268,7 @@ watch.detail.order.this.call.to.action=Choisir cette montre
 watch.detail.data.this.one.available=Disponibilité
 watch.detail.data.this.one.available.yes=La montre est disponible
 watch.detail.data.this.one.available.no=La montre est actuellement essayée par un client
+watch.detail.display.watch.title=Voir la fiche de la {0}
 
 # Offer page
 offer.html.title=Les services Hometime
