@@ -6,7 +6,7 @@
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}/@routes.Application.indexAlternate()</loc>
+      <loc>http://@{request.host()}@routes.Application.indexAlternate()</loc>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
     </url>
