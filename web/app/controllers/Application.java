@@ -29,6 +29,7 @@ import play.mvc.*;
 import views.html.*;
 import views.html.admin.login;
 
+@With(SessionWatcher.class)
 public class Application extends Controller {
 	
 	public static class LoginForm {
@@ -290,7 +291,7 @@ public class Application extends Controller {
     public static Result order(String brandName) {
     	try {
     		
-	        return ok(order.render("", fillFormWithQueryParams(brandName), getSupportedBrands(), getDisplayableWatches()));
+	        return ok(order.render("", fillFormWithQueryParams(brandName), getSupportedBrands(), getDisplayableWatches(), SessionWatcher.isItFirstPageOfSession(session())));
     	} catch (Exception e) {
     		return internalServerError();
     	}
@@ -355,7 +356,7 @@ public class Application extends Controller {
 	public static Result manageOrder() {
 		Form<OrderForm> orderForm = Form.form(OrderForm.class).bindFromRequest();
 		if(orderForm.hasErrors()) {
-			return badRequest(order.render("", orderForm, getSupportedBrands(), getDisplayableWatches()));
+			return badRequest(order.render("", orderForm, getSupportedBrands(), getDisplayableWatches(), SessionWatcher.isItFirstPageOfSession(session())));
 		} else {
 			OrderRequest orderRequest = orderForm.get().getRequest();
 			orderRequest.save();

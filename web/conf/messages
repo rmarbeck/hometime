@@ -391,6 +391,8 @@ order.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, �
 order.baseline=Demander un devis gratuit
 order.text.explanation=Pour obtenir un devis d''entretien de votre montre, veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
 
+order.text.pre.explanation=<a href="{0}">Hometime</a> est un service d''entretien des montres de grandes marques, dans le réseau officiel ou auprès d''un atelier indépendant, avec prise en charge à domicile et essai prolongé de montres mythiques pendant la durée de l''entretien. Vous souhaitez connaître les délais et le coût de l''entretien d''une montre, Hometime vous répond.<br /><br /> 
+
 order.baume.baseline=Demander un devis gratuit
 order.baume.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Baume et Mercier (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
 order.baume.html.title=Devis pour révision ou réparation d''une montre Baume et Mercier
@@ -513,7 +515,7 @@ order.autre.html.keywords=devis gratuit,devis en ligne, entretien, horloger agr�
 
 
 order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)
-order.form.value.type.of.service.repair=Réparation ou restauration
+order.form.value.type.of.service.repair=Réparation ou <abbr class="" title="Pour les montres anciennes ou très abîmées" >restauration</abbr>
 order.form.value.type.of.service.service=Révision complète (démontage, nettoyage, huilage, <abbr class="" title="Si vous le souhaitez" >polissage</abbr>), à prévoir tous les 5 ans environ
 order.form.value.type.of.service.intermediate=Entretien intermédiaire (étanchéité et léger <abbr class="" title="Si vous le souhaitez" >polissage</abbr>), à prévoir tous les 2 à 4 ans
 order.form.value.type.of.service.setting.up=Réglage de la précision du mouvement
@@ -530,7 +532,7 @@ order.form.value.method.outlet=Je souhaite que ma montre soit entretenue par un 
 order.form.value.method.both=Je souhaite un devis comparant les deux modes d''entretien
 order.form.label.remark=Remarques
 order.form.placeholder.remark=Vous souhaitez préciser quelque-chose
-order.form.label.choice=Choix de la montre que vous souhaitez essayer
+order.form.label.choice=<abbr class="" title="Si vous le souhaitez, Hometime vous permet d''essayer une montre pendant toute la durée de l''entretien" >Choix de la montre que vous souhaitez essayer</abbr>
 order.form.value.choice.default=Je ne souhaite pas essayer de montre pendant l''entretien
 order.form.cat.label.you=Vous
 order.form.label.your.name=* Vos nom et prénom

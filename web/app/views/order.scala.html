@@ -1,4 +1,4 @@
-@(message: String = "", order: Form[Application.OrderForm], supported_brands: List[Brand], available_watches: List[Watch])
+@(message: String = "", order: Form[Application.OrderForm], supported_brands: List[Brand], available_watches: List[Watch], is_it_first_page: Boolean)
 @import tags._
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
@@ -64,6 +64,9 @@
       } else {
       <div class="row explanation">
           <div class="col-sm-10 col-sm-offset-1">
+            @if(is_it_first_page) {
+            <div class="explanation-body">@Html(Messages("order.text.pre.explanation", routes.Application.index()))</div>
+            }
             <div class="explanation-body">@Html(Messages(key+".text.explanation"))</div>
             <hr>
           </div>
@@ -100,7 +103,7 @@
                 @helper.select(order("watchChosen"),
                                      for (w <- available_watches) yield w.id.toString -> (w.brand ++ " - " ++ w.short_name),
                                      '_default -> Messages("order.form.value.choice.default"),
-                                     '_label -> Messages("order.form.label.choice"),
+                                     '_label -> Html(Messages("order.form.label.choice")),
                                      'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 <div class="form-group">
