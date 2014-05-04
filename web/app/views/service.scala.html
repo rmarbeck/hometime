@@ -4,6 +4,22 @@
     @layouts.fragments.navbar(80)
 
     <div class="container service">
+    
+      <div class="row featurette">
+        <div class="visible-xs col-xs-2"></div>
+        <div class="col-sm-3 col-xs-8">
+          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/service/invest.jpg")" alt="@Messages("service.invest.alt")">
+        </div>
+        <div class="visible-xs col-xs-2"></div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-sm-9">
+          <div class="featurette-heading"><h2>@Html(Messages("service.content.6.head"))</h2></div>
+          <div class="featurette-body">@Html(Messages("service.content.6.body"))</div>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+    
 
       <div class="row featurette">
         <div class="visible-xs col-xs-2"></div>
@@ -110,25 +126,5 @@
 
       <hr class="featurette-divider">
       
-      <div class="row featurette">
-        <div class="visible-xs col-xs-2"></div>
-        <div class="col-sm-3 col-xs-8">
-          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/service/invest.jpg")" alt="@Messages("service.invest.alt")">
-        </div>
-        <div class="visible-xs col-xs-2"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-sm-9">
-          <div class="featurette-heading"><h2>@Html(Messages("service.content.6.head"))</h2></div>
-          <div class="featurette-body">@Html(Messages("service.content.6.body"))</div>
-        </div>
-      </div>
-      <div class="row featurette">
-        <div class="col-xs-12 text-center">
-          <div class="featurette-action text-center"><a class="btn btn-primary" href="@routes.Application.order(null)" role="button">@Messages("service.invest.call.to.action")</a></div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
     </div><!-- /.container -->
 }
