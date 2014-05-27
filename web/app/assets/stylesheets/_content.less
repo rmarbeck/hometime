@@ -2,7 +2,23 @@
   .reset_div;
 }
 
-.content-box .title h2 {
+.rich-content-box .title h2 {
+  padding-left: 10px;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.rich-content-box img {
+  height: 60px;
+}
+  
+.rich-content-box img {
+  margin-right: 10px;
+}
+  
+.rich-content-box .title h2, .content-box .title h2 {
   font-size: 14px;
 }
 
@@ -19,7 +35,11 @@
     padding-top: @content-top-margin;
   }
 
-  .content-box .title h2 {
+  .rich-content-box  {
+    font-size: 14px;
+  }
+
+  .rich-content-box .title h2, .content-box .title h2 {
     font-size: 16px;
   }
 }

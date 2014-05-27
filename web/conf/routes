@@ -73,6 +73,9 @@ GET     /cgv                        controllers.Application.cgv()
 # Autour
 GET     /autour-de-hometime         controllers.Application.around()
 
+# Feedback
+GET     /avis-clients               controllers.Application.feedback()
+
 # ADMIN
 GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()

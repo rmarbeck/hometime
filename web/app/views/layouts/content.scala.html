@@ -1,12 +1,6 @@
 @(page: String, nbArticles: Integer)
-@import tags._
-@layouts.main(page) {
-    @layouts.fragments.navbar(0)
-      
-    <div class="container container-@page">
-        @baseline(page+".baseline")
-        <div class="row">
-            <div id="content" class="col-md-12" role="main">
+
+@layouts.content_layout(page) {
             @for(i <- 1 to nbArticles) {
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">
@@ -16,9 +10,5 @@
                   </div>
                 </div>
               </div>
-              }
-          </div>
-        </div>
-        <hr>
-    </div><!-- /.container -->
+            }
 }

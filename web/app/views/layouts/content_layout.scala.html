@@ -1,0 +1,15 @@
+@(page: String)(content: Html)
+@import tags._
+@layouts.main(page) {
+    @layouts.fragments.navbar(0)
+      
+    <div class="container container-@page">
+        @baseline(page+".baseline")
+        <div class="row">
+            <div id="content" class="col-md-12" role="main">
+              @content
+          </div>
+        </div>
+        <hr>
+    </div><!-- /.container -->
+}

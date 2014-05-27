@@ -24,6 +24,7 @@ global.navbar.link.text.services.other=Les prestations complémentaires
 global.navbar.link.text.services.faq=Questions fréquentes (FAQ)
 global.navbar.link.text.services.around=Bons plans et bonnes adresses
 global.navbar.link.text.services.prices=Les tarifs
+global.navbar.link.text.services.feedback=Avis clients
 global.navbar.link.text.watch.collection=Les montres
 global.navbar.link.text.who.are.we=Mentions légales
 #   global.navbar.link.text.contact=Avis, remarques ?
@@ -71,6 +72,8 @@ global.text.watch.collection.title=Les montres du catalogue disponibles pour un 
 global.action.logout=Se déconnecter
 global.text.faq=Questions&nbsp;fréquentes&nbsp;(FAQ)
 global.text.faq.title=Questions fréquentes (FAQ)
+global.text.feedback=Avis clients
+global.text.feedback=Avis clients
 global.text.blog=Le Blog
 global.text.blog.title=Le Blog Hometime
 global.text.facebook.follow=Nous suivre sur Facebook
@@ -132,6 +135,8 @@ home.order.call.to.action=Demander un devis
 home.order.call.to.action.title=Demander un devis en ligne gratuit
 home.tell.more.call.to.action=En savoir plus...
 home.tell.more.call.to.action.title=Tout savoir sur nos services
+home.feedback.call.to.action=Avis clients
+home.feedback.call.to.action.title=Ce qu''en pensent nos clients
 
 home.title.for.facebook=Hometime
 home.type.for.facebook=website
@@ -743,6 +748,45 @@ about.body.1=Hometime a été créée pour faciliter la vie de tous les possesse
 about.head.2=Nous contacter
 about.body.2=Vous pouvez nous joindre par téléphone au <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).\
  <br /><br />Par email : contact [@] hometime.fr
+ 
+# Feedback page
+feedback.html.title=Avis clients ?
+feedback.html.description=Les avis des clients qui nous ont fait confiance.
+feedback.html.keywords=avis clients, hometime, watchnext, évaluation, note, remarques
+feedback.baseline=Les avis des clients qui nous ont fait confiance.
+feedback.head.1=Edouard de G. - Mai 2014
+feedback.source.1=LinkedIn
+feedback.body.1=Un travail précis et extrêmement professionnel. Un expert en horlogerie recommandable tant pour l''entretien des montres, restauration, et recherche de pièces rares sur mandat. Prix compétitif.
+feedback.picture.url.1=https://media.licdn.com/mpr/mpr/shrink_60_60/p/4/000/16c/296/1bef697.jpg
+feedback.head.2=Xavier L. - Mai 2014
+feedback.source.2=Facebook
+feedback.picture.url.2=https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c192.41.516.516/s100x100/971821_655215587829148_1796451300_n.jpg
+feedback.body.2=Hometime vient de me réviser une Bulova Acutron de 1967, un modèle à diapason difficile à entretenir. Le challenge a été relevé avec brio... Du service et de la compétence....
+feedback.head.3=Olivier F. - Mai 2014
+feedback.source.3=Facebook
+feedback.picture.url.3=https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/p100x100/10257308_10151965562881580_4730319603076552834_a.jpg
+feedback.body.3=Merci pour le polissage de ma Jaeger Reverso Grande Calendar… beau travail, elle est comme neuve! A recommander pour tous les petits bobos de nos tocantes!!
+feedback.head.4=Guillaume P. - Mai 2014
+feedback.source.4=LinkedIn
+feedback.picture.url.4=https://media.licdn.com/mpr/mpr/shrink_60_60/p/2/000/0d8/012/1a7ba8c.jpg
+feedback.body.4=Je viens d''avoir l''occasion de recourir aux services de Hometime pour la restauration d''une montre vintage et ne peux que me féliciter de la qualité du travail effectué, de la pertinence des conseils prodigués et de la qualité du service dont Hometime a fait preuve. \
+ De nature plutôt méfiant, Raphaël a su me convaincre avec tact et finesse de lui confier mes montres pour évaluer des réparations. Il s''est présenté à mon domicile avec tous les papiers de réassurance. Le lendemain j''avais des devis précis des interventions à effectuer. Raphaël m''a ensuite contacté pour tout m''expliquer. J''ai validé une partie des travaux qui ont été réalisés rapidement. Raphaël se déplace ensuite pour remettre les montres. Raphaël est une personne de confiance et je n''hésiterai pas à recourir un nouvelle fois à ce service de conciergerie de montre nouveau et pratique.
+feedback.head.5=Thomas F. - Mai 2014
+feedback.source.5=LinkedIn
+feedback.picture.url.5=https://media.licdn.com/mpr/mpr/shrink_60_60/p/1/000/0cc/346/0708717.jpg
+feedback.body.5=Efficacité, discrétion, ponctualité, réactivité, adaptativité, compréhension, honnêteté,... des qualités qui mettent tout de suite en confiance. Le résultat de la mission fut au dela de mes attentes... Je suis extrêmement satisfait du "job" et n''hésiterai pas une seconde à faire à nouveau appel à Hometime.
+feedback.head.6=Guilhem N. - Avril 2014
+feedback.source.6=LinkedIn
+feedback.picture.url.6=https://media.licdn.com/mpr/mpr/shrink_60_60/p/4/000/16e/02f/2005b2d.jpg
+feedback.body.6=Une efficacité irréprochable, des coûts très compétitifs et des conseils avisés... merci beaucoup !
+feedback.head.7=Johel B. - Avril 2014
+feedback.source.7=LinkedIn
+feedback.picture.url.7=https://media.licdn.com/mpr/mpr/shrink_60_60/p/3/000/212/24a/3d31b86.jpg
+feedback.body.7=Je viens d''avoir l''occasion de recourir aux services de Hometime pour la restauration d''une montre vintage et ne peux que me féliciter de la qualité du travail effectué, de la pertinence des conseils prodigués et de la qualité du service dont Hometime a fait preuve.
+
+
+# Rich content layout
+rich.content.source=Avis posté sur 
 
 # About page
 legal.html.title=Mentions légales

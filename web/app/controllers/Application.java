@@ -333,6 +333,10 @@ public class Application extends Controller {
         return ok(about.render());
     }
     
+    public static Result feedback() {
+        return ok(feedback.render());
+    }
+    
     public static Result faq() {
         return ok(faq.render());
     }
