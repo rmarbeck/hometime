@@ -58,6 +58,11 @@
       <priority>0.6</priority>
     </url>
     <url>
+      <loc>http://@{request.host()}@routes.Application.feedback()</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.5</priority>
+    </url>
+    <url>
       <loc>http://@{request.host()}@routes.Application.about()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>

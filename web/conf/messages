@@ -942,7 +942,7 @@ faq.head.6=Quelles sont les garanties que vous apportez&nbsp;?
 faq.body.6=Hometime dispose de sa propre assurance contre toute perte ou dégradation des montres qui lui sont confiées. Cette assurance, fournie par AXA, couvre l''ensemble des risques liés au transport et à l''intervention des horlogers.\
  <br /><br />Dans le cas de la prise en charge par le réseau officiel de la marque, les assurances habituelles sont maintenues et tout dommage sur votre montre est pris en charge intégralement par la marque elle-même, Hometime s''occupant de tout pour vous.\
  <br /><br />Sans que celles-ci puissent être détaillées, Hometime prend des mesures particulières pour éviter les vols. De plus, un soin encore renforcé peut être demandé par le client pour des montres à forte valeur sentimentale.
-faq.head.7=Que se passe-t-il si des pièces ont besoin d''être changée&nbsp;?
+faq.head.7=Que se passe-t-il si des pièces ont besoin d''être changées&nbsp;?
 faq.body.7=Si des pièces doivent être changées lors d''une intervention, vous en êtes systématiquement informé et les pièces remplacées vous sont restituées (ou un certificat de la marque vous est remis dans le cas où la politique de celle-ci stipule la reprise systématique des anciennes pièces).\
  <br /><br />Les pièces remplacées le sont systématiquement par des pièces identiques. Si cela s''avère pertinent et si vous en donnez l''autorisation, il est possible d''utiliser des pièces d''occasion cohérentes avec l''aspect de votre montre plutôt que des pièces neuves.
 faq.head.8=Faites-vous de la vente&nbsp;?
@@ -959,10 +959,14 @@ faq.head.11=Comment faites-vous pour proposer des devis sans voir la montre&nbsp
 faq.body.11=Même s''il n''est pas possible d''être sûr à 100% des travaux à réaliser sur une montre avant de l''avoir ouverte, nous sommes capables sur la base des informations qui nous sont données et de notre expérience de proposer une évaluation fiable des coûts et des délais nécessaires à la remise en état d''une montre.\
  <br /><br />Dans certains cas, nos devis peuvent faire l''objet d''un ajustement à la baisse ou à la hausse lors de la prise en charge de la montre à domicile ou de l''ouverture de la montre par l''atelier horloger. \
  <br /><br />Si notre devis doit être modifié à la hausse, le nouveau devis est gratuit et la montre vous est restituée sans frais si vous le refusez.
-faq.head.12=Pouvez-vous intervenir en dehors de la région parisienne&nbsp;? Y a-t-il un surcoût&nbsp;?
-faq.body.12=Pour les interventions en dehors de la région parisienne, nous essayons de trouver la solution la plus pertinente avec nos clients. Si cette solution existe, les frais de déplacement sont évalués au plus juste et intégrés dans le devis formel remis au client pour accord.
-faq.head.13=Peut-on vous joindre par téléphone&nbsp;?
-faq.body.13=Nous sommes joignables au 07&nbsp;82&nbsp;43&nbsp;47&nbsp;51 (numéro de mobile standard).
+faq.head.12=Pouvez-vous entretenir des pendules, des horloges ou des montres de poche&nbsp;?
+faq.body.12=En nous entourant des meilleurs horlogers de Paris, nous pouvons entretenir tout type de produit horloger, y compris des pendules et des horloges anciennes ou récentes.\
+ <br /><br />Nous pouvons aussi entretenir des montres de poche, ou encore des montres disposant de mouvements très spécifiques.\
+ <br /><br />Dans certains cas, vous pouvez aussi nous confier vos bijoux pour des interventions comme du resertissage, agrandissement ou réduction.
+faq.head.13=Pouvez-vous intervenir en dehors de la région parisienne&nbsp;? Y a-t-il un surcoût&nbsp;?
+faq.body.13=Pour les interventions en dehors de la région parisienne, nous essayons de trouver la solution la plus pertinente avec nos clients. Si cette solution existe, les frais de déplacement sont évalués au plus juste et intégrés dans le devis formel remis au client pour accord.
+faq.head.14=Peut-on vous joindre par téléphone&nbsp;?
+faq.body.14=Nous sommes joignables au 07&nbsp;82&nbsp;43&nbsp;47&nbsp;51 (numéro de mobile standard).
 
 
 # Around Hometime
@@ -1008,6 +1012,7 @@ site.plan.around.title=Bons plans et bonnes adresses
 site.plan.privacy.title=Confidentialité et vie privée
 site.plan.contact.title=Prise de contact
 site.plan.call.request.title=Rappel téléphonique
+site.plan.feedback.title=Avis clients
 
 
 
