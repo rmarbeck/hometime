@@ -131,6 +131,7 @@ home.promise.3.alt.call.to.action=Déplacements à domicile
 home.promise.3.alt.call.to.action.title=Nos horaires et la zone d''intervention courverte
 
 home.text.supports.brands=Hometime entretient les marques suivantes :
+home.text.supports.brands.notice=Hometime est indépendant et non affilié avec les marques entretenues
 home.order.call.to.action=Demander un devis
 home.order.call.to.action.title=Demander un devis en ligne gratuit
 home.tell.more.call.to.action=En savoir plus...
@@ -750,7 +751,7 @@ about.body.2=Vous pouvez nous joindre par téléphone au <b>07&nbsp;82&nbsp;43&n
  <br /><br />Par email : contact [@] hometime.fr
  
 # Feedback page
-feedback.html.title=Avis clients ?
+feedback.html.title=Avis clients
 feedback.html.description=Les avis des clients qui nous ont fait confiance.
 feedback.html.keywords=avis clients, hometime, watchnext, évaluation, note, remarques
 feedback.baseline=Les avis des clients qui nous ont fait confiance.
@@ -964,9 +965,13 @@ faq.body.12=En nous entourant des meilleurs horlogers de Paris, nous pouvons ent
  <br /><br />Nous pouvons aussi entretenir des montres de poche, ou encore des montres disposant de mouvements très spécifiques.\
  <br /><br />Dans certains cas, vous pouvez aussi nous confier vos bijoux pour des interventions comme du resertissage, agrandissement ou réduction.
 faq.head.13=Pouvez-vous intervenir en dehors de la région parisienne&nbsp;? Y a-t-il un surcoût&nbsp;?
-faq.body.13=Pour les interventions en dehors de la région parisienne, nous essayons de trouver la solution la plus pertinente avec nos clients. Si cette solution existe, les frais de déplacement sont évalués au plus juste et intégrés dans le devis formel remis au client pour accord.
-faq.head.14=Peut-on vous joindre par téléphone&nbsp;?
-faq.body.14=Nous sommes joignables au 07&nbsp;82&nbsp;43&nbsp;47&nbsp;51 (numéro de mobile standard).
+faq.body.13=Pour les interventions en dehors de la région parisienne, nous essayons de trouver la solution la plus pertinente avec nos clients. Si cette solution existe, les frais de déplacement sont évalués au plus juste et intégrés dans le bon de commande remis au client pour accord.
+faq.head.14=Dépendez-vous ou êtes vous affilié avec les marques des montres que vous entretenez&nbsp?
+faq.body.14=La société Watch Next est une société indépendante, non affiliée avec les marques de montres qu''elle entretient ou avec les horlogers à qui elle confie des entretiens.\
+ <br /><br />Dans le cadre des entretiens au sein des réseaux officiels, la société Watch Next intervient comme intermédiaire.\
+ <br /><br />Lorsque le client choisit un entretien auprès d''un horloger partenaire, la responsabilité de la marque de la montre entretenue ne peut être engagée.
+faq.head.15=Peut-on vous joindre par téléphone&nbsp;?
+faq.body.15=Nous sommes joignables au 07&nbsp;82&nbsp;43&nbsp;47&nbsp;51 (numéro de mobile standard).
 
 
 # Around Hometime
