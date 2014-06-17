@@ -24,9 +24,10 @@ global.navbar.link.text.services.other=Les prestations complémentaires
 global.navbar.link.text.services.faq=Questions fréquentes (FAQ)
 global.navbar.link.text.services.around=Bons plans et bonnes adresses
 global.navbar.link.text.services.prices=Les tarifs
-global.navbar.link.text.services.feedback=Avis clients
+global.navbar.link.text.services.feedback=Avis clients <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
 global.navbar.link.text.watch.collection=Les montres
 global.navbar.link.text.who.are.we=Mentions légales
+global.navbar.link.text.about=Qui&nbsp;sommes&nbsp;nous&nbsp;?
 #   global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Demander un devis
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
@@ -72,8 +73,8 @@ global.text.watch.collection.title=Les montres du catalogue disponibles pour un 
 global.action.logout=Se déconnecter
 global.text.faq=Questions&nbsp;fréquentes&nbsp;(FAQ)
 global.text.faq.title=Questions fréquentes (FAQ)
-global.text.feedback=Avis clients
-global.text.feedback=Avis clients
+global.text.feedback=Avis clients  <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+global.text.feedback.title=Avis clients
 global.text.blog=Le Blog
 global.text.blog.title=Le Blog Hometime
 global.text.facebook.follow=Nous suivre sur Facebook
@@ -100,8 +101,8 @@ home.caption.3.head=Ne vous déplacez plus&nbsp;!
 home.caption.3.body=Hometime intervient à domicile et confie votre montre au <b>service après vente officiel</b> ou à l''un des <b>meilleurs horlogers de Paris</b>, c''est vous qui choisissez.
 home.caption.3.call.to.action=Demandez un devis !
 
-home.baseline=<i>Portez une montre mythique à votre poignet pendant l''entretien de votre montre</i>
-home.baseline.alt=<i>Simplifiez-vous l''entretien de votre montre de grande marque</i>
+home.baseline=<i>Ne perdez plus votre temps, gagnez-le !</i>
+home.baseline.alt=<i>Ne perdez plus votre temps, gagnez-le !</i>
 
 home.promise.1.alt=Mouvement de montre
 home.promise.1.head=Entretenez&nbsp;!
@@ -388,7 +389,7 @@ prices.table.body.loan.prices=Entre <strong>{0}</strong> et <strong>{1}</strong>
 prices.table.body.other=Autres services
 prices.table.body.other.prices=Pour les services d''expertise, de conseils ou vente d''accessoires n''hésitez pas à <a href="{0}">nous contacter</a>.
 prices.table.body.moving=Frais de déplacement
-prices.table.body.moving.prices=Gratuits (sur Paris et première couronne)
+prices.table.body.moving.prices=Gratuits (sur Paris et première couronne). <br /> Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.
 prices.table.body.footnote.4=<sup>0</sup> Dans de rares cas, pour les interventions très longues le prix de l''essai peut être supérieur. Dans ce cas, le prix est indiqué dans le devis. 
 
 # Order page
@@ -746,9 +747,22 @@ about.body.1=Hometime a été créée pour faciliter la vie de tous les possesse
  <br /><br />Que ce soit lors de l''achat, de l''entretien ou de la revente, Hometime vous accompagne pour faire les bons choix au meilleur prix et dans le plus grand confort. \
  <br /><br />Pour cela, nous attachons une importance particulière à vous écouter et à vous proposer des solutions personnalisées correspondant à vos attentes. \
  <br /><br />Hometime est un service de la société Watch next enregistrée au RCS de Versailles.
-about.head.2=Nous contacter
-about.body.2=Vous pouvez nous joindre par téléphone au <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).\
- <br /><br />Par email : contact [@] hometime.fr
+about.head.2=Le concept Hometime
+about.body.2=Hometime repose sur le concept d''un super <b>concierge expert en horlogerie</b>.\
+ <br /><br />Comme tous les bons concierges, il est là pour vous faire <b>gagner un maximum de temps en vous facilitant la vie</b>. Tout ce qui est contraignant devient simple et indolore : \
+ <ul>\
+     <li>Hometime vous conseille pour choisir l''entretien qui correspond à votre montre et à son état.</li>\
+     <li>Hometime établit un devis en quelques heures gratuitement, pour tous les types d''entretien, des plus simples aux plus complexes.</li>\
+     <li>Vous ne vous déplacez plus, Hometime se déplace pour vous (si vous habitez en dehors de la zone d''intervention à domicile classique, Hometime vous simplifie l''emballage et l''envoi de votre montre dans une sécurité totale).</li>\
+     <li>Hometime vous propose de vous faire essayer une très belle montre pendant toute la durée de l''entretien.</li>\
+     <li>Hometime vous informe de l''avancement des travaux.</li>\
+     <li>Une fois l''entretien effectué, Hometime se met à votre place et vérifie le travail réalisé pour s''assurer de vous rendre une montre en parfait état.</li>\
+ </ul>\
+ <br />Faciliter la vie, c''est aussi éviter le stress, pour cela Hometime a souscrit <b>un contrat d''assurance auprès d''AXA qui couvre l''ensemble des risques</b> et qui vous assure de dormir sur vos deux oreilles.\
+ <br /><br />Mais surtout, Hometime s''adapte à vos besoins et à vos contraintes. Vous avez une requête particulière, n''hésitez pas !
+about.head.3=Nous contacter
+about.body.3=Vous pouvez nous joindre par téléphone au <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).\
+     <br /><br />Par email : contact [@] hometime.fr
  
 # Feedback page
 feedback.html.title=Avis clients
