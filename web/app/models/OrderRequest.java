@@ -25,7 +25,9 @@ public class OrderRequest extends Model {
 	    SERVICE ("1"),
 	    REPAIR ("2"),
 	    INTERMEDIATE ("3"),
-	    SETTINGUP ("4");
+	    SETTINGUP ("4"),
+	    WATER ("5"),
+	    RESERVED ("6");
 	    
 		private String name = "";
 		    

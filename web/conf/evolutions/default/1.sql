@@ -49,7 +49,7 @@ create table order_request (
   email                     varchar(255),
   phone_number              varchar(255),
   city                      varchar(255),
-  constraint ck_order_request_order_type check (order_type in (0,1,2,3)),
+  constraint ck_order_request_order_type check (order_type in (0,1,2,3,4,5)),
   constraint ck_order_request_method check (method in (0,1,2)),
   constraint pk_order_request primary key (id))
 ;

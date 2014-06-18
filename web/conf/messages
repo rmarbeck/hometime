@@ -28,6 +28,7 @@ global.navbar.link.text.services.feedback=Avis clients <span class="glyphicon gl
 global.navbar.link.text.watch.collection=Les montres
 global.navbar.link.text.who.are.we=Mentions légales
 global.navbar.link.text.about=Qui&nbsp;sommes&nbsp;nous&nbsp;?
+global.navbar.link.text.water.content=Ma montre a pris l''eau
 #   global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Demander un devis
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
@@ -68,6 +69,7 @@ global.text.services.other=Les prestations complémentaires
 global.text.services.other.title=Toutes les prestations horlogères
 global.text.services.prices=Les tarifs
 global.text.services.prices.title=Les tarifs
+global.text.service.water=Etanchéité, buée sur le verre&nbsp;?
 global.text.watch.collection=Les montres
 global.text.watch.collection.title=Les montres du catalogue disponibles pour un prêt
 global.action.logout=Se déconnecter
@@ -242,6 +244,22 @@ service.2.to.action=En savoir plus...
 service.3.to.action=Outil de calcul personnalisé
 service.4.to.action=En savoir plus...
 service.5.to.action=En savoir plus...
+
+# Water page
+water.html.title=Problème d''étanchéité d''une montre
+water.html.description=Comprendre quoi faire lorsque de la buée apparait sur le verre de sa montre
+water.html.keywords=entretien, réparation, montre mécanique, délai, urgence,, étanchéité, buée, séchage, manuelle, automatique
+water.content.1.head=Je vois <span class="text-muted">de la buée sur mon verre !</span>
+water.content.1.body=<div class="sub-title"></div>Une montre étanche est conçue pour empêcher toute entrée d''eau à l''intérieur du boitier. Il arrive malgré tout que de l''eau puisse pénétrer dans la montre à cause d''une mauvaise manipulation ou bien d''une défaillance ou d''une usure d''une des pièces.\
+ <br /><br />Si l''eau entre facilement dans le boitier, il est plus compliqué de la faire sortir et dans tous les cas la présence d''eau, même de courte durée, justifie une intervention horlogère (a fortiori dans le cas de l''eau de mer ou de l''eau de piscine).\
+ <br /><br />Les symptômes sont simples, si vous voyez de la buée sur le verre ou sur le fond de la montre, ou pire des traces de rouille, alors votre montre a pris l''eau.
+water.content.2.head=Que faire <span class="text-muted">si ma montre a pris l''eau ?</span>
+water.content.2.body=<div class="sub-title"></div>Le maître mot lorsque de l''eau entre dans le boitier de votre montre : <b>AGIR VITE !</b>\
+ <br /><br />Les dégâts occasionnés par l''eau peuvent être vite importants, surtout s''il s''agit d''eau de mer ou d''eau chlorée, mais si l''<b>intervention est très rapide il est possible d''éviter toute conséquence</b>.\
+ <br /><br />Une fois dans l''atelier horloger, la cause de l''intrusion d''eau est détectée puis la montre est démontée, séchée, nettoyée (pour être débarrassée de toute source de corrosion).\
+ Lors du remontage de la montre, les joints sont changés et l''étanchéité est contrôlée.\
+ <br /><br />Hometime vous propose d''intervenir dès que vous détectez un problème d''étanchéité et s''engage à réaliser les travaux nécessaires en quelques heures seulement auprès des meilleurs ateliers horlogers parisiens.
+water.1.to.action=Demander une intervention en urgence
 
 # Watch collection page
 watch.collection.html.title=Les montres disponibles pour un essai prolongé Hometime
@@ -528,6 +546,7 @@ order.form.value.type.of.service.service=Révision complète (démontage, nettoy
 order.form.value.type.of.service.intermediate=Entretien intermédiaire (étanchéité et léger <abbr class="" title="Si vous le souhaitez" >polissage</abbr>), à prévoir tous les 2 à 4 ans
 order.form.value.type.of.service.setting.up=Réglage de la précision du mouvement
 order.form.value.type.of.service.setting.up.help=Si votre montre est récente ou si sa dernière révision date de quelques mois et que vous constatez une prise d''avance de quelques dizaines de secondes par jour, cet entretien peut résoudre ce problème avec une intervention simple et rapide.
+order.form.value.type.of.service.water=Urgence étanchéité (vous voyez de la buée sur votre verre)
 order.form.label.cat.your.watch=Votre montre
 order.form.label.brand=* Marque
 order.form.value.brand.default=Sélectionnez la marque de votre montre
@@ -1020,6 +1039,7 @@ site.plan.prices.title=Les tarifs
 site.plan.order.title=Demande de devis gratuit
 site.plan.order.brand.title=Demande de devis de révision ou de réparation pour une montre {0}
 site.plan.service.title=Tout savoir sur l''entretien
+site.plan.water.title=Problème d''étanchéité, buée sur le verre
 site.plan.service.test.title=Quand faire réviser ma montre ?
 site.plan.watch.collection.title=Les montres disponibles à l''essai
 site.plan.watch.title=Fiche {0} - {1}
@@ -1127,8 +1147,10 @@ admin.quotation.request.service.type.value.1=Révision complète d''une {0}
 admin.quotation.request.service.type.value.2=Réparation d''une {0}
 admin.quotation.request.service.type.value.3=Entretien intermédiaire d''une {0}
 admin.quotation.request.service.type.value.4=Simple réglage d''une {0}
+admin.quotation.request.service.type.value.5=Prise en charge d''un problème d''étanchéité pour une {0}
 
 admin.quotation.form.label.type.of.service=* Type d''entretien
+admin.quotation.form.value.type.of.service.water=Urgence étanchéité
 admin.quotation.form.value.type.of.service.setting.up=Réglage de la précision du mouvement
 admin.quotation.form.value.type.of.service.intermediate=Entretien intermédiaire
 admin.quotation.form.value.type.of.service.service=Révision complète

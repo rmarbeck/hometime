@@ -31,6 +31,11 @@
       <priority>0.7</priority>
     </url>
     <url>
+      <loc>http://@{request.host()}@routes.Application.water()</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+    </url>
+    <url>
       <loc>http://@{request.host()}@routes.Application.service_test()</loc>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>

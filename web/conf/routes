@@ -73,6 +73,10 @@ GET     /cgv                        controllers.Application.cgv()
 # Autour
 GET     /autour-de-hometime         controllers.Application.around()
 
+# Water leak
+GET     /prise-en-charge-urgente-probleme-etancheite    controllers.Application.water()
+GET     /urgence-buee-sur-le-verre                      controllers.Default.redirect(to = "/prise-en-charge-rapide-probleme-etancheite")
+
 # Feedback
 GET     /avis-clients               controllers.Application.feedback()
 

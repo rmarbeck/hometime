@@ -288,6 +288,10 @@ public class Application extends Controller {
         return ok(prices.render(""));
     }
 
+    public static Result water() {
+        return ok(water.render(""));
+    }
+
     public static Result order(String brandName) {
     	try {
     		

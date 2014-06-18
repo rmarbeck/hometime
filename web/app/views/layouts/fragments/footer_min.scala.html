@@ -48,6 +48,8 @@
                 @a_(routes.Application.service_test().url, "global.text.service.service.test")
                 <br />
                 @a_(routes.Application.around().url, "global.text.service.around")
+                <br />
+                @a_(routes.Application.water().url, "global.text.service.water")
             </div>
             <div class="col-sm-3">
                 @a_("http://watchnext.fr/blog/", "global.text.blog", 'target -> "_blank")
@@ -89,7 +91,7 @@
             function initialize() {
               var feed = new google.feeds.Feed("http://watchnext.fr/blog/feed/");
               var rssoutput="";
-              feed.setNumEntries(7);
+              feed.setNumEntries(8);
               feed.load(function(result) {
                 if (!result.error) {
                   var container = document.getElementById("feeddiv");

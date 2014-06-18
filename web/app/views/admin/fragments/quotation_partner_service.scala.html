@@ -92,6 +92,27 @@
         <li>Contrôle du bon fonctionnement et des performances chronométriques,</li>
         <li>Polissage de la boite et du bracelet s’il s’agit d’un bracelet métal (sauf mention expresse de votre part). Après polissage, les montres récentes retrouvent un aspect très proche du neuf.</li>
       }
+      case OrderRequest.OrderTypes.WATER => {
+      <li>Diagnostic horloger exhaustif préalable
+            <ul>
+                <li>Vérification d''étanchéité à l'arrivée de la montre.</li>
+                <li>Ouverture de la boite pour confirmation de la prise en charge dans un forfait de séchage sans remplacement de pièces.</li>
+                <li>Identification d'éventuels problèmes nécessitant une révision du mouvement ou le remplacement de pièces coûteuses non incluses dans ce type d'intervention (dans ce cas là, un nouveau devis vous est présenté avant toute intervention).</li>
+            </ul>
+        </li>
+        <li>Séchage de la montre,
+            <ul>
+                <li>Démontage de la montre,</li>
+                <li>Séchage en environnement sec et chaud (s'il s'agit d'eau de mer ou d'eau chlorée, la montre et le mouvement sont intégralement démontés),</li>
+                <li>Nettoyage des pièces marquées par l'eau,</li>
+                <li>Remontage de la montre,</li>
+                <li>Changement des joints d’étanchéité,</li>
+                <li>Fermeture du boitier,</li>
+                <li>Contrôle d’étanchéité et production de certificat.</li>
+            </ul>
+        </li>
+        <li>Contrôle du bon fonctionnement et des performances chronométriques,</li>
+      }
     }
     </ul>
   </li>
@@ -119,11 +140,19 @@ Pour l’ensemble des prestations ci-dessus, Hometime vous propose un tarif <str
   }
   case OrderRequest.OrderTypes.INTERMEDIATE => {
 <br><br>
-L'étanchéité est garantie pendant 2 ans.
+    @if(quotation.warantyTime != null) {
+    @quotation.warantyTime
+    } else {
+    L'étanchéité est garantie pendant 2 ans.
+    }
   }
   case default => {
 <br><br>
-Les opérations sont garanties 1 an, l'étanchéité pendant 2 ans.
+    @if(quotation.warantyTime != null) {
+    @quotation.warantyTime
+    } else {
+    Les opérations sont garanties 1 an, l'étanchéité pendant 2 ans.
+    }
   }
 }
 <br><br>
