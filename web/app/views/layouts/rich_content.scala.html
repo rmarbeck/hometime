@@ -1,7 +1,7 @@
 @(page: String, nbArticles: Integer)
 
 @layouts.content_layout(page) {
-            @for(i <- 1 to nbArticles) {
+            @for(i <- (1 to nbArticles).reverse) {
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="rich-content-box">
