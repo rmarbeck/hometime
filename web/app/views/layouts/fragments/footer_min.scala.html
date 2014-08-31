@@ -19,6 +19,8 @@
                 @a_(routes.Application.siteplan().url, "global.text.site.plan")
                 <br />
                 <a href="https://www.facebook.com/HometimeFr" title="@Messages("global.text.facebook.follow.title")" target="_blank"><span class="fa fa-facebook-square"></span>&nbsp;@Html(Messages("global.text.facebook.follow"))</a>
+                <br />
+                @a_(routes.Application.contact().url, "global.text.issue")
              </div>
              <div class="col-sm-3">
                 @a_(routes.Application.feedback().url, "global.text.feedback")
@@ -29,7 +31,13 @@
                 <br />
                 <a href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
                 <br />
-                @a_(routes.Application.contact().url, "global.text.issue")
+                <div class="call-block">
+                  @Html(Messages("global.text.call.us")) : @Html(Messages("global.text.phone.number"))
+                  <div class="conditions">
+                    <p>@Html(Messages("global.text.footer.conditions.cost"))</p>
+                    <p>@Html(Messages("global.text.footer.conditions.when"))</p>
+                  </div>
+                </div>
                 <br />
             </div>
             <div class="col-sm-3">
@@ -60,17 +68,37 @@
             <div class="col-sm-12">@Messages("global.text.copyright")</div>
         </div>
         <div class="visible-xs">
+            <hr>
             <p class="pull-right"><a href="#" title="@Messages("global.text.back.to.top.title")"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;@Messages("global.text.back.to.top")</a></p>
-            <p>@Messages("global.text.copyright") &middot;
-            @a_(routes.Application.privacy().url, "global.text.privacy") &middot;
-            @a_(routes.Assets.at("CGV%20-%20Hometime.pdf").url, "global.text.terms") &middot; 
-            @a_(routes.Application.about().url, "global.text.who.are.we") &middot; 
-            @a_(routes.Application.legal().url, "global.text.legal") &middot;
-            @a_(routes.Application.siteplan().url, "global.text.site.plan") &middot;
-            @a_(routes.Application.faq().url, "global.text.faq") &middot;
-            <a href="@routes.Application.contact()" title="@Messages("global.text.contact.title")">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a> &middot;
-            <a href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a> &middot;
-            @a_(routes.Application.contact().url, "global.text.issue")
+            <div class="footer-links">
+                <h4>@Messages("global.text.footer.links.contact")</h4>
+                <p><a href="@routes.Application.contact()" title="@Messages("global.text.contact.title")">@Html(Messages("global.text.contact"))&nbsp;<span class="glyphicon glyphicon-envelope"></span></a></p>
+                <p><a href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("global.text.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a></p>
+                <div class="call-block">
+                  <p><a href="tel:@Messages("global.href.phone.number")">@Html(Messages("global.text.phone.number"))</a></p>
+                  <div class="conditions">
+                    <p>@Html(Messages("global.text.footer.conditions.cost"))</p>
+                    <p>@Html(Messages("global.text.footer.conditions.when"))</p>
+                  </div>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>@Messages("global.text.footer.links.help")</h4>
+                <p>@a_(routes.Application.about().url, "global.text.who.are.we")</p>
+                <p>@a_(routes.Application.faq().url, "global.text.faq")</p>
+            </div>
+            <div class="footer-links">
+                <h4>@Messages("global.text.footer.links.legal")</h4>
+                <p>@a_(routes.Assets.at("CGV%20-%20Hometime.pdf").url, "global.text.terms")</p> 
+                <p>@a_(routes.Application.privacy().url, "global.text.privacy")</p>
+                <p>@a_(routes.Application.legal().url, "global.text.legal")</p>
+            </div>
+            <div class="footer-links">
+                <h4>@Messages("global.text.footer.links.other")</h4>
+                <p>@a_(routes.Application.siteplan().url, "global.text.site.plan")</p>
+                <p>@a_(routes.Application.contact().url, "global.text.issue")</p>
+            </div>
+            <p class="text-center">@Messages("global.text.copyright")</p>
         </div>
       </footer>
        <script type="text/javascript">

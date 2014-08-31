@@ -59,6 +59,16 @@
     </div><!-- /.carousel -->
 
     <div class="container marketing">
+       <div class="row visible-xs">
+        <div class="col-xs-12">
+            <div class="call">
+                @Html(Messages("global.text.call.us.reasons")) : <a href="tel:@Messages("global.href.phone.number")">&nbsp;<span><span class="glyphicon glyphicon-earphone"></span>&nbsp;@Html(Messages("global.text.phone.number"))</a></span>
+                <div class="conditions">
+                    <p>@Html(Messages("global.text.footer.conditions.cost")), @Html(Messages("global.text.footer.conditions.when"))</p>
+                </div>
+            </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-xs-12">
             @if(variant == "alt") {

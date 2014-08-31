@@ -45,7 +45,7 @@ global.text.legal=Mentions&nbsp;légales
 global.text.legal.title=Mentions légales
 global.text.site.plan=Plan&nbsp;du&nbsp;site
 global.text.site.plan.title=Plan du site
-global.text.contact=Nous&nbsp;contacter
+global.text.contact=Nous&nbsp;envoyer&nbsp;un&nbsp;email
 global.text.contact.title=Contact
 global.text.call.request=Etre&nbsp;rappelé
 global.text.call.request.title=Rappel téléphonique
@@ -81,7 +81,16 @@ global.text.blog=Le Blog
 global.text.blog.title=Le Blog Hometime
 global.text.facebook.follow=Nous suivre sur Facebook
 global.text.facebook.follow.title=Hometime sur Facebook
-
+global.text.footer.links.contact=Contact
+global.text.footer.links.help=Aide
+global.text.footer.links.legal=Légal
+global.text.footer.links.other=Autres
+global.text.call.us=Nous&nbsp;appeler
+global.text.call.us.reasons=Une question, un conseil
+global.text.phone.number=07&nbsp;82&nbsp;43&nbsp;47&nbsp;51
+global.href.phone.number=0782434751
+global.text.footer.conditions.cost=coût&nbsp;d''un&nbsp;appel vers&nbsp;un&nbsp;mobile&nbsp;en&nbsp;france
+global.text.footer.conditions.when=du&nbsp;lundi&nbsp;au&nbsp;samedi de&nbsp;8h&nbsp;à&nbsp;21h
 
 # Home page
 home.html.title=Révision, réparation et essai de montres à domicile sur Paris
