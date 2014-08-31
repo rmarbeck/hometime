@@ -2,6 +2,10 @@
 @bootstrap-screen-md-min: 992px;
 @bootstrap-screen-lg-min: 1200px;
 
+@top-banner-navbar-offset: 40px;
+@top-banner-header-offset: @top-banner-navbar-offset;
+@top-banner-content-top-offset: @top-banner-navbar-offset / 2;
+
 @transparency-for-header-and-carousel: 0.55;
 
 .reset_div {
@@ -37,6 +41,29 @@ body {
     from{   opacity: 1; }
     50%{    opacity: 0.8; }
     to{ opacity: 1; }
+}
+
+
+.call-top {
+  text-align: center;
+  font-size: 18px;
+  font-weight:bold;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.call-top .conditions {
+  font-size: 12px;
+  font-weight: normal;
+  margin-top: -0.5em;
+}
+
+.call-top span {
+  white-space: nowrap;
+}
+
+.call-top .conditions p {
+  margin-bottom: 0em;
 }
 
 

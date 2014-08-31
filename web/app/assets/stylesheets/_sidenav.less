@@ -80,11 +80,11 @@
   }
   .bs-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
-    top: @content-top-margin;
+    top: @content-top-margin + @top-banner-content-top-offset;
   }
   
   .container-watch-collection .bs-sidebar.affix {
-    top: @content-top-margin + 75px;
+    top: @content-top-margin + 75px + @top-banner-content-top-offset;
   } 
   
   .bs-sidebar.affix-bottom {
@@ -106,6 +106,6 @@
   }
   
   .container-watch-collection .bs-sidebar.affix {
-    top: @content-top-margin + 55px;
+    top: @content-top-margin + 55px @top-banner-content-top-offset;
   } 
 }
