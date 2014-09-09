@@ -65,6 +65,7 @@
       <div class="row explanation">
           <div class="col-sm-10 col-sm-offset-1">
             @if(is_it_first_page) {
+            <div class="head"><img class="img-responsive" src="/assets/images/order/movement.jpg" alt="@Messages("order.movement.alt")"></div>
             <div class="quick-sumup explanation-body">@Html(Messages("order.text.pre.explanation", routes.Application.index(), routes.Application.about()))</div>
             }
             <div class="explanation-body">@Html(Messages(key+".text.explanation"))</div>
