@@ -1,4 +1,4 @@
-@(quotation: Form[Admin.QuotationForm], available_watches: List[Watch])
+@(quotation: Form[Admin.QuotationForm], available_watches: List[Watch], city: String)
 @import tags._
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
@@ -73,7 +73,7 @@
                                 'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 @tags.myInputRadioGroup(quotation("outsideZone"),
-                                Seq( "0" -> Messages("admin.quotation.form.value.outside.zone.inside"), "1" -> Messages("admin.quotation.form.value.outside.zone.outside")), '_label -> Messages("admin.quotation.form.label.outside.zone"),
+                                Seq( "0" -> Messages("admin.quotation.form.value.outside.zone.inside"), "1" -> Messages("admin.quotation.form.value.outside.zone.outside")), '_label -> Html(Messages("admin.quotation.form.label.outside.zone", city)),
                                 '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 <div class="form-group">

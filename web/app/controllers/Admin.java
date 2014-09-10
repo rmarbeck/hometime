@@ -13,6 +13,7 @@ import fr.hometime.utils.GoogleAnalyticsHelper;
 import fr.hometime.utils.ServiceTestHelper;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
+import models.PresetQuotationForBrand;
 import models.Quotation;
 import models.ServiceTest;
 import models.Watch;
@@ -96,7 +97,7 @@ public class Admin extends Controller {
 			hypothesis2 = Messages.get("admin.quotation.default.hypothesis.2");
 	    }
 	    
-	    public QuotationForm(OrderRequest order, boolean inNetworkIfPossible) {
+	    public QuotationForm(OrderRequest order, long presetId, boolean inNetworkIfPossible) {
 	    	this();
 	    	this.serviceType = order.orderType.toString();
 	    	this.watch = order.model;
@@ -109,6 +110,7 @@ public class Admin extends Controller {
 	    	switch(order.method) {
 	    		case BRAND:
 	    			this.typeOfNetwork = Quotation.TypesOfNetwork.IN_ONLY.toString();
+	    			this.fillWithPresetFields(presetId);
 	    			break;
 				case OUTLET:
 					this.typeOfNetwork = Quotation.TypesOfNetwork.OUT_ONLY.toString();
@@ -116,6 +118,7 @@ public class Admin extends Controller {
 				default:
 					if (inNetworkIfPossible) {
 						this.typeOfNetwork = Quotation.TypesOfNetwork.IN_BOTH.toString();
+						this.fillWithPresetFields(presetId);
 					} else {
 						this.typeOfNetwork = Quotation.TypesOfNetwork.OUT_BOTH.toString();
 					}
@@ -158,6 +161,27 @@ public class Admin extends Controller {
 	    	quotation.hypothesis3 = getStringValue(this.hypothesis3);
 	    	return quotation;
 	    }
+	    
+	    private void fillWithPresetFields(long presetId) {
+	    	if (presetExists(presetId)) {
+	    		PresetQuotationForBrand presetFound = PresetQuotationForBrand.findById(presetId);
+	    		this.delay = presetFound.delay;
+	    		this.delayBrand1 = presetFound.delayBrand1;
+	    		this.delayBrand2 = presetFound.delayBrand2;
+	    		this.delayReturn = presetFound.delayReturn;
+	    		this.priceService = presetFound.priceService;
+	    		this.priceIsNotFinal = presetFound.priceIsNotFinal?"1":"0";
+	    		this.delayCanBeReduced = presetFound.delayCanBeReduced?"1":"0";
+	    		this.delayIsNotSure = presetFound.delayIsNotSure?"1":"0";
+	    		this.warantyTime = presetFound.warantyTime;
+	    		this.hypothesis1 = presetFound.hypothesis1;
+	    		this.hypothesis2 = presetFound.hypothesis2;
+	    		this.hypothesis3 = presetFound.hypothesis3;
+	    		this.remark1 = presetFound.remark1;
+	    		this.remark2 = presetFound.remark2;
+	    		this.remark3 = presetFound.remark3;
+	    	}
+	    }
 	}
 	
 	public static Result index() {
@@ -174,7 +198,7 @@ public class Admin extends Controller {
 	
 	public static Result displayOrder(long id) {
 		if (orderIsValid(id))
-			return ok(order.render(OrderRequest.findById(id)));
+			return ok(order.render(OrderRequest.findById(id), PresetQuotationForBrand.findByBrand(OrderRequest.findById(id).brand)));
 		flash("error", "Unknown id");
 		return LIST_ORDERS;
     }
@@ -200,15 +224,19 @@ public class Admin extends Controller {
 	
     public static Result prepareQuotation() {
     	try {
-	        return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm()), getAvailableWatches()));
+	        return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm()), getAvailableWatches(), "N/A"));
     	} catch (Exception e) {
     		return internalServerError();
     	}
     }
     
     public static Result prepareQuotationFromOrder(long orderId, boolean inNetworkIfPossible) {
+    	return prepareQuotationFromOrderWithPreset(orderId, (long) -1, inNetworkIfPossible);
+    }
+    
+    public static Result prepareQuotationFromOrderWithPreset(long orderId, long presetId, boolean inNetworkIfPossible) {
     	if (orderIsValid(orderId))
-    		return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm(OrderRequest.findById(orderId), inNetworkIfPossible)), getAvailableWatches()));
+    		return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm(OrderRequest.findById(orderId), presetId, inNetworkIfPossible)), getAvailableWatches(), OrderRequest.findById(orderId).city));
     	flash("error", "Unknown id");
     	return prepareQuotation();
     }
@@ -217,7 +245,7 @@ public class Admin extends Controller {
 		Form<QuotationForm> quotationForm = Form.form(QuotationForm.class).bindFromRequest();
 		if(quotationForm.hasErrors()) {
 			Logger.debug("Error in form : {}", quotationForm.errors());
-			return badRequest(quotation_form.render(quotationForm, getAvailableWatches()));
+			return badRequest(quotation_form.render(quotationForm, getAvailableWatches(), "?"));
 		} else {
 			Quotation quotationFilled = quotationForm.get().getQuotation();
 			return ok(quotation.render(quotationFilled));
@@ -228,6 +256,11 @@ public class Admin extends Controller {
 	private static boolean orderIsValid(long id) {
 		OrderRequest orderFound = OrderRequest.findById(id);
 		return orderFound != null;
+	}
+	
+	private static boolean presetExists(long id) {
+		PresetQuotationForBrand presetFound = PresetQuotationForBrand.findById(id);
+		return presetFound != null;
 	}
 	
 	private static boolean serviceTestIsValid(long id) {

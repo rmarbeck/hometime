@@ -91,6 +91,7 @@ GET     /admin/service/all          controllers.Admin.displayServiceTests(p:Int 
 GET     /admin/service/:id          controllers.Admin.displayServiceTest(id: Long)
 GET     /admin/quotation            controllers.Admin.prepareQuotation()
 GET     /admin/quotation/:id        controllers.Admin.prepareQuotationFromOrder(id: Long, inNetwork: Boolean ?= false)
+GET     /admin/quotation/:id/:pId   controllers.Admin.prepareQuotationFromOrderWithPreset(id: Long, pId: Long, inNetwork: Boolean ?= false)
 POST    /admin/quotation            controllers.Admin.displayQuotation()
 
 # Sitemap

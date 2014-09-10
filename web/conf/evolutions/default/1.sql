@@ -65,6 +65,28 @@ create table picture (
   constraint pk_picture primary key (id))
 ;
 
+create table preset_quotation_for_brand (
+  id                        bigint not null,
+  preset_name               varchar(255),
+  brand_id                  bigint,
+  delay                     varchar(255),
+  delay_brand1              varchar(255),
+  delay_brand2              varchar(255),
+  delay_return              varchar(255),
+  price_service             varchar(255),
+  waranty_time              varchar(255),
+  price_is_not_final        boolean,
+  delay_is_not_sure         boolean,
+  delay_can_be_reduced      boolean,
+  remark1                   varchar(255),
+  remark2                   varchar(255),
+  remark3                   varchar(255),
+  hypothesis1               varchar(255),
+  hypothesis2               varchar(255),
+  hypothesis3               varchar(255),
+  constraint pk_preset_quotation_for_brand primary key (id))
+;
+
 create table service_test (
   id                        bigint not null,
   request_date              timestamp,
@@ -137,6 +159,8 @@ create sequence order_request_seq;
 
 create sequence picture_seq;
 
+create sequence preset_quotation_for_brand_seq;
+
 create sequence service_test_seq;
 
 create sequence user_table_seq;
@@ -149,6 +173,8 @@ alter table order_request add constraint fk_order_request_watchChosen_2 foreign 
 create index ix_order_request_watchChosen_2 on order_request (watch_chosen_id);
 alter table picture add constraint fk_picture_watch_3 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
 create index ix_picture_watch_3 on picture (watch_id);
+alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand__4 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_preset_quotation_for_brand__4 on preset_quotation_for_brand (brand_id);
 
 
 
@@ -165,6 +191,8 @@ drop table if exists live_config;
 drop table if exists order_request;
 
 drop table if exists picture;
+
+drop table if exists preset_quotation_for_brand;
 
 drop table if exists service_test;
 
@@ -183,6 +211,8 @@ drop sequence if exists live_config_seq;
 drop sequence if exists order_request_seq;
 
 drop sequence if exists picture_seq;
+
+drop sequence if exists preset_quotation_for_brand_seq;
 
 drop sequence if exists service_test_seq;
 
