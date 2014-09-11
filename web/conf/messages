@@ -1244,3 +1244,8 @@ admin.quotation.prepare.call.to.action=Générer le devis
 admin.quotation.prepare.in.network.call.to.action=Générer le devis (réseau officiel)
 admin.quotation.prepare.out.call.to.action=Générer le devis (horloger partenaire)
 admin.quotation.prepare.in.network.preset.call.to.action=Générer : {0}
+
+admin.order.priceService.unfixed=compris dans une fourchette de {0}€ à {1}€ TTC
+admin.order.priceService.fixed={0}€ TTC
+admin.order.price.unfixed=compris dans une fourchette de {0}€ à {1}€ TTC
+admin.order.price.fixed=de {0}€ TTC

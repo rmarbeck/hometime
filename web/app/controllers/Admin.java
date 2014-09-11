@@ -10,6 +10,7 @@ import controllers.Application.OrderForm;
 import controllers.Application.ServiceTestForm;
 import fr.hometime.utils.ActionHelper;
 import fr.hometime.utils.GoogleAnalyticsHelper;
+import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.ServiceTestHelper;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
@@ -100,8 +101,12 @@ public class Admin extends Controller {
 	    public QuotationForm(OrderRequest order, long presetId, boolean inNetworkIfPossible) {
 	    	this();
 	    	this.serviceType = order.orderType.toString();
-	    	this.watch = order.model;
 	    	this.brand = order.brand.display_name;
+	    	if (!order.model.toLowerCase().contains(order.brand.display_name.toLowerCase())) {
+	    		this.watch = order.brand.display_name + " " + order.model;
+	    	} else {
+	    		this.watch = order.model;
+	    	}
 	    	if (order.watchChosen != null) {
 	    		this.watchChosen = order.watchChosen.id.toString();
 	    		this.priceLoan = order.watchChosen.price.intValue() + "€ TTC";
@@ -110,7 +115,7 @@ public class Admin extends Controller {
 	    	switch(order.method) {
 	    		case BRAND:
 	    			this.typeOfNetwork = Quotation.TypesOfNetwork.IN_ONLY.toString();
-	    			this.fillWithPresetFields(presetId);
+	    			this.fillWithPresetFields(presetId, order);
 	    			break;
 				case OUTLET:
 					this.typeOfNetwork = Quotation.TypesOfNetwork.OUT_ONLY.toString();
@@ -118,7 +123,7 @@ public class Admin extends Controller {
 				default:
 					if (inNetworkIfPossible) {
 						this.typeOfNetwork = Quotation.TypesOfNetwork.IN_BOTH.toString();
-						this.fillWithPresetFields(presetId);
+						this.fillWithPresetFields(presetId, order);
 					} else {
 						this.typeOfNetwork = Quotation.TypesOfNetwork.OUT_BOTH.toString();
 					}
@@ -130,8 +135,9 @@ public class Admin extends Controller {
 	    	Quotation quotation = new Quotation();
 	    	quotation.serviceType = OrderTypes.fromString(this.serviceType);
 	    	quotation.typeOfNetwork = Quotation.TypesOfNetwork.fromString(this.typeOfNetwork);
-	    	quotation.watch = this.watch;
 	    	quotation.brand = this.brand;
+    		quotation.watch = this.watch;
+	    	
 	    	if (!"".equals(this.watchChosen)) {
 	    		quotation.watchChosen = Watch.findById(Long.valueOf(this.watchChosen)).brand + " " + Watch.findById(Long.valueOf(this.watchChosen)).full_name;
 	    	} else {
@@ -162,14 +168,28 @@ public class Admin extends Controller {
 	    	return quotation;
 	    }
 	    
-	    private void fillWithPresetFields(long presetId) {
+	    private void fillWithPresetFields(long presetId, OrderRequest order) {
 	    	if (presetExists(presetId)) {
 	    		PresetQuotationForBrand presetFound = PresetQuotationForBrand.findById(presetId);
 	    		this.delay = presetFound.delay;
 	    		this.delayBrand1 = presetFound.delayBrand1;
 	    		this.delayBrand2 = presetFound.delayBrand2;
 	    		this.delayReturn = presetFound.delayReturn;
-	    		this.priceService = presetFound.priceService;
+	    		if (presetFound.priceServiceHighBound > presetFound.priceServiceLowBound) {
+	    			this.priceService = Messages.get("admin.order.priceService.unfixed", presetFound.priceServiceLowBound, presetFound.priceServiceHighBound);
+	    			if (order.watchChosen != null) {
+	    				this.price = Messages.get("admin.order.price.unfixed", presetFound.priceServiceLowBound + order.watchChosen.price.intValue(), presetFound.priceServiceHighBound+ order.watchChosen.price.intValue());
+	    			} else {
+	    				this.price = this.priceService;
+	    			}
+	    		} else {
+	    			this.priceService = Messages.get("admin.order.priceService.fixed", presetFound.priceServiceLowBound);
+	    			if (order.watchChosen != null) {
+	    				this.price = Messages.get("admin.order.price.fixed", presetFound.priceServiceLowBound + order.watchChosen.price.intValue());
+	    			} else {
+	    				this.price = this.priceService;
+	    			}
+	    		}
 	    		this.priceIsNotFinal = presetFound.priceIsNotFinal?"1":"0";
 	    		this.delayCanBeReduced = presetFound.delayCanBeReduced?"1":"0";
 	    		this.delayIsNotSure = presetFound.delayIsNotSure?"1":"0";
@@ -250,7 +270,18 @@ public class Admin extends Controller {
 			Quotation quotationFilled = quotationForm.get().getQuotation();
 			return ok(quotation.render(quotationFilled));
 		}
-        
+    }
+	
+	public static Result sendQuotation() {
+		Form<QuotationForm> quotationForm = Form.form(QuotationForm.class).bindFromRequest();
+		if(quotationForm.hasErrors()) {
+			Logger.debug("Error in form : {}", quotationForm.errors());
+			return badRequest(quotation_form.render(quotationForm, getAvailableWatches(), "?"));
+		} else {
+			Quotation quotationFilled = quotationForm.get().getQuotation();
+			MailjetAdapter.tryToSendMessage("Test", "rmarbeck@gmail.com", quotation.render(quotationFilled).toString());
+			return ok(quotation.render(quotationFilled));
+		}
     }
 	
 	private static boolean orderIsValid(long id) {

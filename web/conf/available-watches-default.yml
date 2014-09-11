@@ -639,7 +639,8 @@ presets:
          delayBrand1:        2 à 3 jours
          delayBrand2:        6 semaines environ
          delayReturn:        1 à 4 jours
-         priceService:       580€ TTC
+         priceServiceLowBound:       580
+         priceServiceHighBound:       580
          warantyTime:        2 ans
          priceIsNotFinal:    false
          delayIsNotSure:     false
@@ -656,7 +657,8 @@ presets:
          delayBrand1:        2 à 3 jours
          delayBrand2:        6 semaines environ
          delayReturn:        1 à 4 jours
-         priceService:       610€ TTC
+         priceServiceLowBound:      610
+         priceServiceHighBound:     610
          warantyTime:        2 ans
          priceIsNotFinal:    false
          delayIsNotSure:     false
@@ -673,7 +675,8 @@ presets:
          delayBrand1:        2 à 3 jours
          delayBrand2:        6 semaines environ
          delayReturn:        1 à 4 jours
-         priceService:       690€ TTC
+         priceServiceLowBound:      690
+         priceServiceHighBound:     690
          warantyTime:        2 ans
          priceIsNotFinal:    false
          delayIsNotSure:     false
@@ -690,7 +693,8 @@ presets:
          delayBrand1:        2 à 3 jours
          delayBrand2:        8 semaines environ
          delayReturn:        1 à 4 jours
-         priceService:       compris dans une fourchette de 600€ à 800€ TTC
+         priceServiceLowBound:      600
+         priceServiceHighBound:     800
          warantyTime:        2 ans
          priceIsNotFinal:    false
          delayIsNotSure:     true
@@ -700,14 +704,15 @@ presets:
          hypothesis1:        La montre n'a pas subi de dommage majeur pouvant avoir généré des dégâts sur le mouvement, sur le boitier ou sur le verre.
          hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
 
-    - &Jaeger !!models.PresetQuotationForBrand
+    - &JaegerSAV !!models.PresetQuotationForBrand
          presetName:         Jaeger SAV
          brand:              *Jaeger
          delay:              14 semaines environ
          delayBrand1:        1 à 2 semaines
          delayBrand2:        12 semaines environ
          delayReturn:        2 à 3 semaines
-         priceService:       compris dans une fourchette de 500€ à 1000€ TTC
+         priceServiceLowBound:      500
+         priceServiceHighBound:     1000
          warantyTime:        1 an
          priceIsNotFinal:    false
          delayIsNotSure:     true
@@ -718,14 +723,15 @@ presets:
          hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
 
 
-    - &Omega !!models.PresetQuotationForBrand
+    - &OmegaSAV !!models.PresetQuotationForBrand
          presetName:         Omega SAV
          brand:              *Omega
          delay:              16 semaines environ
          delayBrand1:        3 à 6 semaines
          delayBrand2:        12 semaines environ
          delayReturn:        2 à 3 semaines
-         priceService:       compris dans une fourchette de 500€ à 800€ TTC
+         priceServiceLowBound:      500
+         priceServiceHighBound:     800
          warantyTime:        2 ans
          priceIsNotFinal:    false
          delayIsNotSure:     true

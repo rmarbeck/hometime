@@ -35,7 +35,8 @@ public class PresetQuotationForBrand extends Model {
 	
 	public String delayReturn;
 
-	public String priceService;
+	public Long priceServiceLowBound;
+	public Long priceServiceHighBound;
 	
 	public String warantyTime;
 	

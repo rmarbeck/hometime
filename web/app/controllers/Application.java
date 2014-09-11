@@ -364,6 +364,16 @@ public class Application extends Controller {
 	public static Result manageOrder() {
 		Form<OrderForm> orderForm = Form.form(OrderForm.class).bindFromRequest();
 		if(orderForm.hasErrors()) {
+			String errorMsg = "";
+            java.util.Map<String, List<play.data.validation.ValidationError>> errorsAll = orderForm.errors();
+            for (String field : errorsAll.keySet()) {
+                errorMsg += field + " ";
+                for (ValidationError error : errorsAll.get(field)) {
+                	
+                    errorMsg += error.message() + "["+orderForm.field(field).value()+"] , ";
+                }
+            }
+			Logger.warn("Error in order : "+errorMsg);
 			return badRequest(order.render("", orderForm, getSupportedBrands(), getDisplayableWatches(), SessionWatcher.isItFirstPageOfSession(session())));
 		} else {
 			OrderRequest orderRequest = orderForm.get().getRequest();
