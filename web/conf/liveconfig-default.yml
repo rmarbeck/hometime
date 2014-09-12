@@ -9,7 +9,7 @@ liveConfig:
 
     - !!models.LiveConfig
          key:                   orders_sender_email_address
-         valuestring:           contact@homtime.fr
+         valuestring:           contact@hometime.fr
 
 #Fin
 
