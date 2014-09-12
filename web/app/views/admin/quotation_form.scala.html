@@ -4,7 +4,7 @@
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
 @layouts.admin() {
     <div class="container">
-            @helper.form(action = routes.Admin.displayQuotation(), 'class -> "form-horizontal", 'role -> "form") {
+            @helper.form(action = routes.Admin.sendQuotation(), 'class -> "form-horizontal", 'role -> "form") {
         
                 @tags.myInputRadioGroup(quotation("serviceType"),
                                 Seq( OrderRequest.OrderTypes.SETTINGUP.toString -> Messages("admin.quotation.form.value.type.of.service.setting.up"), OrderRequest.OrderTypes.INTERMEDIATE.toString -> Messages("admin.quotation.form.value.type.of.service.intermediate"), OrderRequest.OrderTypes.SERVICE.toString -> Messages("admin.quotation.form.value.type.of.service.service"), OrderRequest.OrderTypes.REPAIR.toString -> Messages("admin.quotation.form.value.type.of.service.repair"), OrderRequest.OrderTypes.WATER.toString -> Messages("admin.quotation.form.value.type.of.service.water")), '_label -> Messages("admin.quotation.form.label.type.of.service"),

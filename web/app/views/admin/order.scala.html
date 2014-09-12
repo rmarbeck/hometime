@@ -1,4 +1,4 @@
-@(request: OrderRequest, presets: List[PresetQuotationForBrand])
+@(request: OrderRequest, presetsForBrand: List[PresetQuotationForBrand], presetsForOut: List[PresetQuotationForBrand])
 @import tags._
 
 @layouts.admin() {
@@ -104,49 +104,21 @@
           @request.method match {
           case OrderRequest.MethodTypes.BOTH => {
             <div class="col-xs-6 text-right">
-              @if(presets.size() > 0) {
-                <!-- Split button -->
-                <div class="btn-group text-left">
-                  <a class="btn btn-default" href="@routes.Admin.prepareQuotationFromOrder(request.id)?inNetwork=true" title="@Messages("admin.quotation.prepare.in.network.call.to.action")" role="button">@Messages("admin.quotation.prepare.in.network.call.to.action")</a>
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                  @for(preset <- presets) {
-                    <li><a href="@routes.Admin.prepareQuotationFromOrderWithPreset(request.id, preset.id)?inNetwork=true" title="@Messages("admin.quotation.prepare.in.network.call.to.action")">@Messages("admin.quotation.prepare.in.network.preset.call.to.action", preset.presetName)</a></li>
-                  }
-                  </ul>
-                </div>
-              } else {
-                <a class="btn btn-default" href="@routes.Admin.prepareQuotationFromOrder(request.id)?inNetwork=true" role="button">@Messages("admin.quotation.prepare.in.network.call.to.action")</a>
-              }
+              @prepare_quotation_button(presetsForBrand, request, true, "btn-default")
             </div>
-            <div class="col-xs-6 text-left"><a class="btn btn-primary" href="@routes.Admin.prepareQuotationFromOrder(request.id)?inNetwork=false" role="button">@Messages("admin.quotation.prepare.out.call.to.action")</a></div>
+            <div class="col-xs-6 text-left">
+              @prepare_quotation_button(presetsForOut, request, false, "btn-primary")
+            </div>
           }
           case OrderRequest.MethodTypes.BRAND => {
             <div class="col-xs-12 text-center">
-              @if(presets.size() > 0) {
-                <!-- Split button -->
-                <div class="btn-group text-left">
-                  <a class="btn btn-default" href="@routes.Admin.prepareQuotationFromOrder(request.id)?inNetwork=true" title="@Messages("admin.quotation.prepare.in.network.call.to.action")" role="button">@Messages("admin.quotation.prepare.in.network.call.to.action")</a>
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                  @for(preset <- presets) {
-                    <li><a href="@routes.Admin.prepareQuotationFromOrderWithPreset(request.id, preset.id)?inNetwork=true" title="@Messages("admin.quotation.prepare.in.network.call.to.action")">@Messages("admin.quotation.prepare.in.network.preset.call.to.action", preset.presetName)</a></li>
-                  }
-                  </ul>
-                </div>
-              } else {
-                <a class="btn btn-default" href="@routes.Admin.prepareQuotationFromOrder(request.id)?inNetwork=true" role="button">@Messages("admin.quotation.prepare.in.network.call.to.action")</a>
-              }
+              @prepare_quotation_button(presetsForBrand, request, true, "btn-default")
             </div>
           }
           case OrderRequest.MethodTypes.OUTLET => {
-            <div class="col-xs-12 text-center"><a class="btn btn-primary" href="@routes.Admin.prepareQuotationFromOrder(request.id)" role="button">@Messages("admin.quotation.prepare.call.to.action")</a></div>
+            <div class="col-xs-12 text-center">
+              @prepare_quotation_button(presetsForOut, request, false, "btn-primary")
+            </div>
           }
         }
       </div>

@@ -741,5 +741,62 @@ presets:
          hypothesis1:        La montre n'a pas subi de dommage majeur pouvant avoir généré des dégâts sur le mouvement, sur le boitier ou sur le verre.
          hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
 
+    - &STH1 !!models.PresetQuotationForBrand
+         presetName:         STH Standard 3 aiguilles
+         brand:              *Autre
+         delay:              3 semaines maximum
+         delayReturn:        1 à 4 jours
+         priceServiceLowBound:      360
+         priceServiceHighBound:     360
+         warantyTime:        Le fonctionnement est garanti pendant 1 an, l'étanchéité pendant 2 ans.
+         priceIsNotFinal:    false
+         delayIsNotSure:     false
+         delayCanBeReduced:  true
+         hypothesis1:        La montre n'a pas subi de dommage majeur pouvant avoir généré des dégâts sur le mouvement, sur le boitier ou sur le verre.
+         hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
+
+    - &STH2 !!models.PresetQuotationForBrand
+         presetName:         STH Standard Chrono
+         brand:              *Autre
+         delay:              3 semaines maximum
+         delayReturn:        1 à 4 jours
+         priceServiceLowBound:      480
+         priceServiceHighBound:     480
+         warantyTime:        Le fonctionnement est garanti pendant 1 an, l'étanchéité pendant 2 ans.
+         priceIsNotFinal:    false
+         delayIsNotSure:     false
+         delayCanBeReduced:  true
+         hypothesis1:        La montre n'a pas subi de dommage majeur pouvant avoir généré des dégâts sur le mouvement, sur le boitier ou sur le verre.
+         hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
+
+    - &STH3 !!models.PresetQuotationForBrand
+         presetName:         STH Premium
+         brand:              *Autre
+         delay:              3 semaines maximum
+         delayReturn:        1 à 4 jours
+         priceServiceLowBound:      590
+         priceServiceHighBound:     590
+         warantyTime:        Le fonctionnement est garanti pendant 1 an, l'étanchéité pendant 2 ans.
+         priceIsNotFinal:    false
+         delayIsNotSure:     false
+         delayCanBeReduced:  true
+         hypothesis1:        La montre n'a pas subi de dommage majeur pouvant avoir généré des dégâts sur le mouvement, sur le boitier ou sur le verre.
+         hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
+
+    - &STH4 !!models.PresetQuotationForBrand
+         presetName:         STH délai non maitrisé
+         brand:              *Autre
+         delay:              4 semaines environ
+         delayReturn:        1 à 4 jours
+         priceServiceLowBound:      480
+         priceServiceHighBound:     480
+         warantyTime:        Le fonctionnement est garanti pendant 1 an, l'étanchéité pendant 2 ans.
+         priceIsNotFinal:    false
+         delayIsNotSure:     false
+         delayCanBeReduced:  true
+         hypothesis1:        La montre n'a pas subi de dommage majeur pouvant avoir généré des dégâts sur le mouvement, sur le boitier ou sur le verre.
+         hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
+
+
 #Fin
 

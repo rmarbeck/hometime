@@ -1,0 +1,23 @@
+@**
+ * Generate a button for building a quotation reading available presets.
+ *
+ *@
+@(presets: List[PresetQuotationForBrand], request: OrderRequest, inNetworkFlag: Boolean, style: String) 
+
+@if(presets.size() > 0) {
+    <!-- Split button -->
+    <div class="btn-group text-left">
+      <a class="btn @style" href="@routes.Admin.prepareQuotationFromOrder(request.id)?inNetwork=@inNetworkFlag" role="button">@if(inNetworkFlag) {@Messages("admin.quotation.prepare.in.network.call.to.action")} else {@Messages("admin.quotation.prepare.out.network.call.to.action")}</a>
+      <button type="button" class="btn @style dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+      @for(preset <- presets) {
+        <li><a href="@routes.Admin.prepareQuotationFromOrderWithPreset(request.id, preset.id)?inNetwork=@inNetworkFlag">@if(inNetworkFlag) {@Messages("admin.quotation.prepare.in.network.preset.call.to.action", preset.presetName)} else {@Messages("admin.quotation.prepare.in.network.preset.call.to.action", preset.presetName)} </a></li>
+      }
+      </ul>
+    </div>
+} else {
+    <a class="btn @style" href="@routes.Admin.prepareQuotationFromOrder(request.id)?inNetwork=@inNetworkFlag" role="button">@if(inNetworkFlag) {@Messages("admin.quotation.prepare.in.network.call.to.action")} else {@Messages("admin.quotation.prepare.out.network.call.to.action")}</a>
+}

@@ -12,6 +12,7 @@ import fr.hometime.utils.ActionHelper;
 import fr.hometime.utils.GoogleAnalyticsHelper;
 import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.ServiceTestHelper;
+import models.Brand;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
 import models.PresetQuotationForBrand;
@@ -30,6 +31,8 @@ import views.html.admin.*;
 
 @Security.Authenticated(SecuredAdminOnly.class)
 public class Admin extends Controller {
+	
+	private final static String AUTRE_MARQUE_SEO_NAME = "autre-marque-de-montres";
 	
 	public static class QuotationForm {
 		@Constraints.Required
@@ -115,7 +118,6 @@ public class Admin extends Controller {
 	    	switch(order.method) {
 	    		case BRAND:
 	    			this.typeOfNetwork = Quotation.TypesOfNetwork.IN_ONLY.toString();
-	    			this.fillWithPresetFields(presetId, order);
 	    			break;
 				case OUTLET:
 					this.typeOfNetwork = Quotation.TypesOfNetwork.OUT_ONLY.toString();
@@ -123,12 +125,12 @@ public class Admin extends Controller {
 				default:
 					if (inNetworkIfPossible) {
 						this.typeOfNetwork = Quotation.TypesOfNetwork.IN_BOTH.toString();
-						this.fillWithPresetFields(presetId, order);
 					} else {
 						this.typeOfNetwork = Quotation.TypesOfNetwork.OUT_BOTH.toString();
 					}
 					break;
 	    	}
+	    	this.fillWithPresetFields(presetId, order);
 	    }
 	    
 	    public Quotation getQuotation() {
@@ -218,7 +220,10 @@ public class Admin extends Controller {
 	
 	public static Result displayOrder(long id) {
 		if (orderIsValid(id))
-			return ok(order.render(OrderRequest.findById(id), PresetQuotationForBrand.findByBrand(OrderRequest.findById(id).brand)));
+			return ok(order.render(	OrderRequest.findById(id),
+									PresetQuotationForBrand.findByBrand(OrderRequest.findById(id).brand),
+									PresetQuotationForBrand.findByBrand(Brand.findBySeoName(AUTRE_MARQUE_SEO_NAME))
+								  ));
 		flash("error", "Unknown id");
 		return LIST_ORDERS;
     }

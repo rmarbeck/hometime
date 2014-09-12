@@ -1242,8 +1242,9 @@ admin.quotation.form.label.partner.asset=
 admin.quotation.action.submit=Générer
 admin.quotation.prepare.call.to.action=Générer le devis
 admin.quotation.prepare.in.network.call.to.action=Générer le devis (réseau officiel)
-admin.quotation.prepare.out.call.to.action=Générer le devis (horloger partenaire)
+admin.quotation.prepare.out.network.call.to.action=Générer le devis (horloger partenaire)
 admin.quotation.prepare.in.network.preset.call.to.action=Générer : {0}
+admin.quotation.prepare.out.network.preset.call.to.action=Générer : {0}
 
 admin.order.priceService.unfixed=compris dans une fourchette de {0}€ à {1}€ TTC
 admin.order.priceService.fixed={0}€ TTC
