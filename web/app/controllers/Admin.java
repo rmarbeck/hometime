@@ -112,7 +112,7 @@ public class Admin extends Controller {
 	    	}
 	    	if (order.watchChosen != null) {
 	    		this.watchChosen = order.watchChosen.id.toString();
-	    		this.priceLoan = order.watchChosen.price.intValue() + "€ TTC";
+	    		this.priceLoan = Messages.get("admin.order.price.loan", order.watchChosen.price.intValue());
 	    	}
 	    	this.infosGivenByCustomer1 = order.remark;
 	    	switch(order.method) {
@@ -177,20 +177,16 @@ public class Admin extends Controller {
 	    		this.delayBrand1 = presetFound.delayBrand1;
 	    		this.delayBrand2 = presetFound.delayBrand2;
 	    		this.delayReturn = presetFound.delayReturn;
+	    		int watchChosenPrice = 0;
+    			if (order.watchChosen != null)
+    				watchChosenPrice = order.watchChosen.price.intValue();
+
 	    		if (presetFound.priceServiceHighBound > presetFound.priceServiceLowBound) {
 	    			this.priceService = Messages.get("admin.order.priceService.unfixed", presetFound.priceServiceLowBound, presetFound.priceServiceHighBound);
-	    			if (order.watchChosen != null) {
-	    				this.price = Messages.get("admin.order.price.unfixed", presetFound.priceServiceLowBound + order.watchChosen.price.intValue(), presetFound.priceServiceHighBound+ order.watchChosen.price.intValue());
-	    			} else {
-	    				this.price = Messages.get("admin.order.price.fixed", this.priceService);
-	    			}
+	    			this.price = Messages.get("admin.order.price.unfixed", presetFound.priceServiceLowBound + watchChosenPrice, presetFound.priceServiceHighBound + watchChosenPrice);
 	    		} else {
 	    			this.priceService = Messages.get("admin.order.priceService.fixed", presetFound.priceServiceLowBound);
-	    			if (order.watchChosen != null) {
-	    				this.price = Messages.get("admin.order.price.fixed", presetFound.priceServiceLowBound + order.watchChosen.price.intValue());
-	    			} else {
-	    				this.price = Messages.get("admin.order.price.fixed", this.priceService);
-	    			}
+    				this.price = Messages.get("admin.order.price.fixed", presetFound.priceServiceLowBound + watchChosenPrice);
 	    		}
 	    		this.priceIsNotFinal = presetFound.priceIsNotFinal?"1":"0";
 	    		this.delayCanBeReduced = presetFound.delayCanBeReduced?"1":"0";

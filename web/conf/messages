@@ -1304,3 +1304,4 @@ admin.order.priceService.unfixed=compris dans une fourchette de {0}€ à {1}€
 admin.order.priceService.fixed={0}€ TTC
 admin.order.price.unfixed=compris dans une fourchette de {0}€ à {1}€ TTC
 admin.order.price.fixed=de {0}€ TTC
+admin.order.price.loan={0}€ TTC
