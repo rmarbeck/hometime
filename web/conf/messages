@@ -595,6 +595,9 @@ order.movement.alt=Réparation mouvement de montre
 
 
 # Customization
+customization.html.title=Personnaliser sa montre
+customization.html.description=Le service de personnalisation de montres à la carte de Hometime, pour changer le look de votre montre
+customization.html.keywords=personnaliser sa montre, customiser sa montre, PVD, cadran, bracelet, aiguilles, lunette, insert de lunette
 customization.content.1.head=<span class="text-muted">Personnaliser sa montre&nbsp;:</span> c''est possible&nbsp;!
 customization.content.1.body=<div class="sub-title">Pour avoir une montre qui vous ressemble vraiment&nbsp;:</div>\
   <ul><li>Votre montre commence à vous lasser, mais vous l''aimez tellement que vous ne voulez pas vous en séparer ?</li>\
