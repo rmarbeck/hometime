@@ -182,14 +182,14 @@ public class Admin extends Controller {
 	    			if (order.watchChosen != null) {
 	    				this.price = Messages.get("admin.order.price.unfixed", presetFound.priceServiceLowBound + order.watchChosen.price.intValue(), presetFound.priceServiceHighBound+ order.watchChosen.price.intValue());
 	    			} else {
-	    				this.price = this.priceService;
+	    				this.price = Messages.get("admin.order.price.fixed", this.priceService);
 	    			}
 	    		} else {
 	    			this.priceService = Messages.get("admin.order.priceService.fixed", presetFound.priceServiceLowBound);
 	    			if (order.watchChosen != null) {
 	    				this.price = Messages.get("admin.order.price.fixed", presetFound.priceServiceLowBound + order.watchChosen.price.intValue());
 	    			} else {
-	    				this.price = this.priceService;
+	    				this.price = Messages.get("admin.order.price.fixed", this.priceService);
 	    			}
 	    		}
 	    		this.priceIsNotFinal = presetFound.priceIsNotFinal?"1":"0";
@@ -284,7 +284,7 @@ public class Admin extends Controller {
 			return badRequest(quotation_form.render(quotationForm, getAvailableWatches(), "?"));
 		} else {
 			Quotation quotationFilled = quotationForm.get().getQuotation();
-			MailjetAdapter.tryToSendMessage("Test", "rmarbeck@gmail.com", quotation.render(quotationFilled).toString());
+			MailjetAdapter.tryToSendMessage("Test", "rmarbeck@gmail.com", quotation.render(quotationFilled).body());
 			return ok(quotation.render(quotationFilled));
 		}
     }

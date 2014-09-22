@@ -21,6 +21,7 @@ global.navbar.link.text.services.restore=Restauration
 global.navbar.link.text.services.loan=Essai de montres
 global.navbar.link.text.services.at.home=Déplacements à domicile
 global.navbar.link.text.services.other=Les prestations complémentaires
+global.navbar.link.text.customization=Personnalisation de montres
 global.navbar.link.text.services.faq=Questions fréquentes (FAQ)
 global.navbar.link.text.services.around=Bons plans et bonnes adresses
 global.navbar.link.text.services.prices=Les tarifs
@@ -91,6 +92,7 @@ global.text.phone.number=07&nbsp;82&nbsp;43&nbsp;47&nbsp;51
 global.href.phone.number=0782434751
 global.text.footer.conditions.cost=coût&nbsp;d''un&nbsp;appel vers&nbsp;un&nbsp;mobile&nbsp;en&nbsp;france
 global.text.footer.conditions.when=du&nbsp;lundi&nbsp;au&nbsp;samedi de&nbsp;8h&nbsp;à&nbsp;21h
+global.text.customization=Personnalisation de montres
 
 # Home page
 home.html.title=Révision, réparation et essai de montres à domicile sur Paris
@@ -162,6 +164,7 @@ home.what.is.it.1.body=Hometime est un service de conciergerie horlogère. Nous 
 home.what.is.it.2.body=Nous sélectionnons les meilleurs acteurs du marché de l''horlogerie pour vous apporter tous les services que vous pouvez attendre pour vos montres : entretien, essai, achat, vente.
 home.what.is.it.3.body=Hometime ne dispose pas de boutique afin de vous offrir ses services aux tarifs les plus compétitifs.
 home.what.is.it.4.body=Nous adoptons une démarche de protection de l''environnement en n''utilisant que des moyens de transport verts.
+home.what.is.it.5.body=Nous pouvons <a href="{0}">personnaliser vos montres</a> pour les rendre uniques.
 
 
 home.text.reasons=Pourquoi choisir Hometime&nbsp;?
@@ -223,7 +226,7 @@ service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horl
  <br />Les délais peuvent ainsi varier de <b>1 semaine à 3 mois</b>. \
  <br /><br /><b>Pour toutes les prestations qui lui sont confiées, Hometime se charge de minimiser coûts et délais.</b>
 
-service.content.5.head=Y-a-t-il des risques liés à l''entretien ?
+service.content.5.head=Y-a-t-il des risques liés à l''entretien&nbsp;?
 service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à proprement parler. Les montres sont toutes conçues pour être entretenues à intervalles réguliers.\
  Il existe beaucoup <b>plus de risques à ne pas faire entretenir</b> sa montre qu''à la faire entretenir. En effet, il peut arriver qu''une pièce cassée dans une montre ancienne ne puisse être remplacée alors qu''un entretien régulier aurait pu permettre d''éviter cette casse.\
  <br /><br />Il faut malgré tout être attentifs à certains points :\
@@ -233,26 +236,24 @@ service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à 
  <li>Connaitre les éventuels intermédiaires intervenant dans la réalisation du service.</li></ul>\
  <br /><b>La mission de Hometime est de s''occuper de tout pour vous garantir le meilleur.</b>
 
-service.why.call.to.action=Entretenir ma montre !
-service.invest.call.to.action=Demander un devis
-
 service.content.6.head=Votre montre est précieuse !
 service.content.6.body=<div class="sub-title">Elle fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérées comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
  Si cela est évident pour une catégorie très particulière de montres (Rolex, Patek Philippe notamment), il faut noter que certaines montres peu cotées il y a quelques années s''apprécient très rapidement aujourd''hui (cas des montres Heuer par exemple, ou des Panerai).\
  <br /><br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent représenter une valeur sentimentale très forte.\
  <br /><br />Découvrez pourquoi les montres s''usent et comment les entretenir. 
 
-service.why.alt=Pourquoi faire entretenir sa montre
-service.how.alt=Comment entretient-on une montre
-service.when.alt=Quand faut-il entretenir une montre
-service.how.long.alt=Combien ça coûte et combien de temps ça dure
-service.risky.alt=Y-a-t-il des risques liés à l''entretien
-service.invest.alt=Votre montre c''est votre partimoine
+service.1.alt=Pourquoi faire entretenir sa montre
+service.2.alt=Comment entretient-on une montre
+service.3.alt=Quand faut-il entretenir une montre
+service.4.alt=Combien ça coûte et combien de temps ça dure
+service.5.alt=Y-a-t-il des risques liés à l''entretien
+service.6.alt=Votre montre c''est votre partimoine
 service.1.to.action=En savoir plus...
 service.2.to.action=En savoir plus...
 service.3.to.action=Outil de calcul personnalisé
 service.4.to.action=En savoir plus...
-service.5.to.action=En savoir plus...
+service.5.default.to.action=En savoir plus...
+service.5.primary.to.action=Entretenir ma montre !
 
 # Water page
 water.html.title=Problème d''étanchéité d''une montre
@@ -268,7 +269,10 @@ water.content.2.body=<div class="sub-title"></div>Le maître mot lorsque de l''e
  <br /><br />Une fois dans l''atelier horloger, la cause de l''intrusion d''eau est détectée puis la montre est démontée, séchée, nettoyée (pour être débarrassée de toute source de corrosion).\
  Lors du remontage de la montre, les joints sont changés et l''étanchéité est contrôlée.\
  <br /><br />Hometime vous propose d''intervenir dès que vous détectez un problème d''étanchéité et s''engage à réaliser les travaux nécessaires en quelques heures seulement auprès des meilleurs ateliers horlogers parisiens.
-water.1.to.action=Demander une intervention en urgence
+water.2.to.action=Demander une intervention en urgence
+water.1.alt=Monaco embuée
+water.2.alt=Monaco ouverte
+
 
 # Watch collection page
 watch.collection.html.title=Les montres disponibles pour un essai prolongé Hometime
@@ -331,7 +335,7 @@ offer.service.body=Hometime prend en charge la révision ou la réparation de vo
  <br /><br />Hometime peut prendre en charge les montres des marques suivantes : <b>Baume & Mercier, Bell & Ross, Chanel, Chopard, Breitling, Frédérique Constant, Hamilton, Hublot, IWC, Jaeger LeCoultre, Longines, Omega, Panerai, Tag Heuer, Tissot, Tudor, Rado, Rolex, Zenith</b>.\
  <br /><br />Si la marque de votre montre ne figure pas dans cette liste, vous pouvez nous <a href="mailto:contact@hometime.fr">contacter par mail</a> pour que nous puissions déterminer si nous pouvons intervenir.
 
-offer.service.call.to.action.more=Pourquoi une révision ?
+offer.service.call.to.action.more=Pourquoi réviser ?
 offer.service.call.to.action.order=Demander un devis
 
 offer.restore.head=Service de restauration
@@ -354,7 +358,7 @@ offer.loan.body=Parce que vous n''avez qu''une seule montre, ou que vous souhait
  La grande majorité des montres proposées sont des icônes du monde horloger. Vous avez l''assurance de déclencher des discussions passionnées avec vos amis ou vos collègues.\
  <br /><br />Pour vous en convaincre, allez voir notre catalogue dès maintenant ! 
 
-offer.loan.call.to.action.collection=Toutes nos montres !
+offer.loan.call.to.action.collection=Nos montres !
 
 offer.home.head=Déplacements à domicile
 offer.home.body=Toutes les prestations ont lieu à votre domicile.\
@@ -425,7 +429,8 @@ order.html.description=Formulaire de demande de devis gratuit pour révision, r�
 order.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine
 order.baseline=Demande de devis gratuit
 order.text.explanation=Pour obtenir un devis d''entretien de votre montre, veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-
+order.text.disclaimer=Au delà des entretiens classiques comme la révision complète, les changements de verres, de poussoirs ou de lunette, ou des restaurations de montres ayant subi de graves dommages (rouille causée par une perte d''étanchéité, chute violente...), nous pouvons proposer des services "à la carte" correspondant à des besoins très spécifiques. N''hésitez par à nous contacter pour réviser, réparer, restaurer ou même personnaliser votre montre !\
+  <br />Dans certains cas, il est possible que nous ne soyons pas en mesure de vous proposer des devis comparatifs mais uniquement un devis dans le SAV officiel ou un devis chez un horloger partenaire. Nous vous en informons dans notre réponse. 
 order.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''un atelier indépendant, avec prise en charge à domicile ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a> 
 
 order.baume.baseline=Demande de devis gratuit
@@ -556,6 +561,7 @@ order.form.value.type.of.service.intermediate=Entretien intermédiaire (étanch�
 order.form.value.type.of.service.setting.up=Réglage de la précision du mouvement
 order.form.value.type.of.service.setting.up.help=Si votre montre est récente ou si sa dernière révision date de quelques mois et que vous constatez une prise d''avance de quelques dizaines de secondes par jour, cet entretien peut résoudre ce problème avec une intervention simple et rapide.
 order.form.value.type.of.service.water=Urgence étanchéité (vous voyez de la buée sur votre verre)
+order.form.value.type.of.service.customization=<abbr class="" title="Changement de l''aspect extérieur" >Personnalisation</abbr> de votre montre
 order.form.label.cat.your.watch=Votre montre
 order.form.label.brand=* Marque
 order.form.value.brand.default=Sélectionnez la marque de votre montre
@@ -586,6 +592,50 @@ order.action.submit=Envoyer la demande
 order.action.alternative.separator=ou bien
 order.action.alternative=Etre rappelé
 order.movement.alt=Réparation mouvement de montre
+
+
+# Customization
+customization.content.1.head=<span class="text-muted">Personnaliser sa montre&nbsp;:</span> c''est possible&nbsp;!
+customization.content.1.body=<div class="sub-title">Pour avoir une montre qui vous ressemble vraiment&nbsp;:</div>\
+  <ul><li>Votre montre commence à vous lasser, mais vous l''aimez tellement que vous ne voulez pas vous en séparer ?</li>\
+  <li>Vous souhaitez vous démarquer et être certain de ne jamais croiser une montre identique à la vôtre sur un autre poignet ?</li></ul>\
+  <br /><b>Et si vous la transformiez un peu ? Ou même beaucoup ?</b>\
+  <br /><br />Hometime vous propose un vrai <b>service de personnalisation "à la carte"</b> pour vous accompagner tout au long du processus de personnalisation.
+customization.content.2.head=<span class="text-muted">Le plus simple&nbsp;:</span> changer de bracelet
+customization.content.2.body=<br />C''est la solution <b>la plus simple et la plus rapide</b>. Elle consiste à remplacer le bracelet de votre montre par un bracelet d''une matière ou d''une couleur différente.\
+  <br /><br />En changeant de bracelet, une montre <b>très classique</b> peut devenir <b>très sportive</b>, alors qu''une montre assez sportive peut devenir <b>beaucoup plus habillée</b>.\
+  <br /><br />En jouant sur les contrastes, vous aurez l''impression d''avoir changé plus que le bracelet. La montre pourra tour à tour vous paraître plus grande ou plus petite, plus épaisse ou plus fine.\
+  <br /><br />Cette opération des plus simples permet de <b>redécouvrir sa montre</b>. Dans la plupart des cas, il est aussi possible d''équiper le bracelet de pompes pouvant être manipulées sans le moindre outil. Il devient extrèmement rapide de changer son bracelet, à tel point que l''on peut en changer tous les matins en fonction de son humeur.\
+  <br /><br />Hometime vous aide à lever les quelques freins qui vous empêchent de franchir le pas tout seul&nbsp;:\
+  <ul><li>impossibilité de démonter vous même le bracelet,</li>\
+  <li>nécessité d''un bracelet sur mesure,</li>\
+  <li>besoin de pompes sans outil...</li></ul>
+customization.2.to.action=Personnaliser ma montre !
+customization.2.alt=Changement de bracelets
+customization.content.3.head=<span class="text-muted">Pour aller un peu plus loin&nbsp;:</span> repeindre son cadran, changer de lunette...
+customization.content.3.body=<br />Si vous souhaitez aller plus loin dans la personnalisation de votre montre, il est possible de changer ou de retravailler certaines pièces qui la compose.\
+  <br /><br />Ainsi, sans que cela soit exhaustif, il est possible de réaliser les opérations suivantes&nbsp;\
+  <ul><li>Changer la <b>lunette&nbsp;</b>: que celle-ci soit fixe ou mobile, s''il existe différentes versions de votre montre avec des lunettes particulières, alors il est souvent possible de la remplacer.</li>\
+  <li>Changer la <b>couleur du cadran&nbsp;</b>: plusieurs options sont enisageables pour la personnalisation du cadran, allant du remplacement du cadran par un cadran original d''une autre couleur, jusqu''à une personnalisation de la couleur du cadran, des index et des inscriptions.</li>\
+  <li>Changer les <b>aiguilles&nbsp;</b>: les aiguilles peuvent aussi être remplacées par des aiguilles de formes ou de couleurs différentes.</li>\
+  <li>Changer le <b>verre&nbsp;</b>: dans certains cas, il est possible de remplacer le verre pour un verre plus ou moins bombé, avec ou sans loupe...</li></ul>\
+  Pour ce type de personnalisation, nous vous accompagnons pour explorer le champ des possibles, n''hésitez pas à nous demander conseil !
+customization.3.to.action=Concevoir ma montre personnalisée !
+customization.3.alt=Changement de cadran, lunette
+customization.contact.3.action.title=Aidez moi à personnaliser ma montre 
+customization.content.4.head=Plus radical, changer la couleur du boitier
+customization.content.4.body=<br />Pour aller encore plus loin, il existe des traitements de surface permettant de changer totalement l''apparence de votre boitier en acier (et de votre bracelet si celui-ci est aussi en acier).\
+  <br /><br />Par une méthode chimique éprouvée et totalement adaptée aux montres de luxe, <b>l''acier peut devenir noir ou gris</b> et prendre un aspect très proche du carbone ou de la céramique.\
+  <br /><br />Il est possible de conserver des <b>surfaces polies</b> et des <b>surfaces mattes</b>, et ce traitement est <b>très résistant dans le temps</b>   .\
+  <br /><br />Enfin, si vous vous lassez, il s''agit d''une opération réversible.\
+  <br /><br />Il est bien sûr possible de combiner cette opération avec un changement de cadran ou d''aiguilles pour assurer une cohérence graphique optimale.
+customization.4.to.action=Obtenir un devis !
+customization.4.alt=Traitement PVD
+customization.content.5.head=<span class="text-muted">L''ultime solution&nbsp;:</span> votre montre 100% personnelle
+customization.content.5.body=<br />Enfin, si vous souhaitez vraiment vous démarquer et concevoir vous même votre propre montre en choisissant ses <b>complications</b>, en <b>dessinant son boitier</b>, ses <b>aiguilles</b>, son <b>cadran</b>... nous sommes là pour vous écouter et vous accompagner.\
+  <br /><br />N''hésitez pas et contactez nous pour réaliser votre <b>"Pièce unique"&nbsp;</b>!
+customization.5.to.action=Concevoir ma propre montre !
+customization.contact.5.action.title=Aidez moi à concevoir ma propre montre 
 
 # Contact page
 contact.html.title=Nous contacter
@@ -1067,6 +1117,7 @@ site.plan.privacy.title=Confidentialité et vie privée
 site.plan.contact.title=Prise de contact
 site.plan.call.request.title=Rappel téléphonique
 site.plan.feedback.title=Avis clients
+site.plan.customization.title=Personnalisation de montres
 
 
 

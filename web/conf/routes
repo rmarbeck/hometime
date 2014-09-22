@@ -10,6 +10,9 @@ GET     /revision-reparation-de-montres controllers.Application.indexAlternate()
 GET     /entretien-reparation       controllers.Application.service()
 GET     /service                    controllers.Default.redirect(to = "/entretien-reparation")
 
+# Customization page
+GET     /personnaliser-sa-montre    controllers.Application.customization()
+
 # Watches
 GET     /les-montres-disponibles-a-l-essai       controllers.Application.watch_collection()
 GET     /watches                    controllers.Default.redirect(to = "/les-montres")
@@ -38,7 +41,7 @@ GET     /order                      controllers.Default.redirect(to = "/demande-
 POST    /demande-de-devis           controllers.Application.manageOrder()
 
 # Contact
-GET     /nous-contacter             controllers.Application.contact()
+GET     /nous-contacter             controllers.Application.contact(title: String ?= "")
 POST    /nous-contacter             controllers.Application.manageContact()
 
 # CallRequest

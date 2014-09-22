@@ -3,43 +3,11 @@
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
 @in_head = {
-        @if(flash.containsKey("success")) {
-        <!-- Facebook Code for Demande de devis Conversion Page -->
-        <script type="text/javascript">
-        var fb_param = {};
-        fb_param.pixel_id = '6014879251989';
-        fb_param.value = '0.00';
-        fb_param.currency = 'EUR';
-        (function(){
-          var fpw = document.createElement('script');
-          fpw.async = true;
-          fpw.src = '//connect.facebook.net/en_US/fp.js';
-          var ref = document.getElementsByTagName('script')[0];
-          ref.parentNode.insertBefore(fpw, ref);
-        })();
-        </script>
-        <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6014879251989&amp;value=0&amp;currency=EUR" /></noscript>
+    @if(flash.containsKey("success")) {
+        @fragments.send_order_event_facebook()
         
-        <!-- Google Code for Demande de devis Conversion Page -->
-        <script type="text/javascript">
-        /* <![CDATA[ */
-        var google_conversion_id = 975392781;
-        var google_conversion_language = "en";
-        var google_conversion_format = "3";
-        var google_conversion_color = "ffffff";
-        var google_conversion_label = "RccaCKuTjxEQjaCN0QM";
-        var google_conversion_value = 0;
-        var google_remarketing_only = false;
-        /* ]]> */
-        </script>
-        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-        </script>
-        <noscript>
-        <div style="display:inline;">
-        <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/975392781/?value=0&amp;label=RccaCKuTjxEQjaCN0QM&amp;guid=ON&amp;script=0"/>
-        </div>
-        </noscript>
-        }
+        @fragments.send_order_event_google_analytics()
+    }
 }
 @end_scripts = {}
 
@@ -76,7 +44,14 @@
         <div class="col-xs-12 col-sm-9 col-sm-offset-1">
 		@helper.form(action = routes.Application.manageOrder(), 'class -> "form-horizontal", 'role -> "form") {
                 @tags.myInputRadioGroup(order("orderType"),
-                              Seq( OrderRequest.OrderTypes.SETTINGUP.toString -> abbr(Messages("order.form.value.type.of.service.setting.up.help"), Messages("order.form.value.type.of.service.setting.up")).toString, OrderRequest.OrderTypes.INTERMEDIATE.toString -> Messages("order.form.value.type.of.service.intermediate"), OrderRequest.OrderTypes.SERVICE.toString -> Messages("order.form.value.type.of.service.service"), OrderRequest.OrderTypes.REPAIR.toString -> Messages("order.form.value.type.of.service.repair"), OrderRequest.OrderTypes.WATER.toString -> Messages("order.form.value.type.of.service.water")), '_label -> Html(Messages("order.form.label.type.of.service", routes.Application.service_test())),
+                              Seq( OrderRequest.OrderTypes.SETTINGUP.toString -> abbr(Messages("order.form.value.type.of.service.setting.up.help"), Messages("order.form.value.type.of.service.setting.up")).toString,
+                                   OrderRequest.OrderTypes.INTERMEDIATE.toString -> Messages("order.form.value.type.of.service.intermediate"),
+                                   OrderRequest.OrderTypes.SERVICE.toString -> Messages("order.form.value.type.of.service.service"),
+                                   OrderRequest.OrderTypes.REPAIR.toString -> Messages("order.form.value.type.of.service.repair"),
+                                   OrderRequest.OrderTypes.WATER.toString -> Messages("order.form.value.type.of.service.water"),
+                                   OrderRequest.OrderTypes.CUSTOMIZATION.toString -> Messages("order.form.value.type.of.service.customization")
+                                   ), '_label -> Html(Messages("order.form.label.type.of.service",
+                                   routes.Application.service_test())),
                               '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 <div class="form-group">
@@ -151,6 +126,12 @@
         </div>
       </div>
       }
+      <div class="row disclaimer">
+          <div class="col-sm-10 col-sm-offset-1">
+            
+            <div class="disclaimer-body">@Html(Messages("order.text.disclaimer"))</div>
+          </div>
+      </div>
      <hr>
     </div><!-- /.container -->
 }    

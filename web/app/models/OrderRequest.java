@@ -27,7 +27,7 @@ public class OrderRequest extends Model {
 	    INTERMEDIATE ("3"),
 	    SETTINGUP ("4"),
 	    WATER ("5"),
-	    RESERVED ("6");
+	    CUSTOMIZATION ("6");
 	    
 		private String name = "";
 		    
@@ -148,6 +148,31 @@ public class OrderRequest extends Model {
     	content.append(", phonenumber given ? : " + ((this.phoneNumber==null || "".equals(this.phoneNumber))?("no"):("yes")));
     	content.append(", precisions : " + ((this.remark==null)?("none"):(this.remark)));
     	content.append("]");
+    	return content.toString();
+    }
+    
+    public String toNotificationSumUp() {
+    	StringBuilder content = new StringBuilder();
+    	content.append("Type of service is : " + this.orderType.name());
+    	content.append("\n");
+    	content.append("Where : " + this.method.name());
+    	content.append("\n");
+    	content.append("Brand is : " + this.brand.display_name);
+    	content.append("\n");
+    	content.append("Model is : " + this.model);
+    	content.append("\n");
+    	content.append("\n");
+    	content.append("Watch chosen : " + ((this.watchChosen==null)?("none"):(this.watchChosen.short_name)));
+    	content.append("\n");
+    	content.append("\n");
+    	content.append("Customer's email is : " + this.email);
+    	content.append("\n");
+    	content.append("Living in : " + this.city);
+    	content.append("\n");
+    	content.append("Has he gave his phonenumber ? : " + ((this.phoneNumber==null || "".equals(this.phoneNumber))?("no"):("yes")));
+    	content.append("\n");
+    	content.append("\n");
+    	content.append("Additional informations : " + ((this.remark==null)?("none"):(this.remark)));
     	return content.toString();
     }
 }

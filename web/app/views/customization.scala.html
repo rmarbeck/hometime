@@ -1,0 +1,20 @@
+@(message: String = "")
+@import tags._
+
+@layouts.main("customization") {
+    @layouts.fragments.navbar(50)
+
+    <div class="container customization">
+    
+    @featurette("customization", "1", "none", null, null, null)
+    
+    @featurette("customization", "2", "right", "customization/monaco-bracelets.jpg", null, routes.Application.order(null).url+"?type="+OrderRequest.OrderTypes.CUSTOMIZATION)
+
+    @featurette("customization", "3", "left", "customization/rolex-dial-bezel.jpg", routes.Application.contact(Messages("customization.contact.3.action.title")).url, null)
+    
+    @featurette("customization", "4", "right", "customization/daytona-avant-apres.jpg", null, routes.Application.order(null).url+"?type="+OrderRequest.OrderTypes.CUSTOMIZATION)
+    
+    @featurette("customization", "5", "none", null, null, routes.Application.contact(Messages("customization.contact.5.action.title")).url)
+
+    </div><!-- /.container -->
+}

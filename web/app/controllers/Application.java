@@ -193,6 +193,11 @@ public class Application extends Controller {
 	    	super();
 	    }
 	    
+	    public ContactForm(String title) {
+	    	this();
+	    	this.title = title;
+	    }
+	    
 	    public ContactRequest getRequest() {
 	    	ContactRequest request = new ContactRequest();
 	    	request.title = this.title;
@@ -271,6 +276,10 @@ public class Application extends Controller {
     public static Result service() {
         return ok(service.render(""));
     }
+    
+    public static Result customization() {
+        return ok(customization.render(""));
+    }
 
     public static Result watch_collection() {
         return ok(watch_collection.render("", getDisplayableWatches()));
@@ -301,9 +310,9 @@ public class Application extends Controller {
     	}
     }
     
-    public static Result contact() {
+    public static Result contact(String title) {
     	try {
-	        return ok(contact.render("", Form.form(ContactForm.class).fill(new ContactForm())));
+	        return ok(contact.render("", Form.form(ContactForm.class).fill(new ContactForm(title))));
     	} catch (Exception e) {
     		return internalServerError();
     	}
@@ -379,7 +388,7 @@ public class Application extends Controller {
 			OrderRequest orderRequest = orderForm.get().getRequest();
 			orderRequest.save();
 			
-			ActionHelper.tryToNotifyTeamByEmail("Nouvelle demande de devis", orderRequest.toString());
+			ActionHelper.tryToNotifyTeamByEmail("Nouvelle demande de devis", orderRequest.toNotificationSumUp());
 			
 			flash("success", "OK");
 			
@@ -405,7 +414,7 @@ public class Application extends Controller {
 			
 			GoogleAnalyticsHelper.pushEvent("contact", "sent", ctx());
 			
-			return contact();
+			return contact("");
 		}
 	}
 	

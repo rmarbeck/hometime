@@ -1,0 +1,43 @@
+@**
+ * Generate a featurette block.
+ *
+ *@
+@(topic: String, key: String, positionOfImage: String, imgUrl: String, actionDefaultUrl: String, actionPrimaryUrl: String, preventDivider: Boolean=false, defaultActionOpenInNewWindow: Boolean=false, primaryActionOpenInNewWindow: Boolean=false)
+
+<div class="row featurette">
+@if(imgUrl != null) {
+  <div class="visible-xs col-xs-2"></div>
+  <div class="col-sm-3 col-xs-8 @if(positionOfImage.equals("right")) {col-sm-push-9}">
+      <img class="featurette-image img-responsive" src="@guess_url(imgUrl)" alt="@Messages(topic+"."+key+".alt")">
+  </div>
+  <div class="visible-xs col-xs-2"></div>
+  <div class="clearfix visible-xs"></div>
+}
+  <div class="@if(imgUrl != null) {col-sm-9} else {col-sm-12} @if(positionOfImage.equals("right")) {col-sm-pull-3}">
+      <div class="featurette-heading"><h2>@Html(Messages(topic+".content."+key+".head"))</h2></div>
+      <div class="featurette-body">@Html(Messages(topic+".content."+key+".body"))</div>
+  </div>
+</div>
+@if(actionDefaultUrl != null || actionPrimaryUrl != null) {
+<div class="row featurette">
+  @if(actionDefaultUrl != null && actionPrimaryUrl != null) {
+    <div class="col-xs-6 text-right">
+      <div class="featurette-action"><a class="btn btn-default" @if(defaultActionOpenInNewWindow) {target="_blank"} href="@actionDefaultUrl" role="button">@Messages(topic+"."+key+".default.to.action")</a></div>
+    </div>
+    <div class="col-xs-6 text-left">
+      <div class="featurette-action"><a class="btn btn-primary" @if(primaryActionOpenInNewWindow) {target="_blank"} href="@actionPrimaryUrl" role="button">@Messages(topic+"."+key+".primary.to.action")</a></div>
+    </div>
+  } else {
+    <div class="col-xs-12 text-center">
+        @if(actionDefaultUrl != null) {
+          <div class="featurette-action text-center"><a class="btn btn-default" @if(defaultActionOpenInNewWindow) {target="_blank"} href="@actionDefaultUrl" role="button">@Messages(topic+"."+key+".to.action")</a></div>
+        } else {
+          <div class="featurette-action text-center"><a class="btn btn-primary" @if(primaryActionOpenInNewWindow) {target="_blank"} href="@actionPrimaryUrl" role="button">@Messages(topic+"."+key+".to.action")</a></div>
+        }
+    </div>
+  }
+</div>
+}    
+@if(!preventDivider) {
+    <hr class="featurette-divider">
+}

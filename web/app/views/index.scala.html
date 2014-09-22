@@ -152,6 +152,9 @@
         <div class="col-xs-12 what-is-it">
           <div class="what-is-it-body"><h4><span class="glyphicon glyphicon-leaf">&nbsp;</span>@Html(Messages("home.what.is.it.4.body"))</h4></div>
         </div>
+        <div class="col-xs-12 what-is-it">
+          <div class="what-is-it-body"><h4><span class="glyphicon glyphicon-user">&nbsp;</span>@Html(Messages("home.what.is.it.5.body", routes.Application.customization()))</h4></div>
+        </div>
       </div>
       <div class="row">
         <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.offer()" title="@Messages("home.tell.more.call.to.action.title")" role="button">@Messages("home.tell.more.call.to.action")</a></div>
@@ -256,6 +259,7 @@
         </div>
       </div>
 
+      <hr>
     </div>
     
 }

@@ -1,45 +1,14 @@
 @(message: String = "")
+@import tags._
 
 @layouts.main("water") {
     @layouts.fragments.navbar(80)
 
     <div class="container water">
     
-      <div class="row featurette">
-        <div class="visible-xs col-xs-2"></div>
-        <div class="col-sm-3 col-xs-8">
-          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/water/leak-proof.jpg")" alt="@Messages("water.leak.proof.alt")">
-        </div>
-        <div class="visible-xs col-xs-2"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-sm-9">
-          <div class="featurette-heading"><h2>@Html(Messages("water.content.1.head"))</h2></div>
-          <div class="featurette-body">@Html(Messages("water.content.1.body"))</div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
+    @featurette("water", "1", "left", "water/leak-proof.jpg", null, null)
     
-
-      <div class="row featurette">
-        <div class="visible-xs col-xs-2"></div>
-        <div class="col-sm-3 col-sm-push-9 col-xs-8">
-          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/water/service.jpg")" alt="@Messages("water.service.alt")">
-        </div>
-        <div class="visible-xs col-xs-2"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-sm-9 col-sm-pull-3">
-          <div class="featurette-heading"><h2>@Html(Messages("water.content.2.head"))</h2></div>
-          <div class="featurette-body">@Html(Messages("water.content.2.body"))</div>
-        </div>
-      </div>
-      <div class="row featurette">
-        <div class="col-xs-12 text-center">
-          <div class="featurette-action text-center"><a class="btn btn-primary" href="@routes.Application.order(null)?type=@OrderRequest.OrderTypes.WATER" role="button">@Messages("water.1.to.action")</a></div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-      
+    @featurette("water", "2", "right", "water/service.jpg", null, routes.Application.order(null).url+"?type="+OrderRequest.OrderTypes.WATER)
+          
     </div><!-- /.container -->
 }

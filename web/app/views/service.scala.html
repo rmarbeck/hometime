@@ -1,130 +1,22 @@
 @(message: String = "")
+@import tags._
 
 @layouts.main("service") {
     @layouts.fragments.navbar(80)
 
     <div class="container service">
     
-      <div class="row featurette">
-        <div class="visible-xs col-xs-2"></div>
-        <div class="col-sm-3 col-xs-8">
-          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/service/invest.jpg")" alt="@Messages("service.invest.alt")">
-        </div>
-        <div class="visible-xs col-xs-2"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-sm-9">
-          <div class="featurette-heading"><h2>@Html(Messages("service.content.6.head"))</h2></div>
-          <div class="featurette-body">@Html(Messages("service.content.6.body"))</div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
+    @featurette("service", "6", "left", "service/invest.jpg", null, null)
     
-
-      <div class="row featurette">
-        <div class="visible-xs col-xs-2"></div>
-        <div class="col-sm-3 col-sm-push-9 col-xs-8">
-          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/service/why.png")" alt="@Messages("service.why.alt")">
-        </div>
-        <div class="visible-xs col-xs-2"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-sm-9 col-sm-pull-3">
-          <div class="featurette-heading"><h2>@Html(Messages("service.content.1.head"))</h2></div>
-          <div class="featurette-body">@Html(Messages("service.content.1.body"))</div>
-        </div>
-      </div>
-      <div class="row featurette">
-        <div class="col-xs-12 text-center">
-          <div class="featurette-action text-center"><a class="btn btn-default" target="_blank" href="http://watchnext.fr/blog/2014/01/pourquoi-une-montre-suse-t-elle/?utm_source=hometime.fr" role="button">@Messages("service.1.to.action")</a></div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="visible-xs col-xs-2"></div>
-        <div class="col-sm-3 col-xs-8">
-          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/service/how.jpg")" alt="@Messages("service.how.alt")">
-        </div>
-        <div class="visible-xs col-xs-2"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-sm-9">
-          <div class="featurette-heading"><h2>@Html(Messages("service.content.2.head"))</h2></div>
-          <div class="featurette-body">@Html(Messages("service.content.2.body"))</div>
-        </div>
-      </div>
-      <div class="row featurette">
-        <div class="col-xs-12 text-center">
-          <div class="featurette-action text-center"><a class="btn btn-default" target="_blank" href="http://watchnext.fr/blog/2014/01/comment-entretient-on-une-montre/?utm_source=hometime.fr" role="button">@Messages("service.2.to.action")</a></div>
-        </div>
-      </div>
-
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="visible-xs col-xs-2"></div>
-        <div class="col-sm-3 col-sm-push-9 col-xs-8">
-          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/service/when.jpg")" alt="@Messages("service.when.alt")">
-        </div>
-        <div class="visible-xs col-xs-2"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-sm-9 col-sm-pull-3">
-          <div class="featurette-heading"><h2>@Html(Messages("service.content.3.head"))</h2></div>
-          <div class="featurette-body">@Html(Messages("service.content.3.body"))</div>
-        </div>
-      </div>
-      <div class="row featurette">
-        <div class="col-xs-12 text-center">
-          <div class="featurette-action text-center"><a class="btn btn-primary" href="@routes.Application.service_test()" role="button">@Messages("service.3.to.action")</a></div>
-        </div>
-      </div>
+    @featurette("service", "1", "right", "service/why.png", "http://watchnext.fr/blog/2014/01/pourquoi-une-montre-suse-t-elle/?utm_source=hometime.fr", null, false, true)
+    
+    @featurette("service", "2", "left", "service/how.jpg", "http://watchnext.fr/blog/2014/01/comment-entretient-on-une-montre/?utm_source=hometime.fr", null, false, true)
+    
+    @featurette("service", "3", "right", "service/when.jpg", null, routes.Application.service_test().url)
+    
+    @featurette("service", "4", "left", "service/how-long.png", "http://watchnext.fr/blog/2014/01/combien-de-temps-dure-une-revision-ou-une-reparation-de-montre/?utm_source=hometime.fr", null, false, true)
       
-
-      <hr class="featurette-divider">
-      
-      <div class="row featurette">
-        <div class="visible-xs col-xs-2"></div>
-        <div class="col-sm-3 col-xs-8">
-          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/service/how-long.png")" alt="@Messages("service.how.long.alt")">
-        </div>
-        <div class="visible-xs col-xs-2"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-sm-9">
-          <div class="featurette-heading"><h2>@Html(Messages("service.content.4.head"))</h2></div>
-          <div class="featurette-body">@Html(Messages("service.content.4.body"))</div>
-        </div>
-      </div>
-      <div class="row featurette">
-        <div class="col-xs-12 text-center">
-          <div class="featurette-action text-center"><a class="btn btn-default" target="_blank" href="http://watchnext.fr/blog/2014/01/combien-de-temps-dure-une-revision-ou-une-reparation-de-montre/?utm_source=hometime.fr" role="button">@Messages("service.4.to.action")</a></div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="visible-xs col-xs-2"></div>
-        <div class="col-sm-3 col-sm-push-9 col-xs-8">
-          <img class="featurette-image img-responsive" src="@routes.Assets.at("images/service/risky.png")" alt="@Messages("service.risky.alt")">
-        </div>
-        <div class="visible-xs col-xs-2"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-sm-9 col-sm-pull-3">
-          <div class="featurette-heading"><h2>@Html(Messages("service.content.5.head"))</h2></div>
-          <div class="featurette-body">@Html(Messages("service.content.5.body"))</div>
-        </div>
-      </div>
-      <div class="row featurette">
-        <div class="col-xs-6 text-right">
-          <div class="featurette-action"><a class="btn btn-default" target="_blank" href="http://watchnext.fr/blog/2014/01/existe-t-il-des-risques-a-faire-entretenir-sa-montre/?utm_source=hometime.fr" role="button">@Messages("service.5.to.action")</a></div>
-        </div>
-        <div class="col-xs-6 text-left">
-          <div class="featurette-action"><a class="btn btn-primary" href="@routes.Application.order(null)" role="button">@Messages("service.why.call.to.action")</a></div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
+    @featurette("service", "5", "right", "service/risky.png", "http://watchnext.fr/blog/2014/01/existe-t-il-des-risques-a-faire-entretenir-sa-montre/?utm_source=hometime.fr", routes.Application.order(null).url, false, true)
       
     </div><!-- /.container -->
 }

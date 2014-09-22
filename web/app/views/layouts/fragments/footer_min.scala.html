@@ -58,6 +58,8 @@
                 @a_(routes.Application.around().url, "global.text.service.around")
                 <br />
                 @a_(routes.Application.water().url, "global.text.service.water")
+                <br />
+                @a_(routes.Application.customization().url, "global.text.customization")
             </div>
             <div class="col-sm-3">
                 @a_("http://watchnext.fr/blog/", "global.text.blog", 'target -> "_blank")
@@ -68,7 +70,6 @@
             <div class="col-sm-12">@Messages("global.text.copyright")</div>
         </div>
         <div class="visible-xs">
-            <hr>
             <p class="pull-right"><a href="#" title="@Messages("global.text.back.to.top.title")"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;@Messages("global.text.back.to.top")</a></p>
             <div class="footer-links">
                 <h4>@Messages("global.text.footer.links.contact")</h4>
