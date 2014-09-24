@@ -38,6 +38,42 @@ public class ActionHelper {
 	 * @return validity check status
 	 */
 	public static void notifyTeamByEmail(String title, String message) {
+		MailerAPI mail = prepareEmail(title);
+    	Logger.info("About to send a mail");
+    	mail.send(message);
+	}
+	
+	/**
+	 * Send an HTML email to the team
+	 * 
+	 * @param toCheck
+	 * @return validity check status
+	 */
+	public static void sendHtmlEmail(String title, String htmlMessage) {
+		MailerAPI mail = prepareEmail(title);
+    	Logger.info("About to send an HTML mail");
+    	mail.sendHtml(htmlMessage);
+	}
+	
+	public static void tryToNotifyTeamByEmail(String title, String message) {
+		try {
+			notifyTeamByEmail(title, message);
+		} catch (Throwable t) {
+			Logger.error("Unable to send email {}", t.getMessage());
+			t.printStackTrace();
+		}
+	}
+	
+	public static void tryToSendHtmlEmail(String title, String htmlMessage) {
+		try {
+			sendHtmlEmail(title, htmlMessage);
+		} catch (Throwable t) {
+			Logger.error("Unable to send email {}", t.getMessage());
+			t.printStackTrace();
+		}
+	}
+	
+	private static MailerAPI prepareEmail(String title) {
 		// Looking if liveConfig exists and says to send e-mail
 		if ((LiveConfig.isKeyDefined(NTBE_ACTIVE) && LiveConfig.getBoolean(NTBE_ACTIVE))
 				|| (!LiveConfig.isKeyDefined(NTBE_ACTIVE) && Play.application().configuration().getBoolean("notifyTeam")) ) {
@@ -57,28 +93,8 @@ public class ActionHelper {
 	    		}
 	    		mail.setRecipient(recipients.toArray(new String[]{"empty"}));
 	    	}
-
-	    	Logger.info("About to send a mail");
-	    	mail.send(message);
-
-	    	/*
-	    	//sends html
-	    	mail.sendHtml("<html>html</html>" );
-	    	//sends text/text
-	    	mail.send( "text" );
-	    	//sends both text and html
-	    	mail.send( "text", "<html>html</html>");
-	    	*/
+	    	return mail;
 		}
-		return;
-	}
-	
-	public static void tryToNotifyTeamByEmail(String title, String message) {
-		try {
-			notifyTeamByEmail(title, message);
-		} catch (Throwable t) {
-			Logger.error("Unable to send email {}", t.getMessage());
-			t.printStackTrace();
-		}
+		return null;
 	}
 }

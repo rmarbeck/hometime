@@ -11,5 +11,17 @@ liveConfig:
          key:                   orders_sender_email_address
          valuestring:           contact@hometime.fr
 
+    - !!models.LiveConfig
+         key:                   notify_team_by_email_active
+         valueboolean:         true
+
+    - !!models.LiveConfig
+         key:                   notify_team_by_email_to_1
+         valuestring:           contact@hometime.fr
+
+    - !!models.LiveConfig
+         key:                   notify_team_by_email_to_how_many
+         valuelong:             1
+
 #Fin
 

@@ -280,7 +280,8 @@ public class Admin extends Controller {
 			return badRequest(quotation_form.render(quotationForm, getAvailableWatches(), "?"));
 		} else {
 			Quotation quotationFilled = quotationForm.get().getQuotation();
-			MailjetAdapter.tryToSendMessage("Test", "rmarbeck@gmail.com", quotation.render(quotationFilled).body());
+			//MailjetAdapter.tryToSendMessage("Test", "rmarbeck@gmail.com", quotation.render(quotationFilled).body());
+			ActionHelper.tryToSendHtmlEmail("Devis", quotation.render(quotationFilled).body());
 			return ok(quotation.render(quotationFilled));
 		}
     }

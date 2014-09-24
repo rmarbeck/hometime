@@ -34,7 +34,7 @@ public class MailjetAdapter {
 	public static String MAILJET_HOST = "in.mailjet.com";
 	public static String MAILJET_SOCKET_FACTORY_PORT = "465";
 	public static String MAILJET_PORT = "465";
-	public static String MAILJET_CLASS = "mailjet_secret_key";
+	public static String MAILJET_CLASS = "javax.net.ssl.SSLSocketFactory";
 	
 	
 	/**
@@ -57,7 +57,7 @@ public class MailjetAdapter {
  
 		props.put ("mail.smtp.host", MAILJET_HOST);
 		props.put ("mail.smtp.socketFactory.port", MAILJET_SOCKET_FACTORY_PORT);
-		props.put ("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		props.put ("mail.smtp.socketFactory.class", MAILJET_CLASS);
 		props.put ("mail.smtp.auth", "true");
 		props.put ("mail.smtp.ssl.trust", "*");
 		props.put ("mail.smtp.port", MAILJET_PORT);
