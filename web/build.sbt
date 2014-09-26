@@ -24,3 +24,7 @@ excludeFilter in (Assets, LessKeys.less) := "_*.less"
 pipelineStages := Seq(rjs, digest, gzip)
 
 LessKeys.compress in Assets := true
+
+WebKeys.webTarget := target.value / "scala-web"
+
+artifactPath in PlayKeys.playPackageAssets := WebKeys.webTarget.value / (artifactPath in PlayKeys.playPackageAssets).value.getName
