@@ -16,7 +16,7 @@ import play.libs.Yaml;
 import play.mvc.Action;
 import play.mvc.Http.Request;
 import play.mvc.Http.RequestHeader;
-import play.mvc.SimpleResult;
+import play.mvc.Result;
 
 import com.avaje.ebean.Ebean;
 import com.typesafe.config.ConfigFactory;
@@ -78,23 +78,24 @@ public class Global extends GlobalSettings {
     }
 
     @Override
-    public Promise<SimpleResult> onError(RequestHeader request, Throwable t) {
-        return Promise.<SimpleResult>pure(internalServerError(
+	public Promise<Result> onError(RequestHeader request, Throwable t) {
+        return Promise.<Result>pure(internalServerError(
             views.html.error.generic.render(t)
         ));
     }
     
 
     @Override
-    public Promise<SimpleResult> onHandlerNotFound(RequestHeader request) {
-        return Promise.<SimpleResult>pure(notFound(
+    public Promise<Result> onHandlerNotFound(RequestHeader request) {
+        return Promise.<Result>pure(notFound(
             views.html.error.notfound.render(request.uri())
         ));
     }
 
+	
     @Override
-    public Promise<SimpleResult> onBadRequest(RequestHeader request, String error) {
-        return Promise.<SimpleResult>pure(badRequest("Don't try to hack the URI!"));
+    public Promise<Result> onBadRequest(RequestHeader request, String error) {
+        return Promise.<Result>pure(badRequest("Don't try to hack the URI!"));
     }
     
     private static boolean forceReload() {

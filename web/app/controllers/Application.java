@@ -24,7 +24,7 @@ import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.i18n.Messages;
-import play.libs.WS;
+import play.libs.ws.*;
 import play.mvc.*;
 import views.html.*;
 import views.html.admin.login;
@@ -557,7 +557,7 @@ public class Application extends Controller {
     
     public static Result autoHead(String originalPath) throws IllegalAccessException {
     	Logger.debug("In autoHead with {}", originalPath);
-        WS.WSRequestHolder forwardedRequest = WS.url("http://" + request().host() + request().path());
+        WSRequestHolder forwardedRequest = WS.url("http://" + request().host() + request().path());
         // this header will allow you to make additional choice i.e. avoid tracking the request or something else
         // see condition in index() action
         forwardedRequest.setHeader("X_FORWARD_FROM_HEAD", "true");
@@ -575,7 +575,7 @@ public class Application extends Controller {
         }
 
         // Call the same path but with GET
-        WS.Response wsResponse = forwardedRequest.get().get(1000L, TimeUnit.MILLISECONDS);
+        WSResponse wsResponse = forwardedRequest.get().get(1000L, TimeUnit.MILLISECONDS);
 
         // Set returned headers to the response
         for (java.lang.reflect.Field f : Http.HeaderNames.class.getFields()) {

@@ -4,11 +4,11 @@ import play.Logger;
 import play.libs.F.Promise;
 import play.mvc.Http.Context;
 import play.mvc.Http.Session;
-import play.mvc.SimpleResult;
+import play.mvc.Result;
 
 public class SessionWatcher extends play.mvc.Action.Simple {
 	@Override
-	public Promise<SimpleResult> call(Context ctx) throws Throwable {
+	public Promise<Result> call(Context ctx) throws Throwable {
 		setIsFirstPageOfSessionFlag(ctx);
 		return delegate.call(ctx);
 	}

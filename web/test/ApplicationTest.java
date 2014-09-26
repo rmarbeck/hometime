@@ -5,6 +5,7 @@ import models.Brand;
 import org.junit.*;
 
 import play.mvc.*;
+import play.twirl.api.Html;
 import static play.test.Helpers.*;
 import static org.fest.assertions.Assertions.*;
 
@@ -25,7 +26,7 @@ public class ApplicationTest {
 
     @Test
     public void renderTemplate() {
-        Content html = views.html.index.render("Your new application is ready.", new ArrayList<Brand>());
+        Html html = views.html.index.render("Your new application is ready.", new ArrayList<Brand>(),"");
         assertThat(contentType(html)).isEqualTo("text/html");
         assertThat(contentAsString(html)).contains("Your new application is ready.");
     }
