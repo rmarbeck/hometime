@@ -2,18 +2,18 @@
 @if(flash.containsKey("success")) {
     <div class="alert alert-success alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>@Messages("flash.success")</strong> @flash.get("success")
+        <strong>@Html(Messages("flash.success"))</strong> @Html(flash.get("success"))
     </div>
 }
 @if(flash.containsKey("warning")) {
 	<div class="alert alert-warning alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>@Messages("flash.warning")</strong> @flash.get("warning")
+        <strong>@Html(Messages("flash.warning"))</strong> @Html(flash.get("warning"))
     </div>
 }
 @if(flash.containsKey("error")) {
 	<div class="alert alert-danger alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>@Messages("flash.error")</strong> @flash.get("error")
+        <strong>@Html(Messages("flash.error"))</strong> @Html(flash.get("error"))
     </div>
 }

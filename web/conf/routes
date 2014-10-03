@@ -95,8 +95,7 @@ GET     /admin/service/:id          controllers.Admin.displayServiceTest(id: Lon
 GET     /admin/quotation            controllers.Admin.prepareQuotation()
 GET     /admin/quotation/:id        controllers.Admin.prepareQuotationFromOrder(id: Long, inNetwork: Boolean ?= false)
 GET     /admin/quotation/:id/:pId   controllers.Admin.prepareQuotationFromOrderWithPreset(id: Long, pId: Long, inNetwork: Boolean ?= false)
-POST    /admin/quotation            controllers.Admin.displayQuotation()
-POST    /admin/send-quotation       controllers.Admin.sendQuotation()
+POST    /admin/manage-quotation     controllers.Admin.manageQuotation()
 
 # Sitemap
 GET     /sitemap.xml                controllers.Application.sitemap()

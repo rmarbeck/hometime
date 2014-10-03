@@ -43,6 +43,10 @@ public class Quotation {
 	
 	public String brand;
 	
+	public String customerEmail;
+	
+	public String customerCity;
+	
 	public String watchChosen = null;
 
 	public String delay;

@@ -67,7 +67,7 @@
               @for((request, index) <- currentPage.getList.zipWithIndex) {
                 <tr>
                   <td>
-                    <a href="@routes.Admin.displayOrder(request.id)">@index</a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.displayOrder(request.id)"><span class="glyphicon glyphicon-flash"></span></a>
                   </td>
                   <td>
                     @display_date(request.requestDate, "dd/MM")

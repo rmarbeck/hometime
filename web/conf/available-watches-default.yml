@@ -798,5 +798,44 @@ presets:
          hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
 
 
+orders:
+    - &Order1 !!models.OrderRequest
+         requestDate:       "2014-09-09 11:02:57"
+         orderType:         SERVICE
+         brand:             *Rolex
+         model:             Submariner
+         method:            BOTH
+         remark:            J'aime ma sub
+         watchChosen:       *TagHeuerMonaco
+         nameOfCustomer:    Customer 1
+         email:             test1@dev.com
+         phoneNumber:       "0600000001"
+         city:              Paris
+
+    - &Order2 !!models.OrderRequest
+         requestDate:       "2014-09-09 23:02:57"
+         orderType:         WATER
+         brand:             *Omega
+         model:             Speedmaster
+         method:            BRAND
+         remark:            Ma montre a pris l'eau
+         nameOfCustomer:    Customer 2
+         email:             test2@dev.com
+         phoneNumber:       "0600000002"
+         city:              Paris
+
+    - &Order3 !!models.OrderRequest
+         requestDate:       "2014-09-10 20:02:57"
+         orderType:         SERVICE
+         brand:             *Breitling
+         model:             Navitimer
+         method:            OUTLET
+         remark:            Grosse réparation
+         watchChosen:       *OmegaSpeedmaster
+         nameOfCustomer:    Customer 3
+         email:             test3@dev.com
+         phoneNumber:       "0600000003"
+         city:              Maubeuge
+
 #Fin
 

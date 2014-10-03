@@ -3,31 +3,42 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import controllers.Application.ContactForm;
-import controllers.Application.OrderForm;
-import controllers.Application.ServiceTestForm;
-import fr.hometime.utils.ActionHelper;
-import fr.hometime.utils.GoogleAnalyticsHelper;
-import fr.hometime.utils.MailjetAdapter;
-import fr.hometime.utils.ServiceTestHelper;
 import models.Brand;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
 import models.PresetQuotationForBrand;
 import models.Quotation;
-import models.ServiceTest;
-import models.Watch;
 import models.Quotation.TypesOfNetwork;
+import models.ServiceTest;
 import models.ServiceTest.TestResult;
+import models.Watch;
 import play.Logger;
-import play.i18n.Messages;
-import play.mvc.*;
 import play.data.Form;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
-import views.html.admin.*;
+import play.i18n.Messages;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.mvc.Security;
+import views.html.admin.index;
+import views.html.admin.order;
+import views.html.admin.orders;
+import views.html.admin.quotation;
+import views.html.admin.quotation_sent;
+import views.html.admin.quotation_form;
+import views.html.admin.service_test;
+import views.html.admin.service_tests;
+import fr.hometime.utils.ActionHelper;
+import fr.hometime.utils.MailjetAdapter;
+import fr.hometime.utils.ServiceTestHelper;
+import play.libs.ws.*;
+import play.libs.F.Function;
+import play.libs.F.Promise;
+
+import java.net.URLEncoder;
+import java.net.URLEncoder.*;
 
 @Security.Authenticated(SecuredAdminOnly.class)
 public class Admin extends Controller {
@@ -44,6 +55,8 @@ public class Admin extends Controller {
 		@Constraints.Required
 		public String brand;
 
+		public String customerEmail = null;
+		public String customerCity = null;
 		public String watchChosen = null;
 		@Constraints.Required
 		public String delay;
@@ -83,6 +96,8 @@ public class Admin extends Controller {
 		public String hypothesis1 = null;
 		public String hypothesis2 = null;
 		public String hypothesis3 = null;
+		
+		public String action = null;
 
 	    public List<ValidationError> validate() {
 	    	List<ValidationError> errors = new ArrayList<ValidationError>();
@@ -114,6 +129,8 @@ public class Admin extends Controller {
 	    		this.watchChosen = order.watchChosen.id.toString();
 	    		this.priceLoan = Messages.get("admin.order.price.loan", order.watchChosen.price.intValue());
 	    	}
+	    	this.customerEmail = order.email;
+	    	this.customerCity = order.city;
 	    	this.infosGivenByCustomer1 = order.remark;
 	    	switch(order.method) {
 	    		case BRAND:
@@ -137,6 +154,8 @@ public class Admin extends Controller {
 	    	Quotation quotation = new Quotation();
 	    	quotation.serviceType = OrderTypes.fromString(this.serviceType);
 	    	quotation.typeOfNetwork = Quotation.TypesOfNetwork.fromString(this.typeOfNetwork);
+	    	quotation.customerEmail = this.customerEmail;
+	    	quotation.customerCity = this.customerCity;
 	    	quotation.brand = this.brand;
     		quotation.watch = this.watch;
 	    	
@@ -203,7 +222,7 @@ public class Admin extends Controller {
 	}
 	
 	public static Result index() {
-        return ok(index.render("", OrderRequest.findAllLatestFirst()));
+		return LIST_ORDERS;
     }
 	
 	public static Result LIST_ORDERS = redirect(
@@ -245,7 +264,7 @@ public class Admin extends Controller {
 	
     public static Result prepareQuotation() {
     	try {
-	        return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm()), getAvailableWatches(), "N/A"));
+	        return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm()), getAvailableWatches()));
     	} catch (Exception e) {
     		return internalServerError();
     	}
@@ -257,32 +276,65 @@ public class Admin extends Controller {
     
     public static Result prepareQuotationFromOrderWithPreset(long orderId, long presetId, boolean inNetworkIfPossible) {
     	if (orderIsValid(orderId))
-    		return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm(OrderRequest.findById(orderId), presetId, inNetworkIfPossible)), getAvailableWatches(), OrderRequest.findById(orderId).city));
+    		return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm(OrderRequest.findById(orderId), presetId, inNetworkIfPossible)), getAvailableWatches()));
     	flash("error", "Unknown id");
     	return prepareQuotation();
     }
-	
-	public static Result displayQuotation() {
-		Form<QuotationForm> quotationForm = Form.form(QuotationForm.class).bindFromRequest();
+
+	public static Promise<Result> manageQuotation() {
+		final Form<QuotationForm> quotationForm = Form.form(QuotationForm.class).bindFromRequest();
+		Logger.debug("Managing Quotation");
 		if(quotationForm.hasErrors()) {
 			Logger.debug("Error in form : {}", quotationForm.errors());
-			return badRequest(quotation_form.render(quotationForm, getAvailableWatches(), "?"));
+			return Promise.pure((Result) badRequest(quotation_form.render(quotationForm, getAvailableWatches())));
 		} else {
-			Quotation quotationFilled = quotationForm.get().getQuotation();
-			return ok(quotation.render(quotationFilled));
+			if ("preview".equals(quotationForm.get().action))
+				return displayQuotation(quotationForm.get().getQuotation());
+			if ("edit".equals(quotationForm.get().action))
+				return editQuotation(quotationForm.get().getQuotation());
+			return sendQuotation(quotationForm);
 		}
-    }
+	}
 	
-	public static Result sendQuotation() {
-		Form<QuotationForm> quotationForm = Form.form(QuotationForm.class).bindFromRequest();
-		if(quotationForm.hasErrors()) {
-			Logger.debug("Error in form : {}", quotationForm.errors());
-			return badRequest(quotation_form.render(quotationForm, getAvailableWatches(), "?"));
-		} else {
-			Quotation quotationFilled = quotationForm.get().getQuotation();
-			//MailjetAdapter.tryToSendMessage("Test", "rmarbeck@gmail.com", quotation.render(quotationFilled).body());
-			ActionHelper.tryToSendHtmlEmail("Devis", quotation.render(quotationFilled).body());
-			return ok(quotation.render(quotationFilled));
+	
+	private static Promise<Result> displayQuotation(Quotation quotationFilled) {
+		Logger.debug("Displaying Quotation");
+		return Promise.pure(ok(quotation.render(quotationFilled)));
+    }
+    
+	private static Promise<Result> editQuotation(Quotation quotationFilled) {
+		Logger.debug("Editing Quotation");
+		return Promise.pure(ok(quotation.render(quotationFilled)));
+    }
+
+	private static Promise<Result> sendQuotation(final Form<QuotationForm> quotationForm) {
+		Logger.debug("Sending Quotation");
+		try {
+			final Quotation quotationFilled = quotationForm.get().getQuotation();
+			String subject = getSubjectFromQuotation(quotationFilled);
+			String title = getTitleFromQuotation(quotationFilled);
+			String email = quotationFilled.customerEmail;
+			String html = quotation.render(quotationFilled).body();
+			String textVersion = Messages.get("admin.quotation.order.email.text.version");
+
+			Promise<Result> resultPromise = MailjetAdapter.wsCreateACampaignWithHtmlContent(subject, title, email, html, textVersion)
+					.map(url -> {
+						flash("success", Messages.get("admin.quotation.success", url));
+						return LIST_ORDERS;
+						});
+							
+			Promise<Result> recoverPromise = resultPromise.recoverWith(throwable -> {
+				Logger.debug("4");
+				Logger.error(throwable.getMessage());
+				//flash("error", throwable.getMessage());
+	        	return Promise.pure((Result) badRequest(quotation_form.render(quotationForm, getAvailableWatches())));
+			});
+			
+			return recoverPromise;
+		} catch (Exception e) {
+			Logger.debug("5");
+			flash("error", e.getMessage());
+			return Promise.pure((Result) badRequest(quotation_form.render(quotationForm, getAvailableWatches())));	
 		}
     }
 	
@@ -303,6 +355,28 @@ public class Admin extends Controller {
 	
     private static List<Watch> getAvailableWatches() {
     	return Watch.findAvailable();
+    }
+    
+    private static String getSubjectFromQuotation(Quotation quotation) {
+    	switch (quotation.typeOfNetwork) {
+    		case IN_BOTH: case IN_ONLY :
+    			return Messages.get("admin.quotation.order.email.subject.for.in.brand", quotation.brand);	
+    		case OUT_BOTH:
+    			return Messages.get("admin.quotation.order.email.subject.for.out.not.only");
+    		case OUT_ONLY:
+    			return Messages.get("admin.quotation.order.email.subject.for.out.only");
+    	}
+		return null;
+    }
+    
+    private static String getTitleFromQuotation(Quotation quotation) {
+    	switch (quotation.typeOfNetwork) {
+		case IN_BOTH: case IN_ONLY :
+			return Messages.get("admin.quotation.order.email.title.for.in.brand", quotation.customerEmail);	
+		case OUT_BOTH: case OUT_ONLY:
+			return Messages.get("admin.quotation.order.email.title.for.out", quotation.customerEmail);
+    	}
+    	return null;
     }
     
     private static String getStringValue(String value) {

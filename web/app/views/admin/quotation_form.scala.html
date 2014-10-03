@@ -1,10 +1,13 @@
-@(quotation: Form[Admin.QuotationForm], available_watches: List[Watch], city: String)
+@(quotation: Form[Admin.QuotationForm], available_watches: List[Watch])
 @import tags._
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
 @layouts.admin() {
     <div class="container">
-            @helper.form(action = routes.Admin.displayQuotation(), 'class -> "form-horizontal", 'role -> "form") {
+            @helper.form(action = routes.Admin.manageQuotation(), 'class -> "form-horizontal", 'role -> "form") {
+            
+            	@tags.inputHidden(quotation("customerEmail"))
+            	@tags.inputHidden(quotation("customerCity"))
         
                 @tags.myInputRadioGroup(quotation("serviceType"),
                                 Seq( OrderRequest.OrderTypes.SETTINGUP.toString -> Messages("admin.quotation.form.value.type.of.service.setting.up"), OrderRequest.OrderTypes.INTERMEDIATE.toString -> Messages("admin.quotation.form.value.type.of.service.intermediate"), OrderRequest.OrderTypes.SERVICE.toString -> Messages("admin.quotation.form.value.type.of.service.service"), OrderRequest.OrderTypes.REPAIR.toString -> Messages("admin.quotation.form.value.type.of.service.repair"), OrderRequest.OrderTypes.WATER.toString -> Messages("admin.quotation.form.value.type.of.service.water")), '_label -> Messages("admin.quotation.form.label.type.of.service"),
@@ -73,7 +76,7 @@
                                 'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 @tags.myInputRadioGroup(quotation("outsideZone"),
-                                Seq( "0" -> Messages("admin.quotation.form.value.outside.zone.inside"), "1" -> Messages("admin.quotation.form.value.outside.zone.outside")), '_label -> Html(Messages("admin.quotation.form.label.outside.zone", city)),
+                                Seq( "0" -> Messages("admin.quotation.form.value.outside.zone.inside"), "1" -> Messages("admin.quotation.form.value.outside.zone.outside")), '_label -> Html(Messages("admin.quotation.form.label.outside.zone", quotation("customerCity").value)),
                                 '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 <div class="form-group">
@@ -140,7 +143,9 @@
 
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-9 text-center">
-                    <button type="submit" class="btn btn-primary">@Html(Messages("admin.quotation.action.submit"))</button>
+                    <button type="submit" class="btn btn-default" name="action" value="preview" formtarget="_blank">@Html(Messages("admin.quotation.action.preview"))</button>
+                    <button type="submit" class="btn btn-primary" name="action" value="edit">@Html(Messages("admin.quotation.action.edit"))</button>
+                    <button type="submit" class="btn btn-warning" name="action" value="send">@Html(Messages("admin.quotation.action.submit"))</button>
                   </div>
                 </div>
             }

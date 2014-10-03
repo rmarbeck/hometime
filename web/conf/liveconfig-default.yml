@@ -1,13 +1,5 @@
 liveConfig:
     - !!models.LiveConfig
-         key:                   mailjet_api_key
-         valuestring:           aa98fac1ba34a8ae1c25eff67b4fe100
-
-    - !!models.LiveConfig
-         key:                   mailjet_secret_key
-         valuestring:           b221e6fd91b81a04d25ec067127ea995
-
-    - !!models.LiveConfig
          key:                   orders_sender_email_address
          valuestring:           contact@hometime.fr
 
@@ -22,6 +14,22 @@ liveConfig:
     - !!models.LiveConfig
          key:                   notify_team_by_email_to_how_many
          valuelong:             1
+
+    - !!models.LiveConfig
+         key:                   mailjet_api_key
+         valuestring:           aa98fac1ba34a8ae1c25eff67b4fe100
+
+    - !!models.LiveConfig
+         key:                   mailjet_secret_key
+         valuestring:           key
+
+    - !!models.LiveConfig
+         key:                   mailjet_from_email
+         valuestring:           contact@hometime.fr
+
+    - !!models.LiveConfig
+         key:                   mailjet_from_name
+         valuestring:           Raphaël de Hometime.fr
 
 #Fin
 

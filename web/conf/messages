@@ -1294,6 +1294,8 @@ admin.quotation.form.label.cat.partner.asset=Expertise partenaire
 admin.quotation.form.placeholder.partner.asset=...
 admin.quotation.form.label.partner.asset=
 admin.quotation.action.submit=Générer
+admin.quotation.action.preview=Prévisualiser
+admin.quotation.action.edit=Modifier
 admin.quotation.prepare.call.to.action=Générer le devis
 admin.quotation.prepare.in.network.call.to.action=Générer le devis (réseau officiel)
 admin.quotation.prepare.out.network.call.to.action=Générer le devis (horloger partenaire)
@@ -1305,3 +1307,16 @@ admin.order.priceService.fixed={0}€ TTC
 admin.order.price.unfixed=compris dans une fourchette de {0}€ à {1}€ TTC
 admin.order.price.fixed=de {0}€ TTC
 admin.order.price.loan={0}€ TTC
+
+admin.quotation.order.email.subject.for.in.brand=Proposition de devis Hometime (au sein du réseau  {0})
+admin.quotation.order.email.subject.for.out.not.only=Proposition de devis alternatif Hometime (via un horloger indépendant)
+admin.quotation.order.email.subject.for.out.only=Proposition de devis Hometime
+admin.quotation.order.email.title.for.in.brand=Proposition de devis (Réseau officiel) - {0}
+admin.quotation.order.email.title.for.out=Proposition de devis (Horloger indépendant) - {0}
+admin.quotation.order.email.text.version=Cet email est en version HTML seulement
+
+admin.quotation.success=<a href="{0}" target="_blank">Prévisualiser</a>
+
+flash.success=Done !
+flash.warning=Warning !
+flash.error=Error !
