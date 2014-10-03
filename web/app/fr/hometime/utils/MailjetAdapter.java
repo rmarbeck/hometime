@@ -31,10 +31,10 @@ public class MailjetAdapter {
 	private final static String LIVE_CONFIG_MAILJET_FROM_NAME = "mailjet_from_name";
 	private final static String LIVE_CONFIG_MAILJET_REPLY_TO = "mailjet_reply_to";
 	
-	private final static String MAILJET_API_PROTOCOL = "http";
+	private final static String MAILJET_API_PROTOCOL = "https";
 	private final static String MAILJET_API_HOST = "api.mailjet.com";
 	private final static String MAILJET_API_VERSION = "0.1";
-	private final static String MAILJET_API_PORT = "80";
+	private final static String MAILJET_API_PORT = "443";
 
 	private final static String MAILJET_API_OUTPUT_PARAM = "output";
 	private final static String MAILJET_API_OUTPUT_PARAM_JSON_VALUE = "json";
