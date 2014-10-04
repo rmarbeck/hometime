@@ -31,10 +31,10 @@ public class MailjetAdapter {
 	private final static String LIVE_CONFIG_MAILJET_FROM_NAME = "mailjet_from_name";
 	private final static String LIVE_CONFIG_MAILJET_REPLY_TO = "mailjet_reply_to";
 	
-	private final static String MAILJET_API_PROTOCOL = "http";
+	private final static String MAILJET_API_PROTOCOL = "https";
 	private final static String MAILJET_API_HOST = "api.mailjet.com";
 	private final static String MAILJET_API_VERSION = "0.1";
-	private final static String MAILJET_API_PORT = "80";
+	private final static String MAILJET_API_PORT = "443";
 
 	private final static String MAILJET_API_OUTPUT_PARAM = "output";
 	private final static String MAILJET_API_OUTPUT_PARAM_JSON_VALUE = "json";
@@ -123,9 +123,16 @@ public class MailjetAdapter {
 
 	private static String extractFirstListIdFromContactInfos(WSResponse response) {
 		try {
+			Logger.debug("extracting first listId from response");
 			JsonNode lists = response.asJson().get(API_METHOD_CONTACT_INFOS_RESULT_LISTS);
 			Iterator<JsonNode> elements = lists.elements();
-			return elements.next().get(API_METHOD_CONTACT_INFOS_RESULT_LIST_ID).textValue();
+			if (elements.hasNext()) { 
+				Logger.debug("it contains elements");
+				return elements.next().get(API_METHOD_CONTACT_INFOS_RESULT_LIST_ID).textValue();
+			} else {
+				Logger.debug("it contains no element");
+				return null;
+			}
 		} catch (NullPointerException e) {
 			return null;
 		}
@@ -186,12 +193,33 @@ public class MailjetAdapter {
 	
 	private static Promise<WSResponse> simpleGetCallWithJsonAsOutput(String method, String queryString) throws Exception {
 		prepareCallWithJsonAsOutput();
-		return buildUrl(method).setQueryString(queryString).get();
+		Logger.info("about to call webservices "+method+" through a GET call "+queryString);
+		Promise<WSResponse> response = buildUrl(method).setQueryString(queryString).get().map(getResponse -> {
+			logCallStatus(getResponse.getStatus());
+			return getResponse;
+		});
+		
+		return response;
 	}
 	
 	private static Promise<WSResponse> simplePostCallWithJsonAsOutput(String method, String body) throws Exception {
 		prepareCallWithJsonAsOutput();
-		return buildUrl(method).setContentType("application/x-www-form-urlencoded").post(body);
+		Logger.info("about to call webservices "+method+" through a POST call");
+		Promise<WSResponse> response = buildUrl(method).setContentType("application/x-www-form-urlencoded").post(body).map(postResponse -> {
+			logCallStatus(postResponse.getStatus());
+			return postResponse;
+		});
+		
+		return response;
+	}
+	
+	private static void logCallStatus(int status) {
+		if (status != 200) {
+			Logger.info("call is NOT successful, error code is ["+status+"]");
+		} else {
+			Logger.info("call is successful");
+		}
+		
 	}
 	
 	private static void prepareCallWithJsonAsOutput() throws Exception {

@@ -4,6 +4,8 @@
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
 @layouts.admin() {
     <div class="container">
+    	@display_flash()
+    
             @helper.form(action = routes.Admin.manageQuotation(), 'class -> "form-horizontal", 'role -> "form") {
             
             	@tags.inputHidden(quotation("customerEmail"))

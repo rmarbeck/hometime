@@ -21,7 +21,7 @@ liveConfig:
 
     - !!models.LiveConfig
          key:                   mailjet_secret_key
-         valuestring:           key
+         valuestring:           6034d97e2f61ef55aba22a48f67c4607
 
     - !!models.LiveConfig
          key:                   mailjet_from_email
