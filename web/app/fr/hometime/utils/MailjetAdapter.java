@@ -133,7 +133,7 @@ public class MailjetAdapter {
 				Logger.debug("it contains no element");
 				return null;
 			}
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			return null;
 		}
 	}
