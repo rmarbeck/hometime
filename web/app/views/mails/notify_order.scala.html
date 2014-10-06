@@ -18,31 +18,42 @@
 </head>
 <body>
 	<div>
-		<h2>What</h2>
+		<h2>@Html(Messages("mails.order.title.what"))</h2>
 		<ul>
-			<li>Type of service is : @order.orderType.name()</li>
-			<li>Where : @order.method.name()</li>
-			<li>Brand is : @order.brand.display_name</li>
-			<li>Model is : @order.model</li>
+			<li>@Html(Messages("mails.order.type.of.service", order.orderType.name()))</li>
+			<li>@Html(Messages("mails.order.method", order.method.name()))</li>
+			<li>@Html(Messages("mails.order.brand", order.brand.display_name))</li>
+			<li>@Html(Messages("mails.order.watch.model", order.model))</li>
 		</ul>
-		<h2>Who</h2>
+		<h2>@Html(Messages("mails.order.title.who"))</h2>
 		<ul>
-			<li>Customer's email is : @order.email</li>
-			<li>Living in : @order.city</li>
-			<li>Has he gave his phonenumber ? : @if(order.phoneNumber==null || "".equals(order.phoneNumber)) {"no"} else {"yes"}</li>
+			<li>@Html(Messages("mails.order.customer.email", order.email))</li>
+			<li>@Html(Messages("mails.order.living.location", order.city))</li>
+			<li>@Html(Messages("mails.order.phone.number.given", if(order.phoneNumber==null || "".equals(order.phoneNumber)) {Html(Messages("mails.order.phone.number.given.no"))} else {Html(Messages("mails.order.phone.number.given.yes"))}))</li>
+			<li>@Html(Messages("mails.order.order.date", display_date(order.requestDate, "dd/MM/yyyy HH:mm")))</li>
 		</ul>
-		<h2>Options and additionnal infos</h2>
+		<h2>@Html(Messages("mails.order.title.additionnal.infos"))</h2>
 		<ul>
-			<li>Watch chosen : @if(order.watchChosen==null) {"none"} else {order.watchChosen.short_name}</li>
-			<li>Remarks : @if(order.remark==null || "".equals(order.remark)) {"none"} else {order.remark}</li>
+			<li>@Html(Messages("mails.order.watch.chosen", if(order.watchChosen==null) {Html(Messages("mails.order.watch.chosen.none"))} else {order.watchChosen.short_name}))</li>
+			<li>@Html(Messages("mails.order.remarks", if(order.remark==null || "".equals(order.remark)) {Html(Messages("mails.order.remarks.none"))} else {order.remark}))</li>
 		</ul>
 	</div>
-
+	
 	<div>
-		<a href="mailto:@order.email?subject=@Messages("mails.notify.subject")&amp;body=@Messages("mails.notify.body")">Accusé de réception simple</a>
+		<a href="mailto:@order.email?subject=@Messages("mails.notify.subject")&amp;body=@Messages("mails.notify.body")">@Html(Messages("mails.notify.label"))</a>
 	</div>
 	<div>
-		<a href="mailto:@order.email?subject=@Html(Messages("mails.precisions.subject"))&amp;body=@Html(Messages("mails.precisions.body"))">Besoin de précisions</a>
+		<a href="mailto:@order.email?subject=@Html(Messages("mails.precisions.subject"))&amp;body=@Html(Messages("mails.precisions.body"))">@Html(Messages("mails.precisions.label"))</a>
+	</div>
+	<div>
+		<a href="mailto:@order.email">Mail simple</a>
+	</div>
+	
+	<div>
+		@mailto(order.email, Messages("mails.notify.subject"), Messages("mails.notify.body"), Messages("mails.notify.label"))
+	</div>
+	<div>
+		@mailto(order.email, Messages("mails.precisions.subject"), Messages("mails.precisions.body"), Messages("mails.precisions.label"))
 	</div>
 	<div>
 		<a href="mailto:@order.email">Mail simple</a>

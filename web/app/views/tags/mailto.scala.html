@@ -1,0 +1,16 @@
+@**
+ * Generate an anchor with a title from messages.
+ *
+ * Example:
+ * {{{
+ * @mailto(email = "toto@titi.com", subject= "My topic", body= "My body", label= "anchor content", args = 'class -> "myLink")
+ * }}}
+ *
+ * @param email email to.
+ * @param subject subject.
+ * @param body body of email.
+ * @param label link content.
+ * @param args Set of extra HTML attributes.
+ *@
+@(email: String, subject: String, body: String, label: String, args: (Symbol,String)*)
+<a href="mailto:@(email)?subject=@(subject.replaceAll(" ", "%20"))&amp;body=@(body.replaceAll(" ", "%20"))" @toHtmlArgs(args.toMap)>@label</a>
