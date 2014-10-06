@@ -30,6 +30,7 @@ import views.html.admin.quotation_sent;
 import views.html.admin.quotation_form;
 import views.html.admin.service_test;
 import views.html.admin.service_tests;
+import views.html.mails.notify_order;
 import fr.hometime.utils.ActionHelper;
 import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.ServiceTestHelper;
@@ -243,6 +244,13 @@ public class Admin extends Controller {
 		return LIST_ORDERS;
     }
 	
+	public static Result displayMail(long id) {
+		if (orderIsValid(id))
+			return ok(notify_order.render(OrderRequest.findById(id)));
+		flash("error", "Unknown id");
+		return LIST_ORDERS;
+    }
+	
 	public static Result LIST_SERVICE_TESTS = redirect(
 			routes.Admin.displayServiceTests(0, "requestDate", "desc", "")
 			);
@@ -326,7 +334,7 @@ public class Admin extends Controller {
 			Promise<Result> recoverPromise = resultPromise.recoverWith(throwable -> {
 				Logger.debug("4");
 				Logger.error(throwable.getMessage());
-				//flash("error", throwable.getMessage());
+				flash("error", throwable.getMessage());
 	        	return Promise.pure((Result) badRequest(quotation_form.render(quotationForm, getAvailableWatches())));
 			});
 			

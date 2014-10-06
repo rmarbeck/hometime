@@ -1,0 +1,51 @@
+@(order: OrderRequest)
+@import tags._
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="fr">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Proposition commerciale Hometime</title>
+<style type="text/css">
+    a { border: none; }
+    img { border: none; }
+    p { margin: 0; line-height: 1.3em; }
+    #footer-msg a { color: #F3A836; }
+    h1,h2,h3,h4,h5,h6 {font-size:100%;margin:0;}
+    ul.main {line-height: 1.5em;}
+    ul.no-bullet {list-style-type: none;}
+    .to-change {color: red; }
+</style>
+</head>
+<body>
+	<div>
+		<h2>What</h2>
+		<ul>
+			<li>Type of service is : @order.orderType.name()</li>
+			<li>Where : @order.method.name()</li>
+			<li>Brand is : @order.brand.display_name</li>
+			<li>Model is : @order.model</li>
+		</ul>
+		<h2>Who</h2>
+		<ul>
+			<li>Customer's email is : @order.email</li>
+			<li>Living in : @order.city</li>
+			<li>Has he gave his phonenumber ? : @if(order.phoneNumber==null || "".equals(order.phoneNumber)) {"no"} else {"yes"}</li>
+		</ul>
+		<h2>Options and additionnal infos</h2>
+		<ul>
+			<li>Watch chosen : @if(order.watchChosen==null) {"none"} else {order.watchChosen.short_name}</li>
+			<li>Remarks : @if(order.remark==null || "".equals(order.remark)) {"none"} else {order.remark}</li>
+		</ul>
+	</div>
+
+	<div>
+		<a href="mailto:@order.email?subject=@Messages("mails.notify.subject")&amp;body=@Messages("mails.notify.body")">Accusé de réception simple</a>
+	</div>
+	<div>
+		<a href="mailto:@order.email?subject=@Html(Messages("mails.precisions.subject"))&amp;body=@Html(Messages("mails.precisions.body"))">Besoin de précisions</a>
+	</div>
+	<div>
+		<a href="mailto:@order.email">Mail simple</a>
+	</div>
+</body>
+</html>

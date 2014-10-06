@@ -28,6 +28,7 @@ import play.libs.ws.*;
 import play.mvc.*;
 import views.html.*;
 import views.html.admin.login;
+import views.html.mails.notify_order;
 
 @With(SessionWatcher.class)
 public class Application extends Controller {
@@ -388,7 +389,7 @@ public class Application extends Controller {
 			OrderRequest orderRequest = orderForm.get().getRequest();
 			orderRequest.save();
 			
-			ActionHelper.tryToNotifyTeamByEmail("Nouvelle demande de devis", orderRequest.toNotificationSumUp());
+			ActionHelper.tryToSendHtmlEmail("Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());
 			
 			flash("success", "OK");
 			

@@ -12,6 +12,7 @@ import models.LiveConfig;
 import play.Logger;
 import play.libs.F.Promise;
 import play.libs.ws.WS;
+import play.libs.ws.WSClient;
 import play.libs.ws.WSRequestHolder;
 import play.libs.ws.WSResponse;
 import fr.hometime.utils.mailjet.Campaign;
@@ -118,7 +119,9 @@ public class MailjetAdapter {
 	}
 
 	private static Promise<WSResponse> wsGetContactInfos(String email) throws Exception {
-		return simpleGetCallWithJsonAsOutput(API_METHOD_CONTACT_INFOS, getContactInfosQueryString(email));
+		// As it seems that there is a bug in managing this call that may return an error
+		// We use a custom call, trying not to use the same pool of client
+		return simpleGetCallWithJsonAsOutputWithDedicatedClient(API_METHOD_CONTACT_INFOS, getContactInfosQueryString(email));
 	}
 
 	private static String extractFirstListIdFromContactInfos(WSResponse response) {
@@ -134,6 +137,8 @@ public class MailjetAdapter {
 				return null;
 			}
 		} catch (Exception e) {
+			Logger.debug("error : it contains no element");
+			response.asByteArray();
 			return null;
 		}
 	}
@@ -183,32 +188,44 @@ public class MailjetAdapter {
 		return simpleGetCallWithJsonAsOutput(API_METHOD_MESSAGE_LIST);
 	}
 	
-	public static Promise<WSResponse> duplicateCampaign() throws Exception {
-		return simplePostCallWithJsonAsOutput(API_METHOD_MESSAGE_DUPLICATE_CAMPAIGN, "id=3524326240");
-	}
-	
 	private static Promise<WSResponse> simpleGetCallWithJsonAsOutput(String method) throws Exception {
 		return simpleGetCallWithJsonAsOutput(method, null);
 	}
 	
 	private static Promise<WSResponse> simpleGetCallWithJsonAsOutput(String method, String queryString) throws Exception {
+		return doGetCallWithJsonAsOutput(buildUrl(method), queryString);
+	}
+	
+	private static Promise<WSResponse> simpleGetCallWithJsonAsOutputWithDedicatedClient(String method, String queryString) throws Exception {
+		return doGetCallWithJsonAsOutput(customURL(method), queryString);
+	}
+	
+	private static Promise<WSResponse> doGetCallWithJsonAsOutput(WSRequestHolder holder, String queryString) throws Exception {
 		prepareCallWithJsonAsOutput();
-		Logger.info("about to call webservices "+method+" through a GET call "+queryString);
-		Promise<WSResponse> response = buildUrl(method).setQueryString(queryString).get().map(getResponse -> {
+		Logger.info("about to call webservices ["+holder.getUrl()+"] through a GET call");
+		Promise<WSResponse> response = holder.setQueryString(queryString).get().map(getResponse -> {
 			logCallStatus(getResponse.getStatus());
 			return getResponse;
 		});
+		
+		response.onFailure(throwable -> Logger.error("call of webservice ["+holder.getUrl()+"] failed, error is : "+throwable.getMessage()));
 		
 		return response;
 	}
 	
 	private static Promise<WSResponse> simplePostCallWithJsonAsOutput(String method, String body) throws Exception {
+		return doPostCallWithJsonAsOutput(buildUrl(method), body);
+	}
+	
+	private static Promise<WSResponse> doPostCallWithJsonAsOutput(WSRequestHolder holder, String body) throws Exception {
 		prepareCallWithJsonAsOutput();
-		Logger.info("about to call webservices "+method+" through a POST call");
-		Promise<WSResponse> response = buildUrl(method).setContentType("application/x-www-form-urlencoded").post(body).map(postResponse -> {
-			logCallStatus(postResponse.getStatus());
-			return postResponse;
+		Logger.info("about to call webservices ["+holder.getUrl()+"] through a POST call");
+		Promise<WSResponse> response = holder.setContentType("application/x-www-form-urlencoded").post(body).map(getResponse -> {
+			logCallStatus(getResponse.getStatus());
+			return getResponse;
 		});
+		
+		response.onFailure(throwable -> Logger.error("call of webservice ["+holder.getUrl()+"] failed, error is : "+throwable.getMessage()));
 		
 		return response;
 	}
@@ -266,6 +283,14 @@ public class MailjetAdapter {
 	
 	private static WSRequestHolder buildUrl(String method) {
 		return WS.url(MAILJET_API_PROTOCOL+"://"+MAILJET_API_HOST+":"+MAILJET_API_PORT+"/"+MAILJET_API_VERSION+"/"+method).setAuth(apiKey, apiSecretKey).setQueryParameter(MAILJET_API_OUTPUT_PARAM, currentOutput);
+	}
+	
+	private static WSRequestHolder customURL(String method) {
+		com.ning.http.client.AsyncHttpClientConfig customConfig =
+			    new com.ning.http.client.AsyncHttpClientConfig.Builder().build();
+			WSClient customClient = new play.libs.ws.ning.NingWSClient(customConfig);
+
+			return customClient.url(MAILJET_API_PROTOCOL+"://"+MAILJET_API_HOST+":"+MAILJET_API_PORT+"/"+MAILJET_API_VERSION+"/"+method).setAuth(apiKey, apiSecretKey).setQueryParameter(MAILJET_API_OUTPUT_PARAM, currentOutput);
 	}
 	
 	private static String getQueryString(Map<String, String> parameters) {

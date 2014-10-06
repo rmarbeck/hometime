@@ -1320,3 +1320,26 @@ admin.quotation.success=<a href="{0}" target="_blank">Prévisualiser</a>
 flash.success=Done !
 flash.warning=Warning !
 flash.error=Error !
+
+mails.notify.subject=Demande de devis Hometime
+mails.notify.body=Bonjour,%0D%0A\
+%0D%0A\
+Nous avons bien reçu votre demande de devis pour l''entretien de votre montre.%0D%0A\
+%0D%0A\
+Nous allons faire au plus vite pour vous répondre.%0D%0A\
+%0D%0A\
+Cordialement,%0D%0A\
+Raphaël%0D%0A\
+07 82 43 47 51
+mails.precisions.subject=Demande de devis Hometime (besoin de précisions)
+mails.precisions.body=Bonjour,%0D%0A\
+%0D%0A\
+Nous avons bien reçu votre demande de devis pour l''entretien de votre montre.%0D%0A\
+%0D%0A\
+Pour être le plus précis possible dans notre devis, nous aurions besoin des précisions suivantes :%0D%0A\
+%0D%0A\
+Merci d''avance, nous vous répondrons le plus rapidement possible.%0D%0A\
+%0D%0A\
+Cordialement,%0D%0A\
+Raphaël%0D%0A\
+07 82 43 47 51
