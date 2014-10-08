@@ -38,24 +38,18 @@
 			<li>@Html(Messages("mails.order.remarks", if(order.remark==null || "".equals(order.remark)) {Html(Messages("mails.order.remarks.none"))} else {order.remark}))</li>
 		</ul>
 	</div>
-	
 	<div>
-		<a href="mailto:@order.email?subject=@Messages("mails.notify.subject")&amp;body=@Messages("mails.notify.body")">@Html(Messages("mails.notify.label"))</a>
-	</div>
-	<div>
-		<a href="mailto:@order.email?subject=@Html(Messages("mails.precisions.subject"))&amp;body=@Html(Messages("mails.precisions.body"))">@Html(Messages("mails.precisions.label"))</a>
-	</div>
-	<div>
-		<a href="mailto:@order.email">Mail simple</a>
+		<h2>@Html(Messages("mails.order.actions"))</h2>
+		@a_absolute(routes.Admin.displayOrder(order.id).url, false) {@Html(Messages("mails.order.action.display"))}
+		<br /><br />
 	</div>
 	
 	<div>
+		<h2>@Html(Messages("mails.order.mails"))</h2>
 		@mailto(order.email, Messages("mails.notify.subject"), Messages("mails.notify.body"), Messages("mails.notify.label"))
-	</div>
-	<div>
+		<br /><br />
 		@mailto(order.email, Messages("mails.precisions.subject"), Messages("mails.precisions.body"), Messages("mails.precisions.label"))
-	</div>
-	<div>
+		<br /><br />
 		<a href="mailto:@order.email">Mail simple</a>
 	</div>
 </body>

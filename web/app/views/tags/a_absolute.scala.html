@@ -1,0 +1,6 @@
+@**
+ * Generate an anchor with absolute path.
+ *
+ *@
+@(relative_path: String, secured: Boolean, args: (Symbol,String)*)(body: => Html)
+<a href="@if(secured) {https} else {http}://@(play.Play.application.configuration.getString("production.host"))@(relative_path)" @toHtmlArgs(args.toMap)>@body</a>
