@@ -15,9 +15,14 @@
 
 @layouts.main(key, end_scripts, in_head) {
     @layouts.fragments.navbar(100)
-
-    <div class="container pure-content order">
-      @baseline(key+".baseline")
+    
+    <div class="container pure-content-call-block-ahead order">
+	  <div class="row visible-xs">
+        <div class="col-xs-12">
+        	@layouts.fragments.top_banner(false)
+        </div>
+      </div>
+      @baseline(key+".baseline", true)
       @if(flash.containsKey("success")) {
       <div class="row success">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1">

@@ -798,8 +798,8 @@ presets:
          hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
 
 
-orders:
-    - &Order1 !!models.OrderRequest
+orderRequests:
+    - &OrderRequest1 !!models.OrderRequest
          requestDate:       "2014-09-09 11:02:57"
          orderType:         SERVICE
          brand:             *Rolex
@@ -812,7 +812,7 @@ orders:
          phoneNumber:       "0600000001"
          city:              Paris
 
-    - &Order2 !!models.OrderRequest
+    - &OrderRequest2 !!models.OrderRequest
          requestDate:       "2014-09-09 23:02:57"
          orderType:         WATER
          brand:             *Omega
@@ -824,7 +824,7 @@ orders:
          phoneNumber:       "0600000002"
          city:              Paris
 
-    - &Order3 !!models.OrderRequest
+    - &OrderRequest3 !!models.OrderRequest
          requestDate:       "2014-09-10 20:02:57"
          orderType:         SERVICE
          brand:             *Breitling
@@ -836,6 +836,61 @@ orders:
          email:             test3@dev.com
          phoneNumber:       "0600000003"
          city:              Maubeuge
+
+customers:
+    - &Customer1 !!models.Customer
+         email:                     customer1@email.com
+         alternativeEmail:          customer1@alternativeemail.com
+         phoneNumber:               "060000001"
+         alternativePhoneNumber:    "070000001"
+         firstname:                 Prénom du customer1 
+         name:                      Nom du customer1
+         billingAddress: |
+              25 rue du customer 1
+              75015 Paris
+         pickupAddress: |
+              25 rue du customer 1
+              75015 Paris
+         returnAdress: |
+              25 rue du customer 1
+              75015 Paris
+         sharedInfos:               Infos partagées
+         privateInfos:              Infos privées
+
+    - &Customer2 !!models.Customer
+         email:                     customer2@email.com
+         alternativeEmail:          customer2@alternativeemail.com
+         phoneNumber:               "060000002"
+         firstname:                 Prénom du customer2 
+         name:                      Nom du customer2
+         billingAddress: |
+              25 rue du customer 2
+              75015 Paris
+         sharedInfos:               Infos partagées
+         privateInfos:              Infos privées
+
+orders:
+    - &Order1 !!models.Order
+         request:                               *OrderRequest1
+         creationDate:                          "2014-09-09 23:02:57"
+         pickUpRealDate:                        "2014-09-10 23:02:57"
+         startWorkingRealDate:                  "2014-09-11 23:02:57"
+         endOfWorkRealDate:                     "2014-09-12 23:02:57"
+         startOfControlDate:                    "2014-09-13 23:02:57"
+         returnRealDate:                        "2014-09-14 23:02:57"
+         closingDate:                           "2014-09-15 23:02:57"
+         lastCommunicationForThisOrderDate:     "2014-09-16 23:02:57"
+         orderType:                             SERVICE
+         status:                                ORDER_CLOSED
+         brand:                                 Rolex
+         model:                                 Submariner
+         method:                                OUTLET
+         remark:                                Aucune
+         watchChosen:                           Tag Heuer Monaco
+         customer:                              *Customer1
+
+    - &Order2 !!models.Order
+         request:                               *OrderRequest2
 
 #Fin
 

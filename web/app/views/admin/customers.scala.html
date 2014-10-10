@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[Order], currentSortBy: String, currentOrder: String, currentFilter: String)
+@(currentPage: com.avaje.ebean.Page[models.Customer], currentSortBy: String, currentOrder: String, currentFilter: String)
 @import tags._
 
 @****************************************
@@ -23,7 +23,7 @@
     }
     
     // Generate the link
-    routes.Admin.displayOrders(newPage, sortBy, order, currentFilter)
+    routes.Customer.displayAll(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -40,7 +40,7 @@
 @layouts.admin() {
   <div class="container">
 
-    @admin.fragments.page_header(link(0, "requestDate").toString, currentFilter)
+    @admin.fragments.page_header(link(0, "creationDate").toString, currentFilter)
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
@@ -54,48 +54,44 @@
                 <tr>
                   <th>#</th>
                   @header("creationDate", "Date")
-                  @header("orderType", "Type")
-                  @header("brand", "Marque")
-                  @header("model", "Modèle")
-                  @header("method", "Réseau")
-                  @header("watchChosen", "Essai")
-                  @header("nameOfCustomer", "Nom", true)
-                  @header("email", "Email", true)
+                  @header("name", "Nom")
+                  @header("firstname", "Prénom")
+                  @header("email", "email")
+                  @header("phoneNumber", "Num.")
+                  @header("billingAddress", "Adresse de facturation")
+                  @header("sharedInfos", "Infos partagées", true)
+                  @header("privateInfos", "Infos privées", true)
                 </tr>
               </thead>
               <tbody>
-              @for((order, index) <- currentPage.getList.zipWithIndex) {
+              @for((customer, index) <- currentPage.getList.zipWithIndex) {
                 <tr>
                   <td>
-	                
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Customer.editCustomer(customer.id)"><span class="glyphicon glyphicon-flash"></span></a>
                   </td>
                   <td>
-                    @display_date(order.creationDate, "dd/MM")
+                    @display_date(customer.creationDate, "dd/MM")
                   </td>
                   <td>
-                    @order.orderType.name()
+                    @customer.name
                   </td>
                   <td>
-                    @order.brand
+                    @customer.firstname
                   </td>
                   <td>
-                    @takeif(order.model, 40)
+                    @customer.email
                   </td>
                   <td>
-                    @order.method
+                    @customer.phoneNumber
                   </td>
                   <td>
-                    @if(order.watchChosen != null) {
-                        @order.watchChosen
-                    } else {
-                        none
-                    }
+                    @customer.billingAddress
                   </td>
                   <td class="hidden-xs">
-                    @order.customer.firstname @(order.customer.name)
+                    @customer.sharedInfos
                   </td>
                   <td class="hidden-xs">
-                    @order.customer.email
+                    @customer.privateInfos
                   </td>
                 </tr>
               }

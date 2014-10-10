@@ -27,6 +27,29 @@ create table contact_request (
   constraint pk_contact_request primary key (id))
 ;
 
+create table customer (
+  id                        bigint not null,
+  email                     varchar(255),
+  alternative_email         varchar(255),
+  creation_date             timestamp,
+  last_communication_date   timestamp,
+  phone_number              varchar(255),
+  alternative_phone_number  varchar(255),
+  firstname                 varchar(255),
+  name                      varchar(255),
+  billing_address           varchar(10000),
+  pickup_address            varchar(10000),
+  return_adress             varchar(10000),
+  shared_infos              varchar(10000),
+  private_infos             varchar(10000),
+  customer_status           varchar(40),
+  value                     bigint,
+  potentiality              bigint,
+  constraint ck_customer_customer_status check (customer_status in ('PROSPECT','ALMOST_CUSTOMER','REAL_CUSTOMER')),
+  constraint uq_customer_email unique (email),
+  constraint pk_customer primary key (id))
+;
+
 create table live_config (
   key                       varchar(255) not null,
   valuestring               varchar(255),
@@ -34,6 +57,31 @@ create table live_config (
   valuelong                 bigint,
   valuedate                 timestamp,
   constraint pk_live_config primary key (key))
+;
+
+create table order_table (
+  id                        bigint not null,
+  request_id                bigint,
+  creation_date             timestamp,
+  pick_up_real_date         timestamp,
+  start_working_real_date   timestamp,
+  end_of_work_real_date     timestamp,
+  start_of_control_date     timestamp,
+  return_real_date          timestamp,
+  closing_date              timestamp,
+  last_comm_date            timestamp,
+  order_type                integer,
+  order_status              varchar(40),
+  brand                     varchar(255),
+  model                     varchar(1000),
+  order_method              integer,
+  remark                    varchar(1000),
+  watch_chosen              varchar(255),
+  customer_id               bigint,
+  constraint ck_order_table_order_type check (order_type in (0,1,2,3,4,5)),
+  constraint ck_order_table_order_status check (order_status in ('INFORMAL_AGREEMENT','FORMAL_AGREEMENT','PICK_UP_PLANNED','PREPACKAGE_SENT','PREPACKAGE_RECEIVED','WATCH_SENT','PICK_UP_DONE','WATCH_RECEIVED','NEW_INFORMAL_PROPOSAL_SUBMITED','NEW_FORMAL_PROPOSAL_SUBMITED','PROPOSAL_AGREED','WORK_STARTED','WORK_ISSUE_WAITING_INTERNAL_SOLUTION','WORK_ISSUE_WAITING_CUSTOMER','WORK_FINISHED','WATCH_CONTROL','REWORK','BILL_SENT','BILL_PAYED','RETURN_PLANNED','RETURN_DONE','WATCH_SENT_BACK','WATCH_RECEIVED_BACK','FEEDBACK_ASKED','FEEDBACK_RECEIVED','ORDER_CLOSED','ORDER_CANCELED')),
+  constraint ck_order_table_order_method check (order_method in (0,1,2)),
+  constraint pk_order_table primary key (id))
 ;
 
 create table order_request (
@@ -154,7 +202,11 @@ create sequence brand_seq;
 
 create sequence contact_request_seq;
 
+create sequence customer_seq;
+
 create sequence live_config_seq;
+
+create sequence order_table_seq;
 
 create sequence order_request_seq;
 
@@ -168,14 +220,18 @@ create sequence user_table_seq;
 
 create sequence watch_seq;
 
-alter table order_request add constraint fk_order_request_brand_1 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_order_request_brand_1 on order_request (brand_id);
-alter table order_request add constraint fk_order_request_watchChosen_2 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
-create index ix_order_request_watchChosen_2 on order_request (watch_chosen_id);
-alter table picture add constraint fk_picture_watch_3 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
-create index ix_picture_watch_3 on picture (watch_id);
-alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand__4 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_preset_quotation_for_brand__4 on preset_quotation_for_brand (brand_id);
+alter table order_table add constraint fk_order_table_request_1 foreign key (request_id) references order_request (id) on delete restrict on update restrict;
+create index ix_order_table_request_1 on order_table (request_id);
+alter table order_table add constraint fk_order_table_customer_2 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_order_table_customer_2 on order_table (customer_id);
+alter table order_request add constraint fk_order_request_brand_3 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_order_request_brand_3 on order_request (brand_id);
+alter table order_request add constraint fk_order_request_watchChosen_4 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
+create index ix_order_request_watchChosen_4 on order_request (watch_chosen_id);
+alter table picture add constraint fk_picture_watch_5 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
+create index ix_picture_watch_5 on picture (watch_id);
+alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand__6 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_preset_quotation_for_brand__6 on preset_quotation_for_brand (brand_id);
 
 
 
@@ -187,7 +243,11 @@ drop table if exists brand;
 
 drop table if exists contact_request;
 
+drop table if exists customer;
+
 drop table if exists live_config;
+
+drop table if exists order_table;
 
 drop table if exists order_request;
 
@@ -207,7 +267,11 @@ drop sequence if exists brand_seq;
 
 drop sequence if exists contact_request_seq;
 
+drop sequence if exists customer_seq;
+
 drop sequence if exists live_config_seq;
+
+drop sequence if exists order_table_seq;
 
 drop sequence if exists order_request_seq;
 

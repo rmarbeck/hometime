@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[Order], currentSortBy: String, currentOrder: String, currentFilter: String)
+@(currentPage: com.avaje.ebean.Page[OrderRequest], currentSortBy: String, currentOrder: String, currentFilter: String)
 @import tags._
 
 @****************************************
@@ -23,7 +23,7 @@
     }
     
     // Generate the link
-    routes.Admin.displayOrders(newPage, sortBy, order, currentFilter)
+    routes.Admin.displayOrderRequests(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -53,7 +53,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  @header("creationDate", "Date")
+                  @header("requestDate", "Date")
                   @header("orderType", "Type")
                   @header("brand", "Marque")
                   @header("model", "Modèle")
@@ -64,38 +64,39 @@
                 </tr>
               </thead>
               <tbody>
-              @for((order, index) <- currentPage.getList.zipWithIndex) {
+              @for((request, index) <- currentPage.getList.zipWithIndex) {
                 <tr>
                   <td>
-	                
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.displayOrderRequest(request.id)"><span class="glyphicon glyphicon-flash"></span></a>
+	                <a type="button" class="btn btn-default btn-xs" href="@routes.Admin.displayMail(request.id)"><span class="glyphicon glyphicon-flash"></span></a>
                   </td>
                   <td>
-                    @display_date(order.creationDate, "dd/MM")
+                    @display_date(request.requestDate, "dd/MM")
                   </td>
                   <td>
-                    @order.orderType.name()
+                    @request.orderType.name()
                   </td>
                   <td>
-                    @order.brand
+                    @request.brand.display_name
                   </td>
                   <td>
-                    @takeif(order.model, 40)
+                    @takeif(request.model, 40)
                   </td>
                   <td>
-                    @order.method
+                    @request.method.name()
                   </td>
                   <td>
-                    @if(order.watchChosen != null) {
-                        @order.watchChosen
+                    @if(request.watchChosen != null) {
+                        @request.watchChosen.full_name
                     } else {
                         none
                     }
                   </td>
                   <td class="hidden-xs">
-                    @order.customer.firstname @(order.customer.name)
+                    @request.nameOfCustomer
                   </td>
                   <td class="hidden-xs">
-                    @order.customer.email
+                    @request.email
                   </td>
                 </tr>
               }

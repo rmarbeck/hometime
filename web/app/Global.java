@@ -45,6 +45,10 @@ public class Global extends GlobalSettings {
 					
 					Ebean.save(all.get("presets"));
 					
+					Ebean.save(all.get("orderRequests"));
+					
+					Ebean.save(all.get("customers"));
+					
 					Ebean.save(all.get("orders"));
 
 					Map<String,List<Object>> liveConfig = (Map<String,List<Object>>)Yaml.load("liveconfig-default.yml");

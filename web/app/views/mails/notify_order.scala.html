@@ -40,7 +40,7 @@
 	</div>
 	<div>
 		<h2>@Html(Messages("mails.order.actions"))</h2>
-		@a_absolute(routes.Admin.displayOrder(order.id).url, false) {@Html(Messages("mails.order.action.display"))}
+		@a_absolute(routes.Admin.displayOrderRequest(order.id).url, false) {@Html(Messages("mails.order.action.display"))}
 		<br /><br />
 	</div>
 	
@@ -51,6 +51,10 @@
 		@mailto(order.email, Messages("mails.precisions.subject"), Messages("mails.precisions.body"), Messages("mails.precisions.label"))
 		<br /><br />
 		<a href="mailto:@order.email">Mail simple</a>
+		<br /><br />
+		@mailto(order.email, Messages("mails.feedback.subject"), Messages("mails.feedback.body"), Messages("mails.feedback.label"))
+		<br /><br />
+		@mailto(order.email, Messages("mails.outside.zone.subject"), Messages("mails.outside.zone.body"), Messages("mails.outside.zone.label"))
 	</div>
 </body>
 </html>

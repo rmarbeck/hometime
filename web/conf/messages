@@ -114,17 +114,17 @@ home.caption.3.head=Ne vous déplacez plus&nbsp;!
 home.caption.3.body=Hometime intervient à domicile et confie votre montre au <b>service après vente officiel</b> ou à l''un des <b>meilleurs horlogers de Paris</b>, c''est vous qui choisissez.
 home.caption.3.call.to.action=Demandez un devis !
 
-home.baseline=<i>Ne perdez plus votre temps, gagnez-le !</i>
-home.baseline.alt=<i>Ne perdez plus votre temps, gagnez-le !</i>
+home.baseline=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
+home.baseline.alt=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
 
 home.promise.1.alt=Mouvement de montre
-home.promise.1.head=Entretenez&nbsp;!
+home.promise.1.head=Entretenez
 home.promise.1.body=Une montre est conçue pour <b>durer longtemps</b> et se transmettre de génération en génération. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique.
 home.promise.1.call.to.action=Tout savoir sur l''entretien
 home.promise.1.call.to.action.title=Comprendre l''entretien et la révision d''une montre
 
 home.promise.2.alt=Montre de légende - Rolex Submariner
-home.promise.2.head=Essayez&nbsp;!
+home.promise.2.head=Essayez
 home.promise.2.body=<b>Portez une montre de légende</b> pendant toute <b>la durée de la révision</b> ou de la réparation <b>de votre montre</b>. Découvrez vite la montre qui vous plaît le plus dans notre catalogue. 
 home.promise.2.call.to.action=Les montres disponibles
 home.promise.2.call.to.action.title=Le catalogue des montres proposées pour un essai prolongé
@@ -1206,7 +1206,9 @@ error.path.result.multiple=Plusieurs résultat pour le chemin spécifié
 
 # ADMIN
 admin.text.home=Admin
-admin.navbar.link.text.orders=Demandes de devis
+admin.navbar.link.text.orders=Commandes
+admin.navbar.link.text.customers=Clients
+admin.navbar.link.text.order.requests=Demandes de devis
 admin.navbar.link.text.service.tests=Evaluations personnalisées
 admin.navbar.link.text.prepare.quotation=Générer devis
 admin.navbar.link.text.logout=Logout
@@ -1367,3 +1369,60 @@ Merci d''avance, nous vous répondrons le plus rapidement possible.%0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
+mails.feedback.label=Relance
+mails.feedback.subject=Devis Hometime
+mails.feedback.body=Bonjour,%0D%0A\
+%0D%0A\
+nous souhaitions nous assurer que le devis que nous vous avons envoyé correspondait bien à votre attente et répondait à l''ensemble de vos demandes.%0D%0A\
+%0D%0A\
+Qu''en avez-vous pensé ? Avez-vous besoin d''éléments complémentaires ?%0D%0A\
+%0D%0A\
+Nous restons à votre entière disposition pour toute précision.%0D%0A\
+%0D%0A\
+Cordialement,%0D%0A\
+Raphaël%0D%0A\
+07 82 43 47 51
+mails.outside.zone.label=Infos solutions de transport
+mails.outside.zone.subject=Devis Hometime - Informations sur la prise en charge
+mails.outside.zone.body=Bonjour,%0D%0A\
+%0D%0A\
+nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
+N''hésitez pas si vous avez la moindre question !%0D%0A\
+%0D%0A\
+Par ailleurs, nous souhaitions vous indiquer que pour les interventions en dehors de la proche banlieue parisienne, nous retenons souvent avec nos clients l''envoi et le retour de la montre par pli sécurisé en valeur déclarée. Il s''agit d''un mode de transport géré par la Poste qui garantit le bien transporté contre tout risque de perte ou de dégradation. Pour rendre la chose la plus simple possible, nous pouvons vous envoyer un premier colis contenant une boite et les instructions pour envoyer votre montre. Les frais d''envoi sont d''environ 30€/70€ aller-retour.%0D%0A\
+%0D%0A\
+Nous pouvons rechercher une autre solution si vous le souhaitez.%0D%0A\
+%0D%0A\
+Qu''en pensez-vous ?%0D%0A\
+%0D%0A\
+Cordialement,%0D%0A\
+Raphaël%0D%0A\
+07 82 43 47 51
+admin.customer.form.placeholder.email=toto@titi.com
+admin.customer.form.label.email=Email principal
+admin.customer.form.placeholder.alternative.email=toto@titi.com
+admin.customer.form.label.alternative.email=Email secondaire
+admin.customer.form.placeholder.phone.number=06xxxxxxxx
+admin.customer.form.label.phone.number=Numéro de téléphone principal
+admin.customer.form.placeholder.alternative.phone.number=06xxxxxxxx
+admin.customer.form.label.alternative.phone.number=Numéro de téléphone secondaire
+admin.customer.form.placeholder.name=Dupond
+admin.customer.form.label.name=Nom
+admin.customer.form.placeholder.firstname=Michel
+admin.customer.form.label.firstname=Prénom
+admin.customer.form.label.cat.address=Adresses
+admin.customer.form.label.billing.adress=Facturation
+admin.customer.form.placeholder.billing.adress=Retour
+admin.customer.form.label.pick.up.adress=Collecte
+admin.customer.form.placeholder.pick.up.adress=Retour
+admin.customer.form.label.return.adress=Retour
+admin.customer.form.placeholder.return.adress=Retour
+admin.customer.form.label.cat.infos=Informations client
+admin.customer.form.label.shared.infos=Partagées
+admin.customer.form.placeholder.shared.infos=
+admin.customer.form.label.private.infos=Privées
+admin.customer.form.placeholder.private.infos=
+admin.customer.action.save=Créer
+admin.customer.action.edit=Modifier
+admin.customer.action.delete=Supprimer
+admin.customer.create.call.to.action=Promouvoir le prospect en client

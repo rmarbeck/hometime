@@ -101,6 +101,12 @@
         </div>
       </div>
       <div class="row">
+    	<div class="col-xs-12 text-center">
+            <a class="btn btn-warning" href="@routes.Customer.addNewCustomer(request.id)" role="button">@Messages("admin.customer.create.call.to.action")</a>
+        </div>
+ 	  </div>
+ 	  <br />
+      <div class="row">
           @request.method match {
           case OrderRequest.MethodTypes.BOTH => {
             <div class="col-xs-6 text-right">
@@ -121,6 +127,7 @@
             </div>
           }
         }
-      </div>
     </div>
+    
+
 }

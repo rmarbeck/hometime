@@ -6,6 +6,8 @@ import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Brand;
+import models.Customer;
+import models.Order;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
 import models.PresetQuotationForBrand;
@@ -23,8 +25,10 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import views.html.admin.index;
-import views.html.admin.order;
+import views.html.admin.order_request;
+import views.html.admin.order_requests;
 import views.html.admin.orders;
+import views.html.admin.customers;
 import views.html.admin.quotation;
 import views.html.admin.quotation_sent;
 import views.html.admin.quotation_form;
@@ -227,16 +231,20 @@ public class Admin extends Controller {
     }
 	
 	public static Result LIST_ORDERS = redirect(
-			routes.Admin.displayOrders(0, "requestDate", "desc", "")
+			routes.Admin.displayOrderRequests(0, "requestDate", "desc", "")
 			);
 	
-	public static Result displayOrders(int page, String sortBy, String order, String filter) {
-        return ok(orders.render(OrderRequest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
+	public static Result displayOrderRequests(int page, String sortBy, String order, String filter) {
+        return ok(order_requests.render(OrderRequest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
     }
 	
-	public static Result displayOrder(long id) {
+	public static Result displayOrders(int page, String sortBy, String order, String filter) {
+        return ok(orders.render(Order.page(page, 10, sortBy, order, filter), sortBy, order, filter));
+    }
+	
+	public static Result displayOrderRequest(long id) {
 		if (orderIsValid(id))
-			return ok(order.render(	OrderRequest.findById(id),
+			return ok(order_request.render(	OrderRequest.findById(id),
 									PresetQuotationForBrand.findByBrand(OrderRequest.findById(id).brand),
 									PresetQuotationForBrand.findByBrand(Brand.findBySeoName(AUTRE_MARQUE_SEO_NAME))
 								  ));
