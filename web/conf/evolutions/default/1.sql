@@ -74,6 +74,20 @@ create table customer_watch (
   constraint pk_customer_watch primary key (id))
 ;
 
+create table feedback (
+  id                        bigint not null,
+  creation_date             timestamp,
+  display_date              timestamp,
+  body                      varchar(50000),
+  author                    varchar(1000),
+  picture_url               varchar(255),
+  feeedback_type            varchar(40),
+  should_display            boolean,
+  may_be_emphasized         boolean,
+  constraint ck_feedback_feeedback_type check (feeedback_type in ('FACEBOOK','LINKED_IN','INTERNAL','OTHER')),
+  constraint pk_feedback primary key (id))
+;
+
 create table live_config (
   key                       varchar(255) not null,
   valuestring               varchar(255),
@@ -228,6 +242,8 @@ create sequence customer_seq;
 
 create sequence customer_watch_seq;
 
+create sequence feedback_seq;
+
 create sequence live_config_seq;
 
 create sequence order_table_seq;
@@ -273,6 +289,8 @@ drop table if exists customer;
 
 drop table if exists customer_watch;
 
+drop table if exists feedback;
+
 drop table if exists live_config;
 
 drop table if exists order_table;
@@ -298,6 +316,8 @@ drop sequence if exists contact_request_seq;
 drop sequence if exists customer_seq;
 
 drop sequence if exists customer_watch_seq;
+
+drop sequence if exists feedback_seq;
 
 drop sequence if exists live_config_seq;
 

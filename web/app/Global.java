@@ -57,6 +57,9 @@ public class Global extends GlobalSettings {
 					
 					Map<String,List<Object>> users = (Map<String,List<Object>>)Yaml.load("users-default.yml");
 					Ebean.save(users.get("users"));
+					
+					Map<String,List<Object>> feedbacks = (Map<String,List<Object>>)Yaml.load("feedbacks-default.yml");
+					Ebean.save(feedbacks.get("feedbacks"));
 				}
 			}
 		}

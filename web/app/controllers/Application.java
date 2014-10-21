@@ -348,7 +348,7 @@ public class Application extends Controller {
     }
     
     public static Result feedback() {
-        return ok(feedback.render());
+        return ok(feedback.render(models.Feedback.findDisplayable()));
     }
     
     public static Result faq() {

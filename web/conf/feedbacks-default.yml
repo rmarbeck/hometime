@@ -1,0 +1,37 @@
+﻿feedbacks:
+    - &Feedback1 !!models.Feedback
+         creationDate:                  "2015-09-09 23:02:57"
+         displayDate:                   "2015-09-09 23:02:57"
+         body: |
+             Je viens d'avoir l'occasion de recourir aux services de Hometime pour la restauration d'une montre vintage et ne peux que me féliciter de la qualité du travail effectué, de la pertinence des conseils prodigués et de la qualité du service dont Hometime a fait preuve.
+         author:                        Johel B.
+         pictureUrl:                    https://media.licdn.com/mpr/mpr/shrink_60_60/p/3/000/212/24a/3d31b86.jpg
+         typeOfFeedback:                LINKED_IN
+         shouldDisplay:                 true
+         mayBeEmphasized:               true
+
+    - &Feedback2 !!models.Feedback
+         creationDate:                  "2015-09-09 23:02:57"
+         displayDate:                   "2015-10-09 23:02:57"
+         body: |
+             Je viens d'avoir l'occasion de recourir aux services de Hometime pour la restauration d'une montre vintage et ne peux que me féliciter de la qualité du travail effectué, de la pertinence des conseils prodigués et de la qualité du service dont Hometime a fait preuve. De nature plutôt méfiant, Raphaël a su me convaincre avec tact et finesse de lui confier mes montres pour évaluer des réparations. Il s'est présenté à mon domicile avec tous les papiers de réassurance. Le lendemain j'avais des devis précis des interventions à effectuer. Raphaël m'a ensuite contacté pour tout m'expliquer.
+             J'ai validé une partie des travaux qui ont été réalisés rapidement. Raphaël se déplace ensuite pour remettre les montres. Raphaël est une personne de confiance et je n'hésiterai pas à recourir un nouvelle fois à ce service de conciergerie de montre nouveau et pratique.
+         author:                        Guillaume P.
+         pictureUrl:                    https://media.licdn.com/mpr/mpr/shrink_60_60/p/2/000/0d8/012/1a7ba8c.jpg
+         typeOfFeedback:                FACEBOOK
+         shouldDisplay:                 true
+         mayBeEmphasized:               true
+
+    - &Feedback3 !!models.Feedback
+         creationDate:                  "2015-09-09 23:02:57"
+         displayDate:                   "2015-09-12 23:02:57"
+         body: |
+             Une efficacité irréprochable, des coûts très compétitifs et des conseils avisés... merci beaucoup !
+         author:                        Guilhem N.
+         pictureUrl:                    https://media.licdn.com/mpr/mpr/shrink_60_60/p/3/005/069/18e/377a79d.jpg
+         typeOfFeedback:                LINKED_IN
+         shouldDisplay:                 true
+         mayBeEmphasized:               true
+
+#Fin
+

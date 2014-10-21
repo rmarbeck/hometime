@@ -1,1 +1,16 @@
-@layouts.rich_content("feedback", 8)
+@(feedbacks: List[models.Feedback])
+@import tags._
+
+@layouts.content_layout("feedback") {
+            @for(feedback <- feedbacks) {
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="rich-content-box">
+                    <div class="title"><blockquote class="clearfix"><img class="img-responsive pull-left" src="@feedback.pictureUrl" alt="@Messages("feedback.alt", feedback.author)"><h2>@Html(Messages("feedback.head", feedback.author, display_date(feedback.displayDate, "MMMM YYYY").toString.trim.capitalize))</h2></blockquote></div>
+                    <div class="body">@Html(feedback.body)</div>
+                    <div class="source"><em>@Html(Messages("feedback.type.of.feedback", Messages("feedback.value.type."+feedback.typeOfFeedback.toString.toLowerCase.replace('_','.'))))</em></div>
+                  </div>
+                </div>
+              </div>
+            }
+}
