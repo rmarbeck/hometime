@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
-import models.User;
 import models.Watch;
 import play.Application;
 import play.GlobalSettings;
@@ -50,7 +49,9 @@ public class Global extends GlobalSettings {
 					Ebean.save(all.get("customers"));
 					
 					Ebean.save(all.get("orders"));
-
+					
+					Ebean.save(all.get("customer_watches"));
+					
 					Map<String,List<Object>> liveConfig = (Map<String,List<Object>>)Yaml.load("liveconfig-default.yml");
 					Ebean.save(liveConfig.get("liveConfig"));
 					

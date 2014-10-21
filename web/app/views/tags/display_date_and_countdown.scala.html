@@ -1,0 +1,5 @@
+@(date: Date, display_format: String = "dd/MM/yyyy", message_key_if_null: String = "tags.date.unknown")
+@import fr.hometime.utils.DateHelper
+
+@if(date == null) {@Messages(message_key_if_null)} else {@date.format(display_format) (@Messages("number.of.days", DateHelper.nbDaysBetween(date)))}
+

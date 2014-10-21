@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,8 @@ import javax.persistence.Table;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
+import play.Logger;
+import play.data.validation.ValidationError;
 import play.db.ebean.Model;
 
 /**
@@ -26,33 +29,33 @@ public class Order extends Model {
 	private static final long serialVersionUID = 1432152323100975220L;
 	
 	public enum OrderStatus {
-	    INFORMAL_AGREEMENT ("10"),
-	    FORMAL_AGREEMENT ("20"),
-	    PICK_UP_PLANNED ("30"),
-	    PREPACKAGE_SENT ("32"),
-	    PREPACKAGE_RECEIVED ("34"),
-	    WATCH_SENT ("36"),
-	    PICK_UP_DONE ("40"),
-	    WATCH_RECEIVED ("42"),
-	    NEW_INFORMAL_PROPOSAL_SUBMITED ("50"),
-	    NEW_FORMAL_PROPOSAL_SUBMITED ("55"),
-	    PROPOSAL_AGREED ("60"),
-	    WORK_STARTED ("70"),
-	    WORK_ISSUE_WAITING_INTERNAL_SOLUTION ("75"),
-	    WORK_ISSUE_WAITING_CUSTOMER ("77"),
-	    WORK_FINISHED ("80"),
-	    WATCH_CONTROL ("90"),
-	    REWORK ("92"),
-	    BILL_SENT ("100"),
-	    BILL_PAYED ("110"),
-	    RETURN_PLANNED ("120"),
-	    RETURN_DONE ("130"),
-	    WATCH_SENT_BACK ("132"),
-	    WATCH_RECEIVED_BACK ("134"),
-	    FEEDBACK_ASKED ("140"),
-	    FEEDBACK_RECEIVED ("150"),
-	    ORDER_CLOSED ("200"),
-	    ORDER_CANCELED ("300");
+	    INFORMAL_AGREEMENT_10 ("INFORMAL_AGREEMENT_10"),
+	    FORMAL_AGREEMENT_20 ("FORMAL_AGREEMENT_20"),
+	    PICK_UP_PLANNED_30 ("PICK_UP_PLANNED_30"),
+	    PREPACKAGE_SENT_32 ("PREPACKAGE_SENT_32"),
+	    PREPACKAGE_RECEIVED_34 ("PREPACKAGE_RECEIVED_34"),
+	    WATCH_SENT_36 ("WATCH_SENT_36"),
+	    PICK_UP_DONE_40 ("PICK_UP_DONE_40"),
+	    WATCH_RECEIVED_42 ("WATCH_RECEIVED_42"),
+	    NEW_INFORMAL_PROPOSAL_SUBMITED_50 ("NEW_INFORMAL_PROPOSAL_SUBMITED_50"),
+	    NEW_FORMAL_PROPOSAL_SUBMITED_55 ("NEW_FORMAL_PROPOSAL_SUBMITED_55"),
+	    PROPOSAL_AGREED_60 ("PROPOSAL_AGREED_60"),
+	    WORK_STARTED_70 ("WORK_STARTED_70"),
+	    WORK_ISSUE_WAITING_INTERNAL_SOLUTION_75 ("WORK_ISSUE_WAITING_INTERNAL_SOLUTION_75"),
+	    WORK_ISSUE_WAITING_CUSTOMER_77 ("WORK_ISSUE_WAITING_CUSTOMER_77"),
+	    WORK_FINISHED_80 ("WORK_FINISHED_80"),
+	    WATCH_CONTROL_90 ("WATCH_CONTROL_90"),
+	    REWORK_92 ("REWORK_92"),
+	    BILL_SENT_100 ("BILL_SENT_100"),
+	    BILL_PAYED_110 ("BILL_PAYED_110"),
+	    RETURN_PLANNED_120 ("RETURN_PLANNED_120"),
+	    RETURN_DONE_130 ("RETURN_DONE_130"),
+	    WATCH_SENT_BACK_132 ("WATCH_SENT_BACK_132"),
+	    WATCH_RECEIVED_BACK_134 ("WATCH_RECEIVED_BACK_134"),
+	    FEEDBACK_ASKED_140 ("FEEDBACK_ASKED_140"),
+	    FEEDBACK_RECEIVED_150 ("FEEDBACK_RECEIVED_150"),
+	    ORDER_CLOSED_200 ("ORDER_CLOSED_200"),
+	    ORDER_CANCELED_300 ("ORDER_CANCELED_300");
 	    
 		private String name = "";
 		    
@@ -63,11 +66,7 @@ public class Order extends Model {
 		public String toString(){
 		    return name;
 		}
-		
-		public int intValue() {
-			return Integer.valueOf(name);
-		}
-		
+
 		public static OrderStatus fromString(String name) {
 	        for (OrderStatus status : OrderStatus.values()) {
 	            if (status.name.equals(name)) {
@@ -84,6 +83,7 @@ public class Order extends Model {
 	@OneToOne
 	public OrderRequest request;
 	
+	@Column(name="creation_date")
 	public Date creationDate;
 	
 	public Date pickUpRealDate;
@@ -101,7 +101,7 @@ public class Order extends Model {
 	@Column(name="last_comm_date")
 	public Date lastCommunicationForThisOrderDate;
 
-	public OrderRequest.OrderTypes orderType;
+	public String orderType;
 	
 	@Column(name="order_status", length = 40)
 	@Enumerated(EnumType.STRING)
@@ -113,7 +113,7 @@ public class Order extends Model {
 	public String model;
 	
 	@Column(name="order_method")
-	public OrderRequest.MethodTypes method;
+	public String method;
 	
 	@Column(length = 1000)
 	public String remark;
@@ -126,22 +126,23 @@ public class Order extends Model {
 	public Order(Customer customer) {
 		this.customer = customer;
 		this.creationDate = new Date();
-		this.status = OrderStatus.INFORMAL_AGREEMENT;
+		this.status = OrderStatus.INFORMAL_AGREEMENT_10;
 	}
 	
 	public Order(String emailOfNewCustomer) {
-		this(Customer.getOrCreateCurstomerForEmail(emailOfNewCustomer));
+		this(Customer.getOrCreateCustomerForEmail(emailOfNewCustomer));
 	}
 	
 	public Order(OrderRequest request) {
-		this(Customer.getOrCreateCurstomerForOrderRequest(request));
+		this(Customer.getOrCreateCustomerFromOrderRequest(request));
 		this.request = request;
 		this.brand = request.brand.display_name;
 		this.model = request.model;
-		this.orderType = request.orderType;
-		this.method = request.method;
+		this.orderType = request.orderType.toString();
+		this.method = request.method.toString();
 		this.remark = request.remark;
-		this.watchChosen = request.watchChosen.full_name;
+		if (request.watchChosen != null)
+			this.watchChosen = request.watchChosen.full_name;
 	}
 
     // -- Queries
@@ -157,15 +158,20 @@ public class Order extends Model {
     }
     
     public static List<Order> findAllOpen() {
-        return find.where().ne("status", OrderStatus.ORDER_CLOSED).orderBy("requestDate DESC").findList();
+        return find.where().ne("status", OrderStatus.ORDER_CLOSED_200).orderBy("requestDate DESC").findList();
     }
     
     public static List<Order> findAllClosed() {
-        return find.where().eq("status", OrderStatus.ORDER_CLOSED).orderBy("requestDate DESC").findList();
+        return find.where().eq("status", OrderStatus.ORDER_CLOSED_200).orderBy("requestDate DESC").findList();
     }
 
     public static Order findById(Long id) {
         return find.byId(id.toString());
+    }
+    
+    public static List<Order> findByCustomer(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+        			.orderBy("creation_date desc").findList();
     }
     
     public static Page<Order> page(int page, int pageSize, String sortBy, String order, String filter) {
@@ -175,5 +181,27 @@ public class Order extends Model {
 	            .findPagingList(pageSize)
 	            .getPage(page);
     }
+    
+	@Override
+	public void save() {
+		this.creationDate = new Date();
+		super.save();
+	}
+
+	@Override
+	public void update() {
+		try {
+			Logger.debug("Updating "+this.getClass().getName());
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
+		super.update();
+	}
+    
+    public List<ValidationError> validate() {
+    	List<ValidationError> errors = new ArrayList<ValidationError>();
+        return errors.isEmpty() ? null : errors;
+    }
+    
 }
 

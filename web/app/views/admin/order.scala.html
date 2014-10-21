@@ -1,0 +1,60 @@
+@(order: models.Order)
+@import tags._
+
+@layouts.admin() {
+  <div class="container">
+     <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.order.head.customer.name",order.customer.firstname, order.customer.name))</h3></div>
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-default" href="@routes.Order.edit(order.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.order.action.edit"))</a>
+        </div>
+     </div>
+     <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <colgroup>
+                <col class="col-xs-2">
+                <col class="col-xs-7">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Champ</th>
+                  <th>Valeur</th>
+                </tr>
+              </thead>
+              <tbody>
+              	@two_cells_table_line(Html(Messages("admin.order.label.creation.date")), display_date(order.creationDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.label.customer")), Html(order.customer.firstname+" "+order.customer.name))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.watch.label.order.type")), Html(Messages("admin.order.value.order.type."+order.orderType.toString.toLowerCase.replace('_','.'))))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.watch.label.method")), Html(Messages("admin.order.value.method."+order.method.toString.toLowerCase.replace('_','.'))))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.watch.label.status")), Html(Messages("admin.order.value.status."+order.status.toString.toLowerCase.replace('_','.'))))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.label.pick.up.real.date")), display_date(order.pickUpRealDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.label.start.working.real.date")), display_date(order.startWorkingRealDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.label.end.of.work.real.date")), display_date(order.endOfWorkRealDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.label.start.of.control.date")), display_date(order.startOfControlDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.label.return.real.date")), display_date(order.returnRealDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.label.closing.date")), display_date(order.closingDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.order.label.last.communication.for.this.order.date")), display_date(order.lastCommunicationForThisOrderDate, "dd/MM/yyyy"))
+              	
+              	@if_not_null_nor_empty(order.watchChosen) {
+              		@two_cells_table_line(Html(Messages("admin.order.label.watch.chosen")), Html(order.watchChosen))
+              	}
+
+              </tbody>
+            </table>
+        </div>
+      </div>
+      
+  </div>
+}

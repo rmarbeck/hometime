@@ -851,7 +851,7 @@ customers:
          pickupAddress: |
               25 rue du customer 1
               75015 Paris
-         returnAdress: |
+         returnAddress: |
               25 rue du customer 1
               75015 Paris
          sharedInfos:               Infos partagées
@@ -881,7 +881,7 @@ orders:
          closingDate:                           "2014-09-15 23:02:57"
          lastCommunicationForThisOrderDate:     "2014-09-16 23:02:57"
          orderType:                             SERVICE
-         status:                                ORDER_CLOSED
+         status:                                ORDER_CLOSED_200
          brand:                                 Rolex
          model:                                 Submariner
          method:                                OUTLET
@@ -891,6 +891,33 @@ orders:
 
     - &Order2 !!models.Order
          request:                               *OrderRequest2
+
+customer_watches:
+    - &CWatch1 !!models.CustomerWatch
+         customer:                              *Customer1
+         brand:                                 Rolex
+         model:                                 Submariner
+         additionnalModelInfos:                 Cadran cerclé
+         reference:                             "5513"
+         serial:                                "0dz5d4"
+         movement:                              "3035"
+         picturesUrl:                           http://www.dropbox.com/link
+         endOfMainWaranty:                      "2015-09-09 23:02:57"
+         endOfWaterWaranty:                     "2016-09-09 23:02:57"
+         nextService:                           "2018-09-09 23:02:57"
+         nextPartialService:                    "2016-09-09 23:02:57"
+         lastStatusUpdate:                      "2014-09-09 23:02:57"
+         serviceInfos:                          Aucune
+         otherInfos:                            Aucune
+         status:                                BACK_TO_CUSTOMER
+
+    - &CWatch2 !!models.CustomerWatch
+         customer:                              *Customer1
+         brand:                                 Breguet
+         model:                                 Marine
+         serial:                                "4653"
+         picturesUrl:                           http://www.dropbox.com/link2
+         status:                                STORED_BY_STH
 
 #Fin
 

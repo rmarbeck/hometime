@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,12 +12,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import models.Order.OrderStatus;
+import play.Logger;
+import play.data.validation.ValidationError;
+import play.db.ebean.Model;
+import play.i18n.Messages;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
-
-import play.db.ebean.Model;
 
 /**
  * Definition of a Customer
@@ -40,10 +42,6 @@ public class Customer extends Model {
 		    return name;
 		}
 		
-		public int intValue() {
-			return Integer.valueOf(name);
-		}
-		
 		public static CustomerStatus fromString(String name) {
 	        for (CustomerStatus status : CustomerStatus.values()) {
 	            if (status.name.equals(name)) {
@@ -62,6 +60,7 @@ public class Customer extends Model {
 
 	public String alternativeEmail;
 	
+	@Column(name="creation_date")
 	public Date creationDate;
 	
 	public Date lastCommunicationDate;
@@ -81,7 +80,7 @@ public class Customer extends Model {
 	public String pickupAddress;
 	
 	@Column(length = 10000)
-	public String returnAdress;
+	public String returnAddress;
 	
 	@Column(length = 10000)
 	public String sharedInfos;
@@ -99,6 +98,9 @@ public class Customer extends Model {
 	
 	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
 	public List<Order> orders;
+
+	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
+	public List<CustomerWatch> watches;
 	
 	private Customer(String email) {
 		this.email = email;
@@ -142,14 +144,14 @@ public class Customer extends Model {
     	return find.where().eq("name", name).findList();
     }
     
-    public static Customer getOrCreateCurstomerForOrderRequest(OrderRequest request) {
+    public static Customer getOrCreateCustomerFromOrderRequest(OrderRequest request) {
     	Customer existingCustomer = findByEmail(request.email);
     	if (existingCustomer == null)
     		return new Customer(request);
     	return existingCustomer;
     }
     
-    public static Customer getOrCreateCurstomerForEmail(String email) {
+    public static Customer getOrCreateCustomerForEmail(String email) {
     	Customer existingCustomer = findByEmail(email);
     	if (existingCustomer == null)
     		return new Customer(email);
@@ -162,6 +164,31 @@ public class Customer extends Model {
 	            .orderBy(sortBy + " " + order)
 	            .findPagingList(pageSize)
 	            .getPage(page);
+    }
+
+	@Override
+	public void save() {
+		this.creationDate = new Date();
+		super.save();
+	}
+
+
+	@Override
+	public void update() {
+		try {
+			Logger.debug("Updating "+this.getClass().getName());
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
+		super.update();
+	}
+	
+    public List<ValidationError> validate() {
+    	List<ValidationError> errors = new ArrayList<ValidationError>();
+        if (lastCommunicationDate != null) {
+        	Logger.info("Date received : "+lastCommunicationDate.toString());
+        }
+        return errors.isEmpty() ? null : errors;
     }
 }
 

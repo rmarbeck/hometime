@@ -1,19 +1,14 @@
 package controllers;
 
 import models.OrderRequest;
-import controllers.Admin.QuotationForm;
 import play.Logger;
-import play.data.DynamicForm;
 import play.data.Form;
-import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
-import views.html.admin.customers;
 import views.html.admin.customer_form;
-import play.libs.ws.*;
-import play.libs.F.Function;
-import play.libs.F.Promise;
+import views.html.admin.customers;
+import views.html.admin.customer;
 
 @Security.Authenticated(SecuredAdminOnly.class)
 public class Customer extends Controller {
@@ -26,21 +21,32 @@ public class Customer extends Controller {
         return ok(customers.render(models.Customer.page(page, 10, sortBy, order, filter), sortBy, order, filter));
     }
 	
-	public static Result addNewCustomer(Long requestId) {
+	public static Result display(Long customerId) {
+		models.Customer existingCustomer = models.Customer.findById(customerId);
+		if (existingCustomer != null)
+			return ok(customer.render(existingCustomer, models.Order.findByCustomer(existingCustomer), models.CustomerWatch.findByCustomer(existingCustomer)));
+		flash("error", "Unknown customer id");
+		return LIST_CUSTOMERS;
+    }
+	
+	public static Result addFromRequest(Long requestId) {
 		OrderRequest request = OrderRequest.findById(requestId);
 		Form<models.Customer> customerForm = Form.form(models.Customer.class);
 		if (request != null) {
 			models.Customer existingCustomer = models.Customer.findByEmail(request.email);
 			if (existingCustomer != null)
 				return ok(customer_form.render(customerForm.fill(existingCustomer), false));
-			return ok(customer_form.render(customerForm.fill(models.Customer.getOrCreateCurstomerForOrderRequest(request)), true));
+			return ok(customer_form.render(customerForm.fill(models.Customer.getOrCreateCustomerFromOrderRequest(request)), true));
 		}
 		flash("error", "Unknown request id");
 		return badRequest(customer_form.render(customerForm, true));
-		
 	}
 	
-	public static Result editCustomer(Long customerId) {
+	public static Result add() {
+		return ok(customer_form.render(Form.form(models.Customer.class), true));		
+	}
+	
+	public static Result edit(Long customerId) {
 		models.Customer existingCustomer = models.Customer.findById(customerId);
 		Form<models.Customer> customerForm = Form.form(models.Customer.class);
 		if (existingCustomer != null)
@@ -50,7 +56,7 @@ public class Customer extends Controller {
 		
 	}
 	
-	public static Result manageCustomer() {
+	public static Result manage() {
 		final Form<models.Customer> customerForm = Form.form(models.Customer.class).bindFromRequest();
 		String action = Form.form().bindFromRequest().get("action");
 		if (customerForm.hasErrors()) {
@@ -62,7 +68,8 @@ public class Customer extends Controller {
 			if ("save".equals(action)) {
 				customer.save();
 			} else if ("delete".equals(action)) {
-				customer.delete();
+				models.Customer customerInDB = models.Customer.findById(customer.id);
+				customerInDB.delete();
 			} else {
 				customer.update();
 			}

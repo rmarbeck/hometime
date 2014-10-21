@@ -3,16 +3,12 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import models.Brand;
-import models.Customer;
 import models.Order;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
 import models.PresetQuotationForBrand;
 import models.Quotation;
-import models.Quotation.TypesOfNetwork;
 import models.ServiceTest;
 import models.ServiceTest.TestResult;
 import models.Watch;
@@ -21,29 +17,20 @@ import play.data.Form;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.i18n.Messages;
+import play.libs.F.Promise;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
-import views.html.admin.index;
 import views.html.admin.order_request;
 import views.html.admin.order_requests;
 import views.html.admin.orders;
-import views.html.admin.customers;
 import views.html.admin.quotation;
-import views.html.admin.quotation_sent;
 import views.html.admin.quotation_form;
 import views.html.admin.service_test;
 import views.html.admin.service_tests;
 import views.html.mails.notify_order;
-import fr.hometime.utils.ActionHelper;
 import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.ServiceTestHelper;
-import play.libs.ws.*;
-import play.libs.F.Function;
-import play.libs.F.Promise;
-
-import java.net.URLEncoder;
-import java.net.URLEncoder.*;
 
 @Security.Authenticated(SecuredAdminOnly.class)
 public class Admin extends Controller {
@@ -236,10 +223,6 @@ public class Admin extends Controller {
 	
 	public static Result displayOrderRequests(int page, String sortBy, String order, String filter) {
         return ok(order_requests.render(OrderRequest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
-    }
-	
-	public static Result displayOrders(int page, String sortBy, String order, String filter) {
-        return ok(orders.render(Order.page(page, 10, sortBy, order, filter), sortBy, order, filter));
     }
 	
 	public static Result displayOrderRequest(long id) {

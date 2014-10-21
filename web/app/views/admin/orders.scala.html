@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[Order], currentSortBy: String, currentOrder: String, currentFilter: String)
+@(currentPage: com.avaje.ebean.Page[models.Order], currentSortBy: String, currentOrder: String, currentFilter: String)
 @import tags._
 
 @****************************************
@@ -23,7 +23,7 @@
     }
     
     // Generate the link
-    routes.Admin.displayOrders(newPage, sortBy, order, currentFilter)
+    routes.Order.displayAll(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -40,7 +40,7 @@
 @layouts.admin() {
   <div class="container">
 
-    @admin.fragments.page_header(link(0, "requestDate").toString, currentFilter)
+    @admin.fragments.page_header(link(0, "requestDate").toString, currentFilter, routes.Order.add().url)
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
@@ -67,13 +67,14 @@
               @for((order, index) <- currentPage.getList.zipWithIndex) {
                 <tr>
                   <td>
-	                
+	                <a type="button" class="btn btn-default btn-xs" href="@routes.Order.display(order.id)"><span class="glyphicon glyphicon-file"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Order.edit(order.id)"><span class="glyphicon glyphicon-edit"></span></a>
                   </td>
                   <td>
                     @display_date(order.creationDate, "dd/MM")
                   </td>
                   <td>
-                    @order.orderType.name()
+                    @order.orderType
                   </td>
                   <td>
                     @order.brand

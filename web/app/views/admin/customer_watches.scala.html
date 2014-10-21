@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[models.Customer], currentSortBy: String, currentOrder: String, currentFilter: String)
+@(currentPage: com.avaje.ebean.Page[models.CustomerWatch], currentSortBy: String, currentOrder: String, currentFilter: String)
 @import tags._
 
 @****************************************
@@ -23,7 +23,7 @@
     }
     
     // Generate the link
-    routes.Customer.displayAll(newPage, sortBy, order, currentFilter)
+    routes.CustomerWatch.displayAll(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -31,7 +31,7 @@
 @**********************************
 * Helper generating table headers *
 ***********************************@
-@header(key:String, title:String, hideSmall: Boolean = false) = {
+@header(key:String, title:Html, hideSmall: Boolean = false) = {
     <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"} @if(hideSmall) {hidden-xs}">
         <a href="@link(0, key)">@title</a>
     </th>
@@ -40,7 +40,7 @@
 @layouts.admin() {
   <div class="container">
 
-    @admin.fragments.page_header(link(0, "creationDate").toString, currentFilter, routes.Customer.add().url)
+    @admin.fragments.page_header(link(0, "creationDate").toString, currentFilter, routes.CustomerWatch.add().url)
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
@@ -53,42 +53,38 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  @header("creationDate", "Date")
-                  @header("name", "Nom")
-                  @header("firstname", "Prénom")
-                  @header("email", "email")
-                  @header("phoneNumber", "Num.")
-                  @header("sharedInfos", "Infos partagées", true)
-                  @header("privateInfos", "Infos privées", true)
+                  @header("lastStatusUpdate", Html(Messages("admin.customer.watch.watches.header.date")))
+                  @header("brand", Html(Messages("admin.customer.watch.watches.header.brand")))
+                  @header("model", Html(Messages("admin.customer.watch.watches.header.model")))
+                  @header("reference", Html(Messages("admin.customer.watch.watches.header.reference")))
+                  @header("customer", Html(Messages("admin.customer.watch.watches.header.status")))
+                  @header("customer", Html(Messages("admin.customer.watch.watches.header.customer")))
                 </tr>
               </thead>
               <tbody>
-              @for((customer, index) <- currentPage.getList.zipWithIndex) {
+              @for((watch, index) <- currentPage.getList.zipWithIndex) {
                 <tr>
                   <td>
-	                <a type="button" class="btn btn-default btn-xs" href="@routes.Customer.display(customer.id)"><span class="glyphicon glyphicon-user"></span></a>
-	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Customer.edit(customer.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                  	<a type="button" class="btn btn-default btn-xs" href="@routes.CustomerWatch.display(watch.id)"><span class="glyphicon glyphicon-time"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
                   </td>
                   <td>
-                    @display_date(customer.creationDate, "dd/MM")
+                    @display_date(watch.lastStatusUpdate, "dd/MM HH:mm")
                   </td>
                   <td>
-                    @customer.name
+                    @watch.brand
                   </td>
                   <td>
-                    @customer.firstname
+                    @watch.model
                   </td>
                   <td>
-                    @customer.email
+                    @watch.reference
                   </td>
                   <td>
-                    @customer.phoneNumber
+                    @Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.')))
                   </td>
-                  <td class="hidden-xs">
-                    @customer.sharedInfos
-                  </td>
-                  <td class="hidden-xs">
-                    @customer.privateInfos
+                  <td>
+                    @if_not_null_nor_empty(watch.customer) {@watch.customer.name @watch.customer.firstname}
                   </td>
                 </tr>
               }

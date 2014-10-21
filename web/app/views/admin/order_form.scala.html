@@ -1,0 +1,84 @@
+@(order: Form[models.Order], isANewOrder: Boolean, customers: List[models.Customer])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.order.action.cancel"))</a>
+      @if(isANewOrder) {
+      	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages("admin.order.action.save"))</button>
+      } else {
+      	@tags.inputHidden(order("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.order.action.edit"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages("admin.order.action.delete"))</button>                  
+      }
+      </div>
+    </div>
+}
+
+@layouts.admin() {
+    <div class="container">
+    	@display_flash()
+    
+            	@helper.form(action = routes.Order.manage(), 'class -> "form-horizontal", 'role -> "form") {
+            	
+            	@actions
+
+            	@tags.myInputRadioGroup(order("orderType"),
+            						for (s <- models.OrderRequest.OrderTypes.values) yield s.toString -> Messages("admin.order.form.value.type."+s.toString.toLowerCase.replace('_','.')	),
+									'_label -> Html(Messages("admin.order.form.label.order.type")),
+                              		'_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+            	
+            	@tags.myInputRadioGroup(order("method"),
+            						for (s <- models.OrderRequest.MethodTypes.values) yield s.toString -> Messages("admin.order.form.value.method."+s.toString.toLowerCase.replace('_','.')	),
+									'_label -> Html(Messages("admin.order.form.label.method")),
+                              		'_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+            	
+            	@if(order("customer.id").value == null && order("customer.email").value != null) {
+            		@simple_admin_input(order("customer.email"), "admin.order.form.VARIABLE.customer.email", 'readonly -> "readonly")
+            		@tags.inputHidden(order("customer.name"))
+            		@tags.inputHidden(order("customer.phoneNumber"))
+            		@tags.inputHidden(order("customer.billingAddress"))
+            		@tags.inputHidden(order("customer.sharedInfos"))
+            	} else { 
+            		@helper.select(order("customer.id"),
+                         for (s <- customers) yield s.id.toString -> (s.firstname + " " + s.name),
+                         '_default -> Messages("admin.order.form.value.customer.default"),
+                         'placeholder -> Messages("admin.order.form.placeholder.customer"), '_label -> Messages("admin.order.form.label.customer"),
+                         'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                }
+            	
+            	@simple_admin_input(order("brand"), "admin.order.form.VARIABLE.brand")
+            	
+            	@simple_admin_input(order("model"), "admin.order.form.VARIABLE.model")
+            	
+            	@simple_admin_input(order("remark"), "admin.order.form.VARIABLE.remark")
+            	
+            	@simple_admin_input(order("watchChosen"), "admin.order.form.VARIABLE.watch.chosen")
+
+	            @helper.select(order("status"),
+                                     for (s <- models.Order.OrderStatus.values) yield s.toString -> Messages("admin.order.form.value.status."+s.toString.toLowerCase.replace('_','.')	),
+                                     '_default -> Messages("admin.order.form.value.status.default"),
+                                     'placeholder -> Messages("admin.order.form.placeholder.status"), '_label -> Messages("admin.order.form.label.status"),
+                                     'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+				
+				@simple_admin_input(order("pickUpRealDate"), "admin.order.form.VARIABLE.pick.up.real.date", 'type -> "date")
+				
+				@simple_admin_input(order("startWorkingRealDate"), "admin.order.form.VARIABLE.start.working.real.date", 'type -> "date")
+				
+				@simple_admin_input(order("endOfWorkRealDate"), "admin.order.form.VARIABLE.end.of.work.real.date", 'type -> "date")
+				
+				@simple_admin_input(order("startOfControlDate"), "admin.order.form.VARIABLE.start.of.control.date", 'type -> "date")
+				
+				@simple_admin_input(order("returnRealDate"), "admin.order.form.VARIABLE.return.real.date", 'type -> "date")
+				
+				@simple_admin_input(order("closingDate"), "admin.order.form.VARIABLE.closing.date", 'type -> "date")
+				
+				@simple_admin_input(order("lastCommunicationForThisOrderDate"), "admin.order.form.VARIABLE.last.communication.date.for.this.order", 'type -> "date")
+
+                @actions
+            }
+    </div>
+}

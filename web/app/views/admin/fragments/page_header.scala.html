@@ -1,4 +1,4 @@
-@(action: String, currentFilter: String)
+@(action: String, currentFilter: String, addNewURL: String="", addNewLabelKey: String="admin.action.label.add.new.default")
 @import tags._
 
     @display_flash()
@@ -14,4 +14,9 @@
               </div>
             </form>
         </div>
+        @if(!"".equals(addNewURL)) {
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-success" href="@addNewURL"><span class="glyphicon glyphicon-plus"></span>@Html(Messages(addNewLabelKey))</a>
+        </div>
+        }
     </div>

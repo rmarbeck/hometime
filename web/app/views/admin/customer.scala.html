@@ -1,0 +1,184 @@
+@(customer: models.Customer, orders: List[models.Order], watches: List[models.CustomerWatch])
+@import tags._
+
+@layouts.admin() {
+  <div class="container">
+     <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.customer.name",customer.firstname, customer.name))</h3></div>
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-default" href="@routes.Customer.edit(customer.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.customer.action.edit"))</a>
+        </div>
+     </div>
+     <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <colgroup>
+                <col class="col-xs-2">
+                <col class="col-xs-7">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Champ</th>
+                  <th>Valeur</th>
+                </tr>
+              </thead>
+              <tbody>
+              	@two_cells_table_line(Html(Messages("admin.customer.label.creation.date")), display_date(customer.creationDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.label.email")), Html(customer.email))
+              	
+              	@if_not_null_nor_empty(customer.alternativeEmail) {
+              		@two_cells_table_line(Html(Messages("admin.customer.label.alternative.email")), Html(customer.alternativeEmail))
+              	}
+              	
+              	@if_not_null_nor_empty(customer.phoneNumber) {
+              		@two_cells_table_line(Html(Messages("admin.customer.label.phone.number")), Html(customer.phoneNumber))
+              	}
+              	
+              	@if_not_null_nor_empty(customer.alternativePhoneNumber) {
+              		@two_cells_table_line(Html(Messages("admin.customer.label.alternative.phone.number")), Html(customer.alternativePhoneNumber))
+              	}
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.label.last.communication.date")), display_date(customer.lastCommunicationDate, "dd/MM/yyyy"))
+              	
+              	@if_not_null_nor_empty(customer.potentiality) {
+              		@two_cells_table_line(Html(Messages("admin.customer.label.potentiality")), simple_progress_bar(customer.potentiality.toInt))
+              	}
+              	
+              	@if_not_null_nor_empty(customer.value) {
+              		@two_cells_table_line(Html(Messages("admin.customer.label.value")), simple_progress_bar(customer.value.toInt))
+              	}
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.label.billing.address")), Html(customer.billingAddress))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.label.pick.up.address")), Html(customer.pickupAddress))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.label.return.address")), Html(customer.returnAddress))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.label.shared.infos")), Html(customer.sharedInfos))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.label.private.infos")), Html(customer.privateInfos))
+
+              </tbody>
+            </table>
+        </div>
+      </div>
+      
+     <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.orders"))</h3></div>
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-primary" href="@routes.Order.addFromCustomer(customer.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.customer.action.add.order"))</a>
+        </div>
+     </div>
+
+
+	  @if(orders == null || orders.size == 0) {
+      <div class="row">
+        <div class="well">
+            <em>@Html(Messages("admin.customer.orders.no.order.to.display"))</em>
+        </div>
+      </div>
+      } else {
+      <div class="row">
+       	<div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>@Html(Messages("admin.customer.orders.header.date"))</th>
+                  <th>@Html(Messages("admin.customer.orders.header.brand"))</th>
+                  <th>@Html(Messages("admin.customer.orders.header.model"))</th>
+                  <th>@Html(Messages("admin.customer.orders.header.order.type"))</th>
+                  <th>@Html(Messages("admin.customer.orders.header.status"))</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for((order, index) <- orders.zipWithIndex) {
+                <tr>
+                  <td>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Order.edit(order.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                  </td>
+                  <td>
+                    @display_date(order.creationDate, "dd/MM HH:mm")
+                  </td>
+                  <td>
+                    @order.brand
+                  </td>
+                  <td>
+                    @order.model
+                  </td>
+                  <td>
+                    @Html(Messages("admin.order.value.order.type."+order.orderType.toString.toLowerCase.replace('_','.')))
+                  </td>
+                  <td>
+                    @Html(Messages("admin.order.value.status."+order.status.toString.toLowerCase.replace('_','.')))
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+		</div>
+	  </div>
+	}
+
+      
+      <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches"))</h3></div>
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-primary" href="@routes.CustomerWatch.addFromCustomer(customer.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.customer.action.add.watch"))</a>
+        </div>
+     </div>
+      
+      @if(watches == null || watches.size == 0) {
+      <div class="row">
+        <div class="well">
+            <em>@Html(Messages("admin.customer.watches.no.watch.to.display"))</em>
+        </div>
+      </div>
+      } else {
+      <div class="row">
+       	<div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>@Html(Messages("admin.customer.watch.watches.header.date"))</th>
+                  <th>@Html(Messages("admin.customer.watch.watches.header.brand"))</th>
+                  <th>@Html(Messages("admin.customer.watch.watches.header.model"))</th>
+                  <th>@Html(Messages("admin.customer.watch.watches.header.reference"))</th>
+                  <th>@Html(Messages("admin.customer.watch.watches.header.customer"))</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for((watch, index) <- watches.zipWithIndex) {
+                <tr>
+                  <td>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                  </td>
+                  <td>
+                    @display_date(watch.lastStatusUpdate, "dd/MM HH:mm")
+                  </td>
+                  <td>
+                    @watch.brand
+                  </td>
+                  <td>
+                    @watch.model
+                  </td>
+                  <td>
+                    @watch.reference
+                  </td>
+                  <td>
+                    @Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.')))
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+		</div>
+	  </div>
+	}       
+              
+  </div>
+}

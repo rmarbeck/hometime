@@ -1,0 +1,77 @@
+@(watch: Form[models.CustomerWatch], isANewWatch: Boolean, customers: List[models.Customer])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.customer.watch.action.cancel"))</a>
+      @if(isANewWatch) {
+      	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages("admin.customer.watch.action.save"))</button>
+      } else {
+      	@tags.inputHidden(watch("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.customer.watch.action.edit"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages("admin.customer.watch.action.delete"))</button>                  
+      }
+      </div>
+    </div>
+}
+
+@layouts.admin() {
+    <div class="container">
+    	@display_flash()
+    
+            @helper.form(action = routes.CustomerWatch.manage(), 'class -> "form-horizontal", 'role -> "form") {
+            
+            	@actions
+           
+	            @helper.select(watch("customer.id"),
+                         for (s <- customers) yield s.id.toString -> (s.firstname + " " + s.name),
+                         '_default -> Messages("admin.customer.watch.form.value.customer.default"),
+                         'placeholder -> Messages("admin.customer.watch.form.placeholder.customer"), '_label -> Messages("admin.customer.watch.form.label.customer"),
+                         'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+            	@simple_admin_input(watch("brand"), "admin.customer.watch.form.VARIABLE.brand")
+            	
+            	@simple_admin_input(watch("model"), "admin.customer.watch.form.VARIABLE.model")
+            	
+            	@simple_admin_input(watch("reference"), "admin.customer.watch.form.VARIABLE.reference")
+            	
+            	@simple_admin_input(watch("serial"), "admin.customer.watch.form.VARIABLE.serial")
+            	
+            	@simple_admin_input(watch("serial2"), "admin.customer.watch.form.VARIABLE.serial2")
+            	
+            	@simple_admin_textarea(watch("additionnalModelInfos"), "admin.customer.watch.form.VARIABLE.additionnal.model.infos")
+
+				@tags.myInputRadioGroup(watch("status"),
+                              Seq( models.CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT.toString -> Messages("admin.customer.watch.form.value.status.by.watch.next"),
+                                   models.CustomerWatch.CustomerWatchStatus.STORED_BY_STH.toString -> Messages("admin.customer.watch.form.value.status.by.sth"),
+                                   models.CustomerWatch.CustomerWatchStatus.STORED_BY_BRAND.toString -> Messages("admin.customer.watch.form.value.status.by.brand"),
+                                   models.CustomerWatch.CustomerWatchStatus.STORED_BY_OTHER_PARTNER.toString -> Messages("admin.customer.watch.form.value.status.by.other"),
+                                   models.CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER.toString -> Messages("admin.customer.watch.form.value.status.by.customer")
+                                   ), '_label -> Html(Messages("admin.customer.watch.form.label.status")),
+                              '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+	            @simple_admin_input(watch("endOfMainWaranty"), "admin.customer.watch.form.VARIABLE.end.of.main.waranty")
+	            
+	            @simple_admin_input(watch("endOfWaterWaranty"), "admin.customer.watch.form.VARIABLE.end.of.water.waranty")
+	            
+	            @simple_admin_input(watch("nextService"), "admin.customer.watch.form.VARIABLE.next.service")
+	            
+	            @simple_admin_input(watch("nextPartialService"), "admin.customer.watch.form.VARIABLE.next.partial.service")
+	            
+                <div class="form-group">
+                  <label for="infos" class="col-xs-3 control-label">@Messages("admin.customer.watch.form.label.cat.infos")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                    	@simple_admin_textarea(watch("serviceInfos"), "admin.customer.watch.form.VARIABLE.service.infos")
+                    	
+                    	@simple_admin_textarea(watch("otherInfos"), "admin.customer.watch.form.VARIABLE.other.infos")
+                    </div>
+                  </div>
+                </div>
+                
+                @actions
+            }
+    </div>
+}

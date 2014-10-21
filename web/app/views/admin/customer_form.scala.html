@@ -2,49 +2,62 @@
 @import tags._
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.customer.action.cancel"))</a>
+      @if(isANewCustomer) {
+      	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages("admin.customer.action.save"))</button>
+      } else {
+      	@tags.inputHidden(customer("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.customer.action.edit"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages("admin.customer.action.delete"))</button>                  
+      }
+      </div>
+    </div>
+}
+
 @layouts.admin() {
     <div class="container">
     	@display_flash()
     
-            @helper.form(action = routes.Customer.manageCustomer(), 'class -> "form-horizontal", 'role -> "form") {
-            
-                @helper.inputText(customer("email"),
-                                'placeholder -> Messages("admin.customer.form.placeholder.email"), '_label -> Messages("admin.customer.form.label.email"),
-                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+            	@helper.form(action = routes.Customer.manage(), 'class -> "form-horizontal", 'role -> "form") {
+            	
+            	@actions
+            	
+            	@simple_admin_input(customer("email"), "admin.customer.form.VARIABLE.email")
 
-                @helper.inputText(customer("alternativeEmail"),
-                                'placeholder -> Messages("admin.customer.form.placeholder.alternative.email"), '_label -> Messages("admin.customer.form.label.alternative.email"),
-                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+	            @helper.select(customer("status"),
+                                     for (s <- models.Customer.CustomerStatus.values) yield s.toString -> Messages("admin.customer.form.value.status."+s.toString.toLowerCase.replace('_','.')	),
+                                     '_default -> Messages("admin.customer.form.value.status.default"),
+                                     'placeholder -> Messages("admin.customer.form.placeholder.status"), '_label -> Messages("admin.customer.form.label.status"),
+                                     'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
-                @helper.inputText(customer("phoneNumber"),
-                                'placeholder -> Messages("admin.customer.form.placeholder.phone.number"), '_label -> Messages("admin.customer.form.label.phone.number"),
-                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+				@simple_admin_input(customer("firstname"), "admin.customer.form.VARIABLE.firstname")
+				
+				@simple_admin_input(customer("name"), "admin.customer.form.VARIABLE.name")
+				
+				@simple_admin_input(customer("phoneNumber"), "admin.customer.form.VARIABLE.phone.number")
 
-                @helper.inputText(customer("alternativePhoneNumber"),
-                                'placeholder -> Messages("admin.customer.form.placeholder.alternative.phone.number"), '_label -> Messages("admin.customer.form.label.alternative.phone.number"),
-                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
-
-                @helper.inputText(customer("firstname"),
-                                'placeholder -> Messages("admin.customer.form.placeholder.firstname"), '_label -> Messages("admin.customer.form.label.firstname"),
-                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
-
-                @helper.inputText(customer("name"),
-                                'placeholder -> Messages("admin.customer.form.placeholder.name"), '_label -> Messages("admin.customer.form.label.name"),
-                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                @simple_admin_input(customer("value"), "admin.customer.form.VARIABLE.value", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "1")
+                
+                @simple_admin_input(customer("potentiality"), "admin.customer.form.VARIABLE.potentiality", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "1")
+				
+				@simple_admin_input(customer("alternativeEmail"), "admin.customer.form.VARIABLE.alternative.email")
+				
+				@simple_admin_input(customer("alternativePhoneNumber"), "admin.customer.form.VARIABLE.alternative.phone.number")
+				
+				@simple_admin_input(customer("lastCommunicationDate"), "admin.customer.form.VARIABLE.last.communication.date", 'type -> "date")
 
                 <div class="form-group">
                   <label for="address" class="col-xs-3 control-label">@Messages("admin.customer.form.label.cat.address")</label>
                   <div class="col-xs-9">
                     <div class="row inner-row">
-                        @helper.textarea(customer("billingAddress"),
-                                        'placeholder -> Messages("admin.customer.form.placeholder.billing.adress"), '_label -> Messages("admin.customer.form.label.billing.adress"),
-                                        'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
-                        @helper.textarea(customer("pickupAddress"),
-                                        'placeholder -> Messages("admin.customer.form.placeholder.pick.up.adress"), '_label -> Messages("admin.customer.form.label.pick.up.adress"),
-                                        'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
-                        @helper.textarea(customer("returnAdress"),
-                                        'placeholder -> Messages("admin.customer.form.placeholder.return.adress"), '_label -> Messages("admin.customer.form.label.return.adress"),
-                                        'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                    	@simple_admin_textarea(customer("billingAddress"), "admin.customer.form.VARIABLE.billing.address")
+                    	
+                    	@simple_admin_textarea(customer("pickupAddress"), "admin.customer.form.VARIABLE.pick.up.address")
+                    	
+                    	@simple_admin_textarea(customer("returnAdress"), "admin.customer.form.VARIABLE.return.address")
                     </div>
                   </div>
                 </div>
@@ -53,28 +66,14 @@
                   <label for="infos" class="col-xs-3 control-label">@Messages("admin.customer.form.label.cat.infos")</label>
                   <div class="col-xs-9">
                     <div class="row inner-row">
-                        @helper.textarea(customer("sharedInfos"),
-                                       'placeholder -> Messages("admin.customer.form.placeholder.shared.infos"), '_label -> Messages("admin.customer.form.label.shared.infos"),
-                                       'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
-                        @helper.textarea(customer("privateInfos"),
-                                        'placeholder -> Messages("admin.customer.form.placeholder.private.infos"), '_label -> Messages("admin.customer.form.label.private.infos"),
-                                       'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+	                    @simple_admin_textarea(customer("sharedInfos"), "admin.customer.form.VARIABLE.shared.infos")
+                    
+                    	@simple_admin_textarea(customer("privateInfos"), "admin.customer.form.VARIABLE.private.infos")
                     </div>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-9 text-center">
-                  @if(isANewCustomer) {
-                  	<button type="submit" class="btn btn-primary" name="action" value="save">@Html(Messages("admin.customer.action.save"))</button>
-                  } else {
-                  	@tags.inputHidden(customer("id"))
-                    <button type="submit" class="btn btn-primary" name="action" value="edit">@Html(Messages("admin.customer.action.edit"))</button>
-                    <button type="submit" class="btn btn-warning" name="action" value="delete">@Html(Messages("admin.customer.action.delete"))</button>                  
-                  }
-                    
-                  </div>
-                </div>
+                @actions
             }
     </div>
 }

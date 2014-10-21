@@ -67,14 +67,14 @@
               @for((request, index) <- currentPage.getList.zipWithIndex) {
                 <tr>
                   <td>
-	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.displayOrderRequest(request.id)"><span class="glyphicon glyphicon-flash"></span></a>
-	                <a type="button" class="btn btn-default btn-xs" href="@routes.Admin.displayMail(request.id)"><span class="glyphicon glyphicon-flash"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.displayOrderRequest(request.id)"><span class="glyphicon glyphicon-pencil"></span></a>
+	                <a type="button" class="btn btn-default btn-xs" href="@routes.Admin.displayMail(request.id)"><span class="glyphicon glyphicon-envelope"></span></a>
                   </td>
                   <td>
                     @display_date(request.requestDate, "dd/MM")
                   </td>
                   <td>
-                    @request.orderType.name()
+                    @Html(Messages("admin.order.value.order.type."+request.orderType.toString.toLowerCase.replace('_','.')))
                   </td>
                   <td>
                     @request.brand.display_name
@@ -83,7 +83,7 @@
                     @takeif(request.model, 40)
                   </td>
                   <td>
-                    @request.method.name()
+                    @Html(Messages("admin.order.value.method."+request.method.toString.toLowerCase.replace('_','.')))
                   </td>
                   <td>
                     @if(request.watchChosen != null) {

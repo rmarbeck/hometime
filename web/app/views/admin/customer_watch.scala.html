@@ -1,0 +1,75 @@
+@(watch: models.CustomerWatch)
+@import tags._
+
+@layouts.admin() {
+  <div class="container">
+     <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.watch.head.watch",watch.brand, watch.model, watch.customer.firstname, watch.customer.name))</h3></div>
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-default" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.customer.watch.action.edit"))</a>
+        </div>
+     </div>
+     <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <colgroup>
+                <col class="col-xs-2">
+                <col class="col-xs-7">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Champ</th>
+                  <th>Valeur</th>
+                </tr>
+              </thead>
+              <tbody>
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.brand")), Html(watch.brand))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.model")), Html(watch.model))
+              	
+              	@if_not_null_nor_empty(watch.additionnalModelInfos) {
+              		@two_cells_table_line(Html(Messages("admin.customer.watch.label.additional.model.infos")), Html(watch.additionnalModelInfos))
+              	}
+              	
+              	@if_not_null_nor_empty(watch.reference) {
+              		@two_cells_table_line(Html(Messages("admin.customer.watch.label.reference")), Html(watch.reference))
+              	}
+              	
+              	@if_not_null_nor_empty(watch.serial) {
+              		@two_cells_table_line(Html(Messages("admin.customer.watch.label.serial")), Html(watch.serial))
+              	}
+              	
+              	@if_not_null_nor_empty(watch.serial2) {
+              		@two_cells_table_line(Html(Messages("admin.customer.watch.label.serial.2")), Html(watch.serial2))
+              	}
+              	
+              	@if_not_null_nor_empty(watch.movement) {
+              		@two_cells_table_line(Html(Messages("admin.customer.watch.label.movement")), Html(watch.movement))
+              	}
+              	
+              	@if_not_null_nor_empty(watch.picturesUrl) {
+              		@two_cells_table_line(Html(Messages("admin.customer.watch.label.pictures.url")), Html("<a href="+watch.picturesUrl+">"+watch.picturesUrl+"</a>"))
+              	}
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.end.of.main.waranty")), display_date_and_countdown(watch.endOfMainWaranty, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.end.of.water.waranty")), display_date(watch.endOfWaterWaranty, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.next.service")), display_date(watch.nextService, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.next.partial.service")), display_date(watch.nextPartialService, "dd/MM/yyyy"))
+              	              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.infos")), Html(watch.serviceInfos))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.other.infos")), Html(watch.otherInfos))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.status")), Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.'))))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.last.status.update")), display_date(watch.lastStatusUpdate, "dd/MM/yyyy"))
+
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+}
