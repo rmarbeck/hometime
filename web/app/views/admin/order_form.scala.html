@@ -41,7 +41,8 @@
             		@tags.inputHidden(order("customer.phoneNumber"))
             		@tags.inputHidden(order("customer.billingAddress"))
             		@tags.inputHidden(order("customer.sharedInfos"))
-            	} else { 
+            	} else {
+            		@tags.inputHidden(order("customer.email")) 
             		@helper.select(order("customer.id"),
                          for (s <- customers) yield s.id.toString -> (s.firstname + " " + s.name),
                          '_default -> Messages("admin.order.form.value.customer.default"),
