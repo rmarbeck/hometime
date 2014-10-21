@@ -99,7 +99,7 @@ GET     /admin/customer/edit/:id 										controllers.Customer.edit(id: Long)
 POST    /admin/manage-customer 											controllers.Customer.manage()
 
 GET     /admin/customer-watch/display/:id								controllers.CustomerWatch.display(id: Long)
-GET     /admin/customer-watch/all    									controllers.CustomerWatch.displayAll(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "")
+GET     /admin/customer-watch/all    									controllers.CustomerWatch.displayAll(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", status ?= "")
 GET     /admin/customer-watch/create/from-customer/:id 					controllers.CustomerWatch.addFromCustomer(id: Long)
 GET     /admin/customer-watch/create				 					controllers.CustomerWatch.add()
 GET     /admin/customer-watch/edit/:id 									controllers.CustomerWatch.edit(id: Long)

@@ -24,7 +24,6 @@
     
     // Generate the link
     routes.Order.displayAll(newPage, sortBy, order, currentFilter)
-    
 }
 
 
@@ -40,7 +39,7 @@
 @layouts.admin() {
   <div class="container">
 
-    @admin.fragments.page_header(link(0, "requestDate").toString, currentFilter, routes.Order.add().url)
+    @admin.fragments.page_header(link(0, "requestDate").toString, "email or name", currentFilter, routes.Order.add().url)
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
@@ -74,16 +73,16 @@
                     @display_date(order.creationDate, "dd/MM")
                   </td>
                   <td>
-                    @order.orderType
+                  	@Html(Messages("admin.order.value.order.type."+order.orderType.toString.toLowerCase.replace('_','.')))
                   </td>
                   <td>
                     @order.brand
                   </td>
                   <td>
-                    @takeif(order.model, 40)
+                    @takeif(order.model)
                   </td>
                   <td>
-                    @order.method
+                    @Html(Messages("admin.order.value.method."+order.method.toString.toLowerCase.replace('_','.')))
                   </td>
                   <td>
                     @if(order.watchChosen != null) {

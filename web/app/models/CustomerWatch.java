@@ -135,6 +135,17 @@ public class CustomerWatch extends Model {
                 .getPage(page);
     }
     
+    public static Page<CustomerWatch> page(int page, int pageSize, String sortBy, String order, String filter, String status) {
+    	if (status == null || "".equals(status))
+    		return page(page, pageSize, sortBy, order, filter);
+        
+    	return 
+            find.where().and(Expr.or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand", "%" + filter + "%")), Expr.eq("customer_watch_status", status))
+                .orderBy(sortBy + " " + order)
+                .findPagingList(pageSize)
+                .getPage(page);
+    }
+    
 	@Override
 	public void save() {
 		this.creationDate = new Date();

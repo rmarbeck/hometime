@@ -880,11 +880,11 @@ orders:
          returnRealDate:                        "2014-09-14 23:02:57"
          closingDate:                           "2014-09-15 23:02:57"
          lastCommunicationForThisOrderDate:     "2014-09-16 23:02:57"
-         orderType:                             SERVICE
+         orderType:                             1
          status:                                ORDER_CLOSED_200
          brand:                                 Rolex
          model:                                 Submariner
-         method:                                OUTLET
+         method:                                2
          remark:                                Aucune
          watchChosen:                           Tag Heuer Monaco
          customer:                              *Customer1

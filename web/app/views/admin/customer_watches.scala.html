@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[models.CustomerWatch], currentSortBy: String, currentOrder: String, currentFilter: String)
+@(currentPage: com.avaje.ebean.Page[models.CustomerWatch], currentSortBy: String, currentOrder: String, currentFilter: String, currentStatus: String)
 @import tags._
 
 @****************************************
@@ -23,7 +23,7 @@
     }
     
     // Generate the link
-    routes.CustomerWatch.displayAll(newPage, sortBy, order, currentFilter)
+    routes.CustomerWatch.displayAll(newPage, sortBy, order, currentFilter, currentStatus)
     
 }
 
@@ -40,7 +40,9 @@
 @layouts.admin() {
   <div class="container">
 
-    @admin.fragments.page_header(link(0, "creationDate").toString, currentFilter, routes.CustomerWatch.add().url)
+    @admin.fragments.page_header(link(0, "lastStatusUpdate").toString, "model or brand", currentFilter, routes.CustomerWatch.add().url)
+    
+    @admin.fragments.page_header(link(0, "lastStatusUpdate").toString, "status", currentStatus)
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
@@ -56,8 +58,8 @@
                   @header("lastStatusUpdate", Html(Messages("admin.customer.watch.watches.header.date")))
                   @header("brand", Html(Messages("admin.customer.watch.watches.header.brand")))
                   @header("model", Html(Messages("admin.customer.watch.watches.header.model")))
-                  @header("reference", Html(Messages("admin.customer.watch.watches.header.reference")))
-                  @header("customer", Html(Messages("admin.customer.watch.watches.header.status")))
+                  @header("reference", Html(Messages("admin.customer.watch.watches.header.reference")),true)
+                  @header("status", Html(Messages("admin.customer.watch.watches.header.status")))
                   @header("customer", Html(Messages("admin.customer.watch.watches.header.customer")))
                 </tr>
               </thead>
@@ -75,9 +77,9 @@
                     @watch.brand
                   </td>
                   <td>
-                    @watch.model
+                    @takeif(watch.model)
                   </td>
-                  <td>
+                  <td class="hidden-xs">
                     @watch.reference
                   </td>
                   <td>

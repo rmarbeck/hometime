@@ -15,12 +15,13 @@ import views.html.admin.customer_watch;
 public class CustomerWatch extends Controller {
 	
 	public static Result LIST_CUSTOMER_WATCHES = redirect(
-			routes.CustomerWatch.displayAll(0, "lastStatusUpdate", "desc", "")
+			routes.CustomerWatch.displayAll(0, "lastStatusUpdate", "desc", "", "")
 			);
 	
-	public static Result displayAll(int page, String sortBy, String order, String filter) {
-        return ok(customer_watches.render(models.CustomerWatch.page(page, 10, sortBy, order, filter), sortBy, order, filter));
+	public static Result displayAll(int page, String sortBy, String order, String filter, String status) {
+        return ok(customer_watches.render(models.CustomerWatch.page(page, 10, sortBy, order, filter, status), sortBy, order, filter, status));
     }
+
 	public static Result display(Long watchId) {
 		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
 		if (existingWatch != null)

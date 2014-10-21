@@ -1,4 +1,4 @@
-@(action: String, currentFilter: String, addNewURL: String="", addNewLabelKey: String="admin.action.label.add.new.default")
+@(action: String, filterName: String, currentFilter: String, addNewURL: String="", addNewLabelKey: String="admin.action.label.add.new.default")
 @import tags._
 
     @display_flash()
@@ -7,10 +7,10 @@
         <div class="col-md-6">  
             <form action="@action" method="GET" class="form-inline" role="form">
               <div class="form-group">
-                <input class="form-control" type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by email...">
+                <input class="form-control" type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by @filterName...">
               </div>
               <div class="form-group">
-                <input class="form-control" type="submit" id="searchsubmit" value="Filter by name" class="btn primary">
+                <input class="form-control" type="submit" id="searchsubmit" value="Filter by @filterName" class="btn primary">
               </div>
             </form>
         </div>

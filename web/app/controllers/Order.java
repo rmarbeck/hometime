@@ -99,9 +99,17 @@ public class Order extends Controller {
 	}
 	
 	private static void saveOrder(models.Order order) {
-		models.Customer existingCustomer = models.Customer.findByEmail(order.customer.email);
-		if (existingCustomer == null)
-			order.customer.save();
+		if (isItANewCustomerToSave(order))
+				order.customer.save();
 		order.save();
+	}
+	
+	private static boolean isItANewCustomerToSave(models.Order order) {
+		if (order.customer.id == null) {
+			models.Customer existingCustomer = models.Customer.findByEmail(order.customer.email);
+			if (existingCustomer == null)
+				return true;
+		}
+		return false;
 	}
 }

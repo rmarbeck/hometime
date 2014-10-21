@@ -40,7 +40,7 @@
 @layouts.admin() {
   <div class="container">
   
-    @admin.fragments.page_header(link(0, "requestDate").toString, currentFilter)
+    @admin.fragments.page_header(link(0, "requestDate").toString, "email or name", currentFilter)
 
     
     @if(currentPage.getTotalRowCount == 0) {
