@@ -23,7 +23,7 @@
                 </tr>
               </thead>
               <tbody>
-              	@two_cells_table_line(Html(Messages("admin.order.label.creation.date")), display_date(order.creationDate, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.order.label.creation.date")), display_date_and_countdown(order.creationDate, "dd/MM/yyyy"))
               	
               	@two_cells_table_line(Html(Messages("admin.order.label.customer")), Html(order.customer.firstname+" "+order.customer.name))
               	
@@ -33,19 +33,19 @@
               	
               	@two_cells_table_line(Html(Messages("admin.order.watch.label.status")), Html(Messages("admin.order.value.status."+order.status.toString.toLowerCase.replace('_','.'))))
               	
-              	@two_cells_table_line(Html(Messages("admin.order.label.pick.up.real.date")), display_date(order.pickUpRealDate, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.order.label.pick.up.real.date")), display_date_and_countdown(order.pickUpRealDate, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.order.label.start.working.real.date")), display_date(order.startWorkingRealDate, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.order.label.start.working.real.date")), display_date_and_countdown(order.startWorkingRealDate, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.order.label.end.of.work.real.date")), display_date(order.endOfWorkRealDate, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.order.label.end.of.work.real.date")), display_date_and_countdown(order.endOfWorkRealDate, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.order.label.start.of.control.date")), display_date(order.startOfControlDate, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.order.label.start.of.control.date")), display_date_and_countdown(order.startOfControlDate, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.order.label.return.real.date")), display_date(order.returnRealDate, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.order.label.return.real.date")), display_date_and_countdown(order.returnRealDate, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.order.label.closing.date")), display_date(order.closingDate, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.order.label.closing.date")), display_date_and_countdown(order.closingDate, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.order.label.last.communication.for.this.order.date")), display_date(order.lastCommunicationForThisOrderDate, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.order.label.last.communication.for.this.order.date")), display_date_and_countdown(order.lastCommunicationForThisOrderDate, "dd/MM/yyyy"))
               	
               	@if_not_null_nor_empty(order.watchChosen) {
               		@two_cells_table_line(Html(Messages("admin.order.label.watch.chosen")), Html(order.watchChosen))

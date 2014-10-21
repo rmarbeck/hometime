@@ -53,11 +53,11 @@
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.end.of.main.waranty")), display_date_and_countdown(watch.endOfMainWaranty, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.end.of.water.waranty")), display_date(watch.endOfWaterWaranty, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.end.of.water.waranty")), display_date_and_countdown(watch.endOfWaterWaranty, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.next.service")), display_date(watch.nextService, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.next.service")), display_date_and_countdown(watch.nextService, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.next.partial.service")), display_date(watch.nextPartialService, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.next.partial.service")), display_date_and_countdown(watch.nextPartialService, "dd/MM/yyyy"))
               	              	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.infos")), Html(watch.serviceInfos))
               	
@@ -65,7 +65,7 @@
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.status")), Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.'))))
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.last.status.update")), display_date(watch.lastStatusUpdate, "dd/MM/yyyy"))
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.last.status.update")), display_date_and_countdown(watch.lastStatusUpdate, "dd/MM/yyyy"))
 
               </tbody>
             </table>

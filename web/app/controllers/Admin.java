@@ -21,6 +21,7 @@ import play.libs.F.Promise;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
+import play.mvc.With;
 import views.html.admin.order_request;
 import views.html.admin.order_requests;
 import views.html.admin.orders;
@@ -33,6 +34,7 @@ import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.ServiceTestHelper;
 
 @Security.Authenticated(SecuredAdminOnly.class)
+@With(NoCacheAction.class)
 public class Admin extends Controller {
 	
 	private final static String AUTRE_MARQUE_SEO_NAME = "autre-marque-de-montres";

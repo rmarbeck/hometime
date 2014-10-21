@@ -9,9 +9,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Version;
 
-import play.Logger;
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import com.avaje.ebean.Expr;
@@ -97,6 +96,7 @@ public class CustomerWatch extends Model {
 	@ManyToOne
 	public Customer customer;
 
+	@Constraints.Required
 	@Column(name="customer_watch_status", length = 40)
 	@Enumerated(EnumType.STRING)
 	public CustomerWatchStatus status;

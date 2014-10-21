@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import play.Logger;
+import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.db.ebean.Model;
 import play.i18n.Messages;
@@ -55,6 +56,7 @@ public class Customer extends Model {
 	@Id
 	public Long id;
 
+	@Constraints.Required
 	@Column(unique=true)
 	public String email;
 
@@ -88,6 +90,7 @@ public class Customer extends Model {
 	@Column(length = 10000)
 	public String privateInfos;
 	
+	@Constraints.Required
 	@Column(name="customer_status", length = 40)
 	@Enumerated(EnumType.STRING)
 	public CustomerStatus status;

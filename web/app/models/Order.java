@@ -17,6 +17,7 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import play.Logger;
+import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.db.ebean.Model;
 
@@ -101,8 +102,10 @@ public class Order extends Model {
 	@Column(name="last_comm_date")
 	public Date lastCommunicationForThisOrderDate;
 
+	@Constraints.Required
 	public String orderType;
 	
+	@Constraints.Required
 	@Column(name="order_status", length = 40)
 	@Enumerated(EnumType.STRING)
 	public OrderStatus status;
@@ -112,6 +115,7 @@ public class Order extends Model {
 	@Column(length = 1000)
 	public String model;
 	
+	@Constraints.Required
 	@Column(name="order_method")
 	public String method;
 	

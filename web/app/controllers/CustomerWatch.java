@@ -4,6 +4,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
+import play.mvc.With;
 import play.twirl.api.Html;
 import views.html.admin.customer;
 import views.html.admin.customer_form;
@@ -12,6 +13,7 @@ import views.html.admin.customer_watches;
 import views.html.admin.customer_watch;
 
 @Security.Authenticated(SecuredAdminOnly.class)
+@With(NoCacheAction.class)
 public class CustomerWatch extends Controller {
 	
 	public static Result LIST_CUSTOMER_WATCHES = redirect(

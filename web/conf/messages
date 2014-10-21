@@ -1505,7 +1505,10 @@ admin.customer.watch.form.label.next.service=Prochaine révision Complète
 admin.customer.watch.form.label.next.partial.service=Prochain entretien intermédiaire
 admin.customer.watch.form.placeholder.next.service=dd/MM/yyyy
 admin.customer.watch.form.placeholder.next.partial.service=dd/MM/yyyy
-
+admin.customer.watch.form.label.movement=Mouvement
+admin.customer.watch.form.placeholder.movement=3035
+admin.customer.watch.form.label.pictures.url=Url des photos
+admin.customer.watch.form.placeholder.pictures.url=http://www.dropbox.com/link
 
 admin.customer.watch.watches.header.date=Date
 admin.customer.watch.watches.header.brand=Marque
@@ -1542,6 +1545,7 @@ admin.customer.watch.value.status.stored.by.other.partner=Chez un partenaire
 admin.customer.watch.value.status.back.to.customer=Chez le client
 admin.customer.watch.label.last.status.update=Dernier changement de situation
 admin.customer.watch.head.watch=<span class="text-muted"><b>{0} - {1}</b></span> de {2} {3}
+
 
 admin.action.label.add.new.default=&nbsp;Nouveau
 

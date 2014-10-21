@@ -6,6 +6,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
+import play.mvc.With;
 import play.twirl.api.Html;
 import views.html.admin.customer_watch_form;
 import views.html.admin.order_form;
@@ -13,6 +14,7 @@ import views.html.admin.orders;
 import views.html.admin.order;
 
 @Security.Authenticated(SecuredAdminOnly.class)
+@With(NoCacheAction.class)
 public class Order extends Controller {
 	
 	public static Result LIST_ORDERS = redirect(

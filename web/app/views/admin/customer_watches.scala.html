@@ -42,7 +42,20 @@
 
     @admin.fragments.page_header(link(0, "lastStatusUpdate").toString, "model or brand", currentFilter, routes.CustomerWatch.add().url)
     
-    @admin.fragments.page_header(link(0, "lastStatusUpdate").toString, "status", currentStatus)
+    <div class="row filter-status">
+        <div class="col-md-6">  
+            <form action="@routes.CustomerWatch.displayAll(0, "lastStatusUpdate", "asc", currentFilter, currentStatus)" method="GET" class="form-inline" role="form">
+              <div class="form-group">
+                <input class="form-control" type="search" id="searchbox" name="status" value="@currentStatus" placeholder="Filter by status...">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="submit" id="searchsubmit" value="Filter by status" class="btn primary">
+              </div>
+            </form>
+        </div>
+    </div>
+    
+    <br />
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
