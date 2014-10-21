@@ -52,13 +52,13 @@
                                    ), '_label -> Html(Messages("admin.customer.watch.form.label.status")),
                               '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
-	            @simple_admin_input(watch("endOfMainWaranty"), "admin.customer.watch.form.VARIABLE.end.of.main.waranty")
+	            @simple_admin_input(watch("endOfMainWaranty"), "admin.customer.watch.form.VARIABLE.end.of.main.waranty", 'type -> "date")
 	            
-	            @simple_admin_input(watch("endOfWaterWaranty"), "admin.customer.watch.form.VARIABLE.end.of.water.waranty")
+	            @simple_admin_input(watch("endOfWaterWaranty"), "admin.customer.watch.form.VARIABLE.end.of.water.waranty", 'type -> "date")
 	            
-	            @simple_admin_input(watch("nextService"), "admin.customer.watch.form.VARIABLE.next.service")
+	            @simple_admin_input(watch("nextService"), "admin.customer.watch.form.VARIABLE.next.service", 'type -> "date")
 	            
-	            @simple_admin_input(watch("nextPartialService"), "admin.customer.watch.form.VARIABLE.next.partial.service")
+	            @simple_admin_input(watch("nextPartialService"), "admin.customer.watch.form.VARIABLE.next.partial.service", 'type -> "date")
 	            
                 <div class="form-group">
                   <label for="infos" class="col-xs-3 control-label">@Messages("admin.customer.watch.form.label.cat.infos")</label>
