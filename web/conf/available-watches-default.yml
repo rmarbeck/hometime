@@ -625,11 +625,109 @@ brands:
          logo_url:              brands/zenith.png
 
     - &Autre !!models.Brand
-         internal_name:         Autre
+         internal_name:         ZzzAutre
          seo_name:              autre-marque-de-montres
          display_name:          Autre marque
          supported:             true
          logo_url:              brands/more.png
+
+    - &Audemars  !!models.Brand
+         internal_name:         Audemars
+         seo_name:              audemars-piguet
+         display_name:          Audemars Piguet
+         supported:             false
+         logo_url:              brands/audemars.png
+
+    - &Blancpain  !!models.Brand
+         internal_name:         Blancpain
+         seo_name:              blancpain
+         display_name:          Blancpain
+         supported:             false
+         logo_url:              brands/blancpain.png
+
+    - &Breguet  !!models.Brand
+         internal_name:         Breguet
+         seo_name:              breguet
+         display_name:          Breguet
+         supported:             false
+         logo_url:              brands/breguet.png
+
+    - &Glashutte  !!models.Brand
+         internal_name:         GlashutteOriginal
+         seo_name:              glashutte-original
+         display_name:          Glashütte Original
+         supported:             false
+         logo_url:              brands/go.png
+
+    - &Patek  !!models.Brand
+         internal_name:         Patek
+         seo_name:              patek-philippe
+         display_name:          Patek Philippe
+         supported:             false
+         logo_url:              brands/patek.png
+
+    - &Lange  !!models.Brand
+         internal_name:         Lange
+         seo_name:              a-lange-und-sohne
+         display_name:          A Lange & Söhne
+         supported:             false
+         logo_url:              brands/lange.png
+
+    - &BRM  !!models.Brand
+         internal_name:         BRM
+         seo_name:              brm
+         display_name:          B.R.M
+         supported:             false
+         logo_url:              brands/brm.png
+
+    - &GP  !!models.Brand
+         internal_name:         GirardPerregaux
+         seo_name:              girard-perregaux
+         display_name:          Girard Perregaux
+         supported:             false
+         logo_url:              brands/girardperregaux.png
+
+    - &Hermes  !!models.Brand
+         internal_name:         Hermes
+         seo_name:              hermes
+         display_name:          Hermès
+         supported:             false
+         logo_url:              brands/hermes.png
+
+    - &Montblanc  !!models.Brand
+         internal_name:         Montblanc
+         seo_name:              montblanc
+         display_name:          Montblanc
+         supported:             false
+         logo_url:              brands/montblanc.png
+
+    - &RichardMille  !!models.Brand
+         internal_name:         RichardMille
+         seo_name:              richard-mille
+         display_name:          Richard Mille
+         supported:             false
+         logo_url:              brands/richardmille.png
+
+    - &Vacheron  !!models.Brand
+         internal_name:         Vacheron
+         seo_name:              vacheron-constantin
+         display_name:          Vacheron Constantin
+         supported:             false
+         logo_url:              brands/vacheron.png
+
+    - &UlysseNardin  !!models.Brand
+         internal_name:         UlysseNardin
+         seo_name:              ulysse-nardin
+         display_name:          Ulysse Nardin
+         supported:             false
+         logo_url:              brands/ulyssenardin.png
+
+    - &JacquetDroz  !!models.Brand
+         internal_name:         JacquetDroz
+         seo_name:              jacquet-droz
+         display_name:          Jacquet Droz
+         supported:             false
+         logo_url:              brands/jacquetdroz.png
 
 presets:
     - &Rolex1 !!models.PresetQuotationForBrand

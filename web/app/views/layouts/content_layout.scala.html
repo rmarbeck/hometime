@@ -1,7 +1,7 @@
-@(page: String)(content: Html)
+@(page: String, navbarFocus: Integer=0)(content: Html)
 @import tags._
 @layouts.main(page) {
-    @layouts.fragments.navbar(0)
+    @layouts.fragments.navbar(navbarFocus)
       
     <div class="container container-@page">
         @baseline(page+".baseline")

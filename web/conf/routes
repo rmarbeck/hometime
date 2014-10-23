@@ -40,6 +40,10 @@ GET     /demande-de-devis/montre/reparation/revision/:brand    controllers.Appli
 GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
 
+# BuyRequest
+GET     /rechercher-une-montre      controllers.Application.buyRequest()
+POST    /rechercher-une-montre      controllers.Application.manageBuyRequest()
+
 # Contact
 GET     /nous-contacter             controllers.Application.contact(title: String ?= "")
 POST    /nous-contacter             controllers.Application.manageContact()
@@ -80,6 +84,10 @@ GET     /autour-de-hometime         controllers.Application.around()
 GET     /prise-en-charge-urgente-probleme-etancheite    controllers.Application.water()
 GET     /urgence-buee-sur-le-verre                      controllers.Default.redirect(to = "/prise-en-charge-rapide-probleme-etancheite")
 
+# Broking
+GET     /achat-de-montres-au-meilleur-prix    			controllers.Application.broking()
+GET     /courtier-en-montres-occasion         			controllers.Default.redirect(to = "/achat-de-montres-au-meilleur-prix")
+
 # Feedback
 GET     /avis-clients               controllers.Application.feedback()
 
@@ -90,6 +98,8 @@ GET     /logout                     									controllers.Application.logout()
 GET     /orStats                    									controllers.Admin.index()
 GET     /admin/order-request/all    									controllers.Admin.displayOrderRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/order-request/:id    									controllers.Admin.displayOrderRequest(id: Long)
+GET     /admin/buy-request/all    										controllers.Admin.displayBuyRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
+GET     /admin/buy-request/:id    										controllers.Admin.displayBuyRequest(id: Long)
 
 GET     /admin/customer/display/:id    									controllers.Customer.display(id: Long)
 GET     /admin/customer/all    											controllers.Customer.displayAll(p:Int ?= 0, s ?= "creationDate", o ?= "desc", f ?= "")
@@ -114,6 +124,7 @@ GET     /admin/order/edit/:id 											controllers.Order.edit(id: Long)
 POST    /admin/manage-order			 									controllers.Order.manage()
 
 GET     /admin/notify-order-request/:id     							controllers.Admin.displayMail(id: Long)
+GET     /admin/notify-buy-request/:id     								controllers.Admin.displayBuyRequestMail(id: Long)
 GET     /admin/service/all          									controllers.Admin.displayServiceTests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/service/:id          									controllers.Admin.displayServiceTest(id: Long)
 GET     /admin/quotation            									controllers.Admin.prepareQuotation()

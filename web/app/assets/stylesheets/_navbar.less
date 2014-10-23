@@ -25,6 +25,14 @@
     text-transform:capitalize;
 }
 
+.navbar-inverse .navbar-nav>li>a {
+	color: #bbb;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #bbb;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
@@ -49,6 +57,10 @@
   ul.navbar-right li:last-child {
     margin-right: 25px;
   }
+}
 
-
+@media (min-width: 768px) {
+  .navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+  }
 }

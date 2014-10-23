@@ -1,0 +1,122 @@
+@(currentPage: com.avaje.ebean.Page[BuyRequest], currentSortBy: String, currentOrder: String, currentFilter: String)
+@import tags._
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.Admin.displayBuyRequests(newPage, sortBy, order, currentFilter)
+    
+}
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String, hideSmall: Boolean = false) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"} @if(hideSmall) {hidden-xs}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@layouts.admin() {
+  <div class="container">
+
+    @admin.fragments.page_header(link(0, "requestDate").toString, "email or name", currentFilter)
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+    } else {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  @header("requestDate", "Date")
+                  @header("brand", "Marque")
+                  @header("model", "Modèle")
+                  @header("timeframe", "Urgence")
+                  @header("nameOfCustomer", "Nom", true)
+                  @header("email", "Email", true)
+                </tr>
+              </thead>
+              <tbody>
+              @for((request, index) <- currentPage.getList.zipWithIndex) {
+                <tr>
+                  <td>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.displayBuyRequest(request.id)"><span class="glyphicon glyphicon-pencil"></span></a>
+	                <a type="button" class="btn btn-default btn-xs" href="@routes.Admin.displayBuyRequestMail(request.id)"><span class="glyphicon glyphicon-envelope"></span></a>
+                  </td>
+                  <td>
+                    @display_date(request.requestDate, "dd/MM")
+                  </td>
+                  <td>
+                    @request.brand.display_name
+                  </td>
+                  <td>
+                    @takeif(request.model, 40)
+                  </td>
+                  <td>
+                    @Html(Messages("admin.buy.request.value.timeframe."+request.timeframe.toString.toLowerCase.replace('_','.')))
+                  </td>
+                  <td class="hidden-xs">
+                    @request.nameOfCustomer
+                  </td>
+                  <td class="hidden-xs">
+                    @request.email
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-5 col-md-offset-7 text-right">
+                    @if(currentPage.hasPrev) {
+                        <span class="prev">
+                            <a class="btn btn-default" href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
+                        </span>
+                    } else {
+                        <span class="prev disabled">
+                            <a class="btn btn-default" disabled="disabled">&larr; Previous</a>
+                        </span>
+                    }
+                    <span class="current">
+                        Displaying @currentPage.getDisplayXtoYofZ(" to "," of ")
+                    </span>
+                    @if(currentPage.hasNext) {
+                        <span class="next">
+                            <a class="btn btn-default"  href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
+                        </span>
+                    } else {
+                        <span class="next disabled">
+                            <a class="btn btn-default" disabled="disabled" >Next &rarr;</a>
+                        </span>
+                    }
+            </div>
+        </div>
+    }
+    </div>
+}

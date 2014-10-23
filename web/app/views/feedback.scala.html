@@ -1,7 +1,7 @@
 @(feedbacks: List[models.Feedback])
 @import tags._
 
-@layouts.content_layout("feedback") {
+@layouts.content_layout("feedback", 50) {
             @for(feedback <- feedbacks) {
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">

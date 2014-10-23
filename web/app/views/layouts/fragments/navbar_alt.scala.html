@@ -1,9 +1,7 @@
 @(index: Integer = 1)
 @import tags._
-    <div class="navbar-wrapper">
-      <div class="container">
 
-        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,14 +36,7 @@
                     <li class="hidden-xs"><a href="@routes.Application.around()">@Html(Messages("global.navbar.link.text.services.around"))</a></li>
                   </ul>
                 }
-                @li_activable(20, index, args = 'class -> "dropdown") {
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("global.navbar.link.text.watches")) <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="@routes.Application.watch_collection()">@Html(Messages("global.navbar.link.text.watch.collection"))</a></li>
-                    <li class="divider hidden-xs"></li>
-                    <li><a href="@routes.Application.broking()">@Html(Messages("global.navbar.link.text.broking"))</a></a></li>
-                  </ul>
-                }
+                @li_activable(20, index) {<a href="@routes.Application.watch_collection()">@Html(Messages("global.navbar.link.text.watch.collection"))</a>}
                 @li_activable(80, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("global.navbar.link.text.service")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -62,7 +53,4 @@
               </ul>
             </div>
           </div>
-        </div>
-
-      </div>
-    </div>
+        </nav>

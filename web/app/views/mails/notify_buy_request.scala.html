@@ -1,0 +1,47 @@
+@(request: BuyRequest)
+@import tags._
+
+@layouts.mail("Nouvelle recherche de montre") {
+	<div>
+		<h2>@Html(Messages("mails.buy.request.title.what"))</h2>
+		<ul>
+			<li>@Html(Messages("mails.buy.request.brand", request.brand.display_name))</li>
+			<li>@Html(Messages("mails.buy.request.model", request.model))</li>
+			<li>@Html(Messages("mails.buy.request.criteria", request.criteria))</li>
+		</ul>
+		<h2>@Html(Messages("mails.buy.request.title.who"))</h2>
+		<ul>
+			<li>@Html(Messages("mails.buy.request.customer.email", request.email))</li>
+			<li>@Html(Messages("mails.buy.request.living.location", request.city))</li>
+			<li>@Html(Messages("mails.buy.request.phone.number.given", if(request.phoneNumber==null || "".equals(request.phoneNumber)) {Html(Messages("mails.buy.request.phone.number.given.no"))} else {Html(Messages("mails.buy.request.phone.number.given.yes"))}))</li>
+			<li>@Html(Messages("mails.buy.request.request.date", display_date(request.requestDate, "dd/MM/yyyy HH:mm")))</li>
+		</ul>
+		<h2>@Html(Messages("mails.buy.request.title.additionnal.infos"))</h2>
+		<ul>
+			<li>@Html(Messages("mails.buy.request.timeframe", Html(Messages("mails.buy.request.timeframe.value."+request.timeframe.toString.toLowerCase.replace('_','.')))))</li>
+			<li>@Html(Messages("mails.buy.request.package", Html(Messages("mails.buy.request.package.value."+request.pack.toString.toLowerCase.replace('_','.')))))</li>
+			<li>@Html(Messages("mails.buy.request.story", Html(Messages("mails.buy.request.story.value."+request.story.toString.toLowerCase.replace('_','.')))))</li>
+			<li>@Html(Messages("mails.buy.request.expected.price", if(request.expectedPrice==null || "".equals(request.expectedPrice)) {Html(Messages("mails.buy.request.expected.price.none"))} else {request.expectedPrice}))</li>
+			<li>@Html(Messages("mails.buy.request.price.higher.bound", if(request.priceHigherBound==null || "".equals(request.priceHigherBound)) {Html(Messages("mails.buy.request.price.higher.bound.none"))} else {request.priceHigherBound}))</li>
+			<li>@Html(Messages("mails.buy.request.remarks", if(request.remark==null || "".equals(request.remark)) {Html(Messages("mails.buy.request.remarks.none"))} else {request.remark}))</li>
+		</ul>
+	</div>
+	<div>
+		<h2>@Html(Messages("mails.buy.request.actions"))</h2>
+		a_absolute(routes.Admin.displayOrderRequest(order.id).url, false) {@Html(Messages("mails.buy.request.action.display"))}
+		<br /><br />
+	</div>
+	
+	<div>
+		<h2>@Html(Messages("mails.buy.request.mails"))</h2>
+		@mailto(request.email, Messages("mails.notify.subject"), Messages("mails.notify.body"), Messages("mails.notify.label"))
+		<br /><br />
+		@mailto(request.email, Messages("mails.precisions.subject"), Messages("mails.precisions.body"), Messages("mails.precisions.label"))
+		<br /><br />
+		<a href="mailto:@request.email">Mail simple</a>
+		<br /><br />
+		@mailto(request.email, Messages("mails.feedback.subject"), Messages("mails.feedback.body"), Messages("mails.feedback.label"))
+		<br /><br />
+		@mailto(request.email, Messages("mails.outside.zone.subject"), Messages("mails.outside.zone.body"), Messages("mails.outside.zone.label"))
+	</div>
+}

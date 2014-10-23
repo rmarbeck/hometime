@@ -1,0 +1,114 @@
+@(message: String = "", request: Form[models.BuyRequest], brands: List[Brand], is_it_first_page: Boolean)
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@in_head = {
+    @if(flash.containsKey("success")) {
+        @fragments.send_buy_request_event_facebook()
+        
+        @fragments.send_buy_request_event_google_analytics()
+    }
+}
+@end_scripts = {}
+
+@defining("buy.request") { key =>
+
+@layouts.main(key, end_scripts, in_head) {
+    @layouts.fragments.navbar(20)
+    
+    <div class="container pure-content-call-block-ahead @key.toLowerCase.replace('.','-')">
+	  <div class="row visible-xs">
+        <div class="col-xs-12">
+        	@layouts.fragments.top_banner(false)
+        </div>
+      </div>
+      @baseline(key+".baseline", true)
+      @if(flash.containsKey("success")) {
+      <div class="row success">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="panel panel-success">
+              <div class="panel-heading">@Html(Messages(key+".success.panel.heading"))</div>
+              <div class="panel-body">
+                @Html(Messages(key+".success.panel.body"))
+              </div>
+            </div>
+        </div>
+      </div>
+      } else {
+      <div class="row explanation">
+          <div class="col-sm-10 col-sm-offset-1">
+            @if(is_it_first_page) {
+            <div class="head"><img class="img-responsive" src="/assets/images/buy/movement.jpg" alt="@Messages(key+".movement.alt")"></div>
+            <div class="quick-sumup explanation-body">@Html(Messages(key+".text.pre.explanation", routes.Application.index(), routes.Application.about()))</div>
+            }
+            <div class="explanation-body">@Html(Messages(key+".text.explanation"))</div>
+            <hr>
+          </div>
+      </div>
+      <div class="row content">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+		@helper.form(action = routes.Application.manageBuyRequest(), 'class -> "form-horizontal", 'role -> "form") {
+		
+				@simple_select(request("brand.id"), for (s <- brands) yield s.id.toString -> s.display_name, key+".form.VARIABLE.brand")
+				
+				@simple_input(request("model"), key+".form.VARIABLE.model")
+				
+				@simple_textarea(request("criteria"), key+".form.VARIABLE.criteria")
+								
+				@simple_radiogroup(request("timeframe"), for (s <- models.BuyRequest.Timeframe.values) yield s.toString -> Messages(key+".form.value.timeframe."+s.toString.toLowerCase.replace('_','.') ), key+".form.VARIABLE.timeframe")
+				
+				@simple_radiogroup(request("story"), for (s <- models.BuyRequest.WatchStory.values) yield s.toString -> Messages(key+".form.value.watch.story."+s.toString.toLowerCase.replace('_','.')	), key+".form.VARIABLE.story")
+				
+				@simple_radiogroup(request("pack"), for (s <- models.BuyRequest.Package.values) yield s.toString -> Messages(key+".form.value.package."+s.toString.toLowerCase.replace('_','.')	), key+".form.VARIABLE.package")
+
+				@simple_input(request("expectedPrice"), key+".form.VARIABLE.expected.price")
+				
+				@simple_input(request("priceHigherBound"), key+".form.VARIABLE.price.higher.bound")
+
+
+                <div class="form-group">
+                  <label for="catYou" class="col-xs-3 control-label">@Messages(key+".form.cat.label.you")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+						@simple_input(request("nameOfCustomer"), key+".form.VARIABLE.name.of.customer")
+		
+						@simple_input(request("email"), key+".form.VARIABLE.email")
+						
+						@simple_input(request("phoneNumber"), key+".form.VARIABLE.phone.number")
+						
+						@simple_input(request("city"), key+".form.VARIABLE.city")
+                    </div>
+                  </div>
+                </div>
+                
+                @simple_textarea(request("remark"), key+".form.VARIABLE.remark")
+
+                <div>
+                    @Html(Messages(key+".form.mandatory.mark.explanation"))
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-9 text-center @(key.toLowerCase.replace('.','-'))-action">
+                    <button type="submit" class="btn btn-primary">@Html(Messages(key+".action.submit"))</button>
+                  </div>
+                  <div class="col-sm-offset-2 col-sm-9 text-center @(key.toLowerCase.replace('.','-'))-separator">
+                    @Html(Messages(key+".action.alternative.separator"))
+                  </div>
+                  <div class="col-sm-offset-2 col-sm-9 text-center">
+                    <a class="btn btn-default" href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages(key+".action.alternative"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
+                  </div>
+                </div>
+            }
+        </div>
+      </div>
+      }
+      <div class="row disclaimer">
+          <div class="col-sm-10 col-sm-offset-1">
+            
+            <div class="disclaimer-body">@Html(Messages(key+".text.disclaimer"))</div>
+          </div>
+      </div>
+     <hr>
+    </div><!-- /.container -->
+  
+}
+}

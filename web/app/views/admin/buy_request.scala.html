@@ -1,0 +1,80 @@
+@(request: BuyRequest)
+@import tags._
+
+@layouts.admin() {
+  <div class="container">
+    <div class="row">
+        <div class="title"><h3>@request.nameOfCustomer le @display_date(request.requestDate, "dd/MM/yyyy")</h3></div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <colgroup>
+                <col class="col-xs-2">
+                <col class="col-xs-7">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Champ</th>
+                  <th>Valeur</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Date
+                  </td>
+                  <td>@display_date(request.requestDate, "dd/MM/yyyy HH:mm:ss")</td>
+                </tr>
+                <tr>
+                  <td>
+                    Marque de la montre
+                  </td>
+                  <td>@request.brand.display_name</td>
+                </tr>
+                <tr>
+                  <td>
+                    Modèle
+                  </td>
+                  <td>@request.model</td>
+                </tr>
+                <tr>
+                  <td>
+                    Client
+                  </td>
+                  <td>@request.nameOfCustomer</td>
+                </tr>
+                <tr>
+                  <td>
+                    Email
+                  </td>
+                  <td>@request.email</td>
+                </tr>
+                <tr>
+                  <td>
+                    Téléphone
+                  </td>
+                  <td>@request.phoneNumber</td>
+                </tr>
+                <tr>
+                  <td>
+                    Ville
+                  </td>
+                  <td>@request.city</td>
+                </tr>
+                <tr>
+                  <td>
+                    Remarques
+                  </td>
+                  <td>
+                    @if(request.remark ==null || request.remark.isEmpty()) {
+                        none
+                    } else {
+                        @request.remark
+                    }
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>   
+
+}

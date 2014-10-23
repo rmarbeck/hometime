@@ -26,10 +26,13 @@ global.navbar.link.text.services.faq=Questions fréquentes (FAQ)
 global.navbar.link.text.services.around=Bons plans et bonnes adresses
 global.navbar.link.text.services.prices=Les tarifs
 global.navbar.link.text.services.feedback=Avis clients <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-global.navbar.link.text.watch.collection=Les montres
+global.navbar.link.text.watches=Essai et achat de montres
+global.navbar.link.text.watch.collection=Les montres disponibles à l''essai
+global.navbar.link.text.buy.request=Nous cherchons votre prochaine montre
 global.navbar.link.text.who.are.we=Mentions légales
 global.navbar.link.text.about=Qui&nbsp;sommes&nbsp;nous&nbsp;?
 global.navbar.link.text.water.content=Ma montre a pris l''eau
+global.navbar.link.text.broking=Trouver et acheter une montre
 #   global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Demander un devis
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
@@ -60,6 +63,7 @@ global.text.service.service.test=Quand réviser ma montre&nbsp;?
 global.text.service.service.test.title=Quand faire réviser sa montre ?
 global.text.services.service=Entretien & révisions
 global.text.services.service.title=Révision de montres et réparation de montres
+global.text.services.broking=Recherche et vente de montres
 global.text.service.around=Bons plans
 global.text.service.around.title=Bons plans et bonnes adresses
 global.text.services.loan=Essai de montres
@@ -113,6 +117,10 @@ home.caption.2.alt.call.to.action=Découvrez nos services !
 home.caption.3.head=Ne vous déplacez plus&nbsp;!
 home.caption.3.body=Hometime intervient à domicile et confie votre montre au <b>service après vente officiel</b> ou à l''un des <b>meilleurs horlogers de Paris</b>, c''est vous qui choisissez.
 home.caption.3.call.to.action=Demandez un devis !
+
+home.caption.4.head=Trouvez votre prochaine montre&nbsp;!
+home.caption.4.body=Hometime vous propose de trouver votre prochaine montre. Neuve ou d''occasion nous recherchons pour vous les plus belles pièces, au <b>meilleur prix</b> en <b>garanties 2 ans</b>.
+home.caption.4.call.to.action=Cherchez une montre&nbsp;!
 
 home.baseline=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
 home.baseline.alt=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
@@ -272,6 +280,46 @@ water.content.2.body=<div class="sub-title"></div>Le maître mot lorsque de l''e
 water.2.to.action=Demander une intervention en urgence
 water.1.alt=Monaco embuée
 water.2.alt=Monaco ouverte
+
+# Borking page
+broking.html.title=Hometime, courtier en montres de luxe
+broking.html.description=Nous trouvons pour vous les montres neuves ou d''occasion au meilleur prix, en vous offrant nos services à domicile et une garantie de 2 ans
+broking.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france
+broking.content.1.head=Nous cherchons <span class="text-muted">votre prochaine montre !</span>
+broking.content.1.body=<div class="sub-title"></div>Vous cherchez une montre en particulier et vous souhaitez <b>la payer son juste prix</b>. Qu''il s''agisse d''une montre <b>neuve</b>, une <b>occasion&nbsp;récente</b> ou une <b>montre&nbsp;vintage</b>, nous sommes là pour la trouver pour vous.\
+ <br /><br />Toutes les montres que nous vendons sont :\
+ <ul><li>certifiées 100% authentiques</li>\
+ 	 <li>garanties au moins 2 ans</li>\
+ 	 <li>livrées et entretenues à domicile sur Paris et sa région</b>\
+ </ul>\
+ <br />Nous avons aussi des solutions pour la France entière.\
+ <br /><br />Décrivez-nous la montre que vous recherchez, nous vous ferons des propositions très rapidement&nbsp;!
+broking.content.2.head=Vous souhaitez faire un cadeau ou vous avez besoin de conseils ?
+broking.content.2.body=<div class="sub-title"></div>Si vous n'êtes pas sûr du modèle que vous recherchez, que vous avez plutôt en tête une <b>forme&nbsp;de&nbsp;boitier</b>, une <b>couleur</b> dominante, une <b>complication&nbsp;horlogère</b>... nous vous guidons en étudiant ensemble ce qui vous plait et ce qui ne vous plaît pas.\
+ <br /><br />Si vous voulez acheter une montre pour l''offrir à un proche dont vous connaissez les goûts ou la collection de montres.\
+ <br /><br />Alors, nous sommes là pour vous guider, nous définissons ensemble :\
+ <ul><li>le type de montres qui pourrait correspondre à vos critères et à votre budget,</li>\
+ 	<li>le temps maximum de la recherche, </li>\
+ </ul>\
+ ...et la recherche peut alors commencer.
+broking.content.3.head=Pour tout de suite ou pour plus tard ? Avec ou sans boite ?
+broking.content.3.body=<div class="sub-title"></div>Pour nous adapter à vos attentes, nous vous proposons de choisir différentes options :\
+ <ul><li>Avec ou sans boite d''origine\
+ 		<ul><li>sans boite les montres sont souvent un peu moins chères</li></ul>\
+ 	 </li>\
+ 	 <li>Avec ou sans les papiers d''origine\
+ 	 	<ul><li>les papiers d''origine donnent de la valeur à la montre</li>\
+ 	 	<li>pour certaines montres anciennes, il peut être difficile de les trouver avec leurs papiers d''époque</li></ul>\
+ 	 </li>\
+ 	 <li>D''une montre neuve, jusqu''à une montre à restaurer intégralement</li>\
+ 	 <li>Pour un besoin immédiat ou lorsque la bonne opportunité se présente...</li>\
+ </ul>
+broking.1.to.action=Rechercher une montre
+broking.2.to.action=Besoin de conseils ?
+broking.1.alt=Submariner 16610
+broking.2.alt=Jaeger LeCoultre Master Compressor Memovox
+broking.3.alt=Jaeger LeCoultre Reverso Grande Date
+broking.action.contact.title=J''ai besoin de conseils pour acheter une montre
 
 
 # Watch collection page
@@ -592,6 +640,63 @@ order.action.submit=Envoyer la demande
 order.action.alternative.separator=ou bien
 order.action.alternative=Etre rappelé
 order.movement.alt=Réparation mouvement de montre
+
+#BuyRequest
+buy.request.html.title=Recherche d''une montre neuve ou d''occasion
+buy.request.html.description=Formulaire de recherche d''une montre neuve ou d''occasion. Nous vous conseillons et cherchons pour vous des montres et les garantissons pendant 2 ans.
+buy.request.html.keywords=recherche montre occasion, recherche montre occasion, garantie 2 ans, en france, expertise, authentique, full set, paris, yvelines, hauts de seine
+buy.request.baseline=Recherche d''une montre
+buy.request.text.explanation=Vous pouvez renseigner les informations ci-dessous pour décrire la montre que vous recherchez. Nous vous proposerons alors des montres <b>certifiées authentiques et garanties 2 ans par Hometime</b>. Les montres sont livrées à domicile sur Paris et sa région, et pas colis sécurisé partout en France.\
+ <br /><br /> Si vous avez besoin de conseils, nous sommes là pour vous guider. N''hésitez pas à nous appeler&nbsp;!
+buy.request.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est une conciergerie horlogère de luxe proposant tous les services que les amateurs de <b>montres de grandes marques</b> peuvent attendre\
+ : entretien et ventes, livraison à domicile en mains propres ou par envoi sécurisé. Vous souhaitez acheter une montre <b>au meilleur prix</b> et <b>avec les meilleures garanties</b>, <b>Hometime</b> est là pour vous. <a href="{1}"><i>Qui&nbsp;sommes&#8209;nous&nbsp;?</i></a>
+buy.request.form.default.brand=Sélectionnez la marque recherchée
+buy.request.form.label.brand=Marque
+buy.request.form.placeholder.brand=Rolex
+buy.request.form.label.model=Modèle recherché
+buy.request.form.placeholder.model=Submariner|Monaco|Portugaise
+buy.request.form.label.criteria=<abbr class="" title="Les caractéristiques que vous recherchez absolument" >Critères forts</abbr>
+buy.request.form.placeholder.criteria=cadran noir|boucle déployante
+buy.request.form.label.expected.price=<abbr class="" title="Le prix idéal" >Prix souhaité</abbr>
+buy.request.form.placeholder.expected.price=2000
+buy.request.form.label.price.higher.bound=<abbr class="" title="Le prix à ne surtout pas dépasser" >Prix maximum</abbr>
+buy.request.form.placeholder.price.higher.bound=2500
+buy.request.form.label.timeframe=* Horizon temporel
+buy.request.form.placeholder.timeframe=Quand
+buy.request.form.value.timeframe.emergency=Recherche urgente
+buy.request.form.value.timeframe.within.month=Dans le mois
+buy.request.form.value.timeframe.within.3.months=A moyen terme
+buy.request.form.value.timeframe.opportunity=Quand l''occasion se présente
+buy.request.form.label.story=* Etat
+buy.request.form.placeholder.story=Neuf|Occassion
+buy.request.form.value.watch.story.new.only=Montre neuve absolument
+buy.request.form.value.watch.story.worn.only=Montre d''occasion seulement
+buy.request.form.value.watch.story.both=Montre neuve ou d''occasion
+buy.request.form.label.package=* Accessoires disponibles
+buy.request.form.value.package.full.set.only=Boite et papiers absolument <abbr class="" title="Vous cherchez uniquement une montre avec sa boite et ses papiers d''origine" >(fullset)</abbr>
+buy.request.form.value.package.watch.only=Seulement la montre
+buy.request.form.value.package.both=Peu importe
+buy.request.form.placeholder.package=
+buy.request.form.cat.label.you=Vous
+buy.request.form.label.name.of.customer=* Vos nom et prénom
+buy.request.form.placeholder.name.of.customer=Prénom Nom
+buy.request.form.label.email=* Votre email
+buy.request.form.placeholder.email=exemple@nomdedomaine.fr
+buy.request.form.label.phone.number=Votre numéro de téléphone
+buy.request.form.placeholder.phone.number=06xxxxxx
+buy.request.form.label.city=* Votre lieu de résidence
+buy.request.form.placeholder.city=Ville
+buy.request.form.mandatory.mark.explanation=* Champ obligatoire
+buy.request.success.panel.heading=Recherche prise en compte
+buy.request.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre demande. Nous vous recontactons très vite pour vous faire des propositions précises. <br /><br />A très bientôt.
+buy.request.action.submit=Envoyer la demande
+buy.request.action.alternative.separator=ou bien
+buy.request.action.alternative=Etre rappelé
+buy.request.movement.alt=Achat de montre
+buy.request.text.disclaimer=Hometime agit comme courtier en montres neuves ou d''occasion. Nous sélectionnons les meilleurs bijoutiers et vous proposons nos services de conseils pour vous guider dans vos choix. Les montres que nous vous proposons sont systématiquement expertisées et nous vous assurons de leur authenticité (un certificat est remis lors de la vente). De plus, nous effectuons des tests de marche et d''étanchéité et vous conseillons sur l''utilisation au quotidien de votre montre. Si vous rencontrez le moindre problème, Hometime assure son service après vente dans toute la France, vous avez un interlocuteur unique et bien réel.
+ 
+buy.request.form.label.remark=Remarques
+buy.request.form.placeholder.remark=...
 
 
 # Customization
@@ -1093,6 +1198,8 @@ site.plan.contact.title=Prise de contact
 site.plan.call.request.title=Rappel téléphonique
 site.plan.feedback.title=Avis clients
 site.plan.customization.title=Personnalisation de montres
+site.plan.buy.request.title=Demande de recherche de montres neuves ou d''occasion
+site.plan.broking.title=Recherche de montres neuves ou d''occasion
 
 
 
@@ -1184,6 +1291,7 @@ admin.navbar.link.text.customer.watches=Montres
 admin.navbar.link.text.order.requests=Demandes de devis
 admin.navbar.link.text.service.tests=Evaluations personnalisées
 admin.navbar.link.text.prepare.quotation=Générer devis
+admin.navbar.link.text.buy.requests=Recherches de montres
 admin.navbar.link.text.logout=Logout
 
 # Quotation
@@ -1317,6 +1425,38 @@ mails.order.watch.chosen=Montre choisie pour un essai : <b>{0}</b>
 mails.order.watch.chosen.none=aucune
 mails.order.remarks=Remarques : <b>{0}</b>
 mails.order.remarks.none=aucune
+
+mails.buy.request.title.what=Demande
+mails.buy.request.title.who=Client
+mails.buy.request.title.additionnal.infos=Infos complémentaires
+mails.buy.request.action.display=Voir la demande
+mails.buy.request.actions=Actions
+mails.buy.request.mails=Envois d''e-mails
+mails.buy.request.type.of.service= Type d''entretien : <b>{0}</b>
+mails.buy.request.brand=Marque : <b>{0}</b>
+mails.buy.request.model=Modèle de la montre : <b>{0}</b>
+mails.buy.request.criteria=Critères : <b>{0}</b>
+mails.buy.request.customer.email=Son email : <b>{0}</b>
+mails.buy.request.living.location=Il habite à <b>{0}</b>
+mails.buy.request.phone.number.given=A-t-il indiqué son numéro : <b>{0}</b>
+mails.buy.request.phone.number.given.yes=oui
+mails.buy.request.phone.number.given.no=non
+mails.buy.request.request.date=Date de la demande : <b>{0}</b>
+mails.buy.request.remarks=Remarques : <b>{0}</b>
+mails.buy.request.remarks.none=aucune
+mails.buy.request.timeframe=Niveau d''urgence : {0}
+mails.buy.request.timeframe.value.emergency=Recherche urgente
+mails.buy.request.timeframe.value.within.month=Dans le mois
+mails.buy.request.timeframe.value.within.3.months=A moyen terme
+mails.buy.request.timeframe.value.opportunity=Quand l''occasion se présente
+mails.buy.request.package=Accessoires inclus : {0}
+mails.buy.request.package.value.full.set.only=Fullset
+mails.buy.request.package.value.watch.only=Montre seulement
+mails.buy.request.package.value.both=Peu importe
+mails.buy.request.story=Ancienneté de la montre : {0}
+mails.buy.request.story.value.new.only=Neuf
+mails.buy.request.story.value.worn.only=Occasion
+mails.buy.request.story.value.both=Neuf ou occasion
 
 mails.notify.label=Accusé de réception simple
 mails.notify.subject=Demande de devis Hometime
@@ -1636,3 +1776,14 @@ admin.order.value.status.feedback.asked.140=Demande d''avis effectuée
 admin.order.value.status.feedback.received.150=Avis client reçu
 admin.order.value.status.order.closed.200=Prestation terminée
 admin.order.value.status.order.canceled.300=Prestation annulée
+
+admin.buy.request.value.timeframe.emergency=Urgent
+admin.buy.request.value.timeframe.within.month=1 mois
+admin.buy.request.value.timeframe.within.3.months=3 mois
+admin.buy.request.value.timeframe.opportunity=Quand dispo
+admin.buy.request.value.package.full.set.only=Fullset
+admin.buy.request.value.package.watch.only=Montre seule
+admin.buy.request.value.package.both=Peu importe
+admin.buy.request.value.watch.story.new.only=Neuve
+admin.buy.request.value.watch.story.worn.only=Occasion
+admin.buy.request.value.watch.story.both=Neuve ou occasion

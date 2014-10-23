@@ -17,6 +17,28 @@ create table brand (
   constraint pk_brand primary key (id))
 ;
 
+create table buy_request (
+  id                        bigint not null,
+  request_date              timestamp,
+  watch_story               varchar(40),
+  watch_package             varchar(40),
+  request_timeframe         varchar(40),
+  brand_id                  bigint,
+  model                     varchar(1000),
+  criteria                  varchar(10000),
+  remark                    varchar(10000),
+  expected_price            varchar(255),
+  price_higher_bound        varchar(255),
+  name_of_customer          varchar(255),
+  email                     varchar(255),
+  phone_number              varchar(255),
+  city                      varchar(255),
+  constraint ck_buy_request_watch_story check (watch_story in ('NEW_ONLY','WORN_ONLY','BOTH')),
+  constraint ck_buy_request_watch_package check (watch_package in ('FULL_SET_ONLY','WATCH_ONLY','BOTH')),
+  constraint ck_buy_request_request_timeframe check (request_timeframe in ('EMERGENCY','WITHIN_MONTH','WITHIN_3_MONTHS','OPPORTUNITY')),
+  constraint pk_buy_request primary key (id))
+;
+
 create table contact_request (
   id                        bigint not null,
   title                     varchar(255),
@@ -236,6 +258,8 @@ create table watch (
 
 create sequence brand_seq;
 
+create sequence buy_request_seq;
+
 create sequence contact_request_seq;
 
 create sequence customer_seq;
@@ -260,20 +284,22 @@ create sequence user_table_seq;
 
 create sequence watch_seq;
 
-alter table customer_watch add constraint fk_customer_watch_customer_1 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
-create index ix_customer_watch_customer_1 on customer_watch (customer_id);
-alter table order_table add constraint fk_order_table_request_2 foreign key (request_id) references order_request (id) on delete restrict on update restrict;
-create index ix_order_table_request_2 on order_table (request_id);
-alter table order_table add constraint fk_order_table_customer_3 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
-create index ix_order_table_customer_3 on order_table (customer_id);
-alter table order_request add constraint fk_order_request_brand_4 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_order_request_brand_4 on order_request (brand_id);
-alter table order_request add constraint fk_order_request_watchChosen_5 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
-create index ix_order_request_watchChosen_5 on order_request (watch_chosen_id);
-alter table picture add constraint fk_picture_watch_6 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
-create index ix_picture_watch_6 on picture (watch_id);
-alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand__7 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_preset_quotation_for_brand__7 on preset_quotation_for_brand (brand_id);
+alter table buy_request add constraint fk_buy_request_brand_1 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_buy_request_brand_1 on buy_request (brand_id);
+alter table customer_watch add constraint fk_customer_watch_customer_2 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_customer_watch_customer_2 on customer_watch (customer_id);
+alter table order_table add constraint fk_order_table_request_3 foreign key (request_id) references order_request (id) on delete restrict on update restrict;
+create index ix_order_table_request_3 on order_table (request_id);
+alter table order_table add constraint fk_order_table_customer_4 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_order_table_customer_4 on order_table (customer_id);
+alter table order_request add constraint fk_order_request_brand_5 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_order_request_brand_5 on order_request (brand_id);
+alter table order_request add constraint fk_order_request_watchChosen_6 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
+create index ix_order_request_watchChosen_6 on order_request (watch_chosen_id);
+alter table picture add constraint fk_picture_watch_7 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
+create index ix_picture_watch_7 on picture (watch_id);
+alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand__8 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_preset_quotation_for_brand__8 on preset_quotation_for_brand (brand_id);
 
 
 
@@ -282,6 +308,8 @@ create index ix_preset_quotation_for_brand__7 on preset_quotation_for_brand (bra
 SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists brand;
+
+drop table if exists buy_request;
 
 drop table if exists contact_request;
 
@@ -310,6 +338,8 @@ drop table if exists watch;
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists brand_seq;
+
+drop sequence if exists buy_request_seq;
 
 drop sequence if exists contact_request_seq;
 

@@ -12,6 +12,7 @@ import fr.hometime.utils.ActionHelper;
 import fr.hometime.utils.GoogleAnalyticsHelper;
 import fr.hometime.utils.ServiceTestHelper;
 import models.Brand;
+import models.BuyRequest;
 import models.ContactRequest;
 import models.OrderRequest;
 import models.Picture;
@@ -29,10 +30,13 @@ import play.mvc.*;
 import views.html.*;
 import views.html.admin.login;
 import views.html.mails.notify_order;
+import views.html.mails.notify_buy_request;
 
 @With(SessionWatcher.class)
 public class Application extends Controller {
 	
+	private static Form form2;
+
 	public static class LoginForm {
 		@Constraints.Email
 		@Constraints.Required
@@ -301,11 +305,24 @@ public class Application extends Controller {
     public static Result water() {
         return ok(water.render(""));
     }
+    
+    public static Result broking() {
+        return ok(broking.render(""));
+    }
 
     public static Result order(String brandName) {
     	try {
     		
 	        return ok(order.render("", fillFormWithQueryParams(brandName), getSupportedBrands(), getDisplayableWatches(), SessionWatcher.isItFirstPageOfSession(session())));
+    	} catch (Exception e) {
+    		return internalServerError();
+    	}
+    }
+    
+    public static Result buyRequest() {
+    	try {
+    		
+	        return ok(buy_request.render("", Form.form(BuyRequest.class), getAllBrands(), SessionWatcher.isItFirstPageOfSession(session())));
     	} catch (Exception e) {
     		return internalServerError();
     	}
@@ -374,16 +391,7 @@ public class Application extends Controller {
 	public static Result manageOrder() {
 		Form<OrderForm> orderForm = Form.form(OrderForm.class).bindFromRequest();
 		if(orderForm.hasErrors()) {
-			String errorMsg = "";
-            java.util.Map<String, List<play.data.validation.ValidationError>> errorsAll = orderForm.errors();
-            for (String field : errorsAll.keySet()) {
-                errorMsg += field + " ";
-                for (ValidationError error : errorsAll.get(field)) {
-                	
-                    errorMsg += error.message() + "["+orderForm.field(field).value()+"] , ";
-                }
-            }
-			Logger.warn("Error in order : "+errorMsg);
+			logFormErrors(orderForm);
 			return badRequest(order.render("", orderForm, getSupportedBrands(), getDisplayableWatches(), SessionWatcher.isItFirstPageOfSession(session())));
 		} else {
 			OrderRequest orderRequest = orderForm.get().getRequest();
@@ -400,6 +408,30 @@ public class Application extends Controller {
 					);
 		}
 	}
+	
+	public static Result manageBuyRequest() {
+		Form<BuyRequest> requestForm = Form.form(BuyRequest.class).bindFromRequest();
+		if(requestForm.hasErrors()) {
+			logFormErrors(requestForm);
+			return badRequest(buy_request.render("", requestForm, getAllBrands(), SessionWatcher.isItFirstPageOfSession(session())));
+		} else {
+			BuyRequest request = requestForm.get();
+			
+			request.save();
+			
+			ActionHelper.tryToSendHtmlEmail("Nouvelle recherche de montre", notify_buy_request.render(request).body().toString());
+			
+			flash("success", "OK");
+			
+			GoogleAnalyticsHelper.pushEvent("buy_request", "sent", ctx());
+			
+			return redirect(
+					routes.Application.buyRequest()
+					);
+		}
+	}
+	
+	
 	
 	public static Result manageContact() {
 		Form<ContactForm> contactForm = Form.form(ContactForm.class).bindFromRequest();
@@ -491,7 +523,11 @@ public class Application extends Controller {
     }
 
     private static List<Brand> getSupportedBrands() {
-    	return Brand.findAllByAscId();
+    	return Brand.findAllSupportedByAscId();
+    }
+    
+    private static List<Brand> getAllBrands() {
+    	return Brand.findAllByAscName();
     }
 
     private static List<Watch> getDisplayableWatchesExceptOne(Watch currentWatch) {
@@ -587,6 +623,19 @@ public class Application extends Controller {
         }
 
         return status(wsResponse.getStatus());
+    }
+    
+    private static <T> void logFormErrors(Form<T> form) {
+		String errorMsg = "";
+        java.util.Map<String, List<play.data.validation.ValidationError>> errorsAll = form.errors();
+        for (String field : errorsAll.keySet()) {
+            errorMsg += field + " ";
+            for (ValidationError error : errorsAll.get(field)) {
+            	
+                errorMsg += error.message() + "["+form.field(field).value()+"] , ";
+            }
+        }
+		Logger.warn("Error in form : "+errorMsg);
     }
 
     public static boolean forwardedFromHead() {

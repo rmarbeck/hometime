@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Brand;
+import models.BuyRequest;
 import models.Order;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
@@ -24,12 +25,15 @@ import play.mvc.Security;
 import play.mvc.With;
 import views.html.admin.order_request;
 import views.html.admin.order_requests;
+import views.html.admin.buy_request;
+import views.html.admin.buy_requests;
 import views.html.admin.orders;
 import views.html.admin.quotation;
 import views.html.admin.quotation_form;
 import views.html.admin.service_test;
 import views.html.admin.service_tests;
 import views.html.mails.notify_order;
+import views.html.mails.notify_buy_request;
 import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.ServiceTestHelper;
 
@@ -237,12 +241,37 @@ public class Admin extends Controller {
 		return LIST_ORDERS;
     }
 	
+	
 	public static Result displayMail(long id) {
 		if (orderIsValid(id))
 			return ok(notify_order.render(OrderRequest.findById(id)));
 		flash("error", "Unknown id");
 		return LIST_ORDERS;
     }
+	
+	public static Result LIST_BUY_REQUESTS = redirect(
+			routes.Admin.displayBuyRequests(0, "requestDate", "desc", "")
+			);
+	
+	public static Result displayBuyRequests(int page, String sortBy, String order, String filter) {
+        return ok(buy_requests.render(BuyRequest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
+    }
+	
+	public static Result displayBuyRequest(long id) {
+		if (buyRequestIsValid(id))
+			return ok(buy_request.render(BuyRequest.findById(id)));
+		flash("error", "Unknown id");
+		return LIST_BUY_REQUESTS;
+    }
+	
+	
+	public static Result displayBuyRequestMail(long id) {
+		if (buyRequestIsValid(id))
+			return ok(notify_buy_request.render(BuyRequest.findById(id)));
+		flash("error", "Unknown id");
+		return LIST_BUY_REQUESTS;
+    }
+
 	
 	public static Result LIST_SERVICE_TESTS = redirect(
 			routes.Admin.displayServiceTests(0, "requestDate", "desc", "")
@@ -342,6 +371,11 @@ public class Admin extends Controller {
 	private static boolean orderIsValid(long id) {
 		OrderRequest orderFound = OrderRequest.findById(id);
 		return orderFound != null;
+	}
+	
+	private static boolean buyRequestIsValid(long id) {
+		BuyRequest requestFound = BuyRequest.findById(id);
+		return requestFound != null;
 	}
 	
 	private static boolean presetExists(long id) {
