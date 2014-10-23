@@ -24,7 +24,7 @@
             <div class="carousel-caption">
               <div class="caption-title"><h2>@Html(Messages("home.caption.1.head"))</h2></div>
               <div class="caption-body hidden-xs"><h3>@Html(Messages("home.caption.1.body"))</h3></div>
-              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.service()" role="button">@Messages("home.caption.1.call.to.action")</a></div>
+              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.service()" role="button">@Html(Messages("home.caption.1.call.to.action"))</a></div>
             </div>
           </div>
         </div>
@@ -35,11 +35,11 @@
               @if(variant == "alt") {
               <div class="caption-title"><h2>@Html(Messages("home.caption.2.alt.head"))</h2></div>
               <div class="caption-body hidden-xs"><h3>@Html(Messages("home.caption.2.alt.body"))</h3></div>
-              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.offer()" role="button">@Messages("home.caption.2.alt.call.to.action")</a></div>
+              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.offer()" role="button">@Html(Messages("home.caption.2.alt.call.to.action"))</a></div>
               } else {
               <div class="caption-title"><h2>@Html(Messages("home.caption.2.head"))</h2></div>
               <div class="caption-body hidden-xs"><h3>@Html(Messages("home.caption.2.body"))</h3></div>
-              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.watch_collection()" role="button">@Messages("home.caption.2.call.to.action")</a></div>
+              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.watch_collection()" role="button">@Html(Messages("home.caption.2.call.to.action"))</a></div>
               }
             </div>
           </div>
@@ -50,7 +50,7 @@
             <div class="carousel-caption">
               <div class="caption-title"><h2>@Html(Messages("home.caption.3.head"))</h2></div>
               <div class="caption-body hidden-xs"><h3>@Html(Messages("home.caption.3.body"))</h3></div>
-              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.order(null)" role="button">@Messages("home.caption.3.call.to.action")</a></div>
+              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.order(null)" role="button">@Html(Messages("home.caption.3.call.to.action"))</a></div>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="carousel-caption">
               <div class="caption-title"><h2>@Html(Messages("home.caption.4.head"))</h2></div>
               <div class="caption-body hidden-xs"><h3>@Html(Messages("home.caption.4.body"))</h3></div>
-              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.buyRequest()" role="button">@Messages("home.caption.4.call.to.action")</a></div>
+              <div class="caption-body"><a class="btn btn-primary" href="@routes.Application.buyRequest()" role="button">@Html(Messages("home.caption.4.call.to.action"))</a></div>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
           <div class="promise-head"><h2>@Html(Messages("home.promise.1.head"))</h2></div>
           <img class="head visible-xs" src="@routes.Assets.at("images/home/to-serve.png")" alt="@Messages("home.promise.1.alt")">
           <div class="promise-body"><h3>@Html(Messages("home.promise.1.body"))</h3></div>
-          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.service()" title="@Messages("home.promise.1.call.to.action.title")" role="button">@Messages("home.promise.1.call.to.action")</a></div>
+          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.service()" title="@Messages("home.promise.1.call.to.action.title")" role="button">@Html(Messages("home.promise.1.call.to.action"))</a></div>
         </div>
         @if(variant == "alt") {
         <div class="col-sm-4 promise">
@@ -99,7 +99,7 @@
           <div class="promise-head"><h2>@Html(Messages("home.promise.2.alt.head"))</h2></div>
           <img class="img-circle head visible-xs" src="@routes.Assets.at("images/home/to-loan.jpg")" alt="@Messages("home.promise.2.alt.alt")">
           <div class="promise-body"><h3>@Html(Messages("home.promise.2.alt.body"))</h3></div>
-          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.offer()" title="@Messages("home.promise.2.alt.call.to.action.title")" role="button">@Messages("home.promise.2.alt.call.to.action")</a></div>
+          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.offer()" title="@Messages("home.promise.2.alt.call.to.action.title")" role="button">@Html(Messages("home.promise.2.alt.call.to.action"))</a></div>
         </div>
         } else {
         <div class="col-sm-4 promise">
@@ -107,7 +107,7 @@
           <div class="promise-head"><h2>@Html(Messages("home.promise.2.head"))</h2></div>
           <img class="img-circle head visible-xs" src="@routes.Assets.at("images/home/to-loan.jpg")" alt="@Messages("home.promise.2.alt")">
           <div class="promise-body"><h3>@Html(Messages("home.promise.2.body"))</h3></div>
-          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.watch_collection()" title="@Messages("home.promise.2.call.to.action.title")" role="button">@Messages("home.promise.2.call.to.action")</a></div>
+          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.watch_collection()" title="@Messages("home.promise.2.call.to.action.title")" role="button">@Html(Messages("home.promise.2.call.to.action"))</a></div>
         </div>
         }
         <div class="col-sm-4 promise">
@@ -116,28 +116,28 @@
           <img class="img-circle head visible-xs" src="@routes.Assets.at("images/home/at-home.png")" alt="@Messages("home.promise.3.alt")">
           <div class="promise-body"><h3>@Html(Messages("home.promise.3.body"))</h3></div>
           @if(variant == "alt") {
-          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.offer()#home" title="@Messages("home.promise.3.alt.call.to.action.title")" role="button">@Messages("home.promise.3.alt.call.to.action")</a></div>
+          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.offer()#home" title="@Messages("home.promise.3.alt.call.to.action.title")" role="button">@Html(Messages("home.promise.3.alt.call.to.action"))</a></div>
           } else {
-          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.offer()" title="@Messages("home.promise.3.call.to.action.title")" role="button">@Messages("home.promise.3.call.to.action")</a></div>
+          <div class="promise-action visible-xs"><a class="btn btn-default" href="@routes.Application.offer()" title="@Messages("home.promise.3.call.to.action.title")" role="button">@Html(Messages("home.promise.3.call.to.action"))</a></div>
           }
         </div>
       </div>
       <div class="row hidden-xs actions">
         <div class="col-sm-4 promise">
-          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.service()"  title="@Messages("home.promise.1.call.to.action.title")" role="button">@Messages("home.promise.1.call.to.action")</a></div>
+          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.service()"  title="@Messages("home.promise.1.call.to.action.title")" role="button">@Html(Messages("home.promise.1.call.to.action"))</a></div>
         </div>
         <div class="col-sm-4 promise">
           @if(variant == "alt") {
-          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.offer()" title="@Messages("home.promise.2.alt.call.to.action.title")" role="button">@Messages("home.promise.2.alt.call.to.action")</a></div>
+          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.offer()" title="@Messages("home.promise.2.alt.call.to.action.title")" role="button">@Html(Messages("home.promise.2.alt.call.to.action"))</a></div>
           } else {
-          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.watch_collection()"  title="@Messages("home.promise.2.call.to.action.title")" role="button">@Messages("home.promise.2.call.to.action")</a></div>
+          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.watch_collection()"  title="@Messages("home.promise.2.call.to.action.title")" role="button">@Html(Messages("home.promise.2.call.to.action"))</a></div>
           }
         </div>
         <div class="col-sm-4 promise">
           @if(variant == "alt") {
-          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.offer()#home" title="@Messages("home.promise.3.alt.call.to.action.title")" role="button">@Messages("home.promise.3.alt.call.to.action")</a></div>
+          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.offer()#home" title="@Messages("home.promise.3.alt.call.to.action.title")" role="button">@Html(Messages("home.promise.3.alt.call.to.action"))</a></div>
           } else {
-          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.offer()" title="@Messages("home.promise.3.call.to.action.title")" role="button">@Messages("home.promise.3.call.to.action")</a></div>
+          <div class="promise-action"><a class="btn btn-default" href="@routes.Application.offer()" title="@Messages("home.promise.3.call.to.action.title")" role="button">@Html(Messages("home.promise.3.call.to.action"))</a></div>
           }
         </div>
       </div>
