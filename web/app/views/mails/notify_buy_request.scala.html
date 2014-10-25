@@ -28,20 +28,16 @@
 	</div>
 	<div>
 		<h2>@Html(Messages("mails.buy.request.actions"))</h2>
-		a_absolute(routes.Admin.displayOrderRequest(order.id).url, false) {@Html(Messages("mails.buy.request.action.display"))}
+		@a_absolute(routes.Admin.displayBuyRequest(request.id).url, false) {@Html(Messages("mails.buy.request.action.display"))}
 		<br /><br />
 	</div>
 	
 	<div>
 		<h2>@Html(Messages("mails.buy.request.mails"))</h2>
-		@mailto(request.email, Messages("mails.notify.subject"), Messages("mails.notify.body"), Messages("mails.notify.label"))
+		@mailto(request.email, Messages("mails.notify.buy.request.subject"), Messages("mails.notify.buy.request.body"), Messages("mails.notify.buy.request.label"))
 		<br /><br />
-		@mailto(request.email, Messages("mails.precisions.subject"), Messages("mails.precisions.body"), Messages("mails.precisions.label"))
+		@mailto(request.email, Messages("mails.precisions.buy.request.subject"), Messages("mails.precisions.buy.request.body"), Messages("mails.precisions.buy.request.label"))
 		<br /><br />
 		<a href="mailto:@request.email">Mail simple</a>
-		<br /><br />
-		@mailto(request.email, Messages("mails.feedback.subject"), Messages("mails.feedback.body"), Messages("mails.feedback.label"))
-		<br /><br />
-		@mailto(request.email, Messages("mails.outside.zone.subject"), Messages("mails.outside.zone.body"), Messages("mails.outside.zone.label"))
 	</div>
 }

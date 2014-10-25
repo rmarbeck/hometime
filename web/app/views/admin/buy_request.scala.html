@@ -18,24 +18,30 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    Date
-                  </td>
-                  <td>@display_date(request.requestDate, "dd/MM/yyyy HH:mm:ss")</td>
-                </tr>
-                <tr>
-                  <td>
-                    Marque de la montre
-                  </td>
-                  <td>@request.brand.display_name</td>
-                </tr>
-                <tr>
-                  <td>
-                    Modèle
-                  </td>
-                  <td>@request.model</td>
-                </tr>
+              	@two_cells_table_line(Html(Messages("admin.buy.request.label.request.date")), display_date(request.requestDate, "dd/MM/yyyy HH:mm:ss"))
+              	
+              	@if_not_null_nor_empty(request.brand) {
+              		@two_cells_table_line(Html(Messages("admin.buy.request.label.brand")), Html(request.brand.display_name))
+              	}
+              	
+              	@if_not_null_nor_empty(request.model) {
+              		@two_cells_table_line(Html(Messages("admin.buy.request.label.model")), Html(request.model))
+              	}
+                
+                @two_cells_table_line(Html(Messages("admin.buy.request.label.story")), Html(Messages("admin.buy.request.value.story."+request.story.toString.toLowerCase.replace('_','.'))))
+                
+                @two_cells_table_line(Html(Messages("admin.buy.request.label.package")), Html(Messages("admin.buy.request.value.package."+request.pack.toString.toLowerCase.replace('_','.'))))
+                
+                @two_cells_table_line(Html(Messages("admin.buy.request.label.timeframe")), Html(Messages("admin.buy.request.value.timeframe."+request.timeframe.toString.toLowerCase.replace('_','.'))))
+                
+                @two_cells_table_line(Html(Messages("admin.buy.request.label.expected.price")), Html(Messages("admin.buy.request.value.expected.price",request.expectedPrice)))
+                
+                @two_cells_table_line(Html(Messages("admin.buy.request.label.price.higher.bound")), Html(Messages("admin.buy.request.value.price.higher.bound",request.priceHigherBound)))
+                
+                @if_not_null_nor_empty(request.criteria) {
+              		@two_cells_table_line(Html(Messages("admin.buy.request.label.criteria")), Html(request.criteria))
+              	}
+                
                 <tr>
                   <td>
                     Client

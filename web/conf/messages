@@ -657,9 +657,9 @@ buy.request.form.label.model=Modèle recherché
 buy.request.form.placeholder.model=Submariner|Monaco|Portugaise
 buy.request.form.label.criteria=<abbr class="" title="Les caractéristiques que vous recherchez absolument" >Critères forts</abbr>
 buy.request.form.placeholder.criteria=cadran noir|boucle déployante
-buy.request.form.label.expected.price=<abbr class="" title="Le prix idéal" >Prix souhaité</abbr>
+buy.request.form.label.expected.price=<abbr class="" title="Le prix idéal" >Prix souhaité</abbr> (en €)
 buy.request.form.placeholder.expected.price=2000
-buy.request.form.label.price.higher.bound=<abbr class="" title="Le prix à ne surtout pas dépasser" >Prix maximum</abbr>
+buy.request.form.label.price.higher.bound=<abbr class="" title="Le prix à ne surtout pas dépasser" >Prix maximum</abbr> (en €)
 buy.request.form.placeholder.price.higher.bound=2500
 buy.request.form.label.timeframe=* Horizon temporel
 buy.request.form.placeholder.timeframe=Quand
@@ -1444,19 +1444,24 @@ mails.buy.request.phone.number.given.no=non
 mails.buy.request.request.date=Date de la demande : <b>{0}</b>
 mails.buy.request.remarks=Remarques : <b>{0}</b>
 mails.buy.request.remarks.none=aucune
-mails.buy.request.timeframe=Niveau d''urgence : {0}
+mails.buy.request.timeframe=Niveau d''urgence : <b>{0}</b>
 mails.buy.request.timeframe.value.emergency=Recherche urgente
 mails.buy.request.timeframe.value.within.month=Dans le mois
 mails.buy.request.timeframe.value.within.3.months=A moyen terme
 mails.buy.request.timeframe.value.opportunity=Quand l''occasion se présente
-mails.buy.request.package=Accessoires inclus : {0}
+mails.buy.request.package=Accessoires inclus : <b>{0}</b>
 mails.buy.request.package.value.full.set.only=Fullset
 mails.buy.request.package.value.watch.only=Montre seulement
 mails.buy.request.package.value.both=Peu importe
-mails.buy.request.story=Ancienneté de la montre : {0}
+mails.buy.request.story=Ancienneté de la montre : <b>{0}</b>
 mails.buy.request.story.value.new.only=Neuf
 mails.buy.request.story.value.worn.only=Occasion
 mails.buy.request.story.value.both=Neuf ou occasion
+
+mails.buy.request.expected.price=Prix souhaité : <b>{0}</b>
+mails.buy.request.expected.price.none=Non spécifié
+mails.buy.request.price.higher.bound.none=Non spécifié
+mails.buy.request.price.higher.bound=Prix maximum : <b>{0}</b>
 
 mails.notify.label=Accusé de réception simple
 mails.notify.subject=Demande de devis Hometime
@@ -1511,6 +1516,32 @@ Qu''en pensez-vous ?%0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
+
+mails.notify.buy.request.label=Accusé de réception simple
+mails.notify.buy.request.subject=Mandat Hometime pour la recherche d''une montre
+mails.notify.buy.request.body=Bonjour,%0D%0A\
+%0D%0A\
+Nous avons bien reçu votre demande de recherche d''une montre.%0D%0A\
+%0D%0A\
+Nous allons faire au plus vite pour vous répondre.%0D%0A\
+%0D%0A\
+Cordialement,%0D%0A\
+Raphaël%0D%0A\
+07 82 43 47 51
+mails.precisions.buy.request.label=Demande de précisions
+mails.precisions.buy.request.subject=Mandat Hometime pour la recherche d''une montre (besoin de précisions)
+mails.precisions.buy.request.body=Bonjour,%0D%0A\
+%0D%0A\
+Nous avons bien reçu votre demande de recherche d''une montre.%0D%0A\
+%0D%0A\
+Pour être le plus précis possible dans notre recherche, nous aurions besoin des précisions suivantes :%0D%0A\
+%0D%0A\
+Merci d''avance, nous vous répondrons le plus rapidement possible.%0D%0A\
+%0D%0A\
+Cordialement,%0D%0A\
+Raphaël%0D%0A\
+07 82 43 47 51
+
 admin.customer.form.placeholder.email=toto@titi.com
 admin.customer.form.label.email=Email principal
 admin.customer.form.placeholder.alternative.email=toto@titi.com
@@ -1777,13 +1808,24 @@ admin.order.value.status.feedback.received.150=Avis client reçu
 admin.order.value.status.order.closed.200=Prestation terminée
 admin.order.value.status.order.canceled.300=Prestation annulée
 
+admin.buy.request.label.timeframe=Délai
 admin.buy.request.value.timeframe.emergency=Urgent
 admin.buy.request.value.timeframe.within.month=1 mois
 admin.buy.request.value.timeframe.within.3.months=3 mois
 admin.buy.request.value.timeframe.opportunity=Quand dispo
+admin.buy.request.label.package=Accessoires
 admin.buy.request.value.package.full.set.only=Fullset
 admin.buy.request.value.package.watch.only=Montre seule
 admin.buy.request.value.package.both=Peu importe
-admin.buy.request.value.watch.story.new.only=Neuve
-admin.buy.request.value.watch.story.worn.only=Occasion
-admin.buy.request.value.watch.story.both=Neuve ou occasion
+admin.buy.request.label.story=Etat
+admin.buy.request.value.story.new.only=Neuve
+admin.buy.request.value.story.worn.only=Occasion
+admin.buy.request.value.story.both=Neuve ou occasion
+admin.buy.request.label.expected.price=Prix souhaité
+admin.buy.request.label.criteria=Critères
+admin.buy.request.label.request.date=Date de la demande
+admin.buy.request.label.brand=Marque
+admin.buy.request.label.model=Modèle
+admin.buy.request.value.expected.price={0} €
+admin.buy.request.label.price.higher.bound=Prix maximum
+admin.buy.request.value.price.higher.bound={0} €

@@ -65,7 +65,7 @@
               @for((request, index) <- currentPage.getList.zipWithIndex) {
                 <tr>
                   <td>
-	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.displayBuyRequest(request.id)"><span class="glyphicon glyphicon-pencil"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.displayBuyRequest(request.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
 	                <a type="button" class="btn btn-default btn-xs" href="@routes.Admin.displayBuyRequestMail(request.id)"><span class="glyphicon glyphicon-envelope"></span></a>
                   </td>
                   <td>
