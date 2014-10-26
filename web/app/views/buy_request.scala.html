@@ -61,9 +61,9 @@
 				
 				@simple_radiogroup(request("pack"), for (s <- models.BuyRequest.Package.values) yield s.toString -> Messages(key+".form.value.package."+s.toString.toLowerCase.replace('_','.')	), key+".form.VARIABLE.package")
 
-				@simple_input(request("expectedPrice"), key+".form.VARIABLE.expected.price")
+				@simple_input(request("expectedPrice"), key+".form.VARIABLE.expected.price", 'type -> "number", 'min -> "600", 'max -> "20000", 'step -> "100")
 				
-				@simple_input(request("priceHigherBound"), key+".form.VARIABLE.price.higher.bound")
+				@simple_input(request("priceHigherBound"), key+".form.VARIABLE.price.higher.bound", 'type -> "number", 'min -> "600", 'max -> "20000", 'step -> "100")
 
 
                 <div class="form-group">
