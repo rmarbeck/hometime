@@ -692,7 +692,7 @@ buy.request.success.panel.body=Merci de votre confiance.<br /><br />Nous avons b
 buy.request.action.submit=Envoyer la demande
 buy.request.action.alternative.separator=ou bien
 buy.request.action.alternative=Etre rappelé
-buy.request.movement.alt=Achat de montre
+buy.request.watches.alt=Achat de montre
 buy.request.text.disclaimer=Hometime agit comme courtier en montres neuves ou d''occasion. Nous sélectionnons les meilleurs bijoutiers et vous proposons nos services de conseils pour vous guider dans vos choix. Les montres que nous vous proposons sont systématiquement expertisées et nous vous assurons de leur authenticité (un certificat est remis lors de la vente). De plus, nous effectuons des tests de marche et d''étanchéité et vous conseillons sur l''utilisation au quotidien de votre montre. Si vous rencontrez le moindre problème, Hometime assure son service après vente dans toute la France, vous avez un interlocuteur unique et bien réel.
  
 buy.request.form.label.remark=Remarques
