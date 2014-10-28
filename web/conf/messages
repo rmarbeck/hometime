@@ -1497,6 +1497,8 @@ Qu''en avez-vous pensé ? Avez-vous besoin d''éléments complémentaires ?%0D%0
 %0D%0A\
 Nous restons à votre entière disposition pour toute précision.%0D%0A\
 %0D%0A\
+Si vous n''avez pas reçu le devis, peut-être a-t-il été considéré comme étant du spam par votre logiciel de messagerie. Si c''est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
+%0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
@@ -1512,6 +1514,21 @@ Par ailleurs, nous souhaitions vous indiquer que pour les interventions en dehor
 Nous pouvons rechercher une autre solution si vous le souhaitez.%0D%0A\
 %0D%0A\
 Qu''en pensez-vous ?%0D%0A\
+%0D%0A\
+Si vous n''avez pas reçu le devis, peut-être a-t-il été considéré comme étant du spam par votre logiciel de messagerie. Si c'est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
+%0D%0A\
+Cordialement,%0D%0A\
+Raphaël%0D%0A\
+07 82 43 47 51
+mails.beware.of.spam.label=Info Spam
+mails.beware.of.spam.subject=Devis Hometime
+mails.beware.of.spam.body=Bonjour,%0D%0A\
+%0D%0A\
+nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
+%0D%0A\
+N''hésitez pas si vous avez la moindre question !%0D%0A\
+%0D%0A\
+Si vous n''avez pas reçu le devis, peut-être a-t-il été considéré comme étant du spam par votre logiciel de messagerie. Si c''est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
 %0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\

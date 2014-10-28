@@ -13,4 +13,4 @@
  * @param args Set of extra HTML attributes.
  *@
 @(email: String, subject: String, body: String, label: String, args: (Symbol,String)*)
-<a href="mailto:@(email)?subject=@(subject.replaceAll(" ", "%20"))&amp;body=@(body.replaceAll(" ", "%20"))" @toHtmlArgs(args.toMap)>@label</a>
+<a href="mailto:@(email)?subject=@(subject.replaceAll(" ", "%20"))&amp;body=@(body.replaceAll(" ", "%20"))" @toHtmlArgs(args.toMap)>@label</a> 
