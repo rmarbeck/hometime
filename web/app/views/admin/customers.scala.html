@@ -54,6 +54,7 @@
                 <tr>
                   <th>#</th>
                   @header("creationDate", "Date", true)
+                  @header("isTopicOpen", "Sujet ouvert")
                   @header("name", "Nom")
                   @header("firstname", "Prénom")
                   @header("email", "email")
@@ -71,6 +72,9 @@
                   </td>
                   <td class="hidden-xs">
                     @display_date(customer.creationDate, "dd/MM")
+                  </td>
+                  <td>
+                    @customer.isTopicOpen
                   </td>
                   <td>
                     @customer.name

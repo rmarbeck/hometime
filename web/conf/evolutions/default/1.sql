@@ -67,6 +67,7 @@ create table customer (
   customer_status           varchar(40),
   value                     bigint,
   potentiality              bigint,
+  is_topic_open             boolean,
   constraint ck_customer_customer_status check (customer_status in ('PROSPECT','ALMOST_CUSTOMER','REAL_CUSTOMER')),
   constraint uq_customer_email unique (email),
   constraint pk_customer primary key (id))
@@ -225,6 +226,7 @@ create table user_table (
   firstname                 varchar(255),
   name                      varchar(255),
   active                    boolean,
+  number_of_bad_passwords   integer,
   constraint ck_user_table_role check (role in (0,1,2,3)),
   constraint uq_user_table_email unique (email),
   constraint pk_user_table primary key (id))
@@ -253,6 +255,11 @@ create table watch (
   model_history             varchar(10000),
   item_history              varchar(10000),
   reason_why                varchar(10000),
+  number_of_loans           integer,
+  owning_cost               float,
+  lower_selling_price       float,
+  best_selling_price        float,
+  acquisition_date          timestamp,
   constraint pk_watch primary key (id))
 ;
 

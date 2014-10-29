@@ -1,0 +1,33 @@
+@(field: play.api.data.Field, key: String, args: (Symbol,Any)*)
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+
+@_default = @{ args.toMap.get('_default).map(_.toString)
+					.getOrElse(Html(Messages(key.replaceAll("VARIABLE", "default")))) }
+@label = @{ args.toMap.get('_label).map(_.toString)
+					.getOrElse(Html(Messages(key.replaceAll("VARIABLE", "label")))) }
+@_class = @{ args.toMap.get('class).map(_.toString)
+					.getOrElse("") }
+@__class = @{ args.toMap.get('_class).map(_.toString)
+					.getOrElse("form-group") }
+@label_class = @{ args.toMap.get('_label_class).map(_.toString)
+					.getOrElse("col-sm-3 control-label") }
+@body_class = @{ args.toMap.get('_body_class).map(_.toString)
+					.getOrElse("col-sm-9 checkbox") }
+@showConstraints = @{ args.toMap.get('_showConstraints).map(_.toString)
+					.getOrElse(false) }
+
+@htmlArgs = @{ args.filter(arg => !arg._1.name.startsWith("_")
+				&& arg._1 != 'placeholder
+				&& arg._1 != '_label
+				&& arg._1 != 'class
+				&& arg._1 != '_class
+				&& arg._1 != '_label_class
+				&& arg._1 != '_body_class
+				&& arg._1 != '_showConstraints).toSeq }
+
+@helper.checkbox(field,
+		(Seq('_default -> _default, '_label -> label,
+      	'class -> _class, '_class -> __class, '_label_class -> label_class, '_body_class -> body_class, '_showConstraints -> showConstraints) ++ htmlArgs):_*)
+<input type="hidden" name="@field.name" value="false" /> 
+      	

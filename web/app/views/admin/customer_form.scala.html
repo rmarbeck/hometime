@@ -49,6 +49,9 @@
 				
 				@simple_admin_input(customer("lastCommunicationDate"), "admin.customer.form.VARIABLE.last.communication.date", 'type -> "date")
 
+				@helper.checkbox(customer("isTopicOpen"), '_label -> Messages("admin.customer.form.label.is.topic.open"),
+                                     'class -> "", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9 checkbox", '_showConstraints -> false)
+
                 <div class="form-group">
                   <label for="address" class="col-xs-3 control-label">@Messages("admin.customer.form.label.cat.address")</label>
                   <div class="col-xs-9">
@@ -57,7 +60,7 @@
                     	
                     	@simple_admin_textarea(customer("pickupAddress"), "admin.customer.form.VARIABLE.pick.up.address")
                     	
-                    	@simple_admin_textarea(customer("returnAdress"), "admin.customer.form.VARIABLE.return.address")
+                    	@simple_admin_textarea(customer("returnAddress"), "admin.customer.form.VARIABLE.return.address")
                     </div>
                   </div>
                 </div>

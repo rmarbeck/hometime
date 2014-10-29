@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[models.Order], currentSortBy: String, currentOrder: String, currentFilter: String)
+@(currentPage: com.avaje.ebean.Page[models.Watch], currentSortBy: String, currentOrder: String, currentFilter: String)
 @import tags._
 
 @****************************************
@@ -23,14 +23,15 @@
     }
     
     // Generate the link
-    routes.Order.displayAll(newPage, sortBy, order, currentFilter)
+    routes.Watch.displayAll(newPage, sortBy, order, currentFilter)
+    
 }
 
 
 @**********************************
 * Helper generating table headers *
 ***********************************@
-@header(key:String, title:String, hideSmall: Boolean = false) = {
+@header(key:String, title:Html, hideSmall: Boolean = false) = {
     <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"} @if(hideSmall) {hidden-xs}">
         <a href="@link(0, key)">@title</a>
     </th>
@@ -39,7 +40,7 @@
 @layouts.admin() {
   <div class="container">
 
-    @admin.fragments.page_header(link(0, "requestDate").toString, "email or name", currentFilter, routes.Order.add().url)
+    @admin.fragments.page_header(link(0, "id").toString, "model or brand", currentFilter, routes.Watch.add().url)
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
@@ -52,46 +53,34 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  @header("creationDate", "Date")
-                  @header("orderType", "Type")
-                  @header("brand", "Marque")
-                  @header("model", "Modèle")
-                  @header("method", "Réseau")
-                  @header("watchChosen", "Essai")
-                  @header("nameOfCustomer", "Nom", true)
+                  @header("id", Html(Messages("admin.watch.watches.header.id")))
+                  @header("brand", Html(Messages("admin.watch.watches.header.brand")))
+                  @header("full_name", Html(Messages("admin.watch.watches.header.full.name")))
+                  @header("shouldDisplay", Html(Messages("admin.watch.watches.header.should.display")))
+                  @header("isAvailable", Html(Messages("admin.watch.watches.header.is.available")))
                 </tr>
               </thead>
               <tbody>
-              @for((order, index) <- currentPage.getList.zipWithIndex) {
+              @for((watch, index) <- currentPage.getList.zipWithIndex) {
                 <tr>
                   <td>
-	                <a type="button" class="btn btn-default btn-xs" href="@routes.Order.display(order.id)"><span class="glyphicon glyphicon-file"></span></a>
-	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Order.edit(order.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                  	<a type="button" class="btn btn-default btn-xs" href="@routes.Watch.display(watch.id)"><span class="glyphicon glyphicon-time"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Watch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
                   </td>
                   <td>
-                    @display_date(order.creationDate, "dd/MM")
+                    @watch.id
                   </td>
                   <td>
-                  	@Html(Messages("admin.order.value.order.type."+order.orderType.toString.toLowerCase.replace('_','.')))
+                    @watch.brand
                   </td>
                   <td>
-                    @order.brand
+                    @takeif(watch.full_name)
                   </td>
                   <td>
-                    @takeif(order.model)
+                    @watch.should_display
                   </td>
                   <td>
-                    @Html(Messages("admin.order.value.method."+order.method.toString.toLowerCase.replace('_','.')))
-                  </td>
-                  <td>
-                    @if(order.watchChosen != null) {
-                        @order.watchChosen
-                    } else {
-                        none
-                    }
-                  </td>
-                  <td class="hidden-xs">
-                    <a href="@routes.Customer.display(order.customer.id)">@order.customer.firstname @(order.customer.name)</a>
+                    @watch.is_available
                   </td>
                 </tr>
               }

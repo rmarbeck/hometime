@@ -29,6 +29,7 @@ import play.libs.ws.*;
 import play.mvc.*;
 import views.html.*;
 import views.html.admin.login;
+import views.html.admin.quick_login;
 import views.html.mails.notify_order;
 import views.html.mails.notify_buy_request;
 
@@ -47,6 +48,20 @@ public class Application extends Controller {
 	    public String validate() {
 	    	Logger.debug("Validating credentials : [{}]:[{}]", email, password);
 	        if (User.authenticate(email, password) == null) {
+	        	Logger.debug("Authentication failed");
+	        	return "Invalid user or password";
+	        }
+	        return null;
+	    }
+	}
+	
+	public static class QuickLoginForm {
+		@Constraints.Required
+	    public String password;
+	    
+	    public String validate() {
+	    	Logger.debug("Validating quick login for admin : [{}]:[{}]", password);
+	        if (User.quickAuthenticateAdmin(password) == null) {
 	        	Logger.debug("Authentication failed");
 	        	return "Invalid user or password";
 	        }
@@ -256,6 +271,10 @@ public class Application extends Controller {
         return ok(login.render(Form.form(LoginForm.class)));
     }
     
+    public static Result quickAdminLogin() {
+        return ok(quick_login.render(Form.form(QuickLoginForm.class)));
+    }
+    
     public static Result logout() {
         session().clear();
         flash("success", "You've been logged out");
@@ -272,6 +291,20 @@ public class Application extends Controller {
         } else {
             session().clear();
             session("token", loginForm.get().email);
+            return redirect(
+                routes.Admin.index()
+            );
+        }
+    }
+    
+    public static Result quickAdminAuthenticate() {
+        Form<QuickLoginForm> loginForm = Form.form(QuickLoginForm.class).bindFromRequest();
+        if (loginForm.hasErrors()) {
+        	Logger.info("Login failed");
+            return badRequest(quick_login.render(loginForm));
+        } else {
+            session().clear();
+            session("token", User.findQuickAdmin().email);
             return redirect(
                 routes.Admin.index()
             );

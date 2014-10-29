@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,8 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import play.Logger;
+import play.data.validation.ValidationError;
 import play.db.ebean.Model;
 
+import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 /**
@@ -73,6 +77,17 @@ public class Watch extends Model {
 	@Column(length = 10000)
 	public String reason_why;
 	
+	public int number_of_loans = 0;
+	
+	public Float owning_cost;
+	
+	public Float lower_selling_price;
+	
+	public Float best_selling_price;
+	
+	@Column(name="acquisition_date")
+	public Date acquisition_date;
+	
 	@OneToMany(mappedBy="watch", cascade = CascadeType.ALL)
 	public List<Picture> pictures;
 
@@ -108,11 +123,32 @@ public class Watch extends Model {
 
     public static Page<Watch> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where()
-                .ilike("title", "%" + filter + "%")
+            find.where().or(Expr.ilike("full_name", "%" + filter + "%"), Expr.ilike("brand", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
     }
+    
+	@Override
+	public void save() {
+		super.save();
+	}
+
+
+	@Override
+	public void update() {
+		try {
+			Logger.debug("Updating "+this.getClass().getName());
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
+		super.update();
+	}
+	
+    public List<ValidationError> validate() {
+    	List<ValidationError> errors = new ArrayList<ValidationError>();
+        return errors.isEmpty() ? null : errors;
+    }
+    
 }
 

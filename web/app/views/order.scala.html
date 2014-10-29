@@ -1,4 +1,4 @@
-@(message: String = "", order: Form[Application.OrderForm], supported_brands: List[Brand], available_watches: List[Watch], is_it_first_page: Boolean)
+@(message: String = "", order: Form[Application.OrderForm], supported_brands: List[Brand], available_watches: List[models.Watch], is_it_first_page: Boolean)
 @import tags._
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }

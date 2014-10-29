@@ -49,15 +49,21 @@
               		@two_cells_table_line(Html(Messages("admin.customer.label.value")), simple_progress_bar(customer.value.toInt))
               	}
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.label.billing.address")), Html(customer.billingAddress))
+              	@two_cells_table_line(Html(Messages("admin.customer.label.billing.address")), display_address(customer.billingAddress))
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.label.pick.up.address")), Html(customer.pickupAddress))
+              	@if_not_null_nor_empty(customer.pickupAddress) {
+              		@two_cells_table_line(Html(Messages("admin.customer.label.pick.up.address")), Html(display_address(customer.pickupAddress) + "<br />" + admin_add_to_google_calendar(Messages("admin.customer.action.add.to.google.pickup", customer.firstname + " " + customer.name), Messages("admin.customer.action.add.to.google.details", customer.phoneNumber, customer.email), customer.pickupAddress.replaceAll("\n", ", "), true)))
+              	}
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.label.return.address")), Html(customer.returnAddress))
+              	@if_not_null_nor_empty(customer.returnAddress) {
+              		@two_cells_table_line(Html(Messages("admin.customer.label.return.address")), Html(display_address(customer.returnAddress) + "<br />" + admin_add_to_google_calendar(Messages("admin.customer.action.add.to.google.return", customer.firstname + " " + customer.name), Messages("admin.customer.action.add.to.google.details", customer.phoneNumber, customer.email), customer.returnAddress.replaceAll("\n", ", "), true)))
+              	}
               	
               	@two_cells_table_line(Html(Messages("admin.customer.label.shared.infos")), Html(customer.sharedInfos))
               	
               	@two_cells_table_line(Html(Messages("admin.customer.label.private.infos")), Html(customer.privateInfos))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.label.is.topic.open")), Html(""+customer.isTopicOpen))
 
               </tbody>
             </table>
@@ -97,7 +103,9 @@
               @for((order, index) <- orders.zipWithIndex) {
                 <tr>
                   <td>
+                    <a type="button" class="btn btn-default btn-xs" href="@routes.Order.display(order.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Order.edit(order.id)"><span class="glyphicon glyphicon-edit"></span></a>
+	                <a type="button" class="btn btn-warning btn-xs" href="@routes.CustomerWatch.addFromOrder(order.id)"><span class="glyphicon glyphicon-arrow-down"></span></a>
                   </td>
                   <td>
                     @display_date(order.creationDate, "dd/MM HH:mm")
@@ -155,7 +163,9 @@
               @for((watch, index) <- watches.zipWithIndex) {
                 <tr>
                   <td>
+                    <a type="button" class="btn btn-default btn-xs" href="@routes.CustomerWatch.display(watch.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                   	<a type="button" class="btn btn-warning btn-xs" href="@routes.Order.addFromCustomerWatch(watch.id)"><span class="glyphicon glyphicon-arrow-up"></span></a>
                   </td>
                   <td>
                     @display_date(watch.lastStatusUpdate, "dd/MM HH:mm")
@@ -178,7 +188,13 @@
             </table>
 		</div>
 	  </div>
-	}       
+	}
+	
+	  <div class="row">
+        <div class="well">
+            @admin_add_to_google_calendar("Rendez-vous de collecte", customer.name, customer.pickupAddress, true)
+        </div>
+      </div>
               
   </div>
 }

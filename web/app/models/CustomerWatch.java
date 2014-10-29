@@ -110,6 +110,12 @@ public class CustomerWatch extends Model {
 		this.customer = customer;
 	}
 	
+	public CustomerWatch(Order order) {
+		this(order.customer);
+		this.brand = order.brand;
+		this.model = order.model;
+	}
+	
     // -- Queries
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Model.Finder<String,CustomerWatch> find = new Model.Finder(String.class, CustomerWatch.class);

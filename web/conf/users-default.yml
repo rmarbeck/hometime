@@ -31,5 +31,13 @@
          name:                  numéro 2
          active:                false
 
+    - &admin3 !!models.User
+         email:                 admin_quick@hometime.fr
+         password:              "0000"
+         role:                  ADMIN
+         firstname:             administrateur
+         name:                  quick
+         active:                true
+
 #Fin
 

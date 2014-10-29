@@ -1,2 +1,6 @@
 @(price: Float, label: String = "€")
-@(price.toInt) @label
+@if(price != null) {
+	@(price.toInt) @label
+} else {
+	-
+}

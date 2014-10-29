@@ -1,0 +1,99 @@
+@(watch: Form[models.Watch], isANewWatch: Boolean)
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.watch.action.cancel"))</a>
+      @if(isANewWatch) {
+      	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages("admin.watch.action.save"))</button>
+      } else {
+      	@tags.inputHidden(watch("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.watch.action.edit"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages("admin.watch.action.delete"))</button>                  
+      }
+      </div>
+    </div>
+}
+
+@layouts.admin() {
+    <div class="container">
+    	@display_flash()
+    
+            @helper.form(action = routes.Watch.manage(), 'class -> "form-horizontal", 'role -> "form") {
+            
+            	@actions
+            	
+                @simple_admin_checkbox(watch("should_display"), "admin.watch.form.label.should.display")
+                                     
+                @simple_admin_checkbox(watch("is_available"), "admin.watch.form.label.is.available")
+
+            	@simple_admin_input(watch("brand"), "admin.watch.form.VARIABLE.brand")
+            	
+            	@simple_admin_input(watch("full_name"), "admin.watch.form.VARIABLE.full.name")
+            	
+            	@simple_admin_input(watch("short_name"), "admin.watch.form.VARIABLE.short.name")
+            	
+            	@simple_admin_input(watch("seo_name"), "admin.watch.form.VARIABLE.seo.name")
+            	
+            	@simple_admin_textarea(watch("movement"), "admin.watch.form.VARIABLE.movement")
+            	
+            	@simple_admin_textarea(watch("case_infos"), "admin.watch.form.VARIABLE.case.infos")
+            	
+            	@simple_admin_textarea(watch("functions"), "admin.watch.form.VARIABLE.functions")
+            	
+            	@simple_admin_input(watch("water_resistance"), "admin.watch.form.VARIABLE.water.resistance")
+            	
+            	@simple_admin_textarea(watch("specials"), "admin.watch.form.VARIABLE.specials")
+            	
+            	@simple_admin_textarea(watch("production_period"), "admin.watch.form.VARIABLE.production.period")
+            	
+            	@simple_admin_input(watch("water_resistance"), "admin.watch.form.VARIABLE.water.resistance")
+            	
+            	@simple_admin_input(watch("item_year"), "admin.watch.form.VARIABLE.item.year")
+            	
+            	@simple_admin_input(watch("item_strap"), "admin.watch.form.VARIABLE.item.strap")
+            	
+            	@simple_admin_input(watch("item_reference"), "admin.watch.form.VARIABLE.item.reference")
+            	
+            	@simple_admin_input(watch("price"), "admin.watch.form.VARIABLE.price", 'type -> "number", 'step -> "any")
+            	
+            	@simple_admin_input(watch("main_picture_url"), "admin.watch.form.VARIABLE.main.picture.url")
+            	
+            	@simple_admin_input(watch("main_thumbnail_url"), "admin.watch.form.VARIABLE.main.thumbnail.url")
+            	
+            	@simple_admin_input(watch("number_of_loans"), "admin.watch.form.VARIABLE.number.of.loans", 'type -> "number", 'step -> "1")            	
+
+                <div class="form-group">
+                  <label for="infos" class="col-xs-3 control-label">@Messages("admin.watch.form.label.cat.details")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                    	@simple_admin_textarea(watch("model_history"), "admin.watch.form.VARIABLE.model.history", 'rows -> "5")
+                    	
+                    	@simple_admin_textarea(watch("item_history"), "admin.watch.form.VARIABLE.item.history", 'rows -> "5")
+                    	
+                    	@simple_admin_textarea(watch("reason_why"), "admin.watch.form.VARIABLE.reason.why")
+                    </div>
+                  </div>
+                </div>
+                
+                @simple_admin_input(watch("acquisition_date"), "admin.watch.form.VARIABLE.acquisition.date", 'type -> "date")
+                
+                <div class="form-group">
+                  <label for="infos" class="col-xs-3 control-label">@Messages("admin.watch.form.label.cat.prices")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                    	@simple_admin_input(watch("owning_cost"), "admin.watch.form.VARIABLE.owning.cost", 'type -> "number", 'step -> "any")
+                    	
+                    	@simple_admin_input(watch("lower_selling_price"), "admin.watch.form.VARIABLE.lower.selling.price", 'type -> "number", 'step -> "any")
+                    	
+                    	@simple_admin_input(watch("best_selling_price"), "admin.watch.form.VARIABLE.best.selling.price", 'type -> "number", 'step -> "any")
+                    </div>
+                  </div>
+                </div>
+                
+                @actions
+            }
+    </div>
+}

@@ -18,6 +18,9 @@ import play.db.ebean.Model;
 @Table(name = "user_table")
 public class User extends Model {
 	private static final long serialVersionUID = -6051070381002940159L;
+	
+	private static final String ADMIN_QUICK_EMAIL = "admin_quick@hometime.fr";
+	private static final int ADMIN_QUICK_MAX_ATTEMPT = 3;
 
 	public enum Role {
 	    ADMIN ("1"),
@@ -61,6 +64,8 @@ public class User extends Model {
 	
 	public boolean active = true;
 	
+	public int numberOfBadPasswords = 0;
+	
 	public User(String email) {
 		this.email = email;
 	}
@@ -85,9 +90,21 @@ public class User extends Model {
         return find.where().eq("email", email).findUnique();
     }
     
+    public static User findQuickAdmin() {
+        return findByEmail(ADMIN_QUICK_EMAIL);
+    }
+    
     public static String authenticate(String email, String password) {
     	if (isPasswordMatching(email, password))
     		return email;
+    	return null;
+    }
+    
+    public static String quickAuthenticateAdmin(String password) {
+    	User quickAdminFakeUser = findQuickAdmin();
+    	if (quickAdminFakeUser != null && quickAdminFakeUser.active && quickAdminFakeUser.numberOfBadPasswords <= ADMIN_QUICK_MAX_ATTEMPT)
+    	  	if (isPasswordMatching(ADMIN_QUICK_EMAIL, password))
+    	  		return ADMIN_QUICK_EMAIL;
     	return null;
     }
     
@@ -95,7 +112,15 @@ public class User extends Model {
     	User loggedInUser = User.findByEmail(email);
     	if (loggedInUser == null)
     		return false;
-    	return loggedInUser.isPasswordCorrect(password);
+    	if (loggedInUser.isPasswordCorrect(password)) {
+    		loggedInUser.numberOfBadPasswords = 0;
+    		loggedInUser.update();
+        	return true;
+    	} else {
+    		loggedInUser.numberOfBadPasswords++;
+    		loggedInUser.update();
+        	return false;
+    	}
     }
     
     private boolean isPasswordCorrect(String password) {

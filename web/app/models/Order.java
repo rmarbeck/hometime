@@ -148,6 +148,12 @@ public class Order extends Model {
 		if (request.watchChosen != null)
 			this.watchChosen = request.watchChosen.full_name;
 	}
+	
+	public Order(CustomerWatch watch) {
+		this(watch.customer);
+		this.brand = watch.brand;
+		this.model = watch.model;
+	}
 
     // -- Queries
     @SuppressWarnings({ "rawtypes", "unchecked" })

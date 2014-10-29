@@ -1,0 +1,50 @@
+@(watch: models.Watch)
+@import tags._
+
+@layouts.admin() {
+  <div class="container">
+     <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.watch.head.watch",watch.brand, watch.full_name))</h3></div>
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-default" href="@routes.Watch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.watch.action.edit"))</a>
+        </div>
+     </div>
+     <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <colgroup>
+                <col class="col-xs-2">
+                <col class="col-xs-7">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Champ</th>
+                  <th>Valeur</th>
+                </tr>
+              </thead>
+              <tbody>
+                @two_cells_table_line(Html(Messages("admin.watch.label.should.display")), Html(""+watch.should_display))
+                
+                @two_cells_table_line(Html(Messages("admin.watch.label.is.available")), Html(""+watch.is_available))
+              
+              	@two_cells_table_line(Html(Messages("admin.watch.label.brand")), Html(watch.brand))
+              	
+              	@two_cells_table_line(Html(Messages("admin.watch.label.full.name")), Html(watch.full_name))
+              	
+              	@two_cells_table_line(Html(Messages("admin.watch.label.price")), display_price(watch.price))
+              	
+              	@two_cells_table_line(Html(Messages("admin.watch.label.number.of.loans")), Html(""+watch.number_of_loans))
+              	
+              	@two_cells_table_line(Html(Messages("admin.watch.label.owning.cost")), display_price(watch.owning_cost))
+              	
+              	@two_cells_table_line(Html(Messages("admin.watch.label.acquisition.date")), display_date(watch.acquisition_date, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.watch.label.lower.selling.price")), display_price(watch.lower_selling_price))
+              	
+              	@two_cells_table_line(Html(Messages("admin.watch.label.best.selling.price")), display_price(watch.best_selling_price))
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+}

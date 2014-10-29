@@ -53,6 +53,16 @@ public class Order extends Controller {
 		return badRequest(orderForm(orderForm, true));
 	}
 	
+	public static Result addFromCustomerWatch(Long customerWatchId) {
+		models.CustomerWatch watch = models.CustomerWatch.findById(customerWatchId);
+		Form<models.Order> orderForm = Form.form(models.Order.class);
+		if (watch != null) {
+			return ok(orderForm(orderForm.fill(fromCustomerWatch(watch)), true));
+		}
+		flash("error", "Unknown watch id");
+		return badRequest(orderForm(orderForm, true));
+	}
+	
 	public static Result add() {
 		return ok(orderForm(Form.form(models.Order.class), true));		
 	}
@@ -98,6 +108,10 @@ public class Order extends Controller {
 
 	private static models.Order fromCustomer(models.Customer customer) {
 		return new models.Order(customer);
+	}
+	
+	private static models.Order fromCustomerWatch(models.CustomerWatch watch) {
+		return new models.Order(watch);
 	}
 	
 	private static void saveOrder(models.Order order) {

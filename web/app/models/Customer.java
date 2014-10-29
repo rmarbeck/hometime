@@ -99,6 +99,9 @@ public class Customer extends Model {
 	
 	public Long potentiality = 0L;
 	
+	@Column(name="is_topic_open")
+	public Boolean isTopicOpen = false;
+	
 	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
 	public List<Order> orders;
 
@@ -147,6 +150,10 @@ public class Customer extends Model {
     	return find.where().eq("name", name).findList();
     }
     
+    public static List<Customer> findWithOpenTopic(String name) {
+    	return find.where().eq("is_topic_open", true).findList();
+    }
+    
     public static Customer getOrCreateCustomerFromOrderRequest(OrderRequest request) {
     	Customer existingCustomer = findByEmail(request.email);
     	if (existingCustomer == null)
@@ -188,6 +195,8 @@ public class Customer extends Model {
 	
     public List<ValidationError> validate() {
     	List<ValidationError> errors = new ArrayList<ValidationError>();
+    	if (isTopicOpen == null)
+    		isTopicOpen = false;
         if (lastCommunicationDate != null) {
         	Logger.info("Date received : "+lastCommunicationDate.toString());
         }

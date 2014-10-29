@@ -42,6 +42,16 @@ public class CustomerWatch extends Controller {
 		return badRequest(emptyNewWatchForm());
 	}
 	
+	public static Result addFromOrder(Long orderId) {
+		models.Order existingOrder = models.Order.findById(orderId);
+		if (existingOrder != null) {
+			models.CustomerWatch newWatch = new models.CustomerWatch(existingOrder);
+			return ok(customerWatchForm(Form.form(models.CustomerWatch.class).fill(newWatch), true));
+		}
+		flash("error", "Unknown customer id");
+		return badRequest(emptyNewWatchForm());
+	}
+	
 	public static Result add() {
 		return ok(emptyNewWatchForm());		
 	}

@@ -658,9 +658,9 @@ buy.request.form.placeholder.model=Submariner|Monaco|Portugaise
 buy.request.form.label.criteria=<abbr class="" title="Les caractéristiques que vous recherchez absolument" >Critères forts</abbr>
 buy.request.form.placeholder.criteria=cadran noir|boucle déployante
 buy.request.form.label.expected.price=<abbr class="" title="Le prix idéal" >Prix souhaité</abbr> (en €)
-buy.request.form.placeholder.expected.price=2000
+buy.request.form.placeholder.expected.price=
 buy.request.form.label.price.higher.bound=<abbr class="" title="Le prix à ne surtout pas dépasser" >Prix maximum</abbr> (en €)
-buy.request.form.placeholder.price.higher.bound=2500
+buy.request.form.placeholder.price.higher.bound=
 buy.request.form.label.timeframe=* Horizon temporel
 buy.request.form.placeholder.timeframe=Quand
 buy.request.form.value.timeframe.emergency=Recherche urgente
@@ -1594,6 +1594,7 @@ admin.customer.form.value.status.almost.customer=Presque client
 admin.customer.form.value.status.real.customer=Client
 admin.customer.form.label.last.communication.date=Dernière communication
 admin.customer.form.placeholder.last.communication.date=dd/MM/yy
+admin.customer.form.label.is.topic.open=Sujet ouvert
 admin.customer.action.save=&nbsp;Créer
 admin.customer.action.edit=&nbsp;Modifier
 admin.customer.action.delete=&nbsp;Supprimer
@@ -1625,6 +1626,11 @@ admin.customer.label.return.address=Adresse de retour
 admin.customer.label.pick.up.address=Adresse de collecte
 admin.customer.label.shared.infos=Informations partagées
 admin.customer.label.private.infos=Informations privées
+admin.customer.label.is.topic.open=Sujet ouvert
+
+admin.customer.action.add.to.google.pickup=Collecte pour {0} 
+admin.customer.action.add.to.google.return=Retour pour {0}
+admin.customer.action.add.to.google.details=Téléphone : {0}, Email : {1}
 
 admin.customer.watches.no.watch.to.display=Aucune montre pour ce client
 admin.customer.orders.no.order.to.display=Aucune commande pour ce client
@@ -1705,6 +1711,91 @@ admin.customer.watch.value.status.stored.by.other.partner=Chez un partenaire
 admin.customer.watch.value.status.back.to.customer=Chez le client
 admin.customer.watch.label.last.status.update=Dernier changement de situation
 admin.customer.watch.head.watch=<span class="text-muted"><b>{0} - {1}</b></span> de {2} {3}
+admin.customer.watch.watches.label.status=Filtrer par statut
+admin.customer.watch.watches.value.status.stored.by.watch.next=Dans le coffre
+admin.customer.watch.watches.value.status.stored.by.sth=Chez STH
+admin.customer.watch.watches.value.status.stored.by.brand=SAV de la marque
+admin.customer.watch.watches.value.status.stored.by.other.partner=Chez un partenaire
+admin.customer.watch.watches.value.status.back.to.customer=Chez le client
+
+
+admin.watch.form.label.should.display=Doit être affichée
+admin.watch.form.label.is.available=Est disponible
+admin.watch.form.placeholder.brand=Rolex
+admin.watch.form.label.brand=Marque
+admin.watch.form.placeholder.full.name=Submariner LV
+admin.watch.form.label.full.name=Modèle (nom complet)
+admin.watch.form.placeholder.short.name=Submariner
+admin.watch.form.label.short.name=Modèle (nom court)
+admin.watch.form.placeholder.seo.name=submariner
+admin.watch.form.label.seo.name=Nom SEO
+admin.watch.form.placeholder.movement=3135
+admin.watch.form.label.movement=Mouvement
+
+admin.watch.form.placeholder.case.infos=
+admin.watch.form.label.case.infos=Informations sur le boitier
+admin.watch.form.placeholder.functions=chronographe, GMT
+admin.watch.form.label.functions=Fonctions
+admin.watch.form.placeholder.water.resistance=100m
+admin.watch.form.label.water.resistance=Etanchéité
+admin.watch.form.placeholder.specials=Edition limitée
+admin.watch.form.label.specials=Particularités
+admin.watch.form.placeholder.production.period=circa 1970
+admin.watch.form.label.production.period=Produit vers
+admin.watch.form.placeholder.item.year=1983
+admin.watch.form.label.item.year=Année de cet exemplaire
+admin.watch.form.placeholder.item.strap=Cuir, Nato
+admin.watch.form.label.item.strap=Bracelet de cet exemplaire
+admin.watch.form.placeholder.item.reference=
+admin.watch.form.label.item.reference=Référence de cet exemplaire
+admin.watch.form.placeholder.price=100
+admin.watch.form.label.price=Prix de l''essai
+admin.watch.form.placeholder.main.picture.url=
+admin.watch.form.label.main.picture.url=Url de l''image principale
+admin.watch.form.placeholder.main.thumbnail.url=
+admin.watch.form.label.main.thumbnail.url=Url de la miniature principale
+admin.watch.form.label.cat.details=Détails
+admin.watch.form.placeholder.model.history=
+admin.watch.form.label.model.history=Historique du modèle
+admin.watch.form.placeholder.item.history=
+admin.watch.form.label.item.history=Historique de l''exemplaire
+admin.watch.form.placeholder.reason.why=Parce que...
+admin.watch.form.label.reason.why=Pourquoi la choisir
+admin.watch.form.placeholder.number.of.loans=
+admin.watch.form.label.number.of.loans=Nombre d''essais
+
+admin.watch.form.label.cat.prices=Prix
+admin.watch.form.placeholder.best.selling.price=
+admin.watch.form.label.best.selling.price=Prix de vente idéal
+admin.watch.form.placeholder.lower.selling.price=
+admin.watch.form.label.lower.selling.price=Prix de vente le plus bas
+admin.watch.form.placeholder.owning.cost=
+admin.watch.form.label.owning.cost=Coût d''acquisition
+admin.watch.form.label.acquisition.date=Date d''acquisition
+
+admin.watch.watches.header.id=Id
+admin.watch.watches.header.brand=Marque
+admin.watch.watches.header.full.name=Nom
+admin.watch.watches.header.should.display=A afficher
+admin.watch.watches.header.is.available=Est disponible
+
+admin.watch.action.save=&nbsp;Créer
+admin.watch.action.edit=&nbsp;Modifier
+admin.watch.action.delete=&nbsp;Supprimer
+admin.watch.action.cancel=&nbsp;Annuler
+admin.watch.create.call.to.action=Promouvoir le prospect en client
+
+admin.watch.label.brand=Marque
+admin.watch.label.full.name=Modèle
+admin.watch.label.should.display=A afficher
+admin.watch.label.is.available=Est disponible
+admin.watch.head.watch=<b><span class="text-muted">{0}</span> - {1}</b>
+admin.watch.label.number.of.loans=Nombre d''essais client
+admin.watch.label.owning.cost=Coût d''acquisition
+admin.watch.label.lower.selling.price=Prix de vente le plus bas
+admin.watch.label.best.selling.price=Meilleur prix de vente
+admin.watch.label.acquisition.date=Date d''acquisition
+admin.watch.label.price=Prix de l''essai
 
 
 admin.action.label.add.new.default=&nbsp;Nouveau

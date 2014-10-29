@@ -1,0 +1,2 @@
+@(text: String, details: String, location: String, busy: Boolean, args: (Symbol,String)*)
+<a href="http://www.google.com/calendar/event?action=TEMPLATE&text=@text&details=@details&location=@location&trp=@busy" target="_blank" @toHtmlArgs(args.toMap)><img src="@routes.Assets.at("images/google-calendar.png")" border="0" width="30px"></a>

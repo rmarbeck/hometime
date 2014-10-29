@@ -46,7 +46,12 @@
         <div class="col-md-6">  
             <form action="@routes.CustomerWatch.displayAll(0, "lastStatusUpdate", "asc", currentFilter, currentStatus)" method="GET" class="form-inline" role="form">
               <div class="form-group">
-                <input class="form-control" type="search" id="searchbox" name="status" value="@currentStatus" placeholder="Filter by status...">
+                <select id="searchbox" name="status" placeholder="Filter by status..." class="form-control">
+                	<option class="blank" value="">@Messages("admin.customer.watch.watches.label.status")</option>
+            	@for(status <- models.CustomerWatch.CustomerWatchStatus.values) {
+            		<option value="@status.name" @if(status.name.equals(currentStatus)) {selected="selected"})>@Messages("admin.customer.watch.watches.value.status."+status.name.toString.toLowerCase.replace('_','.'))</option>
+            	}
+        		</select>
               </div>
               <div class="form-group">
                 <input class="form-control" type="submit" id="searchsubmit" value="Filter by status" class="btn primary">
@@ -99,7 +104,9 @@
                     @Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.')))
                   </td>
                   <td>
-                    @if_not_null_nor_empty(watch.customer) {@watch.customer.name @watch.customer.firstname}
+                    @if_not_null_nor_empty(watch.customer) {
+                    <a href="@routes.Customer.display(watch.customer.id)">@watch.customer.name @watch.customer.firstname</a>
+                    }
                   </td>
                 </tr>
               }
