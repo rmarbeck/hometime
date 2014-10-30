@@ -12,7 +12,7 @@ global.text.site.name=hometime
 global.text.copyright=© Watch next SAS 2013-2014
 global.text.brand.baseline=
 global.navbar.link.text.home=Home
-global.navbar.link.text.service=L''entretien
+global.navbar.link.text.service=Entretien
 global.navbar.link.text.service.content=Tout savoir sur l''entretien des montres
 global.navbar.link.text.service.service.test=Quand faire réviser ma montre ?
 global.navbar.link.text.services=Les services
@@ -26,7 +26,7 @@ global.navbar.link.text.services.faq=Questions fréquentes (FAQ)
 global.navbar.link.text.services.around=Bons plans et bonnes adresses
 global.navbar.link.text.services.prices=Les tarifs
 global.navbar.link.text.services.feedback=Avis clients <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-global.navbar.link.text.watches=Essai et achat de montres
+global.navbar.link.text.watches=Essai/achat de montres
 global.navbar.link.text.watch.collection=Les montres disponibles à l''essai
 global.navbar.link.text.buy.request=Nous cherchons votre prochaine montre
 global.navbar.link.text.who.are.we=Mentions légales
