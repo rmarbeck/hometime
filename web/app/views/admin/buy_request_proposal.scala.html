@@ -1,0 +1,157 @@
+@(proposal: BuyRequestProposal)
+@import tags._
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="fr">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>@Messages("admin.buy.request.proposal.title")</title>
+<style type="text/css">
+    a { border: none; }
+    img { border: none; }
+    p { margin: 0; line-height: 1.3em; }
+    #footer-msg a { color: #F3A836; }
+    h1,h2,h3,h4,h5,h6 {font-size:100%;margin:0;}
+    ul.main {line-height: 1.5em;}
+    ul.no-bullet {list-style-type: none;}
+    .to-change {color: red; }
+</style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #eeeeee" bgcolor="#eeeeee">
+	<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+		<tr>
+			<td align="center" style="padding: 37px 0; background-color: #eeeeee;" bgcolor="#eeeeee">
+				<div style="padding: 0 0 10px"><a href="[[PERMALINK]]" style="line-height: 1;vertical-align: bottom;color: #000000; font-family: arial; font-size: 11px; ;border: none;">@Html(Messages("admin.buy.request.proposal.action.view.online.version"))</a></div>
+                <table cellpadding="0" cellspacing="0" border="0" style="margin: 0; border: 1px solid #dddddd; color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff; " width="600">
+					<tr>
+						<td>
+							<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								<tr>
+									<td>
+										<img width="600" alt="" style="display: block; width: 600px;border: none;" src="http://xiv.r.mailjet.com/img/1kmh/x2r93/xxkxx.png">
+									</td>
+								</tr>
+							</table>
+							<table cellpadding="0" cellspacing="0" border="0" style="margin: 0; border-collapse: collapse;" width="100%">
+								<tr>
+									<td style="color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff;  padding: 5px 0;" align="left">
+									   <table style="margin: 0 0 0 10px;border-collapse:collapse;color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff; ">
+									       <tr>
+									           <td width="580" style="vertical-align: top; padding: 5px 0; ">
+									               <table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:565px;color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff; " width="565">
+									                   <tr>
+									                       <td style="padding:5px 0 5px 5px;line-height:normal;color: #444444; font-family: arial; font-size: 12px; border-color: #dddddd; background-color: #ffffff; ">
+																<p style="margin: 0 0 10px;line-height: 1.3em;">
+																	@Html(Messages("admin.buy.request.proposal.head"))
+																</p>
+																<u>@Html(Messages("admin.buy.request.proposal.customer.request"))</u>
+																<ul class="main">
+																	@li_not_null_nor_empty(proposal.brand, "admin.buy.request.proposal.brand")
+																	@li_not_null_nor_empty(proposal.model, "admin.buy.request.proposal.model")
+																	@li_not_null_nor_empty(proposal.criteria, "admin.buy.request.proposal.criteria")
+																	<li>@Messages("admin.buy.request.proposal.value.story."+proposal.story.toString.toLowerCase.replace('_','.'))</li>
+																	<li>@Messages("admin.buy.request.proposal.value.package."+proposal.pack.toString.toLowerCase.replace('_','.'))</li>
+																	<li>@Messages("admin.buy.request.proposal.value.timeframe."+proposal.timeframe.toString.toLowerCase.replace('_','.'))</li>
+																</ul>
+																<br>
+																@if_not_null_nor_empty(proposal.infosGivenByCustomer1) {
+						                                        <u>@Html(Messages("admin.buy.request.proposal.customer.remark"+if_not_null_nor_empty(proposal.infosGivenByCustomer2) {Html("s")}))</u>
+						                                        <ul class="main">
+						                                        	@li_not_null_nor_empty(proposal.infosGivenByCustomer1, "global.void.1")
+						                                        	@li_not_null_nor_empty(proposal.infosGivenByCustomer2, "global.void.1")
+						                                        	@li_not_null_nor_empty(proposal.infosGivenByCustomer3, "global.void.1")
+						                                        </ul>
+						                                        <br>
+						                                        }
+						                                        @if_not_null_nor_empty(proposal.hypothesis1) {
+						                                        <u>@Html(Messages("admin.buy.request.proposal.hypothesis"))</u>
+						                                        <ul class="main">
+						                                        	@li_not_null_nor_empty(proposal.hypothesis1, "global.void.1")
+						                                        	@li_not_null_nor_empty(proposal.hypothesis2, "global.void.1")
+						                                        	@li_not_null_nor_empty(proposal.hypothesis3, "global.void.1")
+						                                        </ul>
+						                                        <br>
+						                                        }
+						                                        @if_not_null_nor_empty(proposal.remark1) {
+																<u>@Html(Messages("admin.buy.request.proposal.remark"+if_not_null_nor_empty(proposal.remark2) {Html("s")}))</u>
+																<ul class="main">
+																	@li_not_null_nor_empty(proposal.remark1, "global.void.1")
+						                                        	@li_not_null_nor_empty(proposal.remark2, "global.void.1")
+						                                        	@li_not_null_nor_empty(proposal.remark3, "global.void.1")
+																</ul>
+																<br>
+																}
+																<b>
+						                                        @if_not_null_nor_empty(proposal.proposal1) {
+																<u>@Html(Messages("admin.buy.request.proposal.proposal"+if_not_null_nor_empty(proposal.proposal2) {Html("s")}))</u>
+																<ul class="main">
+																	@li_not_null_nor_empty(proposal.proposal1, "global.void.1")
+						                                        	@li_not_null_nor_empty(proposal.proposal2, "global.void.1")
+						                                        	@li_not_null_nor_empty(proposal.proposal3, "global.void.1")
+																</ul>
+																</b>
+																<br>
+																}
+																<u>@Html(Messages("admin.buy.request.proposal.waranties.head"))</u>
+																<br><br>
+																@Html(Messages("admin.buy.request.proposal.waranties.body"))
+																<br><br>
+																<u>@Html(Messages("admin.buy.request.proposal.payment.conditions.head"))</u>
+																<br><br>
+																@Html(Messages("admin.buy.request.proposal.payment.conditions.body"))
+																<br><br>
+																@if(proposal.outsideZone) {
+																<u>@Html(Messages("admin.buy.request.proposal.outsidezone.head"))</u>
+																<br><br>
+																@Html(Messages("admin.buy.request.proposal.outsidezone.body"))
+																<br><br>
+																} else {
+																<u>@Html(Messages("admin.buy.request.proposal.insidezone.head"))</u>
+																<br><br>
+																@Html(Messages("admin.buy.request.proposal.insidezone.body"))
+																<br><br>
+																}
+																<u>@Html(Messages("admin.buy.request.proposal.other.services.head"))</u>
+																<br><br>
+																@Html(Messages("admin.buy.request.proposal.other.services.body", "http://"+request.host()+""+routes.Application.index()+"?utm_source=buy_request_proposal_sent"))
+																<br><br>
+																@Html(Messages("admin.buy.request.proposal.end.part", "http://"+request.host()+""+routes.Assets.at("CGV%20-%20Hometime.pdf")))
+																<br><br>
+																@Html(Messages("admin.buy.request.proposal.signature"))
+																<br><br>
+																<p style="margin: 0 0 10px;line-height: 1.3em;"></p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+            	<table cellpadding="10" cellspacing="0" border="0" style="margin: 0; border-collapse: collapse;" width="600">
+            		<tr>
+            			<td style="color: #444444; background-color: #eeeeee; border-color: #eeeeee; align: left; font-family: arial; font-size: 11px; ">
+            				<table cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin: 0; border-collapse: collapse;" width="100%">
+            					<tr>
+            						<td align="left" valign="top" style="vertical-align: top; text-align: left; color: #444444; background-color: #eeeeee; border-color: #eeeeee; align: left; font-family: arial; font-size: 11px; ">
+            							<div id="nl_footer" style="display: block; text-align: left; margin: 0;">@Html(Messages("admin.buy.request.proposal.footer.email.sent.to")) <a href="mailto:[[EMAIL_TO]]" style="color:#000000;border: none;">[[EMAIL_TO]]</a>, <a href="[[UNSUB_LINK_FR]]" style="color:#000000;border: none;">@Html(Messages("admin.buy.request.proposal.action.unsubscribe"))</a>.</div>
+            							<div id="footer_address" style="display: block; text-align: left; margin: 5px 0 0;">
+            								@Html(Messages("admin.buy.request.proposal.footer.address"))
+            							</div>
+            						</td>
+            						<td align="right" valign="top" style="vertical-align: top; text-align: right">
+            							<a href="http://www.mailjet.com" style="border: none;border: none;"><img class="nl_footer_logo" alt="" style="border: none;" src="http://www.mailjet.com/images/theme/v1/logos/nl_logo.png"></a>
+            						</td>
+            					</tr>
+            				</table>
+            			</td>
+                    </tr>
+            	</table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

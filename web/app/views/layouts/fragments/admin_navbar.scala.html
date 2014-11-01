@@ -16,7 +16,7 @@
               <ul class="nav navbar-nav">
                 @li_activable(1, index) {<a href="@routes.Admin.index()"><span class="glyphicon glyphicon-home"></span></a>}
                 @li_activable(20, index) {<a href="@routes.Admin.displayOrderRequests()">@Messages("admin.navbar.link.text.order.requests")</a>}
-                @li_activable(25, index) {<a href="@routes.Admin.displayBuyRequests()">@Messages("admin.navbar.link.text.buy.requests")</a>}
+                @li_activable(25, index) {<a href="@routes.BuyRequest.displayBuyRequests()">@Messages("admin.navbar.link.text.buy.requests")</a>}
                 @li_activable(30, index) {<a href="@routes.Admin.displayServiceTests()">@Messages("admin.navbar.link.text.service.tests")</a>}
                 @li_activable(35, index) {<a href="@routes.Customer.displayAll()">@Messages("admin.navbar.link.text.customers")</a>}
                 @li_activable(36, index) {<a href="@routes.CustomerWatch.displayAll()">@Messages("admin.navbar.link.text.customer.watches")</a>}

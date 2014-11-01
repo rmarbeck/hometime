@@ -1,4 +1,4 @@
-@(request: BuyRequest)
+@(request: models.BuyRequest)
 @import tags._
 
 @layouts.admin() {
@@ -81,6 +81,11 @@
               </tbody>
             </table>
         </div>
+        <div class="row">
+	    	<div class="col-xs-12 text-center">
+	    		<a class="btn btn-warning" href="@routes.BuyRequest.prepareProposalFromRequest(request.id)" role="button">@Messages("admin.buy.request.create.call.to.action")</a>
+	        </div>
+ 	  	</div>
       </div>   
 
 }

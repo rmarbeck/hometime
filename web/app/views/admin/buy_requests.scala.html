@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[BuyRequest], currentSortBy: String, currentOrder: String, currentFilter: String)
+@(currentPage: com.avaje.ebean.Page[models.BuyRequest], currentSortBy: String, currentOrder: String, currentFilter: String)
 @import tags._
 
 @****************************************
@@ -23,7 +23,7 @@
     }
     
     // Generate the link
-    routes.Admin.displayBuyRequests(newPage, sortBy, order, currentFilter)
+    routes.BuyRequest.displayBuyRequests(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -65,8 +65,8 @@
               @for((request, index) <- currentPage.getList.zipWithIndex) {
                 <tr>
                   <td>
-	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.displayBuyRequest(request.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
-	                <a type="button" class="btn btn-default btn-xs" href="@routes.Admin.displayBuyRequestMail(request.id)"><span class="glyphicon glyphicon-envelope"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.BuyRequest.displayBuyRequest(request.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
+	                <a type="button" class="btn btn-default btn-xs" href="@routes.BuyRequest.displayBuyRequestMail(request.id)"><span class="glyphicon glyphicon-envelope"></span></a>
                   </td>
                   <td>
                     @display_date(request.requestDate, "dd/MM")

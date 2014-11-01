@@ -249,30 +249,6 @@ public class Admin extends Controller {
 		return LIST_ORDERS;
     }
 	
-	public static Result LIST_BUY_REQUESTS = redirect(
-			routes.Admin.displayBuyRequests(0, "requestDate", "desc", "")
-			);
-	
-	public static Result displayBuyRequests(int page, String sortBy, String order, String filter) {
-        return ok(buy_requests.render(BuyRequest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
-    }
-	
-	public static Result displayBuyRequest(long id) {
-		if (buyRequestIsValid(id))
-			return ok(buy_request.render(BuyRequest.findById(id)));
-		flash("error", "Unknown id");
-		return LIST_BUY_REQUESTS;
-    }
-	
-	
-	public static Result displayBuyRequestMail(long id) {
-		if (buyRequestIsValid(id))
-			return ok(notify_buy_request.render(BuyRequest.findById(id)));
-		flash("error", "Unknown id");
-		return LIST_BUY_REQUESTS;
-    }
-
-	
 	public static Result LIST_SERVICE_TESTS = redirect(
 			routes.Admin.displayServiceTests(0, "requestDate", "desc", "")
 			);

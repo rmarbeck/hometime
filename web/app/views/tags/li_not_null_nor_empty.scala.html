@@ -1,0 +1,4 @@
+@(value: String, key: String, args: (Symbol,Any)*) 
+@if_not_null_nor_empty(value) {
+	<li @toHtmlArgs(args.toMap)>@Html(Messages(key, value))</li>
+}

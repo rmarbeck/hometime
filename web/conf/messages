@@ -1515,7 +1515,7 @@ Nous pouvons rechercher une autre solution si vous le souhaitez.%0D%0A\
 %0D%0A\
 Qu''en pensez-vous ?%0D%0A\
 %0D%0A\
-Si vous n''avez pas reçu le devis, peut-être a-t-il été considéré comme étant du spam par votre logiciel de messagerie. Si c'est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
+Si vous n''avez pas reçu le devis, peut-être a-t-il été considéré comme étant du spam par votre logiciel de messagerie. Si c''est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
 %0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\
@@ -1862,7 +1862,7 @@ admin.order.form.value.status.work.finished.80=Travaux terminés
 admin.order.form.value.status.watch.control.90=Contrôle en cours
 admin.order.form.value.status.rework.92=Nouveaux travaux nécessaires
 admin.order.form.value.status.bill.sent.100=Facture envoyée
-admin.order.form.value.status.bill.payed.110=Facturé payée
+admin.order.form.value.status.bill.payed.110=Facture payée
 admin.order.form.value.status.return.planned.120=Retour planifié
 admin.order.form.value.status.return.done.130=Retour effectué
 admin.order.form.value.status.watch.sent.back.132=Montre renvoyée
@@ -1937,3 +1937,109 @@ admin.buy.request.label.model=Modèle
 admin.buy.request.value.expected.price={0} €
 admin.buy.request.label.price.higher.bound=Prix maximum
 admin.buy.request.value.price.higher.bound={0} €
+
+admin.buy.request.proposal.title=Mandat de recherche de montre Hometime
+admin.buy.request.proposal.head=Bonjour,<br/><br/>Veuillez trouver ci-dessous la proposition Hometime correspondant à votre demande de recherche de montre. Nous vous en souhaitons bonne réception.<br /><br />Pouvez-vous nous confirmer la bonne réception de ce mail ?<br/><br/>Merci d'avance.<br/><br/>
+admin.buy.request.proposal.customer.request=Rappel de la demande :
+admin.buy.request.proposal.customer.remarks=Précisions apportées par le client :
+admin.buy.request.proposal.customer.remark=Précision apportée par le client :
+admin.buy.request.proposal.hypothesis=Hypothèses prises pour la recherche :
+admin.buy.request.proposal.remarks=Remarques importantes :
+admin.buy.request.proposal.remark=Remarque importante :
+admin.buy.request.proposal.proposals=Nos propositions :
+admin.buy.request.proposal.proposal=Notre proposition :
+admin.buy.request.proposal.brand=Marque de la montre : {0}
+admin.buy.request.proposal.model=Modèle recherché : {0}
+admin.buy.request.proposal.criteria=Critères forts : {0}
+admin.buy.request.proposal.value.story.new.only=La montre doit absolument être neuve
+admin.buy.request.proposal.value.story.worn.only=La montre doit être un modèle d''occasion
+admin.buy.request.proposal.value.story.both=La montre peut être neuve ou d''occasion
+admin.buy.request.proposal.value.package.full.set.only=La montre doit être livrée avec sa boite et ses papiers d''origine
+admin.buy.request.proposal.value.package.watch.only=Il n'est pas demandé de boite ou de papiers d''origine
+admin.buy.request.proposal.value.package.both=La montre sera livrée avec sa boite et ses papiers d''origine si possible
+admin.buy.request.proposal.value.timeframe.emergency=La montre est recherchée en urgence
+admin.buy.request.proposal.value.timeframe.within.month=L''acquisition de la montre est souhaitée sous 1 mois 
+admin.buy.request.proposal.value.timeframe.within.3.months=L''acquisition de la montre est souhaitée sous 3 mois
+admin.buy.request.proposal.value.timeframe.opportunity=L''achat sera effectué lorsque l''occasion se présentera
+admin.buy.request.proposal.action.unsubscribe=cliquez ici pour vous désabonner
+admin.buy.request.proposal.footer.address=Watch next SAS, N° SIRET : 800 198 418 00017 RCS de Versailles<br />Représentée par son président, Raphaël Marbeck<br />Siège social : 11 bis rue Pierre Curie, 78600 Maisons Laffitte<br />
+admin.buy.request.proposal.footer.email.sent.to=Cet email a été envoyé à 
+admin.buy.request.proposal.action.view.online.version=Voir la version en ligne
+admin.buy.request.proposal.waranties.head=Garanties Hometime :
+admin.buy.request.proposal.waranties.body=Toutes les montres vendues par Hometime sont garanties <b>100% authentiques</b> (nous établissons un certificat d''authenticité qui nous engage).<br /><br/>Les montres sont <b>garanties pendant 2 ans pour le fonctionnement et pour l''étanchéité</b> (sauf mention contraire dans le cas de l''étanchéité).
+admin.buy.request.proposal.payment.conditions.head=Conditions de paiement :
+admin.buy.request.proposal.payment.conditions.body=Les prix proposés par Hometime sont nets d''honoraires : le prix annoncé est le prix final que vous payez (hors éventuel coût de transport).<br /><br/>Une fois que vous avez choisi d''acheter une montre, nous vous demandons un acompte de 50% à la commande.<br /><br/>Dans le cas d''une livraison en mains propres, le solde est réglé par carte bancaire lors de la livraison, ou par virement ou chèque trois jours ouvrés avant la livraison.<br /><br/>Dans le cas d''une livraison postale, le solde est réglé par virement ou par chèque et la montre est expédiée dès réception du paiement.
+admin.buy.request.proposal.outsidezone.head=Livraison et service après vente :
+admin.buy.request.proposal.outsidezone.body=Pour les livraisons en dehors de la région parisienne, nous retenons la plupart du temps avec nos clients l''envoi de la montre en "valeur déclarée". Il s''agit d''un mode de transport entièrement sécurisé proposé par la Poste, garantissant le bien envoyé contre tout risque de vol ou de dégradation.<br /><br />Dans le cadre de la garantie de bon fonctionnement, nous prenons en charge les transports aller et retour de votre montre.
+admin.buy.request.proposal.insidezone.head=Livraison et service après vente :
+admin.buy.request.proposal.insidezone.body=Sur Paris et sa région, nous livrons les montres à votre domicile ou au bureau du Lundi au Samedi.<br /><br />Dans le cadre de la garantie de bon fonctionnement, nous intervenons également à domicile pour collecter et vous restituer votre montre.
+admin.buy.request.proposal.other.services.head=Prestations complémentaires :
+admin.buy.request.proposal.other.services.body=En complément du courtage en montres de luxe, Hometime vous propose ses services d''entretien de montres de luxe (révision, réparation, restauration) avec prise en charge à domicile.<br /><br />Nous proposons par ailleurs une vaste gamme de services horlogers. Tous les détails sur <a href="{0}">notre site</a>.
+admin.buy.request.proposal.end.part=Nous sommes à votre disposition pour toute précision.<br /><br />Dans l''attente de votre réponse, merci de votre confiance.<br /><br />Cette proposition commerciale s''entend dans le cadre des <a href="{0}">Conditions&nbsp;Générales&nbsp;de&nbsp;Ventes&nbsp;Hometime</a>.
+admin.buy.request.proposal.signature=Raphaël de Hometime.fr<br /><a href="mailto:raphael@hometime.fr" target="_blank" style="color: #0033cc; ;border: none;">raphael@hometime.fr</a><br />07 82 43 47 51
+
+admin.buy.request.proposal.form.label.brand=Marque
+admin.buy.request.proposal.form.placeholder.brand=Rolex|Omega
+admin.buy.request.proposal.form.label.model=Modèle
+admin.buy.request.proposal.form.placeholder.model=Submariner|Speedmaster
+admin.buy.request.proposal.form.label.outside.zone=En dehors de la zone ({0})
+admin.buy.request.proposal.form.value.outside.zone.inside=Non (proche)
+admin.buy.request.proposal.form.value.outside.zone.outside=Oui
+admin.buy.request.proposal.form.label.delay.can.be.reduced=Délai peut être réduit
+admin.buy.request.proposal.form.value.delay.can.be.reduced.no=Non
+admin.buy.request.proposal.form.value.delay.can.be.reduced.yes=Oui
+admin.buy.request.proposal.form.label.criteria=Critères
+admin.buy.request.proposal.form.placeholder.criteria=...
+admin.buy.request.proposal.form.label.remark=Remarque du client
+admin.buy.request.proposal.form.placeholder.remark=...
+admin.buy.request.proposal.form.label.expected.price=Prix souhaité 
+admin.buy.request.proposal.form.placeholder.expected.price=
+admin.buy.request.proposal.form.label.price.higher.bound=Prix maximum
+admin.buy.request.proposal.form.placeholder.price.higher.bound=
+admin.buy.request.proposal.form.label.cat.infos.given.by.customer=Infos données par le client
+admin.buy.request.proposal.form.label.infos.given.by.customer.1=1
+admin.buy.request.proposal.form.placeholder.infos.given.by.customer.1=...
+admin.buy.request.proposal.form.label.infos.given.by.customer.2=2
+admin.buy.request.proposal.form.placeholder.infos.given.by.customer.2=...
+admin.buy.request.proposal.form.label.infos.given.by.customer.3=3
+admin.buy.request.proposal.form.placeholder.infos.given.by.customer.3=...
+admin.buy.request.proposal.form.label.cat.hypothesis=Hypothèses
+admin.buy.request.proposal.form.label.hypothesis.1=1
+admin.buy.request.proposal.form.placeholder.hypothesis.1=...
+admin.buy.request.proposal.form.label.hypothesis.2=2
+admin.buy.request.proposal.form.placeholder.hypothesis.2=...
+admin.buy.request.proposal.form.label.hypothesis.3=3
+admin.buy.request.proposal.form.placeholder.hypothesis.3=...
+admin.buy.request.proposal.form.label.cat.remark=Remarques importantes
+admin.buy.request.proposal.form.label.remark.1=1
+admin.buy.request.proposal.form.placeholder.remark.1=...
+admin.buy.request.proposal.form.label.remark.2=2
+admin.buy.request.proposal.form.placeholder.remark.2=...
+admin.buy.request.proposal.form.label.remark.3=3
+admin.buy.request.proposal.form.placeholder.remark.3=...
+admin.buy.request.proposal.form.label.cat.proposal=Propositions
+admin.buy.request.proposal.form.label.proposal.1=1
+admin.buy.request.proposal.form.placeholder.proposal.1=...
+admin.buy.request.proposal.form.label.proposal.2=2
+admin.buy.request.proposal.form.placeholder.proposal.2=...
+admin.buy.request.proposal.form.label.proposal.3=3
+admin.buy.request.proposal.form.placeholder.proposal.3=...
+admin.buy.request.proposal.form.label.partner.asset=Compétences partenaire
+admin.buy.request.proposal.form.placeholder.partner.asset=...
+admin.buy.request.proposal.form.label.story=Etat
+admin.buy.request.proposal.form.label.package=Accessoires
+admin.buy.request.proposal.form.label.timeframe=Délai
+
+admin.buy.request.create.call.to.action=Générer
+
+admin.buy.request.proposal.action.submit=Générer
+admin.buy.request.proposal.action.preview=Prévisualiser
+admin.buy.request.proposal.action.edit=Modifier
+
+admin.buy.request.proposal.email.subject=Mandat de recherche Hometime.fr
+admin.buy.request.proposal.email.title=Recherche de {0}
+admin.buy.request.proposal.email.text.version=Cet email est en version HTML seulement
+
+admin.buy.request.proposal.success=<a href="{0}" target="_blank">Prévisualiser</a>
+
+global.void.1={0}

@@ -1,4 +1,4 @@
-@(request: BuyRequest)
+@(request: models.BuyRequest)
 @import tags._
 
 @layouts.mail("Nouvelle recherche de montre") {
@@ -28,7 +28,7 @@
 	</div>
 	<div>
 		<h2>@Html(Messages("mails.buy.request.actions"))</h2>
-		@a_absolute(routes.Admin.displayBuyRequest(request.id).url, false) {@Html(Messages("mails.buy.request.action.display"))}
+		@a_absolute(routes.BuyRequest.displayBuyRequest(request.id).url, false) {@Html(Messages("mails.buy.request.action.display"))}
 		<br /><br />
 	</div>
 	

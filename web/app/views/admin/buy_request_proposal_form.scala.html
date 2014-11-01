@@ -1,0 +1,97 @@
+@(proposal: Form[models.BuyRequestProposal])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@layouts.admin() {
+    <div class="container">
+    	@display_flash()
+    
+            @helper.form(action = routes.BuyRequest.manageProposal(), 'class -> "form-horizontal", 'role -> "form") {
+            
+            	@tags.inputHidden(proposal("customerEmail"))
+            	@tags.inputHidden(proposal("customerCity"))
+        
+        		@simple_admin_input(proposal("brand"),"admin.buy.request.proposal.form.VARIABLE.brand")
+        		
+        		@simple_admin_input(proposal("model"),"admin.buy.request.proposal.form.VARIABLE.model")
+        		
+        		@simple_admin_textarea(proposal("criteria"),"admin.buy.request.proposal.form.VARIABLE.criteria")
+        		
+        		@simple_admin_input(proposal("story"),"admin.buy.request.proposal.form.VARIABLE.story")
+        		
+        		@simple_admin_input(proposal("pack"),"admin.buy.request.proposal.form.VARIABLE.package")
+        		
+        		@simple_admin_input(proposal("timeframe"),"admin.buy.request.proposal.form.VARIABLE.timeframe")
+        		
+        		@simple_admin_input(proposal("expectedPrice"),"admin.buy.request.proposal.form.VARIABLE.expected.price")
+        		
+        		@simple_admin_input(proposal("priceHigherBound"),"admin.buy.request.proposal.form.VARIABLE.price.higher.bound")
+        		
+                @tags.myInputRadioGroup(proposal("outsideZone"),
+                                Seq( "0" -> Messages("admin.buy.request.proposal.form.value.outside.zone.inside"), "1" -> Messages("admin.buy.request.proposal.form.value.outside.zone.outside")), '_label -> Html(Messages("admin.buy.request.proposal.form.label.outside.zone", proposal("customerCity").value)),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+				@tags.myInputRadioGroup(proposal("delayCanBeReduced"),
+                                Seq( "0" -> Messages("admin.buy.request.proposal.form.value.delay.can.be.reduced.no"), "1" -> Messages("admin.buy.request.proposal.form.value.delay.can.be.reduced.yes")), '_label -> Html(Messages("admin.buy.request.proposal.form.label.delay.can.be.reduced")),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                <div class="form-group">
+                  <label for="infosGivenByCustomer" class="col-xs-3 control-label">@Messages("admin.buy.request.proposal.form.label.cat.infos.given.by.customer")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                    	@for(index <- 1 to 3) {
+                    		@simple_admin_input(proposal("infosGivenByCustomer"+index),"admin.buy.request.proposal.form.VARIABLE.infos.given.by.customer."+index,
+                    		'_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11")
+                    	}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="hypothesis" class="col-xs-3 control-label">@Messages("admin.buy.request.proposal.form.label.cat.hypothesis")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                    	@for(index <- 1 to 3) {
+                    		@simple_admin_input(proposal("hypothesis"+index),"admin.buy.request.proposal.form.VARIABLE.hypothesis."+index,
+                    		'_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11")
+                    	}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="remark" class="col-xs-3 control-label">@Messages("admin.buy.request.proposal.form.label.cat.remark")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                    	@for(index <- 1 to 3) {
+                    		@simple_admin_input(proposal("remark"+index),"admin.buy.request.proposal.form.VARIABLE.remark."+index,
+                    		'_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11")
+                    	}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="remark" class="col-xs-3 control-label">@Messages("admin.buy.request.proposal.form.label.cat.proposal")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                    	@for(index <- 1 to 3) {
+                    		@simple_admin_input(proposal("proposal"+index),"admin.buy.request.proposal.form.VARIABLE.proposal."+index,
+                    		'_label_class -> "col-sm-1 control-label", '_body_class -> "col-sm-11")
+                    	}
+                    </div>
+                  </div>
+                </div>
+                
+                @simple_admin_input(proposal("partnerAsset"),"admin.buy.request.proposal.form.VARIABLE.partner.asset")                
+
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-9 text-center">
+                    <button type="submit" class="btn btn-default" name="action" value="preview" formtarget="_blank">@Html(Messages("admin.buy.request.proposal.action.preview"))</button>
+                    <button type="submit" class="btn btn-primary" name="action" value="edit">@Html(Messages("admin.buy.request.proposal.action.edit"))</button>
+                    <button type="submit" class="btn btn-warning" name="action" value="send">@Html(Messages("admin.buy.request.proposal.action.submit"))</button>
+                  </div>
+                </div>
+            }
+    </div>
+}
