@@ -1,6 +1,7 @@
 package controllers;
 
 import static play.data.Form.form;
+import static fr.hometime.utils.SecurityHelper.doesFieldContainSPAM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,8 +95,13 @@ public class Application extends Controller {
 		@Constraints.Required
 		public String city;
 
-	    public String validate() {
-	        return null;
+	    public List<ValidationError> validate() {
+	    	List<ValidationError> errors = new ArrayList<ValidationError>();
+	    	if (doesFieldContainSPAM(model))
+	    		errors.add(new ValidationError("model", Messages.get("order.validation.error.model.spam.detected")));
+	    	if (doesFieldContainSPAM(remark))
+	    		errors.add(new ValidationError("remark", Messages.get("order.validation.error.remark.spam.detected")));
+	    	return errors.isEmpty() ? null : errors;
 	    }
 	    
 	    public OrderForm() {
@@ -162,6 +168,8 @@ public class Application extends Controller {
 	        			(model != null && !"".equals(model)))
 	        		errors.add(new ValidationError("email", Messages.get("service.test.validation.error.email.mandatory")));
 	        }
+	        if (doesFieldContainSPAM(model))
+	    		errors.add(new ValidationError("model", Messages.get("service.test.validation.error.model.spam.detected")));
 	        return errors.isEmpty() ? null : errors;
 	    }
 	    
@@ -205,8 +213,11 @@ public class Application extends Controller {
 		@Constraints.MaxLength(60)
 		public String email;
 		
-	    public String validate() {
-	        return null;
+	    public List<ValidationError> validate() {
+	    	List<ValidationError> errors = new ArrayList<ValidationError>();
+	        if (doesFieldContainSPAM(message))
+	    		errors.add(new ValidationError("message", Messages.get("contact.validation.error.message.spam.detected")));
+	        return errors.isEmpty() ? null : errors;
 	    }
 	    
 	    public ContactForm() {
@@ -240,8 +251,11 @@ public class Application extends Controller {
 		@Formats.NonEmpty
 		public String reason;
 		
-	    public String validate() {
-	        return null;
+	    public List<ValidationError> validate() {
+	    	List<ValidationError> errors = new ArrayList<ValidationError>();
+	        if (doesFieldContainSPAM(reason))
+	    		errors.add(new ValidationError("reason", Messages.get("call.request.validation.error.reason.spam.detected")));
+	        return errors.isEmpty() ? null : errors;
 	    }
 	    
 	    public CallForm() {

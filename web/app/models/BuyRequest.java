@@ -1,5 +1,8 @@
 package models;
 
+import static fr.hometime.utils.SecurityHelper.doesFieldContainSPAM;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +17,9 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import play.data.validation.Constraints;
+import play.data.validation.ValidationError;
 import play.db.ebean.Model;
+import play.i18n.Messages;
 
 /**
  * Definition of an Buy request
@@ -195,6 +200,17 @@ public class BuyRequest extends Model {
 	            .orderBy(sortBy + " " + order)
 	            .findPagingList(pageSize)
 	            .getPage(page);
+    }
+    
+    public List<ValidationError> validate() {
+    	List<ValidationError> errors = new ArrayList<ValidationError>();
+        if (doesFieldContainSPAM(criteria))
+    		errors.add(new ValidationError("criteria", Messages.get("buy.request.validation.error.criteria.spam.detected")));
+        if (doesFieldContainSPAM(remark))
+    		errors.add(new ValidationError("remark", Messages.get("buy.request.validation.error.remark.spam.detected")));
+        if (doesFieldContainSPAM(model))
+    		errors.add(new ValidationError("model", Messages.get("buy.request.validation.error.model.spam.detected")));
+        return errors.isEmpty() ? null : errors;
     }
 }
 

@@ -641,6 +641,9 @@ order.action.alternative.separator=ou bien
 order.action.alternative=Etre rappelé
 order.movement.alt=Réparation mouvement de montre
 
+order.validation.error.model.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+order.validation.error.remark.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+
 #BuyRequest
 buy.request.html.title=Recherche d''une montre neuve ou d''occasion
 buy.request.html.description=Formulaire de recherche d''une montre neuve ou d''occasion. Nous vous conseillons et cherchons pour vous des montres et les garantissons pendant 2 ans.
@@ -698,6 +701,9 @@ buy.request.text.disclaimer=Hometime agit comme courtier en montres neuves ou d'
 buy.request.form.label.remark=Remarques
 buy.request.form.placeholder.remark=...
 
+buy.request.validation.error.criteria.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+buy.request.validation.error.remark.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+buy.request.validation.error.model.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
 
 # Customization
 customization.html.title=Personnaliser sa montre
@@ -765,6 +771,7 @@ contact.form.mandatory.mark.explanation=* Champ obligatoire
 contact.success.panel.heading=Message envoyé
 contact.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre message et allons en prendre connaissance. <br /><br />A très bientôt.
 contact.action.submit=Envoyer
+contact.validation.error.message.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
 
 # Call request page
 call.request.html.title=Etre rappelé
@@ -781,6 +788,8 @@ call.request.form.mandatory.mark.explanation=* Champ obligatoire
 call.request.success.panel.heading=Demande prise en compte
 call.request.success.panel.body=Merci de votre confiance.<br /><br />Nous avons bien enregistré votre demande et allons vous rappeler très rapidement. <br /><br />A très bientôt.
 call.request.action.submit=Envoyer
+
+call.request.validation.error.reason.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
 
 # Service Test page
 service.test.html.title=Dois-je faire réviser ma montre ?
@@ -861,6 +870,7 @@ service.test.action.submit=Evaluer la prochaine révision
 service.test.validation.error.email.mandatory=Ce champ est obligatoire pour une évaluation personnalisée
 service.test.validation.error.model.mandatory=Ce champ est obligatoire pour une évaluation personnalisée
 service.test.validation.error.name.mandatory=Ce champ est obligatoire pour une évaluation personnalisée
+service.test.validation.error.model.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
 
 # Service Test Result page
 service.test.result.html.title=Résultat de l''analyse de votre montre

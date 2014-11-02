@@ -58,5 +58,11 @@ public class SecurityHelper {
 		}
 		return null;
 	}
+	
+    public static boolean doesFieldContainSPAM(String value) {
+    	if (value != null && value.contains("http://"))
+    		return true;
+    	return false;
+    }
 
 }
