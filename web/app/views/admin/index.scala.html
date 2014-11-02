@@ -1,36 +1,111 @@
-@(message: String = "", requests: List[OrderRequest])
+@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest])
 @import tags._
 @layouts.admin() {
     <div class="container">
-    @for(request <- requests) {
-        <div class="row">
-            <div class="col-xs-2">
-                @display_date(request.requestDate, "dd/MM/yyyy HH:mm")
+    @if(activeCustomers != null && activeCustomers.size >0) {
+    	<div class="row">
+    		<b>
+        	<div class="col-xs-4">
+                Nom
             </div>
-            <div class="col-xs-2">
-                @request.orderType.name()
+            <div class="col-xs-4">
+                Date de dernière communication
             </div>
-            <div class="col-xs-2">
-                @request.brand.display_name - @request.model
-            </div>
-            <div class="col-xs-2">
-                @request.method.name()
-            </div>
-            <div class="col-xs-2">
-                @if(request.remark ==null || request.remark.isEmpty()) {
-                    none
-                } else {
-                    @request.remark
-                }
-            </div>
-            <div class="col-xs-2">
-                @if(request.watchChosen != null) {
-                @request.watchChosen.brand - @request.watchChosen.full_name
-                } else {
-                    none
-                }
+            <div class="col-xs-4">
+                Statut
             </div>
         </div>
+        	</b>
+    	@for(customer <- activeCustomers) {
+        <div class="row">
+        	<div class="col-xs-4">
+                <a href="@routes.Customer.display(customer.id)">@customer.name @customer.firstname</a>
+            </div>
+            <div class="col-xs-4">
+                @display_date(customer.lastCommunicationDate, "dd/MM/yyyy HH:mm")
+            </div>
+            <div class="col-xs-4">
+                @customer.status
+            </div>
+        </div>
+    	}
+    	<br /> <br />
+    } else {
+    	Aucun client avec un sujet ouvert
+    }
+    @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
+    	<div class="row">
+    		<b>
+    		<div class="col-xs-1">
+        	    ##
+        	</div>
+        	<div class="col-xs-3">
+                Date
+            </div>
+            <div class="col-xs-4">
+                email
+            </div>
+            <div class="col-xs-4">
+                Détails
+            </div>
+           	</b>
+        </div>
+    	@for(request <- unrepliedOrderRequests) {
+        <div class="row">
+        	<div class="col-xs-1">
+        		<a href="@routes.Admin.displayOrderRequest(request.id)">##</a>
+        	</div>
+            <div class="col-xs-3">
+                @display_date(request.requestDate, "dd/MM/yyyy HH:mm")
+            </div>
+            <div class="col-xs-4">
+                @request.email
+            </div>
+            <div class="col-xs-4">
+                @(request.brand), @(request.model), @(request.city) 
+            </div>
+        </div>
+    	}
+    	<br /> <br />
+    } else {
+    	Aucune demande d'entretien non répondue
+    }
+    @if(unrepliedBuyRequests != null && unrepliedBuyRequests.size >0) {
+    	<div class="row">
+    		<b>
+    		<div class="col-xs-1">
+        	    ##
+        	</div>
+        	<div class="col-xs-3">
+                Date
+            </div>
+            <div class="col-xs-4">
+                email
+            </div>
+            <div class="col-xs-4">
+                Détails
+            </div>
+           	</b>
+        </div>
+    	@for(request <- unrepliedBuyRequests) {
+        <div class="row">
+        	<div class="col-xs-1">
+        		<a href="@routes.BuyRequest.displayBuyRequest(request.id)">##</a>
+        	</div>
+            <div class="col-xs-3">
+                @display_date(request.requestDate, "dd/MM/yyyy HH:mm")
+            </div>
+            <div class="col-xs-4">
+                @request.email
+            </div>
+            <div class="col-xs-4">
+                @(request.brand), @(request.model), @(request.city) 
+            </div>
+        </div>
+    	}
+    	<br /> <br />
+    } else {
+    	Aucune demande de recherche non répondue
     }
     </div>
 }

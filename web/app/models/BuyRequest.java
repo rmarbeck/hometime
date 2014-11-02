@@ -147,6 +147,16 @@ public class BuyRequest extends Model {
 	@Constraints.Required
 	public String city;
 	
+	public Boolean replied = false;
+	
+	@Column(name="waiting_for_customer")
+	public Boolean waitingForCustomer = false;
+	
+	public Boolean closed = false;
+	
+	@Column(name="feedback_asked")
+	public Boolean feedbackAsked = false;
+	
 	public BuyRequest() {
 		super();
 		requestDate = new Date();
@@ -162,6 +172,17 @@ public class BuyRequest extends Model {
     
     public static List<BuyRequest> findAllLatestFirst() {
         return find.orderBy("requestDate DESC").findList();
+    }
+    
+    public static List<BuyRequest> findAllUnReplied() {
+        return find.where()
+        		.and(
+        				Expr.and(
+        						Expr.eq("replied", false),
+        						Expr.eq("waiting_for_customer", false)
+        						)
+        						,Expr.eq("closed", false))
+        		.orderBy("requestDate ASC").findList();
     }
 
     public static BuyRequest findById(Long id) {

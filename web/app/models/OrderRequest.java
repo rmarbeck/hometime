@@ -107,6 +107,16 @@ public class OrderRequest extends Model {
 	
 	public String city;
 	
+	public Boolean replied = false;
+	
+	@Column(name="waiting_for_customer")
+	public Boolean waitingForCustomer = false;
+	
+	public Boolean closed = false;
+	
+	@Column(name="feedback_asked")
+	public Boolean feedbackAsked = false;
+	
 	public OrderRequest() {
 		super();
 		requestDate = new Date();
@@ -123,6 +133,18 @@ public class OrderRequest extends Model {
     public static List<OrderRequest> findAllLatestFirst() {
         return find.orderBy("requestDate DESC").findList();
     }
+    
+    public static List<OrderRequest> findAllUnReplied() {
+        return find.where()
+        		.and(
+        				Expr.and(
+        						Expr.eq("replied", false),
+        						Expr.eq("waiting_for_customer", false)
+        						)
+        						,Expr.eq("closed", false))
+        		.orderBy("requestDate ASC").findList();
+    }
+
 
     public static OrderRequest findById(Long id) {
         return find.byId(id.toString());

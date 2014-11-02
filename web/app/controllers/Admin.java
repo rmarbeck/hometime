@@ -5,6 +5,7 @@ import java.util.List;
 
 import models.Brand;
 import models.BuyRequest;
+import models.Customer;
 import models.Order;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
@@ -28,6 +29,7 @@ import views.html.admin.order_requests;
 import views.html.admin.buy_request;
 import views.html.admin.buy_requests;
 import views.html.admin.orders;
+import views.html.admin.index;
 import views.html.admin.quotation;
 import views.html.admin.quotation_form;
 import views.html.admin.service_test;
@@ -220,7 +222,7 @@ public class Admin extends Controller {
 	}
 	
 	public static Result index() {
-		return LIST_ORDERS;
+		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied()));
     }
 	
 	public static Result LIST_ORDERS = redirect(

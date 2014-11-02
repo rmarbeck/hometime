@@ -32,10 +32,11 @@
 		
 		@helper.form(action = routes.Application.quickAdminAuthenticate(), args = 'class -> "form-signin") {
 	        <h2 class="form-signin-heading">Please sign in</h2>
-	        <input name="password" type="password" class="form-control" placeholder="Password">
+	        <input name="password" type="number" pattern="[0-9]*" inputmode="numeric" class="form-control" placeholder="Password">
 
 	        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		}
+		<div class="text-center"><a href="@routes.Application.login()">Classical Login</a></div>
 		</div> <!-- /container -->
 	</body>
 </html>

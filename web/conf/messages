@@ -1293,6 +1293,9 @@ admin.navbar.link.text.service.tests=Evaluations personnalisées
 admin.navbar.link.text.prepare.quotation=Générer devis
 admin.navbar.link.text.buy.requests=Recherches de montres
 admin.navbar.link.text.logout=Logout
+admin.navbar.link.text.requests=Demandes client
+admin.navbar.link.text.prepare=Générer réponses
+admin.navbar.link.text.prepare.buy.request.proposal=Générer proposition
 
 # Quotation
 admin.quotation.request.service.type.value.1=Révision complète d''une {0}

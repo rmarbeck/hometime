@@ -69,5 +69,9 @@ public class Brand extends Model {
     public static Brand findBySeoName(String seoName) {
     	return find.where().eq("seo_name", seoName).findUnique();
     }
+    
+    public String toString() {
+    	return display_name;
+    }
 }
 

@@ -97,7 +97,7 @@ POST    /login                      									controllers.Application.authenticat
 GET     /quick-login                   									controllers.Application.quickAdminLogin()
 POST    /quick-login                   									controllers.Application.quickAdminAuthenticate()
 GET     /logout                     									controllers.Application.logout()
-GET     /orStats                    									controllers.Admin.index()
+GET     /admin/		                    									controllers.Admin.index()
 GET     /admin/order-request/all    									controllers.Admin.displayOrderRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/order-request/:id    									controllers.Admin.displayOrderRequest(id: Long)
 
