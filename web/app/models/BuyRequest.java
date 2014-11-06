@@ -202,6 +202,17 @@ public class BuyRequest extends Model {
 	            .getPage(page);
     }
     
+    public BuyRequest close() {
+    	this.closed = true;
+    	return this;
+    }
+    
+    public BuyRequest replied() {
+    	this.replied = true;
+    	return this;
+    }
+    
+    
     public List<ValidationError> validate() {
     	List<ValidationError> errors = new ArrayList<ValidationError>();
         if (doesFieldContainSPAM(criteria))

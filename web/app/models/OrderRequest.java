@@ -158,6 +158,16 @@ public class OrderRequest extends Model {
 	            .getPage(page);
     }
     
+    public OrderRequest close() {
+    	this.closed = true;
+    	return this;
+    }
+    
+    public OrderRequest replied() {
+    	this.replied = true;
+    	return this;
+    }
+    
     public String toString() {
     	StringBuilder content = new StringBuilder();
     	content.append(this.getClass().getSimpleName() + " : [");

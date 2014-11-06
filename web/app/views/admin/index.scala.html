@@ -3,109 +3,102 @@
 @layouts.admin() {
     <div class="container">
     @if(activeCustomers != null && activeCustomers.size >0) {
-    	<div class="row">
-    		<b>
-        	<div class="col-xs-4">
-                Nom
-            </div>
-            <div class="col-xs-4">
-                Date de dernière communication
-            </div>
-            <div class="col-xs-4">
-                Statut
-            </div>
-        </div>
-        	</b>
-    	@for(customer <- activeCustomers) {
-        <div class="row">
-        	<div class="col-xs-4">
-                <a href="@routes.Customer.display(customer.id)">@customer.name @customer.firstname</a>
-            </div>
-            <div class="col-xs-4">
-                @display_date(customer.lastCommunicationDate, "dd/MM/yyyy HH:mm")
-            </div>
-            <div class="col-xs-4">
-                @customer.status
-            </div>
-        </div>
-    	}
-    	<br /> <br />
+    	<h3>
+    		@Html(Messages("admin.index.customers.active"))
+    	</h3>
+    	<table class="table table-condensed table-striped table-bordered">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages("admin.index.customers.head.name"))</th>
+	          <th>@Html(Messages("admin.index.customers.head.last.communication.date"))</th>
+	          <th>@Html(Messages("admin.index.customers.head.status"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for(customer <- activeCustomers) {
+	      	<tr>
+	      		<td><a href="@routes.Customer.display(customer.id)">@customer.name @customer.firstname</a></td>
+	      		<td>@display_date(customer.lastCommunicationDate, "dd/MM/yyyy HH:mm")</td>
+	      		<td>@Html(Messages("admin.index.customers.value.status."+customer.status.name.toString.toLowerCase.replace('_','.')))</td>
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
     } else {
-    	Aucun client avec un sujet ouvert
+    	<h3>
+    		@Html(Messages("admin.index.customers.active.none"))
+    	</h3>
     }
+    <br />
     @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
-    	<div class="row">
-    		<b>
-    		<div class="col-xs-1">
-        	    ##
-        	</div>
-        	<div class="col-xs-3">
-                Date
-            </div>
-            <div class="col-xs-4">
-                email
-            </div>
-            <div class="col-xs-4">
-                Détails
-            </div>
-           	</b>
-        </div>
-    	@for(request <- unrepliedOrderRequests) {
-        <div class="row">
-        	<div class="col-xs-1">
-        		<a href="@routes.Admin.displayOrderRequest(request.id)">##</a>
-        	</div>
-            <div class="col-xs-3">
-                @display_date(request.requestDate, "dd/MM/yyyy HH:mm")
-            </div>
-            <div class="col-xs-4">
-                @request.email
-            </div>
-            <div class="col-xs-4">
-                @(request.brand), @(request.model), @(request.city) 
-            </div>
-        </div>
-    	}
-    	<br /> <br />
+    	<h3>
+    		@Html(Messages("admin.index.order.requests.active"))
+    	</h3>
+    	<table class="table table-condensed table-striped table-bordered">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages("admin.index.order.requests.head.link.to"))</th>
+	          <th>@Html(Messages("admin.index.order.requests.head.request.date"))</th>
+	          <th>@Html(Messages("admin.index.order.requests.head.email"))</th>
+	          <th>@Html(Messages("admin.index.order.requests.head.details"))</th>
+	          <th>@Html(Messages("admin.index.order.requests.head.actions"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for(request <- unrepliedOrderRequests) {
+	      	<tr>
+	      		<td><a href="@routes.Admin.displayOrderRequest(request.id)">##</a></td>
+	      		<td>@display_date(request.requestDate, "dd/MM/yyyy HH:mm")</td>
+	      		<td>@request.email</td>
+	      		<td>@(request.brand), @(request.model), @(request.city)</td>
+	      		<td>
+		      		<a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.setRepliedOrderRequest(request.id)" title="@Messages("admin.index.order.requests.action.set.replied.title")"><span class="glyphicon glyphicon-new-window"></span></a>
+	                <a type="button" class="btn btn-warning btn-xs" href="@routes.Admin.closeOrderRequest(request.id)" title="@Messages("admin.index.order.requests.action.close.title")"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
     } else {
-    	Aucune demande d'entretien non répondue
+    	<h3>
+    		@Html(Messages("admin.index.order.requests.active.none"))
+    	</h3>
     }
+    <br />
     @if(unrepliedBuyRequests != null && unrepliedBuyRequests.size >0) {
-    	<div class="row">
-    		<b>
-    		<div class="col-xs-1">
-        	    ##
-        	</div>
-        	<div class="col-xs-3">
-                Date
-            </div>
-            <div class="col-xs-4">
-                email
-            </div>
-            <div class="col-xs-4">
-                Détails
-            </div>
-           	</b>
-        </div>
-    	@for(request <- unrepliedBuyRequests) {
-        <div class="row">
-        	<div class="col-xs-1">
-        		<a href="@routes.BuyRequest.displayBuyRequest(request.id)">##</a>
-        	</div>
-            <div class="col-xs-3">
-                @display_date(request.requestDate, "dd/MM/yyyy HH:mm")
-            </div>
-            <div class="col-xs-4">
-                @request.email
-            </div>
-            <div class="col-xs-4">
-                @(request.brand), @(request.model), @(request.city) 
-            </div>
-        </div>
-    	}
-    	<br /> <br />
+    	<h3>
+    		@Html(Messages("admin.index.buy.requests.active"))
+    	</h3>
+    	<table class="table table-condensed table-striped table-bordered">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages("admin.index.buy.requests.head.link.to"))</th>
+	          <th>@Html(Messages("admin.index.buy.requests.head.request.date"))</th>
+	          <th>@Html(Messages("admin.index.buy.requests.head.email"))</th>
+	          <th>@Html(Messages("admin.index.buy.requests.head.details"))</th>
+	          <th>@Html(Messages("admin.index.buy.requests.head.actions"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for(request <- unrepliedBuyRequests) {
+	      	<tr>
+	      		<td><a href="@routes.BuyRequest.displayBuyRequest(request.id)">##</a></td>
+	      		<td>@display_date(request.requestDate, "dd/MM/yyyy HH:mm")</td>
+	      		<td>@request.email</td>
+	      		<td>@(request.brand), @(request.model), @(request.city)</td>
+	      		<td>
+		      		<a type="button" class="btn btn-primary btn-xs" href="@routes.BuyRequest.setRepliedBuyRequest(request.id)" title="@Messages("admin.index.buy.requests.action.set.replied.title")"><span class="glyphicon glyphicon-new-window"></span></a>
+	                <a type="button" class="btn btn-warning btn-xs" href="@routes.BuyRequest.closeBuyRequest(request.id)" title="@Messages("admin.index.buy.requests.action.close.title")"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
     } else {
-    	Aucune demande de recherche non répondue
+    	<h3>
+    		@Html(Messages("admin.index.buy.requests.active.none"))
+    	</h3>
     }
+    <br />
     </div>
 }

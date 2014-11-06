@@ -466,7 +466,7 @@ public class Application extends Controller {
 			
 			request.save();
 			
-			ActionHelper.tryToSendHtmlEmail("Nouvelle recherche de montre", notify_buy_request.render(request).body().toString());
+			ActionHelper.tryToSendHtmlEmail("Nouvelle recherche de montre", notify_buy_request.render(BuyRequest.findById(request.id)).body().toString());
 			
 			flash("success", "OK");
 			

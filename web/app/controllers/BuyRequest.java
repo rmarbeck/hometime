@@ -35,6 +35,9 @@ import fr.hometime.utils.ServiceTestHelper;
 @With(NoCacheAction.class)
 public class BuyRequest extends Controller {
 	
+	private final static int CLOSE_BUY_REQUEST = 1;
+	private final static int SET_REPLIED_BUY_REQUEST = 2;
+	
 	public static Result LIST_BUY_REQUESTS = redirect(
 			routes.BuyRequest.displayBuyRequests(0, "requestDate", "desc", "")
 			);
@@ -127,6 +130,30 @@ public class BuyRequest extends Controller {
 			return Promise.pure((Result) badRequest(buy_request_proposal_form.render(proposalForm)));	
 		}
     }
+	
+	public static Result closeBuyRequest(long id) {
+		return updateBuyRequest(id, CLOSE_BUY_REQUEST);
+    }
+	
+	public static Result setRepliedBuyRequest(long id) {
+		return updateBuyRequest(id, SET_REPLIED_BUY_REQUEST);
+    }
+	
+	private static Result updateBuyRequest(long id, int action) {
+		if (buyRequestIsValid(id)) {
+			switch(action) {
+			case CLOSE_BUY_REQUEST:
+				models.BuyRequest.findById(id).close().update();
+				break;
+			case SET_REPLIED_BUY_REQUEST:
+				models.BuyRequest.findById(id).replied().update();
+				break;
+			}
+			return Admin.INDEX;
+		}
+		flash("error", "Unknown id");
+		return Admin.INDEX;
+	}
 	
 	private static boolean buyRequestIsValid(long id) {
 		models.BuyRequest requestFound = models.BuyRequest.findById(id);

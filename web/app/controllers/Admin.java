@@ -44,6 +44,8 @@ import fr.hometime.utils.ServiceTestHelper;
 public class Admin extends Controller {
 	
 	private final static String AUTRE_MARQUE_SEO_NAME = "autre-marque-de-montres";
+	private final static int CLOSE_ORDER_REQUEST = 1;
+	private final static int SET_REPLIED_ORDER_REQUEST = 2;
 	
 	public static class QuotationForm {
 		@Constraints.Required
@@ -225,6 +227,10 @@ public class Admin extends Controller {
 		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied()));
     }
 	
+	public static Result INDEX = redirect(
+			routes.Admin.index()
+			);
+	
 	public static Result LIST_ORDERS = redirect(
 			routes.Admin.displayOrderRequests(0, "requestDate", "desc", "")
 			);
@@ -243,6 +249,29 @@ public class Admin extends Controller {
 		return LIST_ORDERS;
     }
 	
+	public static Result closeOrderRequest(long id) {
+		return updateOrderRequest(id, CLOSE_ORDER_REQUEST);
+    }
+	
+	public static Result setRepliedOrderRequest(long id) {
+		return updateOrderRequest(id, SET_REPLIED_ORDER_REQUEST);
+    }
+	
+	private static Result updateOrderRequest(long id, int action) {
+		if (orderIsValid(id)) {
+			switch(action) {
+			case CLOSE_ORDER_REQUEST:
+				OrderRequest.findById(id).close().update();
+				break;
+			case SET_REPLIED_ORDER_REQUEST:
+				OrderRequest.findById(id).replied().update();
+				break;
+			}
+			return INDEX;
+		}
+		flash("error", "Unknown id");
+		return INDEX;
+	}
 	
 	public static Result displayMail(long id) {
 		if (orderIsValid(id))
@@ -400,3 +429,4 @@ public class Admin extends Controller {
     	}
     }
 }
+

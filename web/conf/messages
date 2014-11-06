@@ -2055,4 +2055,37 @@ admin.buy.request.proposal.email.text.version=Cet email est en version HTML seul
 
 admin.buy.request.proposal.success=<a href="{0}" target="_blank">Prévisualiser</a>
 
+admin.index.order.requests.active=Demandes de devis ouvertes
+admin.index.order.requests.action.set.replied.title=Marquer comme répondue
+admin.index.order.requests.action.close.title=Marquer comme fermée
+admin.index.order.requests.active.none=Aucune demande de devis ouvertes
+admin.index.order.requests.head.link.to=##
+admin.index.order.requests.head.request.date=Date
+admin.index.order.requests.head.email=email
+admin.index.order.requests.head.details=Détails
+admin.index.order.requests.head.actions=Actions
+
+admin.index.buy.requests.active=Demandes de recherche ouvertes
+admin.index.buy.requests.action.set.replied.title=Marquer comme répondue
+admin.index.buy.requests.action.close.title=Marquer comme fermée
+admin.index.buy.requests.active.none=Aucune demande de recherche ouvertes
+admin.index.buy.requests.head.link.to=##
+admin.index.buy.requests.head.request.date=Date
+admin.index.buy.requests.head.email=email
+admin.index.buy.requests.head.details=Détails
+admin.index.buy.requests.head.actions=Actions
+
+admin.index.customers.active=Clients avec une actualité
+admin.index.customers.active.none=Aucun client avec une actualité
+admin.index.customers.head.name=Nom
+admin.index.customers.head.last.communication.date=Dernière communication
+admin.index.customers.head.status=Statut
+admin.index.customers.value.status.prospect=Prospect
+admin.index.customers.value.status.almost.customer=Presque client
+admin.index.customers.value.status.real.customer=Client
+
+
+
 global.void.1={0}
+
+

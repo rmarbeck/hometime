@@ -97,9 +97,11 @@ POST    /login                      									controllers.Application.authenticat
 GET     /quick-login                   									controllers.Application.quickAdminLogin()
 POST    /quick-login                   									controllers.Application.quickAdminAuthenticate()
 GET     /logout                     									controllers.Application.logout()
-GET     /admin/		                    									controllers.Admin.index()
+GET     /admin/		                    								controllers.Admin.index()
 GET     /admin/order-request/all    									controllers.Admin.displayOrderRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/order-request/:id    									controllers.Admin.displayOrderRequest(id: Long)
+GET     /admin/order-request-close/:id   								controllers.Admin.closeOrderRequest(id: Long)
+GET     /admin/order-request-set-replied/:id							controllers.Admin.setRepliedOrderRequest(id: Long)
 
 GET     /admin/buy-request/all    										controllers.BuyRequest.displayBuyRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/buy-request/:id    										controllers.BuyRequest.displayBuyRequest(id: Long)
@@ -107,6 +109,8 @@ GET     /admin/notify-buy-request/:id     								controllers.BuyRequest.display
 GET     /admin/buy-request-proposal           							controllers.BuyRequest.prepareProposal()
 GET     /admin/buy-request-proposal/:id   								controllers.BuyRequest.prepareProposalFromRequest(id: Long)
 POST    /admin/manage-buy-request-proposal								controllers.BuyRequest.manageProposal()
+GET     /admin/buy-request-close/:id   									controllers.BuyRequest.closeBuyRequest(id: Long)
+GET     /admin/buy-request-set-replied/:id								controllers.BuyRequest.setRepliedBuyRequest(id: Long)
 
 GET     /admin/customer/display/:id    									controllers.Customer.display(id: Long)
 GET     /admin/customer/all    											controllers.Customer.displayAll(p:Int ?= 0, s ?= "creationDate", o ?= "desc", f ?= "")
