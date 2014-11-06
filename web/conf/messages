@@ -595,11 +595,11 @@ order.zenith.html.title=Devis pour révision ou réparation d''une montre Zenith
 order.zenith.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Zenith, différents modèles Chronomaster, El Primero, Rainbow, Defy, Pilot, Captain.
 order.zenith.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Zenith, Chronomaster, El Primero, Rainbow, Defy, Pilot, Captain
 
-order.autre.baseline=Demande de devis gratuit
-order.autre.text.explanation=Pour obtenir un devis pour l''entretien d''une montre, veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.autre.html.title=Devis pour révision ou réparation toutes marques
-order.autre.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle toutes marques
-order.autre.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine
+order.zzzautre.baseline=Demande de devis gratuit
+order.zzzautre.text.explanation=Pour obtenir un devis pour l''entretien d''une montre, veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
+order.zzzautre.html.title=Devis pour révision ou réparation toutes marques
+order.zzzautre.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle toutes marques
+order.zzzautre.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine
 
 
 order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)
