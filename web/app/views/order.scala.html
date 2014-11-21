@@ -11,9 +11,26 @@
 }
 @end_scripts = {}
 
-@defining(if(order("brand").value!=null && !"".equals(order("brand").value)) {"order."+Brand.findById(Long.valueOf(order("brand").value)).internal_name.toLowerCase} else {"order"}) { key =>
+@key_ = {
+	@if(order("brand").value!=null && !"".equals(order("brand").value)) {order.@Brand.findById(Long.valueOf(order("brand").value)).internal_name.toLowerCase} else {order}
+}
 
-@layouts.main(key, end_scripts, in_head) {
+@title = {
+	@Messages("order.generic.html.title", Messages(key_.toString.trim+".brand.name"))
+}
+
+@description = {
+	@Messages("order.generic.html.description", Messages(key_.toString.trim+".brand.name"), Messages(key_.toString.trim+".brand.models"))
+}
+
+@keywords = {
+	@Messages("order.generic.html.keywords", Messages(key_.toString.trim+".brand.name"), Messages(key_.toString.trim+".brand.models"))
+}
+
+@defining(key_.toString.trim) { key =>
+
+
+@layouts.main_with_options(title.toString.trim, description.toString.trim, keywords.toString.trim, end_scripts, in_head) {
     @layouts.fragments.navbar(100)
     
     <div class="container pure-content-call-block-ahead order">
@@ -22,7 +39,7 @@
         	@layouts.fragments.top_banner(false)
         </div>
       </div>
-      @baseline(key+".baseline", true)
+      @baseline("order.generic.baseline", true)
       @if(flash.containsKey("success")) {
       <div class="row success">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1">
@@ -41,7 +58,7 @@
             <div class="head"><img class="img-responsive" src="/assets/images/order/movement.jpg" alt="@Messages("order.movement.alt")"></div>
             <div class="quick-sumup explanation-body">@Html(Messages("order.text.pre.explanation", routes.Application.index(), routes.Application.about()))</div>
             }
-            <div class="explanation-body">@Html(Messages(key+".text.explanation"))</div>
+            <div class="explanation-body">@Html(Messages("order.generic.text.explanation", Messages(key+".brand.name")))</div>
             <hr>
           </div>
       </div>

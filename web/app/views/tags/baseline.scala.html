@@ -1,6 +1,2 @@
-@(key: String, withCallBloackAHead : Boolean=false) 
-      <div class="row">
-          <div class="col-xs-12">
-            <div class="page-baseline@if(withCallBloackAHead) {-call-block-ahead}"><h1>@Messages(key)</h1></div>
-          </div>
-      </div>
+@(key: String, withCallBlockAHead: Boolean=false)
+@baseline_common(Messages(key), withCallBlockAHead)

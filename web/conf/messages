@@ -481,125 +481,83 @@ order.text.disclaimer=Au delà des entretiens classiques comme la révision comp
   <br />Dans certains cas, il est possible que nous ne soyons pas en mesure de vous proposer des devis comparatifs mais uniquement un devis dans le SAV officiel ou un devis chez un horloger partenaire. Nous vous en informons dans notre réponse. 
 order.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''un atelier indépendant, avec prise en charge à domicile ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a> 
 
-order.baume.baseline=Demande de devis gratuit
-order.baume.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Baume et Mercier (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.baume.html.title=Devis pour révision ou réparation d''une montre Baume et Mercier
-order.baume.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Baume et Mercier, différents modèles clifton, capeland, classima, hampton.
-order.baume.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Baume et Mercier, clifton, capeland, classima, hampton
+order.generic.baseline=Demande de devis gratuit
+order.generic.text.explanation=Pour obtenir un devis pour l''entretien d''une montre {0} (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
+order.generic.html.title=Devis pour révision ou réparation d''une montre {0}
+order.generic.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
+order.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
 
-order.br.baseline=Demande de devis gratuit
-order.br.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Bell & Ross (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.br.html.title=Devis pour révision ou réparation d''une montre Bell & Ross
-order.br.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Bell & Ross, différents modèles BR 01, BR 03, BR S, Automatic, Chronograph, WW1, WW2, Vintage, Aviation.
-order.br.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Bell & Ross, BR 01, BR 03, BR S, Automatic, Chronograph, WW1, WW2, Vintage, Aviation
+order.baume.brand.name=Baume et Mercier
+order.baume.brand.models=clifton, capeland, classima, hampton
 
-order.breitling.baseline=Demande de devis gratuit
-order.breitling.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Breitling (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.breitling.html.title=Devis pour révision ou réparation d''une montre Breitling
-order.breitling.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Breitling, différents modèles Superocean, Professional, Navitimer, Chronomat, Avenger, Transocean, Galactic, Montbrillant, Colt, Blackbird.
-order.breitling.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Breitling, Superocean, Professional, Navitimer, Chronomat, Avenger, Transocean, Galactic, Montbrillant, Colt, Blackbird
+order.br.brand.name=Bell & Ross
+order.br.brand.models=BR 01, BR 03, BR S, Automatic, Chronograph, WW1, WW2, Vintage, Aviation
 
-order.chanel.baseline=Demande de devis gratuit
-order.chanel.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Chanel (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.chanel.html.title=Devis pour révision ou réparation d''une montre Chanel
-order.chanel.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Chanel, différents modèles J12, Chromatic.
-order.chanel.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Chanel, J12, Chromatic
+order.breitling.brand.name=Breitling
+order.breitling.brand.models=Superocean, Professional, Navitimer, Chronomat, Avenger, Transocean, Galactic, Montbrillant, Colt, Blackbird
 
-order.chopard.baseline=Demande de devis gratuit
-order.chopard.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Chopard (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.chopard.html.title=Devis pour révision ou réparation d''une montre Chopard
-order.chopard.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Chopard, différents modèles Mille Miglia, Superfast, Monaco Historique, Classic.
-order.chopard.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Chopard, Mille Miglia, Superfast, Monaco Historique, Classic
+order.chanel.brand.name=Chanel
+order.chanel.brand.models=J12, Chromatic
 
-order.fc.baseline=Demande de devis gratuit
-order.fc.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Frédérique Constant (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.fc.html.title=Devis pour révision ou réparation d''une montre Frédérique Constant
-order.fc.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Frédérique Constant, différents modèles Manufacture, Runabout, Vintage Rally, Classiques.
-order.fc.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Frédérique Constant, Manufacture, Runabout, Vintage Rally, Classiques
+order.chopard.brand.name=Chopard
+order.chopard.brand.models=Mille Miglia, Superfast, Monaco Historique, Classic
 
-order.hamilton.baseline=Demande de devis gratuit
-order.hamilton.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Hamilton (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.hamilton.html.title=Devis pour révision ou réparation d''une montre Hamilton
-order.hamilton.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Hamilton, différents modèles Jazzmaster, Timeless Classic, Venture, Aviation, Field, Navy.
-order.hamilton.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Hamilton, Jazzmaster, Timeless Classic, Venture, Aviation, Field, Navy
+order.fc.brand.name=Frédérique Constant
+order.fc.brand.models=Manufacture, Runabout, Vintage Rally, Classiques
 
-order.hublot.baseline=Demande de devis gratuit
-order.hublot.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Hublot (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.hublot.html.title=Devis pour révision ou réparation d''une montre Hublot
-order.hublot.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Hublot, différents modèles Big Bang, Bigger Bang, King Power, Classic Fusion, MP.
-order.hublot.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Hublot, Big Bang, Bigger Bang, King Power, Classic Fusion, MP
+order.hamilton.brand.name=Hamilton
+order.hamilton.brand.models=Jazzmaster, Timeless Classic, Venture, Aviation, Field, Navy
 
-order.iwc.baseline=Demande de devis gratuit
-order.iwc.text.explanation=Pour obtenir un devis pour l''entretien d''une montre IWC (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.iwc.html.title=Devis pour révision ou réparation d''une montre IWC
-order.iwc.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle IWC, différents modèles Portugaise, Portofino, Aviateur, Ingénieur, Aquatimer, Da Vinci.
-order.iwc.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, IWC, Portugaise, Portofino, Aviateur, Ingénieur, Aquatimer, Da Vinci
+order.hublot.brand.name=Hublot
+order.hublot.brand.models=Big Bang, Bigger Bang, King Power, Classic Fusion, MP
 
-order.jaeger.baseline=Demande de devis gratuit
-order.jaeger.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Jaeger LeCoultre (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.jaeger.html.title=Devis pour révision ou réparation d''une montre Jaeger LeCoultre
-order.jaeger.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Jaeger LeCoultre, différents modèles Reverso, Master Compressor, Navy Seals, Master Control, Rendez Vous, Deep sea.
-order.jaeger.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Jaeger LeCoultre, JLC, Reverso, Master Compressor, Navy Seals, Master Control, Rendez Vous, Deep sea
+order.iwc.brand.name=IWC
+order.iwc.brand.models=Portugaise, Portofino, Aviateur, Ingénieur, Aquatimer, Da Vinci
 
-order.longines.baseline=Demande de devis gratuit
-order.longines.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Longines (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.longines.html.title=Devis pour révision ou réparation d''une montre Longines
-order.longines.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Longines, différents modèles Conquest, HydroConquest, Master Collection, Evidenza, Heritage.
-order.longines.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Longines, Conquest, HydroConquest, Master Collection, Evidenza, Heritage
+order.jaeger.brand.name=Jaeger LeCoultre
+order.jaeger.brand.models=JLC, Reverso, Master Compressor, Navy Seals, Master Control, Rendez Vous, Deep sea
 
-order.omega.baseline=Demande de devis gratuit
-order.omega.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Omega (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.omega.html.title=Devis pour révision ou réparation d''une montre Omega
-order.omega.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Omega, différents modèles Speedmaster, Seamaster, De Ville, Planet Ocean, Broad Arrow, Aqua Terra, Ploprof, Constellation, Moon watch.
-order.omega.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Omega, Speedmaster, Seamaster, De Ville, Planet Ocean, Broad Arrow, Aqua Terra, Ploprof, Constellation, Moon watch
+order.longines.brand.name=Longines
+order.longines.brand.models=Conquest, HydroConquest, Master Collection, Evidenza, Heritage
 
-order.panerai.baseline=Demande de devis gratuit
-order.panerai.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Panerai (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.panerai.html.title=Devis pour révision ou réparation d''une montre Panerai
-order.panerai.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Panerai, différents modèles Luminor, Marina, Radiomir.
-order.panerai.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Panerai, Officine Panerai, Luminor, Marina, Radiomir
+order.omega.brand.name=Omega
+order.omega.brand.models=Speedmaster, Seamaster, De Ville, Planet Ocean, Broad Arrow, Aqua Terra, Ploprof, Constellation, Moon watch
 
-order.rado.baseline=Demande de devis gratuit
-order.rado.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Rado (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.rado.html.title=Devis pour révision ou réparation d''une montre Rado
-order.rado.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Rado, différents modèles Hyperchrome, Esenza, D-Original, Diamaster, Centrix.
-order.rado.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Rado, Hyperchrome, Esenza, D-Original, Diamaster, Centrix
+order.panerai.brand.name=Panerai
+order.panerai.brand.models=Officine Panerai, Luminor, Marina, Radiomir
 
-order.rolex.baseline=Demande de devis gratuit
-order.rolex.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Rolex (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.rolex.html.title=Devis pour révision ou réparation d''une montre Rolex
-order.rolex.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Rolex, différents modèles Submariner, Daytona, Date Just, GMT Master, Explorer, Deep sea, Sea Dweller, Air King, Yacht Master, Milgauss.
-order.rolex.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Rolex, Submariner, Daytona, Date Just, GMT Master, Explorer, Deep sea, Sea Dweller, Air King, Yacht Master, Milgauss
+order.rado.brand.name=Rado
+order.rado.brand.models=Hyperchrome, Esenza, D-Original, Diamaster, Centrix
 
-order.tag.baseline=Demande de devis gratuit
-order.tag.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Tag Heuer (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.tag.html.title=Devis pour révision ou réparation d''une montre Tag Heuer
-order.tag.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Tag Heuer, différents modèles Carrera, Monaco, 1887, Grand Carrera, Link, Aquaracer.
-order.tag.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Tag Heuer, Carrera, Monaco, 1887, Grand Carrera, Link, Aquaracer
+order.rolex.brand.name=Rolex
+order.rolex.brand.models=Submariner, Daytona, Date Just, GMT Master, Explorer, Deep sea, Sea Dweller, Air King, Yacht Master, Milgauss
 
-order.tissot.baseline=Demande de devis gratuit
-order.tissot.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Tissot (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.tissot.html.title=Devis pour révision ou réparation d''une montre Tissot
-order.tissot.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Tissot, différents modèles T-Touch, Heritage, Classic, Trend, Sport.
-order.tissot.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Tissot, T-Touch, Heritage, Classic, Trend, Sport
+order.tag.brand.name=Tag Heuer
+order.tag.brand.models=Carrera, Monaco, 1887, Grand Carrera, Link, Aquaracer
 
-order.tudor.baseline=Demande de devis gratuit
-order.tudor.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Tudor (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.tudor.html.title=Devis pour révision ou réparation d''une montre Tudor
-order.tudor.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Tudor, différents modèles Submariner, SnowFlake, Heritage, FastRider, Advisor, Black Bay, Prince Date, Oyster.
-order.tudor.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Tudor, Submariner, SnowFlake, Heritage, FastRider, Advisor, Black Bay, Prince Date, Oyster
+order.tissot.brand.name=Tissot
+order.tissot.brand.models=T-Touch, Heritage, Classic, Trend, Sport
 
-order.zenith.baseline=Demande de devis gratuit
-order.zenith.text.explanation=Pour obtenir un devis pour l''entretien d''une montre Zenith (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.zenith.html.title=Devis pour révision ou réparation d''une montre Zenith
-order.zenith.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle Zenith, différents modèles Chronomaster, El Primero, Rainbow, Defy, Pilot, Captain.
-order.zenith.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, Zenith, Chronomaster, El Primero, Rainbow, Defy, Pilot, Captain
+order.tudor.brand.name=Tudor
+order.tudor.brand.models=Submariner, SnowFlake, Heritage, FastRider, Advisor, Black Bay, Prince Date, Oyster
 
-order.zzzautre.baseline=Demande de devis gratuit
-order.zzzautre.text.explanation=Pour obtenir un devis pour l''entretien d''une montre, veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
-order.zzzautre.html.title=Devis pour révision ou réparation toutes marques
-order.zzzautre.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle toutes marques
-order.zzzautre.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine
+order.zenith.brand.name=Zenith
+order.zenith.brand.models=Chronomaster, El Primero, Rainbow, Defy, Pilot, Captain
+
+order.audemars.brand.name=Audemars Piguet
+order.audemars.brand.models=Royal Oak, Kasparov, Offshore, Millenary, Tradition
+
+order.blancpain.brand.name=Blancpain
+order.blancpain.brand.models=Le Brassus, Villeret, Léman, Fifty Fathoms
+
+order.breguet.brand.name=Breguet
+order.breguet.brand.models=Marine, Heritage, Type XX, Tradition
+
+order.hermes.brand.name=Hermes
+order.hermes.brand.models=Clipper, Arceay, Cape Code
+
+order.zzzautre.brand.name=Vacheron Constantin, Lange und Sohne, Patek Philippe 
+order.zzzautre.brand.models=Overseas, Malte, Patrimony, Calatrava, Aquanaut, Nautilus
 
 
 order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)

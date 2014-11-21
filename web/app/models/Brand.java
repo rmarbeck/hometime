@@ -57,9 +57,12 @@ public class Brand extends Model {
         return find.orderBy("internal_name ASC").findList();
     }
     
-    
     public static List<Brand> findAllSupportedByAscId() {
         return find.where().eq("supported", true).orderBy("id ASC").findList();
+    }
+
+    public static List<Brand> findAllSupportedByAscName() {
+        return find.where().eq("supported", true).orderBy("internal_name ASC").findList();
     }
 
     public static Brand findById(Long id) {

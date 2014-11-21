@@ -92,9 +92,9 @@ GET     /courtier-en-montres-occasion         			controllers.Default.redirect(to
 GET     /avis-clients               controllers.Application.feedback()
 
 # ADMIN
-GET     /login                      									controllers.Application.login()
+GET     /login                      									controllers.Application.login(origin: String ?= "")
 POST    /login                      									controllers.Application.authenticate()
-GET     /quick-login                   									controllers.Application.quickAdminLogin()
+GET     /quick-login                   									controllers.Application.quickAdminLogin(origin: String ?= "")
 POST    /quick-login                   									controllers.Application.quickAdminAuthenticate()
 GET     /logout                     									controllers.Application.logout()
 GET     /admin/		                    								controllers.Admin.index()

@@ -635,21 +635,21 @@ brands:
          internal_name:         Audemars
          seo_name:              audemars-piguet
          display_name:          Audemars Piguet
-         supported:             false
+         supported:             true
          logo_url:              brands/audemars.png
 
     - &Blancpain  !!models.Brand
          internal_name:         Blancpain
          seo_name:              blancpain
          display_name:          Blancpain
-         supported:             false
+         supported:             true
          logo_url:              brands/blancpain.png
 
     - &Breguet  !!models.Brand
          internal_name:         Breguet
          seo_name:              breguet
          display_name:          Breguet
-         supported:             false
+         supported:             true
          logo_url:              brands/breguet.png
 
     - &Glashutte  !!models.Brand
@@ -691,7 +691,7 @@ brands:
          internal_name:         Hermes
          seo_name:              hermes
          display_name:          Hermès
-         supported:             false
+         supported:             true
          logo_url:              brands/hermes.png
 
     - &Montblanc  !!models.Brand

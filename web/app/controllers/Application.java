@@ -36,8 +36,6 @@ import views.html.mails.notify_buy_request;
 
 @With(SessionWatcher.class)
 public class Application extends Controller {
-	
-	private static Form form2;
 
 	public static class LoginForm {
 		@Constraints.Email
@@ -46,6 +44,8 @@ public class Application extends Controller {
 		@Constraints.Required
 	    public String password;
 	    
+		public String origin;
+		
 	    public String validate() {
 	    	Logger.debug("Validating credentials : [{}]:[{}]", email, password);
 	        if (User.authenticate(email, password) == null) {
@@ -59,6 +59,8 @@ public class Application extends Controller {
 	public static class QuickLoginForm {
 		@Constraints.Required
 	    public String password;
+		
+		public String origin;
 	    
 	    public String validate() {
 	    	Logger.debug("Validating quick login for admin : [{}]:[{}]", password);
@@ -71,7 +73,6 @@ public class Application extends Controller {
 	}
 	
 	public static class OrderForm {
-
 		@Constraints.Required
 		public String orderType;
 		@Constraints.Required
@@ -281,19 +282,26 @@ public class Application extends Controller {
         return ok(index.render("", getSupportedBrands(), "alt"));
     }
     
-    public static Result login() {
-        return ok(login.render(Form.form(LoginForm.class)));
+    public static Result login(String originInQueryString) {
+        return ok(login.render(Form.form(LoginForm.class), originToUse(originInQueryString)));
     }
     
-    public static Result quickAdminLogin() {
-        return ok(quick_login.render(Form.form(QuickLoginForm.class)));
+    public static Result quickAdminLogin(String originInQueryString) {
+        return ok(quick_login.render(Form.form(QuickLoginForm.class), originToUse(originInQueryString)));
+    }
+    
+    private static String originToUse(String originInQueryString) {
+    	String originToUse = originInQueryString;
+    	if (originToUse == null)
+    		originToUse = ActionHelper.getOriginOfCall(ctx());
+    	return originToUse;
     }
     
     public static Result logout() {
         session().clear();
         flash("success", "You've been logged out");
         return redirect(
-            routes.Application.login()
+            routes.Application.quickAdminLogin("")
         );
     }
     
@@ -301,10 +309,13 @@ public class Application extends Controller {
         Form<LoginForm> loginForm = Form.form(LoginForm.class).bindFromRequest();
         if (loginForm.hasErrors()) {
         	Logger.info("Login failed");
-            return badRequest(login.render(loginForm));
+            return badRequest(login.render(loginForm, ActionHelper.getOriginOfCall(ctx())));
         } else {
+        	String origin = loginForm.get().origin;
             session().clear();
             session("token", loginForm.get().email);
+            if (origin != null && !"".equals(origin))
+            	return redirect(origin);
             return redirect(
                 routes.Admin.index()
             );
@@ -315,10 +326,13 @@ public class Application extends Controller {
         Form<QuickLoginForm> loginForm = Form.form(QuickLoginForm.class).bindFromRequest();
         if (loginForm.hasErrors()) {
         	Logger.info("Login failed");
-            return badRequest(quick_login.render(loginForm));
+            return badRequest(quick_login.render(loginForm, ActionHelper.getOriginOfCall(ctx())));
         } else {
+        	String origin = loginForm.get().origin;
             session().clear();
             session("token", User.findQuickAdmin().email);
+            if (origin != null && !"".equals(origin))
+            	return redirect(origin);
             return redirect(
                 routes.Admin.index()
             );
@@ -570,7 +584,7 @@ public class Application extends Controller {
     }
 
     private static List<Brand> getSupportedBrands() {
-    	return Brand.findAllSupportedByAscId();
+    	return Brand.findAllSupportedByAscName();
     }
     
     private static List<Brand> getAllBrands() {

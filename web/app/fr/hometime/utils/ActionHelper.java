@@ -3,16 +3,14 @@ package fr.hometime.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.spi.ServiceRegistry;
-
 import models.LiveConfig;
-import models.ServiceTest;
+import play.Logger;
+import play.Play;
+import play.mvc.Http.Context;
+import play.mvc.Http.Flash;
 
 import com.typesafe.plugin.MailerAPI;
 import com.typesafe.plugin.MailerPlugin;
-
-import play.Logger;
-import play.Play;
 
 
 /**
@@ -28,8 +26,11 @@ public class ActionHelper {
 	public static String NBTE_TO = "notify_team_by_email_to";
 	public static String NBTE_FROM = "notify_team_by_email_from";
 	
+	private static String FLASH_ORIGIN = "flashscope_origin";
+	
 	private static String TEAM_ADDRESS_1 = "contact@hometime.fr";
 	private static String TEAM_FROM_ADDRESS = "watchnextforsmtp@gmail.com";
+
 
 	/**
 	 * Send a mail to the team
@@ -71,6 +72,30 @@ public class ActionHelper {
 			Logger.error("Unable to send email {}", t.getMessage());
 			t.printStackTrace();
 		}
+	}
+	
+	public static void setOriginOfCall(Context ctx) {
+		setOriginOfCall(ctx.flash(), ctx.request().uri());
+	}
+	
+	public static void setOriginOfCall(Flash flash, String value) {
+		flash.put(FLASH_ORIGIN, value);
+	}
+	
+	public static String getOriginOfCall(Context ctx) {
+		return getOriginOfCall(ctx.flash());
+	}
+	
+	public static String getOriginOfCall(Flash flash) {
+		return flash.get(FLASH_ORIGIN);
+	}
+	
+	public static void rememberOriginOfLastCall(Context ctx) {
+		rememberOriginOfLastCall(ctx.flash());
+	}
+	
+	public static void rememberOriginOfLastCall(Flash flash) {
+		setOriginOfCall(flash, getOriginOfCall(flash));
 	}
 	
 	private static MailerAPI prepareEmail(String title) {

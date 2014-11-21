@@ -1,13 +1,11 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-import play.mvc.Security.Authenticator;
-import play.mvc.Http.*;
-import models.*;
+import models.User;
 import models.User.Role;
+import play.Logger;
+import play.mvc.Http.Context;
 
-public class SecuredAdminOnly extends Authenticator {
+public class SecuredAdminOnly extends Secured {
     @Override
     public String getUsername(Context ctx) {
     	String currentUserToken = ctx.session().get("token");
@@ -19,10 +17,5 @@ public class SecuredAdminOnly extends Authenticator {
     	}
     		
         return null;
-    }
-
-    @Override
-    public Result onUnauthorized(Context ctx) {
-        return redirect(routes.Application.login());
     }
 }
