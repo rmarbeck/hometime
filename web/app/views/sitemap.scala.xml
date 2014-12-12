@@ -51,6 +51,12 @@
       <priority>1.0</priority>
     </url>
     <url>
+      <loc>http://@{request.host()}@routes.Application.sell()</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+
+    <url>
       <loc>http://@{request.host()}@routes.Application.buyRequest()</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>

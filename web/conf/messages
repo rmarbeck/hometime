@@ -410,6 +410,7 @@ offer.menu.text.service=Révision & réparations
 offer.menu.text.restore=Service de restauration
 offer.menu.text.loan=Essai de montre de luxe
 offer.menu.text.home=Déplacement à domicile
+offer.menu.text.other=Achat/vente
 offer.menu.text.more=Les autres prestations
 offer.menu.text.prices=Les tarifs
 
@@ -467,6 +468,13 @@ offer.home.body=Toutes les prestations ont lieu à votre domicile.\
 offer.home.call.to.action.contact=Nous contacter
 offer.home.call.to.action.call.request=Etre rappelé
 offer.home.call.to.action.order=Demander un devis
+
+offer.other.head=Achat et vente de montres
+offer.other.body=Vous souhaitez acheter une montre neuve ou d''occasion, vous souhaitez vendre votre montre ou l''expertiser, nous sommes là !
+
+offer.other.call.to.action.broking=Achetez une montre
+offer.other.call.to.action.sell=Vendez votre montre
+
 
 # More offer page
 more.html.title=Les services complémentaires
