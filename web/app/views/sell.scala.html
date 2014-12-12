@@ -1,0 +1,23 @@
+@(message: String = "")
+@import tags._
+
+@defining("sell") { key =>
+
+@layouts.main(key) {
+    @layouts.fragments.navbar(20)
+
+    <div class="container @key">
+    
+    @featurette(key, "1", "left", key+"/iwc.jpg", null, null)
+    
+    @featurette(key, "2", "right", key+"/patek.jpg", null, routes.Application.contact().url+"?title="+Html(Messages("sell.action.expert.title")))
+        
+    @featurette(key, "3", "left", key+"/kasparov.jpg", null, routes.Application.contact().url+"?title="+Html(Messages("sell.action.virtual.sell.title")))
+    
+    @featurette(key, "4", "right", null, null, routes.Application.contact().url+"?title="+Html(Messages("sell.action.direct.sell.title")), true)
+    
+    </div><!-- /.container -->
+    
+    <br />
+}
+}

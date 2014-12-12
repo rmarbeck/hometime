@@ -33,6 +33,7 @@ global.navbar.link.text.who.are.we=Mentions légales
 global.navbar.link.text.about=Qui&nbsp;sommes&nbsp;nous&nbsp;?
 global.navbar.link.text.water.content=Ma montre a pris l''eau
 global.navbar.link.text.broking=Trouver et acheter une montre
+global.navbar.link.text.sell=Vendre sa montre
 #   global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Demander un devis
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
@@ -281,7 +282,7 @@ water.2.to.action=Demander une intervention en urgence
 water.1.alt=Monaco embuée
 water.2.alt=Monaco ouverte
 
-# Borking page
+# Broking page
 broking.html.title=Hometime, courtier en montres de luxe
 broking.html.description=Nous trouvons pour vous les montres neuves ou d''occasion au meilleur prix, en vous offrant nos services à domicile et une garantie de 2 ans
 broking.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france
@@ -320,6 +321,50 @@ broking.1.alt=Submariner 16610
 broking.2.alt=Jaeger LeCoultre Master Compressor Memovox
 broking.3.alt=Jaeger LeCoultre Reverso Grande Date
 broking.action.contact.title=J''ai besoin de conseils pour acheter une montre
+
+
+# Sell page
+sell.html.title=Hometime, vendez votre montre de luxe
+sell.html.description=Nous achetons vos montres de luxe ou les mettons en vente pour vous via notre méthode de dépôt vente virtuel
+sell.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france, vente, dépôt-vente
+sell.content.1.head=Nous vous accompagnons pour vendre <span class="text-muted">votre montre</span>
+sell.content.1.body=<div class="sub-title"></div>Vous cherchez à <b>vendre une montre</b> et souhaitez en tirer le <b>meilleur prix</b>. Nous pouvons vous accompagner de différentes façons, que vous soyez pressé ou non, que vous soyez expert ou novice en horlogerie.\
+ <br /><br />Nous vous proposons les services suivants :\
+ <ul><li>Expertise et diagnostic avant vente,</li>\
+ 	 <li>Dépôt vente virtuel,</li>\
+ 	 <li>Achat ferme.</b>\
+ </ul>\
+ <br />Avec notre <b>structure de coûts légère</b>, nous apportons une solution intermédiaire entre les boutiques ayant pignon sur rue qui peuvent vendre vite mais qui font des marges importantes au détriment du montant revenant au vendeur (c''est à dire vous), et les solutions de vente entre particuliers aléatoires et chronophages.
+sell.content.2.head=Expertise et diagnostic avant vente
+sell.content.2.body=<div class="sub-title"></div>Quelque soit le mode de vente que vous choisissez, nous pouvons <b>vous accompagner pour expertiser votre montre et produire des documents assurant son authenticité</b>.\
+ <br /><br />Notre travail vous permet de donner confiance aux acheteurs potentiels qui pourraient être intéressés par votre montre mais inquiets de ne pas l''acheter à un professionnel.\
+ <br /><br />Notre expertise nous permet de plus de <b>vous conseiller sur le prix de vente et sur le canal le plus adapté</b> pour réaliser la vente en fonction de vos attentes (rapidité, prix net vendeur, simplicité...). Nous pouvons aussi vous aider à rédiger votre annonce pour un maximum d''efficacité.
+sell.content.3.head=Dépôt vente virtuel
+sell.content.3.body=<div class="sub-title"></div>Pour vous apporter un service de vente au meilleur prix, <b>sans contrainte et sans risque</b>, nous vous proposons une solution exclusive de dépôt vente virtuelle.\
+ <br /><br />Le principe est simple :\
+ <ul><li>Votre montre est prise en photo (de belles photos vendeuses),</li>\
+     <li>Nous prenons toutes les informations utiles sur celle-ci,</li>\
+ 	 <li>Nous convenons ensemble du prix de vente qui vous revient,</li>\
+ 	 <li>Nous mettons en vente votre montre et vous prévenons dès qu'elle est vendue.</b>\
+ </ul>\
+ <br />Que des avantages :\
+ <ul><li><b>La montre reste chez vous</b> et vous pouvez en disposer comme vous le souhaitez,</li>\
+ 	 <li>Le mandat n''est pas exclusif, vous pouvez très bien essayer de la vendre par un autre moyen,</li>\
+ 	 <li>Vous définissez <b>librement le montant que vous souhaitez tirer de la vente</b>.\
+ </ul>\
+ <br />Vos seuls engagements, nous prévenir si vous vendez la montre et être disponible pour la collecte lorsque nous l'avons vendue. 
+sell.content.4.head=Achat ferme
+sell.content.4.body=<div class="sub-title"></div>Si vous êtes pressé de vendre votre montre, nous pouvons éventuellement vous la racheter.\
+ <br /><br />N''hésitez pas à nous contacter pour nous décrire votre montre et nous vous ferons nos propositions rapidement ! 
+sell.3.to.action=Faire un dépôt virtuel
+sell.4.to.action=Obtenir une proposition ferme
+sell.2.to.action=Besoin d''une expertise ?
+sell.1.alt=IWC Mark XVI
+sell.2.alt=Certificat Patek Philippe
+sell.3.alt=Audemars Piguet Royal Oak Kasparov
+sell.action.expert.title=Je souhaite bénéficier d''une prestation d''expertise
+sell.action.virtual.sell.title=Je veux vendre ma montre par dépôt virtuel
+sell.action.direct.sell.title=Je veux vous vendre ma montre
 
 
 # Watch collection page
@@ -486,6 +531,9 @@ order.generic.text.explanation=Pour obtenir un devis pour l''entretien d''une mo
 order.generic.html.title=Devis pour révision ou réparation d''une montre {0}
 order.generic.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
 order.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
+
+order.undefined.brand.name=d''une marque supportée par Hometime
+order.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrera, Oyster, ,Submariner, Daytona, GMT Master, Big Bang, Royal Oak, El Primero, Chronomaster
 
 order.baume.brand.name=Baume et Mercier
 order.baume.brand.models=clifton, capeland, classima, hampton
@@ -1168,6 +1216,7 @@ site.plan.feedback.title=Avis clients
 site.plan.customization.title=Personnalisation de montres
 site.plan.buy.request.title=Demande de recherche de montres neuves ou d''occasion
 site.plan.broking.title=Recherche de montres neuves ou d''occasion
+site.plan.sell.title=Vendez votre montre d''occasion
 
 
 
@@ -1452,6 +1501,8 @@ mails.precisions.body=Bonjour,%0D%0A\
 Nous avons bien reçu votre demande de devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
 Pour être le plus précis possible dans notre devis, nous aurions besoin des précisions suivantes :%0D%0A\
+  - quels sont les symptômes dont souffre votre montre et qui justifient une réparation ?%0D%0A\
+  - connaîtriez-vous la référence précise de votre montre, ou sinon pourriez-vous nous envoyer des photos de celle-ci ?%0D%0A\
 %0D%0A\
 Merci d''avance, nous vous répondrons le plus rapidement possible.%0D%0A\
 %0D%0A\
@@ -1478,6 +1529,7 @@ mails.outside.zone.subject=Devis Hometime - Informations sur la prise en charge
 mails.outside.zone.body=Bonjour,%0D%0A\
 %0D%0A\
 nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
+%0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\
 Par ailleurs, nous souhaitions vous indiquer que pour les interventions en dehors de la proche banlieue parisienne, nous retenons souvent avec nos clients l''envoi et le retour de la montre par pli sécurisé en valeur déclarée. Il s''agit d''un mode de transport géré par la Poste qui garantit le bien transporté contre tout risque de perte ou de dégradation. Pour rendre la chose la plus simple possible, nous pouvons vous envoyer un premier colis contenant une boite et les instructions pour envoyer votre montre. Les frais d''envoi sont d''environ 30€/70€ aller-retour.%0D%0A\
@@ -1496,6 +1548,8 @@ mails.beware.of.spam.subject=Devis Hometime
 mails.beware.of.spam.body=Bonjour,%0D%0A\
 %0D%0A\
 nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
+%0D%0A\
+Habituellement nous nous déplaçons à votre domicile ou sur votre lieu de travail, cependant si vous le souhaitez, nous pouvons vous recevoir à l''atelier dans le 3ème arrondissement de Paris du lundi au vendredi.%0D%0A\
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\

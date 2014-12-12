@@ -370,6 +370,10 @@ public class Application extends Controller {
     public static Result broking() {
         return ok(broking.render(""));
     }
+    
+    public static Result sell() {
+        return ok(sell.render(""));
+    }
 
     public static Result order(String brandName) {
     	try {

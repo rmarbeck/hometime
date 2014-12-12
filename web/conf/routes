@@ -88,6 +88,10 @@ GET     /urgence-buee-sur-le-verre                      controllers.Default.redi
 GET     /achat-de-montres-au-meilleur-prix    			controllers.Application.broking()
 GET     /courtier-en-montres-occasion         			controllers.Default.redirect(to = "/achat-de-montres-au-meilleur-prix")
 
+# Sell
+GET     /vendez-votre-montre			    			controllers.Application.sell()
+GET     /mandat-de-depot-vente-virtuel-de-montre		controllers.Default.redirect(to = "/vendez-votre-montre")
+
 # Feedback
 GET     /avis-clients               controllers.Application.feedback()
 

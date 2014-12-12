@@ -13,7 +13,7 @@
   <div class="visible-xs col-xs-2"></div>
   <div class="clearfix visible-xs"></div>
 }
-  <div class="@if(imgUrl != null) {col-sm-9} else {col-sm-12} @if(positionOfImage.equals("right")) {col-sm-pull-3}">
+  <div class="@if(imgUrl != null) {col-sm-9} else {col-sm-12} @if(positionOfImage.equals("right") && imgUrl != null) {col-sm-pull-3}">
       <div class="featurette-heading"><h2>@Html(Messages(topic+".content."+key+".head"))</h2></div>
       <div class="featurette-body">@Html(Messages(topic+".content."+key+".body"))</div>
   </div>

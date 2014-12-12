@@ -12,7 +12,7 @@
 @end_scripts = {}
 
 @key_ = {
-	@if(order("brand").value!=null && !"".equals(order("brand").value)) {order.@Brand.findById(Long.valueOf(order("brand").value)).internal_name.toLowerCase} else {order}
+	@if(order("brand").value!=null && !"".equals(order("brand").value)) {order.@Brand.findById(Long.valueOf(order("brand").value)).internal_name.toLowerCase} else {order.undefined}
 }
 
 @title = {
