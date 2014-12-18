@@ -1,0 +1,47 @@
+@(feedback: models.Feedback)
+@import tags._
+
+@layouts.admin() {
+  <div class="container">
+     <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.feedback.head.watch",feedback.author))</h3></div>
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-default" href="@routes.Feedback.edit(feedback.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.feedback.action.edit"))</a>
+        </div>
+     </div>
+     <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <colgroup>
+                <col class="col-xs-2">
+                <col class="col-xs-7">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Champ</th>
+                  <th>Valeur</th>
+                </tr>
+              </thead>
+              <tbody>
+              	@two_cells_table_line(Html(Messages("admin.feedback.label.creation.date")), display_date(feedback.creationDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.feedback.label.display.date")), display_date(feedback.displayDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.feedback.label.author")), Html(feedback.author))
+              	
+              	@two_cells_table_line(Html(Messages("admin.feedback.label.body")), takeif_html(feedback.body))
+              	
+              	@two_cells_table_line(Html(Messages("admin.feedback.label.type.of.feedback")), Html(Messages("admin.feedback.value.type.of.feedback."+feedback.typeOfFeedback.toString.toLowerCase.replace('_','.'))))
+              	
+              	@two_cells_table_line(Html(Messages("admin.feedback.label.picture.url")), Html("<img src=\""+feedback.pictureUrl+"\" />"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.feedback.label.should.display")), Html(""+feedback.shouldDisplay))
+              	
+              	@two_cells_table_line(Html(Messages("admin.feedback.label.may.be.emphasized")), Html(""+feedback.mayBeEmphasized))
+
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+}

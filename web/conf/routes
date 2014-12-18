@@ -137,6 +137,12 @@ GET     /admin/watch/create				 								controllers.Watch.add()
 GET     /admin/watch/edit/:id 											controllers.Watch.edit(id: Long)
 POST    /admin/manage-watch 											controllers.Watch.manage()
 
+GET     /admin/feedback/display/:id										controllers.Feedback.display(id: Long)
+GET     /admin/feedback/all    											controllers.Feedback.displayAll(p:Int ?= 0, s ?= "display_date", o ?= "desc", f ?= "")
+GET     /admin/feedback/create				 							controllers.Feedback.add()
+GET     /admin/feedback/edit/:id 										controllers.Feedback.edit(id: Long)
+POST    /admin/manage-feedback											controllers.Feedback.manage()
+
 
 GET     /admin/order/display/:id										controllers.Order.display(id: Long)
 GET     /admin/order/all    											controllers.Order.displayAll(p:Int ?= 0, s ?= "creationDate", o ?= "desc", f ?= "")

@@ -1,0 +1,52 @@
+@(feedback: Form[models.Feedback], isANewFeedback: Boolean)
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.feedback.action.cancel"))</a>
+      @if(isANewFeedback) {
+      	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages("admin.feedback.action.save"))</button>
+      } else {
+      	@tags.inputHidden(feedback("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.feedback.action.edit"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages("admin.feedback.action.delete"))</button>                  
+      }
+      </div>
+    </div>
+}
+
+@layouts.admin() {
+    <div class="container">
+    	@display_flash()
+    
+            @helper.form(action = routes.Feedback.manage(), 'class -> "form-horizontal", 'role -> "form") {
+            
+            	@actions
+           
+	            
+	            @simple_admin_input(feedback("creationDate"), "admin.feedback.form.VARIABLE.creation.date", 'type -> "date")
+	            
+	            @simple_admin_input(feedback("displayDate"), "admin.feedback.form.VARIABLE.display.date", 'type -> "date")
+
+            	@simple_admin_input(feedback("author"), "admin.feedback.form.VARIABLE.author")
+            	
+            	@simple_admin_textarea(feedback("body"), "admin.feedback.form.VARIABLE.body")
+            	
+            	@helper.select(feedback("typeOfFeedback"),
+                         for (s <- models.Feedback.FeedbackType.values) yield s.toString -> Messages("admin.feedback.form.value.type."+s.toString.toLowerCase.replace('_','.')	),
+                         '_default -> Messages("admin.feedback.form.value.type.default"),
+                         'placeholder -> Messages("admin.feedback.form.placeholder.type"), '_label -> Messages("admin.feedback.form.label.type"),
+                         'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+            	
+            	@simple_admin_input(feedback("pictureUrl"), "admin.feedback.form.VARIABLE.picture.url")
+
+				@simple_admin_checkbox(feedback("shouldDisplay"), "admin.feedback.form.VARIABLE.should.display")
+                                     
+				@simple_admin_checkbox(feedback("mayBeEmphasized"), "admin.feedback.form.VARIABLE.may.be.emphasized")
+                
+                @actions
+            }
+    </div>
+}

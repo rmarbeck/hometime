@@ -1321,6 +1321,7 @@ admin.navbar.link.text.logout=Logout
 admin.navbar.link.text.requests=Demandes client
 admin.navbar.link.text.prepare=Générer réponses
 admin.navbar.link.text.prepare.buy.request.proposal=Générer proposition
+admin.navbar.link.text.feedbacks=Avis
 
 # Quotation
 admin.quotation.request.service.type.value.1=Révision complète d''une {0}
@@ -1750,6 +1751,50 @@ admin.customer.watch.watches.value.status.stored.by.sth=Chez STH
 admin.customer.watch.watches.value.status.stored.by.brand=SAV de la marque
 admin.customer.watch.watches.value.status.stored.by.other.partner=Chez un partenaire
 admin.customer.watch.watches.value.status.back.to.customer=Chez le client
+
+admin.feedback.head.watch=Avis de {0}
+admin.feedback.label.creation.date=Date de création
+admin.feedback.label.display.date=Date affichée
+admin.feedback.label.author=Auteur
+admin.feedback.label.body=Avis
+admin.feedback.label.type.of.feedback=Type (source)
+admin.feedback.label.picture.url=Image
+admin.feedback.label.should.display=Doit être affiché ?
+admin.feedback.label.may.be.emphasized=Peut être mis en avant ?
+admin.feedback.value.type.of.feedback.facebook=Facebook
+admin.feedback.value.type.of.feedback.linked.in=LinkedIn
+admin.feedback.value.type.of.feedback.internal=Sur le site
+admin.feedback.value.type.of.feedback.other=Autre
+
+admin.feedback.action.edit=&nbsp;Modifier
+admin.feedback.action.cancel=&nbsp;Annuler
+admin.feedback.action.delete=&nbsp;Supprimer
+admin.feedback.action.save=&nbsp;Enregistrer
+
+admin.feedback.form.label.display.date=Date affichée
+admin.feedback.form.label.creation.date=Création
+admin.feedback.form.label.author=Auteur
+admin.feedback.form.placeholder.author=
+admin.feedback.form.label.body=Avis
+admin.feedback.form.placeholder.body=
+admin.feedback.form.label.type=Type (source)
+admin.feedback.form.value.type.default=Sélectionner le type d''avis
+admin.feedback.form.value.type.linked.in=LinkedIn
+admin.feedback.form.value.type.facebook=Facebook
+admin.feedback.form.value.type.internal=Sur le site
+admin.feedback.form.value.type.other=Autre
+admin.feedback.form.label.picture.url=Image
+admin.feedback.form.placeholder.picture.url=
+admin.feedback.form.label.should.display=Affichée ?
+admin.feedback.form.label.may.be.emphasized=Mis en avant possible ?
+
+
+admin.feedback.feedbacks.header.creation.date=Création
+admin.feedback.feedbacks.header.display.date=Date affichée
+admin.feedback.feedbacks.header.author=Auteur
+admin.feedback.feedbacks.header.body=Avis
+admin.feedback.feedbacks.header.should.display=Affiché ?
+admin.feedback.feedbacks.header.may.be.emphasized=Mis en avant ?
 
 
 admin.watch.form.label.should.display=Doit être affichée

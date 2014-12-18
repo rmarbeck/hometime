@@ -9,6 +9,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
+import com.avaje.ebean.Expr;
+import com.avaje.ebean.Page;
+
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -93,6 +96,14 @@ public class Feedback extends Model {
         		.orderBy("display_date DESC").findList();
     }
 
+    public static Page<Feedback> page(int page, int pageSize, String sortBy, String order, String filter) {
+        return
+	        find.where().ilike("author", "%" + filter + "%")
+	            .orderBy(sortBy + " " + order)
+	            .findPagingList(pageSize)
+	            .getPage(page);
+    }
+    
 }
 
 
