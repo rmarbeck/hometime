@@ -120,7 +120,7 @@ public class Global extends GlobalSettings {
     
     private static boolean isUserAgentBlocked(Request request) {
     	String userAgent = request.getHeader("user-agent");
-    	if (userAgent != null && userAgent.toLowerCase().matches(".libwww-perl."))
+    	if (userAgent != null && userAgent.toLowerCase().matches("(.*)libwww-perl(.*)"))
     		return true;
     	return false;
     }
