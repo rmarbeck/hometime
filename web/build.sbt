@@ -21,7 +21,7 @@ includeFilter in (Assets, LessKeys.less) := "*.less"
 
 excludeFilter in (Assets, LessKeys.less) := "_*.less"
 
-pipelineStages := Seq(digest, gzip)
+pipelineStages := Seq(rjs, uglify, digest, gzip)
 
 LessKeys.compress in Assets := true
 

@@ -5,7 +5,7 @@
 @head = {
     @layouts.fragments.head_min("home")
         @layouts.fragments.bootstrap_css()
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/home.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/home.css")">
         @layouts.fragments.facebook_meta(Messages("home.title.for.facebook"), Messages("home.type.for.facebook"), routes.Assets.at("images/logo_for_facebook.jpg").absoluteURL(), Messages("home.description.for.facebook"))
         <meta property="forsearch:image" content="@routes.Assets.at("images/revision-reparation-montre-paris-small.png").absoluteURL()" />
         <meta property="forsearch:image" content="@routes.Assets.at("images/revision-reparation-montre-paris-small.jpg").absoluteURL()" />
@@ -19,8 +19,8 @@
     @layouts.fragments.end_scripts()
     @layouts.fragments.google_plus_one_script()
     @layouts.fragments.twitter_share_script()
-    <script src="@routes.Assets.at("javascripts/home.js")"></script>
-    <script src="@routes.Assets.at("javascripts/holder.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/home.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/holder.js")"></script>
 }
 
 @layouts.root(head, footer, end_scripts) {
