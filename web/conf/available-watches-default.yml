@@ -496,14 +496,14 @@ brands:
          seo_name:              baume-et-mercier
          display_name:          Baume & Mercier
          supported:             true
-         logo_url:              brands/baume_and_mercier.png
+         logo_url:              brands/baume-and-mercier.png
 
     - &BR !!models.Brand
          internal_name:         BR
          seo_name:              bell-and-ross
          display_name:          Bell & Ross
          supported:             true
-         logo_url:              brands/bell_and_ross.png
+         logo_url:              brands/bell-and-ross.png
 
     - &Breitling !!models.Brand
          internal_name:         Breitling
@@ -531,7 +531,7 @@ brands:
          seo_name:              frederique-constant
          display_name:          Frédérique Constant
          supported:             true
-         logo_url:              brands/frederique_constant.png
+         logo_url:              brands/frederique-constant.png
 
     - &Hamilton !!models.Brand
          internal_name:         Hamilton
@@ -559,7 +559,7 @@ brands:
          seo_name:              jaeger-lecoultre
          display_name:          Jaeger LeCoultre
          supported:             true
-         logo_url:              brands/jaeger_lecoultre.png
+         logo_url:              brands/jaeger-lecoultre.png
 
     - &Longines !!models.Brand
          internal_name:         Longines
@@ -601,7 +601,7 @@ brands:
          seo_name:              tag-heuer
          display_name:          Tag Heuer
          supported:             true
-         logo_url:              brands/tag_heuer.png
+         logo_url:              brands/tag-heuer.png
 
     - &Tissot !!models.Brand
          internal_name:         Tissot
