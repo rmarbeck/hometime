@@ -84,6 +84,8 @@ public class Global extends GlobalSettings {
     @SuppressWarnings("rawtypes")
 	public Action onRequest(Request request, Method actionMethod) {
         Logger.debug("Before each request... {}", request.toString());
+        if (isUserAgentBlocked(request))
+        	throw new RuntimeException("User agent blocked");
         return super.onRequest(request, actionMethod);
     }
 
@@ -114,5 +116,12 @@ public class Global extends GlobalSettings {
     	} catch (Throwable t) {
     		return false;
     	}
+    }
+    
+    private static boolean isUserAgentBlocked(Request request) {
+    	String userAgent = request.getHeader("user-agent");
+    	if (userAgent != null && userAgent.toLowerCase().matches(".libwww-perl."))
+    		return true;
+    	return false;
     }
 }
