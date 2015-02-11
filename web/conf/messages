@@ -159,7 +159,7 @@ home.order.call.to.action=Demander un devis
 home.order.call.to.action.title=Demander un devis en ligne gratuit
 home.tell.more.call.to.action=En savoir plus...
 home.tell.more.call.to.action.title=Tout savoir sur nos services
-home.feedback.call.to.action=Avis clients
+home.feedback.call.to.action=Tous les avis
 home.feedback.call.to.action.title=Ce qu''en pensent nos clients
 
 home.title.for.facebook=Hometime
@@ -185,6 +185,8 @@ home.reason.5.body=Pour un entretien au sein du réseau officiel, hometime s''oc
 home.reason.6.body=Pour un entretien chez un horloger, hometime sélectionne les meilleurs&nbsp;!
 home.reason.7.body=Si je suis pressé, hometime me propose une solution en quelques jours seulement&nbsp;!
 home.reason.8.body=Je possède une montre ancienne ou vintage, je peux la faire restaurer&nbsp;!
+
+home.text.feedback=Avis clients
 
 # Service page
 service.html.title=Entretenir sa montre

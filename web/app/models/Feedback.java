@@ -73,6 +73,7 @@ public class Feedback extends Model {
 	@Column(name="should_display")
 	public Boolean shouldDisplay = true;
 	
+	@Column(name="may_be_emphasized")
 	public Boolean mayBeEmphasized = true;
 	
 	public Feedback() {
@@ -93,6 +94,13 @@ public class Feedback extends Model {
     
     public static List<Feedback> findDisplayable() {
         return find.where().eq("should_display", true)
+        		.orderBy("display_date DESC").findList();
+    }
+    
+    public static List<Feedback> findEmphasizable() {
+        return find.where().and(
+        						Expr.eq("should_display", true),
+        						Expr.eq("may_be_emphasized", true))
         		.orderBy("display_date DESC").findList();
     }
 

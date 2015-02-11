@@ -11,10 +11,13 @@ import javax.persistence.Column;
 
 import fr.hometime.utils.ActionHelper;
 import fr.hometime.utils.GoogleAnalyticsHelper;
+import fr.hometime.utils.ListHelper;
+import fr.hometime.utils.RandomHelper;
 import fr.hometime.utils.ServiceTestHelper;
 import models.Brand;
 import models.BuyRequest;
 import models.ContactRequest;
+import models.Feedback;
 import models.OrderRequest;
 import models.Picture;
 import models.ServiceTest;
@@ -275,11 +278,11 @@ public class Application extends Controller {
 	
 
     public static Result index() {
-        return ok(index.render("", getSupportedBrands(), ""));
+        return ok(index.render("", getSupportedBrands(), "", getOneEmphasizableFeedbackRandomly()));
     }
 
     public static Result indexAlternate() {
-        return ok(index.render("", getSupportedBrands(), "alt"));
+        return ok(index.render("", getSupportedBrands(), "alt", getOneEmphasizableFeedbackRandomly()));
     }
     
     public static Result login(String originInQueryString) {
@@ -705,5 +708,9 @@ public class Application extends Controller {
 
     public static boolean forwardedFromHead() {
         return (request().getHeader("X_FORWARD_FROM_HEAD") != null && "true".equals(request().getHeader("X_FORWARD_FROM_HEAD")));
+    }
+    
+    private static Feedback getOneEmphasizableFeedbackRandomly() {
+    	return new ListHelper<Feedback>(Feedback.findEmphasizable()).getAnElementRandomly();
     }
 }
