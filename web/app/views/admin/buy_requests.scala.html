@@ -72,7 +72,9 @@
                     @display_date(request.requestDate, "dd/MM")
                   </td>
                   <td>
+                  	@if_not_null_nor_empty(request.brand) {
                     @request.brand.display_name
+                    }
                   </td>
                   <td>
                     @takeif(request.model, 40)
