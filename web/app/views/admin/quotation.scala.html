@@ -151,8 +151,10 @@
 										  }
 										}
 										
+										<br>
 										@admin.fragments.quotation_validity_time_and_limits(quotation)
 
+										<br>
 										@quotation.typeOfNetwork match {
 												  case Quotation.TypesOfNetwork.OUT_ONLY | Quotation.TypesOfNetwork.OUT_BOTH => {
                                                     @admin.fragments.quotation_partners_description(quotation)
@@ -163,7 +165,11 @@
 										
 										@admin.fragments.quotation_outside_zone(quotation)
 										
+										<br>
 										@admin.fragments.quotation_more_services(quotation)
+										
+										<br><br>
+										@admin.fragments.quotation_next_steps(quotation)
 										
 										@admin.fragments.quotation_end_part(quotation)
                                                             </td>
