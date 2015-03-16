@@ -959,7 +959,7 @@ about.head.1=Notre mission
 about.body.1=Hometime a été créée pour faciliter la vie de tous les possesseurs de belles montres aux moments clefs de leurs expériences horlogères. \
  <br /><br />Que ce soit lors de l''achat, de l''entretien ou de la revente, Hometime vous accompagne pour faire les bons choix au meilleur prix et dans le plus grand confort. \
  <br /><br />Pour cela, nous attachons une importance particulière à vous écouter et à vous proposer des solutions personnalisées correspondant à vos attentes. \
- <br /><br />Hometime est un service de la société Watch next enregistrée au RCS de Versailles.
+ <br /><br />Hometime est un service de la société <a href="hardCodedToLegal">Watch next enregistrée au RCS de Versailles</a>.
 about.head.2=Le concept Hometime
 about.body.2=Hometime repose sur le concept d''un super <b>concierge expert en horlogerie</b>.\
  <br /><br />Comme tous les bons concierges, il est là pour vous faire <b>gagner un maximum de temps en vous facilitant la vie</b>. Tout ce qui est contraignant devient simple et indolore : \
@@ -975,7 +975,7 @@ about.body.2=Hometime repose sur le concept d''un super <b>concierge expert en h
  <br /><br />Mais surtout, Hometime s''adapte à vos besoins et à vos contraintes. Vous avez une requête particulière, n''hésitez pas !
 about.head.3=Nous contacter
 about.body.3=Vous pouvez nous joindre par téléphone au <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).\
-     <br /><br />Par email : contact [@] hometime.fr
+     <br /><br />Par email : contact [@] hometime.fr, ou via notre <a href="hardCodedToContact">formulaire de contact</a>
  
 # Feedback page
 feedback.html.title=Avis clients

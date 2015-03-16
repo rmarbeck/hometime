@@ -46,6 +46,7 @@ POST    /rechercher-une-montre      controllers.Application.manageBuyRequest()
 
 # Contact
 GET     /nous-contacter             controllers.Application.contact(title: String ?= "")
+GET     /hardCodedToContact         controllers.Default.redirect(to = "/nous-contacter")
 POST    /nous-contacter             controllers.Application.manageContact()
 
 # CallRequest
@@ -65,6 +66,7 @@ GET     /about                      controllers.Default.redirect(to = "/qui-somm
 # Legal
 GET     /mentions-legales           controllers.Application.legal()
 GET     /legal                      controllers.Default.redirect(to = "/mentions-legales")
+GET     /hardCodedToLegal           controllers.Default.redirect(to = "/mentions-legales")
 
 # FAQ
 GET     /questions-frequentes       controllers.Application.faq()
