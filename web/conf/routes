@@ -97,6 +97,9 @@ GET     /mandat-de-depot-vente-virtuel-de-montre		controllers.Default.redirect(t
 # Moon website
 GET		/lune											controllers.Default.redirect(to = "http://www.patek.com/contents/default/fr/MoonphaseIndicatorSetting.html")
 
+# Chrono24 page
+GET		/chrono24										controllers.Default.redirect(to = "http://www.chrono24.fr/search/index.htm?dosearch=true&merchantName=watchnext")
+
 # Feedback
 GET     /avis-clients               controllers.Application.feedback()
 
