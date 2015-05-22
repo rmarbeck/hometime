@@ -1,9 +1,14 @@
-@(key: String)(content: Html)
+@(key: String, redirect: String)(content: Html)
 
 @import tags._
 
 @head = {
-    @layouts.fragments.head_min(key)
+	@if(redirect!=null) {
+		<meta http-equiv="refresh" content="1;url=@redirect">
+        <script type="text/javascript">
+            window.location.href = "@redirect"
+        </script>
+	}    @layouts.fragments.head_min(key)
         @layouts.fragments.bootstrap_css()
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/error.min.css")">
 }

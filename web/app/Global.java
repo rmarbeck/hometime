@@ -99,8 +99,11 @@ public class Global extends GlobalSettings {
 
     @Override
     public Promise<Result> onHandlerNotFound(RequestHeader request) {
+    	String redirect = null;
+    	if(request.uri()!= null && request.uri().startsWith("//"))
+    		redirect = request.uri().replaceAll("//", "/");
         return Promise.<Result>pure(notFound(
-            views.html.error.notfound.render(request.uri())
+            views.html.error.notfound.render(request.uri(), redirect)
         ));
     }
 

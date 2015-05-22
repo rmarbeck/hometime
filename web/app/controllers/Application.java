@@ -561,7 +561,7 @@ public class Application extends Controller {
 	    	Watch currentWatch = Watch.findById(id);
 	        return ok(watch_detail.render(currentWatch.short_name, currentWatch, Picture.findPicturesForWatch(currentWatch), getDisplayableWatchesExceptOne(currentWatch)));
     	} catch (Exception e) {
-    		return badRequest(views.html.error.notfound.render(request().uri()));
+    		return badRequest(views.html.error.notfound.render(request().uri(), null));
     	}
     }
     
@@ -570,7 +570,7 @@ public class Application extends Controller {
 	    	Watch currentWatch = Watch.findBySeoName(seoName);
 	    	return watch_detail_byId(currentWatch.id);
     	} catch (Exception e) {
-    		return badRequest(views.html.error.notfound.render(request().uri()));
+    		return badRequest(views.html.error.notfound.render(request().uri(), null));
     	}
     }
 
