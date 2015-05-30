@@ -1,0 +1,6 @@
+@**
+ * Prepend url with cdn hostname if it is defined in conf.
+ *
+ * @param file file to look at
+ *@
+@(file: String)@if(play.Play.application.configuration.getString("cdn.host") != null) {http://@(play.Play.application.configuration.getString("cdn.host"))}@routes.Assets.at(file)

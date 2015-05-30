@@ -1,2 +1,2 @@
 @(url: String)
-@if(url.startsWith("http")) {@url} else {@routes.Assets.at("images/"+url)}
+@if(url.startsWith("http")) {@url} else {@remote_assets("images/"+url)}

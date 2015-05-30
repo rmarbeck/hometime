@@ -5,9 +5,9 @@
 @head = {
     @layouts.fragments.head_min(key, title_option, description_option)
         @layouts.fragments.bootstrap_css()
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.min.css")">
+        <link rel="stylesheet" media="screen" href="@remote_assets("stylesheets/main.min.css")">
         <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap-image-gallery.min.css")">
+        <link rel="stylesheet" href="@remote_assets("stylesheets/bootstrap-image-gallery.min.css")">
 }
 
 @footer = {
@@ -16,10 +16,10 @@
 
 @end_scripts = {
     @layouts.fragments.end_scripts()
-    <script src="@routes.Assets.at("javascripts/main.js")"></script>
-    <script src="@routes.Assets.at("javascripts/holder.js")"></script>
+    <script src="@remote_assets("javascripts/main.js")"></script>
+    <script src="@remote_assets("javascripts/holder.js")"></script>
     <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-    <script src="@routes.Assets.at("javascripts/bootstrap-image-gallery.min.js")"></script>
+    <script src="@remote_assets("javascripts/bootstrap-image-gallery.min.js")"></script>
     @end_scripts_bottom
 }
 

@@ -5,7 +5,7 @@
 @head = {
     @layouts.fragments.head_min(key)
         @layouts.fragments.bootstrap_css()
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.min.css")">
+        <link rel="stylesheet" media="screen" href="@remote_assets("stylesheets/main.min.css")">
         @in_head_content
 }
 
@@ -15,8 +15,8 @@
 
 @end_scripts = {
     @layouts.fragments.end_scripts()
-    <script src="@routes.Assets.at("javascripts/main.js")"></script>
-    <script src="@routes.Assets.at("javascripts/holder.js")"></script>
+    <script src="@remote_assets("javascripts/main.js")"></script>
+    <script src="@remote_assets("javascripts/holder.js")"></script>
     @end_scripts_bottom
 }
 
