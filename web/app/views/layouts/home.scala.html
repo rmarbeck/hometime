@@ -19,8 +19,8 @@
     @layouts.fragments.end_scripts()
     @layouts.fragments.google_plus_one_script()
     @layouts.fragments.twitter_share_script()
-    <script src="@routes.Assets.at("javascripts/home.js")"></script>
-    <script src="@routes.Assets.at("javascripts/holder.js")"></script>
+    <script src="@remote_assets("javascripts/home.js")"></script>
+    <script src="@remote_assets("javascripts/holder.js")"></script>
 }
 
 @layouts.root(head, footer, end_scripts) {
