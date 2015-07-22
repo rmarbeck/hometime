@@ -100,6 +100,9 @@ GET		/lune											controllers.Default.redirect(to = "http://www.patek.com/con
 # Chrono24 page
 GET		/chrono24										controllers.Default.redirect(to = "http://www.chrono24.fr/search/index.htm?dosearch=true&merchantName=watchnext")
 
+# Usefull Links page
+GET		/links											controllers.Application.usefull_links()
+
 # Feedback
 GET     /avis-clients               controllers.Application.feedback()
 
@@ -151,6 +154,11 @@ GET     /admin/feedback/create				 							controllers.Feedback.add()
 GET     /admin/feedback/edit/:id 										controllers.Feedback.edit(id: Long)
 POST    /admin/manage-feedback											controllers.Feedback.manage()
 
+GET     /admin/link/display/:id											controllers.UsefullLink.display(id: Long)
+GET     /admin/link/all    												controllers.UsefullLink.displayAll(p:Int ?= 0, s ?= "creation_date", o ?= "desc", f ?= "")
+GET     /admin/link/create					 							controllers.UsefullLink.add()
+GET     /admin/link/edit/:id	 										controllers.UsefullLink.edit(id: Long)
+POST    /admin/manage-link												controllers.UsefullLink.manage()
 
 GET     /admin/order/display/:id										controllers.Order.display(id: Long)
 GET     /admin/order/all    											controllers.Order.displayAll(p:Int ?= 0, s ?= "creationDate", o ?= "desc", f ?= "")
@@ -168,6 +176,10 @@ GET     /admin/quotation            									controllers.Admin.prepareQuotation(
 GET     /admin/quotation/:id        									controllers.Admin.prepareQuotationFromOrder(id: Long, inNetwork: Boolean ?= false)
 GET     /admin/quotation/:id/:pId   									controllers.Admin.prepareQuotationFromOrderWithPreset(id: Long, pId: Long, inNetwork: Boolean ?= false)
 POST    /admin/manage-quotation     									controllers.Admin.manageQuotation()
+
+GET     /admin/invoice            										controllers.Accounting.display()
+GET     /admin/invoice/create          									controllers.Accounting.addInvoice()
+POST     /admin/manage-invoice            								controllers.Accounting.manageInvoice()
 
 # Sitemap
 GET     /sitemap.xml                controllers.Application.sitemap()

@@ -21,6 +21,7 @@ import models.Feedback;
 import models.OrderRequest;
 import models.Picture;
 import models.ServiceTest;
+import models.UsefullLink;
 import models.User;
 import models.Watch;
 import play.Logger;
@@ -581,6 +582,10 @@ public class Application extends Controller {
     public static Result siteplan() {
     	return ok(site_plan.render(getDisplayableWatches(), getSupportedBrands()));
     }
+    
+    public static Result usefull_links() {
+    	return ok(usefull_links.render(getDisplayableUsefullLinks()));
+    }
 
     private static List<Watch> getDisplayableWatches() {
     	return Watch.findDisplayable();
@@ -603,6 +608,10 @@ public class Application extends Controller {
     	if (displayableWatches != null && !displayableWatches.isEmpty())
     		displayableWatches.remove(currentWatch);
     	return displayableWatches;
+    }
+    
+    private static List<UsefullLink> getDisplayableUsefullLinks() {
+    	return UsefullLink.findDisplayable();
     }
     
     private static Form<OrderForm> fillFormWithQueryParams(String brandName) {

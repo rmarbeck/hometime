@@ -1,0 +1,47 @@
+@(link: Form[models.UsefullLink], isANewLink: Boolean)
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.usefull.link.action.cancel"))</a>
+      @if(isANewLink) {
+      	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages("admin.usefull.link.action.save"))</button>
+      } else {
+      	@tags.inputHidden(link("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.usefull.link.action.edit"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages("admin.usefull.link.action.delete"))</button>                  
+      }
+      </div>
+    </div>
+}
+
+@layouts.admin() {
+    <div class="container">
+    	@display_flash()
+    
+            @helper.form(action = routes.UsefullLink.manage(), 'class -> "form-horizontal", 'role -> "form") {
+            
+            	@actions
+	            
+	            @simple_admin_input(link("creationDate"), "admin.usefull.link.form.VARIABLE.creation.date", 'type -> "date")
+	            
+            	@simple_admin_input(link("name"), "admin.usefull.link.form.VARIABLE.name")
+            	
+            	@simple_admin_textarea(link("description"), "admin.usefull.link.form.VARIABLE.description")
+            	
+            	@helper.select(link("typeOfLink"),
+                         for (s <- models.UsefullLink.LinkType.values) yield s.toString -> Messages("admin.usefull.link.form.value.type."+s.toString.toLowerCase.replace('_','.')	),
+                         '_default -> Messages("admin.usefull.link.form.value.type.default"),
+                         'placeholder -> Messages("admin.usefull.link.form.placeholder.type"), '_label -> Messages("admin.usefull.link.form.label.type"),
+                         'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+            	
+            	@simple_admin_input(link("url"), "admin.usefull.link.form.VARIABLE.url")
+
+				@simple_admin_checkbox(link("shouldDisplay"), "admin.usefull.link.form.VARIABLE.should.display")
+                
+                @actions
+            }
+    </div>
+}

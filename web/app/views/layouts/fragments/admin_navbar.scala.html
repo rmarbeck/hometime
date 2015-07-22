@@ -25,13 +25,19 @@
                 }
                 @li_activable(35, index) {<a href="@routes.Customer.displayAll()">@Messages("admin.navbar.link.text.customers")</a>}
                 @li_activable(36, index) {<a href="@routes.CustomerWatch.displayAll()">@Messages("admin.navbar.link.text.customer.watches")</a>}
-                @li_activable(37, index) {<a href="@routes.Feedback.displayAll()">@Messages("admin.navbar.link.text.feedbacks")</a>}
                 @li_activable(38, index) {<a href="@routes.Order.displayAll()">@Messages("admin.navbar.link.text.orders")</a>}
                 @li_activable(40, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.prepare")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     @li_activable(40, index) {<a href="@routes.Admin.prepareQuotation()">@Messages("admin.navbar.link.text.prepare.quotation")</a>}
 	                @li_activable(45, index) {<a href="@routes.BuyRequest.prepareProposal()">@Messages("admin.navbar.link.text.prepare.buy.request.proposal")</a>}
+                  </ul>
+                }
+                @li_activable(50, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.other")) <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    @li_activable(50, index) {<a href="@routes.Feedback.displayAll()">@Messages("admin.navbar.link.text.feedbacks")</a>}
+                    @li_activable(55, index) {<a href="@routes.UsefullLink.displayAll()">@Messages("admin.navbar.link.text.links")</a>}
                   </ul>
                 }
               </ul>

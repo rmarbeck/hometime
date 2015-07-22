@@ -3,6 +3,23 @@
 
 # --- !Ups
 
+create table accounting_document (
+  id                        bigint not null,
+  constraint pk_accounting_document primary key (id))
+;
+
+create table accounting_line (
+  id                        bigint not null,
+  description               varchar(10000),
+  unit                      bigint,
+  unit_price                float,
+  info                      varchar(10000),
+  document_id               bigint,
+  line_type                 varchar(40),
+  constraint ck_accounting_line_line_type check (line_type in ('WITH_VAT_BY_UNIT','WITHOUT_VAT_BY_UNIT','FREE_INCLUDED','FREE_OFFERED','FREE_SPECIAL','INFO_LINE')),
+  constraint pk_accounting_line primary key (id))
+;
+
 create table brand (
   id                        bigint not null,
   internal_name             varchar(255),
@@ -113,6 +130,22 @@ create table feedback (
   may_be_emphasized         boolean,
   constraint ck_feedback_feeedback_type check (feeedback_type in ('FACEBOOK','LINKED_IN','INTERNAL','OTHER')),
   constraint pk_feedback primary key (id))
+;
+
+create table invoice (
+  id                        bigint not null,
+  description               varchar(10000),
+  payment_conditions        varchar(10000),
+  supported_payment_methods varchar(10000),
+  payment_method_used       varchar(10000),
+  already_payed             float,
+  unique_accounting_number  varchar(255),
+  creation_date             timestamp,
+  from_date                 timestamp,
+  to_date                   timestamp,
+  customer_id               bigint,
+  constraint uq_invoice_unique_accounting_num unique (unique_accounting_number),
+  constraint pk_invoice primary key (id))
 ;
 
 create table live_config (
@@ -226,6 +259,18 @@ create table service_test (
   constraint pk_service_test primary key (id))
 ;
 
+create table usefull_link (
+  id                        bigint not null,
+  creation_date             timestamp,
+  description               varchar(50000),
+  name                      varchar(1000),
+  url                       varchar(255),
+  link_type                 varchar(40),
+  should_display            boolean,
+  constraint ck_usefull_link_link_type check (link_type in ('PARTNER','RESERVED_1','RESERVED_2','RESERVED_3')),
+  constraint pk_usefull_link primary key (id))
+;
+
 create table user_table (
   id                        bigint not null,
   email                     varchar(255),
@@ -271,6 +316,10 @@ create table watch (
   constraint pk_watch primary key (id))
 ;
 
+create sequence accounting_document_seq;
+
+create sequence accounting_line_seq;
+
 create sequence brand_seq;
 
 create sequence buy_request_seq;
@@ -282,6 +331,8 @@ create sequence customer_seq;
 create sequence customer_watch_seq;
 
 create sequence feedback_seq;
+
+create sequence invoice_seq;
 
 create sequence live_config_seq;
 
@@ -295,32 +346,42 @@ create sequence preset_quotation_for_brand_seq;
 
 create sequence service_test_seq;
 
+create sequence usefull_link_seq;
+
 create sequence user_table_seq;
 
 create sequence watch_seq;
 
-alter table buy_request add constraint fk_buy_request_brand_1 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_buy_request_brand_1 on buy_request (brand_id);
-alter table customer_watch add constraint fk_customer_watch_customer_2 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
-create index ix_customer_watch_customer_2 on customer_watch (customer_id);
-alter table order_table add constraint fk_order_table_request_3 foreign key (request_id) references order_request (id) on delete restrict on update restrict;
-create index ix_order_table_request_3 on order_table (request_id);
-alter table order_table add constraint fk_order_table_customer_4 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
-create index ix_order_table_customer_4 on order_table (customer_id);
-alter table order_request add constraint fk_order_request_brand_5 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_order_request_brand_5 on order_request (brand_id);
-alter table order_request add constraint fk_order_request_watchChosen_6 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
-create index ix_order_request_watchChosen_6 on order_request (watch_chosen_id);
-alter table picture add constraint fk_picture_watch_7 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
-create index ix_picture_watch_7 on picture (watch_id);
-alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand__8 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_preset_quotation_for_brand__8 on preset_quotation_for_brand (brand_id);
+alter table accounting_line add constraint fk_accounting_line_document_1 foreign key (document_id) references accounting_document (id) on delete restrict on update restrict;
+create index ix_accounting_line_document_1 on accounting_line (document_id);
+alter table buy_request add constraint fk_buy_request_brand_2 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_buy_request_brand_2 on buy_request (brand_id);
+alter table customer_watch add constraint fk_customer_watch_customer_3 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_customer_watch_customer_3 on customer_watch (customer_id);
+alter table invoice add constraint fk_invoice_customer_4 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_invoice_customer_4 on invoice (customer_id);
+alter table order_table add constraint fk_order_table_request_5 foreign key (request_id) references order_request (id) on delete restrict on update restrict;
+create index ix_order_table_request_5 on order_table (request_id);
+alter table order_table add constraint fk_order_table_customer_6 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_order_table_customer_6 on order_table (customer_id);
+alter table order_request add constraint fk_order_request_brand_7 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_order_request_brand_7 on order_request (brand_id);
+alter table order_request add constraint fk_order_request_watchChosen_8 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
+create index ix_order_request_watchChosen_8 on order_request (watch_chosen_id);
+alter table picture add constraint fk_picture_watch_9 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
+create index ix_picture_watch_9 on picture (watch_id);
+alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand_10 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_preset_quotation_for_brand_10 on preset_quotation_for_brand (brand_id);
 
 
 
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
+
+drop table if exists accounting_document;
+
+drop table if exists accounting_line;
 
 drop table if exists brand;
 
@@ -334,6 +395,8 @@ drop table if exists customer_watch;
 
 drop table if exists feedback;
 
+drop table if exists invoice;
+
 drop table if exists live_config;
 
 drop table if exists order_table;
@@ -346,11 +409,17 @@ drop table if exists preset_quotation_for_brand;
 
 drop table if exists service_test;
 
+drop table if exists usefull_link;
+
 drop table if exists user_table;
 
 drop table if exists watch;
 
 SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists accounting_document_seq;
+
+drop sequence if exists accounting_line_seq;
 
 drop sequence if exists brand_seq;
 
@@ -364,6 +433,8 @@ drop sequence if exists customer_watch_seq;
 
 drop sequence if exists feedback_seq;
 
+drop sequence if exists invoice_seq;
+
 drop sequence if exists live_config_seq;
 
 drop sequence if exists order_table_seq;
@@ -375,6 +446,8 @@ drop sequence if exists picture_seq;
 drop sequence if exists preset_quotation_for_brand_seq;
 
 drop sequence if exists service_test_seq;
+
+drop sequence if exists usefull_link_seq;
 
 drop sequence if exists user_table_seq;
 

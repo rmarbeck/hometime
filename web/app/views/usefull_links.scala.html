@@ -1,0 +1,9 @@
+@(links: List[models.UsefullLink])
+@import tags._
+
+
+      
+@for(link <- links) {
+        <div class="entry"><h3><a href="@link.url">@link.name</a></h3></div>
+}
+

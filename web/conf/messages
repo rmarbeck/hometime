@@ -1323,7 +1323,9 @@ admin.navbar.link.text.logout=Logout
 admin.navbar.link.text.requests=Demandes client
 admin.navbar.link.text.prepare=Générer réponses
 admin.navbar.link.text.prepare.buy.request.proposal=Générer proposition
+admin.navbar.link.text.other=Autres
 admin.navbar.link.text.feedbacks=Avis
+admin.navbar.link.text.links=Liens utiles
 
 # Quotation
 admin.quotation.request.service.type.value.1=Révision complète d''une {0}
@@ -1799,6 +1801,31 @@ admin.feedback.feedbacks.header.should.display=Affiché ?
 admin.feedback.feedbacks.header.may.be.emphasized=Mis en avant ?
 
 
+admin.usefull.links.header.creation.date=Date
+admin.usefull.links.header.name=Nom
+admin.usefull.links.header.description=Description
+admin.usefull.links.header.should.display=Affiché
+admin.usefull.link.action.cancel=Annuler
+admin.usefull.link.action.save=Enregistrer
+admin.usefull.link.action.edit=Modifier
+admin.usefull.link.action.delete=Supprimer
+
+admin.usefull.link.form.label.creation.date=Date
+admin.usefull.link.form.label.name=Nom
+admin.usefull.link.form.placeholder.name=xxxx
+admin.usefull.link.form.label.description=Description
+admin.usefull.link.form.placeholder.description=...
+admin.usefull.link.form.label.type=Type de lien
+admin.usefull.link.form.value.type.default=Sélectionner le type
+admin.usefull.link.form.value.type.partner=Partenaire
+admin.usefull.link.form.value.type.reserved.1=...
+admin.usefull.link.form.value.type.reserved.2=...
+admin.usefull.link.form.value.type.reserved.3=...
+admin.usefull.link.form.label.url=Url
+admin.usefull.link.form.placeholder.url=http://www.xxx.fr
+admin.usefull.link.form.label.should.display=Afficher ?
+
+
 admin.watch.form.label.should.display=Doit être affichée
 admin.watch.form.label.is.available=Est disponible
 admin.watch.form.placeholder.brand=Rolex
@@ -2151,8 +2178,63 @@ admin.index.customers.value.status.prospect=Prospect
 admin.index.customers.value.status.almost.customer=Presque client
 admin.index.customers.value.status.real.customer=Client
 
+admin.invoice.form.value.customer.default=Sélectionner le client
+admin.invoice.form.label.customer=Client
+admin.invoice.form.placeholder.customer=...
+admin.invoice.form.label.description=Description
+admin.invoice.form.placeholder.description=Révision...|Réparation...|Vente...
+admin.invoice.form.label.unique.accounting.number=Numéro de facture
+admin.invoice.form.placeholder.unique.accounting.number=2015XX-YY
+admin.invoice.form.label.creation.date=Date de facture
+admin.invoice.form.placeholder.creation.date=
+admin.invoice.form.label.from.date=Date de début de prestation
+admin.invoice.form.placeholder.from.date=
+admin.invoice.form.label.to.date=Date de fin de prestation
+admin.invoice.form.placeholder.to.date=
+admin.invoice.form.label.line.description=Libellé
+admin.invoice.form.placeholder.line.description=...
+admin.invoice.form.label.line.unit=Nombre d''unités
+admin.invoice.form.placeholder.line.unit=
+admin.invoice.form.label.line.unit.price=Prix unitaire
+admin.invoice.form.placeholder.line.unit.price=
+admin.invoice.form.label.line.info=Contenu de la ligne
+admin.invoice.form.placeholder.line.info=
+admin.invoice.form.label.already.payed=Déjà perçu
+admin.invoice.form.placeholder.already.payed=
+admin.invoice.form.label.payment.conditions=Conditions de paiement
+admin.invoice.form.placeholder.payment.conditions=
+admin.invoice.form.label.supported.payment.methods=Moyens de paiements acceptés
+admin.invoice.form.placeholder.supported.payment.methods=
+admin.invoice.form.label.payment.method.used=Moyen de paiement utilisé
+admin.invoice.form.placeholder.payment.method.used=
+admin.invoice.form.label.lines=Lignes
 
+admin.invoice.action.save=&nbsp;Créer
+admin.invoice.action.show=&nbsp;Prévisualiser
+admin.invoice.action.edit=&nbsp;Modifier
+admin.invoice.action.delete=&nbsp;Supprimer
+admin.invoice.action.cancel=&nbsp;Annuler
+
+admin.invoice.header.description=Désignation
+admin.invoice.header.quantity=Quantité
+admin.invoice.header.unit.price.ht=Prix unitaire HT
+admin.invoice.header.unit.price.mixed=Prix unitaire
+admin.invoice.header.total=Total
+
+admin.invoice.customer.details=Identification du client :
+admin.invoice.description=Description :
+admin.invoice.number=Numéro de facture :
+admin.invoice.from.date.to.date=du {0} au {1}
+admin.invoice.one.shot.date=le {0}
+admin.invoice.working.date=Date de la prestation :
+admin.invoice.payment.conditions=Conditions de paiement :
+admin.invoice.supported.payment.methods=Moyens de paiement acceptés :
+admin.invoice.payment.method.used=Moyen de paiement utilisé :
+
+admin.invoice.legal=Toute somme non payée dans les trente jours est augmentée du taux d''intérêt appliqué par la Banque centrale européenne\
+ à son opération de refinancement la plus récente majoré de 10 points de pourcentage. Les pénalités de retard sont\
+ exigibles sans qu''un rappel ne soit nécessaire. Le montant de l''indemnité forfaitaire pour frais de recouvrement prévue au\
+ douzième alinéa du I de l''article L. 441-6 est fixé à 40 euros. Articles L. 441-6 et D. 441-5 du Code de commerce.
+admin.invoice.notice="Régime particulier-Biens d''occasion"<br />Article 242 nonies A, 16° de l''annexe II au CGI
 
 global.void.1={0}
-
-

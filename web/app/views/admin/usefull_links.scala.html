@@ -1,0 +1,115 @@
+@(currentPage: com.avaje.ebean.Page[models.UsefullLink], currentSortBy: String, currentOrder: String, currentFilter: String)
+@import tags._
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.UsefullLink.displayAll(newPage, sortBy, order, currentFilter)
+    
+}
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:Html, hideSmall: Boolean = false) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"} @if(hideSmall) {hidden-xs}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@layouts.admin() {
+  <div class="container">
+
+    @admin.fragments.page_header(link(0, "creation_date").toString, "Auteur", currentFilter, routes.UsefullLink.add().url)
+    <br />
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+    } else {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  @header("creation_date", Html(Messages("admin.usefull.links.header.creation.date")))
+                  @header("name", Html(Messages("admin.usefull.links.header.name")))
+                  @header("description", Html(Messages("admin.usefull.links.header.description")))
+                  @header("should_display", Html(Messages("admin.usefull.links.header.should.display")),true)
+                </tr>
+              </thead>
+              <tbody>
+              @for((link, index) <- currentPage.getList.zipWithIndex) {
+                <tr>
+                  <td>
+                  	<a type="button" class="btn btn-default btn-xs" href="@routes.UsefullLink.display(link.id)"><span class="glyphicon glyphicon-time"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.UsefullLink.edit(link.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                  </td>
+                  <td>
+                    @display_date(link.creationDate, "dd/MM")
+                  </td>
+                  <td>
+                    @takeif(link.name)
+                  </td>
+                  <td>
+                    @takeif(link.description)
+                  </td>
+                  <td class="hidden-xs">
+                    @link.shouldDisplay
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-5 col-md-offset-7 text-right">
+                    @if(currentPage.hasPrev) {
+                        <span class="prev">
+                            <a class="btn btn-default" href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
+                        </span>
+                    } else {
+                        <span class="prev disabled">
+                            <a class="btn btn-default" disabled="disabled">&larr; Previous</a>
+                        </span>
+                    }
+                    <span class="current">
+                        Displaying @currentPage.getDisplayXtoYofZ(" to "," of ")
+                    </span>
+                    @if(currentPage.hasNext) {
+                        <span class="next">
+                            <a class="btn btn-default"  href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
+                        </span>
+                    } else {
+                        <span class="next disabled">
+                            <a class="btn btn-default" disabled="disabled" >Next &rarr;</a>
+                        </span>
+                    }
+            </div>
+        </div>
+    }
+    </div>
+}
