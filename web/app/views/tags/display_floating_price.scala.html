@@ -1,0 +1,6 @@
+@(price: Float, label: String = "€")
+@if(price != null) {
+	@String.format("%.2f",price) @label
+} else {
+	-
+}

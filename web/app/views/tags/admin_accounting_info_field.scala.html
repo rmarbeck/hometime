@@ -1,0 +1,15 @@
+@(value: String, key: String, args: (Symbol,String)*)
+@if_not_null_nor_empty(value) {
+	<div class="row">
+        <div class="col-xs-4">
+	        <div class="@args.toMap.get('dataclass)">
+	        	@Html(Messages(key))
+	        </div>
+       	</div>
+       	<div class="col-xs-8">
+	        <div class="@args.toMap.get('dataclass)">
+		        	@value
+		    </div>
+        </div>
+     </div>
+}

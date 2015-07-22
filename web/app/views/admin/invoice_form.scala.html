@@ -1,0 +1,83 @@
+@(invoice: Form[models.Invoice], isANewInvoice: Boolean, customers: List[models.Customer])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.invoice.action.cancel"))</a>
+      @if(isANewInvoice) {
+      	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages("admin.invoice.action.save"))</button>
+      	<button type="submit" class="btn btn-primary" name="action" value="show"><span class="glyphicon glyphicon-save">@Html(Messages("admin.invoice.action.show"))</button>
+      } else {
+      	@tags.inputHidden(invoice("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.invoice.action.edit"))</button>
+        <button type="submit" class="btn btn-primary" name="action" value="show"><span class="glyphicon glyphicon-save">@Html(Messages("admin.invoice.action.show"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages("admin.invoice.action.delete"))</button>                  
+      }
+      </div>
+    </div>
+}
+
+@layouts.admin() {
+    <div class="container">
+    	@display_flash()
+    
+            @helper.form(action = routes.Accounting.manageInvoice(), 'class -> "form-horizontal", 'role -> "form") {
+            
+            	@actions
+           
+	            @helper.select(invoice("customer.id"),
+                         for (s <- customers) yield s.id.toString -> (s.firstname + " " + s.name),
+                         '_default -> Messages("admin.invoice.form.value.customer.default"),
+                         'placeholder -> Messages("admin.invoice.form.placeholder.customer"), '_label -> Messages("admin.invoice.form.label.customer"),
+                         'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+            	@simple_admin_input(invoice("description"), "admin.invoice.form.VARIABLE.description")
+            	
+            	@simple_admin_input(invoice("uniqueAccountingNumber"), "admin.invoice.form.VARIABLE.unique.accounting.number")
+            	
+            	@simple_admin_input(invoice("creationDate"), "admin.invoice.form.VARIABLE.creation.date", 'type -> "date")
+            	
+            	@simple_admin_input(invoice("fromDate"), "admin.invoice.form.VARIABLE.from.date", 'type -> "date")
+            	
+            	@simple_admin_input(invoice("toDate"), "admin.invoice.form.VARIABLE.to.date", 'type -> "date")
+            	
+            	<div class="form-group">
+                  <label for="lines" class="col-xs-3 control-label">@Messages("admin.invoice.form.label.lines")</label>
+                  <div class="col-xs-9">
+                    <div class="row inner-row">
+                        @helper.repeat(invoice("lines"), min = 3) { line =>
+                        
+                        	@helper.select(line("type"),
+                                     for (s <- models.AccountingLine.LineType.values) yield s.toString -> Messages("admin.invoice.form.value.type."+s.toString.toLowerCase.replace('_','.')	),
+                                     '_default -> Messages("admin.invoice.form.value.type.default"),
+                                     'placeholder -> Messages("admin.invoice.form.placeholder.type"), '_label -> Messages("admin.invoice.form.label.type"),
+                                     'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+    						@simple_admin_textarea(line("description"), "admin.invoice.form.VARIABLE.line.description", 'class -> "col-xs-12")
+    				
+    						@simple_admin_input(line("unit"), "admin.invoice.form.VARIABLE.line.unit", 'class -> "col-xs-2", 'type -> "number",  'step -> "1")
+
+							@simple_admin_input(line("unitPrice"), "admin.invoice.form.VARIABLE.line.unit.price", 'class -> "col-xs-2", 'type -> "number",  'step -> "0.01")    				
+    				
+    						@simple_admin_input(line("info"), "admin.invoice.form.VARIABLE.line.info")
+						}
+                    </div>
+                  </div>
+                </div>
+            	
+            	
+				
+				@simple_admin_input(invoice("alreadyPayed"), "admin.invoice.form.VARIABLE.already.payed", 'type -> "number",  'step -> "0.01")
+				
+				@simple_admin_input(invoice("paymentConditions"), "admin.invoice.form.VARIABLE.payment.conditions")
+				
+				@simple_admin_input(invoice("supportedPaymentMethods"), "admin.invoice.form.VARIABLE.supported.payment.methods")
+				
+				@simple_admin_input(invoice("paymentMethodUsed"), "admin.invoice.form.VARIABLE.payment.method.used")
+				                
+                @actions
+            }
+    </div>
+}

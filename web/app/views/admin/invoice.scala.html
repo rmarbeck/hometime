@@ -1,0 +1,178 @@
+@(invoice : models.Invoice, totalAmount : Float, amountToPay : Float, htAmount : Float, vat : Float)
+@import tags._
+
+@layouts.admin_accounting("Facture") {
+  <div class="container">
+     <div class="row">
+        <div class="col-xs-4">
+        	<div class="header">
+		        <h3>Watch next S.A.S.</h3>
+		        <h4>Services Horlogers</h4>
+		        <h5><br />www.hometime.fr</h5>
+		        <h5>07 82 43 47 51</h5>
+	        </div>
+        </div>
+        <div class="col-xs-7 col-xs-offset-1">
+        	<div class="row">
+        		<div class="col-xs-12">
+			        <div class="date text-right">
+			        	<br />
+			        	@display_date(invoice.creationDate, "d MMMM yyyy")
+			        </div>
+			        @defining(models.Customer.findById(invoice.customer.id)) { customer =>
+			        	<div class="customer-details text-left">
+			        	<div class="cd-label">@Html(Messages("admin.invoice.customer.details"))</div>
+			        	<div class="name">@customer.firstname @customer.name</div>
+			        	<div class="address">@customer.billingAddress</div>
+			        </div>
+			        }
+			    </div>
+        	</div>
+        </div>
+     </div>
+     
+     <div class="row">
+        <div class="type col-xs-12">
+	        <h2>Facture</h2>
+        </div>
+     </div>
+     
+     @admin_accounting_info_field(invoice.description, "admin.invoice.description", 'dataclass -> "descriptions")
+     
+     @admin_accounting_info_field(invoice.uniqueAccountingNumber, "admin.invoice.number", 'dataclass -> "descriptions")
+     
+     @if(invoice.fromDate != null) {
+     	@if(invoice.toDate != null) {
+     		@admin_accounting_info_field(Messages("admin.invoice.from.date.to.date", display_date(invoice.fromDate, "d MMMM yyyy"), display_date(invoice.toDate, "d MMMM yyyy")), "admin.invoice.working.date", 'dataclass -> "descriptions")
+     	} else  {
+     		@admin_accounting_info_field(Messages("admin.invoice.one.shot.date", display_date(invoice.fromDate, "d MMMM yyyy")), "admin.invoice.working.date", 'dataclass -> "descriptions")
+     	}
+     }
+     
+     <br />
+     
+     <div class="row">
+     	<div class="col-xs-12">
+	        <div class="table-responsive">
+	            <table class="table table-bordered">
+	              <colgroup>
+	                <col class="col-xs-7">
+	                <col class="col-xs-1">
+	                <col class="col-xs-2">
+	                <col class="col-xs-2">
+	              </colgroup>
+	              <thead>
+	                <tr>
+	                  <th>@Html(Messages("admin.invoice.header.description"))</th>
+	                  <th>@Html(Messages("admin.invoice.header.quantity"))</th>
+	                  <th>@Html(Messages("admin.invoice.header.unit.price.ht"))</th>
+	                  <th>@Html(Messages("admin.invoice.header.total"))</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	              @for(line <- invoice.lines) {
+	                @if(line.getType().equals(models.AccountingLine.LineType.WITH_VAT_BY_UNIT)) {
+		              	@if_not_null_nor_empty(line.description) {
+		              	<tr>
+		                  <td>@line.description</td>
+		                  @if_not_null_nor_empty_else(line.info) {
+		                  	<td class="text-center" colspan="3">@line.info</td>
+		                  } {
+			                  <td class="text-center">@line.unit</td>
+			                  <td class="text-right">@display_floating_price(line.unitPrice)</td>
+			                  <td class="text-right">@display_floating_price(line.unitPrice*line.unit)</td>
+		                  }
+		                </tr>
+		                }
+	                }
+	              }
+	                @if(htAmount != 0) {             
+	                <tr class="sub-total">
+	                  <td>Total HT</td>
+	                  <td colspan="3" class="text-right">@display_floating_price(htAmount)</td>
+	                </tr>
+	                <tr class="vat">
+	                  <td>T.V.A. 20%</td>
+	                  <td colspan="3" class="text-right">@display_floating_price(vat)</td>
+	                </tr>
+	                }
+	                @for(line <- invoice.lines) {
+	                @if(line.getType().equals(models.AccountingLine.LineType.WITHOUT_VAT_BY_UNIT)) {
+		              	@if_not_null_nor_empty(line.description) {
+		              	<tr>
+		                  <td>@line.description</td>
+		                  @if_not_null_nor_empty_else(line.info) {
+		                  	<td class="text-center" colspan="3">@line.info</td>
+		                  } {
+			                  <td class="text-center">@line.unit</td>
+			                  <td class="text-right">@display_floating_price(line.unitPrice)</td>
+			                  <td class="text-right">@display_floating_price(line.unitPrice*line.unit)</td>
+		                  }
+		                </tr>
+		                }
+	                }
+	              }
+	                @if(invoice.alreadyPayed != 0) {
+	                <tr class="total">
+	                  <td><strong>Total TTC</strong></td>
+	                  <td colspan="3" class="text-right"><strong>@display_floating_price(totalAmount)</strong></td>
+	                </tr>
+	                <tr class="sub-total">
+	                  <td><strong>Déjà perçu</strong></td>
+	                  <td colspan="3" class="text-right"><strong>@display_floating_price(invoice.alreadyPayed)</strong></td>
+	                </tr>
+	                <tr class="total">
+	                  <td><strong>Reste à payer</strong></td>
+	                  <td colspan="3" class="text-right"><strong>@display_floating_price(amountToPay)</strong></td>
+	                </tr>
+	                } else {
+	                <tr class="total">
+	                  <td><strong>Total à payer</strong></td>
+	                  <td colspan="3" class="text-right"><strong>@display_floating_price(totalAmount)</strong></td>
+	                </tr>
+	                }
+	              </tbody>
+	            </table>
+	       </div>
+        </div>
+      </div>
+      
+      @admin_accounting_info_field(invoice.paymentConditions, "admin.invoice.payment.conditions", 'dataclass -> "payment-infos")
+      
+      @admin_accounting_info_field(invoice.supportedPaymentMethods, "admin.invoice.supported.payment.methods", 'dataclass -> "payment-infos")
+      
+      @admin_accounting_info_field(invoice.paymentMethodUsed, "admin.invoice.payment.method.used", 'dataclass -> "payment-infos")
+	  
+	  
+     <div class="row">
+        <div class="col-xs-12">
+	        <div class="legal">
+	        	@Html(Messages("admin.invoice.legal"))
+	        </div>
+        </div>
+     </div>
+     
+     <div class="row">
+        <div class="col-xs-12 text-center">
+        	<div class="notice">
+					@Html(Messages("admin.invoice.notice"))
+        	</div>
+        </div>
+     </div>
+      
+      
+  </div>
+    <div class="footer">
+    	<div>Watch next - Société par actions simplifiée - Capital : 20 000 Euros</div>
+		<div>Représentée par son président Raphaël MARBECK</div>
+		<div>Siège social : 11bis rue Pierre Curie, 78600 MAISONS LAFFITTE</div>
+		<div>N° SIRET : 800 198 418 00017, Code NAF : 9525Z</div>
+		<div>Numéro de TVA Intracommunautaire : FR 78 800198418</div>
+		<div>Domiciliation bancaire : Agence Bred Republique 41 bis, boulevard Voltaire, 75011 Paris</div>
+		<div class="banking">IBAN : FR76 1010 7001 0500 5290 2067 418</div>
+		<div class="banking">Code BIC : BREDFRPPXXX</div>
+    </div>
+    <div class="cgv">
+    	<img src="@routes.Assets.at("images/CGV - Hometime - v1.0.png")" />
+    </div>
+}

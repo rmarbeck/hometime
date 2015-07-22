@@ -1,0 +1,23 @@
+@(title: String = "Admin", end_scripts_bottom: Html = Html(""))(content: Html)
+
+@import tags._
+
+@head = {
+        <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="description" content="@Messages("accounting.html.description")">
+        <meta name="author" content="@Messages("accounting.html.author")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap_for_printing.min.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/accounting.min.css")">
+}
+
+@footer = {
+
+}
+
+@end_scripts = {
+}
+
+@layouts.admin_root(head, footer, end_scripts) {
+    @content
+}
