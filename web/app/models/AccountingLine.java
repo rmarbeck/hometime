@@ -80,6 +80,10 @@ public class AccountingLine extends Model {
 		
 	}
 	
+	public LineType getType() {
+		return type;
+	}
+	
 	public AccountingLine(AccountingDocument document) {
 		this();
 		this.document = document;
