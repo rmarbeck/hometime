@@ -1,0 +1,26 @@
+@(line: AccountingLine)
+  	@if_not_null_nor_empty(line.description) {
+  	<tr>
+      <td>@line.description</td>
+      @if_not_null_nor_empty_else(line.info) {
+      	@if(line.getType().equals(models.AccountingLine.LineType.FREE_SPECIAL)) {
+      	<td class="text-center">@line.unit</td>
+      	<td class="text-right">@line.info</td>
+      	<td class="text-right">@display_floating_price(0f)</td>
+      	} else {
+      	<td class="text-center" colspan="3">@line.info</td>
+      	}
+      } {
+          <td class="text-center">@line.unit</td>
+          @if(line.getType().equals(models.AccountingLine.LineType.FREE_INCLUDED)
+		      || line.getType().equals(models.AccountingLine.LineType.FREE_OFFERED)
+		      || line.getType().equals(models.AccountingLine.LineType.FREE_SPECIAL)) {
+		  <td class="text-right">@Html(Messages("admin.invoice.line.special."+line.getType().toString.toLowerCase.replace('_','.')))</td>
+          <td class="text-right">@display_floating_price(0f)</td>
+		  } else {
+          <td class="text-right">@display_floating_price(line.unitPrice)</td>
+          <td class="text-right">@display_floating_price(line.unitPrice*line.unit)</td>
+          }
+      }
+    </tr>
+    }      	

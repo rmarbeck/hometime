@@ -32,6 +32,12 @@
                                      '_default -> Messages("admin.customer.form.value.status.default"),
                                      'placeholder -> Messages("admin.customer.form.placeholder.status"), '_label -> Messages("admin.customer.form.label.status"),
                                      'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                                     
+	            @helper.select(customer("civility"),
+                                     for (s <- models.Customer.CustomerCivility.values) yield s.toString -> Messages("admin.customer.form.value.civility."+s.toString.toLowerCase.replace('_','.')	),
+                                     '_default -> Messages("admin.customer.form.value.civility.default"),
+                                     'placeholder -> Messages("admin.customer.form.placeholder.civility"), '_label -> Messages("admin.customer.form.label.civility"),
+                                     'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
 				@simple_admin_input(customer("firstname"), "admin.customer.form.VARIABLE.firstname")
 				

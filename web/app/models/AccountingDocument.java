@@ -1,10 +1,13 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 
@@ -20,6 +23,12 @@ public abstract class AccountingDocument extends Model {
 	
 	@Id
 	public Long id;
+	
+	@Column(name="creation_date")
+	public Date creationDate;
+	
+	@ManyToOne
+	public Customer customer;
 	
 	@OneToMany(mappedBy="document", cascade = CascadeType.ALL)
 	public List<AccountingLine> lines;

@@ -1,4 +1,4 @@
-@(title: String = "Admin", end_scripts_bottom: Html = Html(""))(content: Html)
+@(title: String = "Admin", accountingDocumment: models.AccountingDocument, end_scripts_bottom: Html = Html(""))(content: Html)
 
 @import tags._
 
@@ -19,5 +19,13 @@
 }
 
 @layouts.admin_root(head, footer, end_scripts) {
+
+  <div class="container">
+    @views.html.admin.fragments.accounting_header(accountingDocumment)
+
     @content
+    
+    @views.html.admin.fragments.accounting_footer()
+    
+  </div>    
 }

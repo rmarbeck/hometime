@@ -1,6 +1,7 @@
 @(invoice: Form[models.Invoice], isANewInvoice: Boolean, customers: List[models.Customer])
 @import tags._
 @import helper._
+@import java.math.BigInteger; var index=0
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
 @actions = {
     <div class="form-group">
@@ -8,24 +9,78 @@
       	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.invoice.action.cancel"))</a>
       @if(isANewInvoice) {
       	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages("admin.invoice.action.save"))</button>
-      	<button type="submit" class="btn btn-primary" name="action" value="show"><span class="glyphicon glyphicon-save">@Html(Messages("admin.invoice.action.show"))</button>
+      	<button type="submit" class="btn btn-primary" name="action" value="show" formtarget="_blank"><span class="glyphicon glyphicon-save">@Html(Messages("admin.invoice.action.show"))</button>
       } else {
       	@tags.inputHidden(invoice("id"))
         <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.invoice.action.edit"))</button>
-        <button type="submit" class="btn btn-primary" name="action" value="show"><span class="glyphicon glyphicon-save">@Html(Messages("admin.invoice.action.show"))</button>
+        <button type="submit" class="btn btn-primary" name="action" value="show" formtarget="_blank"><span class="glyphicon glyphicon-save">@Html(Messages("admin.invoice.action.show"))</button>
         <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages("admin.invoice.action.delete"))</button>                  
       }
       </div>
     </div>
 }
 
-@layouts.admin() {
+@end_scripts = {
+<script>
+    $(document).ready(function(){
+    	
+    	var indexPosition = $("[id*='invoice_line_']:last").attr("id").substr(13);
+        $('#add-line').click(function(event) {
+        	event.preventDefault();
+        	var copiedPosition = indexPosition;
+        	var copyPosition = ++indexPosition;
+            $('#invoice_line_'+copiedPosition).clone().attr('id', 'invoice_line_'+ copyPosition).insertAfter('#invoice_line_'+ copiedPosition);
+            
+			$('#invoice_line_'+copyPosition).find("[id*='lines_']").each(function() {
+				$(this).attr("id", $(this).attr("id").replace(copiedPosition,copyPosition));
+				$(this).attr("name", $(this).attr("name").replace(copiedPosition,copyPosition));
+            });
+            $('#invoice_line_'+copyPosition).find("[for*='lines_']").each(function() {
+            	$(this).attr("for", $(this).attr("for").replace(copiedPosition,copyPosition));
+            });
+         });
+         
+         $('#remove-line').click(function(event) {
+        	event.preventDefault();
+			$('#invoice_line_'+indexPosition).remove();
+			--indexPosition;
+         });
+
+         $('#type').change(function() {
+         	if ( $(this).val() == "VAT" ) {
+            	$( 'option[value="WITHOUT_VAT_BY_UNIT"]' ).attr('disabled', 'disabled');
+            	$( 'option[value="WITH_VAT_BY_UNIT"]' ).removeAttr('disabled');
+            }
+            
+            if ( $(this).val() == "MARGIN_VAT" || $(this).val() == "NO_VAT" ) {
+            	$( 'option[value="WITH_VAT_BY_UNIT"]' ).attr('disabled', 'disabled');
+            	$( 'option[value="WITHOUT_VAT_BY_UNIT"]' ).removeAttr('disabled');
+            }
+            
+            if ( $(this).val() == "MIXED_VAT" ) {
+            	$( 'option[value="WITH_VAT_BY_UNIT"]' ).removeAttr('disabled');
+            	$( 'option[value="WITHOUT_VAT_BY_UNIT"]' ).removeAttr('disabled');
+            }
+ 		 });
+         
+    })  
+</script> 
+}
+
+
+@layouts.admin("", end_scripts) {
     <div class="container">
     	@display_flash()
     
             @helper.form(action = routes.Accounting.manageInvoice(), 'class -> "form-horizontal", 'role -> "form") {
             
             	@actions
+            	
+            	@helper.select(invoice("type"),
+                         for (s <- models.Invoice.InvoiceType.values) yield s.toString -> Messages("admin.invoice.form.value.type."+s.toString.toLowerCase.replace('_','.')	),
+                         '_default -> Messages("admin.invoice.form.value.type.default"),
+                         'placeholder -> Messages("admin.invoice.form.placeholder.type"), '_label -> Messages("admin.invoice.form.label.type"),
+                         'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
            
 	            @helper.select(invoice("customer.id"),
                          for (s <- customers) yield s.id.toString -> (s.firstname + " " + s.name),
@@ -48,11 +103,12 @@
                   <div class="col-xs-9">
                     <div class="row inner-row">
                         @helper.repeat(invoice("lines"), min = 3) { line =>
-                        
+                        <div id="invoice_line_@{index}">
+                        	@(index+=1)
                         	@helper.select(line("type"),
-                                     for (s <- models.AccountingLine.LineType.values) yield s.toString -> Messages("admin.invoice.form.value.type."+s.toString.toLowerCase.replace('_','.')	),
-                                     '_default -> Messages("admin.invoice.form.value.type.default"),
-                                     'placeholder -> Messages("admin.invoice.form.placeholder.type"), '_label -> Messages("admin.invoice.form.label.type"),
+                                     for (s <- models.AccountingLine.LineType.values) yield s.toString -> Messages("admin.invoice.form.value.line.type."+s.toString.toLowerCase.replace('_','.')	),
+                                     '_default -> Messages("admin.invoice.form.value.line.type.default"),
+                                     'placeholder -> Messages("admin.invoice.form.placeholder.line.type"), '_label -> Messages("admin.invoice.form.label.line.type"),
                                      'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
     						@simple_admin_textarea(line("description"), "admin.invoice.form.VARIABLE.line.description", 'class -> "col-xs-12")
@@ -62,12 +118,14 @@
 							@simple_admin_input(line("unitPrice"), "admin.invoice.form.VARIABLE.line.unit.price", 'class -> "col-xs-2", 'type -> "number",  'step -> "0.01")    				
     				
     						@simple_admin_input(line("info"), "admin.invoice.form.VARIABLE.line.info")
+    					</div>
 						}
                     </div>
                   </div>
                 </div>
             	
-            	
+            	<button id="add-line" class="btn btn-primary">&nbsp;Ajouter</button>
+            	<button id="remove-line" class="btn btn-danger">&nbsp;Retirer</button>
 				
 				@simple_admin_input(invoice("alreadyPayed"), "admin.invoice.form.VARIABLE.already.payed", 'type -> "number",  'step -> "0.01")
 				

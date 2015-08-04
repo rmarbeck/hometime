@@ -52,6 +52,32 @@ public class Customer extends Model {
 	        throw new IllegalArgumentException("Illegal type name: " + name);
 	    }
 	}
+	
+	public enum CustomerCivility {
+	    MONSIEUR ("MONSIEUR"),
+	    MADAME ("MADAME"),
+	    MISTER ("MISTER"),
+	    MISS ("MISS");
+	    
+		private String name = "";
+		    
+		CustomerCivility(String name){
+		    this.name = name;
+		}
+
+		public String toString(){
+		    return name;
+		}
+		
+		public static CustomerCivility fromString(String name) {
+	        for (CustomerCivility civility : CustomerCivility.values()) {
+	            if (civility.name.equals(name)) {
+	                return civility;
+	            }
+	        }
+	        throw new IllegalArgumentException("Illegal type name: " + name);
+	    }
+	}
 
 	@Id
 	public Long id;
@@ -95,6 +121,11 @@ public class Customer extends Model {
 	@Enumerated(EnumType.STRING)
 	public CustomerStatus status;
 	
+	@Constraints.Required
+	@Column(name="customer_civility", length = 40)
+	@Enumerated(EnumType.STRING)
+	public CustomerCivility civility = CustomerCivility.MONSIEUR;
+	
 	public Long value = 0L;
 	
 	public Long potentiality = 0L;
@@ -112,6 +143,7 @@ public class Customer extends Model {
 		this.email = email;
 		this.creationDate = new Date();
 		this.status = CustomerStatus.PROSPECT;
+		this.civility = CustomerCivility.MONSIEUR;
 	}
 	
 	private Customer(OrderRequest request) {

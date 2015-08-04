@@ -1502,7 +1502,7 @@ mails.notify.body=Bonjour,%0D%0A\
 %0D%0A\
 Nous avons bien reçu votre demande de devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
-Nous allons faire au plus vite pour vous répondre.%0D%0A\
+Nous sommes actuellement en effectif réduit pour cause de congès annuels, malgré tout nous allons faire au plus vite pour vous répondre. Cependant, veuillez nous excuser si le délai de notre réponse est un peu long.%0D%0A\
 %0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\
@@ -1519,6 +1519,8 @@ Pour être le plus précis possible dans notre devis, nous aurions besoin des pr
 %0D%0A\
 Merci d''avance, nous vous répondrons le plus rapidement possible.%0D%0A\
 %0D%0A\
+Nous sommes actuellement en effectif réduit pour cause de congès annuels, malgré tout nous allons faire au plus vite pour vous répondre. Cependant, veuillez nous excuser si le délai de notre réponse est un peu long.%0D%0A\
+%0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
@@ -1526,9 +1528,13 @@ mails.feedback.label=Relance
 mails.feedback.subject=Devis Hometime
 mails.feedback.body=Bonjour,%0D%0A\
 %0D%0A\
-nous souhaitions nous assurer que le devis que nous vous avons envoyé correspondait bien à votre attente et répondait à l''ensemble de vos demandes.%0D%0A\
+Tout d''abord veuillez nous excuser pour le délai de notre réponse, nous sommes actuellement en effectif réduit pour cause de congès annuels.%0D%0A\
+%0D%0A\
+Nous souhaitions nous assurer que le devis que nous vous avons envoyé correspondait bien à votre attente et répondait à l''ensemble de vos demandes.%0D%0A\
 %0D%0A\
 Qu''en avez-vous pensé ? Avez-vous besoin d''éléments complémentaires ?%0D%0A\
+%0D%0A\
+Veuillez noter que pour cause de congès annuels de l''ensemble des acteurs du marché de l''horlogerie, les interventions sont interrompues pendant toute la durée du mois d''Août. Pour notre part, nous pourrons reprendre la prise en charge de vos montres à partir du 7 septembre 2015.%0D%0A\
 %0D%0A\
 Nous restons à votre entière disposition pour toute précision.%0D%0A\
 %0D%0A\
@@ -1541,7 +1547,9 @@ mails.outside.zone.label=Infos solutions de transport
 mails.outside.zone.subject=Devis Hometime - Informations sur la prise en charge
 mails.outside.zone.body=Bonjour,%0D%0A\
 %0D%0A\
-nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
+Tout d''abord veuillez nous excuser pour le délai de notre réponse, nous sommes actuellement en effectif réduit pour cause de congès annuels.%0D%0A\
+%0D%0A\
+Nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\
@@ -1550,6 +1558,8 @@ Par ailleurs, nous souhaitions vous indiquer que pour les interventions en dehor
 Nous pouvons rechercher une autre solution si vous le souhaitez.%0D%0A\
 %0D%0A\
 Qu''en pensez-vous ?%0D%0A\
+%0D%0A\
+Veuillez noter que pour cause de congès annuels de l''ensemble des acteurs du marché de l''horlogerie, les interventions sont interrompues pendant toute la durée du mois d''Août. Pour notre part, nous pourrons reprendre la prise en charge de vos montres à partir du 7 septembre 2015.%0D%0A\
 %0D%0A\
 Si vous n''avez pas reçu le devis, peut-être a-t-il été considéré comme étant du spam par votre logiciel de messagerie. Si c''est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
 %0D%0A\
@@ -1560,11 +1570,15 @@ mails.beware.of.spam.label=Info Spam
 mails.beware.of.spam.subject=Devis Hometime
 mails.beware.of.spam.body=Bonjour,%0D%0A\
 %0D%0A\
-nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
+Tout d''abord veuillez nous excuser pour le délai de notre réponse, nous sommes actuellement en effectif réduit pour cause de congès annuels.%0D%0A\
+%0D%0A\
+Nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
 Habituellement nous nous déplaçons à votre domicile ou sur votre lieu de travail, cependant si vous le souhaitez, nous pouvons vous recevoir à l''atelier dans le 3ème arrondissement de Paris du lundi au vendredi.%0D%0A\
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
+%0D%0A\
+Veuillez noter que pour cause de congès annuels de l''ensemble des acteurs du marché de l''horlogerie, les interventions sont interrompues pendant toute la durée du mois d''Août. Pour notre part, nous pourrons reprendre la prise en charge de vos montres à partir du 7 septembre 2015.%0D%0A\
 %0D%0A\
 Si vous n''avez pas reçu le devis, peut-être a-t-il été considéré comme étant du spam par votre logiciel de messagerie. Si c''est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
 %0D%0A\
@@ -1580,6 +1594,8 @@ Nous avons bien reçu votre demande de recherche d''une montre.%0D%0A\
 %0D%0A\
 Nous allons faire au plus vite pour vous répondre.%0D%0A\
 %0D%0A\
+Veuillez noter que pour cause de congès annuels nos recherches sont interrompues pendant toute la durée du mois d''Août. Nous pourrons ainsi vous faire des propositions à partir du 7 septembre 2015.%0D%0A\
+%0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
@@ -1592,6 +1608,8 @@ Nous avons bien reçu votre demande de recherche d''une montre.%0D%0A\
 Pour être le plus précis possible dans notre recherche, nous aurions besoin des précisions suivantes :%0D%0A\
 %0D%0A\
 Merci d''avance, nous vous répondrons le plus rapidement possible.%0D%0A\
+%0D%0A\
+Veuillez noter que pour cause de congès annuels nos recherches sont interrompues pendant toute la durée du mois d''Août. Nous pourrons ainsi vous faire des propositions à partir du 7 septembre 2015.%0D%0A\
 %0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\
@@ -1641,7 +1659,20 @@ admin.customer.action.add.order=&nbsp;Nouvelle commande
 admin.customer.action.add.watch=&nbsp;Nouvelle montre
 admin.customer.create.call.to.action=Promouvoir le prospect en client
 admin.order.create.call.to.action=Créer la commande correspondante
-admin.customer.head.customer.name=<span class="text-muted">Fiche client de</span> {0} {1}
+admin.customer.head.customer.name=<span class="text-muted">Fiche client de</span> {0} {1} {2}
+admin.customer.text.civility.monsieur=Monsieur
+admin.customer.text.civility.monsieur.short=M.
+admin.customer.text.civility.madame=Madame
+admin.customer.text.civility.madame.short=Mme
+admin.customer.text.civility.mister=Mister
+admin.customer.text.civility.mister.short=Mr
+admin.customer.text.civility.miss=Miss
+admin.customer.text.civility.miss.short=Miss
+admin.customer.form.value.civility.default=Sélectionner la civilité
+admin.customer.form.value.civility.monsieur=Monsieur
+admin.customer.form.value.civility.madame=Madame
+admin.customer.form.value.civility.mister=Mister
+admin.customer.form.value.civility.miss=Miss
 admin.customer.head.watches=Ses montres
 admin.customer.head.orders=Commandes
 
@@ -2215,11 +2246,31 @@ admin.invoice.action.edit=&nbsp;Modifier
 admin.invoice.action.delete=&nbsp;Supprimer
 admin.invoice.action.cancel=&nbsp;Annuler
 
+admin.invoice.head.company=Watch next S.A.S.
+admin.invoice.head.description=Services Horlogers
+admin.invoice.head.url=www.hometime.fr
+admin.invoice.head.phone.number=07 82 43 47 51
+admin.invoice.title.bill=Facture {0}
+admin.invoice.text.bill=Facture
+
 admin.invoice.header.description=Désignation
 admin.invoice.header.quantity=Quantité
 admin.invoice.header.unit.price.ht=Prix unitaire HT
 admin.invoice.header.unit.price.mixed=Prix unitaire
+admin.invoice.header.unit.price=Prix unitaire
 admin.invoice.header.total=Total
+
+admin.invoice.line.special.free.included=Inclus
+admin.invoice.line.special.free.offered=Offert
+
+admin.invoice.label.ht.total=Total HT
+admin.invoice.label.vat=T.V.A. 20%
+admin.invoice.label.ttc.total=Total TTC
+admin.invoice.label.partial.payment=Déjà perçu
+admin.invoice.label.still.to.pay=Reste à payer
+admin.invoice.label.to.pay=Total à payer
+admin.invoice.label.to.pay.ttc=Total à payer TTC
+
 
 admin.invoice.customer.details=Identification du client :
 admin.invoice.description=Description :
@@ -2230,6 +2281,24 @@ admin.invoice.working.date=Date de la prestation :
 admin.invoice.payment.conditions=Conditions de paiement :
 admin.invoice.supported.payment.methods=Moyens de paiement acceptés :
 admin.invoice.payment.method.used=Moyen de paiement utilisé :
+
+admin.invoice.form.label.type=Type de facture
+admin.invoice.form.value.type.default=Sélectionner le type de facture
+admin.invoice.form.value.type.vat=Avec TVA
+admin.invoice.form.value.type.margin.vat=TVA sur marge
+admin.invoice.form.value.type.no.vat=Sans TVA
+admin.invoice.form.value.type.mixed.vat=Avec et sans TVA
+admin.invoice.form.value.type.reserved.1=Réservé
+admin.invoice.form.value.type.reserved.2=Réservé
+
+admin.invoice.form.label.line.type=Type de ligne
+admin.invoice.form.value.line.type.default=Sélectionner le type
+admin.invoice.form.value.line.type.with.vat.by.unit=Avec TVA à l''unité
+admin.invoice.form.value.line.type.without.vat.by.unit=Sans TVA à l''unité
+admin.invoice.form.value.line.type.free.included=Inclus
+admin.invoice.form.value.line.type.free.offered=Offert
+admin.invoice.form.value.line.type.free.special=Spécial
+admin.invoice.form.value.line.type.info.line=Info
 
 admin.invoice.legal=Toute somme non payée dans les trente jours est augmentée du taux d''intérêt appliqué par la Banque centrale européenne\
  à son opération de refinancement la plus récente majoré de 10 points de pourcentage. Les pénalités de retard sont\

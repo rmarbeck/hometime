@@ -75,26 +75,27 @@ public class Invoice extends AccountingDocument {
 	@Constraints.Required
 	@Column(unique=true)
 	public String uniqueAccountingNumber;
-	
-	@Column(name="creation_date")
-	public Date creationDate;
+
+	@Column(name="invoice_type")
+	public InvoiceType type;
 	
 	@Column(name="from_date")
 	public Date fromDate;
 	
 	@Column(name="to_date")
 	public Date toDate;
-
-	@ManyToOne
-	public Customer customer;
 	
 	public Invoice() {
-		
+		this.creationDate = new Date();
 	}
 	
 	public Invoice(Customer customer) {
 		this();
 		this.customer = customer;
+	}
+	
+	public InvoiceType getType() {
+		return type;
 	}
 	
     // -- Queries

@@ -7,7 +7,10 @@ import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
+
 import java.util.List;
+
+import models.Invoice;
 import views.html.admin.invoice;
 import views.html.admin.invoice_form;
 
@@ -32,7 +35,7 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html emptyNewInvoiceForm() {
-		return invoiceForm(Form.form(models.Invoice.class), true);
+		return invoiceForm(Form.form(models.Invoice.class).fill(new models.Invoice()), true);
 	}
 	
 	public static Result manageInvoice() {
@@ -43,7 +46,7 @@ public class Accounting extends Controller {
 				return badRequest(invoiceForm(invoiceForm, true));
 			return badRequest(invoiceForm(invoiceForm, false));
 		} else {
-			models.Invoice curentInvoice = invoiceForm.get();
+			models.Invoice curentInvoice = getInvoiceFromForm(invoiceForm);
 			if ("save".equals(action)) {
 				curentInvoice.save();
 			} else if ("delete".equals(action)) {
@@ -61,25 +64,43 @@ public class Accounting extends Controller {
 	private static Result displayInvoice(models.Invoice invoice) {
 		if (invoice == null)
 			return ok(views.html.admin.invoice.render(null, 0f, 0f, 0f, 0f));
-		Float htAmount = computeHTTotalAmount(invoice);
+		Float htAmount = computeHTTotalAmountForVatLines(invoice);
 		Float totalAmount = htAmount * 1.20f;
 		Float vat = htAmount * 0.20f;
-		Float amountToPay = totalAmount - invoice.alreadyPayed;
+		Float amountToPay = totalAmount + computeHTTotalAmountForNonVatLines(invoice) - invoice.alreadyPayed;
 
 		return ok(views.html.admin.invoice.render(invoice, totalAmount, amountToPay, htAmount, vat));
 	}
 	
-	private static Float computeHTTotalAmount(models.Invoice invoice) {
+	private static Float computeHTTotalAmountForVatLines(models.Invoice invoice) {
 		List<models.AccountingLine> lines = invoice.lines;
 		if (lines == null)
 			return 0f;
 		Float result = 0f;
 		for (models.AccountingLine line : lines)
-			if (line.type.equals(models.AccountingLine.LineType.WITH_VAT_BY_UNIT))
+			if (line!= null && models.AccountingLine.LineType.WITH_VAT_BY_UNIT.equals(line.type))
 				result+=line.unitPrice*line.unit;
 			
 		return result;
 	}
+	
+	private static Float computeHTTotalAmountForNonVatLines(models.Invoice invoice) {
+		List<models.AccountingLine> lines = invoice.lines;
+		if (lines == null)
+			return 0f;
+		Float result = 0f;
+		for (models.AccountingLine line : lines)
+			if (line!= null && models.AccountingLine.LineType.WITHOUT_VAT_BY_UNIT.equals(line.type))
+				result+=line.unitPrice*line.unit;
+			
+		return result;
+	}
+	
+	private static models.Invoice getInvoiceFromForm(final Form<models.Invoice> invoiceForm) {
+		models.Invoice invoice = invoiceForm.get();
+		return invoice;
+	}
+	
 	
 	/*public static Result LIST_CUSTOMERS = redirect(
 			routes.Customer.displayAll(0, "creationDate", "desc", "")
