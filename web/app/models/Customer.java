@@ -139,6 +139,9 @@ public class Customer extends Model {
 	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
 	public List<CustomerWatch> watches;
 	
+	public Customer() {
+	}
+	
 	private Customer(String email) {
 		this.email = email;
 		this.creationDate = new Date();
