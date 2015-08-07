@@ -1,0 +1,7 @@
+@(isTop: Boolean=true)
+    <div class="@if(isTop) {warning-store-closed-top hidden-xs} else {warning-store-closed}">
+        <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp; @Html(Messages("global.text.store.closed"))
+        <div class="conditions">
+            <p>@Html(Messages("global.text.store.closed.consequences"))</p>
+        </div>
+    </div>

@@ -98,6 +98,8 @@ global.href.phone.number=0782434751
 global.text.footer.conditions.cost=coût&nbsp;d''un&nbsp;appel vers&nbsp;un&nbsp;mobile&nbsp;en&nbsp;france
 global.text.footer.conditions.when=du&nbsp;lundi&nbsp;au&nbsp;samedi de&nbsp;8h&nbsp;à&nbsp;21h
 global.text.customization=Personnalisation de montres
+global.text.store.closed=Trêve horlogère, Hometime en effectif réduit
+global.text.store.closed.consequences=jusqu''au 7 septembre nous serons un peu moins réactifs, soyez indulgents
 
 # Home page
 home.html.title=Révision, réparation et essai de montres à domicile sur Paris
@@ -1623,6 +1625,8 @@ admin.customer.form.placeholder.phone.number=06xxxxxxxx
 admin.customer.form.label.phone.number=Numéro de téléphone principal
 admin.customer.form.placeholder.alternative.phone.number=06xxxxxxxx
 admin.customer.form.label.alternative.phone.number=Numéro de téléphone secondaire
+admin.customer.form.placeholder.civility=Monsieur/Madame
+admin.customer.form.label.civility=Civilité
 admin.customer.form.placeholder.name=Dupond
 admin.customer.form.label.name=Nom
 admin.customer.form.placeholder.firstname=Michel

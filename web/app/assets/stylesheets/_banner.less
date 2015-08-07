@@ -1,4 +1,4 @@
-.call-top, .call {
+.call-top, .call, .warning-store-closed-top, .warning-store-closed {
   text-align: center;
   font-size: 18px;
   font-weight:bold;
@@ -6,21 +6,21 @@
   padding-bottom: 2px;
 }
 
-.call-top .conditions, .call .conditions {
+.call-top .conditions, .call .conditions, .warning-store-closed-top .conditions, .warning-store-closed .conditions {
   font-size: 12px;
   font-weight: normal;
   margin-top: -0.5em;
 }
 
-.call-top span, .call span {
+.call-top span, .call span, .warning-store-closed-top span, .warning-store-closed span {
   white-space: nowrap;
 }
 
-.call-top .conditions p, .call .conditions p {
+.call-top .conditions p, .call .conditions p, .warning-store-closed-top .conditions p, .warning-store-closed .conditions p {
   margin-bottom: 0em;
 }
 
-.call {
+.call, .warning-store-closed {
   font-size: 14px;
   margin-top: 50px;
   margin-bottom: 2px;
@@ -31,6 +31,15 @@
   padding-bottom: 10px;
 }
 
-.call .conditions {
+.call .conditions, .warning-store-closed .conditions {
   font-size: 9px;
+}
+
+.warning-store-closed-top, .warning-store-closed {
+  background-color: #FEEFB3;
+  color: #9F6000;
+}
+
+.warning-store-closed-top .conditions, .warning-store-closed .conditions {
+  color: #9F6000;
 }
