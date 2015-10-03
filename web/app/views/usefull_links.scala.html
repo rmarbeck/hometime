@@ -2,8 +2,30 @@
 @import tags._
 
 
-      
-@for(link <- links) {
-        <div class="entry"><h3><a href="@link.url">@link.name</a></h3></div>
-}
+<!DOCTYPE html>
 
+<html lang="@Messages("global.code.lang.head")">
+    <head>
+        @layouts.fragments.head_min()
+        @layouts.fragments.bootstrap_css()
+        <style>
+        	button {
+        	   margin-top: 1em !important;
+        	   }
+        </style>
+    </head>
+    <body>
+    	<div class="container">
+    		
+      
+	      @for(link <- links) {
+	      	<div class="row">
+	      	   <div class="col-xs-12">
+	        		<a href="@link.url"><button type="button" class="btn btn-lg btn-default btn-block">@link.name</button></a>
+	        	</div>
+	        </div>
+		  }
+		</div>
+
+    </body>
+</html>
