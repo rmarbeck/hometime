@@ -635,7 +635,7 @@ order.form.label.model=* Modèle
 order.form.placeholder.model=Nom du modèle - Année
 order.form.label.method=* Réseau
 order.form.help.method=Un horloger indépendant sélectionné par Hometime sera plus rapide et moins cher.
-order.form.value.method.brand=Je souhaite que ma montre soit entretenue par son fabriquant
+order.form.value.method.brand=Je souhaite que ma montre soit entretenue par son fabricant
 order.form.value.method.outlet=Je souhaite que ma montre soit entretenue par un <abbr class="" title="Hometime ne travaille qu''avec des professionnels réputés disposant d''ateliers dans Paris" >horloger indépendant</abbr>
 order.form.value.method.both=Je souhaite un devis comparant les deux modes d''entretien
 order.form.label.remark=Remarques
