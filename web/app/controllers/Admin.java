@@ -360,7 +360,7 @@ public class Admin extends Controller {
 			Promise<Result> resultPromise = MailjetAdapter.wsCreateACampaignWithHtmlContent(subject, title, email, html, textVersion)
 					.map(url -> {
 						flash("success", Messages.get("admin.quotation.success", url));
-						return LIST_ORDERS;
+						return INDEX;
 						});
 							
 			Promise<Result> recoverPromise = resultPromise.recoverWith(throwable -> {

@@ -23,6 +23,8 @@
 
 @layouts.admin_root(head, footer, end_scripts) {
     @layouts.fragments.admin_navbar(0)
+    
+    @display_flash()
 
     @content
 }
