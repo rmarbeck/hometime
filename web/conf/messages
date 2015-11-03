@@ -1410,6 +1410,7 @@ admin.quotation.form.label.remark.3=3
 admin.quotation.form.placeholder.remark.3=...
 admin.quotation.form.label.cat.partner.asset=Expertise partenaire
 admin.quotation.form.placeholder.partner.asset=...
+admin.quotation.default.partner.asset=Ils disposent d''une très grande expérience sur les montres {0}.
 admin.quotation.form.label.partner.asset=
 admin.quotation.action.submit=Générer
 admin.quotation.action.preview=Prévisualiser

@@ -149,6 +149,9 @@ public class Admin extends Controller {
 					}
 					break;
 	    	}
+	    	if (this.typeOfNetwork.equals(Quotation.TypesOfNetwork.OUT_BOTH.toString()) || this.typeOfNetwork.equals(Quotation.TypesOfNetwork.OUT_ONLY.toString()))
+	    		if (this.brand != null)
+	    			this.partnerAsset = Messages.get("admin.quotation.default.partner.asset", this.brand);
 	    	this.fillWithPresetFields(presetId, order);
 	    }
 	    
