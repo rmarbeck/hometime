@@ -49,6 +49,7 @@ public class MailjetAdapter {
 	private static String fromEmail = null;
 	private static String fromName = null;
 	private static String replyTo = null;
+	private static WSClient customClient = null;
 	
 	private static String API_METHOD_MESSAGE_CREATE_CAMPAIGN = "messageCreatecampaign";
 	private static String API_METHOD_MESSAGE_CREATE_CAMPAIGN_RESULT_CAMPAIGN = "campaign";
@@ -69,6 +70,8 @@ public class MailjetAdapter {
 	private static String API_METHOD_LISTS_CREATE_PARAM_NAME = "name";
 	private static String API_METHOD_LISTS_CREATE_RESPONSE_STATUS = "status";
 	private static String API_METHOD_LISTS_CREATE_RESPONSE_LIST_ID = "list_id";
+	
+	
 	
 	public static Promise<String> wsCreateACampaignWithHtmlContent(String subject, String title, String email, String html, String text) throws Exception {
 		return wsCreateACampaign(subject, title, email)
@@ -286,11 +289,12 @@ public class MailjetAdapter {
 	}
 	
 	private static WSRequestHolder customURL(String method) {
-		com.ning.http.client.AsyncHttpClientConfig customConfig =
-			    new com.ning.http.client.AsyncHttpClientConfig.Builder().build();
-			WSClient customClient = new play.libs.ws.ning.NingWSClient(customConfig);
-
-			return customClient.url(MAILJET_API_PROTOCOL+"://"+MAILJET_API_HOST+":"+MAILJET_API_PORT+"/"+MAILJET_API_VERSION+"/"+method).setAuth(apiKey, apiSecretKey).setQueryParameter(MAILJET_API_OUTPUT_PARAM, currentOutput);
+		if (customClient == null) {
+			com.ning.http.client.AsyncHttpClientConfig customConfig =
+					new com.ning.http.client.AsyncHttpClientConfig.Builder().build();
+			customClient = new play.libs.ws.ning.NingWSClient(customConfig);
+		}
+		return customClient.url(MAILJET_API_PROTOCOL+"://"+MAILJET_API_HOST+":"+MAILJET_API_PORT+"/"+MAILJET_API_VERSION+"/"+method).setAuth(apiKey, apiSecretKey).setQueryParameter(MAILJET_API_OUTPUT_PARAM, currentOutput);
 	}
 	
 	private static String getQueryString(Map<String, String> parameters) {
