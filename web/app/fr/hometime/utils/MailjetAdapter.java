@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.ning.http.client.AsyncHttpClient;
 
 import models.LiveConfig;
 import play.Logger;
@@ -289,11 +290,13 @@ public class MailjetAdapter {
 	}
 	
 	private static WSRequestHolder customURL(String method) {
-		if (customClient == null) {
-			com.ning.http.client.AsyncHttpClientConfig customConfig =
-					new com.ning.http.client.AsyncHttpClientConfig.Builder().build();
-			customClient = new play.libs.ws.ning.NingWSClient(customConfig);
+		if (customClient != null) {
+			AsyncHttpClient client = (AsyncHttpClient) customClient.getUnderlying();
+			client.close();
 		}
+		com.ning.http.client.AsyncHttpClientConfig customConfig =
+				new com.ning.http.client.AsyncHttpClientConfig.Builder().build();
+		customClient = new play.libs.ws.ning.NingWSClient(customConfig);
 		return customClient.url(MAILJET_API_PROTOCOL+"://"+MAILJET_API_HOST+":"+MAILJET_API_PORT+"/"+MAILJET_API_VERSION+"/"+method).setAuth(apiKey, apiSecretKey).setQueryParameter(MAILJET_API_OUTPUT_PARAM, currentOutput);
 	}
 	
