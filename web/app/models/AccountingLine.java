@@ -1,6 +1,5 @@
 package models;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -29,7 +28,8 @@ public class AccountingLine extends Model {
 	    FREE_INCLUDED ("FREE_INCLUDED"),
 	    FREE_OFFERED ("FREE_OFFERED"),
 	    FREE_SPECIAL ("FREE_SPECIAL"),
-	    INFO_LINE ("INFO_LINE");
+	    INFO_LINE ("INFO_LINE"),
+	    SUB_TOTAL ("SUB_TOTAL");
 	    
 		private String name = "";
 		    

@@ -1328,6 +1328,13 @@ admin.navbar.link.text.prepare.buy.request.proposal=Générer proposition
 admin.navbar.link.text.other=Autres
 admin.navbar.link.text.feedbacks=Avis
 admin.navbar.link.text.links=Liens utiles
+admin.navbar.link.text.accounting.add.invoice=Nouvelle facture
+admin.navbar.link.text.accounting.invoices=Factures
+admin.navbar.link.text.accounting.add.order.document=Nouveau bon de commande
+admin.navbar.link.text.accounting.order.documents=Bons de commande
+admin.navbar.link.text.accounting.add.selling.document=Nouveau papier de vente
+admin.navbar.link.text.accounting.selling.documents=Papiers de vente
+admin.navbar.link.text.accounting=Facturation
 
 # Quotation
 admin.quotation.request.service.type.value.1=Révision complète d''une {0}
@@ -1552,7 +1559,7 @@ Nous venons de vous éditer et de vous envoyer le devis pour l''entretien de vot
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\
-Par ailleurs, nous souhaitions vous indiquer que pour les interventions en dehors de la proche banlieue parisienne, nous retenons souvent avec nos clients l''envoi et le retour de la montre par pli sécurisé en valeur déclarée. Il s''agit d''un mode de transport géré par la Poste qui garantit le bien transporté contre tout risque de perte ou de dégradation. Pour rendre la chose la plus simple possible, nous pouvons vous envoyer un premier colis contenant une boite et les instructions pour envoyer votre montre. Les frais d''envoi sont d''environ 30€/70€ aller-retour.%0D%0A\
+Par ailleurs, nous souhaitions vous indiquer que pour les interventions en dehors de la proche banlieue parisienne, nous retenons souvent avec nos clients l''envoi et le retour de la montre par pli sécurisé en valeur déclarée. Il s''agit d''un mode de transport géré par la Poste qui garantit le bien transporté contre tout risque de perte ou de dégradation. Pour rendre la chose la plus simple possible, nous pouvons vous envoyer un premier colis contenant une boite et les instructions pour envoyer votre montre. Les frais d''envoi sont d''environ 40€ aller-retour.%0D%0A\
 %0D%0A\
 Nous pouvons rechercher une autre solution si vous le souhaitez.%0D%0A\
 %0D%0A\
@@ -2255,6 +2262,8 @@ admin.invoice.header.total=Total
 
 admin.invoice.line.special.free.included=Inclus
 admin.invoice.line.special.free.offered=Offert
+admin.invoice.free.included=Inclus
+admin.invoice.free.offered=Offert
 
 admin.invoice.label.ht.total=Total HT
 admin.invoice.label.vat=T.V.A. 20%
@@ -2264,6 +2273,31 @@ admin.invoice.label.still.to.pay=Reste à payer
 admin.invoice.label.to.pay=Total à payer
 admin.invoice.label.to.pay.ttc=Total à payer TTC
 
+admin.invoice.total.line.description=Total à payer
+admin.invoice.vat.line.description=T.V.A. 20%
+admin.invoice.vat.total.line.description=Total à payer TTC
+admin.invoice.ht.total.line.description=Total HT
+admin.invoice.already.payed.line.description=Déjà perçu
+admin.invoice.to.pay.total.line.description=Reste à payer
+
+admin.invoice.total.line.class=total
+admin.invoice.total.line.value.class=text-right
+admin.invoice.unit.class=text-center
+admin.invoice.unit.price.class=text-right
+admin.invoice.price.class=text-right
+admin.invoice.free.included.class=text-right
+admin.invoice.free.offered.class=text-right
+admin.invoice.admin.invoice.sub.total.class=sub-total
+admin.invoice.vat.line.class=vat
+admin.invoice.vat.line.value.class=text-right
+admin.invoice.vat.total.line.class=total
+admin.invoice.vat.total.line.value.class=text-right
+admin.invoice.ht.total.line.class=sub-total
+admin.invoice.ht.total.line.value.class=text-right
+admin.invoice.already.payed.line.class=sub-total
+admin.invoice.already.payed.line.value.class=text-right
+admin.invoice.to.pay.total.line.class=total
+admin.invoice.to.pay.total.line.value.class=text-right
 
 admin.invoice.customer.details=Identification du client :
 admin.invoice.description=Description :
@@ -2274,6 +2308,11 @@ admin.invoice.working.date=Date de la prestation :
 admin.invoice.payment.conditions=Conditions de paiement :
 admin.invoice.supported.payment.methods=Moyens de paiement acceptés :
 admin.invoice.payment.method.used=Moyen de paiement utilisé :
+
+admin.selling.customer.details=Identification du vendeur :
+admin.selling.company.details=Identification de l''acheteur :
+admin.selling.company.name=Société Watch next SAS
+admin.selling.company.address=11 bis rue Pierre Curie<br/>78600 Maisons Laffitte
 
 admin.invoice.form.label.type=Type de facture
 admin.invoice.form.value.type.default=Sélectionner le type de facture
@@ -2299,4 +2338,165 @@ admin.invoice.legal=Toute somme non payée dans les trente jours est augmentée 
  douzième alinéa du I de l''article L. 441-6 est fixé à 40 euros. Articles L. 441-6 et D. 441-5 du Code de commerce.
 admin.invoice.notice="Régime particulier-Biens d''occasion"<br />Article 242 nonies A, 16° de l''annexe II au CGI
 
+
+admin.order.document.text.bill=Bon de commande
+admin.order.document.title.bill={0} - Devis 
+admin.order.document.description=Description :
+admin.order.document.number=Numéro de bon de commande :
+
+admin.order.document.header.description=Désignation
+admin.order.document.header.quantity=Quantité
+admin.order.document.header.unit.price=Prix unitaire
+admin.order.document.header.unit.price.ht=Prix unitaire HT
+admin.order.document.header.total=Total
+admin.order.document.label.to.pay=Somme totale à payer TTC
+admin.order.document.payment.conditions=Conditions de paiement :
+admin.order.document.supported.payment.methods=Moyens de paiement acceptés :
+admin.order.document.delay=Délais de livraison :
+admin.order.document.valid.until.date=Offre valable jusqu''au {0, date,dd/MM/yyyy} inclus
+admin.order.document.detailed.infos={0}
+admin.order.document.label.ht.total=Total HT
+admin.order.document.label.vat=T.V.A. 20%
+admin.order.document.label.to.pay.ttc=Total à payer TTC
+
+
+admin.order.document.action.save=&nbsp;Créer
+admin.order.document.action.show=&nbsp;Prévisualiser
+admin.order.document.action.edit=&nbsp;Modifier
+admin.order.document.action.delete=&nbsp;Supprimer
+admin.order.document.action.cancel=&nbsp;Annuler
+admin.order.document.form.label.customer=Client
+admin.order.document.form.value.customer.default=Sélectionner le client
+admin.order.document.form.label.description=Description
+admin.order.document.form.placeholder.description=Révision...|Réparation...|Vente...
+admin.order.document.form.label.unique.accounting.number=Numéro de bon de commande
+admin.order.document.form.placeholder.unique.accounting.number=2016XX-YY
+admin.order.document.form.label.lines=Lignes
+admin.order.document.form.label.line.description=Désignation
+admin.order.document.form.placeholder.line.description=...
+admin.order.document.form.label.line.unit=Nombre d''unités
+admin.order.document.form.placeholder.line.unit=
+admin.order.document.form.label.line.unit.price=Prix unitaire
+admin.order.document.form.placeholder.line.unit.price=
+admin.order.document.form.label.line.info=Contenu de la ligne
+admin.order.document.form.placeholder.line.info=
+admin.order.document.form.label.detailed.infos=Infos détaillées
+admin.order.document.form.placeholder.detailed.infos=* la révision...
+admin.order.document.form.label.payment.conditions=Conditions de paiement
+admin.order.document.form.placeholder.payment.conditions=
+admin.order.document.form.label.supported.payment.methods=Moyens de paiement acceptés
+admin.order.document.form.placeholder.supported.payment.methods=
+admin.order.document.form.label.delay=Délais de livraison
+admin.order.document.form.placeholder.delay=
+admin.order.document.form.label.valid.until.date=Date de validité
+admin.order.document.form.placeholder.valid.until.date= 
+
+admin.order.document.form.label.type=Type de bon de commande
+admin.order.document.form.value.type.default=Sélectionner le type de facture
+admin.order.document.form.value.type.vat=Avec TVA
+admin.order.document.form.value.type.margin.vat=TVA sur marge
+admin.order.document.form.value.type.no.vat=Sans TVA
+admin.order.document.form.value.type.mixed.vat=Avec et sans TVA
+admin.order.document.form.value.type.reserved.1=Réservé
+admin.order.document.form.value.type.reserved.2=Réservé
+
+admin.order.document.form.label.line.type=Type de ligne
+admin.order.document.form.value.line.type.default=Sélectionner le type
+admin.order.document.form.value.line.type.with.vat.by.unit=Avec TVA à l''unité
+admin.order.document.form.value.line.type.without.vat.by.unit=Sans TVA à l''unité
+admin.order.document.form.value.line.type.free.included=Inclus
+admin.order.document.form.value.line.type.free.offered=Offert
+admin.order.document.form.value.line.type.free.special=Spécial
+admin.order.document.form.value.line.type.info.line=Info
+
+admin.order.document.signing=Date et signature du client précédées de la mention "Lu et accepté"
+
+
+admin.selling.document.text.bill=Facture
+admin.selling.document.title.bill=Facture {0} - Papier de vente
+admin.selling.document.description=Description :
+admin.selling.document.working.date=Date de la transcation :
+admin.selling.document.one.shot.date=le {0}
+
+admin.selling.document.header.description=Désignation
+admin.selling.document.header.quantity=Quantité
+admin.selling.document.header.unit.price=Prix unitaire
+admin.selling.document.header.total=Total
+admin.selling.document.label.to.pay=Somme totale à payer TTC
+admin.selling.document.payment.method.used=Moyen de paiement utilisé :
+
+admin.selling.document.signing=Date et signature du vendeur précédées de la mention "bon pour vente"
+
+admin.selling.document.action.save=&nbsp;Créer
+admin.selling.document.action.show=&nbsp;Prévisualiser
+admin.selling.document.action.edit=&nbsp;Modifier
+admin.selling.document.action.delete=&nbsp;Supprimer
+admin.selling.document.action.cancel=&nbsp;Annuler
+
+admin.selling.document.form.label.customer=Client
+admin.selling.document.form.value.customer.default=Sélectionner le client
+admin.selling.document.form.label.description=Description
+admin.selling.document.form.placeholder.description=
+admin.selling.document.form.label.unique.accounting.number=Numéro de facture
+admin.selling.document.form.placeholder.unique.accounting.number=2016-XX
+admin.selling.document.form.label.date=Date de transaction
+admin.selling.document.form.label.lines=Lignes
+admin.selling.document.form.label.line.description=Désignation
+admin.selling.document.form.placeholder.line.description=...
+admin.selling.document.form.label.line.unit=Nombre d''unités
+admin.selling.document.form.placeholder.line.unit=
+admin.selling.document.form.label.line.unit.price=Prix unitaire
+admin.selling.document.form.placeholder.line.unit.price=
+admin.selling.document.form.label.line.info=Contenu de la ligne
+admin.selling.document.form.placeholder.line.info=
+admin.selling.document.form.label.payment.method.used=Moyen de paiement utilisé
+admin.selling.document.form.placeholder.payment.method.used= 
+
+
+
 global.void.1={0}
+
+
+
+admin.watchtosell.form.title=Montres à vendre
+admin.watchtosell.action.cancel=&nbsp;Annuler
+admin.watchtosell.action.save=&nbsp;Créer
+admin.watchtosell.action.delete=&nbsp;Supprimer
+admin.watchtosell.action.edit=&nbsp;Modifier
+admin.watchtosell.form.brand.internal.name.label.name=Marque
+admin.watchtosell.form.brand.internal.name.default.name=Sélectionner la marque
+admin.watchtosell.form.model.label.name=Modèle
+admin.watchtosell.form.model.placeholder.name=
+admin.watchtosell.form.additionnalmodelinfos.label.name=Infos complémentaires sur le modèle
+admin.watchtosell.form.additionnalmodelinfos.placeholder.name=...
+admin.watchtosell.form.ownerstatus.label.name=Type de mise en vente
+admin.watchtosell.form.ownerstatus.default.name=Sélectionner le type de mise en vente
+admin.watchtosell.form.status.label.name=Statut
+admin.watchtosell.form.status.default.name=Sélectionner le statut
+admin.watchtosell.form.reference.label.name=Référence
+admin.watchtosell.form.reference.placeholder.name=...
+admin.watchtosell.form.serial.label.name=Numéro de série
+admin.watchtosell.form.serial.placeholder.name=
+admin.watchtosell.form.serial2.label.name=Numéro de série complémentaire
+admin.watchtosell.form.serial2.placeholder.name=
+admin.watchtosell.form.movement.label.name=Mouvement
+admin.watchtosell.form.movement.placeholder.name=
+admin.watchtosell.form.seller.label.name=Vendeur
+admin.watchtosell.form.seller.placeholder.name=
+admin.watchtosell.form.additionnalinfos.label.name=Infos complémentaires
+admin.watchtosell.form.additionnalinfos.placeholder.name=
+admin.watchtosell.form.privateinfos.label.name=Infos privées
+admin.watchtosell.form.privateinfos.placeholder.name=
+admin.watchtosell.form.year.label.name=Année
+admin.watchtosell.form.year.placeholder.name=
+admin.watchtosell.form.hasbox.label.name=Boite
+admin.watchtosell.form.haspapers.label.name=Papiers
+admin.watchtosell.form.isnew.label.name=Neuve
+admin.watchtosell.form.purchasedate.label.name=Date d''achat
+admin.watchtosell.form.startsellingdate.label.name=Date de mise en vente
+admin.watchtosell.form.sellingdate.label.name=Date de vente
+admin.watchtosell.form.purchaseinvoiceavailable.label.name=Facture disponible
+admin.watchtosell.form.purchaseinvoice.name.label.name=Facture
+admin.watchtosell.form.purchaseinvoice.name.default.name=Sélectionner la facture
+admin.watchtosell.form.customerthatboughtthewatch.name.label.name=Acheteur
+admin.watchtosell.form.customerthatboughtthewatch.name.default.name=Sélectionner l''acheteur

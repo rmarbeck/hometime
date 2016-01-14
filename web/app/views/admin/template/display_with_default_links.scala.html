@@ -1,0 +1,12 @@
+@(modelDisplay: views.ModelDisplay, controllerName: String)
+@import tags._
+
+@newlink() = {
+	@routes.CrudHelper.create(controllerName)
+}
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit(controllerName, id)
+}
+
+@admin.template.display(modelDisplay, newlink, editlink)

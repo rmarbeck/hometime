@@ -1,0 +1,28 @@
+@(to_render: String, rendering_option: String)
+@if(rendering_option == null) {
+	@to_render
+} else {
+	@rendering_option match {
+		  case "price" => {
+		    @display_price(if(to_render == null || "null".equals(to_render)) {0} else {Float.parseFloat(to_render)})
+		  }
+		
+		  case "date short" => {
+		    @display_date(views.Helper.parseDateInMillis(to_render), "dd/MM")
+		  }
+		  
+		  case "date long" => {
+		    @display_date(views.Helper.parseDateInMillis(to_render), "dd/MM/yyyy HH:mm")
+		  }
+		  
+		  case default => {
+		    @if(rendering_option.startsWith("take ")) {
+		    	@defining(Integer.parseInt(rendering_option.replace("take ", ""))) { size =>
+  					@takeif(to_render, size)
+				}
+		    } else {
+		  		-
+		  	}
+		  }
+	}
+}

@@ -1,0 +1,18 @@
+@(line: views.AccountingSheet#Line)
+		<tr class="@line.getCssClass">
+		   	@for(cell <- line.getCells) {
+      			<td @if(cell.getColSpan!=0) {colspan="@cell.getColSpan"} class="@cell.getCssClass">
+      				@cell.getType match {
+					  case "Float" => {
+					    @display_floating_price(cell.getFloatValue)
+  						}
+  					  case "Long" => {
+    					@cell.getLongValue
+  						}
+					  case _ => {
+					    @Html(cell.getStringValue)
+  						}
+					}
+      			</td>
+      		}
+      	</tr>

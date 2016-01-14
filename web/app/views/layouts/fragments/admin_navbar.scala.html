@@ -40,6 +40,20 @@
                     @li_activable(55, index) {<a href="@routes.UsefullLink.displayAll()">@Messages("admin.navbar.link.text.links")</a>}
                   </ul>
                 }
+                @li_activable(60, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.accounting")) <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    @li_activable(60, index) {<a href="@routes.Accounting.displayAllInvoice()">@Messages("admin.navbar.link.text.accounting.invoices")</a>}
+                    @li_activable(61, index) {<a href="@routes.Accounting.addInvoice()">@Messages("admin.navbar.link.text.accounting.add.invoice")</a>}
+                    <li class="divider hidden-xs"></li>
+                    @li_activable(64, index) {<a href="@routes.Accounting.displayAllOrderDocument()">@Messages("admin.navbar.link.text.accounting.order.documents")</a>}
+	                @li_activable(65, index) {<a href="@routes.Accounting.addOrderDocument()">@Messages("admin.navbar.link.text.accounting.add.order.document")</a>}
+	                <li class="divider hidden-xs"></li>
+                	@li_activable(66, index) {<a href="@routes.Accounting.displayAllSellingDocument()">@Messages("admin.navbar.link.text.accounting.selling.documents")</a>}
+                	@li_activable(67, index) {<a href="@routes.Accounting.addSellingDocument()">@Messages("admin.navbar.link.text.accounting.add.selling.document")</a>}
+                  </ul>
+                }
+                
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 @li_activable(100, index) {<a href="@routes.Application.logout()">@Messages("admin.navbar.link.text.logout")</a>}

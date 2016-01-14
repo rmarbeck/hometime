@@ -1,22 +1,23 @@
 @(invoice : models.Invoice, totalAmount : Float, amountToPay : Float, htAmount : Float, vat : Float)
 @import tags._
+@import views.AccountingSheet
 @import java.lang.String; var title=""
 @import models.Customer; var customer=new models.Customer() 
 
 @{
 	title=Messages("admin.invoice.title.bill", invoice.uniqueAccountingNumber);
-	if(invoice.customer.id != null) {
-		customer = models.Customer.findById(invoice.customer.id);
+	if(invoice.document.customer.id != null) {
+		customer = models.Customer.findById(invoice.document.customer.id);
 		if(customer != null && customer.civility!=null) {
 			title=title+" - "+Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.'));
 		}
 		if(customer != null) {
-			title=title+" "+customer.firstname+" "+customer.firstname;
+			title=title+" "+customer.firstname+" "+customer.name;
 		}
 	}
 }
 
-@layouts.admin_accounting(title, invoice) {
+@layouts.admin_accounting(title, invoice.document) {
      
      <div class="row">
         <div class="type col-xs-12">
@@ -67,7 +68,7 @@
 	              <tbody>
 	              @if(invoice.getType().equals(models.Invoice.InvoiceType.VAT)
 	                 || invoice.getType().equals(models.Invoice.InvoiceType.MIXED_VAT)) {
-		          	@for(line <- invoice.lines) {
+		          	@for(line <- invoice.document.lines) {
 		          		@if(line.getType() != null) {
 			                @if(line.getType().equals(models.AccountingLine.LineType.WITH_VAT_BY_UNIT)
 			                    || line.getType().equals(models.AccountingLine.LineType.FREE_INCLUDED)
@@ -91,11 +92,11 @@
 	              }
 	              @if(invoice.getType().equals(models.Invoice.InvoiceType.MARGIN_VAT)
 	                 || invoice.getType().equals(models.Invoice.InvoiceType.NO_VAT)) {
-                    @for(line <- invoice.lines) {
+                    @for(line <- invoice.document.lines) {
 	    				@admin_display_invoice_line(line)
 	                }
 	              } else {
- 					@for(line <- invoice.lines) {
+ 					@for(line <- invoice.document.lines) {
  					    @if(line.getType() != null && line.getType().equals(models.AccountingLine.LineType.WITHOUT_VAT_BY_UNIT)) {
 	    					@admin_display_invoice_line(line)
 	    			    }
@@ -103,8 +104,14 @@
 				  }
 	                @if(invoice.alreadyPayed != 0) {
 	                <tr class="total">
+	                @if(invoice.getType().equals(models.Invoice.InvoiceType.MARGIN_VAT)
+	                 || invoice.getType().equals(models.Invoice.InvoiceType.NO_VAT)) {
+	                  <td><strong>@Html(Messages("admin.invoice.label.ht.total"))</strong></td>
+	                  <td colspan="3" class="text-right"><strong>@display_floating_price(htAmount)</strong></td>
+	                  } else {
 	                  <td><strong>@Html(Messages("admin.invoice.label.ttc.total"))</strong></td>
 	                  <td colspan="3" class="text-right"><strong>@display_floating_price(totalAmount)</strong></td>
+	                  }
 	                </tr>
 	                <tr class="sub-total">
 	                  <td><strong>@Html(Messages("admin.invoice.label.partial.payment"))</strong></td>
@@ -126,6 +133,36 @@
         </div>
       </div>
       
+     @defining(AccountingSheet.of(invoice.document, "admin.invoice", invoice.alreadyPayed)) { sheet =>
+     <div class="row">
+     	<div class="col-xs-12">
+	        <div class="table-responsive">
+	            <table class="table table-bordered">
+	              <colgroup>
+	                <col class="col-xs-7">
+	                <col class="col-xs-1">
+	                <col class="col-xs-2">
+	                <col class="col-xs-2">
+	              </colgroup>
+	              <thead>
+	                <tr>
+						@for(cell <- sheet.getHeader.getCells) {
+							<th class="@cell.getCssClass">@Html(cell.getStringValue)</th>
+						}
+					</tr>
+				  </thead>
+				  <tbody>
+				  @for(line <- sheet.getLines) {
+				  	@admin_display_sheet_line(line)
+      			  }
+	              </tbody>
+	            </table>
+	       </div>
+        </div>
+      </div>
+		
+	  }
+
       @admin_accounting_info_field(invoice.paymentConditions, "admin.invoice.payment.conditions", 'dataclass -> "payment-infos")
       
       @admin_accounting_info_field(invoice.supportedPaymentMethods, "admin.invoice.supported.payment.methods", 'dataclass -> "payment-infos")

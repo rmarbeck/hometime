@@ -1,0 +1,10 @@
+@(currentPage: com.avaje.ebean.Page[models.ExternalDocument], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+@defining(new views.PageDisplay(currentPage, "creation_date", "admin.external.document.page")) { pageDisplay =>
+	@{ 	pageDisplay.addTableField("model", "model", "getModel", false);
+		pageDisplay.addTableField("brand", "brand", "getBrand", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "WatchesToSell", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

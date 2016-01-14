@@ -1,0 +1,71 @@
+@(accountingDocumment: models.AccountingDocument, alternate: Boolean = false)
+@import tags._
+
+	@if(alternate == false) {
+     <div class="row">
+        <div class="col-xs-4">
+        	<div class="header">
+		        <h3>@Html(Messages("admin.invoice.head.company"))</h3>
+		        <h4>@Html(Messages("admin.invoice.head.description"))</h4>
+		        <h5><br />@Html(Messages("admin.invoice.head.url"))</h5>
+		        <h5>@Html(Messages("admin.invoice.head.phone.number"))</h5>
+	        </div>
+        </div>
+        <div class="col-xs-7 col-xs-offset-1">
+        	<div class="row">
+        		<div class="col-xs-12">
+			        <div class="date text-right">
+			        	<br />
+			        	@display_date(accountingDocumment.creationDate, "d MMMM yyyy")
+			        </div>
+					@if(accountingDocumment.customer!=null) {
+						@defining(models.Customer.findById(accountingDocumment.customer.id)) { customer =>
+						<div class="customer-details text-left">
+			        		<div class="cd-label">@Html(Messages("admin.invoice.customer.details"))</div>
+			        		<div class="name">@if(customer.civility != null) {@Html(Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.')+".short"))} @customer.firstname @customer.name</div>
+			        		<div class="address">@customer.billingAddress</div>
+			        	</div>
+			        	}
+					}	        
+			    </div>
+        	</div>
+        </div>
+     </div>
+     } else {
+     <div class="row">
+        <div class="col-xs-6">
+        	<div class="row">
+        		<div class="col-xs-12">
+			        <div class="date text-right">
+			        	<br />
+			        	&nbsp;
+			        </div>
+					@if(accountingDocumment.customer!=null) {
+						@defining(models.Customer.findById(accountingDocumment.customer.id)) { customer =>
+						<div class="customer-details text-left">
+			        		<div class="cd-label">@Html(Messages("admin.selling.customer.details"))</div>
+			        		<div class="name">@if(customer.civility != null) {@Html(Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.')+".short"))} @customer.firstname @customer.name</div>
+			        		<div class="address">@customer.billingAddress</div>
+			        	</div>
+			        	}
+					}	        
+			    </div>
+        	</div>
+        </div>
+        <div class="col-xs-5 col-xs-offset-1">
+        	<div class="row">
+        		<div class="col-xs-12">
+			        <div class="date text-right">
+			        	<br />
+			        	@display_date(accountingDocumment.creationDate, "d MMMM yyyy")
+			        </div>
+					<div class="customer-details text-left">
+		        		<div class="cd-label">@Html(Messages("admin.selling.company.details"))</div>
+		        		<div class="name">@Html(Messages("admin.selling.company.name"))</div>
+		        		<div class="address">@Html(Messages("admin.selling.company.address"))</div>
+		        	</div>
+			    </div>
+        	</div>
+        </div>
+     </div>     
+     }

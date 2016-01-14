@@ -1,0 +1,18 @@
+@(document: models.ExternalDocument)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("WatchesToSell", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("WatchesToSell")
+}
+
+@defining(new views.ModelDisplay(document)) { modelDisplay =>
+		@{ 	modelDisplay.addField("model");
+			modelDisplay.addField("brand");
+		}
+	
+	@admin.template.display(modelDisplay, newlink, editlink)
+}

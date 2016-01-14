@@ -237,5 +237,9 @@ public class Customer extends Model {
         }
         return errors.isEmpty() ? null : errors;
     }
+    
+    public String toString() {
+    	return email;
+    }
 }
 

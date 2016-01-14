@@ -1,0 +1,15 @@
+@(lines: Field, key: String, defaultNumberOfLines: Integer=3)
+@import java.math.BigInteger; var index=0
+
+@helper.repeat(lines, min = defaultNumberOfLines) { line =>
+        <div id="invoice_line_@{index}" class="row">
+        	@(index+=1)
+			@simple_admin_textarea(line("description"), key+".line.description", '_label_class -> "hidden", '_class -> "col-xs-6" , '_body_class -> "")
+	
+			@simple_admin_input(line("unit"), key+".line.unit", '_class -> "col-xs-3", '_body_class -> "", '_label_class -> "hidden", 'type -> "number",  'step -> "1")
+
+			@simple_admin_input(line("unitPrice"), key+".line.unit.price", '_class -> "col-xs-3", '_body_class -> "", '_label_class -> "hidden", 'type -> "number",  'step -> "0.01")    				
+			
+			@simple_admin_input(line("info"), key+".line.info", '_class -> "col-xs-offset-4 col-xs-8")
+		</div>
+}

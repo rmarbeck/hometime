@@ -1,0 +1,18 @@
+@(watch_to_sell: models.WatchToSell)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("WatchesToSell", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("WatchesToSell")
+}
+
+@defining(new views.ModelDisplay(watch_to_sell)) { modelDisplay =>
+		@{ 	modelDisplay.addField("model");
+			modelDisplay.addField("brand");
+		}
+	
+	@admin.template.display(modelDisplay, newlink, editlink)
+}

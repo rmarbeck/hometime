@@ -7,6 +7,7 @@ create table accounting_document (
   id                        bigint not null,
   creation_date             timestamp,
   customer_id               bigint,
+  document_data             blob,
   constraint pk_accounting_document primary key (id))
 ;
 
@@ -18,7 +19,7 @@ create table accounting_line (
   info                      varchar(10000),
   document_id               bigint,
   line_type                 varchar(40),
-  constraint ck_accounting_line_line_type check (line_type in ('WITH_VAT_BY_UNIT','WITHOUT_VAT_BY_UNIT','FREE_INCLUDED','FREE_OFFERED','FREE_SPECIAL','INFO_LINE')),
+  constraint ck_accounting_line_line_type check (line_type in ('WITH_VAT_BY_UNIT','WITHOUT_VAT_BY_UNIT','FREE_INCLUDED','FREE_OFFERED','FREE_SPECIAL','INFO_LINE','SUB_TOTAL')),
   constraint pk_accounting_line primary key (id))
 ;
 
@@ -122,6 +123,17 @@ create table customer_watch (
   constraint pk_customer_watch primary key (id))
 ;
 
+create table external_document (
+  id                        bigint not null,
+  creation_date             timestamp,
+  name                      varchar(255),
+  description               varchar(10000),
+  file_type                 varchar(255),
+  file_name                 varchar(255),
+  file_data                 blob,
+  constraint pk_external_document primary key (id))
+;
+
 create table feedback (
   id                        bigint not null,
   creation_date             timestamp,
@@ -138,9 +150,8 @@ create table feedback (
 
 create table invoice (
   id                        bigint not null,
-  creation_date             timestamp,
-  customer_id               bigint,
   description               varchar(10000),
+  document_id               bigint,
   payment_conditions        varchar(10000),
   supported_payment_methods varchar(10000),
   payment_method_used       varchar(10000),
@@ -184,6 +195,22 @@ create table order_table (
   customer_id               bigint,
   constraint ck_order_table_order_status check (order_status in ('INFORMAL_AGREEMENT_10','FORMAL_AGREEMENT_20','PICK_UP_PLANNED_30','PREPACKAGE_SENT_32','PREPACKAGE_RECEIVED_34','WATCH_SENT_36','PICK_UP_DONE_40','WATCH_RECEIVED_42','NEW_INFORMAL_PROPOSAL_SUBMITED_50','NEW_FORMAL_PROPOSAL_SUBMITED_55','PROPOSAL_AGREED_60','WORK_STARTED_70','WORK_ISSUE_WAITING_INTERNAL_SOLUTION_75','WORK_ISSUE_WAITING_CUSTOMER_77','WORK_FINISHED_80','WATCH_CONTROL_90','REWORK_92','BILL_SENT_100','BILL_PAYED_110','RETURN_PLANNED_120','RETURN_DONE_130','WATCH_SENT_BACK_132','WATCH_RECEIVED_BACK_134','FEEDBACK_ASKED_140','FEEDBACK_RECEIVED_150','ORDER_CLOSED_200','ORDER_CANCELED_300')),
   constraint pk_order_table primary key (id))
+;
+
+create table order_document (
+  id                        bigint not null,
+  description               varchar(10000),
+  document_id               bigint,
+  payment_conditions        varchar(10000),
+  supported_payment_methods varchar(10000),
+  detailed_infos            varchar(10000),
+  delay                     varchar(10000),
+  unique_accounting_number  varchar(255),
+  invoice_type              integer,
+  valid_until_date          timestamp,
+  constraint ck_order_document_invoice_type check (invoice_type in (0,1,2,3,4,5)),
+  constraint uq_order_document_unique_account unique (unique_accounting_number),
+  constraint pk_order_document primary key (id))
 ;
 
 create table order_request (
@@ -240,6 +267,17 @@ create table preset_quotation_for_brand (
   hypothesis2               varchar(255),
   hypothesis3               varchar(255),
   constraint pk_preset_quotation_for_brand primary key (id))
+;
+
+create table selling_document (
+  id                        bigint not null,
+  description               varchar(10000),
+  document_id               bigint,
+  payment_method_used       varchar(10000),
+  unique_accounting_number  varchar(255),
+  purchase_date             timestamp,
+  constraint uq_selling_document_unique_accou unique (unique_accounting_number),
+  constraint pk_selling_document primary key (id))
 ;
 
 create table service_test (
@@ -322,6 +360,38 @@ create table watch (
   constraint pk_watch primary key (id))
 ;
 
+create table watch_to_sell (
+  id                        bigint not null,
+  creation_date             timestamp,
+  pruchase_date             timestamp,
+  start_selling_date        timestamp,
+  selling_date              timestamp,
+  brand_id                  bigint,
+  model                     varchar(255),
+  additionnal_model_infos   varchar(255),
+  reference                 varchar(255),
+  serial                    varchar(255),
+  serial2                   varchar(255),
+  movement                  varchar(255),
+  seller                    varchar(255),
+  additionnal_infos         varchar(10000),
+  private_infos             varchar(10000),
+  year                      varchar(255),
+  has_box                   boolean,
+  has_papers                boolean,
+  is_new                    boolean,
+  customer_that_bought_the_watch_id bigint,
+  owner_status              varchar(17),
+  status                    varchar(23),
+  purchase_invoice_available boolean,
+  selling_price             bigint,
+  purchasing_price          bigint,
+  purchase_invoice_id       bigint,
+  constraint ck_watch_to_sell_owner_status check (owner_status in ('OWNED_BY_US','OWNED_BY_CUSTOMER','OWNED_BY_PARTNER','RESERVED_1','RESERVED_2')),
+  constraint ck_watch_to_sell_status check (status in ('TO_SELL','RESERVED_FOR_A_CUSTOMER','SOLD','SELLING_CANCELED','RESERVED_1','RESERVED_2')),
+  constraint pk_watch_to_sell primary key (id))
+;
+
 create sequence accounting_document_seq;
 
 create sequence accounting_line_seq;
@@ -336,6 +406,8 @@ create sequence customer_seq;
 
 create sequence customer_watch_seq;
 
+create sequence external_document_seq;
+
 create sequence feedback_seq;
 
 create sequence invoice_seq;
@@ -344,11 +416,15 @@ create sequence live_config_seq;
 
 create sequence order_table_seq;
 
+create sequence order_document_seq;
+
 create sequence order_request_seq;
 
 create sequence picture_seq;
 
 create sequence preset_quotation_for_brand_seq;
+
+create sequence selling_document_seq;
 
 create sequence service_test_seq;
 
@@ -358,6 +434,8 @@ create sequence user_table_seq;
 
 create sequence watch_seq;
 
+create sequence watch_to_sell_seq;
+
 alter table accounting_document add constraint fk_accounting_document_custome_1 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
 create index ix_accounting_document_custome_1 on accounting_document (customer_id);
 alter table accounting_line add constraint fk_accounting_line_document_2 foreign key (document_id) references accounting_document (id) on delete restrict on update restrict;
@@ -366,20 +444,30 @@ alter table buy_request add constraint fk_buy_request_brand_3 foreign key (brand
 create index ix_buy_request_brand_3 on buy_request (brand_id);
 alter table customer_watch add constraint fk_customer_watch_customer_4 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
 create index ix_customer_watch_customer_4 on customer_watch (customer_id);
-alter table invoice add constraint fk_invoice_customer_5 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
-create index ix_invoice_customer_5 on invoice (customer_id);
+alter table invoice add constraint fk_invoice_document_5 foreign key (document_id) references accounting_document (id) on delete restrict on update restrict;
+create index ix_invoice_document_5 on invoice (document_id);
 alter table order_table add constraint fk_order_table_request_6 foreign key (request_id) references order_request (id) on delete restrict on update restrict;
 create index ix_order_table_request_6 on order_table (request_id);
 alter table order_table add constraint fk_order_table_customer_7 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
 create index ix_order_table_customer_7 on order_table (customer_id);
-alter table order_request add constraint fk_order_request_brand_8 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_order_request_brand_8 on order_request (brand_id);
-alter table order_request add constraint fk_order_request_watchChosen_9 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
-create index ix_order_request_watchChosen_9 on order_request (watch_chosen_id);
-alter table picture add constraint fk_picture_watch_10 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
-create index ix_picture_watch_10 on picture (watch_id);
-alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand_11 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_preset_quotation_for_brand_11 on preset_quotation_for_brand (brand_id);
+alter table order_document add constraint fk_order_document_document_8 foreign key (document_id) references accounting_document (id) on delete restrict on update restrict;
+create index ix_order_document_document_8 on order_document (document_id);
+alter table order_request add constraint fk_order_request_brand_9 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_order_request_brand_9 on order_request (brand_id);
+alter table order_request add constraint fk_order_request_watchChosen_10 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
+create index ix_order_request_watchChosen_10 on order_request (watch_chosen_id);
+alter table picture add constraint fk_picture_watch_11 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
+create index ix_picture_watch_11 on picture (watch_id);
+alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand_12 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_preset_quotation_for_brand_12 on preset_quotation_for_brand (brand_id);
+alter table selling_document add constraint fk_selling_document_document_13 foreign key (document_id) references accounting_document (id) on delete restrict on update restrict;
+create index ix_selling_document_document_13 on selling_document (document_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_brand_14 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_brand_14 on watch_to_sell (brand_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_customerThat_15 foreign key (customer_that_bought_the_watch_id) references customer (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_customerThat_15 on watch_to_sell (customer_that_bought_the_watch_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_purchaseInvo_16 foreign key (purchase_invoice_id) references external_document (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_purchaseInvo_16 on watch_to_sell (purchase_invoice_id);
 
 
 
@@ -401,6 +489,8 @@ drop table if exists customer;
 
 drop table if exists customer_watch;
 
+drop table if exists external_document;
+
 drop table if exists feedback;
 
 drop table if exists invoice;
@@ -409,11 +499,15 @@ drop table if exists live_config;
 
 drop table if exists order_table;
 
+drop table if exists order_document;
+
 drop table if exists order_request;
 
 drop table if exists picture;
 
 drop table if exists preset_quotation_for_brand;
+
+drop table if exists selling_document;
 
 drop table if exists service_test;
 
@@ -422,6 +516,8 @@ drop table if exists usefull_link;
 drop table if exists user_table;
 
 drop table if exists watch;
+
+drop table if exists watch_to_sell;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
@@ -439,6 +535,8 @@ drop sequence if exists customer_seq;
 
 drop sequence if exists customer_watch_seq;
 
+drop sequence if exists external_document_seq;
+
 drop sequence if exists feedback_seq;
 
 drop sequence if exists invoice_seq;
@@ -447,11 +545,15 @@ drop sequence if exists live_config_seq;
 
 drop sequence if exists order_table_seq;
 
+drop sequence if exists order_document_seq;
+
 drop sequence if exists order_request_seq;
 
 drop sequence if exists picture_seq;
 
 drop sequence if exists preset_quotation_for_brand_seq;
+
+drop sequence if exists selling_document_seq;
 
 drop sequence if exists service_test_seq;
 
@@ -460,4 +562,6 @@ drop sequence if exists usefull_link_seq;
 drop sequence if exists user_table_seq;
 
 drop sequence if exists watch_seq;
+
+drop sequence if exists watch_to_sell_seq;
 

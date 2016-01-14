@@ -1,0 +1,163 @@
+@(pageDisplay: views.PageDisplay[_], link: (Int, String, String, String, Int) => Html, displaylink: (Long) => Html, editlink: (Long) => Html, optionallink: (Long) => Html, newlink: () => Html, currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, actionlink: () => Html)
+@import tags._
+@import scala._
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@createlink(newPage:Int, newSortBy:String, newPageSize:Int, sortOrder: String) = @{
+    
+    var sortBy = currentSortBy
+    var order = sortOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(sortOrder == "asc") {
+            order = "asc"
+        } else {
+            order = "desc"
+        }
+    }
+    
+    // Generate the link
+    link(newPage, sortBy, order, currentFilter, newPageSize)
+    
+}
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String, hideSmall: Boolean = false) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"} @if(hideSmall) {hidden-xs}">
+    	@if("".equals(key)) {
+    		@title
+    	} else {
+    		@if(currentSortBy == key && currentOrder == "desc") {
+        		<span class="glyphicon glyphicon-chevron-down"></span>
+        	} else {
+        		<a href="@createlink(0, key, currentSize, "desc")"><span class="glyphicon glyphicon-chevron-down"></span></a>
+        	} 
+        	@if(currentSortBy == key && currentOrder == "asc") {
+        		<span class="glyphicon glyphicon-chevron-up"></span>
+        	} else {
+        		<a href="@createlink(0, key, currentSize, "asc")"><span class="glyphicon glyphicon-chevron-up"></span></a>
+        	}
+        	@title
+        }
+    </th>
+}
+
+@sortColor(key: String) = {
+	@if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}
+}
+
+
+@**********************************
+* Displays action link			  *
+***********************************@
+@action() = {
+	@if(actionlink != null) {
+	<div class="row row-action">
+  			<div class="col-xs-12 text-center">
+  				<a class="btn btn-warning" href="@actionlink()"><span class="glyphicon glyphicon-refresh"></span>@Html(Messages(pageDisplay.getLabelKey+".action"))</a>
+  			</div>
+  	</div>
+  	}
+}
+
+
+@createnewlink() = {@if(newlink != null) {@newlink().toString}}
+
+@layouts.admin_main(pageDisplay.getLabelKey) {
+
+  <div class="container page">
+    
+	<div class="row row-title">
+    	<div class="col-xs-12">
+    		<h1>@Html(Messages(pageDisplay.getLabelKey+".title"))</h1>
+    	</div>
+    </div>
+    
+    @action()
+
+    @admin.fragments.page_header(createlink(0, pageDisplay.defaultSortingField, currentSize ,currentOrder).toString, pageDisplay.filterByLabel, currentFilter, createnewlink().toString.trim)
+
+
+    @if(pageDisplay.getPage.getTotalRowCount == 0) {
+        <div class="well">
+            <em>@Messages("admin.page.nothing.to.display")</em>
+        </div>
+    } else {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  @for(currentTableField <- pageDisplay.getTableFields) {
+                  	@header(currentTableField.dbField, Messages(pageDisplay.getLabelKey+"."+currentTableField.labelKey.toLowerCase), currentTableField.hideSmall)
+                  }
+                </tr>
+              </thead>
+              <tbody>
+              @for((currentLine, index) <- pageDisplay.getPage.getList.zipWithIndex) {
+                <tr @if(pageDisplay.hasClass) {class="@pageDisplay.getClassByIndex(index)"}>
+                  <td>
+	                @if(displaylink != null) {<a type="button" class="btn btn-default btn-xs" href="@displaylink(pageDisplay.getIdByIndex(index))"><span class="glyphicon glyphicon-user"></span></a>}
+	                @if(editlink != null) {<a type="button" class="btn btn-primary btn-xs" href="@editlink(pageDisplay.getIdByIndex(index))"><span class="glyphicon glyphicon-edit"></span></a>}
+	                @if(optionallink != null) {<a type="button" class="btn btn-info btn-xs" target="_blank" href="@optionallink(pageDisplay.getIdByIndex(index))"><span class="glyphicon glyphicon-new-window"></span></a>}
+                  </td>
+                  @for(currentField <- pageDisplay.getTableFields) {
+	                <td class="@if(currentField.hideSmall) {hidden-xs}@sortColor(currentField.dbField)">
+	                	@display_field(pageDisplay.display(currentLine, currentField.fieldAccessorMethod), currentField.renderingOption)
+                  	</td>
+                  }
+                </tr>
+              }
+              </tbody>
+            </table>
+        </div>
+    
+        <div class="row">
+        	<div class="col-md-5 text-left">
+        	        @for(size <- List(10,20,30,50,100,0)) {
+	                    @if(currentSize != size) {
+	                        <span class="prev">
+	                            <a class="btn btn-default" href="@createlink(0, null, size, currentOrder)">@if(size ==0) {@Messages("admin.page.text.display.all")} else {@size}</a>
+	                        </span>
+	                    } else {
+	                        <span class="prev disabled">
+	                            <a class="btn btn-default" disabled="disabled">@if(size ==0) {@Messages("admin.page.text.display.all")} else {@size}</a>
+	                        </span>
+	                    }
+	                }
+            </div>
+        
+            <div class="col-md-5 col-md-offset-2 text-right">
+                    @if(pageDisplay.getPage.hasPrev) {
+                        <span class="prev">
+                            <a class="btn btn-default" href="@createlink(pageDisplay.getPage.getPageIndex - 1, currentFilter, currentSize, currentOrder)">&larr; Previous</a>
+                        </span>
+                    } else {
+                        <span class="prev disabled">
+                            <a class="btn btn-default" disabled="disabled">&larr; Previous</a>
+                        </span>
+                    }
+                    <span class="current">
+                        Displaying @pageDisplay.getPage.getDisplayXtoYofZ(" to "," of ")
+                    </span>
+                    @if(pageDisplay.getPage.hasNext) {
+                        <span class="next">
+                            <a class="btn btn-default"  href="@createlink(pageDisplay.getPage.getPageIndex + 1, null, currentSize, currentOrder)">Next &rarr;</a>
+                        </span>
+                    } else {
+                        <span class="next disabled">
+                            <a class="btn btn-default" disabled="disabled" >Next &rarr;</a>
+                        </span>
+                    }
+            </div>
+        </div>
+        
+       	@action()
+    }
+    </div>
+}

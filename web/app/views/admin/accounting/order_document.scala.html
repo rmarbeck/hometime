@@ -1,0 +1,138 @@
+@(orderDocument : models.OrderDocument, totalAmount : Float, amountToPay : Float, htAmount : Float, vat : Float)
+@import tags._
+@import java.lang.String; var title=""
+@import models.Customer; var customer=new models.Customer() 
+
+@{
+	title=Messages("admin.order.document.title.bill", orderDocument.uniqueAccountingNumber);
+	if(orderDocument.document.customer.id != null) {
+		customer = models.Customer.findById(orderDocument.document.customer.id);
+		if(customer != null && customer.civility!=null) {
+			title=title+" - "+Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.'));
+		}
+		if(customer != null) {
+			title=title+" "+customer.firstname+" "+customer.name;
+		}
+	}
+}
+
+@layouts.admin_accounting(title, orderDocument.document) {
+     
+     <div class="row">
+        <div class="type col-xs-12">
+	        <h2>@Html(Messages("admin.order.document.text.bill"))</h2>
+        </div>
+     </div>
+     
+     @admin_accounting_info_field(orderDocument.description, "admin.order.document.description", 'dataclass -> "descriptions")
+     
+     @admin_accounting_info_field(orderDocument.uniqueAccountingNumber, "admin.order.document.number", 'dataclass -> "descriptions")
+     
+     <br />
+     
+     <div class="row">
+     	<div class="col-xs-12">
+	        <div class="table-responsive">
+	            <table class="table table-bordered">
+	              <colgroup>
+	                <col class="col-xs-7">
+	                <col class="col-xs-1">
+	                <col class="col-xs-2">
+	                <col class="col-xs-2">
+	              </colgroup>
+	              <thead>
+	                <tr>
+	                  <th>@Html(Messages("admin.order.document.header.description"))</th>
+	                  <th>@Html(Messages("admin.order.document.header.quantity"))</th>
+	                  @if(orderDocument.getType().equals(models.Invoice.InvoiceType.VAT)) {
+	                  <th>@Html(Messages("admin.order.document.header.unit.price.ht"))</th>
+	                  } else {
+	                  	@if(orderDocument.getType().equals(models.Invoice.InvoiceType.MIXED_VAT)) {
+	                  <th>@Html(Messages("admin.order.document.header.unit.price.mixed"))</th>
+	                  	} else {
+					  <th>@Html(Messages("admin.order.document.header.unit.price"))</th>	                  	
+	                  	}
+	                  }
+	                  <th>@Html(Messages("admin.order.document.header.total"))</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	              @if(orderDocument.getType().equals(models.Invoice.InvoiceType.VAT)
+	                 || orderDocument.getType().equals(models.Invoice.InvoiceType.MIXED_VAT)) {
+		          	@for(line <- orderDocument.document.lines) {
+		          		@if(line.getType() != null) {
+			                @if(line.getType().equals(models.AccountingLine.LineType.WITH_VAT_BY_UNIT)
+			                    || line.getType().equals(models.AccountingLine.LineType.FREE_INCLUDED)
+			                    || line.getType().equals(models.AccountingLine.LineType.FREE_OFFERED)
+			                    || line.getType().equals(models.AccountingLine.LineType.FREE_SPECIAL)
+			                    || line.getType().equals(models.AccountingLine.LineType.INFO_LINE)) {
+			                	@admin_display_invoice_line(line)
+			            	}
+		            	}
+		            }
+	                @if(htAmount != 0) {             
+	                <tr class="sub-total">
+	                  <td>@Html(Messages("admin.order.document.label.ht.total"))</td>
+	                  <td colspan="3" class="text-right">@display_floating_price(htAmount)</td>
+	                </tr>
+	                <tr class="vat">
+	                  <td>@Html(Messages("admin.order.document.label.vat"))</td>
+	                  <td colspan="3" class="text-right">@display_floating_price(vat)</td>
+	                </tr>
+	                }
+	              }
+	              @if(orderDocument.getType().equals(models.Invoice.InvoiceType.MARGIN_VAT)
+	                 || orderDocument.getType().equals(models.Invoice.InvoiceType.NO_VAT)) {
+                    @for(line <- orderDocument.document.lines) {
+	    				@admin_display_invoice_line(line)
+	                }
+	              } else {
+ 					@for(line <- orderDocument.document.lines) {
+ 					    @if(line.getType() != null && line.getType().equals(models.AccountingLine.LineType.WITHOUT_VAT_BY_UNIT)) {
+	    					@admin_display_invoice_line(line)
+	    			    }
+	                }
+				  }
+	                
+	                <tr class="total">
+	                  <td><strong>@if(orderDocument.getType().equals(models.Invoice.InvoiceType.VAT)) {@Html(Messages("admin.order.document.label.to.pay.ttc"))} else {@Html(Messages("admin.order.document.label.to.pay"))}</strong></td>
+	                  <td colspan="3" class="text-right"><strong>@display_floating_price(amountToPay)</strong></td>
+	                </tr>
+	              </tbody>
+	            </table>
+	       </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-12">
+	        <div class="detailed_infos">
+	        	@Html(Messages("admin.order.document.detailed.infos", orderDocument.detailedInfos))
+	        </div>
+        </div>
+     </div>
+      
+      @admin_accounting_info_field(orderDocument.paymentConditions, "admin.order.document.payment.conditions", 'dataclass -> "payment-infos")
+      
+      @admin_accounting_info_field(orderDocument.supportedPaymentMethods, "admin.order.document.supported.payment.methods", 'dataclass -> "payment-infos")
+      
+      @admin_accounting_info_field(orderDocument.delay, "admin.order.document.delay", 'dataclass -> "payment-infos")
+      
+     <div class="row">
+        <div class="col-xs-12">
+	        <div class="validity">
+	        	@Html(Messages("admin.order.document.valid.until.date", orderDocument.validUntilDate))
+	        </div>
+        </div>
+     </div>
+	  
+	 <div class="row">
+        <div class="col-xs-12">
+	        <div class="signing">
+	        	@Html(Messages("admin.order.document.signing"))
+	        </div>
+        </div>
+     </div>
+	  
+  </div>
+}

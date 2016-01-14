@@ -1,5 +1,8 @@
 package models;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.Date;
 import java.util.List;
 
@@ -15,44 +18,12 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 /**
- * Definition of an invoice
+ * Definition of a formal order document
  */
 @Entity 
-public class Invoice extends Model {
-	private static final long serialVersionUID = -6697685682606242671L;
-	
-	public enum InvoiceType {
-	    VAT ("VAT"),
-	    MARGIN_VAT ("MARGIN_VAT"),
-	    NO_VAT ("NO_VAT"),
-	    MIXED_VAT ("MIXED_VAT"),
-	    RESERVED_1 ("RESERVED_1"),
-	    RESERVED_2 ("RESERVED_2");
-	    
-		private String name = "";
-		    
-		InvoiceType(String name){
-		    this.name = name;
-		}
+public class OrderDocument extends Model {
+	private static final long serialVersionUID = 110270838160216086L;
 
-		public String toString(){
-		    return name;
-		}
-		
-		public int intValue() {
-			return Integer.valueOf(name);
-		}
-		
-		public static InvoiceType fromString(String name) {
-	        for (InvoiceType type : InvoiceType.values()) {
-	            if (type.name.equals(name)) {
-	                return type;
-	            }
-	        }
-	        throw new IllegalArgumentException("Illegal type name: " + name);
-	    }
-	}
-	
 	@Id
 	public Long id;
 	
@@ -69,53 +40,52 @@ public class Invoice extends Model {
 	public String supportedPaymentMethods;
 	
 	@Column(length = 10000)
-	public String paymentMethodUsed;
+	public String detailedInfos;
 	
-	public float alreadyPayed = 0;
+	@Column(length = 10000)
+	public String delay;
 	
 	@Constraints.Required
 	@Column(unique=true)
 	public String uniqueAccountingNumber;
 
 	@Column(name="invoice_type")
-	public InvoiceType type;
+	public Invoice.InvoiceType type;
 	
-	@Column(name="from_date")
-	public Date fromDate;
+	@Column(name="valid_until_date")
+	public Date validUntilDate;
 	
-	@Column(name="to_date")
-	public Date toDate;
-	
-	public Invoice() {
+	public OrderDocument() {
 		this.document = new AccountingDocument();
+		this.validUntilDate = new Date(Instant.now().plus(15, ChronoUnit.DAYS).toEpochMilli());
 	}
 	
-	public Invoice(Customer customer) {
+	public OrderDocument(Customer customer) {
 		this.document = new AccountingDocument(customer);
 	}
 	
-	public InvoiceType getType() {
+	public Invoice.InvoiceType getType() {
 		return type;
 	}
 	
     // -- Queries
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Model.Finder<String,Invoice> find = new Model.Finder(String.class, Invoice.class);
+	public static Model.Finder<String,OrderDocument> find = new Model.Finder(String.class, OrderDocument.class);
     
-    public static List<Invoice> findAll() {
+    public static List<OrderDocument> findAll() {
         return find.all();
     }
     
-    public static Invoice findById(Long id) {
+    public static OrderDocument findById(Long id) {
         return find.byId(id.toString());
     }
     
-    public static List<Invoice> findByCustomer(models.Customer customer) {
+    public static List<OrderDocument> findByCustomer(models.Customer customer) {
     	return find.where().eq("customer.id", customer.id)
         			.orderBy("next_partial_service desc").findList();
     }
 
-    public static Page<Invoice> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static Page<OrderDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().or(Expr.ilike("document.customer", "%" + filter + "%"), Expr.ilike("document.customer", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)

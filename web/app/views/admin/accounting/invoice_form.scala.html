@@ -82,7 +82,7 @@
                          'placeholder -> Messages("admin.invoice.form.placeholder.type"), '_label -> Messages("admin.invoice.form.label.type"),
                          'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
            
-	            @helper.select(invoice("customer.id"),
+	            @helper.select(invoice("document.customer.id"),
                          for (s <- customers) yield s.id.toString -> (s.firstname + " " + s.name),
                          '_default -> Messages("admin.invoice.form.value.customer.default"),
                          'placeholder -> Messages("admin.invoice.form.placeholder.customer"), '_label -> Messages("admin.invoice.form.label.customer"),
@@ -92,7 +92,7 @@
             	
             	@simple_admin_input(invoice("uniqueAccountingNumber"), "admin.invoice.form.VARIABLE.unique.accounting.number")
             	
-            	@simple_admin_input(invoice("creationDate"), "admin.invoice.form.VARIABLE.creation.date", 'type -> "date")
+            	@simple_admin_input(invoice("document.creationDate"), "admin.invoice.form.VARIABLE.creation.date", 'type -> "date")
             	
             	@simple_admin_input(invoice("fromDate"), "admin.invoice.form.VARIABLE.from.date", 'type -> "date")
             	
@@ -102,7 +102,7 @@
                   <label for="lines" class="col-xs-3 control-label">@Messages("admin.invoice.form.label.lines")</label>
                   <div class="col-xs-9">
                     <div class="row inner-row">
-                        @helper.repeat(invoice("lines"), min = 3) { line =>
+                        @helper.repeat(invoice("document.lines"), min = 3) { line =>
                         <div id="invoice_line_@{index}">
                         	@(index+=1)
                         	@helper.select(line("type"),

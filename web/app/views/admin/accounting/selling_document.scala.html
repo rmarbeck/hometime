@@ -1,0 +1,79 @@
+@(sellingDocument : models.SellingDocument, totalAmount : Float)
+@import tags._
+@import java.lang.String; var title=""
+@import models.Customer; var customer=new models.Customer() 
+
+@{
+	title=Messages("admin.selling.document.title.bill", sellingDocument.uniqueAccountingNumber);
+	if(sellingDocument.document.customer.id != null) {
+		customer = models.Customer.findById(sellingDocument.document.customer.id);
+		if(customer != null && customer.civility!=null) {
+			title=title+" - "+Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.'));
+		}
+		if(customer != null) {
+			title=title+" "+customer.firstname+" "+customer.name;
+		}
+	}
+}
+
+@layouts.admin_accounting(title, sellingDocument.document, true) {
+     
+     <div class="row">
+        <div class="type col-xs-12">
+	        <h2>@Html(Messages("admin.selling.document.text.bill"))</h2>
+        </div>
+     </div>
+     
+     @admin_accounting_info_field(sellingDocument.description, "admin.selling.document.description", 'dataclass -> "descriptions")
+     
+     @if(sellingDocument.date != null) {
+   		@admin_accounting_info_field(Messages("admin.selling.document.one.shot.date", display_date(sellingDocument.date, "d MMMM yyyy")), "admin.selling.document.working.date", 'dataclass -> "descriptions")
+     }
+     
+     <br />
+     
+     <div class="row">
+     	<div class="col-xs-12">
+	        <div class="table-responsive">
+	            <table class="table table-bordered">
+	              <colgroup>
+	                <col class="col-xs-7">
+	                <col class="col-xs-1">
+	                <col class="col-xs-2">
+	                <col class="col-xs-2">
+	              </colgroup>
+	              <thead>
+	                <tr>
+	                  <th>@Html(Messages("admin.selling.document.header.description"))</th>
+	                  <th>@Html(Messages("admin.selling.document.header.quantity"))</th>
+	                  <th>@Html(Messages("admin.selling.document.header.unit.price"))</th>
+	                  <th>@Html(Messages("admin.selling.document.header.total"))</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+				  @for(line <- sellingDocument.document.lines) {
+                	@admin_display_invoice_line(line)
+				  }
+	                <tr class="total">
+	                  <td><strong>@Html(Messages("admin.selling.document.label.to.pay"))</strong></td>
+	                  <td colspan="3" class="text-right"><strong>@display_floating_price(totalAmount)</strong></td>
+	                </tr>
+	              </tbody>
+	            </table>
+	       </div>
+        </div>
+      </div>
+      
+      @admin_accounting_info_field(sellingDocument.paymentMethodUsed, "admin.selling.document.payment.method.used", 'dataclass -> "payment-infos")
+	  
+	  
+     <div class="row">
+        <div class="col-xs-12">
+	        <div class="signing">
+	        	@Html(Messages("admin.selling.document.signing"))
+	        </div>
+        </div>
+     </div>
+      
+  </div>
+}

@@ -1,0 +1,55 @@
+@(formDisplay: views.FormDisplay, isItNew: Boolean, actionlink: play.api.mvc.Call)
+
+@import tags._
+
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages(formDisplay.getActionKey+".cancel"))</a>
+      @if(isItNew) {
+      	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages(formDisplay.getActionKey+".save"))</button>
+      } else {
+      	@tags.inputHidden(formDisplay.getForm().field("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages(formDisplay.getActionKey+".edit"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages(formDisplay.getActionKey+".delete"))</button>                  
+      }
+      </div>
+    </div>
+}
+
+@layouts.admin_main(formDisplay.getLabelKey) {
+
+  <div class="container form">
+  
+  	<div class="row">
+    	<div class="col-xs-12">
+    		<h1>@Html(Messages(formDisplay.getLabelKey+".title"))</h1>
+    	</div>
+    </div>
+  
+  	@helper.form(action = actionlink, 'class -> "form-horizontal", 'role -> "form") {
+      @actions
+      @for(currentField <- formDisplay.getFormFields) {
+        <td @if(currentField.hideSmall) {class="hidden-xs"}">
+        	@currentField.getType() match {
+              case "input" => {
+                @simple_admin_input(currentField.getField, currentField.getKey, currentField.options.toSeq:_*)
+              }
+              case "textarea" => {
+                @simple_admin_textarea(currentField.getField, currentField.getKey, currentField.options.toSeq:_*)
+              }
+              case "checkbox" => {
+                @simple_admin_checkbox(currentField.getField, currentField.getKey, currentField.options.toSeq:_*)
+              }
+              case "select" => {
+                @simple_admin_select(currentField.getField, currentField.getPossibleValues.toSeq, currentField.getKey, currentField.options.toSeq:_*)
+              }
+            }
+      	</td>
+      }
+      @actions
+    }
+    
+  </div>
+
+}

@@ -179,18 +179,41 @@ POST    /admin/manage-quotation     									controllers.Admin.manageQuotation()
 
 GET     /admin/invoice            										controllers.Accounting.display()
 GET     /admin/invoice/create          									controllers.Accounting.addInvoice()
-POST     /admin/manage-invoice            								controllers.Accounting.manageInvoice()
+GET     /admin/invoice/edit/:id         								controllers.Accounting.editInvoice(id: Long)
+POST    /admin/manage-invoice            								controllers.Accounting.manageInvoice()
+GET     /admin/invoices            										controllers.Accounting.displayAllInvoice(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")
+GET     /admin/invoice/:id         										controllers.Accounting.viewInvoice(id: Long)
+
+GET     /admin/order-document/create          							controllers.Accounting.addOrderDocument()
+GET     /admin/order-document/edit/:id         							controllers.Accounting.editOrderDocument(id: Long)
+POST    /admin/manage-order-document            						controllers.Accounting.manageOrderDocument()
+GET     /admin/order-documents            								controllers.Accounting.displayAllOrderDocument(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")
+GET     /admin/order-document/:id         								controllers.Accounting.viewOrderDocument(id: Long)
+
+GET     /admin/selling-document/create          						controllers.Accounting.addSellingDocument()
+GET     /admin/selling-document/edit/:id         						controllers.Accounting.editSellingDocument(id: Long)
+POST    /admin/manage-selling-document            						controllers.Accounting.manageSellingDocument()
+GET     /admin/selling-documents            							controllers.Accounting.displayAllSellingDocument(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")
+GET     /admin/selling-document/:id         							controllers.Accounting.viewSellingDocument(id: Long)
+
+GET		/admin/display/:model/All										controllers.CrudHelper.displayAll(model: String, d:Int ?=20)
+GET		/admin/display/:model/:id										controllers.CrudHelper.display(model: String, id: Long)
+GET		/admin/display/:model/page/										controllers.CrudHelper.page(model: String, p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "", d:Int ?=10)
+GET		/admin/create/:model											controllers.CrudHelper.create(model: String)
+GET		/admin/edit/:model/:id											controllers.CrudHelper.edit(model: String, id: Long)
+POST	/admin/manage/:model											controllers.CrudHelper.manage(model: String)
+
 
 # Sitemap
-GET     /sitemap.xml                controllers.Application.sitemap()
-GET     /plan-du-site               controllers.Application.siteplan()
+GET     /sitemap.xml													controllers.Application.sitemap()
+GET     /plan-du-site													controllers.Application.siteplan()
 
 # Map specifically to robots.txt
-GET     /robots.txt                 controllers.Assets.at(path="/public", file="robots.txt")
+GET     /robots.txt														controllers.Assets.at(path="/public", file="robots.txt")
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file													controllers.Assets.at(path="/public", file)
 
-HEAD    /                           controllers.Application.autoHead(originalPath:String ?= "/")
-HEAD    /*originalPath              controllers.Application.autoHead(originalPath:String)
+HEAD    /																controllers.Application.autoHead(originalPath:String ?= "/")
+HEAD    /*originalPath													controllers.Application.autoHead(originalPath:String)
 

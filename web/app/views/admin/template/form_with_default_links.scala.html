@@ -1,0 +1,8 @@
+@(formDisplay: views.FormDisplay, isItNew: Boolean)
+@import tags._
+
+@actionlink() = @{
+	routes.CrudHelper.manage(formDisplay.getControllerName)
+}
+
+@admin.template.form(formDisplay, isItNew, actionlink)

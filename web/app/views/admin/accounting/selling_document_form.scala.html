@@ -1,0 +1,84 @@
+@(sellingDocument: Form[models.SellingDocument], isANewDocument: Boolean, customers: List[models.Customer])
+@import tags._
+@import helper._
+@import java.math.BigInteger; var index=0
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.selling.document.action.cancel"))</a>
+      @if(isANewDocument) {
+      	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages("admin.selling.document.action.save"))</button>
+      	<button type="submit" class="btn btn-primary" name="action" value="show" formtarget="_blank"><span class="glyphicon glyphicon-save">@Html(Messages("admin.selling.document.action.show"))</button>
+      } else {
+      	@tags.inputHidden(sellingDocument("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.selling.document.action.edit"))</button>
+        <button type="submit" class="btn btn-primary" name="action" value="show" formtarget="_blank"><span class="glyphicon glyphicon-save">@Html(Messages("admin.selling.document.action.show"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages("admin.selling.document.action.delete"))</button>                  
+      }
+      </div>
+    </div>
+}
+
+@end_scripts = {
+<script>
+    $(document).ready(function(){
+    	
+    	var indexPosition = $("[id*='invoice_line_']:last").attr("id").substr(13);
+        $('#add-line').click(function(event) {
+        	event.preventDefault();
+        	var copiedPosition = indexPosition;
+        	var copyPosition = ++indexPosition;
+            $('#invoice_line_'+copiedPosition).clone().attr('id', 'invoice_line_'+ copyPosition).insertAfter('#invoice_line_'+ copiedPosition);
+            
+			$('#invoice_line_'+copyPosition).find("[id*='lines_']").each(function() {
+				$(this).attr("id", $(this).attr("id").replace(copiedPosition,copyPosition));
+				$(this).attr("name", $(this).attr("name").replace(copiedPosition,copyPosition));
+            });
+            $('#invoice_line_'+copyPosition).find("[for*='lines_']").each(function() {
+            	$(this).attr("for", $(this).attr("for").replace(copiedPosition,copyPosition));
+            });
+         });
+         
+         $('#remove-line').click(function(event) {
+        	event.preventDefault();
+			$('#invoice_line_'+indexPosition).remove();
+			--indexPosition;
+         });
+         
+    })  
+</script> 
+}
+
+
+@layouts.admin("", end_scripts) {
+    <div class="container">
+    	@display_flash()
+    
+            @helper.form(action = routes.Accounting.manageSellingDocument(), 'class -> "form-horizontal", 'role -> "form") {
+            
+            	@actions
+            	
+	            @helper.select(sellingDocument("document.customer.id"),
+                         for (s <- customers) yield s.id.toString -> (s.firstname + " " + s.name),
+                         '_default -> Messages("admin.selling.document.form.value.customer.default"),
+                         'placeholder -> Messages("admin.selling.document.form.placeholder.customer"), '_label -> Messages("admin.selling.document.form.label.customer"),
+                         'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+            	@simple_admin_input(sellingDocument("description"), "admin.selling.document.form.VARIABLE.description")
+            	
+            	@simple_admin_input(sellingDocument("uniqueAccountingNumber"), "admin.selling.document.form.VARIABLE.unique.accounting.number")
+            	
+            	@simple_admin_input(sellingDocument("date"), "admin.selling.document.form.VARIABLE.date", 'type -> "date")
+            	
+				@accounting_form_lines(sellingDocument("document.lines"), "admin.selling.document.form.VARIABLE")
+            	
+            	<button id="add-line" class="btn btn-primary">&nbsp;Ajouter</button>
+            	<button id="remove-line" class="btn btn-danger">&nbsp;Retirer</button>
+				
+				@simple_admin_input(sellingDocument("paymentMethodUsed"), "admin.selling.document.form.VARIABLE.payment.method.used")
+				                
+                @actions
+            }
+    </div>
+}
