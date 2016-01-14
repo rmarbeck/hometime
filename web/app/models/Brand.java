@@ -79,7 +79,7 @@ public class Brand extends Model {
     
     
     public String toString() {
-    	return display_name;
+    	return internal_name;
     }
 }
 

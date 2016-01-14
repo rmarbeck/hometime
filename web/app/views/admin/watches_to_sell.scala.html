@@ -1,9 +1,11 @@
 @(currentPage: com.avaje.ebean.Page[models.WatchToSell], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
 @import tags._
 
-@defining(new views.PageDisplay(currentPage, "creation_date", "admin.watch.to.sell.page")) { pageDisplay =>
+@defining(new views.PageDisplay(currentPage, "modèle ou marque", "admin.watchtosell.page")) { pageDisplay =>
 	@{ 	pageDisplay.addTableField("model", "model", "getModel", false);
 		pageDisplay.addTableField("brand", "brand", "getBrand", false);
+		pageDisplay.addTableField("additionnalModelInfos", "additionnalModelInfos", "getAdditionnalModelInfos", false);
+		pageDisplay.addTableField("status", "status", "getStatus", false);
 	}
 	
 	@admin.template.page_with_default_links(pageDisplay, "WatchesToSell", null, currentSortBy, currentOrder, currentFilter, currentSize)

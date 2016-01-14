@@ -3,30 +3,9 @@
 @import tags._
 
 @defining(new views.FormDisplay(thisInstance, "ExternalDocument", "admin.externaldocument.form")) { formDisplay =>
-		@{ formDisplay.addFormFieldForSelect("brand.internal_name", models.Brand.findAll);
-		   formDisplay.addFormField("model", true, "input");
-		   formDisplay.addFormField("additionnalModelInfos", true, "textarea");
-		   formDisplay.addFormFieldForSelect("ownerStatus", models.WatchToSell.WatchToSellOwnerStatus.values.toList)
-		   formDisplay.addFormFieldForSelect("status", models.WatchToSell.WatchToSellStatus.values.toList)
-		   formDisplay.addFormField("reference", true, "input");
-		   formDisplay.addFormField("serial", true, "input");
-		   formDisplay.addFormField("serial2", true, "input");
-		   formDisplay.addFormField("movement", true, "input");
-		   formDisplay.addFormField("seller", true, "input");
-		   formDisplay.addFormField("additionnalInfos", true, "textarea");
-		   formDisplay.addFormField("privateInfos", true, "textarea");
-		   formDisplay.addFormField("year", true, "input");
-		   formDisplay.addFormField("hasBox", true, "checkbox")
-		   formDisplay.addFormField("hasPapers", true, "checkbox")
-		   formDisplay.addFormField("isNew", true, "checkbox")
-		   formDisplay.addFormField("purchaseDate", true, "input", 'type -> "date");
-		   formDisplay.addFormField("purchasingPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
-		   formDisplay.addFormField("startSellingDate", true, "input", 'type -> "date");
-		   formDisplay.addFormField("sellingDate", true, "input", 'type -> "date");
-		   formDisplay.addFormField("purchaseInvoiceAvailable", true, "checkbox")
-		   formDisplay.addFormFieldForSelect("purchaseInvoice.name", models.ExternalDocument.findAll);
-		   formDisplay.addFormFieldForSelect("customerThatBoughtTheWatch.email", models.Customer.findAll);
-		   formDisplay.addFormField("sellingPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		@{ formDisplay.addFormField("name", true, "input");
+		   formDisplay.addFormField("description", true, "textarea");
+		   formDisplay.addFormField("url", true, "input");
 		}
 	
 	@admin.template.form_with_default_links(formDisplay, isItNew)

@@ -2,7 +2,6 @@ package models;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.Date;
 import java.util.List;
 
@@ -107,6 +106,10 @@ public class OrderDocument extends Model {
 	
 	public String getUniqueAccountingNumber() {
 		return uniqueAccountingNumber;
+	}
+	
+	public void setUniqueAccountingNumber(String uan) {
+		this.uniqueAccountingNumber = uan;
 	}
 }
 

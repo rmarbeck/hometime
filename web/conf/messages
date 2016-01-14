@@ -1335,6 +1335,12 @@ admin.navbar.link.text.accounting.order.documents=Bons de commande
 admin.navbar.link.text.accounting.add.selling.document=Nouveau papier de vente
 admin.navbar.link.text.accounting.selling.documents=Papiers de vente
 admin.navbar.link.text.accounting=Facturation
+admin.navbar.link.text.watches.to.sell=Stock
+admin.navbar.link.text.accounting.external.documents=Factures externes
+admin.navbar.link.text.accounting.add.external.document=Nouvelle facture externe
+
+admin.page.nothing.to.display=Aucun article à afficher
+admin.page.text.display.all=Tous
 
 # Quotation
 admin.quotation.request.service.type.value.1=Révision complète d''une {0}
@@ -2512,9 +2518,11 @@ admin.selling.document.line.info.class=text-center
 
 global.void.1={0}
 
+admin.watchtosell.page.title=Etat du Stock
+admin.watchtosell.page=Etat du Stock
 
-
-admin.watchtosell.form.title=Montres à vendre
+admin.watchtosell.form=Montre à vendre
+admin.watchtosell.form.title=Montre à vendre
 admin.watchtosell.action.cancel=&nbsp;Annuler
 admin.watchtosell.action.save=&nbsp;Créer
 admin.watchtosell.action.delete=&nbsp;Supprimer
@@ -2556,3 +2564,78 @@ admin.watchtosell.form.purchaseinvoice.name.label.name=Facture
 admin.watchtosell.form.purchaseinvoice.name.default.name=Sélectionner la facture
 admin.watchtosell.form.customerthatboughtthewatch.name.label.name=Acheteur
 admin.watchtosell.form.customerthatboughtthewatch.name.default.name=Sélectionner l''acheteur
+admin.watchtosell.form.purchasingprice.label.name=Prix d''achat
+admin.watchtosell.form.customerthatboughtthewatch.email.label.name=Acheteur
+admin.watchtosell.form.sellingprice.label.name=Prix de vente
+
+admin.watchtosell.form.brand.internal.name.value.name.baume=Baume & Mercier
+admin.watchtosell.form.brand.internal.name.value.name.br=Bell & Ross
+admin.watchtosell.form.brand.internal.name.value.name.breitling=Breitling
+admin.watchtosell.form.brand.internal.name.value.name.chanel=Chanel
+admin.watchtosell.form.brand.internal.name.value.name.chopard=Chopard
+admin.watchtosell.form.brand.internal.name.value.name.fc=Frédérique Constant
+admin.watchtosell.form.brand.internal.name.value.name.hamilton=Hamilton
+admin.watchtosell.form.brand.internal.name.value.name.hublot=Hublot
+admin.watchtosell.form.brand.internal.name.value.name.iwc=IWC
+admin.watchtosell.form.brand.internal.name.value.name.jaeger=Jaeger
+admin.watchtosell.form.brand.internal.name.value.name.longines=Longines
+admin.watchtosell.form.brand.internal.name.value.name.omega=Omega
+admin.watchtosell.form.brand.internal.name.value.name.panerai=Panerai
+admin.watchtosell.form.brand.internal.name.value.name.rado=Rado
+admin.watchtosell.form.brand.internal.name.value.name.rolex=Rolex
+admin.watchtosell.form.brand.internal.name.value.name.tag=Tag
+admin.watchtosell.form.brand.internal.name.value.name.tissot=Tissot
+admin.watchtosell.form.brand.internal.name.value.name.tudor=Tudor
+admin.watchtosell.form.brand.internal.name.value.name.zenith=Zenith
+admin.watchtosell.form.brand.internal.name.value.name.zzzautre=ZzzAutre
+admin.watchtosell.form.brand.internal.name.value.name.audemars=Audemars
+admin.watchtosell.form.brand.internal.name.value.name.blancpain=Blancpain
+admin.watchtosell.form.brand.internal.name.value.name.breguet=Breguet
+admin.watchtosell.form.brand.internal.name.value.name.glashutteoriginal=Glashutte Original
+admin.watchtosell.form.brand.internal.name.value.name.patek=Patek
+admin.watchtosell.form.brand.internal.name.value.name.lange=Lange
+admin.watchtosell.form.brand.internal.name.value.name.brm=BRM
+admin.watchtosell.form.brand.internal.name.value.name.girardperregaux=GirardPerregaux
+admin.watchtosell.form.brand.internal.name.value.name.hermes=Hermes
+admin.watchtosell.form.brand.internal.name.value.name.montblanc=Montblanc
+admin.watchtosell.form.brand.internal.name.value.name.richardmille=Richard Mille
+admin.watchtosell.form.brand.internal.name.value.name.vacheron=Vacheron
+admin.watchtosell.form.brand.internal.name.value.name.ulyssenardin=Ulysse Nardin
+admin.watchtosell.form.brand.internal.name.value.name.jacquetdroz=Jacquet Droz
+
+admin.watchtosell.form.ownerstatus.value.name.owned.by.us=En stock
+admin.watchtosell.form.ownerstatus.value.name.owned.by.customer=Dépôt vente client
+admin.watchtosell.form.ownerstatus.value.name.owned.by.partner=Dépôt vente partenaire
+admin.watchtosell.form.ownerstatus.value.name.reserved.1=Non implémenté
+admin.watchtosell.form.ownerstatus.value.name.reserved.2=Non implémenté
+admin.watchtosell.form.status.value.name.to.sell=A vendre
+admin.watchtosell.form.status.value.name.reserved.for.a.customer=Réservée pour un client
+admin.watchtosell.form.status.value.name.sold=Vendue
+admin.watchtosell.form.status.value.name.selling.canceled=Vente annulée
+admin.watchtosell.form.status.value.name.reserved.1=Non implémenté
+admin.watchtosell.form.status.value.name.reserved.2=Non implémenté
+
+admin.watchtosell.page.model=Modèle
+admin.watchtosell.page.brand=Marque
+admin.watchtosell.page.additionnalmodelinfos=Infos sur le modèle
+admin.watchtosell.page.status=Statut
+
+admin.externaldocument.form=Facture externe
+admin.externaldocument.form.title=Facture externe
+admin.externaldocument.form.name.label.name=Nom
+admin.externaldocument.form.name.placeholder.name=Nom
+admin.externaldocument.form.description.label.name=Description
+admin.externaldocument.form.description.placeholder.name=Description
+admin.externaldocument.form.url.label.name=URL
+admin.externaldocument.form.url.placeholder.name=URL
+admin.externaldocument.action.cancel=&nbsp;Annuler
+admin.externaldocument.action.save=&nbsp;Créer
+admin.externaldocument.action.delete=&nbsp;Supprimer
+admin.externaldocument.action.edit=&nbsp;Modifier
+
+admin.externaldocument.page.title=Factures externes
+admin.externaldocument.page=Factures externes
+
+admin.externaldocument.page.name=Nom
+admin.externaldocument.page.description=Description
+admin.externaldocument.page.url=URL

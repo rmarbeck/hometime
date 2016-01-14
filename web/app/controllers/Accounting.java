@@ -12,9 +12,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
+import fr.hometime.utils.UniqueAccountingNumber;
 import models.Customer;
 import models.Invoice;
 import models.OrderDocument;
+import models.SellingDocument;
 import views.html.admin.accounting.invoice;
 import views.html.admin.accounting.invoices;
 import views.html.admin.accounting.invoice_form;
@@ -72,7 +74,9 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html emptyNewInvoiceForm() {
-		return invoiceForm(Form.form(models.Invoice.class).fill(new models.Invoice()), true);
+		models.Invoice emptyInvoice = new Invoice();
+		emptyInvoice.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
+		return invoiceForm(Form.form(models.Invoice.class).fill(emptyInvoice), true);
 	}
 	
 	private static Html existingInvoiceForm(models.Invoice invoice) {
@@ -145,7 +149,9 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html emptyNewOrderDocumentForm() {
-		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(new models.OrderDocument()), true);
+		models.OrderDocument emptyOrder = new OrderDocument();
+		emptyOrder.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForOrders().toString());
+		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(emptyOrder), true);
 	}
 	
 	private static Html existingOrderDocumentForm(models.OrderDocument orderDocument) {
@@ -254,7 +260,9 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html emptyNewsellingDocumentForm() {
-		return sellingDocumentForm(Form.form(models.SellingDocument.class).fill(new models.SellingDocument()), true);
+		models.SellingDocument emptySellingDocument = new SellingDocument();
+		emptySellingDocument.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
+		return sellingDocumentForm(Form.form(models.SellingDocument.class).fill(emptySellingDocument), true);
 	}
 	
 	private static Html existingSellingDocumentForm(models.SellingDocument sellingDocument) {

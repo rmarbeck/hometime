@@ -14,6 +14,8 @@ import play.db.ebean.Model;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
+import fr.hometime.utils.UniqueAccountingNumber;
+
 /**
  * Definition of an invoice
  */
@@ -76,7 +78,7 @@ public class Invoice extends Model {
 	@Constraints.Required
 	@Column(name="unique_accounting_number", unique=true)
 	public String uniqueAccountingNumber;
-
+	
 	@Column(name="invoice_type")
 	public InvoiceType type;
 	
@@ -137,6 +139,10 @@ public class Invoice extends Model {
 
 	public String getUniqueAccountingNumber() {
 		return uniqueAccountingNumber;
+	}
+	
+	public void setUniqueAccountingNumber(String uan) {
+		this.uniqueAccountingNumber = uan;
 	}
 }
 

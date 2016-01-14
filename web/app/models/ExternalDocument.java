@@ -33,12 +33,7 @@ public class ExternalDocument extends Model implements CrudReady<ExternalDocumen
 	@Column(length = 10000)
 	public String description;
 	
-	public String fileType;
-	
-	public String fileName;
-	
-	@Lob
-	public byte[] fileData;
+	public String url;
 
 	public Long getId() {
 		return id;
@@ -68,7 +63,7 @@ public class ExternalDocument extends Model implements CrudReady<ExternalDocumen
     
     public static Page<ExternalDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where().or(Expr.ilike("fileName", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
+            find.where().or(Expr.ilike("description", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
@@ -78,6 +73,10 @@ public class ExternalDocument extends Model implements CrudReady<ExternalDocumen
 	public Finder<String, ExternalDocument> getFinder() {
 		return find;
 	}
+
+    public static ExternalDocument findById(Long id) {
+        return find.byId(id.toString());
+    }
 
 	@Override
 	public Page<ExternalDocument> getPage(int page, int pageSize,

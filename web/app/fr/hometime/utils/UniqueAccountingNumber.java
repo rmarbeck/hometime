@@ -8,6 +8,7 @@ import java.util.List;
 import models.Invoice;
 import models.OrderDocument;
 import models.SellingDocument;
+import play.Logger;
 import play.db.ebean.Model;
 
 public class UniqueAccountingNumber {
@@ -99,13 +100,19 @@ public class UniqueAccountingNumber {
 	}
 	
 	private static boolean isValid(String uan) {
-		if (uan != null	&& uan.matches("^[0-9]6\\-[0-9]{2,3}$"))
+		if (uan != null	&& uan.matches("^[0-9]{6}\\-[0-9]{2,3}$"))
 			return true;
 		return false;
 	}
 	
 	public String toString() {
-		return prefix + SEPARATOR + serial;
+		return prefix + SEPARATOR + serialAsString();
+	}
+	
+	private String serialAsString() {
+		if (serial<10)
+			return "0"+serial;
+		return ""+serial;
 	}
 	
 	public boolean equals(UniqueAccountingNumber toCompare) {

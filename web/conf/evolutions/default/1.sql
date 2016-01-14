@@ -128,9 +128,7 @@ create table external_document (
   creation_date             timestamp,
   name                      varchar(255),
   description               varchar(10000),
-  file_type                 varchar(255),
-  file_name                 varchar(255),
-  file_data                 blob,
+  url                       varchar(255),
   constraint pk_external_document primary key (id))
 ;
 

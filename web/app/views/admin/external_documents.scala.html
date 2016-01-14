@@ -1,10 +1,14 @@
 @(currentPage: com.avaje.ebean.Page[models.ExternalDocument], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
 @import tags._
 
-@defining(new views.PageDisplay(currentPage, "creation_date", "admin.external.document.page")) { pageDisplay =>
-	@{ 	pageDisplay.addTableField("model", "model", "getModel", false);
-		pageDisplay.addTableField("brand", "brand", "getBrand", false);
+@optionallink(id:Long) = {
+    @routes.Admin.goToExternalDocumentUrl(id)
+}
+
+@defining(new views.PageDisplay(currentPage, "nom ou description", "admin.externaldocument.page")) { pageDisplay =>
+	@{ 	pageDisplay.addTableField("name", "name", "getName", false);
+		pageDisplay.addTableField("description", "description", "getDescription", false);
 	}
 	
-	@admin.template.page_with_default_links(pageDisplay, "WatchesToSell", null, currentSortBy, currentOrder, currentFilter, currentSize)
+	@admin.template.page_with_default_links(pageDisplay, "ExternalDocuments", optionallink, currentSortBy, currentOrder, currentFilter, currentSize)
 }

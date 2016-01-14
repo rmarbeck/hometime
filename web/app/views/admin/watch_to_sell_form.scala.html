@@ -3,7 +3,7 @@
 @import tags._
 
 @defining(new views.FormDisplay(thisInstance, "WatchToSell", "admin.watchtosell.form")) { formDisplay =>
-		@{ formDisplay.addFormFieldForSelect("brand.internal_name", models.Brand.findAll);
+		@{ formDisplay.addFormFieldForSelect("brand.internal_name", models.Brand.findAllByAscName);
 		   formDisplay.addFormField("model", true, "input");
 		   formDisplay.addFormField("additionnalModelInfos", true, "textarea");
 		   formDisplay.addFormFieldForSelect("ownerStatus", models.WatchToSell.WatchToSellOwnerStatus.values.toList)

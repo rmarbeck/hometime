@@ -6,6 +6,7 @@ import java.util.List;
 import models.Brand;
 import models.BuyRequest;
 import models.Customer;
+import models.ExternalDocument;
 import models.Order;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
@@ -430,6 +431,10 @@ public class Admin extends Controller {
     	} else {
     		return value;
     	}
+    }
+    
+    public static Result goToExternalDocumentUrl(long id) {
+ 	   return redirect(ExternalDocument.findById(id).url);
     }
 }
 
