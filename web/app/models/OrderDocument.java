@@ -46,7 +46,7 @@ public class OrderDocument extends Model {
 	public String delay;
 	
 	@Constraints.Required
-	@Column(unique=true)
+	@Column(name="unique_accounting_number", unique=true)
 	public String uniqueAccountingNumber;
 
 	@Column(name="invoice_type")
@@ -103,6 +103,10 @@ public class OrderDocument extends Model {
 	public void update() {
 		this.document.update();
 		super.update();
+	}
+	
+	public String getUniqueAccountingNumber() {
+		return uniqueAccountingNumber;
 	}
 }
 

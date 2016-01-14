@@ -74,7 +74,7 @@ public class Invoice extends Model {
 	public float alreadyPayed = 0;
 	
 	@Constraints.Required
-	@Column(unique=true)
+	@Column(name="unique_accounting_number", unique=true)
 	public String uniqueAccountingNumber;
 
 	@Column(name="invoice_type")
@@ -133,6 +133,10 @@ public class Invoice extends Model {
 	public void update() {
 		this.document.update();
 		super.update();
+	}
+
+	public String getUniqueAccountingNumber() {
+		return uniqueAccountingNumber;
 	}
 }
 

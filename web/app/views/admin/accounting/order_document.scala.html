@@ -1,5 +1,6 @@
 @(orderDocument : models.OrderDocument, totalAmount : Float, amountToPay : Float, htAmount : Float, vat : Float)
 @import tags._
+@import views.AccountingSheet
 @import java.lang.String; var title=""
 @import models.Customer; var customer=new models.Customer() 
 
@@ -30,6 +31,7 @@
      
      <br />
      
+     @defining(AccountingSheet.of(orderDocument.document, "admin.order.document", 0F)) { sheet =>
      <div class="row">
      	<div class="col-xs-12">
 	        <div class="table-responsive">
@@ -42,67 +44,21 @@
 	              </colgroup>
 	              <thead>
 	                <tr>
-	                  <th>@Html(Messages("admin.order.document.header.description"))</th>
-	                  <th>@Html(Messages("admin.order.document.header.quantity"))</th>
-	                  @if(orderDocument.getType().equals(models.Invoice.InvoiceType.VAT)) {
-	                  <th>@Html(Messages("admin.order.document.header.unit.price.ht"))</th>
-	                  } else {
-	                  	@if(orderDocument.getType().equals(models.Invoice.InvoiceType.MIXED_VAT)) {
-	                  <th>@Html(Messages("admin.order.document.header.unit.price.mixed"))</th>
-	                  	} else {
-					  <th>@Html(Messages("admin.order.document.header.unit.price"))</th>	                  	
-	                  	}
-	                  }
-	                  <th>@Html(Messages("admin.order.document.header.total"))</th>
-	                </tr>
-	              </thead>
-	              <tbody>
-	              @if(orderDocument.getType().equals(models.Invoice.InvoiceType.VAT)
-	                 || orderDocument.getType().equals(models.Invoice.InvoiceType.MIXED_VAT)) {
-		          	@for(line <- orderDocument.document.lines) {
-		          		@if(line.getType() != null) {
-			                @if(line.getType().equals(models.AccountingLine.LineType.WITH_VAT_BY_UNIT)
-			                    || line.getType().equals(models.AccountingLine.LineType.FREE_INCLUDED)
-			                    || line.getType().equals(models.AccountingLine.LineType.FREE_OFFERED)
-			                    || line.getType().equals(models.AccountingLine.LineType.FREE_SPECIAL)
-			                    || line.getType().equals(models.AccountingLine.LineType.INFO_LINE)) {
-			                	@admin_display_invoice_line(line)
-			            	}
-		            	}
-		            }
-	                @if(htAmount != 0) {             
-	                <tr class="sub-total">
-	                  <td>@Html(Messages("admin.order.document.label.ht.total"))</td>
-	                  <td colspan="3" class="text-right">@display_floating_price(htAmount)</td>
-	                </tr>
-	                <tr class="vat">
-	                  <td>@Html(Messages("admin.order.document.label.vat"))</td>
-	                  <td colspan="3" class="text-right">@display_floating_price(vat)</td>
-	                </tr>
-	                }
-	              }
-	              @if(orderDocument.getType().equals(models.Invoice.InvoiceType.MARGIN_VAT)
-	                 || orderDocument.getType().equals(models.Invoice.InvoiceType.NO_VAT)) {
-                    @for(line <- orderDocument.document.lines) {
-	    				@admin_display_invoice_line(line)
-	                }
-	              } else {
- 					@for(line <- orderDocument.document.lines) {
- 					    @if(line.getType() != null && line.getType().equals(models.AccountingLine.LineType.WITHOUT_VAT_BY_UNIT)) {
-	    					@admin_display_invoice_line(line)
-	    			    }
-	                }
-				  }
-	                
-	                <tr class="total">
-	                  <td><strong>@if(orderDocument.getType().equals(models.Invoice.InvoiceType.VAT)) {@Html(Messages("admin.order.document.label.to.pay.ttc"))} else {@Html(Messages("admin.order.document.label.to.pay"))}</strong></td>
-	                  <td colspan="3" class="text-right"><strong>@display_floating_price(amountToPay)</strong></td>
-	                </tr>
+						@for(cell <- sheet.getHeader.getCells) {
+							<th class="@cell.getCssClass">@Html(cell.getStringValue)</th>
+						}
+					</tr>
+				  </thead>
+				  <tbody>
+				  @for(line <- sheet.getLines) {
+				  	@admin_display_sheet_line(line)
+      			  }
 	              </tbody>
 	            </table>
 	       </div>
         </div>
       </div>
+	  }
       
       <div class="row">
         <div class="col-xs-12">

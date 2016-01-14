@@ -14,6 +14,8 @@ import play.db.ebean.Model;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
+import fr.hometime.utils.UniqueAccountingNumber;
+
 /**
  * Definition of a selling document
  */
@@ -34,7 +36,7 @@ public class SellingDocument extends Model {
 	public String paymentMethodUsed;
 	
 	@Constraints.Required
-	@Column(unique=true)
+	@Column(name="unique_accounting_number", unique=true)
 	public String uniqueAccountingNumber;
 
 	@Column(name="purchase_date")
@@ -42,10 +44,12 @@ public class SellingDocument extends Model {
 	
 	public SellingDocument() {
 		this.document = new AccountingDocument();
+		this.uniqueAccountingNumber = UniqueAccountingNumber.getNextForInvoices().toString();
 	}
 	
 	public SellingDocument(Customer customer) {
 		this.document = new AccountingDocument(customer);
+		this.uniqueAccountingNumber = UniqueAccountingNumber.getNextForInvoices().toString();
 	}
 	
     // -- Queries
@@ -82,6 +86,10 @@ public class SellingDocument extends Model {
 	public void update() {
 		this.document.update();
 		super.update();
+	}
+	
+	public String getUniqueAccountingNumber() {
+		return uniqueAccountingNumber;
 	}
 }
 

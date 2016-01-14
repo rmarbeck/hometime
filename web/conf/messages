@@ -2280,6 +2280,15 @@ admin.invoice.ht.total.line.description=Total HT
 admin.invoice.already.payed.line.description=Déjà perçu
 admin.invoice.to.pay.total.line.description=Reste à payer
 
+admin.order.document.total.line.description=Total à payer
+admin.order.document.vat.line.description=T.V.A. 20%
+admin.order.document.vat.total.line.description=Total à payer TTC
+admin.order.document.ht.total.line.description=Total HT
+admin.order.document.line.special.free.included=Inclus
+admin.order.document.line.special.free.offered=Offert
+admin.order.document.free.included=Inclus
+admin.order.document.free.offered=Offert
+
 admin.invoice.total.line.class=total
 admin.invoice.total.line.value.class=text-right
 admin.invoice.unit.class=text-center
@@ -2298,6 +2307,35 @@ admin.invoice.already.payed.line.class=sub-total
 admin.invoice.already.payed.line.value.class=text-right
 admin.invoice.to.pay.total.line.class=total
 admin.invoice.to.pay.total.line.value.class=text-right
+
+admin.order.document.total.line.class=total
+admin.order.document.total.line.value.class=text-right
+admin.order.document.unit.class=text-center
+admin.order.document.unit.price.class=text-right
+admin.order.document.price.class=text-right
+admin.order.document.free.included.class=text-right
+admin.order.document.free.offered.class=text-right
+admin.order.document.admin.invoice.sub.total.class=sub-total
+admin.order.document.vat.line.class=vat
+admin.order.document.vat.line.value.class=text-right
+admin.order.document.vat.total.line.class=total
+admin.order.document.vat.total.line.value.class=text-right
+admin.order.document.ht.total.line.class=sub-total
+admin.order.document.ht.total.line.value.class=text-right
+
+admin.selling.document.total.line.description=Somme totale à payer TTC
+admin.selling.document.total.line.class=total
+admin.selling.document.total.line.value.class=text-right
+
+admin.selling.document.unit.class=text-center
+admin.selling.document.unit.price.class=text-right
+admin.selling.document.price.class=text-right
+
+admin.selling.document.line.special.free.included=Inclus
+admin.selling.document.line.special.free.offered=Offert
+admin.selling.document.free.included=Inclus
+admin.selling.document.free.offered=Offert
+
 
 admin.invoice.customer.details=Identification du client :
 admin.invoice.description=Description :
@@ -2331,6 +2369,8 @@ admin.invoice.form.value.line.type.free.included=Inclus
 admin.invoice.form.value.line.type.free.offered=Offert
 admin.invoice.form.value.line.type.free.special=Spécial
 admin.invoice.form.value.line.type.info.line=Info
+
+admin.invoice.line.info.class=text-center
 
 admin.invoice.legal=Toute somme non payée dans les trente jours est augmentée du taux d''intérêt appliqué par la Banque centrale européenne\
  à son opération de refinancement la plus récente majoré de 10 points de pourcentage. Les pénalités de retard sont\
@@ -2408,6 +2448,8 @@ admin.order.document.form.value.line.type.free.included=Inclus
 admin.order.document.form.value.line.type.free.offered=Offert
 admin.order.document.form.value.line.type.free.special=Spécial
 admin.order.document.form.value.line.type.info.line=Info
+admin.order.document.line.info.class=text-center
+
 
 admin.order.document.signing=Date et signature du client précédées de la mention "Lu et accepté"
 
@@ -2421,6 +2463,7 @@ admin.selling.document.one.shot.date=le {0}
 admin.selling.document.header.description=Désignation
 admin.selling.document.header.quantity=Quantité
 admin.selling.document.header.unit.price=Prix unitaire
+admin.selling.document.header.unit.price.ht=Prix unitaire HT
 admin.selling.document.header.total=Total
 admin.selling.document.label.to.pay=Somme totale à payer TTC
 admin.selling.document.payment.method.used=Moyen de paiement utilisé :
@@ -2451,6 +2494,19 @@ admin.selling.document.form.label.line.info=Contenu de la ligne
 admin.selling.document.form.placeholder.line.info=
 admin.selling.document.form.label.payment.method.used=Moyen de paiement utilisé
 admin.selling.document.form.placeholder.payment.method.used= 
+
+admin.selling.document.form.label.line.type=Type de ligne
+admin.selling.document.form.default.line.type=Sélectionner le type
+admin.selling.document.form.value.line.type.with.vat.by.unit=Avec TVA à l''unité
+admin.selling.document.form.value.line.type.without.vat.by.unit=Sans TVA à l''unité
+admin.selling.document.form.value.line.type.free.included=Inclus
+admin.selling.document.form.value.line.type.free.offered=Offert
+admin.selling.document.form.value.line.type.free.special=Spécial
+admin.selling.document.form.value.line.type.info.line=Info
+
+
+admin.selling.document.admin.selling.document.sub.total.class=sub-total
+admin.selling.document.line.info.class=text-center
 
 
 

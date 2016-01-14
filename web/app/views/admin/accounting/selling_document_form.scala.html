@@ -25,6 +25,12 @@
     $(document).ready(function(){
     	
     	var indexPosition = $("[id*='invoice_line_']:last").attr("id").substr(13);
+    	    	
+    	$("[id*='invoice_line_']").each(function() {
+				$( 'option[value="WITH_VAT_BY_UNIT"]' ).attr('disabled', 'disabled');
+				$( 'option[value="WITHOUT_VAT_BY_UNIT"]' ).attr('selected', 'selected');
+            });
+    	
         $('#add-line').click(function(event) {
         	event.preventDefault();
         	var copiedPosition = indexPosition;
@@ -71,7 +77,7 @@
             	
             	@simple_admin_input(sellingDocument("date"), "admin.selling.document.form.VARIABLE.date", 'type -> "date")
             	
-				@accounting_form_lines(sellingDocument("document.lines"), "admin.selling.document.form.VARIABLE")
+				@accounting_form_lines(sellingDocument("document.lines"), "admin.selling.document.form.VARIABLE", 1)
             	
             	<button id="add-line" class="btn btn-primary">&nbsp;Ajouter</button>
             	<button id="remove-line" class="btn btn-danger">&nbsp;Retirer</button>

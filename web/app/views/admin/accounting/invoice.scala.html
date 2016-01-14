@@ -39,100 +39,6 @@
      
      <br />
      
-     <div class="row">
-     	<div class="col-xs-12">
-	        <div class="table-responsive">
-	            <table class="table table-bordered">
-	              <colgroup>
-	                <col class="col-xs-7">
-	                <col class="col-xs-1">
-	                <col class="col-xs-2">
-	                <col class="col-xs-2">
-	              </colgroup>
-	              <thead>
-	                <tr>
-	                  <th>@Html(Messages("admin.invoice.header.description"))</th>
-	                  <th>@Html(Messages("admin.invoice.header.quantity"))</th>
-	                  @if(invoice.getType().equals(models.Invoice.InvoiceType.VAT)) {
-	                  <th>@Html(Messages("admin.invoice.header.unit.price.ht"))</th>
-	                  } else {
-	                  	@if(invoice.getType().equals(models.Invoice.InvoiceType.MIXED_VAT)) {
-	                  <th>@Html(Messages("admin.invoice.header.unit.price.mixed"))</th>
-	                  	} else {
-					  <th>@Html(Messages("admin.invoice.header.unit.price"))</th>	                  	
-	                  	}
-	                  }
-	                  <th>@Html(Messages("admin.invoice.header.total"))</th>
-	                </tr>
-	              </thead>
-	              <tbody>
-	              @if(invoice.getType().equals(models.Invoice.InvoiceType.VAT)
-	                 || invoice.getType().equals(models.Invoice.InvoiceType.MIXED_VAT)) {
-		          	@for(line <- invoice.document.lines) {
-		          		@if(line.getType() != null) {
-			                @if(line.getType().equals(models.AccountingLine.LineType.WITH_VAT_BY_UNIT)
-			                    || line.getType().equals(models.AccountingLine.LineType.FREE_INCLUDED)
-			                    || line.getType().equals(models.AccountingLine.LineType.FREE_OFFERED)
-			                    || line.getType().equals(models.AccountingLine.LineType.FREE_SPECIAL)
-			                    || line.getType().equals(models.AccountingLine.LineType.INFO_LINE)) {
-			                	@admin_display_invoice_line(line)
-			            	}
-		            	}
-		            }
-	                @if(htAmount != 0) {             
-	                <tr class="sub-total">
-	                  <td>@Html(Messages("admin.invoice.label.ht.total"))</td>
-	                  <td colspan="3" class="text-right">@display_floating_price(htAmount)</td>
-	                </tr>
-	                <tr class="vat">
-	                  <td>@Html(Messages("admin.invoice.label.vat"))</td>
-	                  <td colspan="3" class="text-right">@display_floating_price(vat)</td>
-	                </tr>
-	                }
-	              }
-	              @if(invoice.getType().equals(models.Invoice.InvoiceType.MARGIN_VAT)
-	                 || invoice.getType().equals(models.Invoice.InvoiceType.NO_VAT)) {
-                    @for(line <- invoice.document.lines) {
-	    				@admin_display_invoice_line(line)
-	                }
-	              } else {
- 					@for(line <- invoice.document.lines) {
- 					    @if(line.getType() != null && line.getType().equals(models.AccountingLine.LineType.WITHOUT_VAT_BY_UNIT)) {
-	    					@admin_display_invoice_line(line)
-	    			    }
-	                }
-				  }
-	                @if(invoice.alreadyPayed != 0) {
-	                <tr class="total">
-	                @if(invoice.getType().equals(models.Invoice.InvoiceType.MARGIN_VAT)
-	                 || invoice.getType().equals(models.Invoice.InvoiceType.NO_VAT)) {
-	                  <td><strong>@Html(Messages("admin.invoice.label.ht.total"))</strong></td>
-	                  <td colspan="3" class="text-right"><strong>@display_floating_price(htAmount)</strong></td>
-	                  } else {
-	                  <td><strong>@Html(Messages("admin.invoice.label.ttc.total"))</strong></td>
-	                  <td colspan="3" class="text-right"><strong>@display_floating_price(totalAmount)</strong></td>
-	                  }
-	                </tr>
-	                <tr class="sub-total">
-	                  <td><strong>@Html(Messages("admin.invoice.label.partial.payment"))</strong></td>
-	                  <td colspan="3" class="text-right"><strong>@display_floating_price(invoice.alreadyPayed)</strong></td>
-	                </tr>
-	                <tr class="total">
-	                  <td><strong>@Html(Messages("admin.invoice.label.still.to.pay"))</strong></td>
-	                  <td colspan="3" class="text-right"><strong>@display_floating_price(amountToPay)</strong></td>
-	                </tr>
-	                } else {
-	                <tr class="total">
-	                  <td><strong>@if(invoice.getType().equals(models.Invoice.InvoiceType.VAT)) {@Html(Messages("admin.invoice.label.to.pay.ttc"))} else {@Html(Messages("admin.invoice.label.to.pay"))}</strong></td>
-	                  <td colspan="3" class="text-right"><strong>@display_floating_price(amountToPay)</strong></td>
-	                </tr>
-	                }
-	              </tbody>
-	            </table>
-	       </div>
-        </div>
-      </div>
-      
      @defining(AccountingSheet.of(invoice.document, "admin.invoice", invoice.alreadyPayed)) { sheet =>
      <div class="row">
      	<div class="col-xs-12">
@@ -160,7 +66,6 @@
 	       </div>
         </div>
       </div>
-		
 	  }
 
       @admin_accounting_info_field(invoice.paymentConditions, "admin.invoice.payment.conditions", 'dataclass -> "payment-infos")

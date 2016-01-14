@@ -1,5 +1,6 @@
 @(sellingDocument : models.SellingDocument, totalAmount : Float)
 @import tags._
+@import views.AccountingSheet
 @import java.lang.String; var title=""
 @import models.Customer; var customer=new models.Customer() 
 
@@ -32,6 +33,7 @@
      
      <br />
      
+     @defining(AccountingSheet.of(sellingDocument.document, "admin.selling.document", 0F)) { sheet =>
      <div class="row">
      	<div class="col-xs-12">
 	        <div class="table-responsive">
@@ -44,25 +46,21 @@
 	              </colgroup>
 	              <thead>
 	                <tr>
-	                  <th>@Html(Messages("admin.selling.document.header.description"))</th>
-	                  <th>@Html(Messages("admin.selling.document.header.quantity"))</th>
-	                  <th>@Html(Messages("admin.selling.document.header.unit.price"))</th>
-	                  <th>@Html(Messages("admin.selling.document.header.total"))</th>
-	                </tr>
-	              </thead>
-	              <tbody>
-				  @for(line <- sellingDocument.document.lines) {
-                	@admin_display_invoice_line(line)
-				  }
-	                <tr class="total">
-	                  <td><strong>@Html(Messages("admin.selling.document.label.to.pay"))</strong></td>
-	                  <td colspan="3" class="text-right"><strong>@display_floating_price(totalAmount)</strong></td>
-	                </tr>
+						@for(cell <- sheet.getHeader.getCells) {
+							<th class="@cell.getCssClass">@Html(cell.getStringValue)</th>
+						}
+					</tr>
+				  </thead>
+				  <tbody>
+				  @for(line <- sheet.getLines) {
+				  	@admin_display_sheet_line(line)
+      			  }
 	              </tbody>
 	            </table>
 	       </div>
         </div>
       </div>
+	  }
       
       @admin_accounting_info_field(sellingDocument.paymentMethodUsed, "admin.selling.document.payment.method.used", 'dataclass -> "payment-infos")
 	  
