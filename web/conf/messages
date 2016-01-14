@@ -2463,7 +2463,7 @@ admin.order.document.signing=Date et signature du client précédées de la ment
 admin.selling.document.text.bill=Facture
 admin.selling.document.title.bill=Facture {0} - Papier de vente
 admin.selling.document.description=Description :
-admin.selling.document.working.date=Date de la transcation :
+admin.selling.document.working.date=Date de la transaction :
 admin.selling.document.one.shot.date=le {0}
 
 admin.selling.document.header.description=Désignation

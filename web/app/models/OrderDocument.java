@@ -86,7 +86,7 @@ public class OrderDocument extends Model {
 
     public static Page<OrderDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where().or(Expr.like("document.customer", "%" + filter + "%"), Expr.like("document.customer", "%" + filter + "%"))
+            find.where().or(Expr.eq("document.customer", filter), Expr.eq("document.customer", filter))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
