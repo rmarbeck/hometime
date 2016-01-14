@@ -119,7 +119,7 @@ public class Invoice extends Model {
 
     public static Page<Invoice> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where().or(Expr.ilike("document.customer", "%" + filter + "%"), Expr.ilike("document.customer", "%" + filter + "%"))
+            find.where().or(Expr.like("document.customer", "%" + filter + "%"), Expr.like("document.customer", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
