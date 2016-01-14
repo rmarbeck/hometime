@@ -2489,6 +2489,7 @@ admin.selling.document.form.placeholder.description=
 admin.selling.document.form.label.unique.accounting.number=Numéro de facture
 admin.selling.document.form.placeholder.unique.accounting.number=2016-XX
 admin.selling.document.form.label.date=Date de transaction
+admin.selling.document.form.label.creation.date=Date de facture
 admin.selling.document.form.label.lines=Lignes
 admin.selling.document.form.label.line.description=Désignation
 admin.selling.document.form.placeholder.line.description=...

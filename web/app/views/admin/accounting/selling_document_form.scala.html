@@ -71,6 +71,8 @@
                          'placeholder -> Messages("admin.selling.document.form.placeholder.customer"), '_label -> Messages("admin.selling.document.form.label.customer"),
                          'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
+            	@simple_admin_input(sellingDocument("document.creationDate"), "admin.selling.document.form.VARIABLE.creation.date", 'type -> "date")
+            	
             	@simple_admin_input(sellingDocument("description"), "admin.selling.document.form.VARIABLE.description")
             	
             	@simple_admin_input(sellingDocument("uniqueAccountingNumber"), "admin.selling.document.form.VARIABLE.unique.accounting.number")
