@@ -40,7 +40,7 @@
 @layouts.admin() {
   <div class="container">
 
-    @admin.fragments.page_header(link(0, "creationDate").toString, "email or name", currentFilter, routes.Customer.add().url)
+    @admin.fragments.page_header(link(0, "creationDate").toString, "email or name", currentFilter, routes.Accounting.addSellingDocument().url)
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
@@ -62,7 +62,7 @@
                 <tr>
                   <td>
 	                <a type="button" class="btn btn-default btn-xs" href="@routes.Accounting.viewSellingDocument(sellingDocument.id)"><span class="glyphicon glyphicon-user"></span></a>
-	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Customer.edit(sellingDocument.document.id)"><span class="glyphicon glyphicon-edit"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editSellingDocument(sellingDocument.document.id)"><span class="glyphicon glyphicon-edit"></span></a>
                   </td>
                   <td class="hidden-xs">
                     @display_date(sellingDocument.document.creationDate, "dd/MM")

@@ -10,6 +10,7 @@ import play.twirl.api.Html;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import fr.hometime.utils.UniqueAccountingNumber;
@@ -91,18 +92,23 @@ public class Accounting extends Controller {
 				return badRequest(invoiceForm(invoiceForm, true));
 			return badRequest(invoiceForm(invoiceForm, false));
 		} else {
-			models.Invoice curentInvoice = getInvoiceFromForm(invoiceForm);
+			models.Invoice currentInvoice = getInvoiceFromForm(invoiceForm);
 			if ("save".equals(action)) {
-				curentInvoice.document.documentData = getInvoiceHtml(curentInvoice).body().getBytes(StandardCharsets.UTF_8);
-				curentInvoice.save();
+				currentInvoice.document.documentData = getInvoiceHtml(currentInvoice).body().getBytes(StandardCharsets.UTF_8);
+				currentInvoice.save();
 			} else if ("delete".equals(action)) {
-				models.Invoice invoiceInDB = models.Invoice.findById(curentInvoice.id);
+				models.Invoice invoiceInDB = models.Invoice.findById(currentInvoice.id);
 				invoiceInDB.delete();
 			} else if ("show".equals(action)) {
-				return displayInvoice(curentInvoice);
+				return displayInvoice(currentInvoice);
 			} else {
-				curentInvoice.document.documentData = getInvoiceHtml(curentInvoice).body().getBytes(StandardCharsets.UTF_8);
-				curentInvoice.update();
+				Long customerId = invoiceForm.get().document.customer.id;
+				Date creationDate = invoiceForm.get().document.creationDate;
+				currentInvoice.document = SellingDocument.findById(currentInvoice.id).document;
+				currentInvoice.document.customer = Customer.findById(customerId);
+				currentInvoice.document.creationDate = creationDate;
+				currentInvoice.document.documentData = getInvoiceHtml(currentInvoice).body().getBytes(StandardCharsets.UTF_8);
+				currentInvoice.update();
 			}
 		}
 		return LIST_INVOICES;
@@ -166,25 +172,24 @@ public class Accounting extends Controller {
 				return badRequest(orderDocumentForm(orderDocumentForm, true));
 			return badRequest(orderDocumentForm(orderDocumentForm, false));
 		} else {
-			models.OrderDocument curentOrderDocument = getOrderDocumentFromForm(orderDocumentForm);
+			models.OrderDocument currentOrderDocument = getOrderDocumentFromForm(orderDocumentForm);
 			if ("save".equals(action)) {
-				curentOrderDocument.document.documentData = getOrderDocumentHtml(curentOrderDocument).body().getBytes(StandardCharsets.UTF_8);
-				curentOrderDocument.save();
+				currentOrderDocument.document.documentData = getOrderDocumentHtml(currentOrderDocument).body().getBytes(StandardCharsets.UTF_8);
+				currentOrderDocument.save();
 			} else if ("delete".equals(action)) {
-				models.OrderDocument orderDocumentInDB = models.OrderDocument.findById(curentOrderDocument.id);
+				models.OrderDocument orderDocumentInDB = models.OrderDocument.findById(currentOrderDocument.id);
 				orderDocumentInDB.delete();
 			} else if ("show".equals(action)) {
-				return displayOrderDocument(curentOrderDocument);
+				return displayOrderDocument(currentOrderDocument);
 			} else {
-				Logger.debug(curentOrderDocument.document.customer+" vs "+orderDocumentForm.get().document.customer);
-				Logger.debug("ID "+orderDocumentForm.get().document.customer.id);
 				Long customerId = orderDocumentForm.get().document.customer.id;
-				curentOrderDocument.document = OrderDocument.findById(curentOrderDocument.id).document;
-				curentOrderDocument.document.customer = Customer.findById(customerId);
-				Logger.debug("ID "+curentOrderDocument.document.customer.id);
-				Logger.debug("UPdateing :"+curentOrderDocument.document.customer+" - "+curentOrderDocument.document.customer.name);
-				curentOrderDocument.document.documentData = getOrderDocumentHtml(curentOrderDocument).body().getBytes(StandardCharsets.UTF_8);
-				curentOrderDocument.update();
+				Date creationDate = orderDocumentForm.get().document.creationDate;
+
+				currentOrderDocument.document = OrderDocument.findById(currentOrderDocument.id).document;
+				currentOrderDocument.document.customer = Customer.findById(customerId);
+				currentOrderDocument.document.creationDate = creationDate;
+				currentOrderDocument.document.documentData = getOrderDocumentHtml(currentOrderDocument).body().getBytes(StandardCharsets.UTF_8);
+				currentOrderDocument.update();
 			}
 		}
 		return LIST_ORDER_DOCUMENTS;
@@ -277,18 +282,23 @@ public class Accounting extends Controller {
 				return badRequest(sellingDocumentForm(documentForm, true));
 			return badRequest(sellingDocumentForm(documentForm, false));
 		} else {
-			models.SellingDocument curentDocument = getSellingDocumentFromForm(documentForm);
+			models.SellingDocument currentDocument = getSellingDocumentFromForm(documentForm);
 			if ("save".equals(action)) {
-				curentDocument.document.documentData = getSellingDocumentHtml(curentDocument).body().getBytes(StandardCharsets.UTF_8);
-				curentDocument.save();
+				currentDocument.document.documentData = getSellingDocumentHtml(currentDocument).body().getBytes(StandardCharsets.UTF_8);
+				currentDocument.save();
 			} else if ("delete".equals(action)) {
-				models.SellingDocument documentInDB = models.SellingDocument.findById(curentDocument.id);
+				models.SellingDocument documentInDB = models.SellingDocument.findById(currentDocument.id);
 				documentInDB.delete();
 			} else if ("show".equals(action)) {
-				return displaySellingDocument(curentDocument);
+				return displaySellingDocument(currentDocument);
 			} else {
-				curentDocument.document.documentData = getSellingDocumentHtml(curentDocument).body().getBytes(StandardCharsets.UTF_8);
-				curentDocument.update();
+				Long customerId = documentForm.get().document.customer.id;
+				Date creationDate = documentForm.get().document.creationDate;
+				currentDocument.document = SellingDocument.findById(currentDocument.id).document;
+				currentDocument.document.customer = Customer.findById(customerId);
+				currentDocument.document.creationDate = creationDate;
+				currentDocument.document.documentData = getSellingDocumentHtml(currentDocument).body().getBytes(StandardCharsets.UTF_8);
+				currentDocument.update();
 			}
 		}
 		return LIST_SELLING_DOCUMENTS;
