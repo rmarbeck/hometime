@@ -66,7 +66,7 @@ public class SellingDocument extends Model {
 
     public static Page<SellingDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-        	find.where().or(Expr.ilike("description", "%" + filter + "%"), Expr.ilike("document.customer.name", "%" + filter + "%"))
+        	find.where().or(Expr.ilike("uniqueAccountingNumber", "%" + filter + "%"), Expr.ilike("document.customer.name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);

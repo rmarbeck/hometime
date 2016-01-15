@@ -40,7 +40,7 @@
 @layouts.admin() {
   <div class="container">
 
-    @admin.fragments.page_header(link(0, "creationDate").toString, "email or name", currentFilter, routes.Accounting.addSellingDocument().url)
+    @admin.fragments.page_header(link(0, "creationDate").toString, "numéro ou client", currentFilter, routes.Accounting.addSellingDocument().url)
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
@@ -53,8 +53,10 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  @header("creationDate", "Date", false)
-                  @header("document.customer", "Client", false)
+                  @header("document.creationDate", "Date", false)
+                  @header("uniqueAccountingNumber", "Numéro", false)
+                  @header("description", "Description", false)
+                  @header("document.customer", "Vendeur", false)
                 </tr>
               </thead>
               <tbody>
@@ -66,6 +68,12 @@
                   </td>
                   <td class="hidden-xs">
                     @display_date(sellingDocument.document.creationDate, "dd/MM")
+                  </td>
+                  <td>
+                    @sellingDocument.uniqueAccountingNumber
+                  </td>
+                  <td>
+                    @sellingDocument.description
                   </td>
                   <td>
                     @sellingDocument.document.customer.name

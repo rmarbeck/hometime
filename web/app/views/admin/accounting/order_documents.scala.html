@@ -40,7 +40,7 @@
 @layouts.admin() {
   <div class="container">
 
-    @admin.fragments.page_header(link(0, "creationDate").toString, "email or name", currentFilter, routes.Accounting.addOrderDocument().url)
+    @admin.fragments.page_header(link(0, "creationDate").toString, "numéro ou client", currentFilter, routes.Accounting.addOrderDocument().url)
     
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
@@ -53,9 +53,10 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  @header("uniqueAccountingNumber", "Reference", false)
-                  @header("document.customer", "Client", false)
+                  @header("document.creationDate", "Date", false)
+                  @header("uniqueAccountingNumber", "Numéro", false)
                   @header("description", "Description", false)
+                  @header("document.customer", "Client", false)
                 </tr>
               </thead>
               <tbody>
@@ -66,14 +67,16 @@
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editOrderDocument(orderDocument.id)"><span class="glyphicon glyphicon-edit"></span></a>
                   </td>
                   <td class="hidden-xs">
-                  
+                    @display_date(orderDocument.document.creationDate, "dd/MM")
+                  </td>
+                  <td>
                     @orderDocument.uniqueAccountingNumber
                   </td>
                   <td>
-                    @orderDocument.document.customer.name
+                    @orderDocument.description
                   </td>
                   <td>
-                    @orderDocument.description
+                    @orderDocument.document.customer.name
                   </td>
                 </tr>
               }
