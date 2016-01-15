@@ -101,6 +101,11 @@ public class AccountingLine extends Model {
         return find.byId(id.toString());
     }
     
+    public static List<AccountingLine> findByAccountingDocumentId(Long id) {
+        return find.where().eq("document.id", id)
+    			.orderBy("id ASC").findList();
+    }
+    
     public static List<AccountingLine> findByCustomer(models.Customer customer) {
     	return find.where().eq("customer.id", customer.id)
         			.orderBy("next_partial_service desc").findList();

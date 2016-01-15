@@ -14,8 +14,6 @@ import play.db.ebean.Model;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
-import fr.hometime.utils.UniqueAccountingNumber;
-
 /**
  * Definition of an invoice
  */

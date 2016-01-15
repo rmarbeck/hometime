@@ -1,32 +1,28 @@
 package controllers;
 
-import play.Logger;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
+import java.util.List;
+
+import models.AccountingDocument;
+import models.AccountingLine;
+import models.Customer;
+import models.Invoice;
+import models.OrderDocument;
+import models.SellingDocument;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
-import fr.hometime.utils.UniqueAccountingNumber;
-import models.Customer;
-import models.Invoice;
-import models.OrderDocument;
-import models.SellingDocument;
-import views.html.admin.accounting.invoice;
-import views.html.admin.accounting.invoices;
 import views.html.admin.accounting.invoice_form;
-import views.html.admin.accounting.selling_document;
-import views.html.admin.accounting.selling_documents;
-import views.html.admin.accounting.selling_document_form;
-import views.html.admin.accounting.order_document;
-import views.html.admin.accounting.order_documents;
+import views.html.admin.accounting.invoices;
 import views.html.admin.accounting.order_document_form;
+import views.html.admin.accounting.order_documents;
+import views.html.admin.accounting.selling_document_form;
+import views.html.admin.accounting.selling_documents;
+import fr.hometime.utils.UniqueAccountingNumber;
 
 @Security.Authenticated(SecuredAdminOnly.class)
 @With(NoCacheAction.class)
@@ -81,6 +77,7 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html existingInvoiceForm(models.Invoice invoice) {
+		invoice.document.reorderLines();
 		return invoiceForm(Form.form(models.Invoice.class).fill(invoice), false);
 	}
 
@@ -102,16 +99,23 @@ public class Accounting extends Controller {
 			} else if ("show".equals(action)) {
 				return displayInvoice(currentInvoice);
 			} else {
-				Long customerId = invoiceForm.get().document.customer.id;
-				Date creationDate = invoiceForm.get().document.creationDate;
-				currentInvoice.document = SellingDocument.findById(currentInvoice.id).document;
-				currentInvoice.document.customer = Customer.findById(customerId);
-				currentInvoice.document.creationDate = creationDate;
-				currentInvoice.document.documentData = getInvoiceHtml(currentInvoice).body().getBytes(StandardCharsets.UTF_8);
-				currentInvoice.update();
+				updateDocument(invoiceForm.get().document, Invoice.findById(currentInvoice.id).document, getInvoiceHtml(currentInvoice));
 			}
 		}
 		return LIST_INVOICES;
+	}
+	
+	private static void updateDocument(AccountingDocument inFormDocument, AccountingDocument toUpdateDocument, Html htmlData) {
+		Long customerId = inFormDocument.customer.id;
+		Date creationDate = inFormDocument.creationDate;
+		List<AccountingLine> lines = inFormDocument.lines;
+		
+		toUpdateDocument.customer = Customer.findById(customerId);
+		toUpdateDocument.creationDate = creationDate;
+		toUpdateDocument.deleteLines();
+		toUpdateDocument.lines = lines;
+		toUpdateDocument.documentData = htmlData.body().getBytes(StandardCharsets.UTF_8);
+		toUpdateDocument.update();
 	}
 	
 	private static Result displayInvoice(models.Invoice invoice) {
@@ -161,6 +165,7 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html existingOrderDocumentForm(models.OrderDocument orderDocument) {
+		orderDocument.document.reorderLines();
 		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(orderDocument), false);
 	}
 
@@ -182,14 +187,7 @@ public class Accounting extends Controller {
 			} else if ("show".equals(action)) {
 				return displayOrderDocument(currentOrderDocument);
 			} else {
-				Long customerId = orderDocumentForm.get().document.customer.id;
-				Date creationDate = orderDocumentForm.get().document.creationDate;
-
-				currentOrderDocument.document = OrderDocument.findById(currentOrderDocument.id).document;
-				currentOrderDocument.document.customer = Customer.findById(customerId);
-				currentOrderDocument.document.creationDate = creationDate;
-				currentOrderDocument.document.documentData = getOrderDocumentHtml(currentOrderDocument).body().getBytes(StandardCharsets.UTF_8);
-				currentOrderDocument.update();
+				updateDocument(orderDocumentForm.get().document, OrderDocument.findById(currentOrderDocument.id).document, getOrderDocumentHtml(currentOrderDocument));
 			}
 		}
 		return LIST_ORDER_DOCUMENTS;
@@ -271,6 +269,7 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html existingSellingDocumentForm(models.SellingDocument sellingDocument) {
+		sellingDocument.document.reorderLines();
 		return sellingDocumentForm(Form.form(models.SellingDocument.class).fill(sellingDocument), false);
 	}
 	
@@ -292,13 +291,7 @@ public class Accounting extends Controller {
 			} else if ("show".equals(action)) {
 				return displaySellingDocument(currentDocument);
 			} else {
-				Long customerId = documentForm.get().document.customer.id;
-				Date creationDate = documentForm.get().document.creationDate;
-				currentDocument.document = SellingDocument.findById(currentDocument.id).document;
-				currentDocument.document.customer = Customer.findById(customerId);
-				currentDocument.document.creationDate = creationDate;
-				currentDocument.document.documentData = getSellingDocumentHtml(currentDocument).body().getBytes(StandardCharsets.UTF_8);
-				currentDocument.update();
+				updateDocument(documentForm.get().document, SellingDocument.findById(currentDocument.id).document, getSellingDocumentHtml(currentDocument));
 			}
 		}
 		return LIST_SELLING_DOCUMENTS;

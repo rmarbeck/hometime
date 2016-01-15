@@ -53,5 +53,15 @@ public class AccountingDocument extends Model {
 		this.customer = customer;
 	}
 	
+	public void reorderLines() {
+		if (id != null)
+			lines = AccountingLine.findByAccountingDocumentId(id);
+	}
+	
+	public void deleteLines() {
+		if (id != null)
+			for(AccountingLine line : AccountingLine.findByAccountingDocumentId(id))
+				line.delete();
+	}
 }
 
