@@ -257,6 +257,8 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 			this.brand = Brand.findByInternalName(this.brand.internal_name);
 		if (this.customerThatBoughtTheWatch != null)
 			this.customerThatBoughtTheWatch = Customer.findByEmail(this.customerThatBoughtTheWatch.email);
+		if (this.purchaseInvoice != null)
+			this.purchaseInvoice = ExternalDocument.findByName(this.purchaseInvoice.name);
 	}
 	
 }

@@ -129,6 +129,7 @@ create table external_document (
   name                      varchar(255),
   description               varchar(10000),
   url                       varchar(255),
+  constraint uq_external_document_name unique (name),
   constraint pk_external_document primary key (id))
 ;
 

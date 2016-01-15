@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
@@ -28,6 +27,7 @@ public class ExternalDocument extends Model implements CrudReady<ExternalDocumen
 	@Column(name="creation_date")
 	public Date creationDate;
 	
+	@Column(unique=true)
 	public String name;
 	
 	@Column(length = 10000)
@@ -61,6 +61,10 @@ public class ExternalDocument extends Model implements CrudReady<ExternalDocumen
         return find.all();
     }
     
+    public static List<ExternalDocument> findAllNewerFirst() {
+        return find.orderBy("creationDate DESC").findList();
+    }
+    
     public static Page<ExternalDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().or(Expr.ilike("description", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
@@ -77,11 +81,19 @@ public class ExternalDocument extends Model implements CrudReady<ExternalDocumen
     public static ExternalDocument findById(Long id) {
         return find.byId(id.toString());
     }
+    
+    public static ExternalDocument findByName(String name) {
+        return find.where().eq("name", name).findUnique();
+    }
 
 	@Override
 	public Page<ExternalDocument> getPage(int page, int pageSize,
 			String sortBy, String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
+	}
+	
+	public String toString() {
+		return name;
 	}
 }
 

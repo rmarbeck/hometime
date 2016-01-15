@@ -241,5 +241,14 @@ public class Customer extends Model {
     public String toString() {
     	return email;
     }
+    
+    public String getFullNameWithCivility() {
+    	return Messages.get("admin.customer.text.civility." + this.civility.toString().toLowerCase()) + " " + this.getFullName();
+    }
+    
+    public String getFullName() {
+    	return this.firstname + " " + this.name;
+    	
+    }
 }
 
