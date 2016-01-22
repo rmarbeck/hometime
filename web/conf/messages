@@ -2295,6 +2295,19 @@ admin.order.document.line.special.free.offered=Offert
 admin.order.document.free.included=Inclus
 admin.order.document.free.offered=Offert
 
+admin.invoice.description.selling.a.watch=Vente d''une montre {0} {1}
+admin.invoice.main.line.selling.a.watch=Vente d''une montre {0} {1}{2} {3}, ref. {4} n° {5}, {6}{7} livrée {8}
+admin.invoice.waranty.line.selling.a.watch=Garantie watchnext pendant 2 ans
+admin.invoice.delivery.line.selling.a.watch=Remise en mains propres à domicile | Envoi sécurisé en valeur déclarée ({1}/4G000XXXXXXXX) - Assurée sur valeur réelle par contrat d'assurance AXA - à hauteur de 30€ par la Poste
+
+admin.invoice.of.year= datant de {0}
+admin.invoice.new.watch=neuve
+admin.invoice.used.watch=d''occasion
+admin.invoice.box.and.papers=avec boite et papiers d''origine
+admin.invoice.box.only=avec boite d''origine
+admin.invoice.papers.only=avec papiers d''origine
+admin.invoice.default=avec boite générique
+
 admin.invoice.total.line.class=total
 admin.invoice.total.line.value.class=text-right
 admin.invoice.unit.class=text-center

@@ -179,6 +179,7 @@ POST    /admin/manage-quotation     									controllers.Admin.manageQuotation()
 
 GET     /admin/invoice            										controllers.Accounting.display()
 GET     /admin/invoice/create          									controllers.Accounting.addInvoice()
+GET     /admin/invoice/create/by/watch-to-sell/:id						controllers.Accounting.addInvoiceByWatchToSellId(id: Long)
 GET     /admin/invoice/edit/:id         								controllers.Accounting.editInvoice(id: Long)
 POST    /admin/manage-invoice            								controllers.Accounting.manageInvoice()
 GET     /admin/invoices            										controllers.Accounting.displayAllInvoice(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")

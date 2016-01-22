@@ -1,16 +1,21 @@
 package controllers;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import models.AccountingDocument;
 import models.AccountingLine;
+import models.AccountingLine.LineType;
 import models.Customer;
 import models.Invoice;
+import models.Invoice.InvoiceType;
 import models.OrderDocument;
 import models.SellingDocument;
+import models.WatchToSell;
 import play.data.Form;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
@@ -48,6 +53,10 @@ public class Accounting extends Controller {
         return ok(invoices.render(models.Invoice.page(page, 10, sortBy, order, filter), sortBy, order, filter));
     }
 	
+	public static Result addInvoiceByWatchToSellId(Long id) {
+		return ok(newInvoiceFormByWatchToSellId(id));		
+	}
+	
 	public static Result addInvoice() {
 		return ok(emptyNewInvoiceForm());		
 	}
@@ -74,6 +83,34 @@ public class Accounting extends Controller {
 		models.Invoice emptyInvoice = new Invoice();
 		emptyInvoice.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
 		return invoiceForm(Form.form(models.Invoice.class).fill(emptyInvoice), true);
+	}
+	
+	private static Html newInvoiceFormByWatchToSellId(long id) {
+		models.WatchToSell watchToSell = WatchToSell.findById(id);
+		if (watchToSell == null)
+			return emptyNewInvoiceForm();
+		models.Invoice newInvoice = new Invoice();
+		newInvoice.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
+		newInvoice.document.customer = watchToSell.customerThatBoughtTheWatch;
+		newInvoice.type = InvoiceType.MARGIN_VAT;
+		newInvoice.description = Messages.get("admin.invoice.description.selling.a.watch", watchToSell.brand.display_name, watchToSell.model);
+		newInvoice.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLine(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice));
+		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.waranty.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.delivery.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
+	}
+	
+	private static String getMainLine(WatchToSell watchToSell) {
+		return Messages.get("admin.invoice.main.line.selling.a.watch",
+							watchToSell.brand.display_name,
+							watchToSell.model,
+							watchToSell.additionnalModelInfos!=null && !watchToSell.additionnalModelInfos.equals("")?" "+watchToSell.additionnalModelInfos:"",
+							watchToSell.isNew?Messages.get("admin.invoice.new.watch"):Messages.get("admin.invoice.used.watch"),
+							watchToSell.reference,
+							watchToSell.serial,
+							watchToSell.isNew?"":watchToSell.year!=null && !watchToSell.year.equals("")?Messages.get("admin.invoice.of.year",watchToSell.year):"",
+							watchToSell.additionnalInfos!=null && !watchToSell.additionnalInfos.equals("")?" "+watchToSell.additionnalInfos:"",
+							watchToSell.hasBox?(watchToSell.hasPapers?Messages.get("admin.invoice.box.and.papers"):Messages.get("admin.invoice.box.only")):(watchToSell.hasPapers?Messages.get("admin.invoice.papers.only"):Messages.get("admin.invoice.default")));
 	}
 	
 	private static Html existingInvoiceForm(models.Invoice invoice) {

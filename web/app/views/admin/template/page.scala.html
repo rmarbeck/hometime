@@ -135,7 +135,7 @@
             <div class="col-md-5 col-md-offset-2 text-right">
                     @if(pageDisplay.getPage.hasPrev) {
                         <span class="prev">
-                            <a class="btn btn-default" href="@createlink(pageDisplay.getPage.getPageIndex - 1, currentFilter, currentSize, currentOrder)">&larr; Previous</a>
+                            <a class="btn btn-default" href="@createlink(pageDisplay.getPage.getPageIndex - 1, currentSortBy, currentSize, currentOrder)">&larr; Previous</a>
                         </span>
                     } else {
                         <span class="prev disabled">
@@ -147,7 +147,7 @@
                     </span>
                     @if(pageDisplay.getPage.hasNext) {
                         <span class="next">
-                            <a class="btn btn-default"  href="@createlink(pageDisplay.getPage.getPageIndex + 1, null, currentSize, currentOrder)">Next &rarr;</a>
+                            <a class="btn btn-default"  href="@createlink(pageDisplay.getPage.getPageIndex + 1, currentSortBy, currentSize, currentOrder)">Next &rarr;</a>
                         </span>
                     } else {
                         <span class="next disabled">

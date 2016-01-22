@@ -89,6 +89,15 @@ public class AccountingLine extends Model {
 		this.document = document;
 	}
 	
+	public AccountingLine(AccountingDocument document, LineType type, String description, Long unit, Float unitPrice) {
+		this(document);
+		this.type = type;
+		this.description = description;
+		this.unit = unit;
+		this.unitPrice = unitPrice;
+	}
+	
+	
     // -- Queries
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Model.Finder<String,AccountingLine> find = new Model.Finder(String.class, AccountingLine.class);

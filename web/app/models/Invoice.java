@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import models.AccountingLine.LineType;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -121,6 +123,12 @@ public class Invoice extends Model {
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
+    }
+    
+    public void  addLine(LineType type, String description, Long unit, Float unitPrice) {
+    	if (this.document.lines == null)
+    		this.document.lines = new ArrayList<AccountingLine>();
+    	this.document.lines.add(new AccountingLine(this.document, type, description, unit, unitPrice));
     }
 
 	@Override
