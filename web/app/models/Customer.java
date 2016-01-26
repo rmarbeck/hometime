@@ -168,6 +168,10 @@ public class Customer extends Model {
     public static List<Customer> findAllByAscId() {
         return find.orderBy("id ASC").findList();
     }
+    
+    public static List<Customer> findAllByEmailAsc() {
+        return find.orderBy("email ASC").findList();
+    }
 
     public static Customer findById(Long id) {
         return find.byId(id.toString());
