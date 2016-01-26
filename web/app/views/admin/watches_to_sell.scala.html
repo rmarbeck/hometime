@@ -8,7 +8,7 @@
 
 @defining(new views.PageDisplay(currentPage, "modèle ou marque", "admin.watchtosell.page")) { pageDisplay =>
 	@{ 	pageDisplay.addTableField("model", "model", "getModel", false);
-		pageDisplay.addTableField("brand", "brand", "getBrand", false);
+		pageDisplay.addTableField("brand.display_name", "brand", "getBrandDisplayName", false);
 		pageDisplay.addTableField("additionnalModelInfos", "additionnalModelInfos", "getAdditionnalModelInfos", false);
 		pageDisplay.addTableField("status", "status", "getStatus", false);
 	}

@@ -208,7 +208,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 
     public static Page<WatchToSell> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where().or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand.display_name", "%" + filter + "%"))
+            find.fetch("brand").where().or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand.display_name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
@@ -262,6 +262,12 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 		if (this.purchaseInvoice != null)
 			this.purchaseInvoice = ExternalDocument.findByName(this.purchaseInvoice.name);
 	}
+	
+    public String getBrandDisplayName() {
+    	if (brand != null)
+    		return brand.display_name;
+    	return "unknown";
+    }
 	
 }
 
