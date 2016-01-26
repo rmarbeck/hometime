@@ -1,0 +1,35 @@
+@(report: views.admin.reports.Report[_])
+@import tags._
+
+    <div class="container">
+    @if(report.isEmpty()) {
+    	<h3>
+    		@Html(Messages(report.getKey()+".empty"))
+    	</h3>
+    } else {
+    	<h3>
+    		@Html(Messages(report.getKey()+".title"))
+    	</h3>
+    	<table class="table table-condensed table-striped table-bordered">
+          <thead>
+	        <tr>
+	        @for(head <- report.getHeaders) {
+	          <th>@Html(Messages(head.getKey))</th>
+	        }
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for((currentLine, index) <- report.getLines.zipWithIndex) {
+	      	<tr @if(report.hasClass) {class="@report.getClassByIndex(index)"}>
+	      		@for(currentCol <- report.getCols) {
+	                <td class="@if(currentCol.shouldHideSmall) {hidden-xs}currentCol.getCssClass)">
+	                	@display_field(report.display(currentLine, currentCol.getFieldAccessorMethod), currentCol.getRenderingOption)
+                  	</td>
+                }
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
+    }
+    </div>
+

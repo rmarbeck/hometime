@@ -196,8 +196,8 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     }
     
     public static List<WatchToSell> findByCustomer(models.Customer customer) {
-    	return find.where().eq("customer.id", customer.id)
-        			.orderBy("next_partial_service desc").findList();
+    	return find.where().eq("customerThatBoughtTheWatch.id", customer.id)
+        			.orderBy("creationDate desc").findList();
     }
 
     public static Page<WatchToSell> page(int page, int pageSize, String sortBy, String order, String filter) {

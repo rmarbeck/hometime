@@ -77,6 +77,8 @@ public class ReflectionHelper {
 			  return Optional.of((java.lang.String) object.get());
 		  case "java.lang.Long":
 			  return Optional.of(Long.toString((java.lang.Long) object.get()));
+		  case "java.lang.Float":
+			  return Optional.of(Float.toString((java.lang.Float) object.get()));
 		  case "java.util.Date":
 			  return Optional.of(Long.toString(((java.util.Date) object.get()).getTime()));
 		  case "java.lang.Boolean":
