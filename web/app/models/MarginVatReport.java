@@ -63,7 +63,7 @@ public class MarginVatReport {
 	
 	private static boolean doesPriceMatches(WatchToSell watch, Invoice invoice) {
 		for (AccountingLine line : invoice.document.lines)
-			if (line.unitPrice == watch.sellingPrice)
+			if (line.unitPrice!= null && line.unitPrice == watch.sellingPrice)
 				return true;
 		return false;
 	}
