@@ -386,6 +386,9 @@ create table watch_to_sell (
   selling_price             bigint,
   purchasing_price          bigint,
   purchase_invoice_id       bigint,
+  should_be_in_registry     boolean,
+  is_in_registry            boolean,
+  reporting_infos           varchar(255),
   constraint ck_watch_to_sell_owner_status check (owner_status in ('OWNED_BY_US','OWNED_BY_CUSTOMER','OWNED_BY_PARTNER','RESERVED_1','RESERVED_2')),
   constraint ck_watch_to_sell_status check (status in ('TO_SELL','RESERVED_FOR_A_CUSTOMER','SOLD','SELLING_CANCELED','RESERVED_1','RESERVED_2')),
   constraint pk_watch_to_sell primary key (id))

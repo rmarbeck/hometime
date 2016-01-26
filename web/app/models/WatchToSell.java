@@ -157,6 +157,12 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	@OneToOne
 	public ExternalDocument purchaseInvoice;
 	
+	public Boolean shouldBeInRegistry = true;
+	
+	public Boolean isInRegistry = false;
+	
+	public String reportingInfos;
+	
 	public WatchToSell() {
 		
 	}
@@ -249,10 +255,6 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	}
 	
 	private void checkBeforeSaving() {
-		Logger.debug("-------> "+this.brand);
-		Logger.debug("-------> "+this.model);
-		Logger.debug("-------> "+this.customerThatBoughtTheWatch);
-
 		if (this.brand != null)
 			this.brand = Brand.findByInternalName(this.brand.internal_name);
 		if (this.customerThatBoughtTheWatch != null)

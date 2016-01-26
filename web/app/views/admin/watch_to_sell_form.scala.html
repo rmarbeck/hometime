@@ -27,6 +27,9 @@
 		   formDisplay.addFormFieldForSelect("purchaseInvoice.name", models.ExternalDocument.findAllNewerFirst);
 		   formDisplay.addFormFieldForSelect("customerThatBoughtTheWatch.email", models.Customer.findAllByEmailAsc);
 		   formDisplay.addFormField("sellingPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   formDisplay.addFormField("shouldBeInRegistry", true, "checkbox");
+		   formDisplay.addFormField("isInRegistry", true, "checkbox");
+		   formDisplay.addFormField("reportingInfos", true, "textarea");
 		}
 	
 	@admin.template.form_with_default_links(formDisplay, isItNew)

@@ -2580,6 +2580,7 @@ admin.watchtosell.form.customerthatboughtthewatch.name.label.name=Acheteur
 admin.watchtosell.form.customerthatboughtthewatch.name.default.name=Sélectionner l''acheteur
 admin.watchtosell.form.purchasingprice.label.name=Prix d''achat
 admin.watchtosell.form.customerthatboughtthewatch.email.label.name=Acheteur
+admin.watchtosell.form.customerthatboughtthewatch.email.default.name=Sélectionner l''acheteur (email)
 admin.watchtosell.form.sellingprice.label.name=Prix de vente
 
 admin.watchtosell.form.brand.internal.name.value.name.baume=Baume & Mercier
@@ -2628,6 +2629,10 @@ admin.watchtosell.form.status.value.name.sold=Vendue
 admin.watchtosell.form.status.value.name.selling.canceled=Vente annulée
 admin.watchtosell.form.status.value.name.reserved.1=Non implémenté
 admin.watchtosell.form.status.value.name.reserved.2=Non implémenté
+admin.watchtosell.form.isinregistry.label.name=Est dans le registre
+admin.watchtosell.form.shouldbeinregistry.label.name=Doit être dans le registre
+admin.watchtosell.form.reportinginfos.label.name=Infos à afficher dans les rapports
+admin.watchtosell.form.reportinginfos.placeholder.name=...
 
 admin.watchtosell.page.model=Modèle
 admin.watchtosell.page.brand=Marque
