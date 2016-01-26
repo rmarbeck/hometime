@@ -37,7 +37,7 @@ public class MarginVatReport {
 	
 	public static List<MarginVatReport> generateReport() {
 		List<MarginVatReport> report = new ArrayList<MarginVatReport>();
-		List<Invoice> invoices = Invoice.findAll();
+		List<Invoice> invoices = Invoice.findAllByDescendingDate();
 		if (listNotEmpty(invoices))
 			for(Invoice invoice : invoices)
 				if (InvoiceType.MARGIN_VAT.equals(invoice.type))

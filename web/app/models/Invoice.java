@@ -108,6 +108,10 @@ public class Invoice extends Model {
         return find.all();
     }
     
+    public static List<Invoice> findAllByDescendingDate() {
+        return find.orderBy("document.creationDate DESC").findList();
+    }
+    
     public static Invoice findById(Long id) {
         return find.byId(id.toString());
     }

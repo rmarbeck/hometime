@@ -13,14 +13,14 @@ import java.util.Optional;
 public class Report<T> {
 	public class Col {
 		public String fieldAccessorMethod;
-		public Optional<String> labelKey;
+		public Optional<String> colKey;
 		public Optional<String> renderingOption;
 		public Optional<String> cssClass;
 		public boolean hideSmall;
 		
 		protected Col(String labelKey, String fieldAccessorMethod, boolean hideSmall, String renderingOption, String cssClass) {
 			this.fieldAccessorMethod = fieldAccessorMethod;
-			this.labelKey = Optional.ofNullable(labelKey);
+			this.colKey = Optional.ofNullable(labelKey);
 			this.hideSmall = hideSmall;
 			this.cssClass = Optional.ofNullable(cssClass);
 			this.renderingOption = Optional.ofNullable(renderingOption);
@@ -35,7 +35,7 @@ public class Report<T> {
 		}
 		
 		public String getKey() {
-			return this.labelKey.orElse("undefined");
+			return labelKey.get()+ "." + this.colKey.orElse("undefined");
 		}
 		
 		public String getCssClass() {

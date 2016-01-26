@@ -2653,3 +2653,11 @@ admin.externaldocument.page=Factures externes
 admin.externaldocument.page.name=Nom
 admin.externaldocument.page.description=Description
 admin.externaldocument.page.url=URL
+
+admin.margin.vat.page.title=Rapport de ventes en TVA sur Marge 
+
+admin.margin.vat.page.date=Date de facture
+admin.margin.vat.page.invoice.name=Numéro de facture
+admin.margin.vat.page.selling.price=Prix de vente
+admin.margin.vat.page.purchase.invoice.name=Facture d''achat
+admin.margin.vat.page.purchase.price=Prix d''achat

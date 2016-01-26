@@ -10,7 +10,11 @@
 		  case "date short" => {
 		    @display_date(views.Helper.parseDateInMillis(to_render), "dd/MM")
 		  }
-		  
+		
+		  case "date medium" => {
+		    @display_date(views.Helper.parseDateInMillis(to_render), "dd/MM/yyyy")
+		  }
+		  		  
 		  case "date long" => {
 		    @display_date(views.Helper.parseDateInMillis(to_render), "dd/MM/yyyy HH:mm")
 		  }
