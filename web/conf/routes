@@ -208,6 +208,7 @@ GET		/admin/follow/external/document/url/:id							controllers.Admin.goToExterna
 
 GET     /admin/margin-vat-report            							controllers.Reporting.index()
 GET     /admin/addresses		            							controllers.Reporting.addresses()
+GET     /admin/addressbook		            							controllers.Reporting.addressBook()
 
 # Sitemap
 GET     /sitemap.xml													controllers.Application.sitemap()

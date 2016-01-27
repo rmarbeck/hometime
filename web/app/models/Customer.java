@@ -200,6 +200,10 @@ public class Customer extends Model {
     	return find.where().eq("name", name).findList();
     }
     
+    public static List<Customer> findByNameAsc() {
+    	return find.where().orderBy("name ASC").findList();
+    }
+    
     public static List<Customer> findWithOpenTopic() {
     	return find.where().eq("is_topic_open", true).findList();
     }
