@@ -2,6 +2,72 @@
 @import tags._
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+
+@end_scripts = {
+<script>
+    $(document).ready(function(){
+        $('#billingAddress').on('paste', function(event) {
+        		if ($('#name:text').val().length == 0) {
+        			event.preventDefault();
+        			var pasteData = event.originalEvent.clipboardData.getData('text')
+        			manageAddressPaste($('#billingAddress'), pasteData);
+        		}
+        	});
+    });
+    
+    function manageAddressPaste(textarea, pastedText) {
+    	var pastedValue = pastedText;
+    	var lines = pastedText.split('\n');
+    	var civility = lines[0].replace(/^(M\.|Mme|Mme\.|Mr|Mr\.|Dr\.|Dr) .*/g,"$1");
+    	manageCivility(civility);
+    	var fullname = lines[0].replace(/^(M\.|Mme|Mme\.|Mr|Mr\.|Dr\.|Dr) /g,"");
+    	var firstname = manageCase(fullname.replace(/([^ ]*) .*/g,"$1"));
+    	var name = manageCase(fullname.replace(/([^ ]*) (.*)/g,"$2"));
+    	$('#firstname').val(firstname);
+    	$('#name').val(name);
+    	$('#email').val("unknown@@"+name.toLowerCase());
+    	$('#status option:eq(3)').prop('selected', true);
+		lines.splice(0, 1);
+		textarea.val(lines.join("\n"));
+    }
+    
+    function isUpperCase(str) {
+    	return str === str.toUpperCase();
+	}
+	
+	function isLowerCase(str) {
+    	return str === str.toLowerCase();
+	}
+	
+	function manageCase(str) {
+		if(isUpperCase(str) || isLowerCase(str)) {
+    		return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+    	}
+    	return str;
+	}
+	function manageCivility(str) {
+		switch(str) {
+	        case 'M.':
+	        case 'Dr':
+	        	$('#civility option:eq(1)').prop('selected', true);
+                break;
+	        case 'Mme':
+	        case 'Mme.':
+	            $('#civility option:eq(2)').prop('selected', true);
+	            break;
+	        case 'Mr':
+	            $('#civility option:eq(3)').prop('selected', true);
+	            break;
+	        case 'Miss':
+	            $('#civility option:eq(4)').prop('selected', true);
+	            break;
+	    }
+	}
+</script> 
+}
+
+
+
 @actions = {
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-9 text-center">
@@ -17,7 +83,7 @@
     </div>
 }
 
-@layouts.admin() {
+@layouts.admin("", end_scripts) {
     <div class="container">
     	@display_flash()
     
