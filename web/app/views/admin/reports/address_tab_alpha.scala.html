@@ -1,0 +1,30 @@
+@(customers: List[models.Customer])
+@import tags._
+
+@import tags._
+
+@head = {
+	<link rel="stylesheet" href="@remote_assets("stylesheets/addresses.min.css")">
+	@layouts.fragments.bootstrap_css()
+}
+
+@footer = {
+
+}
+
+@end_scripts = {
+
+}
+
+@layouts.simple(head, footer, end_scripts) {
+    <div class="container">
+    	@for((customer, index) <- customers.zipWithIndex) {
+    	<div class="address-alpha-row row">    	
+    		<div class="address-alpha-cell col-xs-12">
+        		<div class="name">@if(customer.civility != null) {@Html(Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.')+".short"))} @customer.firstname @customer.name</div>
+        		<div class="address">@customer.billingAddress</div>
+        	</div>
+    	</div>
+    	}
+    </div>
+}
