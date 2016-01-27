@@ -45,7 +45,7 @@ public class Customer extends Controller {
 	}
 	
 	public static Result add() {
-		return ok(customer_form.render(Form.form(models.Customer.class), true));		
+		return ok(customer_form.render(Form.form(models.Customer.class).fill(new models.Customer()), true));		
 	}
 	
 	public static Result edit(Long customerId) {
