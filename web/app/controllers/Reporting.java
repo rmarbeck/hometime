@@ -1,6 +1,5 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import models.MarginVatReport;
@@ -25,8 +24,8 @@ public class Reporting extends Controller {
 	private static List<models.Customer> getCustomers() {
 		/*List<models.Customer> customers = new ArrayList<models.Customer>();
 		for(int index = 0; index <10; index++) {
-			customers.addAll(models.Customer.findAll());
+			customers.addAll(models.Customer.findPrintableByDescId());
 		}*/
-		return models.Customer.findAllByDescId();
+		return models.Customer.findPrintableByDescId();
 	}
 }

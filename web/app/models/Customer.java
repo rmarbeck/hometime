@@ -133,6 +133,9 @@ public class Customer extends Model {
 	@Column(name="is_topic_open")
 	public Boolean isTopicOpen = false;
 	
+	@Column(name="should_print_address")
+	public Boolean shouldPrintAddress = true;
+
 	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
 	public List<Order> orders;
 
@@ -171,6 +174,10 @@ public class Customer extends Model {
     
     public static List<Customer> findAllByDescId() {
         return find.orderBy("id DESC").findList();
+    }
+    
+    public static List<Customer> findPrintableByDescId() {
+        return find.where().eq("should_print_address", true).orderBy("id DESC").findList();
     }
     
     public static List<Customer> findAllByEmailAsc() {
@@ -238,8 +245,6 @@ public class Customer extends Model {
 	
     public List<ValidationError> validate() {
     	List<ValidationError> errors = new ArrayList<ValidationError>();
-    	if (isTopicOpen == null)
-    		isTopicOpen = false;
         if (lastCommunicationDate != null) {
         	Logger.info("Date received : "+lastCommunicationDate.toString());
         }

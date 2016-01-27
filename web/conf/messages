@@ -1657,6 +1657,7 @@ admin.customer.form.value.status.real.customer=Client
 admin.customer.form.label.last.communication.date=Dernière communication
 admin.customer.form.placeholder.last.communication.date=dd/MM/yy
 admin.customer.form.label.is.topic.open=Sujet ouvert
+admin.customer.form.label.should.print.address=Imprimer adresse
 admin.customer.action.save=&nbsp;Créer
 admin.customer.action.edit=&nbsp;Modifier
 admin.customer.action.delete=&nbsp;Supprimer
