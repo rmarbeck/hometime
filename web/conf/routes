@@ -207,6 +207,7 @@ POST	/admin/manage/:model											controllers.CrudHelper.manage(model: String)
 GET		/admin/follow/external/document/url/:id							controllers.Admin.goToExternalDocumentUrl(id: Long)
 
 GET     /admin/margin-vat-report            							controllers.Reporting.index()
+GET     /admin/addresses		            							controllers.Reporting.addresses()
 
 # Sitemap
 GET     /sitemap.xml													controllers.Application.sitemap()

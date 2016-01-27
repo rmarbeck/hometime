@@ -1,0 +1,33 @@
+@(customers: List[models.Customer])
+@import tags._
+
+@import tags._
+
+@head = {
+        <link rel="stylesheet" href="@remote_assets("stylesheets/addresses.min.css")">
+        <link rel="stylesheet" href="@remote_assets("stylesheets/bootstrap_for_printing-v1.0.min.css")">
+}
+
+@footer = {
+
+}
+
+@end_scripts = {
+
+}
+
+@layouts.simple(head, footer, end_scripts) {
+    <div class="container">
+    	<div class="address-row row">    	
+    		@for((customer, index) <- customers.zipWithIndex) {
+			<div class="address-cell col-xs-6">
+        		<div class="name">@if(customer.civility != null) {@Html(Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.')+".short"))} @customer.firstname @customer.name</div>
+        		<div class="address">@customer.billingAddress</div>
+        	</div>
+	        	@if(index % 14 == 13) {
+	        	<div class="page-break">-</div>
+	        	}
+			}
+    	</div>
+    </div>
+}

@@ -1,0 +1,24 @@
+@(head: Html, footer: Html, end_scripts: Html = Html(""))(content: Html)
+@import tags._
+<!DOCTYPE html>
+
+<html lang="@Messages("global.code.lang.head")">
+    <head>
+        @head
+    </head>
+    <body>
+      
+      @content
+
+      @if_body_not_empty(footer) {
+      <div id="footer">
+      	<div class="container">
+        @footer
+        </div>
+      </div>
+      }
+
+      @end_scripts
+
+    </body>
+</html>

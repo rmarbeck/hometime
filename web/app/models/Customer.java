@@ -169,6 +169,10 @@ public class Customer extends Model {
         return find.orderBy("id ASC").findList();
     }
     
+    public static List<Customer> findAllByDescId() {
+        return find.orderBy("id DESC").findList();
+    }
+    
     public static List<Customer> findAllByEmailAsc() {
         return find.orderBy("email ASC").findList();
     }
