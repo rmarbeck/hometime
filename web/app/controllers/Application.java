@@ -214,6 +214,7 @@ public class Application extends Controller {
 		@Formats.NonEmpty
 	    @Constraints.MaxLength(60)
 		public String name;
+		@Constraints.Required
 		@Constraints.Email
 		@Constraints.MaxLength(60)
 		public String email;
