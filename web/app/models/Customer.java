@@ -204,6 +204,10 @@ public class Customer extends Model {
     	return find.where().orderBy("name ASC").findList();
     }
     
+    public static List<Customer> findByFirstNameAndNameAsc() {
+    	return find.where().orderBy("firstname, name ASC").findList();
+    }
+    
     public static List<Customer> findWithOpenTopic() {
     	return find.where().eq("is_topic_open", true).findList();
     }

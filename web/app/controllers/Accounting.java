@@ -76,7 +76,7 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html invoiceForm(Form<models.Invoice> invoiceForm, boolean isItANewInvoice) {
-		return invoice_form.render(invoiceForm, isItANewInvoice, models.Customer.findAll());
+		return invoice_form.render(invoiceForm, isItANewInvoice, models.Customer.findByFirstNameAndNameAsc());
 	}
 	
 	private static Html emptyNewInvoiceForm() {
@@ -192,7 +192,7 @@ public class Accounting extends Controller {
 	
 	
 	private static Html orderDocumentForm(Form<models.OrderDocument> orderDocumentForm, boolean isItANewOrderDocument) {
-		return order_document_form.render(orderDocumentForm, isItANewOrderDocument, models.Customer.findAll());
+		return order_document_form.render(orderDocumentForm, isItANewOrderDocument, models.Customer.findByFirstNameAndNameAsc());
 	}
 	
 	private static Html emptyNewOrderDocumentForm() {
@@ -296,7 +296,7 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html sellingDocumentForm(Form<models.SellingDocument> documentForm, boolean isItANewDocument) {
-		return selling_document_form.render(documentForm, isItANewDocument, models.Customer.findAll());
+		return selling_document_form.render(documentForm, isItANewDocument, models.Customer.findByFirstNameAndNameAsc());
 	}
 	
 	private static Html emptyNewsellingDocumentForm() {
