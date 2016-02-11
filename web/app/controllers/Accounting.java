@@ -46,7 +46,7 @@ public class Accounting extends Controller {
 	 */
 	
 	public static Result LIST_INVOICES = redirect(
-			routes.Accounting.displayAllInvoice(0, "description", "desc", "")
+			routes.Accounting.displayAllInvoice(0, "uniqueAccountingNumber", "desc", "")
 			);
 	
 	public static Result displayAllInvoice(int page, String sortBy, String order, String filter) {
@@ -55,6 +55,10 @@ public class Accounting extends Controller {
 	
 	public static Result addInvoiceByWatchToSellId(Long id) {
 		return ok(newInvoiceFormByWatchToSellId(id));		
+	}
+	
+	public static Result addInvoiceByOrderId(Long id) {
+		return ok(newInvoiceFormByOrderId(id));		
 	}
 	
 	public static Result addInvoice() {
@@ -97,6 +101,22 @@ public class Accounting extends Controller {
 		newInvoice.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLine(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice));
 		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.waranty.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
 		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.delivery.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
+	}
+	
+	private static Html newInvoiceFormByOrderId(long id) {
+		models.OrderDocument orderToInspireFrom = OrderDocument.findById(id);
+		if (orderToInspireFrom == null)
+			return emptyNewInvoiceForm();
+		models.Invoice newInvoice = new Invoice();
+		newInvoice.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
+		newInvoice.document.customer = orderToInspireFrom.document.customer;
+		newInvoice.type = orderToInspireFrom.type;
+		newInvoice.description = orderToInspireFrom.description;
+		if (orderToInspireFrom.document.lines != null)
+			for(AccountingLine line : orderToInspireFrom.document.lines)
+				newInvoice.addLine(line.type, line.description, line.unit, line.unitPrice);
+
 		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
 	}
 	
@@ -270,7 +290,7 @@ public class Accounting extends Controller {
 	 */
 	
 	public static Result LIST_SELLING_DOCUMENTS = redirect(
-			routes.Accounting.displayAllSellingDocument(0, "description", "desc", "")
+			routes.Accounting.displayAllSellingDocument(0, "", "desc", "")
 			);
 	
 	public static Result displayAllSellingDocument(int page, String sortBy, String order, String filter) {
