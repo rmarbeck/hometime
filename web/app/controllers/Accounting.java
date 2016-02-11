@@ -158,6 +158,7 @@ public class Accounting extends Controller {
 				return displayInvoice(currentInvoice);
 			} else {
 				updateDocument(invoiceForm.get().document, Invoice.findById(currentInvoice.id).document, getInvoiceHtml(currentInvoice));
+				currentInvoice.update();
 			}
 		}
 		return LIST_INVOICES;
@@ -193,7 +194,26 @@ public class Accounting extends Controller {
 	
 	private static models.Invoice getInvoiceFromForm(final Form<models.Invoice> invoiceForm) {
 		models.Invoice invoice = invoiceForm.get();
+		if (invoiceForm.get().id != null) {
+			invoice = Invoice.findById(invoiceForm.get().id);
+			cloneInvoice(invoice, invoiceForm.get());
+		}
+		
 		return invoice;
+	}
+	
+	public static void cloneInvoice(Invoice existingInvoice, Invoice toClone) {
+		if (toClone != null) {
+			existingInvoice.description = toClone.description;
+			existingInvoice.paymentConditions = toClone.paymentConditions;
+			existingInvoice.supportedPaymentMethods = toClone.supportedPaymentMethods;
+			existingInvoice.paymentMethodUsed = toClone.paymentMethodUsed;
+			existingInvoice.alreadyPayed = toClone.alreadyPayed;
+			existingInvoice.uniqueAccountingNumber = toClone.uniqueAccountingNumber;
+			existingInvoice.type = toClone.type;
+			existingInvoice.fromDate = toClone.fromDate;
+			existingInvoice.toDate = toClone.toDate;
+		}
 	}
 	
 	/*

@@ -2378,7 +2378,7 @@ admin.invoice.form.value.type.vat=Avec TVA
 admin.invoice.form.value.type.margin.vat=TVA sur marge
 admin.invoice.form.value.type.no.vat=Sans TVA
 admin.invoice.form.value.type.mixed.vat=Avec et sans TVA
-admin.invoice.form.value.type.reserved.1=Réservé
+admin.invoice.form.value.type.reserved.1=Vente export
 admin.invoice.form.value.type.reserved.2=Réservé
 
 admin.invoice.form.label.line.type=Type de ligne
@@ -2396,7 +2396,8 @@ admin.invoice.legal=Toute somme non payée dans les trente jours est augmentée 
  à son opération de refinancement la plus récente majoré de 10 points de pourcentage. Les pénalités de retard sont\
  exigibles sans qu''un rappel ne soit nécessaire. Le montant de l''indemnité forfaitaire pour frais de recouvrement prévue au\
  douzième alinéa du I de l''article L. 441-6 est fixé à 40 euros. Articles L. 441-6 et D. 441-5 du Code de commerce.
-admin.invoice.notice="Régime particulier-Biens d''occasion"<br />Article 242 nonies A, 16° de l''annexe II au CGI
+admin.invoice.notice.margin.vat="Régime particulier-Biens d''occasion"<br />Article 242 nonies A, 16° de l''annexe II au CGI
+admin.invoice.notice.reserved.1="Vente Export"<br />Exonération de TVA, article 262 I du CGI
 
 
 admin.order.document.text.bill=Bon de commande

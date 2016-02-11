@@ -82,11 +82,11 @@
 	        </div>
         </div>
      </div>
-     @if(invoice.getType().equals(models.Invoice.InvoiceType.MARGIN_VAT)) {
+     @if(invoice.getType().equals(models.Invoice.InvoiceType.MARGIN_VAT) || invoice.getType().equals(models.Invoice.InvoiceType.RESERVED_1)) {
      <div class="row">
         <div class="col-xs-12 text-center">
         	<div class="notice">
-					@Html(Messages("admin.invoice.notice"))
+					@Html(Messages("admin.invoice.notice."+invoice.getType().toString.toLowerCase.replace('_','.')))
         	</div>
         </div>
      </div>
