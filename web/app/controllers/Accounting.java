@@ -113,6 +113,7 @@ public class Accounting extends Controller {
 		newInvoice.document.customer = orderToInspireFrom.document.customer;
 		newInvoice.type = orderToInspireFrom.type;
 		newInvoice.description = orderToInspireFrom.description;
+		orderToInspireFrom.document.reorderLines();
 		if (orderToInspireFrom.document.lines != null)
 			for(AccountingLine line : orderToInspireFrom.document.lines)
 				newInvoice.addLine(line.type, line.description, line.unit, line.unitPrice);
