@@ -1,7 +1,6 @@
 package controllers;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -79,66 +78,6 @@ public class Accounting extends Controller {
 		return badRequest("error");
 	}
 	
-	private static Html invoiceForm(Form<models.Invoice> invoiceForm, boolean isItANewInvoice) {
-		return invoice_form.render(invoiceForm, isItANewInvoice, models.Customer.findByFirstNameAndNameAsc());
-	}
-	
-	private static Html emptyNewInvoiceForm() {
-		models.Invoice emptyInvoice = new Invoice();
-		emptyInvoice.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
-		return invoiceForm(Form.form(models.Invoice.class).fill(emptyInvoice), true);
-	}
-	
-	private static Html newInvoiceFormByWatchToSellId(long id) {
-		models.WatchToSell watchToSell = WatchToSell.findById(id);
-		if (watchToSell == null)
-			return emptyNewInvoiceForm();
-		models.Invoice newInvoice = new Invoice();
-		newInvoice.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
-		newInvoice.document.customer = watchToSell.customerThatBoughtTheWatch;
-		newInvoice.type = InvoiceType.MARGIN_VAT;
-		newInvoice.description = Messages.get("admin.invoice.description.selling.a.watch", watchToSell.brand.display_name, watchToSell.model);
-		newInvoice.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLine(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice));
-		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.waranty.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
-		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.delivery.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
-		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
-	}
-	
-	private static Html newInvoiceFormByOrderId(long id) {
-		models.OrderDocument orderToInspireFrom = OrderDocument.findById(id);
-		if (orderToInspireFrom == null)
-			return emptyNewInvoiceForm();
-		models.Invoice newInvoice = new Invoice();
-		newInvoice.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
-		newInvoice.document.customer = orderToInspireFrom.document.customer;
-		newInvoice.type = orderToInspireFrom.type;
-		newInvoice.description = orderToInspireFrom.description;
-		orderToInspireFrom.document.reorderLines();
-		if (orderToInspireFrom.document.lines != null)
-			for(AccountingLine line : orderToInspireFrom.document.lines)
-				newInvoice.addLine(line.type, line.description, line.unit, line.unitPrice);
-
-		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
-	}
-	
-	private static String getMainLine(WatchToSell watchToSell) {
-		return Messages.get("admin.invoice.main.line.selling.a.watch",
-							watchToSell.brand.display_name,
-							watchToSell.model,
-							watchToSell.additionnalModelInfos!=null && !watchToSell.additionnalModelInfos.equals("")?" "+watchToSell.additionnalModelInfos:"",
-							watchToSell.isNew?Messages.get("admin.invoice.new.watch"):Messages.get("admin.invoice.used.watch"),
-							watchToSell.reference,
-							watchToSell.serial,
-							watchToSell.isNew?"":watchToSell.year!=null && !watchToSell.year.equals("")?Messages.get("admin.invoice.of.year",watchToSell.year):"",
-							watchToSell.additionnalInfos!=null && !watchToSell.additionnalInfos.equals("")?" "+watchToSell.additionnalInfos:"",
-							watchToSell.hasBox?(watchToSell.hasPapers?Messages.get("admin.invoice.box.and.papers"):Messages.get("admin.invoice.box.only")):(watchToSell.hasPapers?Messages.get("admin.invoice.papers.only"):Messages.get("admin.invoice.default")));
-	}
-	
-	private static Html existingInvoiceForm(models.Invoice invoice) {
-		invoice.document.reorderLines();
-		return invoiceForm(Form.form(models.Invoice.class).fill(invoice), false);
-	}
-
 	public static Result manageInvoice() {
 		final Form<models.Invoice> invoiceForm = Form.form(models.Invoice.class).bindFromRequest();
 		String action = Form.form().bindFromRequest().get("action");
@@ -157,11 +96,71 @@ public class Accounting extends Controller {
 			} else if ("show".equals(action)) {
 				return displayInvoice(currentInvoice);
 			} else {
-				updateDocument(invoiceForm.get().document, Invoice.findById(currentInvoice.id).document, getInvoiceHtml(currentInvoice));
-				currentInvoice.update();
+				updateInvoice(invoiceForm);
 			}
 		}
 		return LIST_INVOICES;
+	}
+	
+	/*********************************************************************************************************************/
+	
+	private static Html invoiceForm(Form<models.Invoice> invoiceForm, boolean isItANewInvoice) {
+		return invoice_form.render(invoiceForm, isItANewInvoice, models.Customer.findByFirstNameAndNameAsc());
+	}
+	
+	private static Html emptyNewInvoiceForm() {
+		models.Invoice emptyInvoice = new Invoice();
+		emptyInvoice.changeUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
+		return invoiceForm(Form.form(models.Invoice.class).fill(emptyInvoice), true);
+	}
+	
+	private static Html newInvoiceFormByWatchToSellId(long id) {
+		models.WatchToSell watchToSell = WatchToSell.findById(id);
+		if (watchToSell == null)
+			return emptyNewInvoiceForm();
+		models.Invoice newInvoice = new Invoice();
+		newInvoice.changeUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
+		newInvoice.document.customer = watchToSell.customerThatBoughtTheWatch;
+		newInvoice.type = InvoiceType.MARGIN_VAT;
+		newInvoice.description = Messages.get("admin.invoice.description.selling.a.watch", watchToSell.brand.display_name, watchToSell.model);
+		newInvoice.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLineForInvoice(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice));
+		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.waranty.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.delivery.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
+	}
+	
+	private static Html newInvoiceFormByOrderId(long id) {
+		models.OrderDocument orderToInspireFrom = OrderDocument.findById(id);
+		if (orderToInspireFrom == null)
+			return emptyNewInvoiceForm();
+		models.Invoice newInvoice = new Invoice();
+		newInvoice.changeUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
+		newInvoice.document.customer = orderToInspireFrom.document.customer;
+		newInvoice.type = orderToInspireFrom.type;
+		newInvoice.description = orderToInspireFrom.description;
+		if (orderToInspireFrom.document.retrieveLines() != null)
+			for(AccountingLine line : orderToInspireFrom.document.retrieveLines())
+				newInvoice.addLine(line.type, line.description, line.unit, line.unitPrice);
+
+		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
+	}
+	
+	private static String getMainLineForInvoice(WatchToSell watchToSell) {
+		return Messages.get("admin.invoice.main.line.selling.a.watch",
+							watchToSell.brand.display_name,
+							watchToSell.model,
+							watchToSell.additionnalModelInfos!=null && !watchToSell.additionnalModelInfos.equals("")?" "+watchToSell.additionnalModelInfos:"",
+							watchToSell.isNew?Messages.get("admin.invoice.new.watch"):Messages.get("admin.invoice.used.watch"),
+							watchToSell.reference,
+							watchToSell.serial,
+							watchToSell.isNew?"":watchToSell.year!=null && !watchToSell.year.equals("")?Messages.get("admin.invoice.of.year",watchToSell.year):"",
+							watchToSell.additionnalInfos!=null && !watchToSell.additionnalInfos.equals("")?" "+watchToSell.additionnalInfos:"",
+							watchToSell.hasBox?(watchToSell.hasPapers?Messages.get("admin.invoice.box.and.papers"):Messages.get("admin.invoice.box.only")):(watchToSell.hasPapers?Messages.get("admin.invoice.papers.only"):Messages.get("admin.invoice.default")));
+	}
+	
+	private static Html existingInvoiceForm(models.Invoice invoice) {
+		invoice.document.reorderLines();
+		return invoiceForm(Form.form(models.Invoice.class).fill(invoice), false);
 	}
 	
 	private static void updateDocument(AccountingDocument inFormDocument, AccountingDocument toUpdateDocument, Html htmlData) {
@@ -181,6 +180,13 @@ public class Accounting extends Controller {
 		return ok(getInvoiceHtml(invoice));
 	}
 	
+	private static void updateInvoice(Form<models.Invoice> invoiceForm) {
+		models.Invoice invoice = Invoice.findById(invoiceForm.get().id);
+		cloneInvoice(invoice, invoiceForm.get());
+		updateDocument(invoiceForm.get().document, Invoice.findById(invoice.id).document, getInvoiceHtml(invoiceForm.get()));
+		invoice.update();
+	}
+	
 	private static Html getInvoiceHtml(models.Invoice invoice) {
 		if (invoice == null)
 			return views.html.admin.accounting.invoice.render(null, 0f, 0f, 0f, 0f);
@@ -194,15 +200,10 @@ public class Accounting extends Controller {
 	
 	private static models.Invoice getInvoiceFromForm(final Form<models.Invoice> invoiceForm) {
 		models.Invoice invoice = invoiceForm.get();
-		if (invoiceForm.get().id != null) {
-			invoice = Invoice.findById(invoiceForm.get().id);
-			cloneInvoice(invoice, invoiceForm.get());
-		}
-		
 		return invoice;
 	}
 	
-	public static void cloneInvoice(Invoice existingInvoice, Invoice toClone) {
+	private static void cloneInvoice(Invoice existingInvoice, Invoice toClone) {
 		if (toClone != null) {
 			existingInvoice.description = toClone.description;
 			existingInvoice.paymentConditions = toClone.paymentConditions;
@@ -231,22 +232,10 @@ public class Accounting extends Controller {
 		return badRequest("error");		
 	}
 	
-	
-	private static Html orderDocumentForm(Form<models.OrderDocument> orderDocumentForm, boolean isItANewOrderDocument) {
-		return order_document_form.render(orderDocumentForm, isItANewOrderDocument, models.Customer.findByFirstNameAndNameAsc());
+	public static Result addOrderDocumentByWatchToSellId(Long id) {
+		return ok(newOrderDocumentFormByWatchToSellId(id));		
 	}
 	
-	private static Html emptyNewOrderDocumentForm() {
-		models.OrderDocument emptyOrder = new OrderDocument();
-		emptyOrder.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForOrders().toString());
-		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(emptyOrder), true);
-	}
-	
-	private static Html existingOrderDocumentForm(models.OrderDocument orderDocument) {
-		orderDocument.document.reorderLines();
-		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(orderDocument), false);
-	}
-
 	public static Result manageOrderDocument() {
 		final Form<models.OrderDocument> orderDocumentForm = Form.form(models.OrderDocument.class).bindFromRequest();
 		String action = Form.form().bindFromRequest().get("action");
@@ -265,14 +254,66 @@ public class Accounting extends Controller {
 			} else if ("show".equals(action)) {
 				return displayOrderDocument(currentOrderDocument);
 			} else {
-				updateDocument(orderDocumentForm.get().document, OrderDocument.findById(currentOrderDocument.id).document, getOrderDocumentHtml(currentOrderDocument));
+				updateOrderDocument(orderDocumentForm);
 			}
 		}
 		return LIST_ORDER_DOCUMENTS;
 	}
 	
+	/*********************************************************************************************************************/
+	
+	private static Html orderDocumentForm(Form<models.OrderDocument> orderDocumentForm, boolean isItANewOrderDocument) {
+		return order_document_form.render(orderDocumentForm, isItANewOrderDocument, models.Customer.findByFirstNameAndNameAsc());
+	}
+	
+	private static Html emptyNewOrderDocumentForm() {
+		models.OrderDocument emptyOrder = new OrderDocument();
+		emptyOrder.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForOrders().toString());
+		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(emptyOrder), true);
+	}
+	
+	private static Html existingOrderDocumentForm(models.OrderDocument orderDocument) {
+		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(orderDocument), false);
+	}
+	
+	private static Html newOrderDocumentFormByWatchToSellId(long id) {
+		models.WatchToSell watchToSell = WatchToSell.findById(id);
+		if (watchToSell == null)
+			return emptyNewOrderDocumentForm();
+		models.OrderDocument newOrder = new OrderDocument();
+		newOrder.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForOrders().toString());
+		newOrder.document.customer = watchToSell.customerThatBoughtTheWatch;
+		newOrder.type = InvoiceType.MARGIN_VAT;
+		newOrder.description = Messages.get("admin.order.document.description.selling.a.watch", watchToSell.brand.display_name, watchToSell.model);
+		newOrder.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLineForOrder(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice));
+		newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.document.waranty.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.document.delivery.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(newOrder), true);
+	}
+	
 	private static Result displayOrderDocument(models.OrderDocument orderDocument) {
 		return ok(getOrderDocumentHtml(orderDocument));
+	}
+	
+	private static void updateOrderDocument(Form<models.OrderDocument> orderDocumentForm) {
+		models.OrderDocument currentOrderDocument = OrderDocument.findById(orderDocumentForm.get().id);
+		cloneOrderDocument(currentOrderDocument, orderDocumentForm.get());
+		
+		updateDocument(orderDocumentForm.get().document, OrderDocument.findById(currentOrderDocument.id).document, getOrderDocumentHtml(orderDocumentForm.get()));
+		currentOrderDocument.update();
+	}
+	
+	private static String getMainLineForOrder(WatchToSell watchToSell) {
+		return Messages.get("admin.order.document.main.line.selling.a.watch",
+							watchToSell.brand.display_name,
+							watchToSell.model,
+							watchToSell.additionnalModelInfos!=null && !watchToSell.additionnalModelInfos.equals("")?" "+watchToSell.additionnalModelInfos:"",
+							watchToSell.isNew?Messages.get("admin.order.document.new.watch"):Messages.get("admin.order.document.used.watch"),
+							watchToSell.reference,
+							"",
+							watchToSell.isNew?"":watchToSell.year!=null && !watchToSell.year.equals("")?Messages.get("admin.order.document.of.year",watchToSell.year):"",
+							watchToSell.additionnalInfos!=null && !watchToSell.additionnalInfos.equals("")?" "+watchToSell.additionnalInfos:"",
+							watchToSell.hasBox?(watchToSell.hasPapers?Messages.get("admin.order.document.box.and.papers"):Messages.get("admin.order.document.box.only")):(watchToSell.hasPapers?Messages.get("admin.order.document.papers.only"):Messages.get("admin.order.document.default")));
 	}
 	
 	private static Html getOrderDocumentHtml(models.OrderDocument orderDocument) {
@@ -288,8 +329,23 @@ public class Accounting extends Controller {
 	
 	private static models.OrderDocument getOrderDocumentFromForm(final Form<models.OrderDocument> orderDocumentForm) {
 		models.OrderDocument orderDocument = orderDocumentForm.get();
+
 		return orderDocument;
 	}
+	
+	private static void cloneOrderDocument(OrderDocument existingOrderDocument, OrderDocument toClone) {
+		if (toClone != null) {
+			existingOrderDocument.description = toClone.description;
+			existingOrderDocument.paymentConditions = toClone.paymentConditions;
+			existingOrderDocument.supportedPaymentMethods = toClone.supportedPaymentMethods;
+			existingOrderDocument.uniqueAccountingNumber = toClone.uniqueAccountingNumber;
+			existingOrderDocument.type = toClone.type;
+			existingOrderDocument.delay = toClone.delay;
+			existingOrderDocument.detailedInfos = toClone.detailedInfos;
+			existingOrderDocument.validUntilDate = toClone.validUntilDate;
+		}
+	}
+	
 	
 	public static Result LIST_ORDER_DOCUMENTS = redirect(
 			routes.Accounting.displayAllOrderDocument(0, "uniqueAccountingNumber", "desc", "")
@@ -347,7 +403,6 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html existingSellingDocumentForm(models.SellingDocument sellingDocument) {
-		sellingDocument.document.reorderLines();
 		return sellingDocumentForm(Form.form(models.SellingDocument.class).fill(sellingDocument), false);
 	}
 	
@@ -369,7 +424,7 @@ public class Accounting extends Controller {
 			} else if ("show".equals(action)) {
 				return displaySellingDocument(currentDocument);
 			} else {
-				updateDocument(documentForm.get().document, SellingDocument.findById(currentDocument.id).document, getSellingDocumentHtml(currentDocument));
+				updateDocument(documentForm.get().document, SellingDocument.findById(currentDocument.id).document, getSellingDocumentHtml(documentForm.get()));
 			}
 		}
 		return LIST_SELLING_DOCUMENTS;

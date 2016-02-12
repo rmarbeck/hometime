@@ -2309,6 +2309,19 @@ admin.invoice.box.only=avec boite d''origine
 admin.invoice.papers.only=avec papiers d''origine
 admin.invoice.default=avec boite générique
 
+admin.order.document.description.selling.a.watch=Vente d''une montre {0} {1}
+admin.order.document.main.line.selling.a.watch=Vente d''une montre {0} {1}{2} {3}, ref. {4}{5}, {6}{7} livrée {8}
+admin.order.document.waranty.line.selling.a.watch=Garantie watchnext pendant 2 ans
+admin.order.document.delivery.line.selling.a.watch=Remise en mains propres à domicile | Envoi sécurisé en valeur déclarée ({1}/4G000XXXXXXXX) - Assurée sur valeur réelle par contrat d'assurance AXA - à hauteur de 30€ par la Poste
+
+admin.order.document.of.year= datant de {0}
+admin.order.document.new.watch=neuve
+admin.order.document.used.watch=d''occasion
+admin.order.document.box.and.papers=avec boite et papiers d''origine
+admin.order.document.box.only=avec boite d''origine
+admin.order.document.papers.only=avec papiers d''origine
+admin.order.document.default=avec boite générique
+
 admin.invoice.total.line.class=total
 admin.invoice.total.line.value.class=text-right
 admin.invoice.unit.class=text-center

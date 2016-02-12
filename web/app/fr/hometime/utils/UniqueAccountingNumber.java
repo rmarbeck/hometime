@@ -61,9 +61,9 @@ public class UniqueAccountingNumber {
 		if (fromInvoice == null)
 			return fromString(fromSellingDocument.getUniqueAccountingNumber());
 		if (fromSellingDocument == null)
-			return fromString(fromInvoice.getUniqueAccountingNumber());
+			return fromString(fromInvoice.retrieveUniqueAccountingNumber());
 
-		return selectOlder(fromInvoice.getUniqueAccountingNumber(), fromInvoice.getUniqueAccountingNumber());
+		return selectOlder(fromInvoice.retrieveUniqueAccountingNumber(), fromInvoice.retrieveUniqueAccountingNumber());
 	}
 	
 	private static UniqueAccountingNumber getLastForOrders() {

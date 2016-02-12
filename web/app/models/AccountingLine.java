@@ -60,6 +60,9 @@ public class AccountingLine extends Model {
 	
 	@Column(length = 10000)
 	public String description;
+
+	@Column(name="ranking")
+	public int order = 0;
 	
 	public Long unit;
 
@@ -90,11 +93,16 @@ public class AccountingLine extends Model {
 	}
 	
 	public AccountingLine(AccountingDocument document, LineType type, String description, Long unit, Float unitPrice) {
+		this(document, type, description, unit, unitPrice, 0);
+	}
+	
+	public AccountingLine(AccountingDocument document, LineType type, String description, Long unit, Float unitPrice, int order) {
 		this(document);
 		this.type = type;
 		this.description = description;
 		this.unit = unit;
 		this.unitPrice = unitPrice;
+		this.order = order;
 	}
 	
 	
@@ -112,7 +120,7 @@ public class AccountingLine extends Model {
     
     public static List<AccountingLine> findByAccountingDocumentId(Long id) {
         return find.where().eq("document.id", id)
-    			.orderBy("id ASC").findList();
+    			.orderBy("order, id ASC").findList();
     }
     
     public static List<AccountingLine> findByCustomer(models.Customer customer) {

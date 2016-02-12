@@ -6,6 +6,8 @@
         	@(index+=1)
         	                 
             @simple_admin_select(line("type"), models.AccountingLine.LineType.values, key+".line.type")
+            
+            @simple_admin_input(line("order").copy(value=Some(""+(index-1))), key+".line.order", '_class -> "hidden")
         	
 			@simple_admin_textarea(line("description"), key+".line.description", '_label_class -> "hidden", '_class -> "col-xs-6" , '_body_class -> "")
 	

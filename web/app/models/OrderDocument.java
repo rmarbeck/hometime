@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import models.AccountingLine.LineType;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -90,6 +91,10 @@ public class OrderDocument extends Model {
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
+    }
+    
+    public void  addLine(LineType type, String description, Long unit, Float unitPrice) {
+    	this.document.addLine(type, description, unit, unitPrice);
     }
 
 	@Override

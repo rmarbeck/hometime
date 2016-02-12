@@ -38,6 +38,9 @@
             $('#invoice_line_'+copyPosition).find("[for*='lines_']").each(function() {
             	$(this).attr("for", $(this).attr("for").replace(copiedPosition,copyPosition));
             });
+            $('#invoice_line_'+copyPosition).find("[id*='_order']").each(function() {
+            	$(this).attr("value", $(this).attr("value").replace(copiedPosition,copyPosition));
+            });
          });
          
          $('#remove-line').click(function(event) {

@@ -14,6 +14,7 @@ create table accounting_document (
 create table accounting_line (
   id                        bigint not null,
   description               varchar(10000),
+  ranking                   integer,
   unit                      bigint,
   unit_price                float,
   info                      varchar(10000),

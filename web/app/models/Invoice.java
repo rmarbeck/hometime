@@ -130,9 +130,7 @@ public class Invoice extends Model {
     }
     
     public void  addLine(LineType type, String description, Long unit, Float unitPrice) {
-    	if (this.document.lines == null)
-    		this.document.lines = new ArrayList<AccountingLine>();
-    	this.document.lines.add(new AccountingLine(this.document, type, description, unit, unitPrice));
+    	this.document.addLine(type, description, unit, unitPrice);
     }
 
 	@Override
@@ -147,11 +145,11 @@ public class Invoice extends Model {
 		super.update();
 	}
 
-	public String getUniqueAccountingNumber() {
+	public String retrieveUniqueAccountingNumber() {
 		return uniqueAccountingNumber;
 	}
 	
-	public void setUniqueAccountingNumber(String uan) {
+	public void changeUniqueAccountingNumber(String uan) {
 		this.uniqueAccountingNumber = uan;
 	}
 }
