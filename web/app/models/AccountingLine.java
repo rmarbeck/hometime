@@ -120,7 +120,7 @@ public class AccountingLine extends Model {
     
     public static List<AccountingLine> findByAccountingDocumentId(Long id) {
         return find.where().eq("document.id", id)
-    			.orderBy("order, id ASC").findList();
+    			.orderBy("ranking, id ASC").findList();
     }
     
     public static List<AccountingLine> findByCustomer(models.Customer customer) {
