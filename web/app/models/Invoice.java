@@ -152,5 +152,9 @@ public class Invoice extends Model {
 	public void changeUniqueAccountingNumber(String uan) {
 		this.uniqueAccountingNumber = uan;
 	}
+	
+	public Date getCreationDate() {
+		return this.document.creationDate;
+	}
 }
 

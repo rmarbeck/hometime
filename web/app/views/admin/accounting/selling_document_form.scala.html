@@ -21,39 +21,7 @@
 }
 
 @end_scripts = {
-<script>
-    $(document).ready(function(){
-    	
-    	var indexPosition = $("[id*='invoice_line_']:last").attr("id").substr(13);
-    	    	
-    	$("[id*='invoice_line_']").each(function() {
-				$( 'option[value="WITH_VAT_BY_UNIT"]' ).attr('disabled', 'disabled');
-				$( 'option[value="WITHOUT_VAT_BY_UNIT"]' ).attr('selected', 'selected');
-            });
-    	
-        $('#add-line').click(function(event) {
-        	event.preventDefault();
-        	var copiedPosition = indexPosition;
-        	var copyPosition = ++indexPosition;
-            $('#invoice_line_'+copiedPosition).clone().attr('id', 'invoice_line_'+ copyPosition).insertAfter('#invoice_line_'+ copiedPosition);
-            
-			$('#invoice_line_'+copyPosition).find("[id*='lines_']").each(function() {
-				$(this).attr("id", $(this).attr("id").replace(copiedPosition,copyPosition));
-				$(this).attr("name", $(this).attr("name").replace(copiedPosition,copyPosition));
-            });
-            $('#invoice_line_'+copyPosition).find("[for*='lines_']").each(function() {
-            	$(this).attr("for", $(this).attr("for").replace(copiedPosition,copyPosition));
-            });
-         });
-         
-         $('#remove-line').click(function(event) {
-        	event.preventDefault();
-			$('#invoice_line_'+indexPosition).remove();
-			--indexPosition;
-         });
-         
-    })  
-</script> 
+	@admin.accounting.fragments.javascript_in_form()
 }
 
 

@@ -1,4 +1,4 @@
-@(modelDisplay: views.ModelDisplay, newlink: () => Html, editlink: (Long) => Html)
+@(modelDisplay: views.ModelDisplay, newlink: () => Html, editlink: (Long) => Html, body: Html = Html(""))
 
 @import tags._
 
@@ -8,19 +8,24 @@
   	<div class="row display">
     	<div class="col-xs-12">
     		<h1>@Html(Messages(modelDisplay.getLabelKey+".title"))</h1>
+
+	@if(newlink != null) {
+    <div class="row display">
+    	<div class="col-xs-12">
+			<a type="button" class="btn btn-default" href="@newlink()"><span class="glyphicon glyphicon-edit"></span>@Html(Messages(modelDisplay.getLabelKey+".action.new"))</a>
     	</div>
     </div>
-
-  <a type="button" class="btn btn-default" href="@newlink()"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.order.action.new"))</a>
-
+    }
   
       @for(currentField <- modelDisplay.getFields) {
-	    <div class="row">
+	    <div class="row display @currentField.getRenderingOption">
       		<div class="col-xs-12 @if(currentField.hideSmall) {hidden-xs}">
-				@Messages(currentField.getKey) : @currentField.display 
+				<span class="display-label">@Messages(currentField.getKey)</span>&nbsp;:&nbsp;<span class="display-value">@currentField.display</span> 
 			</div>
 	    </div>      	
       }
   </div>
+  
+  @body
 
 }

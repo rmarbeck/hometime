@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import play.Logger;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
+import play.i18n.Messages;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
@@ -267,6 +268,12 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     	if (brand != null)
     		return brand.display_name;
     	return "unknown";
+    }
+    
+    public String getFullNameWithCivility() {
+    	if (customerThatBoughtTheWatch != null)
+    		return customerThatBoughtTheWatch.getFullNameWithCivility();
+    	return null;
     }
 	
 }

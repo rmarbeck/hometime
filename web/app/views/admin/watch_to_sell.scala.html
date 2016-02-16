@@ -9,10 +9,26 @@
     @routes.CrudHelper.create("WatchesToSell")
 }
 
-@defining(new views.ModelDisplay(watch_to_sell)) { modelDisplay =>
-		@{ 	modelDisplay.addField("model");
-			modelDisplay.addField("brand");
+@end_body = {
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10 text-center">
+      	<a class="btn btn-primary" href="@routes.Accounting.addOrderDocumentByWatchToSellId(watch_to_sell.id)"><span class="glyphicon glyphicon-list-alt"></span>@Html(Messages("admin.watchtosell.action.new.order.document"))</a>
+        <a class="btn btn-success" href="@routes.Accounting.addInvoiceByWatchToSellId(watch_to_sell.id)"><span class="glyphicon glyphicon-list-alt"></span>@Html(Messages("admin.watchtosell.action.new.invoice"))</a>
+        <a class="btn btn-warning" href="#"><span class="glyphicon glyphicon-certificate"></span>@Html(Messages("admin.watchtosell.action.new.waranty"))</a>                  
+      </div>
+    </div>
+}
+
+@defining(new views.ModelDisplay(watch_to_sell, "admin.watchtosell")) { modelDisplay =>
+		@{ 	modelDisplay.addField("brand");
+			modelDisplay.addField("model");
+			modelDisplay.addField("reference");
+			modelDisplay.addField("serial");
+			modelDisplay.addField("additionnalModelInfos", "getAdditionnalModelInfos");
+			modelDisplay.addField("purchasingPice", "getPurchasingPrice", false, null, "price");
+			modelDisplay.addField("customer", "getFullNameWithCivility");
+			modelDisplay.addField("sellingPrice", "getSellingPrice", false, null, "price");
 		}
 	
-	@admin.template.display(modelDisplay, newlink, editlink)
+	@admin.template.display(modelDisplay, null, editlink, end_body)
 }

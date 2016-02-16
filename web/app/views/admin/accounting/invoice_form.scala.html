@@ -21,53 +21,7 @@
 }
 
 @end_scripts = {
-<script>
-    $(document).ready(function(){
-    	
-    	var indexPosition = $("[id*='invoice_line_']:last").attr("id").substr(13);
-        $('#add-line').click(function(event) {
-        	event.preventDefault();
-        	var copiedPosition = indexPosition;
-        	var copyPosition = ++indexPosition;
-            $('#invoice_line_'+copiedPosition).clone().attr('id', 'invoice_line_'+ copyPosition).insertAfter('#invoice_line_'+ copiedPosition);
-            
-			$('#invoice_line_'+copyPosition).find("[id*='lines_']").each(function() {
-				$(this).attr("id", $(this).attr("id").replace(copiedPosition,copyPosition));
-				$(this).attr("name", $(this).attr("name").replace(copiedPosition,copyPosition));
-            });
-            $('#invoice_line_'+copyPosition).find("[for*='lines_']").each(function() {
-            	$(this).attr("for", $(this).attr("for").replace(copiedPosition,copyPosition));
-            });
-            $('#invoice_line_'+copyPosition).find("[id*='_order']").each(function() {
-            	$(this).attr("value", $(this).attr("value").replace(copiedPosition,copyPosition));
-            });
-         });
-         
-         $('#remove-line').click(function(event) {
-        	event.preventDefault();
-			$('#invoice_line_'+indexPosition).remove();
-			--indexPosition;
-         });
-
-         $('#type').change(function() {
-         	if ( $(this).val() == "VAT" ) {
-            	$( 'option[value="WITHOUT_VAT_BY_UNIT"]' ).attr('disabled', 'disabled');
-            	$( 'option[value="WITH_VAT_BY_UNIT"]' ).removeAttr('disabled');
-            }
-            
-            if ( $(this).val() == "MARGIN_VAT" || $(this).val() == "NO_VAT" ) {
-            	$( 'option[value="WITH_VAT_BY_UNIT"]' ).attr('disabled', 'disabled');
-            	$( 'option[value="WITHOUT_VAT_BY_UNIT"]' ).removeAttr('disabled');
-            }
-            
-            if ( $(this).val() == "MIXED_VAT" ) {
-            	$( 'option[value="WITH_VAT_BY_UNIT"]' ).removeAttr('disabled');
-            	$( 'option[value="WITHOUT_VAT_BY_UNIT"]' ).removeAttr('disabled');
-            }
- 		 });
-         
-    })  
-</script> 
+	@admin.accounting.fragments.javascript_in_form() 
 }
 
 

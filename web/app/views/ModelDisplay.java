@@ -53,6 +53,10 @@ public class ModelDisplay {
 			return fieldName;
 		}
 		
+		public String getRenderingOption() {
+			return renderingOption;
+		}
+		
 		public String getKey() {
 			if (labelKey == null || labelKey.equals(""))
 				return MAIN_KEY.replaceFirst("MODELNAME", getModelName().toLowerCase()).replaceFirst("FIELDNAME", getFieldName().toLowerCase()).replace("_", ".");

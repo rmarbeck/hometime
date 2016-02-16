@@ -273,6 +273,7 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html existingOrderDocumentForm(models.OrderDocument orderDocument) {
+		orderDocument.document.reorderLines();
 		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(orderDocument), false);
 	}
 	
@@ -298,7 +299,6 @@ public class Accounting extends Controller {
 	private static void updateOrderDocument(Form<models.OrderDocument> orderDocumentForm) {
 		models.OrderDocument currentOrderDocument = OrderDocument.findById(orderDocumentForm.get().id);
 		cloneOrderDocument(currentOrderDocument, orderDocumentForm.get());
-		
 		updateDocument(orderDocumentForm.get().document, OrderDocument.findById(currentOrderDocument.id).document, getOrderDocumentHtml(orderDocumentForm.get()));
 		currentOrderDocument.update();
 	}
@@ -367,7 +367,7 @@ public class Accounting extends Controller {
 	 */
 	
 	public static Result LIST_SELLING_DOCUMENTS = redirect(
-			routes.Accounting.displayAllSellingDocument(0, "", "desc", "")
+			routes.Accounting.displayAllSellingDocument(0, "uniqueAccountingNumber", "desc", "")
 			);
 	
 	public static Result displayAllSellingDocument(int page, String sortBy, String order, String filter) {
@@ -403,6 +403,7 @@ public class Accounting extends Controller {
 	}
 	
 	private static Html existingSellingDocumentForm(models.SellingDocument sellingDocument) {
+		sellingDocument.document.reorderLines();
 		return sellingDocumentForm(Form.form(models.SellingDocument.class).fill(sellingDocument), false);
 	}
 	
@@ -424,11 +425,14 @@ public class Accounting extends Controller {
 			} else if ("show".equals(action)) {
 				return displaySellingDocument(currentDocument);
 			} else {
-				updateDocument(documentForm.get().document, SellingDocument.findById(currentDocument.id).document, getSellingDocumentHtml(documentForm.get()));
+				updateSellingDocument(documentForm);
+				//updateDocument(documentForm.get().document, SellingDocument.findById(currentDocument.id).document, getSellingDocumentHtml(documentForm.get()));
 			}
 		}
 		return LIST_SELLING_DOCUMENTS;
 	}
+	
+	/*********************************************************************************************************************/
 	
 	
 	private static Result displaySellingDocument(models.SellingDocument document) {
@@ -441,6 +445,25 @@ public class Accounting extends Controller {
 
 		return views.html.admin.accounting.selling_document.render(document, 0f);
 	}
+	
+	private static void updateSellingDocument(Form<models.SellingDocument> sellingDocumentForm) {
+		models.SellingDocument currentSellingDocument = SellingDocument.findById(sellingDocumentForm.get().id);
+		cloneSellingDocument(currentSellingDocument, sellingDocumentForm.get());
+		updateDocument(sellingDocumentForm.get().document, SellingDocument.findById(currentSellingDocument.id).document, getSellingDocumentHtml(sellingDocumentForm.get()));
+		currentSellingDocument.update();
+	}
+	
+	private static void cloneSellingDocument(SellingDocument existingSellingDocument, SellingDocument toClone) {
+		if (toClone != null) {
+			existingSellingDocument.description = toClone.description;
+			existingSellingDocument.uniqueAccountingNumber = toClone.uniqueAccountingNumber;
+			existingSellingDocument.paymentMethodUsed = toClone.paymentMethodUsed;
+			existingSellingDocument.date = toClone.date;
+		}
+	}
+	
+	
+	/*********************************************************************************************************************/
 	
 	private static Float computeHTTotalAmountForVatLines(List<models.AccountingLine> lines) {
 		if (lines == null)
