@@ -1,0 +1,35 @@
+@(thisInstance: Form[models.PostServiceCertificate], isItNew: Boolean)
+
+@import tags._
+
+@defining(new views.FormDisplay(thisInstance, "PostServiceCertificate", "admin.postservicecertificate.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("owner.email", models.Customer.findAllByEmailAsc);
+		   formDisplay.addFormFieldForSelect("watch.serial", false, models.CustomerWatch.getSerialsBySerialAsc, models.CustomerWatch.findAllBySerialAsc);
+		   formDisplay.addFormField("documentDate", true, "input", 'type -> "date");
+		   formDisplay.addFormField("workDone", true, "textarea");
+		   formDisplay.addFormField("privateInfos", true, "textarea");
+		   formDisplay.addFormField("mechanicalTestResult", true, "input");
+		   formDisplay.addFormField("quartzTestResult", true, "input");
+		   formDisplay.addFormField("waterproofingTestResult", true, "input");
+		   formDisplay.addFormField("waterproofWaranted", true, "checkbox")
+		   formDisplay.addFormField("waterproofWarantyDate", true, "input", 'type -> "date");
+		   formDisplay.addFormField("workingWaranted", true, "checkbox")
+		   formDisplay.addFormField("workingWarantyDate", true, "input", 'type -> "date");
+		   
+		   formDisplay.addFormField("nextWaterproofingRecommendedYear", true, "input", 'type -> "number", 'min -> "2016", 'step -> "1");
+		   formDisplay.addFormField("nextServiceRecommendedYear", true, "input", 'type -> "number", 'min -> "2016", 'step -> "1");
+		   
+		   formDisplay.addFormField("usageTips", true, "textarea");
+		   
+		   formDisplay.addFormField("displayQuickDateTip", true, "checkbox")
+		   formDisplay.addFormField("displayLowWaterResistanceTip", true, "checkbox")
+		   formDisplay.addFormField("displayWindingTip", true, "checkbox")
+		   formDisplay.addFormField("displayScrewingDownCrownTip", true, "checkbox")
+		   formDisplay.addFormField("displayPushingCrownTip", true, "checkbox")
+		   formDisplay.addFormField("displayClosingCrownTip", true, "checkbox")
+		   formDisplay.addFormField("displayReadManualTip", true, "checkbox")
+		   formDisplay.addFormField("displayWaterLeakTip", true, "checkbox")
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew)
+}

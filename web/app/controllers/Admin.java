@@ -31,6 +31,7 @@ import views.html.admin.buy_request;
 import views.html.admin.buy_requests;
 import views.html.admin.orders;
 import views.html.admin.index;
+import views.html.admin.cgv;
 import views.html.admin.quotation;
 import views.html.admin.quotation_form;
 import views.html.admin.service_test;
@@ -241,6 +242,10 @@ public class Admin extends Controller {
 	
 	public static Result displayOrderRequests(int page, String sortBy, String order, String filter) {
         return ok(order_requests.render(OrderRequest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
+    }
+	
+	public static Result cgv() {
+        return ok(cgv.render());
     }
 	
 	public static Result displayOrderRequest(long id) {

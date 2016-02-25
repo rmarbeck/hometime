@@ -8,10 +8,12 @@
       	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages(formDisplay.getActionKey+".cancel"))</a>
       @if(isItNew) {
       	<button type="submit" class="btn btn-success" name="action" value="save"><span class="glyphicon glyphicon-save">@Html(Messages(formDisplay.getActionKey+".save"))</button>
+      	<button type="submit" class="btn btn-primary" name="action" value="show" formtarget="_blank"><span class="glyphicon glyphicon-save">@Html(Messages(formDisplay.getActionKey+".show"))</button>
       } else {
       	@tags.inputHidden(formDisplay.getForm().field("id"))
         <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages(formDisplay.getActionKey+".edit"))</button>
-        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages(formDisplay.getActionKey+".delete"))</button>                  
+        <button type="submit" class="btn btn-primary" name="action" value="show" formtarget="_blank"><span class="glyphicon glyphicon-save">@Html(Messages(formDisplay.getActionKey+".show"))</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete"><span class="glyphicon glyphicon-trash"></span>@Html(Messages(formDisplay.getActionKey+".delete"))</button>
       }
       </div>
     </div>
@@ -42,7 +44,7 @@
                 @simple_admin_checkbox(currentField.getField, currentField.getKey, currentField.options.toSeq:_*)
               }
               case "select" => {
-                @simple_admin_select(currentField.getField, currentField.getPossibleValues.toSeq, currentField.getKey, currentField.options.toSeq:_*)
+                @simple_admin_select_enhanced(currentField.getField, currentField.getPossibleKeys.zip(currentField.getPossibleValues), currentField.getKey, currentField.options.toSeq:_*)
               }
             }
       	</td>

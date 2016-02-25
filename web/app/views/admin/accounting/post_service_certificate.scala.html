@@ -1,0 +1,117 @@
+@(thisInstance: models.PostServiceCertificate)
+@import tags._
+@import views.AccountingSheet
+@import java.lang.String; var title=""
+@import models.Customer; var customer=new models.Customer()
+@import models.CustomerWatch; var watch=new models.CustomerWatch()
+@import models.AccountingDocument; var document=new models.AccountingDocument()
+@import java.lang.Integer; var year=new java.lang.Integer(java.time.Year.now().getValue())
+
+@{
+	title=Messages("admin.post.service.certificate.title", thisInstance.watch.getModel);
+	if(thisInstance.owner.email != null) {
+		customer = models.Customer.findByEmail(thisInstance.owner.email);
+		if(customer != null && customer.civility!=null) {
+			title=title+" - "+Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.'));
+		}
+		if(customer != null) {
+			title=title+" "+customer.firstname+" "+customer.name;
+			document = new models.AccountingDocument(customer);
+			document.setDocumentCreationDate(thisInstance.documentDate);
+		}
+	}
+	watch = models.CustomerWatch.findBySerial(thisInstance.watch.readSerial); 
+}
+
+@layouts.admin_accounting(title, document) {
+  <div class="certificate post-service-certificate">
+     
+     <div class="row">
+        <div class="type col-xs-12">
+	        <h2>@Html(Messages("admin.post.service.certificate.text"))</h2>
+        </div>
+     </div>
+     
+     <div class="watch row">
+     	<div class="watch-description col-xs-12">
+	        <h3>@Html(Messages("admin.post.service.certificate.watch.description"))</h3>
+        </div>
+     	<div class="container">
+		    <div class="row">
+		        <div class="watch-details col-xs-6">
+			        <h4>@Html(Messages("admin.post.service.certificate.watch.brand"))</h4>
+			        <p>@watch.getBrand</p>
+			        <h4>@Html(Messages("admin.post.service.certificate.watch.model"))</h4>
+			        <p>@if_not_null_nor_empty_else(watch.getModel) {@watch.getModel} {@Html(Messages("admin.post.service.certificate.watch.model.unknown"))}</p>
+			        <h4>@Html(Messages("admin.post.service.certificate.watch.movement"))</h4>
+			        <p>@if_not_null_nor_empty_else(watch.getMovement) {@watch.getMovement} {@Html(Messages("admin.post.service.certificate.watch.movement.unknown"))}</p>
+		        </div>
+		        <div class="type col-xs-6">
+			        <h4>@Html(Messages("admin.post.service.certificate.watch.reference"))</h4>
+			        <p>@if_not_null_nor_empty_else(watch.getReference) {@watch.getReference} {@Html(Messages("admin.post.service.certificate.watch.reference.unknown"))}</p>
+			        <h4>@Html(Messages("admin.post.service.certificate.watch.case.serial"))</h4>
+			        <p>@if_not_null_nor_empty_else(watch.getSerial2) {@watch.getSerial2} {@Html(Messages("admin.post.service.certificate.watch.serial.unknown"))}</p>
+			        <h4>@Html(Messages("admin.post.service.certificate.watch.serial"))</h4>
+			        <p>@if_not_null_nor_empty_else(watch.readSerial) {@watch.readSerial} {@Html(Messages("admin.post.service.certificate.watch.serial.unknown"))}</p>
+		        </div>
+		    </div>
+	 	</div>
+	 </div>
+     <hr />
+     <div class="row">
+     	<div class="service col-xs-12">
+	        <h3>@Html(Messages("admin.post.service.certificate.service.description"))</h3>
+	        <p>@thisInstance.workDone</p>
+	        <br />
+	        @if_not_null_nor_empty(thisInstance.mechanicalTestResult) {<p>@Html(Messages("admin.post.service.certificate.service.mechanical.test.result", thisInstance.mechanicalTestResult))</p>}
+	        @if_not_null_nor_empty(thisInstance.quartzTestResult) {<p>@Html(Messages("admin.post.service.certificate.service.quartz.test.result", thisInstance.quartzTestResult))</p>}
+	        @if_not_null_nor_empty(thisInstance.waterproofingTestResult) {<p>@Html(Messages("admin.post.service.certificate.service.waterproofing.test.result", thisInstance.waterproofingTestResult))</p>}
+        </div>
+     </div>
+     <hr />
+     @if(thisInstance.waterproofWaranted || thisInstance.workingWaranted) {
+     <div class="row">
+     	<div class="waranty col-xs-12">
+	        <h3>@Html(Messages("admin.post.service.certificate.waranty.description"))</h3>
+	        @if(thisInstance.workingWaranted) {<p>@Html(Messages("admin.post.service.certificate.waranty.working", thisInstance.workingWarantyDate))</p>}
+	        @if(thisInstance.waterproofWaranted) {<p>@Html(Messages("admin.post.service.certificate.waranty.waterproof", thisInstance.waterproofWarantyDate))</p>}
+	        @if(thisInstance.workingWaranted) {
+	        <br />
+	        <p class="footnote">@Html(Messages("admin.post.service.certificate.waranty.working.footnote"))</p>
+	        }
+        </div>
+     </div>
+     <hr />
+     }
+     @if(thisInstance.nextWaterproofingRecommendedYear > year.intValue || thisInstance.nextServiceRecommendedYear > year.intValue) { 
+     <div class="row">
+     	<div class="next-service col-xs-12">
+	        <h3>@Html(Messages("admin.post.service.certificate.next.services"))</h3>
+	        @if(thisInstance.nextWaterproofingRecommendedYear > year.intValue) {<p>@Html(Messages("admin.post.service.certificate.next.service.waterproof", thisInstance.nextWaterproofingRecommendedYear))</p>}
+	        @if(thisInstance.nextServiceRecommendedYear > year.intValue) {<p>@Html(Messages("admin.post.service.certificate.next.service.full", thisInstance.nextServiceRecommendedYear))</p>}
+        </div>
+     </div>
+     <hr />
+     }
+     <div class="row">
+     	<div class="tips col-xs-12">
+	        <h3>@Html(Messages("admin.post.service.certificate.tips"))</h3>
+	        @if_not_null_nor_empty(thisInstance.usageTips) {<p>@thisInstance.usageTips</p>}
+	        @if(thisInstance.displayQuickDateTip) {<p>@Html(Messages("admin.post.service.certificate.tip.quick.date", thisInstance.displayQuickDateTip))</p>}
+	        @if(thisInstance.displayLowWaterResistanceTip) {<p>@Html(Messages("admin.post.service.certificate.tip.low.water.resistance", thisInstance.displayLowWaterResistanceTip))</p>}
+	        @if(thisInstance.displayWindingTip) {<p>@Html(Messages("admin.post.service.certificate.tip.winding", thisInstance.displayWindingTip))</p>}
+	        @if(thisInstance.displayScrewingDownCrownTip) {<p>@Html(Messages("admin.post.service.certificate.tip.screwing.crown", thisInstance.displayScrewingDownCrownTip))</p>}
+	        @if(thisInstance.displayClosingCrownTip) {<p>@Html(Messages("admin.post.service.certificate.tip.closing.crown", thisInstance.displayClosingCrownTip))</p>}
+	        @if(thisInstance.displayReadManualTip) {<p>@Html(Messages("admin.post.service.certificate.tip.read.manual", thisInstance.displayReadManualTip))</p>}
+	        @if(thisInstance.displayWaterLeakTip) {<p>@Html(Messages("admin.post.service.certificate.tip.water.leak", thisInstance.displayWaterLeakTip))</p>}
+        </div>
+     </div>
+     <div class="row">
+     	<div class="stamp col-xs-12">
+	        <h3>@Html(Messages("admin.post.service.certificate.stamp"))</h3>
+        </div>
+     </div>
+  </div>
+}
+
+

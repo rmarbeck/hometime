@@ -212,6 +212,8 @@ GET     /admin/margin-vat-report            							controllers.Reporting.index()
 GET     /admin/addresses		            							controllers.Reporting.addresses()
 GET     /admin/addressbook		            							controllers.Reporting.addressBook()
 
+GET     /admin/cgv				            							controllers.Admin.cgv()
+
 # Sitemap
 GET     /sitemap.xml													controllers.Application.sitemap()
 GET     /plan-du-site													controllers.Application.siteplan()

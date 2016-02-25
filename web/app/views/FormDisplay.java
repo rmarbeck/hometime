@@ -26,14 +26,20 @@ public class FormDisplay {
 		public String fieldName;
 		public String fieldKey;
 		public String type;
+		public List<?> possibleKeys;
 		public List<?> possibleValues;
 		public List<Tuple2<Symbol, String>> options;
 		public boolean hideSmall;
 		
-		protected FormField(Form<?> form, String fieldName, String fieldKey, boolean hideSmall, List<?> possibleValues, Tuple2<Symbol, String>... tuple) {
+		protected FormField(Form<?> form, String fieldName, String fieldKey, boolean hideSmall, List<?> possibleKeys, List<?> possibleValues, Tuple2<Symbol, String>... tuple) {
 			this(form, fieldName, fieldKey, hideSmall, SELECT_TYPE);
 			this.options = new ArrayList<Tuple2<Symbol,String>>(Arrays.asList(tuple));
+			this.possibleKeys = possibleKeys;
 			this.possibleValues = possibleValues;
+		}
+		
+		protected FormField(Form<?> form, String fieldName, String fieldKey, boolean hideSmall, List<?> possibleValues, Tuple2<Symbol, String>... tuple) {
+			this(form, fieldName, fieldKey, hideSmall, possibleValues, possibleValues, tuple);
 		}
 		
 		protected FormField(Form<?> form, String fieldName, String fieldKey, boolean hideSmall, String type, Tuple2<Symbol, String>... tuple) {
@@ -48,6 +54,7 @@ public class FormDisplay {
 			this.hideSmall = hideSmall;
 			this.type = type;
 			this.options = new ArrayList<Tuple2<Symbol,String>>();
+			this.possibleKeys = new ArrayList();
 			this.possibleValues = new ArrayList();
 		}
 
@@ -69,6 +76,10 @@ public class FormDisplay {
 		
 		public String getName() {
 			return fieldName;
+		}
+		
+		public List<?> getPossibleKeys() {
+			return possibleKeys;
 		}
 		
 		public List<?> getPossibleValues() {
@@ -115,6 +126,12 @@ public class FormDisplay {
 
 	public void addFormField(String fieldName, String type, Tuple2<Symbol, String>... tuple) {
 		addFormField(fieldName, null, false, type, tuple);
+	}
+	
+	public void addFormFieldForSelect(String fieldName, boolean hideSmall, List<?> possibleKeys, List<?> possibleValues, Tuple2<Symbol, String>... tuple) {
+		if (formFields == null)
+			formFields = new ArrayList<FormDisplay.FormField>();
+		formFields.add(new FormField(form, fieldName, null, hideSmall, possibleKeys, possibleValues, tuple));
 	}
 	
 	public void addFormFieldForSelect(String fieldName, boolean hideSmall, List<?> possibleValues, Tuple2<Symbol, String>... tuple) {

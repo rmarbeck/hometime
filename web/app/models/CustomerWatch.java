@@ -1,7 +1,9 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -124,6 +126,20 @@ public class CustomerWatch extends Model {
         return find.all();
     }
     
+    public static List<CustomerWatch> findAllBySerialAsc() {
+        return find.where().orderBy("serial ASC").findList();
+    }
+    
+    public static List<String> getSerialsBySerialAsc() {
+    	List<CustomerWatch> watches = findAllBySerialAsc();
+    	List<String> serials = new ArrayList<String>();
+    	if (watches != null) {
+    		for (CustomerWatch watch : watches)
+    			serials.add(watch.readSerial());
+    	}
+    	return serials;
+    }
+    
     public static CustomerWatch findById(Long id) {
         return find.byId(id.toString());
     }
@@ -131,6 +147,10 @@ public class CustomerWatch extends Model {
     public static List<CustomerWatch> findByCustomer(models.Customer customer) {
     	return find.where().eq("customer.id", customer.id)
         			.orderBy("next_partial_service desc").findList();
+    }
+    
+    public static CustomerWatch findBySerial(String serial) {
+    	return find.where().eq("serial", serial).findUnique();
     }
 
     public static Page<CustomerWatch> page(int page, int pageSize, String sortBy, String order, String filter) {
@@ -172,6 +192,34 @@ public class CustomerWatch extends Model {
 	private boolean previousStatusWasDifferent() {
 		CustomerWatch inDB = CustomerWatch.findById(this.id);
 		return !inDB.status.equals(this.status);
+	}
+	
+	public String getBrand() {
+		return brand;
+	}
+	
+	public String getMovement() {
+		return movement;
+	}
+	
+	public String getModel() {
+		return model;
+	}
+	
+	public String readSerial() {
+		return serial;
+	}
+	
+	public String getReference() {
+		return reference;
+	}
+	
+	public String getSerial2() {
+		return serial2;
+	}
+	
+	public String toString() {
+		return customer.name + " -> " + brand + " " + model;
 	}
 }
 

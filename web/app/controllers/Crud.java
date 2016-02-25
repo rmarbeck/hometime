@@ -44,11 +44,14 @@ public class Crud<T extends Model & CrudReady<T, F>, F> {
     }
     
     public Result display(Long id) {
-    	T t = tInstance.getFinder().byId(id.toString());
-        if (t == null) {
+        return display(tInstance.getFinder().byId(id.toString()));
+    }
+    
+    private Result display(T instance) {
+        if (instance == null) {
             return notFound();
         }
-        return ok(showTemplate.render(t));
+        return ok(showTemplate.render(instance));
     }
     
     public Result edit(Long id) {
@@ -93,6 +96,8 @@ public class Crud<T extends Model & CrudReady<T, F>, F> {
 				T currentInstance = tInstance.getInstanceFromForm(currentForm);
 				if ("save".equals(action)) {
 					currentInstance.save();
+				} else if ("show".equals(action)) {
+					return display(currentInstance);
 				} else {
 					currentInstance.update();
 				}

@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import com.avaje.ebean.Page;
 
+import play.Logger;
 import play.data.Form;
 import play.db.ebean.Model;
 

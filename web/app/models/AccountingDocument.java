@@ -79,5 +79,9 @@ public class AccountingDocument extends Model {
 			lines = new ArrayList<AccountingLine>();
 		lines.add(new AccountingLine(this, type, description, unit, unitPrice, linesIndex++));
 	}
+	
+	public void setDocumentCreationDate(Date newDate) {
+		creationDate = newDate;
+	}
 }
 
