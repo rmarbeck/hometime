@@ -2689,6 +2689,7 @@ admin.externaldocument.action.cancel=&nbsp;Annuler
 admin.externaldocument.action.save=&nbsp;Créer
 admin.externaldocument.action.delete=&nbsp;Supprimer
 admin.externaldocument.action.edit=&nbsp;Modifier
+admin.externaldocument.action.show=&nbsp;Prévisualiser
 
 admin.externaldocument.page.title=Factures externes
 admin.externaldocument.page=Factures externes

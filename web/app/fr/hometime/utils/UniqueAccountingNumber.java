@@ -63,7 +63,7 @@ public class UniqueAccountingNumber {
 		if (fromSellingDocument == null)
 			return fromString(fromInvoice.retrieveUniqueAccountingNumber());
 
-		return selectOlder(fromInvoice.retrieveUniqueAccountingNumber(), fromInvoice.retrieveUniqueAccountingNumber());
+		return selectOlder(fromInvoice.retrieveUniqueAccountingNumber(), fromSellingDocument.getUniqueAccountingNumber());
 	}
 	
 	private static UniqueAccountingNumber getLastForOrders() {
