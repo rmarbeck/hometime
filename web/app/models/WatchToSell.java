@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -122,6 +123,8 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	
 	public String movement;
 	
+	public String strap;
+	
 	public String seller;
 	
 	@Column(length = 10000)
@@ -202,12 +205,73 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
         return find.byId(id.toString());
     }
     
+    public static List<WatchToSell> findAllBySerialAsc() {
+        return find.where().orderBy("serial ASC").findList();
+    }
+    
+    public static List<WatchToSell> findAllByCustomerAndBrandAsc() {
+        return find.where().orderBy("customerThatBoughtTheWatch.firstname ASC, brand.display_name ASC").findList();
+    }
+    
+    public static List<String> getSerialsBySerialAsc() {
+    	List<WatchToSell> watches = findAllBySerialAsc();
+    	List<String> serials = new ArrayList<String>();
+    	if (watches != null) {
+    		for (WatchToSell watch : watches)
+    			serials.add(watch.readSerial());
+    	}
+    	return serials;
+    }
+    
+    public static List<String> getIdsByCustomersAsc() {
+    	List<WatchToSell> watches = findAllByCustomerAndBrandAsc();
+    	List<String> watchesByCustomers = new ArrayList<String>();
+    	if (watches != null) {
+    		for (WatchToSell watch : watches)
+    			watchesByCustomers.add(watch.id.toString());
+    	}
+    	return watchesByCustomers;
+    }
+    
+    private static String displayWatchByCustomer(WatchToSell watch) {
+    	StringBuilder result = new StringBuilder();
+    	if (watch.customerThatBoughtTheWatch != null) {
+    		result.append(watch.customerThatBoughtTheWatch.getFullName());
+    	} else {
+    		result.append("unknown");
+    	}
+    	result.append(" -> ");
+    	result.append(watch.brand.display_name);
+    	result.append(" ");
+    	result.append(watch.model);
+    	
+    	return result.toString();
+    }
+    
+    public static List<String> getWatchesByCustomersAsc() {
+    	List<WatchToSell> watches = findAllByCustomerAndBrandAsc();
+    	List<String> watchesByCustomers = new ArrayList<String>();
+    	if (watches != null) {
+    		for (WatchToSell watch : watches)
+    			watchesByCustomers.add(displayWatchByCustomer(watch));
+    	}
+    	return watchesByCustomers;
+    }
+    
     public static List<WatchToSell> findByCustomer(models.Customer customer) {
     	return find.where().eq("customerThatBoughtTheWatch.id", customer.id)
         			.orderBy("creationDate desc").findList();
     }
+    
+    public static WatchToSell findBySerial(String serial) {
+    	return find.where().eq("serial", serial).findUnique();
+    }
 
     public static Page<WatchToSell> page(int page, int pageSize, String sortBy, String order, String filter) {
+    	if (sortBy == null || sortBy.equals("")) {
+    		sortBy = "brand.display_name";
+    		order = "ASC";
+    	}
         return 
             find.fetch("brand").where().or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand.display_name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
@@ -256,6 +320,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	}
 	
 	private void checkBeforeSaving() {
+		Logger.debug("-------------------> "+this.brand);
 		if (this.brand != null)
 			this.brand = Brand.findByInternalName(this.brand.internal_name);
 		if (this.customerThatBoughtTheWatch != null)
@@ -275,6 +340,35 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     		return customerThatBoughtTheWatch.getFullNameWithCivility();
     	return null;
     }
+    
+    public String getBrandName() {
+		return getBrandDisplayName();
+	}
+    
+    public Brand getBrand() {
+		return brand;
+	}
+	
+	
+	public String getMovement() {
+		return movement;
+	}
+	
+	public String getModel() {
+		return model;
+	}
+	
+	public String readSerial() {
+		return serial;
+	}
+	
+	public String getReference() {
+		return reference;
+	}
+	
+	public String getStrap() {
+		return strap;
+	}
 	
 }
 

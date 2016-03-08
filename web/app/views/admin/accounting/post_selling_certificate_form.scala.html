@@ -1,19 +1,17 @@
-@(thisInstance: Form[models.PostServiceCertificate], isItNew: Boolean)
+@(thisInstance: Form[models.PostSellingCertificate], isItNew: Boolean)
 
 @import tags._
 
-@defining(new views.FormDisplay(thisInstance, "PostServiceCertificate", "admin.postservicecertificate.form")) { formDisplay =>
-		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.CustomerWatch.getIdsByCustomersAsc, models.CustomerWatch.getWatchesByCustomersAsc);
+@defining(new views.FormDisplay(thisInstance, "PostSellingCertificate", "admin.postsellingcertificate.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.WatchToSell.getIdsByCustomersAsc, models.WatchToSell.getWatchesByCustomersAsc);
 		   formDisplay.addFormField("documentDate", true, "input", 'type -> "date");
-		   formDisplay.addFormField("workDone", true, "textarea");
-		   formDisplay.addFormField("privateInfos", true, "textarea");
-		   formDisplay.addFormField("mechanicalTestResult", true, "input");
-		   formDisplay.addFormField("quartzTestResult", true, "input");
-		   formDisplay.addFormField("waterproofingTestResult", true, "input");
+		   formDisplay.addFormField("testResult", true, "input");
 		   formDisplay.addFormField("waterproofWaranted", true, "checkbox")
 		   formDisplay.addFormField("waterproofWarantyDate", true, "input", 'type -> "date");
-		   formDisplay.addFormField("workingWaranted", true, "checkbox")
-		   formDisplay.addFormField("workingWarantyDate", true, "input", 'type -> "date");
+		   formDisplay.addFormField("brandWaranted", true, "checkbox")
+		   formDisplay.addFormField("brandWarantyDate", true, "input", 'type -> "date");
+		   formDisplay.addFormField("sellerWaranted", true, "checkbox")
+		   formDisplay.addFormField("sellerWarantyDate", true, "input", 'type -> "date");
 		   
 		   formDisplay.addFormField("nextWaterproofingRecommendedYear", true, "input", 'type -> "number", 'min -> "2016", 'step -> "1");
 		   formDisplay.addFormField("nextServiceRecommendedYear", true, "input", 'type -> "number", 'min -> "2016", 'step -> "1");

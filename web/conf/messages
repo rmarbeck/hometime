@@ -1338,8 +1338,10 @@ admin.navbar.link.text.accounting=Facturation
 admin.navbar.link.text.watches.to.sell=Stock
 admin.navbar.link.text.accounting.external.documents=Factures externes
 admin.navbar.link.text.accounting.add.external.document=Nouvelle facture externe
-admin.navbar.link.text.accounting.private.service.certificate=Certificat d''entretien
-admin.navbar.link.text.accounting.add.private.service.certificate=Nouveau certificat d''entretien
+admin.navbar.link.text.accounting.post.service.certificate=Certificats d''entretien
+admin.navbar.link.text.accounting.add.post.service.certificate=Nouveau certificat d''entretien
+admin.navbar.link.text.accounting.post.selling.certificate=Certificats d''authenticité et de garantie
+admin.navbar.link.text.accounting.add.post.selling.certificate=Nouveau certificat d''authenticité et de garantie
 
 admin.page.nothing.to.display=Aucun article à afficher
 admin.page.text.display.all=Tous
@@ -1683,7 +1685,7 @@ admin.customer.form.value.civility.madame=Madame
 admin.customer.form.value.civility.mister=Mister
 admin.customer.form.value.civility.miss=Miss
 admin.customer.head.watches=Ses montres
-admin.customer.head.orders=Commandes
+admin.customer.head.orders=Ses commandes
 
 admin.customer.orders.header.date=Date de création
 admin.customer.orders.header.brand=Marque
@@ -1761,10 +1763,25 @@ admin.customer.watch.watches.header.reference=Référence
 admin.customer.watch.watches.header.status=Statut
 admin.customer.watch.watches.header.customer=Client
 
+admin.customer.order.documents.no.order.document.to.display=Aucun bon de commande pour ce client
+admin.customer.head.order.documents=Ses bons de commande
+admin.customer.action.add.order.document=&nbsp;Nouveau bon de commande
+admin.customer.order.documents.header.date=Date
+admin.customer.order.documents.header.unique.accounting.number=Numéro
+admin.customer.order.documents.header.description=Description
+
+admin.customer.invoices.no.invoice.to.display=Aucune facture pour ce client
+admin.customer.head.invoices=Ses factures
+admin.customer.action.add.invoice=&nbsp;Nouvelle facture
+admin.customer.invoices.header.date=Date
+admin.customer.invoices.header.unique.accounting.number=Numéro
+admin.customer.invoices.header.description=Description
+
 admin.customer.watch.action.save=&nbsp;Créer
 admin.customer.watch.action.edit=&nbsp;Modifier
 admin.customer.watch.action.delete=&nbsp;Supprimer
 admin.customer.watch.action.cancel=&nbsp;Annuler
+admin.customer.watch.action.create.certificate=&nbsp;Créer certificat
 admin.customer.watch.create.call.to.action=Promouvoir le prospect en client
 
 admin.customer.watch.label.brand=Marque
@@ -2261,6 +2278,7 @@ admin.invoice.head.url=www.hometime.fr
 admin.invoice.head.phone.number=07 82 43 47 51
 admin.invoice.title.bill=Facture {0}
 admin.invoice.text.bill=Facture
+admin.invoice.head.document.date=Document établi le {0, date,d MMMM yyyy}
 
 admin.invoice.header.description=Désignation
 admin.invoice.header.quantity=Quantité
@@ -2556,10 +2574,13 @@ admin.watchtosell.form=Montre à vendre
 admin.watchtosell.form.title=Montre à vendre
 admin.watchtosell.action.cancel=&nbsp;Annuler
 admin.watchtosell.action.save=&nbsp;Créer
+admin.watchtosell.action.show=&nbsp;Prévisualiser
 admin.watchtosell.action.delete=&nbsp;Supprimer
 admin.watchtosell.action.edit=&nbsp;Modifier
 admin.watchtosell.form.brand.internal.name.label.name=Marque
 admin.watchtosell.form.brand.internal.name.default.name=Sélectionner la marque
+admin.watchtosell.form.strap.label.name=Bracelet
+admin.watchtosell.form.strap.placeholder.name=
 admin.watchtosell.form.model.label.name=Modèle
 admin.watchtosell.form.model.placeholder.name=
 admin.watchtosell.form.additionnalmodelinfos.label.name=Infos complémentaires sur le modèle
@@ -2714,8 +2735,8 @@ admin.postservicecertificate.action.delete=&nbsp;Supprimer
 admin.postservicecertificate.action.show=&nbsp;Prévisualiser
 admin.postservicecertificate.form.owner.email.default.name=Sélectionner le client
 admin.postservicecertificate.form.owner.email.label.name=Client
-admin.postservicecertificate.form.watch.serial.default.name=Sélectionner la montre
-admin.postservicecertificate.form.watch.serial.label.name=Montre
+admin.postservicecertificate.form.watch.id.default.name=Sélectionner la montre
+admin.postservicecertificate.form.watch.id.label.name=Montre
 admin.postservicecertificate.form.documentdate.label.name=Date du certificat
 admin.postservicecertificate.form.workdone.label.name=Travail réalisé
 admin.postservicecertificate.form.workdone.placeholder.name=...
@@ -2779,3 +2800,78 @@ admin.post.service.certificate.watch.reference.unknown=&nbsp;
 admin.post.service.certificate.watch.movement.unknown=&nbsp;
 admin.post.service.certificate.watch.model.unknown=&nbsp;
 admin.post.service.certificate.stamp=Cachet :
+
+
+admin.postsellingcertificate.page=Certificats d''authenticité et de garantie
+admin.postsellingcertificate.page.title=Certificats d''authenticité et de garantie
+admin.postsellingcertificate.page.owner=Client
+admin.postsellingcertificate.page.brand=Marque
+admin.postsellingcertificate.page.model=Modèle
+
+admin.post.selling.certificate.title=Certificat d''authenticité et de garantie
+admin.post.selling.certificate.text=Certificat d''authenticité et de garantie
+admin.post.selling.certificate.main=Par la présente, la société Watch next SAS certifie réaliser la vente d''une montre {0} authentique décrite ci-dessous et garantir son bon fonctionnement.
+admin.post.selling.certificate.watch.description=Description de la montre :
+admin.post.selling.certificate.watch.brand.and.model=Marque - Modèle : {0} - {1}
+admin.post.selling.certificate.watch.reference.and.serial=Référence - Numéro de série : {0} - {1}
+admin.post.selling.certificate.watch.movement=Mouvement : {0}
+admin.post.selling.certificate.watch.strap=Bracelet(s) : {0}
+admin.post.selling.certificate.testing.description=Opérations réalisées avant la vente :
+admin.post.selling.certificate.waranty.description=Portée de la garantie :
+
+admin.post.selling.certificate.waranty.brand=Garantie internationale {0} <b>: valable jusqu''au {1, date,d MMMM yyyy}</b>
+admin.post.selling.certificate.waranty.waterproof=La garantie d''étanchéité <b>: valable jusqu''au {0, date,d MMMM yyyy}</b>
+admin.post.selling.certificate.waranty.seller=Garantie watch next de bon fonctionnement* <b>: valable jusqu''au {0, date,d MMMM yyyy}</b>
+admin.post.selling.certificate.waranty.seller.footnote=* porte sur le mouvement et ne couvre pas les bris de fournitures et l''oxydation
+
+admin.post.selling.certificate.next.services=Prochains entretiens conseillés :
+
+admin.post.selling.certificate.next.service.waterproof=Entretien intermédiaire <small>(changement des joints d''étanchéité et test sous pression)</small> <b>: à partir de {0,number,####}</b>
+admin.post.selling.certificate.next.service.full=Révision complète <b>: à partir de {0,number,####}</b>
+admin.post.selling.certificate.tips=Informations essentielles liées à l''utilisation :
+
+admin.post.selling.certificate.tip.quick.date=<b>Ne pas changer la date entre 22h et 6h du matin. Ceci pourrait endommager le mécanisme.</b>
+admin.post.selling.certificate.tip.water.leak=En cas de trace d''eau dans le boitier, prendre immédiatement contact avec un horloger.
+admin.post.selling.certificate.tip.low.water.resistance=<b>Cette montre n''est pas conçue pour être immergée, éviter les contacts prolongés avec l''eau.</b>
+admin.post.selling.certificate.tip.winding=Remonter la montre avant de la porter si celle-ci s''est arrêtée après une période sans portée.
+admin.post.selling.certificate.tip.screwing.crown=Penser à bien revisser la couronne de remontoir après chaque manipulation.
+admin.post.selling.certificate.tip.pushing.crown=Penser à bien repousser la couronne de remontoir après chaque manipulation.
+admin.post.selling.certificate.tip.closing.crown=Penser à bien refermer le protège couronne après chaque manipulation.
+admin.post.selling.certificate.tip.read.manual=Penser à consulter le manuel d''utilisation de votre montre pour éviter toute fausse manipulation.
+
+admin.post.selling.certificate.stamp=Cachet Watch next :
+
+admin.postsellingcertificate.form=Certificat d''authenticité et de garantie
+admin.postsellingcertificate.form.title=Certificat d''authenticité et de garantie
+admin.postsellingcertificate.action.cancel=&nbsp;Annuler
+admin.postsellingcertificate.action.edit=&nbsp;Modifier
+admin.postsellingcertificate.action.save=&nbsp;Créer
+admin.postsellingcertificate.action.show=&nbsp;Prévisualiser
+admin.postsellingcertificate.action.delete=&nbsp;Supprimer
+admin.postsellingcertificate.form.owner.email.label.name=Client
+admin.postsellingcertificate.form.watch.id.label.name=Montre
+admin.postsellingcertificate.form.watch.id.default.name=Sélectionner la montre
+admin.postsellingcertificate.form.owner.email.default.name=Sélectionner le client
+admin.postsellingcertificate.form.documentdate.label.name=Date du document
+admin.postsellingcertificate.form.testresult.label.name=Résultat des tests
+admin.postsellingcertificate.form.testresult.placeholder.name=...
+admin.postsellingcertificate.form.waterproofwaranted.label.name=Etanchéité garantie ?
+admin.postsellingcertificate.form.waterproofwarantydate.label.name=Date de garantie d''étanchéité
+admin.postsellingcertificate.form.brandwaranted.label.name=Garantie de la marque ?
+admin.postsellingcertificate.form.brandwarantydate.label.name=Date de garantie de la marque
+admin.postsellingcertificate.form.sellerwaranted.label.name=Garantie watch next ?
+admin.postsellingcertificate.form.sellerwarantydate.label.name=Date de garantie watch next
+admin.postsellingcertificate.form.nextwaterproofingrecommendedyear.label.name=Prochain contrôle d''étanchéité
+admin.postsellingcertificate.form.nextservicerecommendedyear.label.name=Prochaine révision complète
+admin.postsellingcertificate.form.usagetips.label.name=Conseils
+admin.postsellingcertificate.form.usagetips.placeholder.name=...
+admin.postsellingcertificate.form.displayquickdatetip.label.name=Conseil date rapide
+admin.postsellingcertificate.form.displaywaterleaktip.label.name=Conseil entrée d''eau
+admin.postsellingcertificate.form.displaylowwaterresistancetip.label.name=Conseil étanchéité limitée
+admin.postsellingcertificate.form.displaywindingtip.label.name=Conseil remontage après arrêt
+admin.postsellingcertificate.form.displayscrewingdowncrowntip.label.name=Conseil revissage couronne
+admin.postsellingcertificate.form.displayclosingcrowntip.label.name=Conseil fermeture sécurité couronne (Panerai)
+admin.postsellingcertificate.form.displayreadmanualtip.label.name=Conseil lire le manuel
+admin.postsellingcertificate.form.displaypushingcrowntip.label.name=Conseil repousser la couronne
+admin.postsellingcertificate.form.testresult.watch.is.new=La montre est neuve.
+admin.postsellingcertificate.form.testresult.watch.has.been.tested=Les performances de la montre ont été testées avec succès.

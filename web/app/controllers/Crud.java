@@ -63,7 +63,11 @@ public class Crud<T extends Model & CrudReady<T, F>, F> {
     }
     
     public Result create() {
-        return ok(editTemplate.render(tInstance.fillForm(form), true));
+        return create(form);
+    }
+    
+    public Result create(Form<F> preFilledForm) {
+        return ok(editTemplate.render(tInstance.fillForm(preFilledForm), true));
     }
     
     public Result save() {
@@ -82,6 +86,7 @@ public class Crud<T extends Model & CrudReady<T, F>, F> {
     
     public Result manage() {
     	Form<F> currentForm = form.bindFromRequest();
+    	Logger.debug(currentForm.toString());
 		String action = Form.form().bindFromRequest().get("action");
 		if ("delete".equals(action)) {
 			T instanceInDB = tInstance.getFinder().byId(Form.form().bindFromRequest().get("id").toString());

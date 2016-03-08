@@ -43,7 +43,7 @@
 	}
 	
 	
-	h2, h3, h4 {
+	h2, h3, h4, .date {
 		font-weight: bold;
 	}
 	
@@ -127,13 +127,6 @@
 		font-weight: bold;
 	}
 	
-	.cgv img {
-		position:absolute;
-		top: 1005px;
-		margin: 0 auto;
-		width: 100%;
-	}
-	
 	.payment-infos, .descriptions {
 	
 	}
@@ -151,6 +144,18 @@
 	.signing {
 		margin-top: 1em;
 		text-align: right;
+	}
+	
+	.post-selling-certificate {
+		font-size: 12px;
+	}
+	
+	.post-selling-certificate h2 {
+		font-size: 16px;
+	}
+	
+	.post-selling-certificate h3 {
+		text-decoration: underline;
 	}
 	
 	.certificate .type h2 {
@@ -191,18 +196,109 @@
 		font-size: 10px;
 	}
 	
+	
+	.certificate p.main {
+		padding-left: 0;
+		margin-bottom: 1em;
+		white-space: normal;
+	}
+	
+	
 	.certificate hr {
 		width: 80px;
-    	border: 0;
-    	height: 1px;
-    	background: #aaa;
-    	margin-top: 0.4em;
-    	margin-bottom: 0em;
+		border: 0;
+		height: 1px;
+		background: #aaa;
+		margin-top: 0.4em;
+		margin-bottom: 0em;
 	}
 	
 	.certificate .stamp h3 {
 		text-align: right;
 		margin-right: 15em;
+		text-decoration: none;
+	}
+
+	.cgv .container {
+		position:absolute;
+		top: 970px;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	.cgv {
+		font-family: Cambria,Georgia,serif;
+		font-size: 6px;
+		color: #000;
+	}
+	
+	.cgv .row {
+		margin: 0 -15px;
+	}
+	
+	.cgv .col-xs-2 {
+		width: 20%;
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+	
+	.cgv .title {
+		font-size: 11px;
+		text-align: center;
+		font-weight: bold;
+		margin-bottom: 7px !important;
+	}
+	
+	.cgv .title .small {
+		font-size: 9px;
+	}
+	
+	
+	.cgv .content {
+		text-align: justify;
+	    text-justify: inter-word;
+	}
+	
+	
+	.cgv .sub-title, .cgv .bullet {
+		font-weight: bold;
+	}
+	
+	.cgv .bullet {
+		list-style-type: disc;
+		padding-left: 4em;
+		margin-top: -2px !important;
+		margin-bottom: 5px !important;
+	}
+	
+	.cgv p {
+		margin-bottom: 6px !important;
+	}
+	
+	.cgv p:last-of-type {
+		margin-bottom: 0px !important;
+	}
+	
+	.cgv ul {
+	  margin-bottom: 6px !important;
+	}
+	
+	
+	.cgv ul.list {
+	  list-style-type: none;
+	  padding-left: 2em;
+	}
+	
+	.cgv ul.list > li:before {
+	  content: "–"; /* en dash */
+	  position: absolute;
+	  margin-left: -1.1em; 
+	}
+	
+	.cgv p.end {
+		white-space: pre;
+		margin-top: -6px;
+		text-align: center;
 	}
 	
 	    

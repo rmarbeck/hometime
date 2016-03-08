@@ -1,3 +1,3 @@
 @(field: play.api.data.Field, possibleValues: Seq[_], key: String, args: (Symbol,Any)*)
 
-@tags.simple_admin_select_enhanced(field, for (s <- possibleValues) yield s.toString -> Option(Messages(key.replaceAll("VARIABLE", "value")+"."+s.toString.toLowerCase.replace('_','.'))).filter(!_.contains(".")).getOrElse(s.toString), key, args:_*)
+@tags.simple_admin_select_enhanced(field, for (s <- possibleValues) yield s.toString -> s.toString, key, args:_*)

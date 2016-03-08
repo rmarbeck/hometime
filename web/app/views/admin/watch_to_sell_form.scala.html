@@ -3,7 +3,7 @@
 @import tags._
 
 @defining(new views.FormDisplay(thisInstance, "WatchToSell", "admin.watchtosell.form")) { formDisplay =>
-		@{ formDisplay.addFormFieldForSelect("brand.internal_name", models.Brand.findAllByAscName);
+		@{ formDisplay.addFormFieldForSelect("brand.internal_name", false, models.Brand.getInternalNamesByNameAsc, models.Brand.getDisplayNamesByNameAsc);
 		   formDisplay.addFormField("model", true, "input");
 		   formDisplay.addFormField("additionnalModelInfos", true, "textarea");
 		   formDisplay.addFormFieldForSelect("ownerStatus", models.WatchToSell.WatchToSellOwnerStatus.values.toList)
@@ -11,6 +11,7 @@
 		   formDisplay.addFormField("reference", true, "input");
 		   formDisplay.addFormField("serial", true, "input");
 		   formDisplay.addFormField("serial2", true, "input");
+		   formDisplay.addFormField("strap", true, "input");
 		   formDisplay.addFormField("movement", true, "input");
 		   formDisplay.addFormField("seller", true, "input");
 		   formDisplay.addFormField("additionnalInfos", true, "textarea");

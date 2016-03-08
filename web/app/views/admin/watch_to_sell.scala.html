@@ -14,7 +14,9 @@
       <div class="col-sm-offset-1 col-sm-10 text-center">
       	<a class="btn btn-primary" href="@routes.Accounting.addOrderDocumentByWatchToSellId(watch_to_sell.id)"><span class="glyphicon glyphicon-list-alt"></span>@Html(Messages("admin.watchtosell.action.new.order.document"))</a>
         <a class="btn btn-success" href="@routes.Accounting.addInvoiceByWatchToSellId(watch_to_sell.id)"><span class="glyphicon glyphicon-list-alt"></span>@Html(Messages("admin.watchtosell.action.new.invoice"))</a>
-        <a class="btn btn-warning" href="#"><span class="glyphicon glyphicon-certificate"></span>@Html(Messages("admin.watchtosell.action.new.waranty"))</a>                  
+        @if(watch_to_sell.customerThatBoughtTheWatch != null) {
+        <a class="btn btn-warning" href="@routes.Accounting.addPSellingCByWatchId(watch_to_sell.id)"><span class="glyphicon glyphicon-certificate"></span>@Html(Messages("admin.watchtosell.action.new.waranty"))</a>
+        }                 
       </div>
     </div>
 }

@@ -1,6 +1,11 @@
 package controllers;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
@@ -8,9 +13,12 @@ import models.AccountingDocument;
 import models.AccountingLine;
 import models.AccountingLine.LineType;
 import models.Customer;
+import models.CustomerWatch;
 import models.Invoice;
 import models.Invoice.InvoiceType;
 import models.OrderDocument;
+import models.PostSellingCertificate;
+import models.PostServiceCertificate;
 import models.SellingDocument;
 import models.WatchToSell;
 import play.data.Form;
@@ -58,6 +66,10 @@ public class Accounting extends Controller {
 	
 	public static Result addInvoiceByOrderId(Long id) {
 		return ok(newInvoiceFormByOrderId(id));		
+	}
+	
+	public static Result addInvoiceFromCustomer(Long id) {
+		return ok(newInvoiceFormByCustomerId(id));		
 	}
 	
 	public static Result addInvoice() {
@@ -142,6 +154,16 @@ public class Accounting extends Controller {
 			for(AccountingLine line : orderToInspireFrom.document.retrieveLines())
 				newInvoice.addLine(line.type, line.description, line.unit, line.unitPrice);
 
+		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
+	}
+	
+	private static Html newInvoiceFormByCustomerId(long id) {
+		models.Customer customer = Customer.findById(id);
+		if (customer == null)
+			return emptyNewInvoiceForm();
+		models.Invoice newInvoice = new Invoice();
+		newInvoice.changeUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
+		newInvoice.document.customer = customer;
 		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
 	}
 	
@@ -236,6 +258,10 @@ public class Accounting extends Controller {
 		return ok(newOrderDocumentFormByWatchToSellId(id));		
 	}
 	
+	public static Result addOrderDocumentFromCustomer(Long id) {
+		return ok(newOrderDocumentFormByCustomerId(id));		
+	}
+	
 	public static Result manageOrderDocument() {
 		final Form<models.OrderDocument> orderDocumentForm = Form.form(models.OrderDocument.class).bindFromRequest();
 		String action = Form.form().bindFromRequest().get("action");
@@ -289,6 +315,16 @@ public class Accounting extends Controller {
 		newOrder.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLineForOrder(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice));
 		newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.document.waranty.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
 		newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.document.delivery.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(newOrder), true);
+	}
+	
+	private static Html newOrderDocumentFormByCustomerId(long id) {
+		models.Customer customer = Customer.findById(id);
+		if (customer == null)
+			return emptyNewOrderDocumentForm();
+		models.OrderDocument newOrder = new OrderDocument();
+		newOrder.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForOrders().toString());
+		newOrder.document.customer = customer;
 		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(newOrder), true);
 	}
 	
@@ -461,7 +497,78 @@ public class Accounting extends Controller {
 			existingSellingDocument.date = toClone.date;
 		}
 	}
+
 	
+	/*
+	 * POST SERVICE CERTIFICATE
+	 */
+	
+	public static Result addPServiceCByWatchId(Long id) {
+		return PostServiceCertificates.crud.create(newPServiceCByWatchId(id));
+	}
+	
+	private static Form<PostServiceCertificate> newPServiceCByWatchId(long id) {
+		models.CustomerWatch customerWatch = CustomerWatch.findById(id);
+		models.PostServiceCertificate newCertificate = new PostServiceCertificate();
+		newCertificate.displayPushingCrownTip = true;
+		newCertificate.displayWaterLeakTip = true;
+		newCertificate.displayWindingTip = true;
+		
+		if (customerWatch == null)
+			return Form.form(models.PostServiceCertificate.class).fill(newCertificate);
+		
+		newCertificate.owner = customerWatch.customer;
+		newCertificate.watch = customerWatch;
+		newCertificate.workDone = customerWatch.serviceInfos;
+		newCertificate.nextWaterproofingRecommendedYear = getYear(customerWatch.nextPartialService);
+		newCertificate.nextServiceRecommendedYear = getYear(customerWatch.nextService);
+		newCertificate.waterproofWarantyDate = customerWatch.endOfWaterWaranty;
+		newCertificate.workingWarantyDate = customerWatch.endOfMainWaranty;
+		
+		
+		return Form.form(models.PostServiceCertificate.class).fill(newCertificate);
+	}
+	
+	/*
+	 * POST SELLING CERTIFICATE
+	 */
+	
+	public static Result addPSellingCByWatchId(Long id) {
+		return PostSellingCertificates.crud.create(newPSellingCByWatchId(id));
+	}
+	
+	private static Form<PostSellingCertificate> newPSellingCByWatchId(long id) {
+		models.WatchToSell customerWatch = WatchToSell.findById(id);
+		models.PostSellingCertificate newCertificate = new PostSellingCertificate();
+		newCertificate.displayPushingCrownTip = true;
+		newCertificate.displayWaterLeakTip = true;
+		newCertificate.displayWindingTip = true;
+		
+		if (customerWatch == null)
+			return Form.form(models.PostSellingCertificate.class).fill(newCertificate);
+		
+		newCertificate.owner = customerWatch.customerThatBoughtTheWatch;
+		newCertificate.watch = customerWatch;
+		if (customerWatch.isNew) {
+			newCertificate.brandWaranted = true;
+			newCertificate.brandWarantyDate = Date.from(LocalDate.now().with(java.time.temporal.TemporalAdjusters.lastDayOfMonth()).withYear(LocalDate.now().getYear()+2).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+			newCertificate.sellerWaranted = false;
+			newCertificate.waterproofWaranted = false;
+			newCertificate.testResult = Messages.get("admin.postsellingcertificate.form.testresult.watch.is.new");
+			newCertificate.nextWaterproofingRecommendedYear = getYear(newCertificate.brandWarantyDate) + 1;
+			newCertificate.nextServiceRecommendedYear = getYear(newCertificate.brandWarantyDate) + 1;
+		} else {
+			newCertificate.brandWaranted = false;
+			newCertificate.sellerWaranted = true;
+			newCertificate.sellerWarantyDate = Date.from(LocalDate.now().with(java.time.temporal.TemporalAdjusters.lastDayOfMonth()).withYear(LocalDate.now().getYear()+2).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+			newCertificate.waterproofWaranted = false;
+			newCertificate.testResult = Messages.get("admin.postsellingcertificate.form.testresult.watch.has.been.tested");
+			newCertificate.nextWaterproofingRecommendedYear = getYear(newCertificate.brandWarantyDate) + 1;
+			newCertificate.nextServiceRecommendedYear = getYear(newCertificate.brandWarantyDate) + 1;
+		}
+		
+		return Form.form(models.PostSellingCertificate.class).fill(newCertificate);
+	}
 	
 	/*********************************************************************************************************************/
 	
@@ -493,6 +600,11 @@ public class Accounting extends Controller {
 	}
 	
 
+	private static int getYear(Date date) {
+		if (date == null)
+			date = new Date();
+		return LocalDateTime.ofInstant(Instant.ofEpochMilli(date.getTime()), ZoneId.systemDefault()).getYear();
+	}
 	
 	
 }

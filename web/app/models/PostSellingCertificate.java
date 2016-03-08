@@ -17,13 +17,13 @@ import com.avaje.ebean.Page;
 import controllers.CrudReady;
 
 /**
- * Definition of a certificate after a service
+ * Definition of a certificate after selling a watch
  */
 @Entity 
-public class PostServiceCertificate extends Model implements CrudReady<PostServiceCertificate, PostServiceCertificate> {
-	private static final long serialVersionUID = -2761549515686171737L;
+public class PostSellingCertificate extends Model implements CrudReady<PostSellingCertificate, PostSellingCertificate> {
+	private static final long serialVersionUID = 267435145706481776L;
 
-	private static PostServiceCertificate singleton = null;
+	private static PostSellingCertificate singleton = null;
 
 	@Id
 	public Long id;
@@ -38,29 +38,27 @@ public class PostServiceCertificate extends Model implements CrudReady<PostServi
 	public Customer owner;
 	
 	@ManyToOne
-	public CustomerWatch watch;
-	
-	@Column(length = 10000)
-	public String workDone;
+	public WatchToSell watch;
 	
 	@Column(length = 10000)
 	public String privateInfos;
 	
-	public String mechanicalTestResult;
-	
-	public String quartzTestResult;
-	
-	public String waterproofingTestResult;
+	public String testResult;
 	
 	public Boolean waterproofWaranted;
 	
 	@Column(name="waterproof_waranty_date")
 	public Date waterproofWarantyDate;
 	
-	public Boolean workingWaranted;
+	public Boolean brandWaranted;
 	
-	@Column(name="working_waranty_date")
-	public Date workingWarantyDate;
+	@Column(name="brand_waranty_date")
+	public Date brandWarantyDate;
+	
+	public Boolean sellerWaranted;
+	
+	@Column(name="seller_waranty_date")
+	public Date sellerWarantyDate;
 	
 	public int nextServiceRecommendedYear;
 	
@@ -78,34 +76,34 @@ public class PostServiceCertificate extends Model implements CrudReady<PostServi
 	public Boolean displayClosingCrownTip;
 	public Boolean displayReadManualTip;
 		
-	public PostServiceCertificate() {
+	public PostSellingCertificate() {
 		documentDate = new Date();
 	}
 	
-	public static PostServiceCertificate of() {
+	public static PostSellingCertificate of() {
     	if (singleton == null)
-    		singleton = new PostServiceCertificate();
+    		singleton = new PostSellingCertificate();
     	return singleton;
     }
 
     // -- Queries
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Model.Finder<String,PostServiceCertificate> find = new Model.Finder(String.class, PostServiceCertificate.class);
+	public static Model.Finder<String,PostSellingCertificate> find = new Model.Finder(String.class, PostSellingCertificate.class);
     
-    public static List<PostServiceCertificate> findAll() {
+    public static List<PostSellingCertificate> findAll() {
         return find.all();
     }
     
-    public static PostServiceCertificate findById(Long id) {
+    public static PostSellingCertificate findById(Long id) {
         return find.byId(id.toString());
     }
     
-    public static List<PostServiceCertificate> findByCustomer(models.Customer customer) {
+    public static List<PostSellingCertificate> findByCustomer(models.Customer customer) {
     	return find.where().eq("owner.id", customer.id)
         			.orderBy("creationDate desc").findList();
     }
 
-    public static Page<PostServiceCertificate> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static Page<PostSellingCertificate> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.fetch("watch").where().or(Expr.ilike("owner.name", "%" + filter + "%"), Expr.ilike("watch.brand", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
@@ -127,20 +125,20 @@ public class PostServiceCertificate extends Model implements CrudReady<PostServi
 	}
 
 	@Override
-	public Model.Finder<String, PostServiceCertificate> getFinder() {
+	public Model.Finder<String, PostSellingCertificate> getFinder() {
 		return find;
 	}
 
 	@Override
-	public Page<PostServiceCertificate> getPage(int page, int pageSize, String sortBy,
+	public Page<PostSellingCertificate> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}
 	
 	private void checkBeforeSaving() {
 		if (this.watch != null) {
-			this.watch = CustomerWatch.findById(this.watch.id);
-			Long customerId = this.watch.customer.id;
+			this.watch = WatchToSell.findById(this.watch.id);
+			Long customerId = this.watch.customerThatBoughtTheWatch.id;
 			this.owner = Customer.findById(customerId);
 		}
 	}
@@ -150,7 +148,7 @@ public class PostServiceCertificate extends Model implements CrudReady<PostServi
 	}
 	
 	public String getBrand() {
-		return watch.getBrand();
+		return watch.getBrandName();
 	}
 	
 	public String getModel() {

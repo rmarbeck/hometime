@@ -8,7 +8,10 @@
 @import java.lang.Integer; var year=new java.lang.Integer(java.time.Year.now().getValue())
 
 @{
-	title=Messages("admin.post.service.certificate.title", thisInstance.watch.getModel);
+	watch = models.CustomerWatch.findById(thisInstance.watch.id);
+	title=Messages("admin.post.service.certificate.title", watch.getModel);
+	thisInstance.owner = models.Customer.findById(watch.customer.id);
+	
 	if(thisInstance.owner.email != null) {
 		customer = models.Customer.findByEmail(thisInstance.owner.email);
 		if(customer != null && customer.civility!=null) {
@@ -20,7 +23,7 @@
 			document.setDocumentCreationDate(thisInstance.documentDate);
 		}
 	}
-	watch = models.CustomerWatch.findBySerial(thisInstance.watch.readSerial); 
+
 }
 
 @layouts.admin_accounting(title, document) {

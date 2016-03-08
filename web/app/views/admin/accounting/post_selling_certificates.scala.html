@@ -1,0 +1,12 @@
+@(currentPage: com.avaje.ebean.Page[models.PostSellingCertificate], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "creation_date", "admin.postsellingcertificate.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("owner.name", "owner", "getCustomerFullName", false);
+	    pageDisplay.addTableField("watch.brand", "brand", "getBrand", false);
+	    pageDisplay.addTableField("watch.model", "model", "getModel", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "PostSellingCertificates", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

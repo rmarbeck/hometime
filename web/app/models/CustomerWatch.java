@@ -140,6 +140,47 @@ public class CustomerWatch extends Model {
     	return serials;
     }
     
+    public static List<CustomerWatch> findAllByCustomerAndBrandAsc() {
+        return find.where().orderBy("customer.firstname ASC, brand ASC").findList();
+    }
+
+    
+    public static List<String> getIdsByCustomersAsc() {
+    	List<CustomerWatch> watches = findAllByCustomerAndBrandAsc();
+    	List<String> watchesByCustomers = new ArrayList<String>();
+    	if (watches != null) {
+    		for (CustomerWatch watch : watches)
+    			watchesByCustomers.add(watch.id.toString());
+    	}
+    	return watchesByCustomers;
+    }
+    
+    private static String displayWatchByCustomer(CustomerWatch watch) {
+    	StringBuilder result = new StringBuilder();
+    	if (watch.customer != null) {
+    		result.append(watch.customer.getFullName());
+    	} else {
+    		result.append("unknown");
+    	}
+    	result.append(" -> ");
+    	result.append(watch.brand);
+    	result.append(" ");
+    	result.append(watch.model);
+    	
+    	return result.toString();
+    }
+    
+    public static List<String> getWatchesByCustomersAsc() {
+    	List<CustomerWatch> watches = findAllByCustomerAndBrandAsc();
+    	List<String> watchesByCustomers = new ArrayList<String>();
+    	if (watches != null) {
+    		for (CustomerWatch watch : watches)
+    			watchesByCustomers.add(displayWatchByCustomer(watch));
+    	}
+    	return watchesByCustomers;
+    }
+    
+    
     public static CustomerWatch findById(Long id) {
         return find.byId(id.toString());
     }

@@ -1,4 +1,4 @@
-@(customer: models.Customer, orders: List[models.Order], watches: List[models.CustomerWatch])
+@(customer: models.Customer, orders: List[models.Order], watches: List[models.CustomerWatch], orderDocuments: List[models.OrderDocument], invoices: List[models.Invoice])
 @import tags._
 
 @layouts.admin() {
@@ -188,6 +188,109 @@
             </table>
 		</div>
 	  </div>
-	}              
+	}
+	
+	
+	<div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.order.documents"))</h3></div>
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-primary" href="@routes.Accounting.addOrderDocumentFromCustomer(customer.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.customer.action.add.order.document"))</a>
+        </div>
+     </div>
+      
+      @if(orderDocuments == null || orderDocuments.size == 0) {
+      <div class="row">
+        <div class="well">
+            <em>@Html(Messages("admin.customer.order.documents.no.order.document.to.display"))</em>
+        </div>
+      </div>
+      } else {
+      <div class="row">
+       	<div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th class="hidden-xs">@Html(Messages("admin.customer.order.documents.header.date"))</th>
+                  <th>@Html(Messages("admin.customer.order.documents.header.unique.accounting.number"))</th>
+                  <th>@Html(Messages("admin.customer.order.documents.header.description"))</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for((orderDocument, index) <- orderDocuments.zipWithIndex) {
+                <tr>
+                  <td>
+                   	<a type="button" class="btn btn-default btn-xs" href="@routes.Accounting.viewOrderDocument(orderDocument.id)"><span class="glyphicon glyphicon-user"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editOrderDocument(orderDocument.id)"><span class="glyphicon glyphicon-edit"></span></a>
+	                <a type="button" class="btn btn-success btn-xs" href="@routes.Accounting.addInvoiceByOrderId(orderDocument.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
+                  </td>
+                  <td class="hidden-xs">
+                    @display_date(orderDocument.document.creationDate, "dd/MM")
+                  </td>
+                  <td>
+                    @orderDocument.uniqueAccountingNumber
+                  </td>
+                  <td>
+                    @orderDocument.description
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+		</div>
+	  </div>
+	}
+	
+	<div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.invoices"))</h3></div>
+        <div class="col-md-6 text-right">
+        	<a type="button" class="btn btn-primary" href="@routes.Accounting.addInvoiceFromCustomer(customer.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.customer.action.add.invoice"))</a>
+        </div>
+     </div>
+      
+      @if(invoices == null || invoices.size == 0) {
+      <div class="row">
+        <div class="well">
+            <em>@Html(Messages("admin.customer.invoices.no.invoice.to.display"))</em>
+        </div>
+      </div>
+      } else {
+      <div class="row">
+       	<div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th class="hidden-xs">@Html(Messages("admin.customer.invoices.header.date"))</th>
+                  <th>@Html(Messages("admin.customer.invoices.header.unique.accounting.number"))</th>
+                  <th>@Html(Messages("admin.customer.invoices.header.description"))</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for((invoice, index) <- invoices.zipWithIndex) {
+                <tr>
+                  <td>
+                   	<a type="button" class="btn btn-default btn-xs" href="@routes.Accounting.viewInvoice(invoice.id)"><span class="glyphicon glyphicon-user"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editInvoice(invoice.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                  </td>
+                  <td class="hidden-xs">
+                    @display_date(invoice.document.creationDate, "dd/MM")
+                  </td>
+                  <td>
+                    @invoice.uniqueAccountingNumber
+                  </td>
+                  <td>
+                    @invoice.description
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+		</div>
+	  </div>
+	}
+	
   </div>
 }

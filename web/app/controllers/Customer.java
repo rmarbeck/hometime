@@ -26,7 +26,7 @@ public class Customer extends Controller {
 	public static Result display(Long customerId) {
 		models.Customer existingCustomer = models.Customer.findById(customerId);
 		if (existingCustomer != null)
-			return ok(customer.render(existingCustomer, models.Order.findByCustomer(existingCustomer), models.CustomerWatch.findByCustomer(existingCustomer)));
+			return ok(customer.render(existingCustomer, models.Order.findByCustomer(existingCustomer), models.CustomerWatch.findByCustomer(existingCustomer), models.OrderDocument.findByCustomer(existingCustomer), models.Invoice.findByCustomer(existingCustomer)));
 		flash("error", "Unknown customer id");
 		return LIST_CUSTOMERS;
     }

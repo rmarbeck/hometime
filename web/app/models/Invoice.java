@@ -117,8 +117,8 @@ public class Invoice extends Model {
     }
     
     public static List<Invoice> findByCustomer(models.Customer customer) {
-    	return find.where().eq("customer.id", customer.id)
-        			.orderBy("next_partial_service desc").findList();
+    	return find.fetch("document.customer").where().eq("document.customer.id", customer.id)
+    			.orderBy("unique_accounting_number ASC").findList();
     }
 
     public static Page<Invoice> page(int page, int pageSize, String sortBy, String order, String filter) {

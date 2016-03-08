@@ -28,6 +28,7 @@
 				&& arg._1 != '_body_class
 				&& arg._1 != '_showConstraints).toSeq }
 
-@helper.select(field, for (s <- possibleValues) yield s._1.toString -> s._2.toString,
+@helper.select(field, for (s <- possibleValues) yield s._1.toString -> Option(Messages(key.replaceAll("VARIABLE", "value")+"."+s._2.toString.toLowerCase.replace('_','.'))).filter(!_.contains(".")).getOrElse(s._2.toString),
 		(Seq('_default -> _default, 'placeholder -> placeholder, '_label -> label,
       	'class -> _class, '_class -> __class, '_label_class -> label_class, '_body_class -> body_class, '_showConstraints -> showConstraints) ++ htmlArgs):_*)
+      	

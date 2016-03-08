@@ -1,11 +1,13 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import play.Logger;
 import play.db.ebean.Model;
 
 /**
@@ -36,6 +38,9 @@ public class Brand extends Model {
 	
 	@Column(length = 10000)
 	public String remarks;
+	
+	public Brand() {
+	}
 	
 	public Brand(String internal_name) {
 		this.internal_name = internal_name;
@@ -75,6 +80,27 @@ public class Brand extends Model {
     
     public static Brand findByInternalName(String internalName) {
     	return find.where().eq("internal_name", internalName).findUnique();
+    }
+    
+    public static List<String> getDisplayNamesByNameAsc() {
+    	List<String> displayNames = new ArrayList<String>();
+    	for (Brand b : findAllByAscName())
+    		displayNames.add(b.display_name);
+    	return displayNames;
+    }
+    
+    public static List<String> getInternalNamesByNameAsc() {
+    	List<String> internalNames = new ArrayList<String>();
+    	for (Brand b : findAllByAscName())
+    		internalNames.add(b.internal_name);
+    	return internalNames;
+    }
+    
+    public static List<String> getIDsByNameAsc() {
+    	List<String> ids = new ArrayList<String>();
+    	for (Brand b : findAllByAscName())
+    		ids.add(b.id.toString());
+    	return ids;
     }
 
     public String toString() {

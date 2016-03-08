@@ -16,7 +16,7 @@
         		<div class="col-xs-12">
 			        <div class="date text-right">
 			        	<br />
-			        	@display_date(accountingDocumment.creationDate, "d MMMM yyyy")
+			        	@Html(Messages("admin.invoice.head.document.date", accountingDocumment.creationDate))
 			        </div>
 					@if(accountingDocumment.customer!=null) {
 						@defining(models.Customer.findById(accountingDocumment.customer.id)) { customer =>

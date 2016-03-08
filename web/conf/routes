@@ -180,6 +180,7 @@ POST    /admin/manage-quotation     									controllers.Admin.manageQuotation()
 GET     /admin/invoice            										controllers.Accounting.display()
 GET     /admin/invoice/create          									controllers.Accounting.addInvoice()
 GET     /admin/invoice/create/by/watch-to-sell/:id						controllers.Accounting.addInvoiceByWatchToSellId(id: Long)
+GET     /admin/invoice/create/by/customer/:id							controllers.Accounting.addInvoiceFromCustomer(id: Long)
 GET     /admin/invoice/create/by/order/:id								controllers.Accounting.addInvoiceByOrderId(id: Long)
 GET     /admin/invoice/edit/:id         								controllers.Accounting.editInvoice(id: Long)
 POST    /admin/manage-invoice            								controllers.Accounting.manageInvoice()
@@ -188,6 +189,7 @@ GET     /admin/invoice/:id         										controllers.Accounting.viewInvoice(
 
 GET     /admin/order-document/create          							controllers.Accounting.addOrderDocument()
 GET     /admin/order-document/create/by/watch-to-sell/:id				controllers.Accounting.addOrderDocumentByWatchToSellId(id: Long)
+GET     /admin/order-document/create/by/customer/:id					controllers.Accounting.addOrderDocumentFromCustomer(id: Long)
 GET     /admin/order-document/edit/:id         							controllers.Accounting.editOrderDocument(id: Long)
 POST    /admin/manage-order-document            						controllers.Accounting.manageOrderDocument()
 GET     /admin/order-documents            								controllers.Accounting.displayAllOrderDocument(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")
@@ -205,6 +207,9 @@ GET		/admin/display/:model/page/										controllers.CrudHelper.page(model: Str
 GET		/admin/create/:model											controllers.CrudHelper.create(model: String)
 GET		/admin/edit/:model/:id											controllers.CrudHelper.edit(model: String, id: Long)
 POST	/admin/manage/:model											controllers.CrudHelper.manage(model: String)
+
+GET     /admin/post-service-certificate/create/by/watch/:id				controllers.Accounting.addPServiceCByWatchId(id: Long)
+GET     /admin/post-selling-certificate/create/by/watch/:id				controllers.Accounting.addPSellingCByWatchId(id: Long)
 
 GET		/admin/follow/external/document/url/:id							controllers.Admin.goToExternalDocumentUrl(id: Long)
 
