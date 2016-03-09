@@ -107,7 +107,7 @@ public class PostServiceCertificate extends Model implements CrudReady<PostServi
 
     public static Page<PostServiceCertificate> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.fetch("watch").where().or(Expr.ilike("owner.name", "%" + filter + "%"), Expr.ilike("watch.brand", "%" + filter + "%"))
+            find.fetch("watch").where().or(Expr.ilike("owner.name", "%" + filter + "%"), Expr.like("watch.brand", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
