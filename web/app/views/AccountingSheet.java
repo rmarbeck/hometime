@@ -9,7 +9,7 @@ import models.AccountingLine;
 
 public class AccountingSheet {
 	private static final String DEFAULT_KEY = "admin.accounting.document";
-	private static final String KEY_MODIFIER = ".VARIABLE.";
+	private static final String KEY_MODIFIER = ".VARIABLE";
 
 	private AccountingDocument document;
 	private Line header;
@@ -299,7 +299,7 @@ public class AccountingSheet {
 	}
 	
 	private Cell createHeaderCell(String key) {
-		return new Cell(getModifiedKeyValue("header."+key), getModifiedKeyValue("header"+key+".class"), 0);
+		return new Cell(getModifiedKeyValue("header."+key), getModifiedKeyValue("header."+key+".class"), 0);
 	}
 	
 	private Line createTotalLine(Float value, String key) {
