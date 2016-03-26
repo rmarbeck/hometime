@@ -61,6 +61,10 @@ public class SellingDocument extends Model {
         return find.byId(id.toString());
     }
     
+    public static SellingDocument findByAccountingDocument(AccountingDocument document) {
+    	return find.where().eq("document.id", document.id).findUnique();
+    }
+    
     public static List<SellingDocument> findByCustomer(models.Customer customer) {
     	return find.where().eq("document.customer.id", customer.id).findList();
     }

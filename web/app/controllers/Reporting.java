@@ -2,12 +2,14 @@ package controllers;
 
 import java.util.List;
 
+import models.InvoiceLineReport;
 import models.MarginVatReport;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import views.html.admin.reports.index;
+import views.html.admin.reports.invoice_lines;
 import views.html.admin.reports.address_tab;
 import views.html.admin.reports.address_tab_alpha;
 
@@ -16,6 +18,10 @@ import views.html.admin.reports.address_tab_alpha;
 public class Reporting extends Controller {
 	public static Result index() {
 		return ok(index.render(MarginVatReport.generateReport()));
+    }
+	
+	public static Result invoiceLines() {
+		return ok(invoice_lines.render(InvoiceLineReport.generateReport()));
     }
 	
 	public static Result addresses() {

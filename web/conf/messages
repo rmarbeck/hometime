@@ -2876,3 +2876,13 @@ admin.postsellingcertificate.form.displayreadmanualtip.label.name=Conseil lire l
 admin.postsellingcertificate.form.displaypushingcrowntip.label.name=Conseil repousser la couronne
 admin.postsellingcertificate.form.testresult.watch.is.new=La montre est neuve.
 admin.postsellingcertificate.form.testresult.watch.has.been.tested=Les performances de la montre ont été testées avec succès.
+
+admin.invoice.line.page.title=Rapport financier
+admin.invoice.line.page.date=Date
+admin.invoice.line.page.invoice.type=Type
+admin.invoice.line.page.invoice.name=UAN
+admin.invoice.line.page.line.type=Type de ligne
+admin.invoice.line.page.line.amount=Montant
+admin.invoice.line.page.turnover.amount=Chiffre d''affaires
+admin.report.invoice.type.selling.document=Papier de vente
+admin.report.invoice.type.invoice=Facture

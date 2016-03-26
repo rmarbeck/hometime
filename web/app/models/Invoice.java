@@ -116,6 +116,10 @@ public class Invoice extends Model {
         return find.byId(id.toString());
     }
     
+    public static Invoice findByAccountingDocument(AccountingDocument document) {
+    	return find.where().eq("document.id", document.id).findUnique();
+    }
+    
     public static List<Invoice> findByCustomer(models.Customer customer) {
     	return find.fetch("document.customer").where().eq("document.customer.id", customer.id)
     			.orderBy("unique_accounting_number ASC").findList();

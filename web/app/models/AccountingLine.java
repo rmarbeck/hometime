@@ -118,6 +118,10 @@ public class AccountingLine extends Model {
         return find.byId(id.toString());
     }
     
+    public static List<AccountingLine> findAllByDescendingDate() {
+    	return find.fetch("document").orderBy("document.creationDate DESC").findList();
+    }
+    
     public static List<AccountingLine> findByAccountingDocumentId(Long id) {
         return find.where().eq("document.id", id)
     			.orderBy("ranking, id ASC").findList();
