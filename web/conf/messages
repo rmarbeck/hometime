@@ -2886,3 +2886,6 @@ admin.invoice.line.page.line.amount=Montant
 admin.invoice.line.page.turnover.amount=Chiffre d''affaires
 admin.report.invoice.type.selling.document=Papier de vente
 admin.report.invoice.type.invoice=Facture
+
+without.vat.by.unit=Avec TVA
+with.vat.by.unit=Sans TVA

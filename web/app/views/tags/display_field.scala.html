@@ -19,6 +19,10 @@
 		    @display_date(views.Helper.parseDateInMillis(to_render), "dd/MM/yyyy HH:mm")
 		  }
 		  
+		  case "i18n" => {
+		    @Messages(to_render.toLowerCase.replace("_","."))
+		  }
+		  
 		  case default => {
 		    @if(rendering_option.startsWith("take ")) {
 		    	@defining(Integer.parseInt(rendering_option.replace("take ", ""))) { size =>
