@@ -5,9 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import play.i18n.Messages;
 import models.AccountingLine.LineType;
-import models.Invoice.InvoiceType;
 
 public class InvoiceLineReport {
 	private final static String INVOICE_KEY = "admin.report.invoice.type.invoice";
@@ -45,16 +43,16 @@ public class InvoiceLineReport {
 		}
 	}
 	
-	private Optional<String> guessInvoiceType(AccountingDocument document) {
+	private static Optional<String> guessInvoiceType(AccountingDocument document) {
 		if (Invoice.findByAccountingDocument(document) != null)
-			return Optional.of(Messages.get(INVOICE_KEY));
+			return Optional.of(INVOICE_KEY);
 		if (SellingDocument.findByAccountingDocument(document) != null)
-			return Optional.of(Messages.get(SELLING_DOCUMENT_KEY));
+			return Optional.of(SELLING_DOCUMENT_KEY);
 		
 		return Optional.empty();
 	}
 	
-	private Optional<String> guessUAN(AccountingDocument document) {
+	private static Optional<String> guessUAN(AccountingDocument document) {
 		Invoice foundInvoice = Invoice.findByAccountingDocument(document);
 		if (foundInvoice != null)
 			return Optional.of(foundInvoice.uniqueAccountingNumber);
@@ -70,8 +68,9 @@ public class InvoiceLineReport {
 		List<InvoiceLineReport> report = new ArrayList<InvoiceLineReport>();
 		List<AccountingLine> lines = AccountingLine.findAllByDescendingDate();
 		for(AccountingLine line : lines)
-			if (lineIsNotEmpty(line))
-				report.add(new InvoiceLineReport(line));
+			if (lineIsInvoice(line))
+				if (lineIsNotEmpty(line))
+					report.add(new InvoiceLineReport(line));
 		return report;
 	}
 	
@@ -82,4 +81,16 @@ public class InvoiceLineReport {
 	private static boolean lineIsEmpty(AccountingLine line) {
 		return (line.unit == null || line.unit == 0f || line.unitPrice == null || line.unitPrice == 0f);
 	}
+	
+	private static boolean lineIsInvoice(AccountingLine line) {
+		switch (guessInvoiceType(line.document).orElse("")) {
+			case INVOICE_KEY:
+				return true;
+			case SELLING_DOCUMENT_KEY:
+				return true;
+			default :
+				return false;					
+		}
+	}
+	
 }
