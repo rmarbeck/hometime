@@ -2,11 +2,53 @@
 
 @import tags._
 
+@end_scripts = {
+	<script>
+    $(document).ready(function(){
+        $('#url').on('paste', function(event) {
+        		if ($('#name:text').val().length == 0) {
+        			event.preventDefault();
+        			var pasteData = event.originalEvent.clipboardData.getData('text');
+        			managePaste(pasteData);
+        		}
+        	});
+    });
+    
+    function managePaste(pastedText) {
+    	var pastedValue = pastedText;
+    	var filenameRaw = pastedText.replace(/([^\/]*)\//g,"");
+    	var filenameCutted = filenameRaw.replace(/\..*/g,"");
+    	var filename = unescape(filenameCutted);
+    	$('#name').val(filename);
+    	$('#url').val(pastedValue);
+    }
+    
+    function isUpperCase(str) {
+    	return str === str.toUpperCase();
+	}
+	
+	function isLowerCase(str) {
+    	return str === str.toLowerCase();
+	}
+	
+	function manageCase(str) {
+		if(isUpperCase(str) || isLowerCase(str)) {
+    		return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+    	}
+    	return str;
+	}
+
+	</script>
+}
+
+
 @defining(new views.FormDisplay(thisInstance, "ExternalDocument", "admin.externaldocument.form")) { formDisplay =>
 		@{ formDisplay.addFormField("name", true, "input");
 		   formDisplay.addFormField("description", true, "textarea");
 		   formDisplay.addFormField("url", true, "input");
 		}
 	
-	@admin.template.form_with_default_links(formDisplay, isItNew)
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
+	
+
 }

@@ -63,6 +63,13 @@
                 	@li_activable(77, index) {<a href="@routes.CrudHelper.create("PostSellingCertificates")">@Messages("admin.navbar.link.text.accounting.add.post.selling.certificate")</a>}
                   </ul>
                 }
+                @li_activable(70, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.reporting")) <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    @li_activable(70, index) {<a href="@routes.Reporting.invoiceLines()">@Messages("admin.navbar.link.text.reporting.invoice.lines")</a>}
+                    @li_activable(71, index) {<a href="@routes.Reporting.index()">@Messages("admin.navbar.link.text.reporting.margin.vat")</a>}
+                  </ul>
+                }
                 
               </ul>
               <ul class="nav navbar-nav navbar-right">

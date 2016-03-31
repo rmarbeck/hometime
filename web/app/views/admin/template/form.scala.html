@@ -1,4 +1,4 @@
-@(formDisplay: views.FormDisplay, isItNew: Boolean, actionlink: play.api.mvc.Call)
+@(formDisplay: views.FormDisplay, isItNew: Boolean, actionlink: play.api.mvc.Call, end_scripts_bottom: Html = Html(""))
 
 @import tags._
 
@@ -19,7 +19,7 @@
     </div>
 }
 
-@layouts.admin_main(formDisplay.getLabelKey) {
+@layouts.admin_main(formDisplay.getLabelKey, end_scripts_bottom) {
 
   <div class="container form">
   

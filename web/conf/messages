@@ -1343,6 +1343,10 @@ admin.navbar.link.text.accounting.add.post.service.certificate=Nouveau certifica
 admin.navbar.link.text.accounting.post.selling.certificate=Certificats d''authenticité et de garantie
 admin.navbar.link.text.accounting.add.post.selling.certificate=Nouveau certificat d''authenticité et de garantie
 
+admin.navbar.link.text.reporting=Reporting
+admin.navbar.link.text.reporting.margin.vat=Rapport de TVA sur Marge
+admin.navbar.link.text.reporting.invoice.lines=Rapport de Chiffre d''affaires
+
 admin.page.nothing.to.display=Aucun article à afficher
 admin.page.text.display.all=Tous
 
@@ -2705,6 +2709,8 @@ admin.margin.vat.page.invoice.name=Numéro de facture
 admin.margin.vat.page.selling.price=Prix de vente
 admin.margin.vat.page.purchase.invoice.name=Facture d''achat
 admin.margin.vat.page.purchase.price=Prix d''achat
+
+admin.margin.vat.page.empty=Aucune ligne à afficher
 
 admin.watchtosell=Montre en vente
 admin.watchtosell.title=Montre en vente
