@@ -1,0 +1,21 @@
+@(lines: List[models.StockReport])
+@import tags._
+
+
+
+@defining(new views.admin.reports.Report(lines, "admin.reporting.stock.page")) { report =>
+	@{  report.addCol("date.of.stock.entry", "getDateOfStockEntry", false, "date medium", null);
+		report.addCol("nb.of.days.in.stock", "getNbOfDaysInStock", false);
+		report.addCol("status", "getStatus", false, "i18n", null);
+		report.addCol("brand", "getBrand", false);
+		report.addCol("model.name", "getModelName", false); 	
+		report.addCol("purchase.price", "getPurchasePrice", false, "price", null);
+		report.addCol("expected.selling.price", "getExpectedSellingPrice", false, "price", null);
+		report.addCol("expected.margin.rate", "getExpectedMarginRate", false);
+		report.addCol("registry.warning", "getRegistryWarning", false);
+	}
+	
+	@layouts.admin() {
+	    @admin.reports.fragments.report(report)
+	}
+}

@@ -2676,6 +2676,7 @@ admin.watchtosell.form.shouldbeinregistry.label.name=Doit être dans le registre
 admin.watchtosell.form.reportinginfos.label.name=Infos à afficher dans les rapports
 admin.watchtosell.form.reportinginfos.placeholder.name=...
 
+admin.watchtosell.page.creationdate=Date
 admin.watchtosell.page.model=Modèle
 admin.watchtosell.page.brand=Marque
 admin.watchtosell.page.additionnalmodelinfos=Infos sur le modèle
@@ -2893,5 +2894,22 @@ admin.invoice.line.page.turnover.amount=Chiffre d''affaires
 admin.report.invoice.type.selling.document=Papier de vente
 admin.report.invoice.type.invoice=Facture
 
+
+admin.reporting.stock.page.title=Stock
+admin.reporting.stock.page.date.of.stock.entry=Date d''entrée en stock
+admin.reporting.stock.page.nb.of.days.in.stock=Jours
+admin.reporting.stock.page.status=Statut
+admin.reporting.stock.page.brand=Marque
+admin.reporting.stock.page.model.name=Modèle
+admin.reporting.stock.page.purchase.price=Prix d''achat
+admin.reporting.stock.page.expected.selling.price=Prix de mise en vente
+admin.reporting.stock.page.expected.margin.rate=Taux de marge
+admin.reporting.stock.page.registry.warning=Ajouter ?
+
 without.vat.by.unit=Sans TVA
 with.vat.by.unit=Avec TVA
+
+to.sell=A vendre
+sold=Vendue
+reserved.for.a.customer=Réservée
+selling_canceled=Vente annulée

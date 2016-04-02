@@ -209,6 +209,10 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
         return find.where().orderBy("serial ASC").findList();
     }
     
+    public static List<WatchToSell> findAllByPurchaseDateAsc() {
+        return find.where().orderBy("purchaseDate ASC").findList();
+    }
+    
     public static List<WatchToSell> findAllByCustomerAndBrandAsc() {
         return find.where().orderBy("customerThatBoughtTheWatch.firstname ASC, brand.display_name ASC").findList();
     }

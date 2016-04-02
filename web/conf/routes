@@ -217,6 +217,7 @@ GET     /admin/margin-vat-report            							controllers.Reporting.index()
 GET     /admin/invoice-lines											controllers.Reporting.invoiceLines()
 GET     /admin/addresses		            							controllers.Reporting.addresses()
 GET     /admin/addressbook		            							controllers.Reporting.addressBook()
+GET     /admin/stock			            							controllers.Reporting.stock()
 
 GET     /admin/cgv				            							controllers.Admin.cgv()
 

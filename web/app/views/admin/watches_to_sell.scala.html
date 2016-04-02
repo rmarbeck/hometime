@@ -7,10 +7,11 @@
 
 
 @defining(new views.PageDisplay(currentPage, "modèle ou marque", "admin.watchtosell.page")) { pageDisplay =>
-	@{  pageDisplay.addTableField("brand.display_name", "brand", "getBrandDisplayName", false);
+	@{  pageDisplay.addTableField("creationDate", "creationDate", "getCreationDate", false, "date short");
+	    pageDisplay.addTableField("brand.display_name", "brand", "getBrandDisplayName", false);
 	    pageDisplay.addTableField("model", "model", "getModel", false);
 		pageDisplay.addTableField("additionnalModelInfos", "additionnalModelInfos", "getAdditionnalModelInfos", false);
-		pageDisplay.addTableField("status", "status", "getStatus", false);
+		pageDisplay.addTableField("status", "status", "getStatus", false, "i18n");
 	}
 	
 	@admin.template.page_with_default_links(pageDisplay, "WatchesToSell", optionallink, currentSortBy, currentOrder, currentFilter, currentSize)
