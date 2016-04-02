@@ -1346,6 +1346,7 @@ admin.navbar.link.text.accounting.add.post.selling.certificate=Nouveau certifica
 admin.navbar.link.text.reporting=Reporting
 admin.navbar.link.text.reporting.margin.vat=Rapport de TVA sur Marge
 admin.navbar.link.text.reporting.invoice.lines=Rapport de Chiffre d''affaires
+admin.navbar.link.text.reporting.stock=Rapport de Stock
 
 admin.page.nothing.to.display=Aucun article à afficher
 admin.page.text.display.all=Tous
