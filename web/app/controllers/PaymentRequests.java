@@ -1,19 +1,16 @@
 package controllers;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-import fr.watchnext.store.utils.payment.systempay.DataDictionnary;
-import fr.watchnext.store.utils.payment.systempay.PaymentConfirmation;
-import fr.watchnext.store.utils.payment.systempay.SingleImmediatePF;
 import models.PaymentRequest;
 import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
-import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import fr.watchnext.store.utils.payment.systempay.DataDictionnary;
+import fr.watchnext.store.utils.payment.systempay.PaymentConfirmation;
+import fr.watchnext.store.utils.payment.systempay.SingleImmediatePF;
 
 public class PaymentRequests extends Controller {
 	public static Crud<PaymentRequest, PaymentRequest> crud = Crud.of(
@@ -31,6 +28,10 @@ public class PaymentRequests extends Controller {
 	
 	
 	public static Result error() {
+		return ok(views.html.payment.error.render());
+    }
+	
+	public static Result errorPost() {
 		return ok(views.html.payment.error.render());
     }
 	
