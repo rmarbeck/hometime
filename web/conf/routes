@@ -109,7 +109,7 @@ GET     /avis-clients               					controllers.Application.feedback()
 # Payment
 GET     /paiement/:ak               					controllers.PaymentRequests.displayForm(ak: String)
 POST    /paiement/error               					controllers.PaymentRequests.error()
-POST    /paiement/success              					controllers.PaymentRequests.success()
+GET    /paiement/success              					controllers.PaymentRequests.success()
 POST    /paiement/backoffice           					controllers.PaymentRequests.manageBackOfficeAnswer()
 
 # ADMIN
