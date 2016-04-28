@@ -2956,3 +2956,7 @@ admin.paymentrequest.form.typeofpayment.value.name.reserved.2=Non implémenté
 admin.paymentrequest.form.typeofpayment.value.name.reserved.3=Non implémenté
 admin.paymentrequest.form.typeofpayment.value.name.reserved.4=Non implémenté
 admin.paymentrequest.form.isopen.label.name=Ouverte
+
+start.html.title=Accès au paiement
+error.html.title=Erreur lors du paiement
+success.html.title=Fin de paiement
