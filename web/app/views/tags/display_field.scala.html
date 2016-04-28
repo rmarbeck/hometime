@@ -6,6 +6,10 @@
 		  case "price" => {
 		    @display_price(if(to_render == null || "null".equals(to_render)) {0} else {Float.parseFloat(to_render)})
 		  }
+		  
+		  case "price float" => {
+		    @display_floating_price(if(to_render == null || "null".equals(to_render)) {0} else {Float.parseFloat(to_render)})
+		  }
 		
 		  case "date short" => {
 		    @display_date(views.Helper.parseDateInMillis(to_render), "dd/MM")
@@ -16,7 +20,7 @@
 		  }
 		  		  
 		  case "date long" => {
-		    @display_date(views.Helper.parseDateInMillis(to_render), "dd/MM/yyyy HH:mm")
+		    @display_date(views.Helper.parseDateInMillis(to_render)), "dd/MM/yyyy HH:mm")
 		  }
 		  
 		  case "i18n" => {

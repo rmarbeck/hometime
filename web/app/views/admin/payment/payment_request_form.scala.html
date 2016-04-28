@@ -1,0 +1,20 @@
+@(thisInstance: Form[models.PaymentRequest], isItNew: Boolean)
+
+@import tags._
+
+@defining(new views.FormDisplay(thisInstance, "PaymentRequest", "admin.paymentrequest.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("customer.email", false, models.Customer.getEmailsByNameAsc, models.Customer.getFullnamesByNameAsc);
+		   formDisplay.addFormField("orderNumber", true, "input");
+		   formDisplay.addFormField("accessKey", true, "input");
+		   formDisplay.addFormField("priceInEuros", true, "input", 'type -> "number", 'min -> "0", 'step -> "0.01");
+		   formDisplay.addFormField("validUntilDate", true, "input", 'type -> "date");
+		   formDisplay.addFormField("description", true, "textarea");
+		   formDisplay.addFormField("description2", true, "textarea");
+		   formDisplay.addFormFieldForSelect("solutionToUse", models.PaymentRequest.PaymentSolution.values.toList);
+		   formDisplay.addFormFieldForSelect("typeOfPayment", models.PaymentRequest.PaymentType.values.toList);
+		   formDisplay.addFormField("delayInDays", true, "input", 'type -> "number", 'min -> "1", 'step -> "1");
+		   formDisplay.addFormField("isOpen", true, "checkbox")
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew)
+}

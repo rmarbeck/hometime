@@ -1,0 +1,23 @@
+@(key: String, end_scripts_bottom: Html = Html(""), in_head_content: Html = Html(""))(content: Html)
+
+@import tags._
+
+@head = {
+		@layouts.fragments.head_min(key)
+        @layouts.fragments.bootstrap_css()
+        <link rel="stylesheet" media="screen" href="@remote_assets("stylesheets/main.min.css")">
+        <link rel="stylesheet" media="screen" href="@remote_assets("stylesheets/payment.min.css")">
+        @in_head_content
+}
+
+@footer = {
+	@layouts.fragments.payment_footer()
+}
+
+@end_scripts = {
+    @end_scripts_bottom
+}
+
+@layouts.root(head, footer, end_scripts) {
+    @content
+}

@@ -212,6 +212,20 @@ public class Customer extends Model {
     	return find.where().eq("is_topic_open", true).findList();
     }
     
+    public static List<String> getEmailsByNameAsc() {
+    	List<String> emails = new ArrayList<String>();
+    	for (Customer c : findByNameAsc())
+    		emails.add(c.email);
+    	return emails;
+    }
+    
+    public static List<String> getFullnamesByNameAsc() {
+    	List<String> fullnames = new ArrayList<String>();
+    	for (Customer c : findByNameAsc())
+    		fullnames.add(c.getFullName());
+    	return fullnames;
+    }
+    
     public static Customer getOrCreateCustomerFromOrderRequest(OrderRequest request) {
     	Customer existingCustomer = findByEmail(request.email);
     	if (existingCustomer == null)

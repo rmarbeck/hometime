@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import play.Logger;
 import akka.japi.Option;
 
 public class ReflectionHelper {
@@ -22,6 +23,15 @@ public class ReflectionHelper {
 		possibleAccessorMethods.add("has"+capitalizedFieldName);
 		possibleAccessorMethods.add("is_"+capitalizedFieldName);
 		possibleAccessorMethods.add("has_"+capitalizedFieldName);
+		
+		String onlyFirstLetterToUpperCaseFieldName = fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+		
+		possibleAccessorMethods.add("get"+onlyFirstLetterToUpperCaseFieldName);
+		possibleAccessorMethods.add("is"+onlyFirstLetterToUpperCaseFieldName);
+		possibleAccessorMethods.add("has"+onlyFirstLetterToUpperCaseFieldName);
+		possibleAccessorMethods.add("is_"+onlyFirstLetterToUpperCaseFieldName);
+		possibleAccessorMethods.add("has_"+onlyFirstLetterToUpperCaseFieldName);
+		
 		
 		return possibleAccessorMethods;
 	}

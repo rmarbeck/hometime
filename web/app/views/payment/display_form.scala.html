@@ -1,0 +1,51 @@
+@import fr.watchnext.store.utils.payment.systempay._
+@(currentRequest : PaymentRequest, currentForm : SingleImmediatePF)
+@import tags._
+
+
+@head = {
+
+}
+
+@footer = {
+
+}
+
+@end_scripts = {
+
+}
+
+@layouts.payment("start") {
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>watchNext</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<h3>Accès au processus de paiement</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<ul>
+					<li>Bon de commande : <b>@currentRequest.orderNumber</b></li>
+					<li>Description : <b>@currentRequest.description</b></li>
+					<li>Prix : <b>@display_floating_price(currentRequest.priceInEuros)</b></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<form method="POST" action="https://paiement.systempay.fr/vads-payment/">
+					@for(parameter <- currentForm.getParameters) {
+					<input type="hidden" name="@parameter.getParameterName" value="@parameter.getValue" />
+					}
+					<input type="hidden" name="signature" value="@currentForm.getSignature"/>
+					<input type="submit" class="btn btn-primary" name="payer" value="Accéder au processus de paiement"/>
+				</form>
+			</div>
+		</div>
+	</div>
+}

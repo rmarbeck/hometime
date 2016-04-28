@@ -104,7 +104,13 @@ GET		/chrono24										controllers.Default.redirect(to = "http://www.chrono24.f
 GET		/links											controllers.Application.usefull_links()
 
 # Feedback
-GET     /avis-clients               controllers.Application.feedback()
+GET     /avis-clients               					controllers.Application.feedback()
+
+# Payment
+GET     /paiement/:ak               					controllers.PaymentRequests.displayForm(ak: String)
+POST    /paiement/error               					controllers.PaymentRequests.error()
+POST    /paiement/success              					controllers.PaymentRequests.success()
+POST    /paiement/backoffice           					controllers.PaymentRequests.manageBackOfficeAnswer()
 
 # ADMIN
 GET     /login                      									controllers.Application.login(origin: String ?= "")
@@ -220,6 +226,8 @@ GET     /admin/addressbook		            							controllers.Reporting.addressBook
 GET     /admin/stock			            							controllers.Reporting.stock()
 
 GET     /admin/cgv				            							controllers.Admin.cgv()
+
+GET		/admin/watchesAsJson											controllers.WatchesToSell.watchesAsJSon()
 
 # Sitemap
 GET     /sitemap.xml													controllers.Application.sitemap()

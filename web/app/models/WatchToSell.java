@@ -19,13 +19,15 @@ import play.i18n.Messages;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import controllers.CrudReady;
 
 /**
  * Definition of a Watch to be sold
  */
-@Entity 
+@Entity
+@JsonSerialize(using = fr.hometime.utils.WatchToSellSerializer.class)
 public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchToSell> {
 	private static final long serialVersionUID = 5289876388952107742L;
 	private static WatchToSell singleton = null;

@@ -1,7 +1,11 @@
 package controllers;
 
+import java.util.List;
+
 import models.WatchToSell;
+import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Result;
 
 public class WatchesToSell extends Controller {
 	public static Crud<WatchToSell, WatchToSell> crud = Crud.of(
@@ -9,4 +13,9 @@ public class WatchesToSell extends Controller {
 			views.html.admin.watch_to_sell.ref(),
 			views.html.admin.watch_to_sell_form.ref(),
 			views.html.admin.watches_to_sell.ref());
+	
+	public static Result watchesAsJSon() {
+		List<WatchToSell> watches = WatchToSell.findAllByPurchaseDateAsc();
+		return ok(Json.toJson(watches));
+    }
 }
