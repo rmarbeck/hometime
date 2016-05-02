@@ -1,4 +1,4 @@
-package fr.watchnext.store.utils.payment.systempay;
+package fr.hometime.payment.systempay;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -8,21 +8,25 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.stream.IntStream;
 
+import play.Logger;
 import models.PaymentRequest;
 
 public class Helper {
-	private static final String DATE_TRANS_FORMAT = "YYYYMMddHHmmss"; 
-	
+	private static final String DATE_TRANS_FORMAT = "YYYYMMddHHmmss";
+	private static final String PAYMENT_SITE_ID_CONFIGURATION_KEY = "fr.hometime.payment.systempay.site.id";
+	private static final String PAYMENT_MODE_CONFIGURATION_KEY = "fr.hometime.payment.systempay.mode";
+	private static final String PAYMENT_KEY_CONFIGURATION_KEY = "fr.hometime.payment.systempay.key";
+
 	public static String getParameterPrefix() {
 		return DataDictionnary.PARAMETER_PREFIX;
 	}
 	
 	public static String getSiteId() {
-		return "94268958";
+		return getFromConfiguration(PAYMENT_SITE_ID_CONFIGURATION_KEY);
 	}
 	
 	public static String getCtxMode() {
-		return DataDictionnary.CTX_MODE_PRODUCTION;
+		return getFromConfiguration(PAYMENT_MODE_CONFIGURATION_KEY);
 	}
 	
 	public static String generateTransDate() {
@@ -121,8 +125,17 @@ public class Helper {
 			}
 			sb.append(sep);
 		}
-		sb.append( "9549358870653957" );
+		Logger.error("!!!!!!!!! : " + getFromConfiguration(PAYMENT_KEY_CONFIGURATION_KEY));
+		sb.append( getFromConfiguration(PAYMENT_KEY_CONFIGURATION_KEY) );
 		String c_sign = Sha.encode(sb.toString());
 		return c_sign;
+	}
+	
+	public static String getParameterFullName(String parameterShortName) {
+		return getParameterPrefix()+parameterShortName;
+	}
+	
+	private static String getFromConfiguration(String key) {
+		return play.Configuration.root().getString(key);
 	}
 }

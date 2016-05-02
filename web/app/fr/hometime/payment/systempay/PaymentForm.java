@@ -1,4 +1,4 @@
-package fr.watchnext.store.utils.payment.systempay;
+package fr.hometime.payment.systempay;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,8 +24,8 @@ public class PaymentForm {
 		return this.parameters.keySet();
 	}
 	
-	public String getParameterValueAsString(String parameterName) {
-		return this.parameters.get(parameterName).getValue();
+	public String getParameterValueAsString(String parameterFullName) {
+		return this.parameters.get(parameterFullName).getValue();
 	}
 	
 	public String getSignature() {

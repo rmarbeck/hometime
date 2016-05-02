@@ -16,10 +16,10 @@
 @defining(new views.ModelDisplay(payment_request, "admin.paymentrequest")) { modelDisplay =>
 		@{ 	modelDisplay.addField("creationDate");
 			modelDisplay.addField("customer", "getFullName");
-			modelDisplay.addField("priceInEuros", "getSellingPrice", false, null, "price");
+			modelDisplay.addField("priceInEuros", "getPriceInEuros", false, null, "price float");
 			modelDisplay.addField("accessKey");
 			modelDisplay.addField("isOpen");
-			
+			modelDisplay.addField("statusInfo", "getStatusInfo", false, null, "pre");
 		}
 	
 	@admin.template.display(modelDisplay, null, editlink, end_body)

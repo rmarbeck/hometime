@@ -12,6 +12,7 @@
 		   formDisplay.addFormField("description2", true, "textarea");
 		   formDisplay.addFormFieldForSelect("solutionToUse", models.PaymentRequest.PaymentSolution.values.toList);
 		   formDisplay.addFormFieldForSelect("typeOfPayment", models.PaymentRequest.PaymentType.values.toList);
+		   formDisplay.addFormFieldForSelect("requestStatus", models.PaymentRequest.Status.values.toList);
 		   formDisplay.addFormField("delayInDays", true, "input", 'type -> "number", 'min -> "1", 'step -> "1");
 		   formDisplay.addFormField("isOpen", true, "checkbox")
 		}

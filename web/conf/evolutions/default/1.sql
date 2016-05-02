@@ -252,9 +252,12 @@ create table payment_request (
   is_open                   boolean,
   solution_to_use           varchar(10),
   type_of_payment           varchar(18),
+  request_status            varchar(22),
+  status_info               varchar(10000),
   delay_in_days             integer,
   constraint ck_payment_request_solution_to_use check (solution_to_use in ('SYSTEM_PAY','RESERVED_1','RESERVED_2')),
   constraint ck_payment_request_type_of_payment check (type_of_payment in ('ONE_SHOT_IMMEDIATE','ONE_SHOT_POSTPONED','MULTI','RESERVED_1','RESERVED_2','RESERVED_3','RESERVED_4')),
+  constraint ck_payment_request_request_status check (request_status in ('OPEN','EXPIRED','PENDING','CANCELED','VALIDATED_NO_WARNING','VALIDATED_WITH_WARNING','IN_ERROR','RESERVED_1','RESERVED_2','RESERVED_3','RESERVED_4')),
   constraint pk_payment_request primary key (id))
 ;
 

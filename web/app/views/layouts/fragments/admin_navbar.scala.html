@@ -64,6 +64,13 @@
                   </ul>
                 }
                 @li_activable(70, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.payment")) <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    @li_activable(76, index) {<a href="@routes.CrudHelper.displayAll("PaymentRequests")">@Messages("admin.navbar.link.text.payment.requests")</a>}
+                	@li_activable(77, index) {<a href="@routes.CrudHelper.create("PaymentRequests")">@Messages("admin.navbar.link.text.payment.add.request")</a>}
+                  </ul>
+                }
+                @li_activable(80, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.reporting")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     @li_activable(70, index) {<a href="@routes.Reporting.invoiceLines()">@Messages("admin.navbar.link.text.reporting.invoice.lines")</a>}

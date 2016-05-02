@@ -1,5 +1,7 @@
 package models;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +21,8 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
+import fr.hometime.payment.systempay.PaymentConfirmation;
+import fr.hometime.utils.DateHelper;
 
 /**
  * Definition of a payment request
@@ -90,6 +94,43 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 	        throw new IllegalArgumentException("Illegal type name: " + name);
 	    }
 	}
+	
+	public enum Status {
+	    OPEN ("OPEN"),
+	    EXPIRED ("EXPIRED"),
+	    PENDING ("PENDING"),
+	    CANCELED ("CANCELED"),
+	    VALIDATED_NO_WARNING ("VALIDATED_NO_WARNING"),
+	    VALIDATED_WITH_WARNING ("VALIDATED_WITH_WARNING"),
+	    IN_ERROR ("IN_ERROR"),
+	    RESERVED_1 ("RESERVED_1"),
+	    RESERVED_2 ("RESERVED_2"),
+	    RESERVED_3 ("RESERVED_3"),
+	    RESERVED_4 ("RESERVED_4");
+	    
+		private String name = "";
+		    
+		Status(String name){
+		    this.name = name;
+		}
+
+		public String toString(){
+		    return name;
+		}
+		
+		public int intValue() {
+			return Integer.valueOf(name);
+		}
+		
+		public static Status fromString(String name) {
+	        for (Status status : Status.values()) {
+	            if (status.name.equals(name)) {
+	                return status;
+	            }
+	        }
+	        throw new IllegalArgumentException("Illegal type name: " + name);
+	    }
+	}
 
 	@Id
 	public Long id;
@@ -140,6 +181,14 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 	@Column(name="type_of_payment")
 	public PaymentType typeOfPayment;
 	
+	@Constraints.Required
+	@Enumerated(EnumType.STRING)
+	@Column(name="request_status")
+	public Status requestStatus;
+	
+	@Column(length = 10000)
+	public String statusInfo;
+	
 	@Column(name="delay_in_days")
 	public int delayInDays = 0;
 		
@@ -186,9 +235,33 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
     		return Optional.empty();
 
     	List<PaymentRequest> requests = find.where().eq("access_key", accessKey).findList();
-    	if (requests != null && requests.size() == 1)
-    		return Optional.of(requests.get(0));
-    	return Optional.empty();
+    	return getFirstIfExists(requests);
+    }
+    
+    public static Optional<PaymentRequest> getValidRequestFromAccessKey(String accessKey) {
+    	Optional<PaymentRequest> request = getFromAccessKey(accessKey);
+    	
+    	if (request.isPresent())
+    		if (request.get().isValid())
+    			return request;
+    	
+   		return Optional.empty();
+    }
+    
+    public static Optional<PaymentRequest> getLastFromOrderId(String orderId) {
+    	if (orderId == null)
+    		return Optional.empty();
+    	
+    	List<PaymentRequest> requests = find.where().eq("order_number", orderId).orderBy("creation_date DESC").findList();
+    	return getFirstIfExists(requests);
+    }
+    
+    private boolean isValid() {
+    	return this.isOpen && DateHelper.isAfterNow(getEnOfTheDayValidityDate()) && this.requestStatus.equals(Status.OPEN);
+    }
+    
+    private Date getEnOfTheDayValidityDate() {
+    	return DateHelper.toDate(DateHelper.endOfTheDay(validUntilDate));
     }
     
     public static Page<PaymentRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
@@ -237,6 +310,50 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 		if (this.customer != null)
 			return this.customer.getFullName();
 		return "unknown";
+	}
+	
+	public void updateAfterConfirmationResult(PaymentConfirmation confirmation) {
+		this.statusInfo = confirmation.toString();
+		if (!confirmation.containsWarnings() && confirmation.getEffectiveAmount() == this.priceInEuros * 100) {
+			this.requestStatus = Status.VALIDATED_NO_WARNING;
+			this.closingDate = new Date();
+		} else if (confirmation.isTransactionAuthorized()){
+			this.requestStatus = Status.VALIDATED_WITH_WARNING;
+			this.closingDate = new Date();
+		} else {
+			this.requestStatus = Status.IN_ERROR;
+			this.lastTryDate = new Date();
+		}
+		this.update();
+	}
+	
+	public void setStatus(Status newStatus) {
+		this.requestStatus = newStatus;
+		switch (newStatus) {
+			case VALIDATED_NO_WARNING:
+			case VALIDATED_WITH_WARNING:
+				this.closingDate = new Date();
+				this.isOpen = false;
+				break;
+			case IN_ERROR:
+				this.lastTryDate = new Date();
+				break;
+			case CANCELED:
+			case EXPIRED:
+				this.isOpen = false;
+				break;
+			case OPEN:
+				this.isOpen = true;
+				break;
+		default:
+			break;
+		}
+	}
+	
+	private static Optional<PaymentRequest> getFirstIfExists(List<PaymentRequest> list) {
+		if (list != null && list.size() == 1)
+    		return Optional.of(list.get(0));
+    	return Optional.empty();
 	}
 }
 

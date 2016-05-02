@@ -1,4 +1,4 @@
-package fr.watchnext.store.utils.payment.systempay;
+package fr.hometime.payment.systempay;
 
 public class DataDictionnary {
 	public static final String PARAMETER_PREFIX = "vads_";
@@ -19,6 +19,13 @@ public class DataDictionnary {
 	public static final String CAPTURE_DELAY = "capture_delay";
 	public static final String VALIDATION_MODE = "validation_mode";
 	
+	public static final String RESULT = "result";
+	public static final String RESULT_OK = "00";
+	public static final String WARRANTY_RESULT = "warranty_result";
+	public static final String WARRANTY_RESULT_OK = "YES";
+	public static final String EFFECTIVE_AMOUNT = "effective_amount";
+	public static final String TRANSACTION_STATUS = "trans_status";
+	public static final String TRANSACTION_STATUS_OK_PATTERN = "AUTHORISED";
 	
 	public static final String CTX_MODE_TEST = "TEST";
 	public static final String CTX_MODE_PRODUCTION = "PRODUCTION";

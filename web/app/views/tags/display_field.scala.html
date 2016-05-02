@@ -27,6 +27,10 @@
 		    @Messages(to_render.toLowerCase.replace("_","."))
 		  }
 		  
+		  case "pre" => {
+		    <pre>@to_render</pre>
+		  }
+		  
 		  case default => {
 		    @if(rendering_option.startsWith("take ")) {
 		    	@defining(Integer.parseInt(rendering_option.replace("take ", ""))) { size =>

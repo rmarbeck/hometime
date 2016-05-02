@@ -1342,6 +1342,9 @@ admin.navbar.link.text.accounting.post.service.certificate=Certificats d''entret
 admin.navbar.link.text.accounting.add.post.service.certificate=Nouveau certificat d''entretien
 admin.navbar.link.text.accounting.post.selling.certificate=Certificats d''authenticité et de garantie
 admin.navbar.link.text.accounting.add.post.selling.certificate=Nouveau certificat d''authenticité et de garantie
+admin.navbar.link.text.payment.requests=Demandes de paiement 
+admin.navbar.link.text.payment.add.request=Nouvelle demande de paiement
+admin.navbar.link.text.payment=Paiement
 
 admin.navbar.link.text.reporting=Reporting
 admin.navbar.link.text.reporting.margin.vat=Rapport de TVA sur Marge
@@ -2913,7 +2916,19 @@ with.vat.by.unit=Avec TVA
 to.sell=A vendre
 sold=Vendue
 reserved.for.a.customer=Réservée
-selling_canceled=Vente annulée
+selling.canceled=Vente annulée
+
+open=Ouvert
+expired=Expiré
+pending=En attente
+canceled=Annulé
+validated.no.warning=Validé
+validated.with.warning=! WARNING !
+in.error=Erreur
+reserved.1=Non implémenté
+reserved.2=Non implémenté
+reserved.3=Non implémenté
+reserved.4=Non implémenté
 
 admin.paymentrequest.page=Demande de paiement CB
 admin.paymentrequest.page.title=Demande de paiement CB
@@ -2922,11 +2937,13 @@ admin.paymentrequest.page.customer=Client
 admin.paymentrequest.page.price.in.euros=Prix
 admin.paymentrequest.page.access.key=Clef d''accès
 admin.paymentrequest.page.is.open=Ouverte ?
+admin.paymentrequest.page.status=Statut
 
 admin.paymentrequest.form=Demande de paiement CB
 admin.paymentrequest.form.title=Demande de paiement CB
 admin.paymentrequest.action.cancel=Annuler
 admin.paymentrequest.action.edit=Modifier
+admin.paymentrequest.action.save=Sauvegarder
 admin.paymentrequest.action.show=Prévisualiser
 admin.paymentrequest.action.delete=Supprimer
 admin.paymentrequest.form.customer.email.label.name=Client
@@ -2956,7 +2973,31 @@ admin.paymentrequest.form.typeofpayment.value.name.reserved.2=Non implémenté
 admin.paymentrequest.form.typeofpayment.value.name.reserved.3=Non implémenté
 admin.paymentrequest.form.typeofpayment.value.name.reserved.4=Non implémenté
 admin.paymentrequest.form.isopen.label.name=Ouverte
+admin.paymentrequest.form.requeststatus.label.name=Statut
+admin.paymentrequest.form.requeststatus.default.name=Choisir le statut
+admin.paymentrequest.form.requeststatus.value.name.open=Ouvert
+admin.paymentrequest.form.requeststatus.value.name.expired=Expiré
+admin.paymentrequest.form.requeststatus.value.name.pending=En attente
+admin.paymentrequest.form.requeststatus.value.name.canceled=Annulé
+admin.paymentrequest.form.requeststatus.value.name.validated.no.warning=Validé
+admin.paymentrequest.form.requeststatus.value.name.validated.with.warning=! WARNING !
+admin.paymentrequest.form.requeststatus.value.name.in.error=Erreur
+admin.paymentrequest.form.requeststatus.value.name.reserved.1=Non implémenté
+admin.paymentrequest.form.requeststatus.value.name.reserved.2=Non implémenté
+admin.paymentrequest.form.requeststatus.value.name.reserved.3=Non implémenté
+admin.paymentrequest.form.requeststatus.value.name.reserved.4=Non implémenté
+admin.paymentrequest.form.delayindays.label.name=Délai de validation
 
 start.html.title=Accès au paiement
 error.html.title=Erreur lors du paiement
 success.html.title=Fin de paiement
+
+
+admin.paymentrequest=Demande de paiement
+admin.paymentrequest.title=Demande de paiement
+admin.paymentrequest.creationdate.display.label=Date de création
+admin.paymentrequest.customer.display.label=Client
+admin.paymentrequest.priceineuros.display.label=Montant
+admin.paymentrequest.accesskey.display.label=Clef d''accès
+admin.paymentrequest.isopen.display.label=Ouverte ?
+admin.paymentrequest.statusinfo.display.label=Statut détaillé

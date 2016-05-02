@@ -1,7 +1,7 @@
-package fr.watchnext.store.utils.payment.systempay;
+package fr.hometime.payment.systempay;
 
-import static fr.watchnext.store.utils.payment.systempay.DataDictionnary.*;
-import static fr.watchnext.store.utils.payment.systempay.Helper.*;
+import static fr.hometime.payment.systempay.DataDictionnary.*;
+import static fr.hometime.payment.systempay.Helper.*;
 import models.PaymentRequest;
 
 public class SingleImmediatePF extends PaymentForm {

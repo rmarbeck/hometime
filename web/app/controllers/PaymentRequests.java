@@ -8,9 +8,9 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import fr.watchnext.store.utils.payment.systempay.DataDictionnary;
-import fr.watchnext.store.utils.payment.systempay.PaymentConfirmation;
-import fr.watchnext.store.utils.payment.systempay.SingleImmediatePF;
+import fr.hometime.payment.systempay.DataDictionnary;
+import fr.hometime.payment.systempay.PaymentConfirmation;
+import fr.hometime.payment.systempay.SingleImmediatePF;
 
 public class PaymentRequests extends Controller {
 	public static Crud<PaymentRequest, PaymentRequest> crud = Crud.of(
@@ -20,7 +20,7 @@ public class PaymentRequests extends Controller {
 			views.html.admin.payment.payment_requests.ref());
 	
 	public static Result displayForm(String accessKey) {
-		Optional<PaymentRequest> request  = PaymentRequest.getFromAccessKey(accessKey);
+		Optional<PaymentRequest> request  = PaymentRequest.getValidRequestFromAccessKey(accessKey);
 		if (request.isPresent())
 			return ok(views.html.payment.display_form.render(request.get(), SingleImmediatePF.of(request.get())));
 		return badRequest(views.html.payment.error.render());
@@ -42,19 +42,18 @@ public class PaymentRequests extends Controller {
 	public static Result manageBackOfficeAnswer() {
 		DynamicForm requestData = Form.form().bindFromRequest();
 		
-		for (String key : requestData.data().keySet()) {
-			Logger.error(key+" -> "+requestData.get(key));
-		}
-		
 		PaymentConfirmation confirmation = PaymentConfirmation.of(requestData.data());
 		
 		String receivedSignature = requestData.get(DataDictionnary.SIGNATURE);
 		String calculatedSignature = confirmation.getSignature();
 		
-		Logger.debug("receivedSignature : "+receivedSignature+", calculatedSignature : "+calculatedSignature);
-		
 		if (receivedSignature.equals(calculatedSignature)) {
-			return ok("OK");	
+			Optional<PaymentRequest> foundRequest = PaymentRequest.getLastFromOrderId(confirmation.getOrderId());
+			if (foundRequest.isPresent()) {
+				foundRequest.get().updateAfterConfirmationResult(confirmation);
+				return ok("OK");
+			}
+			return badRequest("Unknown payment request");
 		} else {
 			return badRequest("Signature doesn't match");
 		}

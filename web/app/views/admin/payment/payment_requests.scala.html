@@ -1,13 +1,18 @@
 @(currentPage: com.avaje.ebean.Page[models.PaymentRequest], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
 @import tags._
 
+@optionallink(id:Long) = {
+    @routes.PaymentRequests.displayForm(models.PaymentRequest.findById(id).accessKey)
+}
+
 @defining(new views.PageDisplay(currentPage, "description ou access key", "admin.paymentrequest.page")) { pageDisplay =>
 	@{  pageDisplay.addTableField("creationDate", "creation.date", "getCreationDate", false, "date short");
 	    pageDisplay.addTableField("customer.name", "customer", "getFullName", false);
 	    pageDisplay.addTableField("priceInEuros", "price.in.euros", "getPriceInEuros", false, "price float");
 		pageDisplay.addTableField("accessKey", "access.key", "getAccessKey", false);
+		pageDisplay.addTableField("requestStatus", "status", "getRequestStatus", false, "i18n");
 		pageDisplay.addTableField("isOpen", "is.open", "getIsOpen", false);
 	}
 	
-	@admin.template.page_with_default_links(pageDisplay, "PaymentRequests", null, currentSortBy, currentOrder, currentFilter, currentSize)
+	@admin.template.page_with_default_links(pageDisplay, "PaymentRequests", optionallink, currentSortBy, currentOrder, currentFilter, currentSize)
 }
