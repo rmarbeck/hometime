@@ -57,7 +57,8 @@ public class Customer extends Model {
 	    MONSIEUR ("MONSIEUR"),
 	    MADAME ("MADAME"),
 	    MISTER ("MISTER"),
-	    MISS ("MISS");
+	    MISS ("MISS"),
+	    EMPTY ("EMPTY");
 	    
 		private String name = "";
 		    
@@ -222,7 +223,7 @@ public class Customer extends Model {
     public static List<String> getFullnamesByNameAsc() {
     	List<String> fullnames = new ArrayList<String>();
     	for (Customer c : findByNameAsc())
-    		fullnames.add(c.getFullName());
+    		fullnames.add(c.getFullNameInversed());
     	return fullnames;
     }
     
@@ -283,7 +284,10 @@ public class Customer extends Model {
     
     public String getFullName() {
     	return this.firstname + " " + this.name;
-    	
+    }
+    
+    public String getFullNameInversed() {
+    	return this.name + " " + this.firstname;
     }
 }
 

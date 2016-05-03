@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.Optional;
 
+import models.OrderDocument;
 import models.PaymentRequest;
 import play.Logger;
 import play.data.DynamicForm;
@@ -17,7 +18,21 @@ public class PaymentRequests extends Controller {
 			PaymentRequest.of(),
 			views.html.admin.payment.payment_request.ref(),
 			views.html.admin.payment.payment_request_form.ref(),
-			views.html.admin.payment.payment_requests.ref());
+			views.html.admin.payment.payment_requests.ref(),
+			Form.form(PaymentRequest.class).fill(PaymentRequest.getDefaultValues()));
+	
+	public static Result createFromOrder(long id) {
+		PaymentRequest instance = PaymentRequest.getDefaultValues();
+		OrderDocument document = OrderDocument.findById(id);
+		
+		if (document != null) {
+			instance.orderNumber = document.getUniqueAccountingNumber();
+			instance.customer = document.document.customer;
+			instance.description = document.description;
+			instance.priceInEuros = document.document.getBottomLinePrice();
+		}
+		return crud.create(Form.form(PaymentRequest.class).fill(instance));
+    }
 	
 	public static Result displayForm(String accessKey) {
 		Optional<PaymentRequest> request  = PaymentRequest.getValidRequestFromAccessKey(accessKey);

@@ -226,6 +226,8 @@ GET     /admin/addresses		            							controllers.Reporting.addresses()
 GET     /admin/addressbook		            							controllers.Reporting.addressBook()
 GET     /admin/stock			            							controllers.Reporting.stock()
 
+GET		/admin/create-from-order/PaymentRequests/:id					controllers.PaymentRequests.createFromOrder(id: Long)
+
 GET     /admin/cgv				            							controllers.Admin.cgv()
 
 GET		/admin/watchesAsJson											controllers.WatchesToSell.watchesAsJSon()

@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 
 import com.avaje.ebean.Page;
 
-import play.Logger;
 import play.data.Form;
 import play.db.ebean.Model;
 
@@ -35,7 +34,6 @@ public interface CrudReady<T, F> {
 	default Form<F> fillForm(Form<F> form) {
 		if (form.getClass().isInstance(Form.form(this.getClass()))) {
 			Form<T> currentForm = (Form<T>) form;
-			Logger.debug("!!!!!!!!!!!!!!!!!!!!! "+form);
 			if (form.value().isDefined())
 				return form;
 			return (Form<F>) currentForm.fill(this.getInstance());

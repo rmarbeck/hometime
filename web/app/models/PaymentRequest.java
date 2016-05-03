@@ -1,6 +1,8 @@
 package models;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +15,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import models.Quotation.TypesOfNetwork;
 import play.Logger;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
@@ -23,6 +26,7 @@ import com.avaje.ebean.Page;
 import controllers.CrudReady;
 import fr.hometime.payment.systempay.PaymentConfirmation;
 import fr.hometime.utils.DateHelper;
+import fr.hometime.utils.UniqueAccountingNumber;
 
 /**
  * Definition of a payment request
@@ -354,6 +358,18 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 		if (list != null && list.size() == 1)
     		return Optional.of(list.get(0));
     	return Optional.empty();
+	}
+	
+	public static PaymentRequest getDefaultValues() {
+		PaymentRequest instance = PaymentRequest.of();
+		instance.delayInDays = 1;
+		instance.isOpen = true;
+		instance.validUntilDate = Date.from(Instant.now().plus(15, ChronoUnit.DAYS));
+		instance.typeOfPayment = PaymentType.ONE_SHOT_IMMEDIATE;
+		instance.solutionToUse = PaymentSolution.SYSTEM_PAY;
+		instance.requestStatus = Status.OPEN;
+		instance.orderNumber = UniqueAccountingNumber.getLastForOrders().toString();
+		return instance;
 	}
 }
 

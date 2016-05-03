@@ -96,7 +96,7 @@ create table customer (
   is_topic_open             boolean,
   should_print_address      boolean,
   constraint ck_customer_customer_status check (customer_status in ('PROSPECT','ALMOST_CUSTOMER','REAL_CUSTOMER')),
-  constraint ck_customer_customer_civility check (customer_civility in ('MONSIEUR','MADAME','MISTER','MISS')),
+  constraint ck_customer_customer_civility check (customer_civility in ('MONSIEUR','MADAME','MISTER','MISS','EMPTY')),
   constraint uq_customer_email unique (email),
   constraint pk_customer primary key (id))
 ;

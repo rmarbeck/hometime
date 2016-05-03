@@ -83,5 +83,15 @@ public class AccountingDocument extends Model {
 	public void setDocumentCreationDate(Date newDate) {
 		creationDate = newDate;
 	}
+	
+	public float getBottomLinePrice() {
+		float result = 0f;
+		if (lines != null)
+			for (AccountingLine currentLine : lines)
+				if (currentLine.unit != null && currentLine.unitPrice != null)
+					result+= currentLine.unit*currentLine.unitPrice;
+		
+		return result;
+	}
 }
 

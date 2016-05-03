@@ -3,7 +3,8 @@
 
 
 @defining(new views.PageDisplay(currentPage, "creation_date", "admin.postservicecertificate.page")) { pageDisplay =>
-	@{  pageDisplay.addTableField("owner.name", "owner", "getCustomerFullName", false);
+	@{  pageDisplay.addTableField("documentDate", "documentDate", "getDocumentDate", false, "date short");
+		pageDisplay.addTableField("owner.name", "owner", "getCustomerFullName", false);
 	    pageDisplay.addTableField("watch.brand", "brand", "getBrand", false);
 	    pageDisplay.addTableField("watch.model", "model", "getModel", false);
 	}

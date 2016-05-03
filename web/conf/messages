@@ -1687,11 +1687,14 @@ admin.customer.text.civility.mister=Mister
 admin.customer.text.civility.mister.short=Mr
 admin.customer.text.civility.miss=Miss
 admin.customer.text.civility.miss.short=Miss
+admin.customer.text.civility.empty=
+admin.customer.text.civility.empty.short=
 admin.customer.form.value.civility.default=Sélectionner la civilité
 admin.customer.form.value.civility.monsieur=Monsieur
 admin.customer.form.value.civility.madame=Madame
 admin.customer.form.value.civility.mister=Mister
 admin.customer.form.value.civility.miss=Miss
+admin.customer.form.value.civility.empty=Vide
 admin.customer.head.watches=Ses montres
 admin.customer.head.orders=Ses commandes
 
@@ -2737,6 +2740,7 @@ admin.postservicecertificate.page.title=Certificats d''entretien
 admin.postservicecertificate.page.owner=Client
 admin.postservicecertificate.page.brand=Marque
 admin.postservicecertificate.page.model=Modèle
+admin.postservicecertificate.page.documentdate=Date du document
 
 admin.postservicecertificate.form=Certificat d''entretien
 admin.postservicecertificate.form.title=Certificat d''entretien
@@ -2819,6 +2823,7 @@ admin.postsellingcertificate.page.title=Certificats d''authenticité et de garan
 admin.postsellingcertificate.page.owner=Client
 admin.postsellingcertificate.page.brand=Marque
 admin.postsellingcertificate.page.model=Modèle
+admin.postsellingcertificate.page.documentdate=Date du document
 
 admin.post.selling.certificate.title=Certificat d''authenticité et de garantie
 admin.post.selling.certificate.text=Certificat d''authenticité et de garantie

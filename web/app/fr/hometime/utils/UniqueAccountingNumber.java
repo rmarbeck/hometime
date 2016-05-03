@@ -52,7 +52,7 @@ public class UniqueAccountingNumber {
 		return new UniqueAccountingNumber(this.prefix, this.serial+1);
 	}
 	
-	private static UniqueAccountingNumber getLastForInvoices() {
+	public static UniqueAccountingNumber getLastForInvoices() {
 		Invoice fromInvoice = (Invoice) getLastUAN(Invoice.find);
 		SellingDocument fromSellingDocument = (SellingDocument) getLastUAN(SellingDocument.find);
 		
@@ -66,7 +66,7 @@ public class UniqueAccountingNumber {
 		return selectOlder(fromInvoice.retrieveUniqueAccountingNumber(), fromSellingDocument.getUniqueAccountingNumber());
 	}
 	
-	private static UniqueAccountingNumber getLastForOrders() {
+	public static UniqueAccountingNumber getLastForOrders() {
 		OrderDocument fromOrder = (OrderDocument) getLastUAN(OrderDocument.find);
 		
 		if (fromOrder == null)
