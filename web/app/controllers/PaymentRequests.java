@@ -68,8 +68,10 @@ public class PaymentRequests extends Controller {
 				foundRequest.get().updateAfterConfirmationResult(confirmation);
 				return ok("OK");
 			}
+			Logger.error("Unknown payment request");
 			return badRequest("Unknown payment request");
 		} else {
+			Logger.error("Signature doesn't match");
 			return badRequest("Signature doesn't match");
 		}
     }
