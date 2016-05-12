@@ -86,7 +86,7 @@ public class CustomerWatch extends Controller {
 	}
 	
 	private static Html customerWatchForm(Form<models.CustomerWatch> watchForm, boolean isItANewWatch) {
-		return customer_watch_form.render(watchForm, isItANewWatch, models.Customer.findAll());
+		return customer_watch_form.render(watchForm, isItANewWatch, models.Customer.findByNameAsc());
 	}
 	
 	private static Html emptyNewWatchForm() {

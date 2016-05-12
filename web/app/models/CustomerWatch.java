@@ -141,7 +141,7 @@ public class CustomerWatch extends Model {
     }
     
     public static List<CustomerWatch> findAllByCustomerAndBrandAsc() {
-        return find.where().orderBy("customer.firstname ASC, brand ASC").findList();
+        return find.where().orderBy("customer.name ASC, brand ASC").findList();
     }
 
     
