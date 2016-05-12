@@ -68,7 +68,7 @@ public class PaymentRequests extends Controller {
 				foundRequest.get().updateAfterConfirmationResult(confirmation);
 				return ok("OK");
 			}
-			Logger.error("Unknown payment request");
+			Logger.error("Unknown payment request - "+confirmation.getOrderId());
 			return badRequest("Unknown payment request");
 		} else {
 			Logger.error("Signature doesn't match");
