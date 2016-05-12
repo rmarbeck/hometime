@@ -15,21 +15,21 @@
 
 }
 
-@layouts.payment("success") {
+@layouts.payment("payment.success") {
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<h1>watchNext</h1>
+				<h1>@Html(Messages("payment.header"))</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 text-center">
-				<h4>Merci pour votre paiement.</h4>
+				<h4 class="success">@Html(Messages("payment.success.message"))</h4>
 			</div>
 		</div>
 		<div class="row backlink">
 			<div class="col-xs-12 text-center">
-				<a href="http://www.hometime.fr">Retour vers hometime.fr</a>
+				<a href="http://www.hometime.fr">@Html(Messages("payment.back.to.website"))</a>
 			</div>
 		</div>
 	</div>

@@ -15,21 +15,21 @@
 
 }
 
-@layouts.payment("error") {
+@layouts.payment("payment.error") {
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<h1>watchNext</h1>
+				<h1>@Html(Messages("payment.header"))</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 text-center">
-				<h4>Une erreur s'est produite ou le paiement a déjà été effectué.<br /><br /> Veuillez nous contacter pour plus de précisions.</h4>
+				<h4 class="error">@Html(Messages("payment.error.message"))</h4>
 			</div>
 		</div>
 		<div class="row backlink">
 			<div class="col-xs-12 text-center">
-				<a href="http://www.hometime.fr">Retour vers hometime.fr</a>
+				<a href="http://www.hometime.fr">@Html(Messages("payment.back.to.website"))</a>
 			</div>
 		</div>
 	</div>

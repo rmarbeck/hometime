@@ -34,7 +34,7 @@
             	@actions
             	
 	            @helper.select(sellingDocument("document.customer.id"),
-                         for (s <- customers) yield s.id.toString -> (s.firstname + " " + s.name),
+                         for (s <- customers) yield s.id.toString -> (s.name + " " + s.firstname),
                          '_default -> Messages("admin.selling.document.form.value.customer.default"),
                          'placeholder -> Messages("admin.selling.document.form.placeholder.customer"), '_label -> Messages("admin.selling.document.form.label.customer"),
                          'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)

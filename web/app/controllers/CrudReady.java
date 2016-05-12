@@ -31,10 +31,10 @@ public interface CrudReady<T, F> {
 	Page<T> getPage(int page, int pageSize, String sortBy, String order, String filter);
 	
 	@SuppressWarnings("unchecked")
-	default Form<F> fillForm(Form<F> form) {
+	default Form<F> fillForm(Form<F> form, boolean forceFillingFromInstance) {
 		if (form.getClass().isInstance(Form.form(this.getClass()))) {
 			Form<T> currentForm = (Form<T>) form;
-			if (form.value().isDefined())
+			if (forceFillingFromInstance == false && form.value().isDefined())
 				return form;
 			return (Form<F>) currentForm.fill(this.getInstance());
 		}

@@ -15,24 +15,24 @@
 
 }
 
-@layouts.payment("start") {
+@layouts.payment("payment.start") {
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<h1>watchNext</h1>
+				<h1>@Html(Messages("payment.header"))</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<h3>Accès au processus de paiement</h3>
+				<h3>@Html(Messages("payment.start.main.title"))</h3>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
 				<ul>
-					<li>Bon de commande : <b>@currentRequest.orderNumber</b></li>
-					<li>Description : <b>@currentRequest.description</b></li>
-					<li>Prix : <b>@display_floating_price(currentRequest.priceInEuros)</b></li>
+					<li>@Html(Messages("payment.start.form.order.number", currentRequest.orderNumber))</li>
+					<li>@Html(Messages("payment.start.form.description", currentRequest.description))</li>
+					<li>@Html(Messages("payment.start.form.price", currentRequest.priceInEuros))</li>
 				</ul>
 			</div>
 		</div>
@@ -43,8 +43,11 @@
 					<input type="hidden" name="@parameter.getParameterName" value="@parameter.getValue" />
 					}
 					<input type="hidden" name="signature" value="@currentForm.getSignature"/>
-					<input type="submit" class="btn btn-primary" name="payer" value="Accéder au processus de paiement"/>
+					<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-lock"></span>&nbspAccéder au processus de paiement *</button>
 				</form>
+			</div>
+			<div class="col-xs-12 text-left">
+				<h4 class="explanation">* en cliquant sur ce lien, vous serez redirigé vers la page de paiement de notre banque. Il s'agit d'un processus sécurisé.</h4>
 			</div>
 		</div>
 	</div>

@@ -1,3 +1,4 @@
+@above-phone-screen-portrait: 750px;
 
 #copyright {
     margin-bottom: 15px;
@@ -5,7 +6,6 @@
 
 .btn-primary {
 	margin-top: 2em;
-	margin-bottom: 5em;
 }
 
 ul {
@@ -16,10 +16,29 @@ ul {
 }
 
 li {
-	margin: 5px 0;
+	margin: 15px 0;
 }
 
 .backlink {
 	font-size: 1.2em;
 	margin: 2em 0;
-} 
+}
+
+h4 {
+	margin-top: 2em;
+	margin-bottom: 5em;
+}
+
+h4.explanation {
+	font-size: 1.1em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+@media (min-width: @above-phone-screen-portrait) {
+    h3 {
+    	font-size: 1.8em;
+    }
+}

@@ -355,7 +355,7 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 	}
 	
 	private static Optional<PaymentRequest> getFirstIfExists(List<PaymentRequest> list) {
-		if (list != null && list.size() == 1)
+		if (list != null && list.size() >= 1)
     		return Optional.of(list.get(0));
     	return Optional.empty();
 	}

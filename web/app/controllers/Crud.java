@@ -59,7 +59,7 @@ public class Crud<T extends Model & CrudReady<T, F>, F> {
         if (t == null) {
             return notFound();
         }
-        return ok(editTemplate.render(t.fillForm(form), false));
+        return ok(editTemplate.render(t.fillForm(form, true), false));
     }
     
     public Result create() {
@@ -67,7 +67,7 @@ public class Crud<T extends Model & CrudReady<T, F>, F> {
     }
     
     public Result create(Form<F> preFilledForm) {
-        return ok(editTemplate.render(tInstance.fillForm(preFilledForm), true));
+        return ok(editTemplate.render(tInstance.fillForm(preFilledForm, false), true));
     }
     
     public Result save() {

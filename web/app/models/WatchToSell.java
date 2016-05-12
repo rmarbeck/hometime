@@ -216,7 +216,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     }
     
     public static List<WatchToSell> findAllByCustomerAndBrandAsc() {
-        return find.where().orderBy("customerThatBoughtTheWatch.firstname ASC, brand.display_name ASC").findList();
+        return find.where().orderBy("customerThatBoughtTheWatch.name ASC, brand.display_name ASC").findList();
     }
     
     public static List<String> getSerialsBySerialAsc() {
@@ -242,7 +242,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     private static String displayWatchByCustomer(WatchToSell watch) {
     	StringBuilder result = new StringBuilder();
     	if (watch.customerThatBoughtTheWatch != null) {
-    		result.append(watch.customerThatBoughtTheWatch.getFullName());
+    		result.append(watch.customerThatBoughtTheWatch.getFullNameInversed());
     	} else {
     		result.append("unknown");
     	}

@@ -1197,6 +1197,24 @@ around.body.3=L''offre de montres d''occasion ne se limite pas aux boutiques par
  <br /><br />Rendez-vous des passionnés français, acheteurs ou vendeurs se retrouvent sur une place de marché entièrement gratuite.\
  <br /><br /><a href="http://www.goodmontres.com/" title="Good Montres : Sites d''annonces de montres entre particuliers" target="_blank">Good Montres, c''est par ici</a>.
 
+# Payment pages
+payment.header=watchNext
+payment.start.html.title=Accès au paiement
+payment.start.html.description=Processus de paiement CB watch next
+payment.start.form.order.number=Bon de commande : <b>{0}</b>
+payment.start.form.description=Description : <b>{0}</b>
+payment.start.form.price=Montant : <b>{0,number}&nbsp;€</b>
+payment.start.main.title=Accès au processus de paiement
+
+payment.error.html.title=Erreur lors du paiement
+payment.error.html.description=Processus de paiement CB watch next en erreur
+payment.error.message=Une erreur s'est produite ou le paiement a déjà été effectué.<br /><br /> Veuillez nous contacter pour plus de précisions.
+payment.success.html.title=Fin de paiement
+payment.success.html.description=Fin du processus de paiement CB watch next
+payment.success.message=Merci pour votre paiement
+payment.back.to.website=Retour vers hometime.fr
+				
+
 
 # Siteplan page
 site.plan.html.title=Plan du site
@@ -1229,6 +1247,8 @@ site.plan.customization.title=Personnalisation de montres
 site.plan.buy.request.title=Demande de recherche de montres neuves ou d''occasion
 site.plan.broking.title=Recherche de montres neuves ou d''occasion
 site.plan.sell.title=Vendez votre montre d''occasion
+
+
 
 
 
@@ -2993,11 +3013,6 @@ admin.paymentrequest.form.requeststatus.value.name.reserved.3=Non implémenté
 admin.paymentrequest.form.requeststatus.value.name.reserved.4=Non implémenté
 admin.paymentrequest.form.delayindays.label.name=Délai de validation
 
-start.html.title=Accès au paiement
-error.html.title=Erreur lors du paiement
-success.html.title=Fin de paiement
-
-
 admin.paymentrequest=Demande de paiement
 admin.paymentrequest.title=Demande de paiement
 admin.paymentrequest.creationdate.display.label=Date de création
@@ -3006,3 +3021,4 @@ admin.paymentrequest.priceineuros.display.label=Montant
 admin.paymentrequest.accesskey.display.label=Clef d''accès
 admin.paymentrequest.isopen.display.label=Ouverte ?
 admin.paymentrequest.statusinfo.display.label=Statut détaillé
+
