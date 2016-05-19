@@ -175,6 +175,12 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 	@Column(name="is_open")
 	public Boolean isOpen;
 	
+	@Column(name="allow_amex")
+	public Boolean allowAmex;
+	
+	@Column(name="amex_only")
+	public Boolean amexOnly;
+	
 	@Constraints.Required
 	@Enumerated(EnumType.STRING)
 	@Column(name="solution_to_use")
@@ -369,6 +375,8 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 		instance.solutionToUse = PaymentSolution.SYSTEM_PAY;
 		instance.requestStatus = Status.OPEN;
 		instance.orderNumber = UniqueAccountingNumber.getLastForOrders().toString();
+		instance.allowAmex = false;
+		instance.amexOnly = false;
 		return instance;
 	}
 }

@@ -250,6 +250,8 @@ create table payment_request (
   description               varchar(255),
   description2              varchar(255),
   is_open                   boolean,
+  allow_amex                boolean,
+  amex_only                 boolean,
   solution_to_use           varchar(10),
   type_of_payment           varchar(18),
   request_status            varchar(22),

@@ -72,8 +72,17 @@ public class SingleImmediatePF extends PaymentForm {
 		
 		instance.addParameter(PaymentFormParameter.of(ORDER_INFO_1, request.description, false));
 		instance.addParameter(PaymentFormParameter.of(ORDER_INFO_2, request.description2, false));
-		instance.addParameter(PaymentFormParameter.of(PAYMENT_CARDS, PAYMENT_CARDS_DEFAULT, false));
+		instance.addParameter(PaymentFormParameter.of(PAYMENT_CARDS, getPaymentCardsOptions(request), false));
 		instance.addParameter(PaymentFormParameter.of(SHOP_NAME, SHOP_NAME_DEFAULT, false));
 		return instance;
+	}
+	
+	private static String getPaymentCardsOptions(PaymentRequest request) {
+		if (request.amexOnly)
+			return PAYMENT_CARDS_AMEX;
+		StringBuilder defaultPaymentCards = new StringBuilder(PAYMENT_CARDS_DEFAULT);
+		if (request.allowAmex)
+			defaultPaymentCards.append(PCVS+PAYMENT_CARDS_AMEX);
+		return defaultPaymentCards.toString();
 	}
 }

@@ -24,7 +24,9 @@
 @layouts.admin_root(head, footer, end_scripts) {
     @layouts.fragments.admin_navbar(0)
     
+    <div class="container">
     @display_flash()
+    </div>
 
     @content
 }

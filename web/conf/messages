@@ -2964,6 +2964,7 @@ admin.paymentrequest.page.access.key=Clef d''accès
 admin.paymentrequest.page.is.open=Ouverte ?
 admin.paymentrequest.page.status=Statut
 
+
 admin.paymentrequest.form=Demande de paiement CB
 admin.paymentrequest.form.title=Demande de paiement CB
 admin.paymentrequest.action.cancel=Annuler
@@ -3012,6 +3013,8 @@ admin.paymentrequest.form.requeststatus.value.name.reserved.2=Non implémenté
 admin.paymentrequest.form.requeststatus.value.name.reserved.3=Non implémenté
 admin.paymentrequest.form.requeststatus.value.name.reserved.4=Non implémenté
 admin.paymentrequest.form.delayindays.label.name=Délai de validation
+admin.paymentrequest.form.allowamex.label.name=Autoriser AMEX
+admin.paymentrequest.form.amexonly.label.name=Uniquement AMEX
 
 admin.paymentrequest=Demande de paiement
 admin.paymentrequest.title=Demande de paiement
@@ -3021,4 +3024,6 @@ admin.paymentrequest.priceineuros.display.label=Montant
 admin.paymentrequest.accesskey.display.label=Clef d''accès
 admin.paymentrequest.isopen.display.label=Ouverte ?
 admin.paymentrequest.statusinfo.display.label=Statut détaillé
+admin.paymentrequest.allowamex.display.label=AMEX autorisé
+admin.paymentrequest.amexonly.display.label=AMEX uniquement
 
