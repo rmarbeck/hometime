@@ -48,6 +48,7 @@ public class Admin extends Controller {
 	private final static String AUTRE_MARQUE_SEO_NAME = "autre-marque-de-montres";
 	private final static int CLOSE_ORDER_REQUEST = 1;
 	private final static int SET_REPLIED_ORDER_REQUEST = 2;
+	private final static int CHANGE_FEEDBACK_ASKED = 3;
 	
 	public static class QuotationForm {
 		@Constraints.Required
@@ -266,6 +267,10 @@ public class Admin extends Controller {
 		return updateOrderRequest(id, SET_REPLIED_ORDER_REQUEST);
     }
 	
+	public static Result changeFeedbackAsked(long id) {
+		return updateOrderRequest(id, CHANGE_FEEDBACK_ASKED);
+    }
+	
 	private static Result updateOrderRequest(long id, int action) {
 		if (orderIsValid(id)) {
 			switch(action) {
@@ -274,6 +279,9 @@ public class Admin extends Controller {
 				break;
 			case SET_REPLIED_ORDER_REQUEST:
 				OrderRequest.findById(id).replied().update();
+				break;
+			case CHANGE_FEEDBACK_ASKED:
+				OrderRequest.findById(id).changeFeedbackAsked().update();
 				break;
 			}
 			return INDEX;

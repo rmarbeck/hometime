@@ -168,6 +168,11 @@ public class OrderRequest extends Model {
     	return this;
     }
     
+    public OrderRequest changeFeedbackAsked() {
+    	this.feedbackAsked = !this.feedbackAsked;
+    	return this;
+    }
+    
     public String toString() {
     	StringBuilder content = new StringBuilder();
     	content.append(this.getClass().getSimpleName() + " : [");

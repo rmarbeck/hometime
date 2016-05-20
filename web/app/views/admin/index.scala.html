@@ -18,7 +18,7 @@
 	      </thead>
 	      <tbody>
 	      	@for(request <- unrepliedOrderRequests) {
-	      	<tr>
+	      	<tr class="feedback_asked_@request.feedbackAsked">
 	      		<td><a href="@routes.Admin.displayOrderRequest(request.id)">##</a></td>
 	      		<td>@display_date(request.requestDate, "dd/MM/yyyy HH:mm")</td>
 	      		<td>@request.email</td>
@@ -26,6 +26,7 @@
 	      		<td>
 		      		<a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.setRepliedOrderRequest(request.id)" title="@Messages("admin.index.order.requests.action.set.replied.title")"><span class="glyphicon glyphicon-new-window"></span></a>
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.Admin.closeOrderRequest(request.id)" title="@Messages("admin.index.order.requests.action.close.title")"><span class="glyphicon glyphicon-remove"></span></a>
+	                <a type="button" class="btn btn-success btn-xs" href="@routes.Admin.changeFeedbackAsked(request.id)" title="@Messages("admin.index.order.requests.action.change.feedback.asked.title")"><span class="glyphicon glyphicon-envelope"></span></a>
                 </td>
 	      	</tr>
 	      	}
