@@ -120,6 +120,11 @@ GET     /quick-login                   									controllers.Application.quickAdm
 POST    /quick-login                   									controllers.Application.quickAdminAuthenticate()
 GET     /logout                     									controllers.Application.logout()
 GET     /admin/		                    								controllers.Admin.index()
+
+POST    /admin/search													controllers.Admin.search()
+GET     /admin/search/view/:pattern/:id    								controllers.Admin.viewSearchable(pattern: String, id: Long)
+GET     /admin/search/edit/:pattern/:id									controllers.Admin.editSearchable(pattern: String, id: Long)
+
 GET     /admin/order-request/all    									controllers.Admin.displayOrderRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/order-request/:id    									controllers.Admin.displayOrderRequest(id: Long)
 GET     /admin/order-request-close/:id   								controllers.Admin.closeOrderRequest(id: Long)

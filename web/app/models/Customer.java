@@ -1,8 +1,10 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,11 +23,13 @@ import play.i18n.Messages;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
+import fr.hometime.utils.Searcher;
+
 /**
  * Definition of a Customer
  */
 @Entity 
-public class Customer extends Model {
+public class Customer extends Model implements Searchable {
 	private static final long serialVersionUID = -7161230172856280985L;
 	
 	public enum CustomerStatus {
@@ -289,5 +293,44 @@ public class Customer extends Model {
     public String getFullNameInversed() {
     	return this.name + " " + this.firstname;
     }
+
+	@Override
+	public Optional<List<? extends Searchable>> findMatching(String pattern) {
+		if (pattern != null) {
+			List<Customer> results = find.where().disjunction()
+					.ilike("firstname", "%" + pattern + "%")
+					.ilike("name", "%" + pattern + "%")
+					.ilike("email", "%" + pattern + "%")
+					.ilike("alternativeEmail", "%" + pattern + "%")
+					.ilike("phoneNumber", "%" + pattern + "%")
+					.ilike("alternativePhoneNumber", "%" + pattern + "%")
+					.findList();
+			if (results != null && results.size() != 0)
+				return Optional.of(results);
+		}
+		
+		return Optional.empty();
+	}
+
+	@Override
+	public String getType() {
+		return this.getClass().getSimpleName();
+	}
+
+	@Override
+	public String getDisplayName() {
+		return getFullNameInversed();
+	}
+
+	@Override
+	public String getDetails() {
+		List<String> values = Arrays.asList(email, phoneNumber, alternativeEmail, alternativePhoneNumber);
+		return Searcher.generateDetails(values);
+	}
+
+	@Override
+	public Long retrieveId() {
+		return id;
+	}
 }
 

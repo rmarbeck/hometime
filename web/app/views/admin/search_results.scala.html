@@ -1,0 +1,38 @@
+@(pattern: String = "", results: Optional[List[_ <: Searchable]])
+@import tags._
+@layouts.admin() {
+    <div class="container">
+    @if(results.isPresent) {
+    	<h3>
+    		@Html(Messages("admin.index.search.results.active", pattern))
+    	</h3>
+    	<table class="table table-condensed table-striped table-bordered">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages("admin.index.search.results.head.type"))</th>
+	          <th>@Html(Messages("admin.index.search.results.head.name"))</th>
+	          <th>@Html(Messages("admin.index.search.results.head.details"))</th>
+	          <th>@Html(Messages("admin.index.search.results.head.actions"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for(result <- results.get) {
+	      	<tr class="@result.getType">
+	      		<td>@result.getType</td>
+	      		<td>@result.getDisplayName</td>
+	      		<td>@takeif(result.getDetails, 60)</td>
+	      		<td>
+					<a type="button" class="btn btn-default btn-xs" href="@routes.Admin.viewSearchable(result.getType, result.retrieveId)" title="@Messages("admin.index.search.results.action.view.title")"><span class="glyphicon glyphicon-user"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.editSearchable(result.getType, result.retrieveId)" title="@Messages("admin.index.search.results.action.edit.title")"><span class="glyphicon glyphicon-edit"></span></a>
+                </td>
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
+    } else {
+    	<h3>
+    		@Html(Messages("admin.index.search.results.active.none", pattern))
+    	</h3>
+    }
+    </div>
+}

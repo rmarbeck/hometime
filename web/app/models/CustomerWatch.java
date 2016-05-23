@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import com.avaje.ebean.Page;
  * Definition of a Watch belonging to a customer
  */
 @Entity 
-public class CustomerWatch extends Model {
+public class CustomerWatch extends Model implements Searchable {
 	private static final long serialVersionUID = -1122053555762637015L;
 	
 	public enum CustomerWatchStatus {
@@ -262,5 +263,30 @@ public class CustomerWatch extends Model {
 	public String toString() {
 		return customer.name + " -> " + brand + " " + model;
 	}
+	
+	@Override
+	public Optional<List<? extends Searchable>> findMatching(String pattern) {
+		if (pattern != null) {
+			List<CustomerWatch> results = find.where().disjunction()
+					.ilike("brand", "%" + pattern + "%")
+					.ilike("model", "%" + pattern + "%")
+					.ilike("additionnalModelInfos", "%" + pattern + "%")
+					.ilike("reference", "%" + pattern + "%")
+					.ilike("serial", "%" + pattern + "%")
+					.ilike("movement", "%" + pattern + "%")
+					.ilike("otherInfos", "%" + pattern + "%")
+					.findList();
+			if (results != null && results.size() != 0)
+				return Optional.of(results);
+		}
+		
+		return Optional.empty();
+	}
+
+	@Override
+	public Long retrieveId() {
+		return id;
+	}
+    
 }
 

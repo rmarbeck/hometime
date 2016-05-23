@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import models.Brand;
 import models.BuyRequest;
@@ -16,6 +17,7 @@ import models.ServiceTest;
 import models.ServiceTest.TestResult;
 import models.Watch;
 import play.Logger;
+import play.data.DynamicForm;
 import play.data.Form;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
@@ -26,6 +28,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import views.html.admin.order_request;
+import views.html.admin.search_results;
 import views.html.admin.order_requests;
 import views.html.admin.buy_request;
 import views.html.admin.buy_requests;
@@ -39,6 +42,7 @@ import views.html.admin.service_tests;
 import views.html.mails.notify_order;
 import views.html.mails.notify_buy_request;
 import fr.hometime.utils.MailjetAdapter;
+import fr.hometime.utils.Searcher;
 import fr.hometime.utils.ServiceTestHelper;
 
 @Security.Authenticated(SecuredAdminOnly.class)
@@ -244,6 +248,38 @@ public class Admin extends Controller {
 	public static Result displayOrderRequests(int page, String sortBy, String order, String filter) {
         return ok(order_requests.render(OrderRequest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
     }
+	
+	public static Result search() {
+		DynamicForm requestData = DynamicForm.form().bindFromRequest();
+	    String pattern = requestData.get("pattern");
+        return ok(search_results.render(pattern, Searcher.search(pattern)));
+    }
+	
+	public static Result viewSearchable(String className, Long id) {
+		switch(className.toLowerCase()) {
+			case "customer":
+				return controllers.Customer.display(id);
+			case "customerwatch":
+				return controllers.CustomerWatch.display(id);
+			case "watchtosell":
+				return CrudHelper.display("WatchesToSell", id);
+			default :
+				return CrudHelper.display(className, id);
+		}
+	}
+	
+	public static Result editSearchable(String className, Long id) {
+		switch(className.toLowerCase()) {
+		case "customer":
+			return controllers.Customer.edit(id);
+		case "customerwatch":
+			return controllers.CustomerWatch.edit(id);
+		case "watchtosell":
+			return CrudHelper.edit("WatchesToSell", id);
+		default :
+			return CrudHelper.edit(className, id);
+		}
+	}
 	
 	public static Result cgv() {
         return ok(cgv.render());

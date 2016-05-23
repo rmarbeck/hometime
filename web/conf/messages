@@ -2240,6 +2240,7 @@ admin.buy.request.proposal.success=<a href="{0}" target="_blank">Prévisualiser<
 admin.index.order.requests.active=Demandes de devis ouvertes
 admin.index.order.requests.action.set.replied.title=Marquer comme répondue
 admin.index.order.requests.action.close.title=Marquer comme fermée
+admin.index.order.requests.action.change.feedback.asked.title=Marquer comme mail envoyé
 admin.index.order.requests.active.none=Aucune demande de devis ouvertes
 admin.index.order.requests.head.link.to=##
 admin.index.order.requests.head.request.date=Date
@@ -3027,3 +3028,12 @@ admin.paymentrequest.statusinfo.display.label=Statut détaillé
 admin.paymentrequest.allowamex.display.label=AMEX autorisé
 admin.paymentrequest.amexonly.display.label=AMEX uniquement
 
+
+admin.index.search.results.active.none=Aucun résultat pour la recherche {0}
+admin.index.search.results.active=Résultats de la recherche {0}
+admin.index.search.results.head.type=Type
+admin.index.search.results.head.name=Nom
+admin.index.search.results.head.details=Détails
+admin.index.search.results.head.actions=Actions
+admin.index.search.results.action.view.title=Voir
+admin.index.search.results.action.edit.title=Modifier

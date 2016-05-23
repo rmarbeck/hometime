@@ -1,8 +1,10 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,13 +24,14 @@ import com.avaje.ebean.Page;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import controllers.CrudReady;
+import fr.hometime.utils.Searcher;
 
 /**
  * Definition of a Watch to be sold
  */
 @Entity
 @JsonSerialize(using = fr.hometime.utils.WatchToSellSerializer.class)
-public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchToSell> {
+public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchToSell>, Searchable {
 	private static final long serialVersionUID = 5289876388952107742L;
 	private static WatchToSell singleton = null;
 
@@ -374,6 +377,38 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	
 	public String getStrap() {
 		return strap;
+	}
+
+	@Override
+	public Optional<List<? extends Searchable>> findMatching(String pattern) {
+		if (pattern != null) {
+			List<WatchToSell> results = find.where().disjunction()
+					.ilike("brand.display_name", "%" + pattern + "%")
+					.ilike("model", "%" + pattern + "%")
+					.ilike("additionnalModelInfos", "%" + pattern + "%")
+					.ilike("reference", "%" + pattern + "%")
+					.ilike("serial", "%" + pattern + "%")
+					.ilike("movement", "%" + pattern + "%")
+					.ilike("seller", "%" + pattern + "%")
+					.ilike("additionnalInfos", "%" + pattern + "%")
+					.ilike("privateInfos", "%" + pattern + "%")
+					.findList();
+			if (results != null && results.size() != 0)
+				return Optional.of(results);
+		}
+		
+		return Optional.empty();
+	}
+	
+	@Override
+	public String getDetails() {
+		List<String> values = Arrays.asList(brand.display_name, model, additionnalModelInfos, reference, serial, movement, seller, additionnalInfos, privateInfos);
+		return Searcher.generateDetails(values);
+	}
+
+	@Override
+	public Long retrieveId() {
+		return id;
 	}
 	
 }
