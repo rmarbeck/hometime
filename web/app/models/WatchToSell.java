@@ -410,6 +410,11 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	public Long retrieveId() {
 		return id;
 	}
+
+	@Override
+	public String getDisplayName() {
+		return brand.display_name+" "+model;
+	}
 	
 }
 

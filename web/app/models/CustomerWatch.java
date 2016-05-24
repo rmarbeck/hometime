@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +19,8 @@ import play.db.ebean.Model;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
+
+import fr.hometime.utils.Searcher;
 
 /**
  * Definition of a Watch belonging to a customer
@@ -286,6 +289,17 @@ public class CustomerWatch extends Model implements Searchable {
 	@Override
 	public Long retrieveId() {
 		return id;
+	}
+
+	@Override
+	public String getDisplayName() {
+		return brand+" "+model;
+	}
+
+	@Override
+	public String getDetails() {
+		List<String> values = Arrays.asList(brand, model, additionnalModelInfos, reference, serial, movement, otherInfos);
+		return Searcher.generateDetails(values);
 	}
     
 }
