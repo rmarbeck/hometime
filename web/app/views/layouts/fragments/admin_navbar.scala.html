@@ -23,22 +23,13 @@
                 	@li_activable(30, index) {<a href="@routes.Admin.displayServiceTests()">@Messages("admin.navbar.link.text.service.tests")</a>}
                   </ul>
                 }
-                @li_activable(35, index) {<a href="@routes.Customer.displayAll()">@Messages("admin.navbar.link.text.customers")</a>}
-                @li_activable(36, index) {<a href="@routes.CustomerWatch.displayAll()">@Messages("admin.navbar.link.text.customer.watches")</a>}
-                @li_activable(37, index) {<a href="@routes.CrudHelper.displayAll("WatchesToSell")">@Messages("admin.navbar.link.text.watches.to.sell")</a>}
-                @li_activable(38, index) {<a href="@routes.Order.displayAll()">@Messages("admin.navbar.link.text.orders")</a>}
-                @li_activable(40, index, args = 'class -> "dropdown") {
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.prepare")) <b class="caret"></b></a>
+                @li_activable(34, index) {<a href="@routes.Customer.displayAll()">@Messages("admin.navbar.link.text.customers")</a>}
+                @li_activable(35, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.watches")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    @li_activable(40, index) {<a href="@routes.Admin.prepareQuotation()">@Messages("admin.navbar.link.text.prepare.quotation")</a>}
-	                @li_activable(45, index) {<a href="@routes.BuyRequest.prepareProposal()">@Messages("admin.navbar.link.text.prepare.buy.request.proposal")</a>}
-                  </ul>
-                }
-                @li_activable(50, index, args = 'class -> "dropdown") {
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.other")) <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    @li_activable(50, index) {<a href="@routes.Feedback.displayAll()">@Messages("admin.navbar.link.text.feedbacks")</a>}
-                    @li_activable(55, index) {<a href="@routes.UsefullLink.displayAll()">@Messages("admin.navbar.link.text.links")</a>}
+                    @li_activable(36, index) {<a href="@routes.CustomerWatch.displayAll()">@Messages("admin.navbar.link.text.customer.watches")</a>}
+                    <li class="divider hidden-xs"></li>
+                	@li_activable(37, index) {<a href="@routes.CrudHelper.displayAll("WatchesToSell")">@Messages("admin.navbar.link.text.watches.to.sell")</a>}
                   </ul>
                 }
                 @li_activable(60, index, args = 'class -> "dropdown") {
@@ -78,11 +69,23 @@
                     @li_activable(72, index) {<a href="@routes.Reporting.stock()">@Messages("admin.navbar.link.text.reporting.stock")</a>}
                   </ul>
                 }
-                @helper.form(action = routes.Admin.search(), args = 'class -> "navbar-form navbar-left") {
-			        <div class="form-group">
-			          <input name="pattern" type="text" class="form-control" placeholder="Search">
+                @li_activable(90, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.other")) <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    @li_activable(91, index) {<a href="@routes.Order.displayAll()">@Messages("admin.navbar.link.text.orders")</a>}
+                    <li class="divider hidden-xs"></li>
+                    @li_activable(92, index) {<a href="@routes.Admin.prepareQuotation()">@Messages("admin.navbar.link.text.prepare.quotation")</a>}
+	                @li_activable(93, index) {<a href="@routes.BuyRequest.prepareProposal()">@Messages("admin.navbar.link.text.prepare.buy.request.proposal")</a>}
+                    <li class="divider hidden-xs"></li>
+                    @li_activable(94, index) {<a href="@routes.Feedback.displayAll()">@Messages("admin.navbar.link.text.feedbacks")</a>}
+                    @li_activable(95, index) {<a href="@routes.UsefullLink.displayAll()">@Messages("admin.navbar.link.text.links")</a>}
+                  </ul>
+                }
+                @helper.form(action = routes.Admin.search(), args = 'class -> "navbar-form navbar-left col-xs-12") {
+			        <div class="form-group col-xs-10">
+			          <input name="pattern" type="text" class="form-control" placeholder="Recherche">
 			        </div>
-			        <button type="submit" class="btn btn-default">Submit</button>
+			        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
 				}
                 
               </ul>

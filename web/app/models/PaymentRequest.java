@@ -277,7 +277,7 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
     public static Page<PaymentRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
     	if (sortBy == null || sortBy.equals("")) {
     		sortBy = "creation_date";
-    		order = "ASC";
+    		order = "DESC";
     	}
         return 
             find.where().or(Expr.ilike("description", "%" + filter + "%"), Expr.ilike("access_key", "%" + filter + "%"))
