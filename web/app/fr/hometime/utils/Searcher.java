@@ -1,7 +1,6 @@
 package fr.hometime.utils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,7 +26,6 @@ public class Searcher {
 		WatchToSell wts =  new WatchToSell();
 		CustomerWatch custW =  new CustomerWatch();
 
-		
 		List<? extends Searchable> results = Stream.of(cust, wts, custW)
 				.flatMap(s -> s.findMatching(pattern).orElse(emptyList()).stream())
 				.collect(Collectors.toList());
