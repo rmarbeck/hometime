@@ -2,11 +2,9 @@
 @import tags._
 
 @editlink(id:Long) = {
-    @routes.CrudHelper.edit("PaymentRequests", id)
 }
 
 @newlink() = {
-    @routes.CrudHelper.create("PaymentRequests")
 }
 
 @end_body = {
@@ -25,5 +23,5 @@
 			modelDisplay.addField("statusInfo", "getStatusInfo", false, null, "pre");
 		}
 	
-	@admin.template.display(modelDisplay, null, editlink, end_body)
+	@admin.template.display_email(modelDisplay, null, editlink, end_body)
 }

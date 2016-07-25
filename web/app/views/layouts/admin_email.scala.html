@@ -1,0 +1,17 @@
+@(title: String = "Admin", end_scripts_bottom: Html = Html(""))(content: Html)
+
+@import tags._
+
+@head = {
+}
+
+@footer = {
+
+}
+
+@end_scripts = {
+}
+
+@layouts.admin_root(head, footer, end_scripts) {
+    @content
+}

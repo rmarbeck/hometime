@@ -9,9 +9,11 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.mails.notify_order;
 import fr.hometime.payment.systempay.DataDictionnary;
 import fr.hometime.payment.systempay.PaymentConfirmation;
 import fr.hometime.payment.systempay.SingleImmediatePF;
+import fr.hometime.utils.ActionHelper;
 
 public class PaymentRequests extends Controller {
 	public static Crud<PaymentRequest, PaymentRequest> crud = Crud.of(
@@ -66,6 +68,7 @@ public class PaymentRequests extends Controller {
 			Optional<PaymentRequest> foundRequest = PaymentRequest.getLastFromOrderId(confirmation.getOrderId());
 			if (foundRequest.isPresent()) {
 				foundRequest.get().updateAfterConfirmationResult(confirmation);
+				sendEmailNotification(foundRequest.get());
 				return ok("OK");
 			}
 			Logger.error("Unknown payment request - "+confirmation.getOrderId());
@@ -75,4 +78,21 @@ public class PaymentRequests extends Controller {
 			return badRequest("Signature doesn't match");
 		}
     }
+	
+	private static void sendEmailNotification(PaymentRequest request) {
+		String emailTitle;
+		switch (request.requestStatus) {
+		case VALIDATED_NO_WARNING:
+			emailTitle = "Payment successfull";
+			break;
+		case VALIDATED_WITH_WARNING:
+			emailTitle = "Payment WITH WARNING successfull";
+			break;
+		default:
+			emailTitle = "ERROR in Payment";
+			return;
+		}
+			
+		ActionHelper.tryToSendHtmlEmail(emailTitle, views.html.admin.payment.payment_request_email.render(request).body().toString());	
+	}
 }
