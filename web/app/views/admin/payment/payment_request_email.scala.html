@@ -8,7 +8,11 @@
 }
 
 @end_body = {
-
+	<div>
+		<h2>@Html(Messages("mails.payment.actions"))</h2>
+		@a_absolute(routes.CrudHelper.display("PaymentRequests", payment_request.id).url, false) {@Html(Messages("mails.payment.action.display"))}
+		<br /><br />
+	</div>
 }
 
 @defining(new views.ModelDisplay(payment_request, "admin.paymentrequest")) { modelDisplay =>
@@ -24,4 +28,5 @@
 		}
 	
 	@admin.template.display_email(modelDisplay, null, editlink, end_body)
+
 }

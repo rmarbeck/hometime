@@ -1486,6 +1486,8 @@ flash.success=Done !
 flash.warning=Warning !
 flash.error=Error !
 
+mails.payment.action.display=Voir le statut
+mails.payment.actions=Actions
 
 mails.order.title.what=Demande
 mails.order.title.who=Client
@@ -2965,6 +2967,7 @@ admin.paymentrequest.page.price.in.euros=Prix
 admin.paymentrequest.page.access.key=Clef d''accès
 admin.paymentrequest.page.is.open=Ouverte ?
 admin.paymentrequest.page.status=Statut
+admin.paymentrequest.requeststatus.display.label=Statut du paiement
 
 
 admin.paymentrequest.form=Demande de paiement CB
