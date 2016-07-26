@@ -2653,7 +2653,7 @@ admin.watchtosell.form.customerthatboughtthewatch.name.label.name=Acheteur
 admin.watchtosell.form.customerthatboughtthewatch.name.default.name=Sélectionner l''acheteur
 admin.watchtosell.form.purchasingprice.label.name=Prix d''achat
 admin.watchtosell.form.customerthatboughtthewatch.email.label.name=Acheteur
-admin.watchtosell.form.customerthatboughtthewatch.email.default.name=Sélectionner l''acheteur (email)
+admin.watchtosell.form.customerthatboughtthewatch.email.default.name=Sélectionner l''acheteur
 admin.watchtosell.form.sellingprice.label.name=Prix de vente
 
 admin.watchtosell.form.brand.internal.name.value.name.baume=Baume & Mercier

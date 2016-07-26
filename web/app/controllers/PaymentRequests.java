@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.Optional;
 
+import models.Invoice;
 import models.OrderDocument;
 import models.PaymentRequest;
 import play.Logger;
@@ -29,6 +30,19 @@ public class PaymentRequests extends Controller {
 		
 		if (document != null) {
 			instance.orderNumber = document.getUniqueAccountingNumber();
+			instance.customer = document.document.customer;
+			instance.description = document.description;
+			instance.priceInEuros = document.document.getBottomLinePrice();
+		}
+		return crud.create(Form.form(PaymentRequest.class).fill(instance));
+    }
+	
+	public static Result createFromInvoice(long id) {
+		PaymentRequest instance = PaymentRequest.getDefaultValues();
+		Invoice document = Invoice.findById(id);
+		
+		if (document != null) {
+			instance.orderNumber = document.retrieveUniqueAccountingNumber();
 			instance.customer = document.document.customer;
 			instance.description = document.description;
 			instance.priceInEuros = document.document.getBottomLinePrice();
@@ -90,7 +104,7 @@ public class PaymentRequests extends Controller {
 			break;
 		default:
 			emailTitle = "ERROR in Payment";
-			return;
+			break;
 		}
 			
 		ActionHelper.tryToSendHtmlEmail(emailTitle, views.html.admin.payment.payment_request_email.render(request).body().toString());	

@@ -26,7 +26,7 @@
 		   formDisplay.addFormField("sellingDate", true, "input", 'type -> "date");
 		   formDisplay.addFormField("purchaseInvoiceAvailable", true, "checkbox")
 		   formDisplay.addFormFieldForSelect("purchaseInvoice.name", models.ExternalDocument.findAllNewerFirst);
-		   formDisplay.addFormFieldForSelect("customerThatBoughtTheWatch.email", models.Customer.findAllByEmailAsc);
+		   formDisplay.addFormFieldForSelect("customerThatBoughtTheWatch.email", false, models.Customer.getEmailsByNameAsc, models.Customer.getFullnamesByNameAsc);
 		   formDisplay.addFormField("sellingPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
 		   formDisplay.addFormField("shouldBeInRegistry", true, "checkbox");
 		   formDisplay.addFormField("isInRegistry", true, "checkbox");

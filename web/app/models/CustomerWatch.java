@@ -108,7 +108,8 @@ public class CustomerWatch extends Model implements Searchable {
 	public CustomerWatchStatus status;
 	
 	public CustomerWatch() {
-		
+		this.creationDate = new Date();
+		this.lastStatusUpdate = creationDate;
 	}
 	
 	public CustomerWatch(Customer customer) {
