@@ -119,7 +119,7 @@ public class AccountingLine extends Model {
     }
     
     public static List<AccountingLine> findAllByDescendingDate() {
-    	return find.fetch("document").orderBy("document.creationDate DESC").findList();
+    	return find.fetch("document", "customer").fetch("document", "creationDate").orderBy("document.creationDate DESC").findList();
     }
     
     public static List<AccountingLine> findByAccountingDocumentId(Long id) {
