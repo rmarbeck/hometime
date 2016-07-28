@@ -22,7 +22,11 @@ public class MarginVatReport {
 			this.sellingPrice = Float.valueOf(watchFound.get().sellingPrice);
 			this.purchasingPrice = Float.valueOf(watchFound.get().purchasingPrice);
 			if (watchFound.get().purchaseInvoiceAvailable)
-				this.purchaseInvoiceName = watchFound.get().purchaseInvoice.name;
+				if (watchFound.get().purchaseInvoice != null) {
+					this.purchaseInvoiceName = watchFound.get().purchaseInvoice.name;	
+				} else {
+					this.purchaseInvoiceName = "unfound";
+				}
 		}
 	}
 	
