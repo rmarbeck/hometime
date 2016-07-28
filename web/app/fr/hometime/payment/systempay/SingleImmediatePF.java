@@ -74,6 +74,8 @@ public class SingleImmediatePF extends PaymentForm {
 		instance.addParameter(PaymentFormParameter.of(ORDER_INFO_2, request.description2, false));
 		instance.addParameter(PaymentFormParameter.of(PAYMENT_CARDS, getPaymentCardsOptions(request), false));
 		instance.addParameter(PaymentFormParameter.of(SHOP_NAME, SHOP_NAME_DEFAULT, false));
+		instance.addParameter(PaymentFormParameter.of(CUST_FIRST_NAME, request.customer.firstname, false));
+		instance.addParameter(PaymentFormParameter.of(CUST_LAST_NAME, request.customer.name, false));
 		return instance;
 	}
 	

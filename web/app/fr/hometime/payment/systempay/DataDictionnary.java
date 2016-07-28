@@ -27,6 +27,9 @@ public class DataDictionnary {
 	public static final String TRANSACTION_STATUS = "trans_status";
 	public static final String TRANSACTION_STATUS_OK_PATTERN = "AUTHORISED";
 	
+	public static final String CUST_FIRST_NAME = "cust_first_name";
+	public static final String CUST_LAST_NAME = "cust_last_name";
+	
 	public static final String CTX_MODE_TEST = "TEST";
 	public static final String CTX_MODE_PRODUCTION = "PRODUCTION";
 	
