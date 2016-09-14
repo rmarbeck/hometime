@@ -43,6 +43,14 @@
     @admin.fragments.page_header(link(0, "creation_date").toString, "Auteur", currentFilter, routes.Feedback.add().url)
     <br />
     
+    <div class="row">
+        <div class="col-xs-12 text-center">
+        	<a class="btn btn-default" href="@routes.Application.feedback()">Voir les avis</a>
+        </div>
+    </div>
+    
+    <br />
+    
     @if(currentPage.getTotalRowCount == 0) {
         <div class="well">
             <em>Nothing to display</em>

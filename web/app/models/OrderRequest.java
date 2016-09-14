@@ -142,7 +142,7 @@ public class OrderRequest extends Model {
         						Expr.eq("waiting_for_customer", false)
         						)
         						,Expr.eq("closed", false))
-        		.orderBy("requestDate ASC").findList();
+        		.orderBy("requestDate DESC").findList();
     }
 
 

@@ -38,34 +38,6 @@
     	</h3>
     }
     <br />
-    @if(activeCustomers != null && activeCustomers.size >0) {
-    	<h3>
-    		@Html(Messages("admin.index.customers.active"))
-    	</h3>
-    	<table class="table table-condensed table-striped table-bordered">
-          <thead>
-	        <tr>
-	          <th>@Html(Messages("admin.index.customers.head.name"))</th>
-	          <th>@Html(Messages("admin.index.customers.head.last.communication.date"))</th>
-	          <th>@Html(Messages("admin.index.customers.head.status"))</th>
-	        </tr>
-	      </thead>
-	      <tbody>
-	      	@for(customer <- activeCustomers) {
-	      	<tr>
-	      		<td><a href="@routes.Customer.display(customer.id)">@customer.name @customer.firstname</a></td>
-	      		<td>@display_date(customer.lastCommunicationDate, "dd/MM/yyyy HH:mm")</td>
-	      		<td>@Html(Messages("admin.index.customers.value.status."+customer.status.name.toString.toLowerCase.replace('_','.')))</td>
-	      	</tr>
-	      	}
-		  </tbody>
-		</table>
-    } else {
-    	<h3>
-    		@Html(Messages("admin.index.customers.active.none"))
-    	</h3>
-    }
-    <br />
     @if(unrepliedBuyRequests != null && unrepliedBuyRequests.size >0) {
     	<h3>
     		@Html(Messages("admin.index.buy.requests.active"))
@@ -98,6 +70,34 @@
     } else {
     	<h3>
     		@Html(Messages("admin.index.buy.requests.active.none"))
+    	</h3>
+    }
+    <br />
+    @if(activeCustomers != null && activeCustomers.size >0) {
+    	<h3>
+    		@Html(Messages("admin.index.customers.active"))
+    	</h3>
+    	<table class="table table-condensed table-striped table-bordered">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages("admin.index.customers.head.name"))</th>
+	          <th>@Html(Messages("admin.index.customers.head.last.communication.date"))</th>
+	          <th>@Html(Messages("admin.index.customers.head.status"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for(customer <- activeCustomers) {
+	      	<tr>
+	      		<td><a href="@routes.Customer.display(customer.id)">@customer.name @customer.firstname</a></td>
+	      		<td>@display_date(customer.lastCommunicationDate, "dd/MM/yyyy HH:mm")</td>
+	      		<td>@Html(Messages("admin.index.customers.value.status."+customer.status.name.toString.toLowerCase.replace('_','.')))</td>
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
+    } else {
+    	<h3>
+    		@Html(Messages("admin.index.customers.active.none"))
     	</h3>
     }
     <br />
