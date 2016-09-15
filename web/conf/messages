@@ -1577,7 +1577,7 @@ mails.feedback.label=Relance
 mails.feedback.subject=Devis Hometime
 mails.feedback.body=Bonjour,%0D%0A\
 %0D%0A\
-Tout d''abord veuillez nous excuser pour le délai de notre réponse, nous sommes actuellement en effectif réduit pour cause de congés.%0D%0A\
+Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
 %0D%0A\
 Nous souhaitions nous assurer que le devis que nous vous avons envoyé correspondait bien à votre attente et répondait à l''ensemble de vos demandes.%0D%0A\
 %0D%0A\
@@ -1591,10 +1591,11 @@ Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
 mails.outside.zone.label=Infos solutions de transport
+mails.outside.zone.two.orders.label=Infos solutions de transport (deux devis)
 mails.outside.zone.subject=Devis Hometime - Informations sur la prise en charge
 mails.outside.zone.body=Bonjour,%0D%0A\
 %0D%0A\
-Tout d''abord veuillez nous excuser pour le délai de notre réponse, nous sommes actuellement en effectif réduit pour cause de congés.%0D%0A\
+Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
 %0D%0A\
 Nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
@@ -1611,11 +1612,31 @@ Si vous n''avez pas reçu le devis, peut-être a-t-il été considéré comme é
 Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
+mails.outside.zone.two.orders.body=Bonjour,%0D%0A\
+%0D%0A\
+Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
+%0D%0A\
+Nous venons de vous éditer et de vous envoyer les devis pour l''entretien de votre montre.%0D%0A\
+%0D%0A\
+N''hésitez pas si vous avez la moindre question !%0D%0A\
+%0D%0A\
+Par ailleurs, nous souhaitions vous indiquer que pour les interventions en dehors de la proche banlieue parisienne, nous retenons souvent avec nos clients l''envoi et le retour de la montre par pli sécurisé en valeur déclarée. Il s''agit d''un mode de transport géré par la Poste qui garantit le bien transporté contre tout risque de perte ou de dégradation. Pour rendre la chose la plus simple possible, nous pouvons vous envoyer un premier colis contenant une boite et les instructions pour envoyer votre montre. Les frais d''envoi sont d''environ 40€ aller-retour.%0D%0A\
+%0D%0A\
+Nous pouvons rechercher une autre solution si vous le souhaitez.%0D%0A\
+%0D%0A\
+Qu''en pensez-vous ?%0D%0A\
+%0D%0A\
+Si vous n''avez pas reçu les devis, peut-être ont-t-il été considérés comme étant du spam par votre logiciel de messagerie. Si c''est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
+%0D%0A\
+Cordialement,%0D%0A\
+Raphaël%0D%0A\
+07 82 43 47 51
 mails.beware.of.spam.label=Info Spam
+mails.beware.of.spam.two.orders.label=Info Spam (deux devis)
 mails.beware.of.spam.subject=Devis Hometime
 mails.beware.of.spam.body=Bonjour,%0D%0A\
 %0D%0A\
-Tout d''abord veuillez nous excuser pour le délai de notre réponse, nous sommes actuellement en effectif réduit pour cause de congés.%0D%0A\
+Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
 %0D%0A\
 Nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
@@ -1624,6 +1645,21 @@ Habituellement nous nous déplaçons à votre domicile ou sur votre lieu de trav
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\
 Si vous n''avez pas reçu le devis, peut-être a-t-il été considéré comme étant du spam par votre logiciel de messagerie. Si c''est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
+%0D%0A\
+Cordialement,%0D%0A\
+Raphaël%0D%0A\
+07 82 43 47 51
+mails.beware.of.spam.two.orders.body=Bonjour,%0D%0A\
+%0D%0A\
+Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
+%0D%0A\
+Nous venons de vous éditer et de vous envoyer les devis pour l''entretien de votre montre.%0D%0A\
+%0D%0A\
+Habituellement nous nous déplaçons à votre domicile ou sur votre lieu de travail, cependant si vous le souhaitez, nous pouvons vous recevoir à l''atelier dans le 3ème arrondissement de Paris du lundi au vendredi.%0D%0A\
+%0D%0A\
+N''hésitez pas si vous avez la moindre question !%0D%0A\
+%0D%0A\
+Si vous n''avez pas reçu les devis, peut-être ont-t-il été considérés comme étant du spam par votre logiciel de messagerie. Si c''est le cas, nous vous invitons à consulter le répertoire dans lequel sont classés les mails indésirables.%0D%0A\
 %0D%0A\
 Cordialement,%0D%0A\
 Raphaël%0D%0A\

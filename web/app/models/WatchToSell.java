@@ -361,6 +361,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 		duplicatedWatch.reference = watchToDuplicate.reference;
 		duplicatedWatch.movement = watchToDuplicate.movement;
 		duplicatedWatch.strap = watchToDuplicate.strap;
+		duplicatedWatch.additionnalModelInfos = watchToDuplicate.additionnalModelInfos;
 		return duplicatedWatch;
 	}
 	

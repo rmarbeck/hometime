@@ -41,6 +41,10 @@
 		<br /><br />
 		@mailto(order.email, Messages("mails.outside.zone.subject"), Messages("mails.outside.zone.body"), Messages("mails.outside.zone.label"))
 		<br /><br />
+		@mailto(order.email, Messages("mails.outside.zone.subject"), Messages("mails.outside.zone.two.orders.body"), Messages("mails.outside.zone.two.orders.label"))
+		<br /><br />
 		@mailto(order.email, Messages("mails.beware.of.spam.subject"), Messages("mails.beware.of.spam.body"), Messages("mails.beware.of.spam.label"))
+		<br /><br />
+		@mailto(order.email, Messages("mails.beware.of.spam.subject"), Messages("mails.beware.of.spam.two.orders.body"), Messages("mails.beware.of.two.orders.spam.label"))
 	</div>
 }
