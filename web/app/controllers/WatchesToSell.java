@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.WatchToSell;
+import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -18,4 +19,9 @@ public class WatchesToSell extends Controller {
 		List<WatchToSell> watches = WatchToSell.findAllByPurchaseDateAsc();
 		return ok(Json.toJson(watches));
     }
+	
+	public static Result duplicateWatch(Long id) {
+		WatchToSell duplicated = WatchToSell.duplicate(id);
+		return crud.create(Form.form(WatchToSell.class).fill(duplicated));
+	}
 }

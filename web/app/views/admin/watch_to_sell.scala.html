@@ -12,6 +12,7 @@
 @end_body = {
     <div class="form-group">
       <div class="col-sm-offset-1 col-sm-10 text-center">
+	    <a class="btn btn-info" href="@routes.WatchesToSell.duplicateWatch(watch_to_sell.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.watchtosell.action.duplicate"))</a>
       	<a class="btn btn-primary" href="@routes.Accounting.addOrderDocumentByWatchToSellId(watch_to_sell.id)"><span class="glyphicon glyphicon-list-alt"></span>@Html(Messages("admin.watchtosell.action.new.order.document"))</a>
         <a class="btn btn-success" href="@routes.Accounting.addInvoiceByWatchToSellId(watch_to_sell.id)"><span class="glyphicon glyphicon-list-alt"></span>@Html(Messages("admin.watchtosell.action.new.invoice"))</a>
         @if(watch_to_sell.customerThatBoughtTheWatch != null) {

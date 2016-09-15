@@ -197,6 +197,13 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     		singleton = new WatchToSell();
     	return singleton;
     }
+	
+	public static WatchToSell duplicate(Long id) {
+		Optional<WatchToSell> foundWatch = Optional.ofNullable(findById(id));
+    	if (foundWatch.isPresent())
+    		return duplicateWatch(foundWatch.get());
+    	return new WatchToSell();
+    }
 
     // -- Queries
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -282,7 +289,9 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     		order = "ASC";
     	}
         return 
-            find.fetch("brand").where().or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand.display_name", "%" + filter + "%"))
+            find.fetch("brand").where().disjunction().add(Expr.ilike("model", "%" + filter + "%"))
+            										 .add(Expr.ilike("reference", "%" + filter + "%"))
+            										 .add(Expr.ilike("brand.display_name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
@@ -293,7 +302,14 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     		return page(page, pageSize, sortBy, order, filter);
         
     	return 
-            find.where().and(Expr.or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand.display_name", "%" + filter + "%")), Expr.eq("customer_watch_status", status))
+            find.where().and(
+            		Expr.or(
+            				Expr.ilike("model", "%" + filter + "%"),
+            				Expr.or(
+            						Expr.ilike("reference", "%" + filter + "%"),
+            						Expr.ilike("brand.display_name", "%" + filter + "%"))
+            				)
+            		, Expr.eq("customer_watch_status", status))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
@@ -336,6 +352,16 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 			this.customerThatBoughtTheWatch = Customer.findByEmail(this.customerThatBoughtTheWatch.email);
 		if (this.purchaseInvoice != null)
 			this.purchaseInvoice = ExternalDocument.findByName(this.purchaseInvoice.name);
+	}
+	
+	private static WatchToSell duplicateWatch(WatchToSell watchToDuplicate) {
+		WatchToSell duplicatedWatch = new WatchToSell();
+		duplicatedWatch.brand = watchToDuplicate.brand;
+		duplicatedWatch.model = watchToDuplicate.model;
+		duplicatedWatch.reference = watchToDuplicate.reference;
+		duplicatedWatch.movement = watchToDuplicate.movement;
+		duplicatedWatch.strap = watchToDuplicate.strap;
+		return duplicatedWatch;
 	}
 	
     public String getBrandDisplayName() {

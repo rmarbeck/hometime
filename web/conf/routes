@@ -232,6 +232,8 @@ GET     /admin/addresses		            							controllers.Reporting.addresses()
 GET     /admin/addressbook		            							controllers.Reporting.addressBook()
 GET     /admin/stock			            							controllers.Reporting.stock()
 
+GET     /admin/watch-to-sell/duplicate/:id       						controllers.WatchesToSell.duplicateWatch(id: Long)
+
 GET		/admin/create-from-order/PaymentRequests/:id					controllers.PaymentRequests.createFromOrder(id: Long)
 GET		/admin/create-from-invoice/PaymentRequests/:id					controllers.PaymentRequests.createFromInvoice(id: Long)
 

@@ -2754,6 +2754,7 @@ admin.watchtosell.additionnalmodelinfos.display.label=Informations
 admin.watchtosell.purchasingpice.display.label=Prix d''achat
 admin.watchtosell.sellingprice.display.label=Prix de vente
 admin.watchtosell.customer.display.label=Client
+admin.watchtosell.action.duplicate=&nbsp;Dupliquer la montre
 admin.watchtosell.action.new=&nbsp;Nouvelle montre
 admin.watchtosell.action.new.order.document=&nbsp;Nouveau Bon de commande
 admin.watchtosell.action.new.invoice=&nbsp;Nouvelle Facture
