@@ -187,7 +187,7 @@ public class Invoice extends Model {
 	}
 	
 	public boolean hasBeenPayed() {
-		return Payments.remainingAmountToPay(this) == 0;
+		return Payments.remainingAmountToPay(this) <= 0.01;
 	}
 
 }
