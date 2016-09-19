@@ -2,6 +2,41 @@
 
 @import tags._
 
+@end_scripts = {
+<script>
+    $(document).ready(function(){
+    	
+	        $('#paymentDate').on('change', function(event) {
+	        	if ( $('#paymentMethod option:selected').val() == 'CB' ) {
+	        		var newdate = $('#paymentDate').val();
+	        		$('#inBankDate').val(add2Days(newdate));
+				} else {
+					var newdate = $('#paymentDate').val();
+	        		$('#inBankDate').val(newdate);
+				}   		
+	        });
+    });
+
+    function add2Days(newdate) {
+    	var asDate=new Date(newdate);
+    	var date=new Date(asDate.getTime() + ( 2 * 24 * 60 * 60 * 1000 ) );
+	    day=date.getDate();
+    	month=date.getMonth();
+    	month=month+1;
+    	if((String(day)).length==1)
+    		day='0'+day;
+    	if((String(month)).length==1)
+    		month='0'+month;
+
+    	dateT=date.getFullYear()+ '-' + month + '-' + day;
+    	//dateT=String(dateT);
+    	console.log(dateT);
+    	return dateT;
+    }
+    
+</script> 
+}
+
 @defining(new views.FormDisplay(thisInstance, "Payment", "admin.payment.form")) { formDisplay =>
 		@{ formDisplay.addFormFieldForSelect("invoice.id", false, models.Invoice.findAllByDescendingDateIds, models.Invoice.findAllByDescendingDateOrderIdAndCustomerName);
 		   formDisplay.addFormFieldForSelect("paymentMethod", models.Payment.PaymentMethod.values.toList);
@@ -14,5 +49,5 @@
 		   
 		}
 	
-	@admin.template.form_with_default_links(formDisplay, isItNew)
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
 }
