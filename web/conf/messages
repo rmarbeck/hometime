@@ -1389,6 +1389,10 @@ admin.quotation.form.value.type.of.service.intermediate=Entretien intermédiaire
 admin.quotation.form.value.type.of.service.service=Révision complète
 admin.quotation.form.value.type.of.service.repair=Réparation
 
+admin.quotation.form.label.should.talk.about.water.resistance=Etanchéité
+admin.quotation.form.value.should.talk.about.water.resistance=En parler
+admin.quotation.form.value.should.not.talk.about.water.resistance=Ne pas en parler
+
 admin.quotation.form.label.type.of.network=* Type de devis
 admin.quotation.form.value.type.of.network.in.both=Dans le réseau (et horloger partenaire)
 admin.quotation.form.value.type.of.network.in.only=Dans le réseau uniquement

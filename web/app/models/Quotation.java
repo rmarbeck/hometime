@@ -69,6 +69,8 @@ public class Quotation {
 	
 	public Boolean delayIsNotSure;
 	
+	public Boolean shouldTalkAboutWaterResistance;
+	
 	public Boolean outsideZone;
 	
 	public Boolean delayCanBeReduced;

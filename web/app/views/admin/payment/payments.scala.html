@@ -1,0 +1,14 @@
+@(currentPage: com.avaje.ebean.Page[models.Payment], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "description ou numéro de facture", "admin.payment.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("creationDate", "creation.date", "getCreationDate", false, "date short");
+		pageDisplay.addTableField("paymentDate", "creation.date", "getCreationDate", false, "date short");
+	    pageDisplay.addTableField("invoice.customer.name", "customer", "getCustomerFullName", false);
+	    pageDisplay.addTableField("paymentMethod", "paymentMethod", "getPaymentMethod", false);
+	    pageDisplay.addTableField("amountInEuros", "amount.in.euros", "getAmountInEuros", false, "price float");
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "Payments", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

@@ -77,6 +77,10 @@
                                 'placeholder -> Messages("admin.quotation.form.placeholder.waranty"), '_label -> Messages("admin.quotation.form.label.waranty"),
                                 'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
+				@tags.myInputRadioGroup(quotation("shouldTalkAboutWaterResistance"),
+                                Seq( "0" -> Messages("admin.quotation.form.value.should.talk.about.water.resistance"), "1" -> Messages("admin.quotation.form.value.should.not.talk.about.water.resistance")), '_label -> Html(Messages("admin.quotation.form.label.should.talk.about.water.resistance", quotation("shouldTalkAboutWaterResistance").value)),
+                                '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
                 @tags.myInputRadioGroup(quotation("outsideZone"),
                                 Seq( "0" -> Messages("admin.quotation.form.value.outside.zone.inside"), "1" -> Messages("admin.quotation.form.value.outside.zone.outside")), '_label -> Html(Messages("admin.quotation.form.label.outside.zone", quotation("customerCity").value)),
                                 '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)

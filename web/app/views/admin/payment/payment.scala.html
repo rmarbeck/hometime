@@ -1,0 +1,25 @@
+@(payment: models.Payment)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("Payments", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("Payments")
+}
+
+@end_body = {
+
+}
+
+@defining(new views.ModelDisplay(payment, "admin.payment")) { modelDisplay =>
+		@{ 	modelDisplay.addField("creationDate");
+			modelDisplay.addField("paymentDate");
+			modelDisplay.addField("customer", "getCustomerFullName");
+			modelDisplay.addField("amountInEuros", "getAmountInEuros", false, null, "price float");
+			modelDisplay.addField("paymentMethod", "getPaymentMethod");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+}

@@ -92,6 +92,9 @@ public class Admin extends Controller {
 		@Constraints.Required
 		public String delayCanBeReduced = "1";
 		
+		@Constraints.Required
+		public String shouldTalkAboutWaterResistance = "0";
+		
 		public String infosGivenByCustomer1 = null;
 		public String infosGivenByCustomer2 = null;
 		public String infosGivenByCustomer3 = null;
@@ -188,6 +191,7 @@ public class Admin extends Controller {
 	    	quotation.delayIsNotSure = ("0".equals(this.delayIsNotSure))?false:true;
 	    	quotation.outsideZone = ("0".equals(this.outsideZone))?false:true;
 	    	quotation.delayCanBeReduced = ("0".equals(this.delayCanBeReduced))?false:true;
+	    	quotation.shouldTalkAboutWaterResistance = ("0".equals(this.shouldTalkAboutWaterResistance))?false:true;
 	    	quotation.infosGivenByCustomer1 = getStringValue(this.infosGivenByCustomer1);
 	    	quotation.infosGivenByCustomer2 = getStringValue(this.infosGivenByCustomer2);
 	    	quotation.infosGivenByCustomer3 = getStringValue(this.infosGivenByCustomer3);

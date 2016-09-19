@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -110,6 +111,14 @@ public class Invoice extends Model {
     
     public static List<Invoice> findAllByDescendingDate() {
         return find.orderBy("document.creationDate DESC").findList();
+    }
+    
+    public static List<Long> findAllByDescendingDateIds() {
+        return findAllByDescendingDate().stream().map(invoice -> invoice.id).collect(Collectors.toList());
+    }
+    
+    public static List<String> findAllByDescendingDateOrderIdAndCustomerName() {
+        return findAllByDescendingDate().stream().map(invoice -> invoice.uniqueAccountingNumber + " - " + invoice.document.customer.getFullName()).collect(Collectors.toList());
     }
     
     public static Invoice findById(Long id) {
