@@ -32,7 +32,7 @@ public class PaymentRequests extends Controller {
 			instance.orderNumber = document.getUniqueAccountingNumber();
 			instance.customer = document.document.customer;
 			instance.description = document.description;
-			instance.priceInEuros = document.document.getBottomLinePrice();
+			instance.priceInEuros = document.document.getBottomLinePriceIncludingVAT();
 		}
 		return crud.create(Form.form(PaymentRequest.class).fill(instance));
     }
@@ -45,7 +45,7 @@ public class PaymentRequests extends Controller {
 			instance.orderNumber = document.retrieveUniqueAccountingNumber();
 			instance.customer = document.document.customer;
 			instance.description = document.description;
-			instance.priceInEuros = document.document.getBottomLinePrice();
+			instance.priceInEuros = document.document.getBottomLinePriceIncludingVAT();
 		}
 		return crud.create(Form.form(PaymentRequest.class).fill(instance));
     }

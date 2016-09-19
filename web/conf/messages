@@ -1364,6 +1364,8 @@ admin.navbar.link.text.accounting.post.selling.certificate=Certificats d''authen
 admin.navbar.link.text.accounting.add.post.selling.certificate=Nouveau certificat d''authenticité et de garantie
 admin.navbar.link.text.payment.requests=Demandes de paiement 
 admin.navbar.link.text.payment.add.request=Nouvelle demande de paiement
+admin.navbar.link.text.payment.methods=Paiements
+admin.navbar.link.text.payment.add.method=Nouveau paiement
 admin.navbar.link.text.payment=Paiement
 admin.navbar.link.text.watches=Montres
 
@@ -3082,3 +3084,33 @@ admin.index.search.results.head.details=Détails
 admin.index.search.results.head.actions=Actions
 admin.index.search.results.action.view.title=Voir
 admin.index.search.results.action.edit.title=Modifier
+
+admin.payment.page=Paiements
+admin.payment.page.title=Paiements
+admin.payment.page.creation.date=Date de création
+admin.payment.page.payment.date=Date de paiement
+admin.payment.page.invoice=Facture
+admin.payment.page.customer=Client
+admin.payment.page.paymentmethod=Type
+admin.payment.page.amount.in.euros=Montant
+
+admin.payment.form=Formulaire de paiement
+admin.payment.form.title=Paiement
+admin.payment.action.cancel=Annuler
+admin.payment.action.edit=Modifier
+admin.payment.action.save=Sauvegarder
+admin.payment.action.show=Prévisualiser
+admin.payment.action.delete=Supprimer
+admin.payment.form.invoice.id.label.name=Facture
+admin.payment.form.invoice.id.default.name=Sélectionner la facture
+admin.payment.form.paymentmethod.label.name=Moyen de paiement
+admin.payment.form.paymentmethod.default.name=Sélectionner le moyen de paiement
+admin.payment.form.amountineuros.label.name=Montant
+admin.payment.form.paymentdate.label.name=Date de paiement
+admin.payment.form.inbankdate.label.name=Date de mise en banque
+admin.payment.form.description.label.name=Description publique
+admin.payment.form.description.placeholder.name=
+admin.payment.form.description2.label.name=Description privée
+admin.payment.form.description2.placeholder.name=
+
+

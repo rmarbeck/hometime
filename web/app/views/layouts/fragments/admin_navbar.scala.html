@@ -59,6 +59,9 @@
                   <ul class="dropdown-menu">
                     @li_activable(76, index) {<a href="@routes.CrudHelper.displayAll("PaymentRequests")">@Messages("admin.navbar.link.text.payment.requests")</a>}
                 	@li_activable(77, index) {<a href="@routes.CrudHelper.create("PaymentRequests")">@Messages("admin.navbar.link.text.payment.add.request")</a>}
+                	<li class="divider hidden-xs"></li>
+                	@li_activable(78, index) {<a href="@routes.CrudHelper.displayAll("Payments")">@Messages("admin.navbar.link.text.payment.methods")</a>}
+                	@li_activable(79, index) {<a href="@routes.CrudHelper.create("Payments")">@Messages("admin.navbar.link.text.payment.add.method")</a>}
                   </ul>
                 }
                 @li_activable(80, index, args = 'class -> "dropdown") {

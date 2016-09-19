@@ -237,6 +237,8 @@ GET     /admin/watch-to-sell/duplicate/:id       						controllers.WatchesToSell
 GET		/admin/create-from-order/PaymentRequests/:id					controllers.PaymentRequests.createFromOrder(id: Long)
 GET		/admin/create-from-invoice/PaymentRequests/:id					controllers.PaymentRequests.createFromInvoice(id: Long)
 
+GET		/admin/create-from-invoice/Payments/:id							controllers.Payments.createFromInvoice(id: Long)
+
 GET     /admin/cgv				            							controllers.Admin.cgv()
 
 GET		/admin/watchesAsJson											controllers.WatchesToSell.watchesAsJSon()

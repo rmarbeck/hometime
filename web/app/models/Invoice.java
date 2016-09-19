@@ -3,11 +3,14 @@ package models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import models.AccountingLine.LineType;
@@ -16,6 +19,8 @@ import play.db.ebean.Model;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
+
+import controllers.Payments;
 
 /**
  * Definition of an invoice
@@ -89,6 +94,9 @@ public class Invoice extends Model {
 	@Column(name="to_date")
 	public Date toDate;
 	
+	@OneToMany(mappedBy="invoice", cascade = CascadeType.ALL)
+	public List<Payment> payments;
+	
 	public Invoice() {
 		this.document = new AccountingDocument();
 	}
@@ -114,11 +122,19 @@ public class Invoice extends Model {
     }
     
     public static List<Long> findAllByDescendingDateIds() {
-        return findAllByDescendingDate().stream().map(invoice -> invoice.id).collect(Collectors.toList());
+    	List<Long> ids = new ArrayList<Long>();
+    	for (Invoice invoice : findAllByDescendingDate())
+    		ids.add(invoice.id);
+ 
+    	return ids;
     }
     
     public static List<String> findAllByDescendingDateOrderIdAndCustomerName() {
-        return findAllByDescendingDate().stream().map(invoice -> invoice.uniqueAccountingNumber + " - " + invoice.document.customer.getFullName()).collect(Collectors.toList());
+    	List<String> orderIdAndCustomerName = new ArrayList<String>();
+    	for (Invoice invoice : findAllByDescendingDate())
+    		orderIdAndCustomerName.add(invoice.uniqueAccountingNumber + " - " + invoice.document.customer.getFullName());
+ 
+    	return orderIdAndCustomerName;
     }
     
     public static Invoice findById(Long id) {
@@ -169,5 +185,10 @@ public class Invoice extends Model {
 	public Date getCreationDate() {
 		return this.document.creationDate;
 	}
+	
+	public boolean hasBeenPayed() {
+		return Payments.remainingAmountToPay(this) == 0;
+	}
+
 }
 

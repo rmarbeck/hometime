@@ -236,6 +236,20 @@ create table order_request (
   constraint pk_order_request primary key (id))
 ;
 
+create table payment (
+  id                        bigint not null,
+  creation_date             timestamp,
+  paymentDate               timestamp,
+  in_bank_date              timestamp,
+  amount_in_euros           float,
+  description               varchar(255),
+  description2              varchar(255),
+  payment_method            varchar(15),
+  invoice_id                bigint,
+  constraint ck_payment_payment_method check (payment_method in ('CB','WIRETRANSFER','CHECK','CASH','PAYPAL','TRUSTEDCHECKOUT','OTHER1','OTHER2')),
+  constraint pk_payment primary key (id))
+;
+
 create table payment_request (
   id                        bigint not null,
   creation_date             timestamp,
@@ -509,6 +523,8 @@ create sequence order_document_seq;
 
 create sequence order_request_seq;
 
+create sequence payment_seq;
+
 create sequence payment_request_seq;
 
 create sequence picture_seq;
@@ -551,28 +567,30 @@ alter table order_request add constraint fk_order_request_brand_9 foreign key (b
 create index ix_order_request_brand_9 on order_request (brand_id);
 alter table order_request add constraint fk_order_request_watchChosen_10 foreign key (watch_chosen_id) references watch (id) on delete restrict on update restrict;
 create index ix_order_request_watchChosen_10 on order_request (watch_chosen_id);
-alter table payment_request add constraint fk_payment_request_customer_11 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
-create index ix_payment_request_customer_11 on payment_request (customer_id);
-alter table picture add constraint fk_picture_watch_12 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
-create index ix_picture_watch_12 on picture (watch_id);
-alter table post_selling_certificate add constraint fk_post_selling_certificate_o_13 foreign key (owner_id) references customer (id) on delete restrict on update restrict;
-create index ix_post_selling_certificate_o_13 on post_selling_certificate (owner_id);
-alter table post_selling_certificate add constraint fk_post_selling_certificate_w_14 foreign key (watch_id) references watch_to_sell (id) on delete restrict on update restrict;
-create index ix_post_selling_certificate_w_14 on post_selling_certificate (watch_id);
-alter table post_service_certificate add constraint fk_post_service_certificate_o_15 foreign key (owner_id) references customer (id) on delete restrict on update restrict;
-create index ix_post_service_certificate_o_15 on post_service_certificate (owner_id);
-alter table post_service_certificate add constraint fk_post_service_certificate_w_16 foreign key (watch_id) references customer_watch (id) on delete restrict on update restrict;
-create index ix_post_service_certificate_w_16 on post_service_certificate (watch_id);
-alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand_17 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_preset_quotation_for_brand_17 on preset_quotation_for_brand (brand_id);
-alter table selling_document add constraint fk_selling_document_document_18 foreign key (document_id) references accounting_document (id) on delete restrict on update restrict;
-create index ix_selling_document_document_18 on selling_document (document_id);
-alter table watch_to_sell add constraint fk_watch_to_sell_brand_19 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_watch_to_sell_brand_19 on watch_to_sell (brand_id);
-alter table watch_to_sell add constraint fk_watch_to_sell_customerThat_20 foreign key (customer_that_bought_the_watch_id) references customer (id) on delete restrict on update restrict;
-create index ix_watch_to_sell_customerThat_20 on watch_to_sell (customer_that_bought_the_watch_id);
-alter table watch_to_sell add constraint fk_watch_to_sell_purchaseInvo_21 foreign key (purchase_invoice_id) references external_document (id) on delete restrict on update restrict;
-create index ix_watch_to_sell_purchaseInvo_21 on watch_to_sell (purchase_invoice_id);
+alter table payment add constraint fk_payment_invoice_11 foreign key (invoice_id) references invoice (id) on delete restrict on update restrict;
+create index ix_payment_invoice_11 on payment (invoice_id);
+alter table payment_request add constraint fk_payment_request_customer_12 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_payment_request_customer_12 on payment_request (customer_id);
+alter table picture add constraint fk_picture_watch_13 foreign key (watch_id) references watch (id) on delete restrict on update restrict;
+create index ix_picture_watch_13 on picture (watch_id);
+alter table post_selling_certificate add constraint fk_post_selling_certificate_o_14 foreign key (owner_id) references customer (id) on delete restrict on update restrict;
+create index ix_post_selling_certificate_o_14 on post_selling_certificate (owner_id);
+alter table post_selling_certificate add constraint fk_post_selling_certificate_w_15 foreign key (watch_id) references watch_to_sell (id) on delete restrict on update restrict;
+create index ix_post_selling_certificate_w_15 on post_selling_certificate (watch_id);
+alter table post_service_certificate add constraint fk_post_service_certificate_o_16 foreign key (owner_id) references customer (id) on delete restrict on update restrict;
+create index ix_post_service_certificate_o_16 on post_service_certificate (owner_id);
+alter table post_service_certificate add constraint fk_post_service_certificate_w_17 foreign key (watch_id) references customer_watch (id) on delete restrict on update restrict;
+create index ix_post_service_certificate_w_17 on post_service_certificate (watch_id);
+alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_brand_18 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_preset_quotation_for_brand_18 on preset_quotation_for_brand (brand_id);
+alter table selling_document add constraint fk_selling_document_document_19 foreign key (document_id) references accounting_document (id) on delete restrict on update restrict;
+create index ix_selling_document_document_19 on selling_document (document_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_brand_20 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_brand_20 on watch_to_sell (brand_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_customerThat_21 foreign key (customer_that_bought_the_watch_id) references customer (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_customerThat_21 on watch_to_sell (customer_that_bought_the_watch_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_purchaseInvo_22 foreign key (purchase_invoice_id) references external_document (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_purchaseInvo_22 on watch_to_sell (purchase_invoice_id);
 
 
 
@@ -607,6 +625,8 @@ drop table if exists order_table;
 drop table if exists order_document;
 
 drop table if exists order_request;
+
+drop table if exists payment;
 
 drop table if exists payment_request;
 
@@ -659,6 +679,8 @@ drop sequence if exists order_table_seq;
 drop sequence if exists order_document_seq;
 
 drop sequence if exists order_request_seq;
+
+drop sequence if exists payment_seq;
 
 drop sequence if exists payment_request_seq;
 

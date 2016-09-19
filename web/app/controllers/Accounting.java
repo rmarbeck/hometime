@@ -35,6 +35,7 @@ import views.html.admin.accounting.order_documents;
 import views.html.admin.accounting.selling_document_form;
 import views.html.admin.accounting.selling_documents;
 import fr.hometime.utils.UniqueAccountingNumber;
+import fr.hometime.utils.VATHelper;
 
 @Security.Authenticated(SecuredAdminOnly.class)
 @With(NoCacheAction.class)
@@ -213,8 +214,8 @@ public class Accounting extends Controller {
 		if (invoice == null)
 			return views.html.admin.accounting.invoice.render(null, 0f, 0f, 0f, 0f);
 		Float htAmount = computeHTTotalAmountForVatLines(invoice.document.lines);
-		Float totalAmount = htAmount * 1.20f;
-		Float vat = htAmount * 0.20f;
+		Float totalAmount = VATHelper.getPriceAfterVAT(htAmount);
+		Float vat = VATHelper.getVATAmountForNetPrice(htAmount);
 		Float amountToPay = totalAmount + computeHTTotalAmountForNonVatLines(invoice.document.lines) - invoice.alreadyPayed;
 		htAmount = computeHTTotalAmountForNonVatLines(invoice.document.lines);
 		return views.html.admin.accounting.invoice.render(invoice, totalAmount, amountToPay, htAmount, vat);
@@ -356,8 +357,8 @@ public class Accounting extends Controller {
 		if (orderDocument == null)
 			return views.html.admin.accounting.order_document.render(null, 0f, 0f, 0f, 0f);
 		Float htAmount = computeHTTotalAmountForVatLines(orderDocument.document.lines);
-		Float totalAmount = htAmount * 1.20f;
-		Float vat = htAmount * 0.20f;
+		Float totalAmount = VATHelper.getPriceAfterVAT(htAmount);
+		Float vat = VATHelper.getVATAmountForNetPrice(htAmount);
 		Float amountToPay = totalAmount + computeHTTotalAmountForNonVatLines(orderDocument.document.lines);
 
 		return views.html.admin.accounting.order_document.render(orderDocument, totalAmount, amountToPay, htAmount, vat);

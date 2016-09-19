@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import fr.hometime.utils.VATHelper;
 import models.AccountingLine.LineType;
 import play.db.ebean.Model;
 
@@ -90,6 +91,20 @@ public class AccountingDocument extends Model {
 			for (AccountingLine currentLine : lines)
 				if (currentLine.unit != null && currentLine.unitPrice != null)
 					result+= currentLine.unit*currentLine.unitPrice;
+		
+		return result;
+	}
+	
+	public float getBottomLinePriceIncludingVAT() {
+		float result = 0f;
+		if (lines != null)
+			for (AccountingLine currentLine : lines)
+				if (currentLine.unit != null && currentLine.unitPrice != null)
+					if (currentLine.type.equals(AccountingLine.LineType.WITH_VAT_BY_UNIT)) {
+						result+= VATHelper.getPriceAfterVAT(currentLine.unit*currentLine.unitPrice);
+					} else {
+						result+= currentLine.unit*currentLine.unitPrice;
+					}
 		
 		return result;
 	}

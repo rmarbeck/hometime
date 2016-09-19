@@ -9,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+import play.Logger;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -86,6 +88,7 @@ public class Payment extends Model implements CrudReady<Payment, Payment> {
 	@Column(name="payment_method")
 	public PaymentMethod paymentMethod;
 	
+	@ManyToOne
 	public Invoice invoice;
 	
 	public Payment() {
@@ -159,12 +162,20 @@ public class Payment extends Model implements CrudReady<Payment, Payment> {
 	}
 	
 	private void checkBeforeSaving() {
-		
+		Logger.debug("INVOICE -> "+invoice+" and invoice.id="+invoice.id);
+		if (this.invoice != null)
+			this.invoice = Invoice.findById(this.invoice.id);
 	}
 	
 	public String getCustomerFullName() {
 		if (invoice != null)
 			return invoice.document.customer.getFullName();
+		return "";
+	}
+	
+	public String getInvoiceUAN() {
+		if (invoice != null)
+			return invoice.uniqueAccountingNumber;
 		return "";
 	}
 }
