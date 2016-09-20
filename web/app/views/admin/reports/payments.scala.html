@@ -4,10 +4,10 @@
 
 @defining(new views.admin.reports.Report(lines, "admin.reporting.payments.page")) { report =>
 	@{  report.addCol("date.of.bank.deposit", "getDate", false, "date medium", null);
-		report.addCol("invoice.name", "getInvoiceName", false);
-		report.addCol("customer.name", "getCustomerName", false);
 		report.addCol("amount", "getAmount", false, "price", null);
 		report.addCol("payment.method", "getPaymentMethodName", false, "i18n", null);
+		report.addCol("invoice.name", "getInvoiceName", false);
+		report.addCol("customer.name", "getCustomerName", false);
 		report.addCol("remark", "getRemark", false);
 	}
 	

@@ -25,7 +25,7 @@ public class PaymentsReport {
 	
 	public static List<PaymentsReport> generateReport() {
 		List<PaymentsReport> report = new ArrayList<PaymentsReport>();
-		List<Payment> payments = Payment.findAllByInBankDateAsc();
+		List<Payment> payments = Payment.findAllByInBankDateDesc();
 		if (listNotEmpty(payments))
 			for(Payment payment : payments)
 					report.add(new PaymentsReport(payment));
