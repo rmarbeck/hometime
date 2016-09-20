@@ -1373,6 +1373,7 @@ admin.navbar.link.text.reporting=Reporting
 admin.navbar.link.text.reporting.margin.vat=Rapport de TVA sur Marge
 admin.navbar.link.text.reporting.invoice.lines=Rapport de Chiffre d''affaires
 admin.navbar.link.text.reporting.stock=Rapport de Stock
+admin.navbar.link.text.reporting.payments=Rapport méthodes de paiement
 
 admin.page.nothing.to.display=Aucun article à afficher
 admin.page.text.display.all=Tous
@@ -2981,6 +2982,22 @@ admin.reporting.stock.page.purchase.price=Prix d''achat
 admin.reporting.stock.page.expected.selling.price=Prix de mise en vente
 admin.reporting.stock.page.expected.margin.rate=Taux de marge
 admin.reporting.stock.page.registry.warning=Ajouter ?
+
+admin.reporting.payments.page.title=Paiements
+admin.reporting.payments.page.date.of.bank.deposit=Date de remise
+admin.reporting.payments.page.invoice.name=Facture
+admin.reporting.payments.page.customer.name=Client
+admin.reporting.payments.page.amount=Montant
+admin.reporting.payments.page.payment.method=Moyen utilisé
+admin.reporting.payments.page.remark=Remarque
+admin.report.payment.method.wiretransfer=Virement
+admin.report.payment.method.cb=CB
+admin.report.payment.method.cash=Espèces
+admin.report.payment.method.check=Chèque
+admin.report.payment.method.paypal=Paypal
+admin.report.payment.method.trustedcheckout=Chrono24
+admin.report.payment.method.other1=Autre
+admin.report.payment.method.other2=Type2
 
 without.vat.by.unit=Sans TVA
 with.vat.by.unit=Avec TVA

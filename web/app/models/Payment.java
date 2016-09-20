@@ -113,6 +113,18 @@ public class Payment extends Model implements CrudReady<Payment, Payment> {
         return find.byId(id.toString());
     }
     
+    public static List<Payment> findAllByInBankDateAsc() {
+    	return findAllByInBankDate("ASC");
+    }
+    
+    public static List<Payment> findAllByInBankDateDesc() {
+        return findAllByInBankDate("DESC");
+    }
+    
+    public static List<Payment> findAllByInBankDate(String orderDirection) {
+        return find.where().orderBy("inBankDate "+orderDirection).findList();
+    }
+    
     public static Optional<List<Payment>> findByInvoiceId(long invoiceId) {
     	Invoice invoiceFound = Invoice.findById(invoiceId);
     	List<Payment> paymentsFound = null;

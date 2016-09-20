@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.InvoiceLineReport;
 import models.MarginVatReport;
+import models.PaymentsReport;
 import models.StockReport;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -14,6 +15,7 @@ import views.html.admin.reports.stock;
 import views.html.admin.reports.invoice_lines;
 import views.html.admin.reports.address_tab;
 import views.html.admin.reports.address_tab_alpha;
+import views.html.admin.reports.payments;
 
 @Security.Authenticated(SecuredAdminOnly.class)
 @With(NoCacheAction.class)
@@ -36,6 +38,10 @@ public class Reporting extends Controller {
 	
 	public static Result addressBook() {
 		return ok(address_tab_alpha.render(getAddressBook()));
+    }
+	
+	public static Result payments() {
+		return ok(payments.render(PaymentsReport.generateReport()));
     }
 	
 	private static List<models.Customer> getCustomers() {
