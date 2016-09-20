@@ -3,7 +3,7 @@
 
 @defining(new views.PageDisplay(currentPage, "description ou numéro de facture", "admin.payment.page")) { pageDisplay =>
 	@{  pageDisplay.addTableField("creationDate", "creation.date", "getCreationDate", false, "date short");
-		pageDisplay.addTableField("paymentDate", "payment.date", "getCreationDate", false, "date short");
+		pageDisplay.addTableField("paymentDate", "payment.date", "getPaymentDate", false, "date short");
 	    pageDisplay.addTableField("invoice.name", "invoice", "getInvoiceUAN", false);
 	    pageDisplay.addTableField("invoice.customer.name", "customer", "getCustomerFullName", false);
 	    pageDisplay.addTableField("paymentMethod", "paymentMethod", "getPaymentMethod", false);
