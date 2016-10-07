@@ -291,6 +291,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
         return 
             find.fetch("brand").where().disjunction().add(Expr.ilike("model", "%" + filter + "%"))
             										 .add(Expr.ilike("reference", "%" + filter + "%"))
+            										 .add(Expr.ilike("serial", "%" + filter + "%"))
             										 .add(Expr.ilike("brand.display_name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
