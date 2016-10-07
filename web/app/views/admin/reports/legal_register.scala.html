@@ -1,0 +1,19 @@
+@(lines: List[models.LegalRegisterReport])
+@import tags._
+
+
+
+@defining(new views.admin.reports.Report(lines, "admin.reporting.legal.register.page")) { report =>
+	@{  
+		report.addCol("num", "getNum", false);
+		report.addCol("date.of.stock.entry", "getDateOfStockEntry", false, "date medium", null);
+		report.addCol("description", "getDescription", false, "pre", null); 	
+		report.addCol("seller", "getSeller", false);
+		report.addCol("price", "getPurchasePrice", false, "price", null);
+		report.addCol("registry.warning", "getRegistryWarning", false);
+	}
+	
+	@layouts.admin() {
+	    @admin.reports.fragments.report(report)
+	}
+}

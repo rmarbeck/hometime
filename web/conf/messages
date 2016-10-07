@@ -1373,6 +1373,7 @@ admin.navbar.link.text.reporting=Reporting
 admin.navbar.link.text.reporting.margin.vat=Rapport de TVA sur Marge
 admin.navbar.link.text.reporting.invoice.lines=Rapport de Chiffre d''affaires
 admin.navbar.link.text.reporting.stock=Rapport de Stock
+admin.navbar.link.text.reporting.legal.register=Registre
 admin.navbar.link.text.reporting.payments=Rapport méthodes de paiement
 
 admin.page.nothing.to.display=Aucun article à afficher
@@ -2982,6 +2983,15 @@ admin.reporting.stock.page.purchase.price=Prix d''achat
 admin.reporting.stock.page.expected.selling.price=Prix de mise en vente
 admin.reporting.stock.page.expected.margin.rate=Taux de marge
 admin.reporting.stock.page.registry.warning=Ajouter ?
+
+admin.reporting.legal.register.page.title=Registre
+admin.reporting.legal.register.page.title=Registre
+admin.reporting.legal.register.page.date.of.stock.entry=Date d''achat
+admin.reporting.legal.register.page.description=Description
+admin.reporting.legal.register.page.seller=Vendeur
+admin.reporting.legal.register.page.price=Prix d''achat
+admin.reporting.legal.register.page.registry.warning=A ajouter ?
+admin.reporting.legal.register.page.num=#
 
 admin.reporting.payments.page.title=Paiements
 admin.reporting.payments.page.date.of.bank.deposit=Date de remise
