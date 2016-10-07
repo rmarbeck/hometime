@@ -61,4 +61,10 @@ public class LegalRegisterReport {
 	private static boolean lineIsSupposedToBeDisplayed(WatchToSell watch) {
 		return watch.shouldBeInRegistry;
 	}
+	
+	public String getCssClass() {
+		if (registryWarning)
+			return "shouldAdd";
+		return "shouldNotAdd";
+	}
 }
