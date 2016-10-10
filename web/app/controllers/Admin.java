@@ -93,7 +93,7 @@ public class Admin extends Controller {
 		public String delayCanBeReduced = "1";
 		
 		@Constraints.Required
-		public String shouldTalkAboutWaterResistance = "0";
+		public String shouldTalkAboutWaterResistance = "1";
 		
 		public String infosGivenByCustomer1 = null;
 		public String infosGivenByCustomer2 = null;
@@ -225,6 +225,7 @@ public class Admin extends Controller {
 	    		}
 	    		this.priceIsNotFinal = presetFound.priceIsNotFinal?"1":"0";
 	    		this.delayCanBeReduced = presetFound.delayCanBeReduced?"1":"0";
+	    		this.shouldTalkAboutWaterResistance = presetFound.shouldTalkAboutWaterResistance?"1":"0";
 	    		this.delayIsNotSure = presetFound.delayIsNotSure?"1":"0";
 	    		this.warantyTime = presetFound.warantyTime;
 	    		this.hypothesis1 = presetFound.hypothesis1;

@@ -2,7 +2,84 @@
 @import tags._
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
-@layouts.admin() {
+
+@end_scripts = {
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc"></script>
+<script type="text/javascript">
+var source, destination;
+var directionsDisplay;
+var defaultSource = "Maisons-Laffitte";
+var destinationToUse = '@quotation("customerCity").value'; 
+var urlForQuickAccessToMaps = "https://www.google.fr/maps/dir/"+defaultSource+"/"+destinationToUse
+ 
+function GetRoute() {
+    source = defaultSource;
+    destination = destinationToUse;
+ 
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix({
+        origins: [source],
+        destinations: [destination],
+        travelMode: google.maps.TravelMode.DRIVING,
+        unitSystem: google.maps.UnitSystem.METRIC,
+        avoidHighways: false,
+        avoidTolls: false
+    }, function (response, status) {
+        if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+            var distance = response.rows[0].elements[0].distance.text;
+            var duration = response.rows[0].elements[0].duration.text;
+            var durationInSec = response.rows[0].elements[0].duration.value;
+            var dvDistance = document.getElementById("dvDistance");
+
+ 			if(durationInSec > 4000) {
+ 				$( "#outsideZone_1" ).prop( "checked", true );
+ 			} else {
+ 				$( "#outsideZone_0" ).prop( "checked", true );
+ 			}
+ 			$("label[for='outsideZone']").append(" <- <a target='_blank' href="+urlForQuickAccessToMaps+">"+duration + "["+distance+"]<a/>");
+        } else {
+        	console.log("Unable to find the distance via road.");
+        }
+    });
+}
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        $('#shouldTalkAboutWaterResistance_0').on('click', function(event) {
+        		markWaterResistanceInPage();
+        	});
+        $('#shouldTalkAboutWaterResistance_1').on('click', function(event) {
+        		unmarkWaterResistanceInPage();
+        	});
+        GetRoute();
+    });
+    
+    function markWaterResistanceInPage() {
+    	markIfContains($('#warantyTime'), "tanch");
+    	markIfContains($('#hypothesis1'), "tanch");
+    	markIfContains($('#hypothesis2'), "tanch");
+    	markIfContains($('#hypothesis3'), "tanch");
+    }
+    
+    function unmarkWaterResistanceInPage() {
+    	$(":input[type=text]").css("color","black");
+    }
+    
+    function markIfContains(input, toFind) {
+    	if (contains(input.val(), toFind)) {
+    		input.css("color","red");
+    	}
+    }
+    
+    function contains(str, toFind) {
+    	return str.indexOf(toFind) !== -1;
+    }
+</script> 
+}
+
+@layouts.admin("", end_scripts) {
     <div class="container">
     	@display_flash()
     
@@ -78,12 +155,14 @@
                                 'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
 				@tags.myInputRadioGroup(quotation("shouldTalkAboutWaterResistance"),
-                                Seq( "0" -> Messages("admin.quotation.form.value.should.talk.about.water.resistance"), "1" -> Messages("admin.quotation.form.value.should.not.talk.about.water.resistance")), '_label -> Html(Messages("admin.quotation.form.label.should.talk.about.water.resistance", quotation("shouldTalkAboutWaterResistance").value)),
+                                Seq( "1" -> Messages("admin.quotation.form.value.should.talk.about.water.resistance"), "0" -> Messages("admin.quotation.form.value.should.not.talk.about.water.resistance")), '_label -> Html(Messages("admin.quotation.form.label.should.talk.about.water.resistance", quotation("shouldTalkAboutWaterResistance").value)),
                                 '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
                 @tags.myInputRadioGroup(quotation("outsideZone"),
                                 Seq( "0" -> Messages("admin.quotation.form.value.outside.zone.inside"), "1" -> Messages("admin.quotation.form.value.outside.zone.outside")), '_label -> Html(Messages("admin.quotation.form.label.outside.zone", quotation("customerCity").value)),
                                 '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                                
+                                <tr>
 
                 <div class="form-group">
                   <label for="infosGivenByCustomer" class="col-xs-3 control-label">@Messages("admin.quotation.form.label.cat.infos.given.by.customer")</label>

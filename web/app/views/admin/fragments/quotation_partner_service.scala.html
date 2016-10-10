@@ -19,9 +19,9 @@
                 <li>Changement éventuel de quelques pièces (par des pièces d'origine) habituellement changées lors d'une révision,</li>
                 <li>Huilage des pièces,</li>
                 <li>Remontage du mouvement,</li>
-                <li>Changement des joints d’étanchéité,</li>
-                <li>Fermeture du boitier,</li>
-                <li>Contrôle d’étanchéité et production de certificat.</li>
+                @if(quotation.shouldTalkAboutWaterResistance) {<li>Changement des joints d’étanchéité,</li>}
+                <li>Fermeture du boitier@if(quotation.shouldTalkAboutWaterResistance) {,} else {.}</li>
+                @if(quotation.shouldTalkAboutWaterResistance) {<li>Contrôle d’étanchéité et production de certificat.</li>}
             </ul>
         </li>
         <li>Contrôle du bon fonctionnement et des performances chronométriques,</li>
@@ -45,10 +45,10 @@
                 <li>Démontage de la montre,</li>
                 <li>Démagnétisation du mouvement,</li>
                 <li>Polissage de la boite et de la boucle du bracelet (ce polissage est léger pour éviter de retirer trop de matière),</li>
-                <li>Changement des joints d’étanchéité,</li>
+                @if(quotation.shouldTalkAboutWaterResistance) {<li>Changement des joints d’étanchéité,</li>}
                 <li>Fermeture du boitier,</li>
+                @if(quotation.shouldTalkAboutWaterResistance) {<li>Contrôle d’étanchéité sous basse et haute pression et production de certificat.</li>}
                 <li>Contrôle du bon fonctionnement et des performances chronométriques,</li>
-                <li>Contrôle d’étanchéité sous basse et haute pression et production de certificat.</li>
             </ul>
         </li>
       }

@@ -46,6 +46,8 @@ public class PresetQuotationForBrand extends Model {
 	
 	public Boolean delayCanBeReduced = false;
 	
+	public Boolean shouldTalkAboutWaterResistance = true;
+	
 	public String remark1 = null;
 	public String remark2 = null;
 	public String remark3 = null;

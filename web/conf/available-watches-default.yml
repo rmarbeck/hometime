@@ -895,6 +895,19 @@ presets:
          hypothesis1:        La montre n'a pas subi de dommage majeur pouvant avoir généré des dégâts sur le mouvement, sur le boitier ou sur le verre.
          hypothesis2:        L'étanchéité de la montre doit être préservée et garantie à l'issue des opérations.
 
+    - &STH5 !!models.PresetQuotationForBrand
+         presetName:         STH délai non maitrisé (pas étanche)
+         brand:              *Autre
+         delay:              4 semaines environ
+         delayReturn:        1 à 4 jours
+         priceServiceLowBound:      480
+         priceServiceHighBound:     480
+         warantyTime:        Le fonctionnement est garanti pendant 1 an.
+         priceIsNotFinal:    false
+         delayIsNotSure:     false
+         delayCanBeReduced:  true
+         hypothesis1:        La montre n'a pas subi de dommage majeur pouvant avoir généré des dégâts sur le mouvement, sur le boitier ou sur le verre.
+         shouldTalkAboutWaterResistance:  false
 
 orderRequests:
     - &OrderRequest1 !!models.OrderRequest

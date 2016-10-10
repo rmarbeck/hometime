@@ -359,6 +359,7 @@ create table preset_quotation_for_brand (
   price_is_not_final        boolean,
   delay_is_not_sure         boolean,
   delay_can_be_reduced      boolean,
+  should_talk_about_water_resistance boolean,
   remark1                   varchar(255),
   remark2                   varchar(255),
   remark3                   varchar(255),
