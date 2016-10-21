@@ -1,0 +1,15 @@
+@(lines: List[models.WatchSalesReport])
+@import tags._
+
+@defining(new views.admin.reports.Report(lines, "admin.export.sales.page")) { report =>
+	@{  report.addCol("date", "getDate", false, "date medium", null); 	
+		report.addCol("invoice.name", "getInvoiceName", false);
+		report.addCol("selling.price", "getSellingPrice", false, "price", null);
+		report.addCol("purchase.invoice.name", "getPurchaseInvoiceName", false);
+		report.addCol("purchase.price", "getPurchasingPrice", false, "price", null);
+	}
+	
+	@layouts.admin() {
+	    @admin.reports.fragments.report(report)
+	}
+}

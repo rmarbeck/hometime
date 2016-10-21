@@ -4,7 +4,6 @@ import java.util.List;
 
 import models.InvoiceLineReport;
 import models.LegalRegisterReport;
-import models.MarginVatReport;
 import models.PaymentsReport;
 import models.StockReport;
 import models.Invoice.InvoiceType;
@@ -13,7 +12,8 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
-import views.html.admin.reports.index;
+import views.html.admin.reports.margin_vat;
+import views.html.admin.reports.export_sales;
 import views.html.admin.reports.stock;
 import views.html.admin.reports.legal_register;
 import views.html.admin.reports.invoice_lines;
@@ -24,12 +24,16 @@ import views.html.admin.reports.payments;
 @Security.Authenticated(SecuredAdminOnly.class)
 @With(NoCacheAction.class)
 public class Reporting extends Controller {
-	public static Result index() {
-		return ok(index.render(WatchSalesReport.generateReport(invoice -> InvoiceType.MARGIN_VAT.equals(invoice.type))));
+	public static Result marginVat() {
+		return ok(margin_vat.render(WatchSalesReport.generateReport(invoice -> InvoiceType.MARGIN_VAT.equals(invoice.type))));
     }
 	
 	public static Result exportSales() {
-		return ok(index.render(WatchSalesReport.generateReport(invoice -> InvoiceType.RESERVED_1.equals(invoice.type))));
+		return ok(export_sales.render(WatchSalesReport.generateReport(invoice -> InvoiceType.RESERVED_1.equals(invoice.type))));
+    }
+	
+	public static Result withVat() {
+		return ok(export_sales.render(WatchSalesReport.generateReport(invoice -> InvoiceType.VAT.equals(invoice.type))));
     }
 	
 	public static Result invoiceLines() {

@@ -1371,6 +1371,7 @@ admin.navbar.link.text.watches=Montres
 
 admin.navbar.link.text.reporting=Reporting
 admin.navbar.link.text.reporting.margin.vat=Rapport de TVA sur Marge
+admin.navbar.link.text.reporting.export.sales=Rapport de vente export
 admin.navbar.link.text.reporting.invoice.lines=Rapport de Chiffre d''affaires
 admin.navbar.link.text.reporting.stock=Rapport de Stock
 admin.navbar.link.text.reporting.legal.register=Registre
@@ -2786,7 +2787,17 @@ admin.margin.vat.page.selling.price=Prix de vente
 admin.margin.vat.page.purchase.invoice.name=Facture d''achat
 admin.margin.vat.page.purchase.price=Prix d''achat
 
-admin.margin.vat.page.empty=Aucune ligne à afficher
+
+admin.export.sales.page.title=Rapport de ventes à l'export 
+
+admin.export.sales.page.date=Date de facture
+admin.export.sales.page.invoice.name=Numéro de facture
+admin.export.sales.page.selling.price=Prix de vente
+admin.export.sales.page.purchase.invoice.name=Facture d''achat
+admin.export.sales.page.purchase.price=Prix d''achat (indicatif)
+
+
+admin.export.sales.page.empty=Aucune ligne à afficher
 
 admin.watchtosell=Montre en vente
 admin.watchtosell.title=Montre en vente
