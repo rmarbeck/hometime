@@ -7,6 +7,8 @@ import models.LegalRegisterReport;
 import models.MarginVatReport;
 import models.PaymentsReport;
 import models.StockReport;
+import models.Invoice.InvoiceType;
+import models.WatchSalesReport;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
@@ -23,7 +25,11 @@ import views.html.admin.reports.payments;
 @With(NoCacheAction.class)
 public class Reporting extends Controller {
 	public static Result index() {
-		return ok(index.render(MarginVatReport.generateReport()));
+		return ok(index.render(WatchSalesReport.generateReport(invoice -> InvoiceType.MARGIN_VAT.equals(invoice.type))));
+    }
+	
+	public static Result exportSales() {
+		return ok(index.render(WatchSalesReport.generateReport(invoice -> InvoiceType.RESERVED_1.equals(invoice.type))));
     }
 	
 	public static Result invoiceLines() {

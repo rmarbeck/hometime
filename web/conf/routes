@@ -227,6 +227,7 @@ GET     /admin/post-selling-certificate/create/by/watch/:id				controllers.Accou
 GET		/admin/follow/external/document/url/:id							controllers.Admin.goToExternalDocumentUrl(id: Long)
 
 GET     /admin/margin-vat-report            							controllers.Reporting.index()
+GET     /admin/export-sales-report            							controllers.Reporting.exportSales()
 GET     /admin/invoice-lines											controllers.Reporting.invoiceLines()
 GET     /admin/addresses		            							controllers.Reporting.addresses()
 GET     /admin/addressbook		            							controllers.Reporting.addressBook()
