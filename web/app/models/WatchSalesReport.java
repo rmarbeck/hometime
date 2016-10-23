@@ -1,6 +1,5 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -20,45 +19,26 @@ public class WatchSalesReport {
 	
 	
 	public static List<WatchSalesReport> generateReport(Predicate<Invoice> invoiceFilterIn) {
-		/*List<WatchSalesReport> report = new ArrayList<WatchSalesReport>();
-		List<Invoice> invoices = Invoice.findAllByDescendingDate();
-		if (listNotEmpty(invoices))
-			for(Invoice invoice : invoices)
-				if (invoiceFilterIn.test(invoice))
-					report.add(new WatchSalesReport(invoice));
-		List<WatchSalesReport> report = invoices.stream().filter(invoiceFilterIn).map(WatchSalesReport::new).collect(Collectors.toList());
-		return report;*/
-		return Invoice.tryTofindAllByDescendingDate().orElse(new ArrayList<Invoice>()).stream().filter(invoiceFilterIn).map(WatchSalesReport::new).collect(Collectors.toList());
+		return new ListHelper<Invoice>(Invoice.findAllByDescendingDate()).streamFromNullableList().filter(invoiceFilterIn).map(WatchSalesReport::new).collect(Collectors.toList());
 	}
 	
 	private WatchSalesReport(Invoice invoice) {
 		this.date = invoice.document.creationDate;
 		this.invoiceName = invoice.uniqueAccountingNumber;
-		Optional<WatchToSell> watchFound = guessWatchSold(invoice);
-		if (watchFound.isPresent()) {
-			this.sellingPrice = Float.valueOf(watchFound.get().sellingPrice);
-			this.purchasingPrice = Float.valueOf(watchFound.get().purchasingPrice);
-			if (watchFound.get().purchaseInvoiceAvailable)
-				if (watchFound.get().purchaseInvoice != null) {
-					this.purchaseInvoiceName = watchFound.get().purchaseInvoice.name;	
+		guessWatchSold(invoice).ifPresent(watchFound -> {
+			this.sellingPrice = Float.valueOf(watchFound.sellingPrice);
+			this.purchasingPrice = Float.valueOf(watchFound.purchasingPrice);
+			if (watchFound.purchaseInvoiceAvailable)
+				if (watchFound.purchaseInvoice != null) {
+					this.purchaseInvoiceName = watchFound.purchaseInvoice.name;	
 				} else {
 					this.purchaseInvoiceName = "unfound";
 				}
-		}
+		});
 	}
 	
 	private Optional<WatchToSell> guessWatchSold(Invoice invoice) {
-		/*List<WatchToSell> watches =  WatchToSell.findByCustomer(invoice.document.customer);
-		if (listNotEmpty(watches))
-			for (WatchToSell watch : watches)
-				if (doesWatchMatches(watch, invoice))
-					return Optional.of(watch);
-		return Optional.empty();*/
-		return new ListHelper<>(WatchToSell.findByCustomer(invoice.document.customer)).tryToGet().stream().filter(watch -> doesWatchMatches(watch, invoice)).findAny();
-	}
-	
-	private static boolean listNotEmpty(List<?> list) {
-		return (list != null && list.size() != 0);
+		return new ListHelper<WatchToSell>(WatchToSell.findByCustomer(invoice.document.customer)).streamFromNullableList().filter(watch -> doesWatchMatches(watch, invoice)).findAny();
 	}
 	
 	private static boolean doesWatchMatches(WatchToSell watch, Invoice invoice) {
@@ -67,17 +47,12 @@ public class WatchSalesReport {
 	
 	private static boolean doesReferenceMatches(WatchToSell watch, Invoice invoice) {
 		if (watch.reference != null && watch.reference != "")
-			for (AccountingLine line : invoice.document.lines)
-				if (line.description.contains(watch.reference))
-					return true;
+			return new ListHelper<AccountingLine>(invoice.document.lines).streamFromNullableList().anyMatch(line -> line.description.contains(watch.reference));
 		return false;
 	}
 	
 	private static boolean doesPriceMatches(WatchToSell watch, Invoice invoice) {
-		for (AccountingLine line : invoice.document.lines)
-			if (line.unitPrice!= null && priceSeemsToBeTheSame(line.unitPrice, watch.sellingPrice))
-				return true;
-		return false;
+		return new ListHelper<AccountingLine>(invoice.document.lines).streamFromNullableList().anyMatch(line -> line.unitPrice!= null && line.unitPrice != 0 && priceSeemsToBeTheSame(line.unitPrice, watch.sellingPrice));
 	}
 	
 	private static boolean priceSeemsToBeTheSame(Float unitPrice, long sellingPrice) {

@@ -3,6 +3,7 @@ package fr.hometime.utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class ListHelper<T> {
 	List<T> workingList;
@@ -26,6 +27,12 @@ public class ListHelper<T> {
 	
 	public List<T> tryToGet() {
 		return Optional.ofNullable(workingList).orElse(new ArrayList<T>());
+	}
+	
+	public Stream<T> streamFromNullableList() {
+		if (workingList == null)
+			return Stream.empty();
+		return workingList.stream();
 	}
 
 }
