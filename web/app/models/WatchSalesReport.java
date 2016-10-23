@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import fr.hometime.utils.ListHelper;
 import fr.hometime.utils.VATHelper;
 
 public class WatchSalesReport {
@@ -47,12 +48,13 @@ public class WatchSalesReport {
 	}
 	
 	private Optional<WatchToSell> guessWatchSold(Invoice invoice) {
-		List<WatchToSell> watches =  WatchToSell.findByCustomer(invoice.document.customer);
+		/*List<WatchToSell> watches =  WatchToSell.findByCustomer(invoice.document.customer);
 		if (listNotEmpty(watches))
 			for (WatchToSell watch : watches)
 				if (doesWatchMatches(watch, invoice))
 					return Optional.of(watch);
-		return Optional.empty();
+		return Optional.empty();*/
+		return new ListHelper<>(WatchToSell.findByCustomer(invoice.document.customer)).tryToGet().stream().filter(watch -> doesWatchMatches(watch, invoice)).findAny();
 	}
 	
 	private static boolean listNotEmpty(List<?> list) {
@@ -79,7 +81,14 @@ public class WatchSalesReport {
 	}
 	
 	private static boolean priceSeemsToBeTheSame(Float unitPrice, long sellingPrice) {
-		if (unitPrice == sellingPrice || VATHelper.getPriceAfterVAT(unitPrice) == sellingPrice)
+		if (unitPrice == sellingPrice || vatPriceIsAlmostTheSame(unitPrice, sellingPrice) )
+			return true;
+		return false;
+	}
+	
+	private static boolean vatPriceIsAlmostTheSame(Float unitPrice, long sellingPrice) {
+		float diff = VATHelper.getPriceAfterVAT(unitPrice) - (float) sellingPrice;
+		if (Math.abs(diff) < 1)
 			return true;
 		return false;
 	}

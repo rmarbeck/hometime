@@ -1,6 +1,8 @@
 package fr.hometime.utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ListHelper<T> {
 	List<T> workingList;
@@ -20,6 +22,10 @@ public class ListHelper<T> {
 	
 	public static int getRandomIndex(int upperBoundIncluded) {
 		return RandomHelper.getRandomInt(0, upperBoundIncluded);
+	}
+	
+	public List<T> tryToGet() {
+		return Optional.ofNullable(workingList).orElse(new ArrayList<T>());
 	}
 
 }
