@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import fr.hometime.utils.VATHelper;
 
 public class WatchSalesReport {
 	public Date date;
@@ -16,13 +19,15 @@ public class WatchSalesReport {
 	
 	
 	public static List<WatchSalesReport> generateReport(Predicate<Invoice> invoiceFilterIn) {
-		List<WatchSalesReport> report = new ArrayList<WatchSalesReport>();
+		/*List<WatchSalesReport> report = new ArrayList<WatchSalesReport>();
 		List<Invoice> invoices = Invoice.findAllByDescendingDate();
 		if (listNotEmpty(invoices))
 			for(Invoice invoice : invoices)
 				if (invoiceFilterIn.test(invoice))
 					report.add(new WatchSalesReport(invoice));
-		return report;
+		List<WatchSalesReport> report = invoices.stream().filter(invoiceFilterIn).map(WatchSalesReport::new).collect(Collectors.toList());
+		return report;*/
+		return Invoice.tryTofindAllByDescendingDate().orElse(new ArrayList<Invoice>()).stream().filter(invoiceFilterIn).map(WatchSalesReport::new).collect(Collectors.toList());
 	}
 	
 	private WatchSalesReport(Invoice invoice) {
@@ -68,8 +73,14 @@ public class WatchSalesReport {
 	
 	private static boolean doesPriceMatches(WatchToSell watch, Invoice invoice) {
 		for (AccountingLine line : invoice.document.lines)
-			if (line.unitPrice!= null && line.unitPrice == watch.sellingPrice)
+			if (line.unitPrice!= null && priceSeemsToBeTheSame(line.unitPrice, watch.sellingPrice))
 				return true;
+		return false;
+	}
+	
+	private static boolean priceSeemsToBeTheSame(Float unitPrice, long sellingPrice) {
+		if (unitPrice == sellingPrice || VATHelper.getPriceAfterVAT(unitPrice) == sellingPrice)
+			return true;
 		return false;
 	}
 

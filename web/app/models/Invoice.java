@@ -120,6 +120,10 @@ public class Invoice extends Model {
     public static List<Invoice> findAllByDescendingDate() {
         return find.orderBy("document.creationDate DESC").findList();
     }
+
+    public static Optional<List<Invoice>> tryTofindAllByDescendingDate() {
+        return Optional.ofNullable(findAllByDescendingDate());
+    }
     
     public static List<Long> findAllByDescendingDateIds() {
     	List<Long> ids = new ArrayList<Long>();
