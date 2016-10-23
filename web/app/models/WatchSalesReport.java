@@ -19,7 +19,7 @@ public class WatchSalesReport {
 	
 	
 	public static List<WatchSalesReport> generateReport(Predicate<Invoice> invoiceFilterIn) {
-		return new ListHelper<Invoice>(Invoice.findAllByDescendingDate()).streamFromNullableList().filter(invoiceFilterIn).map(WatchSalesReport::new).collect(Collectors.toList());
+		return new ListHelper<Invoice>(Invoice.findAllByDescendingDate()).streamFromNullableList().filter(invoiceFilterIn).map(WatchSalesReport::new).filter(watch -> watch.sellingPrice != 0).collect(Collectors.toList());
 	}
 	
 	private WatchSalesReport(Invoice invoice) {
