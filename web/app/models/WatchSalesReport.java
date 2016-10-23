@@ -25,6 +25,7 @@ public class WatchSalesReport {
 	private WatchSalesReport(Invoice invoice) {
 		this.date = invoice.document.creationDate;
 		this.invoiceName = invoice.uniqueAccountingNumber;
+		this.sellingPrice = Float.valueOf(0f);
 		guessWatchSold(invoice).ifPresent(watchFound -> {
 			this.sellingPrice = Float.valueOf(watchFound.sellingPrice);
 			this.purchasingPrice = Float.valueOf(watchFound.purchasingPrice);
