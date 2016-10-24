@@ -5,41 +5,47 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import fr.hometime.utils.ListHelper;
+import static fr.hometime.utils.ListHelper.streamFromNullableList;
 import fr.hometime.utils.VATHelper;
 
 public class WatchSalesReport {
 	public Date date;
 	public String invoiceName;
 	public Float sellingPrice;
-	public String purchaseInvoiceName = "";
+	public String purchaseInvoiceName = "unknown";
 	public Float purchasingPrice;
 	public Predicate<Invoice> invoiceFilterIn;
 	
 	
 	public static List<WatchSalesReport> generateReport(Predicate<Invoice> invoiceFilterIn) {
-		return new ListHelper<Invoice>(Invoice.findAllByDescendingDate()).streamFromNullableList().filter(invoiceFilterIn).map(WatchSalesReport::new).filter(watch -> watch.sellingPrice != 0).collect(Collectors.toList());
+		return streamFromNullableList(Invoice.findAllByDescendingDate()).filter(invoiceFilterIn).flatMap(WatchSalesReport::guessWatchesSoldStream).filter(watch -> watch.sellingPrice != 0).collect(Collectors.toList());
 	}
 	
-	private WatchSalesReport(Invoice invoice) {
+	private WatchSalesReport(Invoice invoice, WatchToSell watch) {
 		this.date = invoice.document.creationDate;
 		this.invoiceName = invoice.uniqueAccountingNumber;
-		this.sellingPrice = Float.valueOf(0f);
-		guessWatchSold(invoice).ifPresent(watchFound -> {
-			this.sellingPrice = Float.valueOf(watchFound.sellingPrice);
-			this.purchasingPrice = Float.valueOf(watchFound.purchasingPrice);
-			if (watchFound.purchaseInvoiceAvailable)
-				if (watchFound.purchaseInvoice != null) {
-					this.purchaseInvoiceName = watchFound.purchaseInvoice.name;	
-				} else {
-					this.purchaseInvoiceName = "unfound";
-				}
-		});
+		this.sellingPrice = Float.valueOf(watch.sellingPrice);
+		this.purchasingPrice = Float.valueOf(watch.purchasingPrice);
+		if (watch.purchaseInvoiceAvailable)
+			if (watch.purchaseInvoice != null) {
+				this.purchaseInvoiceName = watch.purchaseInvoice.name;	
+			} else {
+				this.purchaseInvoiceName = "unfound";
+			}
+	}
+	
+	private static List<WatchSalesReport> guessWatchesSold(Invoice invoice) {
+		return streamFromNullableList(WatchToSell.findByCustomer(invoice.document.customer)).filter(watch -> doesWatchMatches(watch, invoice)).map(watch -> new WatchSalesReport(invoice, watch)).collect(Collectors.toList());
+	}
+	
+	private static Stream<WatchSalesReport> guessWatchesSoldStream(Invoice invoice) {
+		return guessWatchesSold(invoice).stream();
 	}
 	
 	private Optional<WatchToSell> guessWatchSold(Invoice invoice) {
-		return new ListHelper<WatchToSell>(WatchToSell.findByCustomer(invoice.document.customer)).streamFromNullableList().filter(watch -> doesWatchMatches(watch, invoice)).findAny();
+		return streamFromNullableList(WatchToSell.findByCustomer(invoice.document.customer)).filter(watch -> doesWatchMatches(watch, invoice)).findAny();
 	}
 	
 	private static boolean doesWatchMatches(WatchToSell watch, Invoice invoice) {
@@ -48,12 +54,12 @@ public class WatchSalesReport {
 	
 	private static boolean doesReferenceMatches(WatchToSell watch, Invoice invoice) {
 		if (watch.reference != null && watch.reference != "")
-			return new ListHelper<AccountingLine>(invoice.document.lines).streamFromNullableList().anyMatch(line -> line.description.contains(watch.reference));
+			return streamFromNullableList(invoice.document.lines).anyMatch(line -> line.description.contains(watch.reference));
 		return false;
 	}
 	
 	private static boolean doesPriceMatches(WatchToSell watch, Invoice invoice) {
-		return new ListHelper<AccountingLine>(invoice.document.lines).streamFromNullableList().anyMatch(line -> line.unitPrice!= null && line.unitPrice != 0 && priceSeemsToBeTheSame(line.unitPrice, watch.sellingPrice));
+		return streamFromNullableList(invoice.document.lines).anyMatch(line -> line.unitPrice!= null && line.unitPrice != 0 && priceSeemsToBeTheSame(line.unitPrice, watch.sellingPrice));
 	}
 	
 	private static boolean priceSeemsToBeTheSame(Float unitPrice, long sellingPrice) {

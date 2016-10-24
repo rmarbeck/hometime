@@ -12,6 +12,10 @@ public class ListHelper<T> {
 		workingList = list;
 	}
 	
+	public static <U> ListHelper<U> of(List<U> list) {
+		return new ListHelper<U>(list);
+	}
+	
 	public T getAnElementRandomly() {
 		if (workingList == null || workingList.size()==0)
 			return null;
@@ -29,10 +33,16 @@ public class ListHelper<T> {
 		return Optional.ofNullable(workingList).orElse(new ArrayList<T>());
 	}
 	
-	public Stream<T> streamFromNullableList() {
+	public Stream<T> stream() {
 		if (workingList == null)
 			return Stream.empty();
 		return workingList.stream();
+	}
+	
+	public static <U> Stream<U> streamFromNullableList(List<U> list) {
+		if (list == null)
+			return Stream.empty();
+		return list.stream();
 	}
 
 }
