@@ -2,7 +2,6 @@ package models;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,7 +19,7 @@ public class WatchSalesReport {
 	
 	
 	public static List<WatchSalesReport> generateReport(Predicate<Invoice> invoiceFilterIn) {
-		return streamFromNullableList(Invoice.findAllByDescendingDate()).filter(invoiceFilterIn).flatMap(WatchSalesReport::guessWatchesSoldStream).filter(watch -> watch.sellingPrice != 0).collect(Collectors.toList());
+		return streamFromNullableList(Invoice.findAllByDescendingDate()).filter(invoiceFilterIn).flatMap(WatchSalesReport::guessWatchesSoldAsStream).filter(watch -> watch.sellingPrice != 0).collect(Collectors.toList());
 	}
 	
 	private WatchSalesReport(Invoice invoice, WatchToSell watch) {
@@ -36,16 +35,8 @@ public class WatchSalesReport {
 			}
 	}
 	
-	private static List<WatchSalesReport> guessWatchesSold(Invoice invoice) {
-		return streamFromNullableList(WatchToSell.findByCustomer(invoice.document.customer)).filter(watch -> doesWatchMatches(watch, invoice)).map(watch -> new WatchSalesReport(invoice, watch)).collect(Collectors.toList());
-	}
-	
-	private static Stream<WatchSalesReport> guessWatchesSoldStream(Invoice invoice) {
-		return guessWatchesSold(invoice).stream();
-	}
-	
-	private Optional<WatchToSell> guessWatchSold(Invoice invoice) {
-		return streamFromNullableList(WatchToSell.findByCustomer(invoice.document.customer)).filter(watch -> doesWatchMatches(watch, invoice)).findAny();
+	private static Stream<WatchSalesReport> guessWatchesSoldAsStream(Invoice invoice) {
+		return streamFromNullableList(WatchToSell.findByCustomer(invoice.document.customer)).filter(watch -> doesWatchMatches(watch, invoice)).map(watch -> new WatchSalesReport(invoice, watch)).collect(Collectors.toList()).stream();
 	}
 	
 	private static boolean doesWatchMatches(WatchToSell watch, Invoice invoice) {

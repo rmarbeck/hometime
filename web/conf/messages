@@ -1372,6 +1372,7 @@ admin.navbar.link.text.watches=Montres
 admin.navbar.link.text.reporting=Reporting
 admin.navbar.link.text.reporting.margin.vat=Rapport de TVA sur Marge
 admin.navbar.link.text.reporting.export.sales=Rapport de vente export
+admin.navbar.link.text.reporting.with.vat.sales=Rapport de vente avec TVA
 admin.navbar.link.text.reporting.invoice.lines=Rapport de Chiffre d''affaires
 admin.navbar.link.text.reporting.stock=Rapport de Stock
 admin.navbar.link.text.reporting.legal.register=Registre
@@ -1641,7 +1642,7 @@ Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
 mails.beware.of.spam.label=Info Spam
-mails.beware.of.spam.two.orders.label=Info Spam (deux devis)
+mails.beware.of.two.orders.spam.label=Info Spam (deux devis)
 mails.beware.of.spam.subject=Devis Hometime
 mails.beware.of.spam.body=Bonjour,%0D%0A\
 %0D%0A\
@@ -2788,7 +2789,7 @@ admin.margin.vat.page.purchase.invoice.name=Facture d''achat
 admin.margin.vat.page.purchase.price=Prix d''achat
 
 
-admin.export.sales.page.title=Rapport de ventes à l'export 
+admin.export.sales.page.title=Rapport de ventes à l''export 
 
 admin.export.sales.page.date=Date de facture
 admin.export.sales.page.invoice.name=Numéro de facture
@@ -2798,6 +2799,16 @@ admin.export.sales.page.purchase.price=Prix d''achat (indicatif)
 
 
 admin.export.sales.page.empty=Aucune ligne à afficher
+
+admin.with.vat.sales.page.title=Rapport de ventes avec TVA 
+
+admin.with.vat.sales.page.date=Date de facture
+admin.with.vat.sales.page.invoice.name=Numéro de facture
+admin.with.vat.sales.page.selling.price=Prix de vente
+admin.with.vat.sales.page.purchase.invoice.name=Facture d''achat
+admin.with.vat.sales.page.purchase.price=Prix d''achat (indicatif)
+
+admin.with.vat.sales.page.empty=Aucune ligne à afficher
 
 admin.watchtosell=Montre en vente
 admin.watchtosell.title=Montre en vente
