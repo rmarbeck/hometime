@@ -13,6 +13,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import views.html.admin.reports.margin_vat;
+import views.html.admin.reports.with_vat;
 import views.html.admin.reports.export_sales;
 import views.html.admin.reports.stock;
 import views.html.admin.reports.legal_register;
@@ -33,7 +34,7 @@ public class Reporting extends Controller {
     }
 	
 	public static Result withVat() {
-		return ok(export_sales.render(WatchSalesReport.generateReport(invoice -> InvoiceType.VAT.equals(invoice.type))));
+		return ok(with_vat.render(WatchSalesReport.generateReport(invoice -> InvoiceType.VAT.equals(invoice.type))));
     }
 	
 	public static Result invoiceLines() {
