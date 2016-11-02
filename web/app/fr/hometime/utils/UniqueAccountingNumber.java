@@ -48,12 +48,16 @@ public class UniqueAccountingNumber {
 	private static UniqueAccountingNumber getNext(UniqueAccountingNumber previous, boolean isItForAnOrder) {
 		UniqueAccountingNumber brandNewOne = createNew(isItForAnOrder);
 		if (brandNewOne.isOlderThan(previous))
-			return brandNewOne.plusOne();
+			return brandNewOne.skipToNextSerial(previous);
 		return previous.plusOne();
 	}
 	
 	private UniqueAccountingNumber plusOne() {
 		return new UniqueAccountingNumber(this.prefix, this.serial+1);
+	}
+	
+	private UniqueAccountingNumber skipToNextSerial(UniqueAccountingNumber previous) {
+		return new UniqueAccountingNumber(this.prefix, previous.serial+1);
 	}
 	
 	public static UniqueAccountingNumber getLastForInvoices() {
