@@ -128,7 +128,7 @@ public class UniqueAccountingNumber {
 	
 	private String paddedSerial() {
 		int paddingToUse = PADDING;
-		if (prefix < START_YEAR_USING_PADDING) {
+		if (prefix < START_YEAR_USING_PADDING * 100) {
 			paddingToUse = 2;
 		}
 		StringBuilder padder = new StringBuilder();
