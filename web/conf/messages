@@ -99,7 +99,7 @@ global.text.footer.conditions.cost=coût&nbsp;d''un&nbsp;appel vers&nbsp;un&nbsp
 global.text.footer.conditions.when=du&nbsp;lundi&nbsp;au&nbsp;samedi de&nbsp;8h&nbsp;à&nbsp;21h
 global.text.customization=Personnalisation de montres
 global.text.store.closed=Hometime fermé pour une semaine
-global.text.store.closed.consequences=jusqu''au 19 octobre nous serons un peu moins réactifs, soyez indulgents
+global.text.store.closed.consequences=jusqu''au 2 janvier nous serons un peu moins réactifs, soyez indulgents
 
 # Home page
 home.html.title=Révision, réparation et essai de montres à domicile sur Paris
@@ -1002,7 +1002,7 @@ legal.html.keywords=description, hometime, watchnext, contact, mentions légales
 legal.baseline=Mentions légales
 legal.head.1=Présentation
 legal.body.1=<p>En vertu de l''article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l''économie numérique, il est précisé aux Utilisateurs du site <a href="/" title="Watch next SAS - www.hometime.fr">www.hometime.fr</a> l''identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p> \
-<p><strong>Propriétaire</strong> : Watch next SAS – Société par Actions Simplifiée au capital de 20 000€ – N° SIRET : 800 198 418 00017 – 11bis rue pierre curie , 78600 Maisons-Laffitte, France<br /> \
+<p><strong>Propriétaire</strong> : Watch next SAS – Société par Actions Simplifiée au capital de 20 000€ – N° SIRET : 800 198 418 00017 – 103 avenue Marceau, 78600 Le Mesnil-Le-Roi, France<br /> \
 <strong>Créateur</strong>  : <a href="http://watchnext.fr">Raphaël Marbeck</a>, Président fondateur de la société<br /> \
 <strong>Responsable publication</strong> : Raphaël Marbeck – contact@watchnext.fr<br /> \
 Le responsable publication est une personne physique.<br /> \
@@ -2206,7 +2206,7 @@ admin.buy.request.proposal.value.timeframe.within.month=L''acquisition de la mon
 admin.buy.request.proposal.value.timeframe.within.3.months=L''acquisition de la montre est souhaitée sous 3 mois
 admin.buy.request.proposal.value.timeframe.opportunity=L''achat sera effectué lorsque l''occasion se présentera
 admin.buy.request.proposal.action.unsubscribe=cliquez ici pour vous désabonner
-admin.buy.request.proposal.footer.address=Watch next SAS, N° SIRET : 800 198 418 00017 RCS de Versailles<br />Représentée par son président, Raphaël Marbeck<br />Siège social : 11 bis rue Pierre Curie, 78600 Maisons Laffitte<br />
+admin.buy.request.proposal.footer.address=Watch next SAS, N° SIRET : 800 198 418 00017 RCS de Versailles<br />Représentée par son président, Raphaël Marbeck<br />Siège social : 103 avenue Marceau, 78600 Le Mesnil-Le-Roi<br />
 admin.buy.request.proposal.footer.email.sent.to=Cet email a été envoyé à 
 admin.buy.request.proposal.action.view.online.version=Voir la version en ligne
 admin.buy.request.proposal.waranties.head=Garanties Hometime :
@@ -2484,7 +2484,7 @@ admin.invoice.payment.method.used=Moyen de paiement utilisé :
 admin.selling.customer.details=Identification du vendeur :
 admin.selling.company.details=Identification de l''acheteur :
 admin.selling.company.name=Société Watch next SAS
-admin.selling.company.address=11 bis rue Pierre Curie<br/>78600 Maisons Laffitte
+admin.selling.company.address=103 avenue Marceau<br/>78600 Le Mesnil-Le-Roi
 
 admin.invoice.form.label.type=Type de facture
 admin.invoice.form.value.type.default=Sélectionner le type de facture

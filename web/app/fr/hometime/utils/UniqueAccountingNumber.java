@@ -12,6 +12,8 @@ import play.db.ebean.Model;
 
 public class UniqueAccountingNumber {
 	private final static String SEPARATOR = "-";
+	private final static Integer START_YEAR_USING_PADDING = 2017;
+	private final static int PADDING = 3; // STARTING FROM START_YEAR_USING_PADDING only
 	private final static Integer ordersYearShifting = 6000;
 	private Integer prefix;
 	private Integer serial;
@@ -121,9 +123,20 @@ public class UniqueAccountingNumber {
 	}
 	
 	private String serialAsString() {
-		if (serial<10)
-			return "0"+serial;
-		return ""+serial;
+		return paddedSerial();
+	}
+	
+	private String paddedSerial() {
+		int paddingToUse = PADDING;
+		if (prefix < START_YEAR_USING_PADDING) {
+			paddingToUse = 2;
+		}
+		StringBuilder padder = new StringBuilder();
+		padder.append(serial);
+		while (padder.length() < paddingToUse)
+			padder.insert(0,"0");
+		return padder.toString();
+		
 	}
 	
 	public boolean equals(UniqueAccountingNumber toCompare) {
