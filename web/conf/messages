@@ -2287,6 +2287,7 @@ admin.buy.request.proposal.email.text.version=Cet email est en version HTML seul
 admin.buy.request.proposal.success=<a href="{0}" target="_blank">Prévisualiser</a>
 
 admin.index.order.requests.active=Demandes de devis ouvertes
+admin.index.order.requests.action.copy.email.address=Copier l''adresse
 admin.index.order.requests.action.set.replied.title=Marquer comme répondue
 admin.index.order.requests.action.close.title=Marquer comme fermée
 admin.index.order.requests.action.change.feedback.asked.title=Marquer comme mail envoyé
@@ -2298,6 +2299,7 @@ admin.index.order.requests.head.details=Détails
 admin.index.order.requests.head.actions=Actions
 
 admin.index.buy.requests.active=Demandes de recherche ouvertes
+admin.index.buy.requests.action.copy.email.address=Copier l''adresse
 admin.index.buy.requests.action.set.replied.title=Marquer comme répondue
 admin.index.buy.requests.action.close.title=Marquer comme fermée
 admin.index.buy.requests.active.none=Aucune demande de recherche ouvertes

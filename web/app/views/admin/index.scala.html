@@ -1,6 +1,25 @@
 @(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest])
 @import tags._
-@layouts.admin() {
+
+@end_scripts = {
+<script>
+	function copyToClipboard(value) {
+      var aux = document.createElement("input");
+
+      aux.setAttribute("value", value);
+      // Append it to the body
+      document.body.appendChild(aux);
+      // Highlight its content
+      aux.select();
+      // Copy the highlighted text
+      document.execCommand("copy");
+      // Remove it from the body
+      document.body.removeChild(aux);
+    }
+</script> 
+}
+
+@layouts.admin("", end_scripts) {
     <div class="container">
     @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
     	<h3>
@@ -21,7 +40,7 @@
 	      	<tr class="feedback_asked_@request.feedbackAsked">
 	      		<td><a href="@routes.Admin.displayOrderRequest(request.id)">##</a></td>
 	      		<td>@display_date(request.requestDate, "dd/MM/yyyy HH:mm")</td>
-	      		<td>@request.email</td>
+	      		<td><a onclick="copyToClipboard('@request.email')" type="button" class="btn btn-primary btn-xs" href="#" title="@Messages("admin.index.order.requests.action.copy.email.address")"><span class="glyphicon glyphicon-download"></span></a> @request.email</td>
 	      		<td>@(request.brand), @takeif(request.model, 30), @(request.city)</td>
 	      		<td>
 		      		<a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.setRepliedOrderRequest(request.id)" title="@Messages("admin.index.order.requests.action.set.replied.title")"><span class="glyphicon glyphicon-new-window"></span></a>
@@ -57,7 +76,7 @@
 	      	<tr>
 	      		<td><a href="@routes.BuyRequest.displayBuyRequest(request.id)">##</a></td>
 	      		<td>@display_date(request.requestDate, "dd/MM/yyyy HH:mm")</td>
-	      		<td>@request.email</td>
+	      		<td><a onclick="copyToClipboard('@request.email')" type="button" class="btn btn-primary btn-xs" href="#" title="@Messages("admin.index.buy.requests.action.copy.email.address")"><span class="glyphicon glyphicon-download"></span></a> @request.email</td>
 	      		<td>@(request.brand), @(request.model), @(request.city)</td>
 	      		<td>
 		      		<a type="button" class="btn btn-primary btn-xs" href="@routes.BuyRequest.setRepliedBuyRequest(request.id)" title="@Messages("admin.index.buy.requests.action.set.replied.title")"><span class="glyphicon glyphicon-new-window"></span></a>
