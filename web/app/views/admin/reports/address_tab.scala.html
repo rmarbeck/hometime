@@ -20,11 +20,11 @@
     <div class="container">
     	<div class="address-row row">    	
     		@for((customer, index) <- customers.zipWithIndex) {
-			<div class="address-cell col-xs-6">
+			<div class="address-cell col-xs-4">
         		<div class="name">@if(customer.civility != null) {@Html(Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.')+".short"))} @customer.firstname @customer.name</div>
         		<div class="address">@customer.billingAddress</div>
         	</div>
-	        	@if(index % 14 == 13) {
+	        	@if(index % 21 == 20) {
 	        	<div class="page-break">-</div>
 	        	}
 			}
