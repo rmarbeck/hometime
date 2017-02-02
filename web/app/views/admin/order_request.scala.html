@@ -1,8 +1,89 @@
 @(request: OrderRequest, presetsForBrand: List[PresetQuotationForBrand], presetsForOut: List[PresetQuotationForBrand])
 @import tags._
 
-@layouts.admin() {
-  <div class="container">
+@end_scripts = {
+<script src="@remote_assets("javascripts/gmail-api-alt.js")"></script>
+
+<script>
+	  var lastEmailInDate;
+	  var lastEmailOutDate; 
+
+	  function defaultActionAfterSignin() {
+  		readMails();
+	  }
+
+	  function getNumberOfMails(emailAddress, qKey, cbFunc) {
+	  	var query = qKey + ":" + emailAddress;
+	  	var request = gapi.client.gmail.users.messages.list({
+          'userId': signedInEmail,
+          'q': query,
+          'fields': 'resultSizeEstimate'
+        });
+        
+        request.execute(function(resp) {
+        	cbFunc(resp.resultSizeEstimate);
+        });
+
+	  }
+	  
+	  function getLastEmail(emailAddress, qKey, cbFunc) {
+	  	var query = qKey + ":" + emailAddress;
+	  	var request = gapi.client.gmail.users.messages.list({
+          'userId': signedInEmail,
+          'q': query,
+          'maxResults': 1
+        });
+        
+        request.execute(function(resp) {
+        if (resp.messages) {
+	      $.each(resp.messages, function() {
+		    var messageRequest = gapi.client.gmail.users.messages.get({
+		      'userId': signedInEmail,
+		      'id': this.id
+		    });
+	
+	      	messageRequest.execute(cbFunc);
+	      });
+	    }
+	  	});
+	  }
+	  
+	  function getNumberOfMailsSentTo(emailAddress, cbFunc) {
+	  	getNumberOfMails(emailAddress, 'to', cbFunc);
+	  }
+	  
+	  function getNumberOfMailsReceivedFrom(emailAddress,cbFunc) {
+	  	getNumberOfMails(emailAddress, 'from', cbFunc);
+	  }
+	  
+      function readMails() {
+      	var emailAddress = '@request.email'; 
+      	getNumberOfMailsSentTo(emailAddress, function(resp) { updateSpan('mailssent', resp) });
+      	getNumberOfMailsReceivedFrom(emailAddress, function(resp) { updateSpan('mailsreceived', resp) });
+      	getLastEmail(emailAddress, 'from', function(resp) { appendDate('mailsreceived', resp) });
+      	getLastEmail(emailAddress, 'to', function(resp) { appendDate('mailssent', resp) });
+      }
+      
+      function updateSpan(id, value) {
+      	$('#'+id).text(value);
+      }
+      
+      function appendToSpan(id, value) {
+      	$('#'+id).append(value);
+      }
+      
+      function appendDate(id, message) {
+        var d = new Date(parseInt(message.internalDate));
+        appendToSpan(id, " - ");
+      	appendToSpan(id, d.toISOString().substring(0, 10));
+      }
+</script>
+
+}
+
+@layouts.admin_with_gmail_api("", end_scripts) {
+    
+    <div class="container">
     <div class="row">
         <div class="title"><h3>@request.nameOfCustomer le @display_date(request.requestDate, "dd/MM/yyyy")</h3></div>
         <div class="table-responsive">
@@ -69,8 +150,10 @@
                 <tr>
                   <td>
                     Email
+                    <button id="authorize-button" style="display: none;">Authorize</button>
+    				<button id="signout-button" style="display: none;">Sign Out</button>
                   </td>
-                  <td>@request.email</td>
+                  <td><a class="btn btn-warning" href="@routes.Admin.displayPrepareMail(request.id)" role="button"><span class="glyphicon glyphicon-envelope"></span></a> <ul><li>Nombre de messages envoyés : <span id="mailssent">0</span></li><li>Nombre de messages reçus : <span id="mailsreceived">0</span></li></ul></td>
                 </tr>
                 <tr>
                   <td>
@@ -129,6 +212,11 @@
           }
         }
     </div>
-    
-
+    <div class="row">
+    	<div class="col-xs-12 text-center">
+    		<a onclick="readMails()" type="button" class="btn btn-primary btn-xs" href="#" title="@Messages("admin.index.order.requests.action.copy.email.address")"><span class="glyphicon glyphicon-download"></span></a>
+    		
+    		
+    	</div>
+	</div>
 }

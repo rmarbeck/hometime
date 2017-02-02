@@ -13,6 +13,7 @@ import fr.hometime.utils.ActionHelper;
 import fr.hometime.utils.GoogleAnalyticsHelper;
 import fr.hometime.utils.ListHelper;
 import fr.hometime.utils.RandomHelper;
+import fr.hometime.utils.SecurityHelper;
 import fr.hometime.utils.ServiceTestHelper;
 import models.Brand;
 import models.BuyRequest;
@@ -335,7 +336,7 @@ public class Application extends Controller {
         } else {
         	String origin = loginForm.get().origin;
             session().clear();
-            session("token", User.findQuickAdmin().email);
+            session("token", SecurityHelper.findByQuickPassword(loginForm.get().password).map(user -> user.email).orElse(null));
             if (origin != null && !"".equals(origin))
             	return redirect(origin);
             return redirect(

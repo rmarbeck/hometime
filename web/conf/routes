@@ -127,6 +127,7 @@ GET     /admin/search/edit/:pattern/:id									controllers.Admin.editSearchable
 
 GET     /admin/order-request/all    									controllers.Admin.displayOrderRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/order-request/:id    									controllers.Admin.displayOrderRequest(id: Long)
+GET     /admin/prepare-mail/:id    									controllers.Admin.displayPrepareMail(id: Long)
 GET     /admin/order-request-close/:id   								controllers.Admin.closeOrderRequest(id: Long)
 GET     /admin/order-request-set-replied/:id							controllers.Admin.setRepliedOrderRequest(id: Long)
 GET     /admin/order-request-change-feedback-asked/:id					controllers.Admin.changeFeedbackAsked(id: Long)
@@ -231,10 +232,13 @@ GET     /admin/export-sales-report            							controllers.Reporting.expor
 GET     /admin/with-vat-report            								controllers.Reporting.withVat()
 GET     /admin/invoice-lines											controllers.Reporting.invoiceLines()
 GET     /admin/addresses		            							controllers.Reporting.addresses()
+GET     /admin/addresses-table	            							controllers.Reporting.addressesAlt()
 GET     /admin/addressbook		            							controllers.Reporting.addressBook()
 GET     /admin/stock			            							controllers.Reporting.stock()
 GET     /admin/legal-register	            							controllers.Reporting.legalRegister()
 GET     /admin/payments			            							controllers.Reporting.payments()
+
+GET     /admin/test			            								controllers.Admin.test()
 
 GET     /admin/watch-to-sell/duplicate/:id       						controllers.WatchesToSell.duplicateWatch(id: Long)
 

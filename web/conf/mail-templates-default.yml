@@ -1,0 +1,58 @@
+﻿mailTemplatesTypes:
+    - &orderRequests !!models.MailTemplateType
+         id:                    1
+         templateTypeName:      orderRequests
+         displayName:           Demandes de devis
+         sortingIndex:          0
+         active:                true
+
+    - &buyRequests !!models.MailTemplateType
+         id:                    2
+         templateTypeName:      buyRequests
+         displayName:           Recherches de montres
+         sortingIndex:          1
+         active:                true
+
+mailTemplates:
+    - &orderReceived !!models.MailTemplate
+         id:                    1
+         templateName:          orderReceived
+         type:                  *orderRequests
+         displayName:           Accusé réception simple
+         title:                 Demande devis Hometime
+         body: |
+          Bonjour,
+          
+          Nous avons bien reçu votre demande de devis pour l'entretien de votre montre.
+          
+          Nous allons faire au plus vite pour vous répondre.
+          
+          Cordialement,
+          Raphaël
+          07 82 43 47 51
+         sortingIndex:          0
+         active:                true
+
+    - &needInfos !!models.MailTemplate
+         id:                    2
+         templateName:          needInfos
+         type:                  *orderRequests
+         displayName:           Besoin de précisions
+         title:                 Demande devis Hometime (besoin de précisions)
+         body: |
+          Bonjour,
+          
+          Nous avons bien reçu votre demande de devis pour l'entretien de votre montre.
+          
+          Savez-vous dire de combien de secondes votre montre avance-t-elle par jour ?
+          
+          Merci d'avance, nous vous répondrons le plus rapidement possible.
+          
+          Cordialement,
+          Raphaël
+          07 82 43 47 51
+         sortingIndex:          1
+         active:                true
+
+#Fin
+

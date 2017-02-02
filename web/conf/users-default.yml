@@ -39,5 +39,21 @@
          name:                  quick
          active:                true
 
+    - &coll1 !!models.User
+         email:                 coll1@hometime.fr
+         password:              default
+         role:                  RESERVED_1
+         firstname:             coll 1
+         name:                  normal
+         active:                true
+
+    - &coll2 !!models.User
+         email:                 coll1_quick@hometime.fr
+         password:              "1234"
+         role:                  RESERVED_1
+         firstname:             coll 1
+         name:                  quick
+         active:                true
+
 #Fin
 

@@ -1,6 +1,8 @@
 package models;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +22,7 @@ public class User extends Model {
 	private static final long serialVersionUID = -6051070381002940159L;
 	
 	private static final String ADMIN_QUICK_EMAIL = "admin_quick@hometime.fr";
-	private static final int ADMIN_QUICK_MAX_ATTEMPT = 3;
+	public static final int ADMIN_QUICK_MAX_ATTEMPT = 3;
 
 	public enum Role {
 	    ADMIN ("1"),
@@ -94,6 +96,10 @@ public class User extends Model {
         return findByEmail(ADMIN_QUICK_EMAIL);
     }
     
+    public static List<User> findQuickLogins() {
+        return find.where().contains("email", "_quick").findList();
+    }
+    
     public static String authenticate(String email, String password) {
     	if (isPasswordMatching(email, password))
     		return email;
@@ -101,26 +107,29 @@ public class User extends Model {
     }
     
     public static String quickAuthenticateAdmin(String password) {
-    	User quickAdminFakeUser = findQuickAdmin();
-    	if (quickAdminFakeUser != null && quickAdminFakeUser.active && quickAdminFakeUser.numberOfBadPasswords <= ADMIN_QUICK_MAX_ATTEMPT)
-    	  	if (isPasswordMatching(ADMIN_QUICK_EMAIL, password))
-    	  		return ADMIN_QUICK_EMAIL;
-    	return null;
+    	return SecurityHelper.quickAuthenticateAdmin(password);
     }
     
-    private static boolean isPasswordMatching(String email, String password) {
+    public static boolean isPasswordMatching(String email, String password) {
     	User loggedInUser = User.findByEmail(email);
     	if (loggedInUser == null)
     		return false;
     	if (loggedInUser.isPasswordCorrect(password)) {
-    		loggedInUser.numberOfBadPasswords = 0;
-    		loggedInUser.update();
         	return true;
     	} else {
-    		loggedInUser.numberOfBadPasswords++;
-    		loggedInUser.update();
+   			incrementNumberOfBadPasswords(loggedInUser);
         	return false;
     	}
+    }
+    
+    public static void resetNumberOfBadPasswords(User user) {
+    	user.numberOfBadPasswords = 0;
+    	user.update();
+    }
+    
+    private static void incrementNumberOfBadPasswords(User user) {
+    	user.numberOfBadPasswords++;
+    	user.update();
     }
     
     private boolean isPasswordCorrect(String password) {
@@ -153,6 +162,10 @@ public class User extends Model {
     
     private boolean isInactive() {
     	return !this.active;
+    }
+    
+    public String toString() {
+    	return this.email;
     }
 }
 

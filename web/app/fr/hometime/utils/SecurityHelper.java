@@ -2,9 +2,18 @@ package fr.hometime.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+
+import play.Logger;
+import play.mvc.Http.Session;
+import play.mvc.Http.Context;
+import models.User;
+import models.User.Role;
 
 /**
  * Security class containing functions for security purpose 
@@ -64,5 +73,48 @@ public class SecurityHelper {
     		return true;
     	return false;
     }
+    
+    public static String retrieveUsername(Context ctx, Predicate<User> isRoleEnough) {
+    	String currentUserToken = ctx.session().get("token");
+    	if (currentUserToken != null) {
+    		User loggedInUser = User.findByEmail(currentUserToken);
+    		Logger.debug("There seems to be a user in session : {}", loggedInUser);
+    		if (isRoleEnough.test(loggedInUser))
+    			return loggedInUser.email;
+    		Logger.debug("User in session is not authorized for this page ({}): {}", ctx.request().path(), loggedInUser);
+    	}
+    		
+        return null;
+    }
+    
+    public static boolean isLoggedInUserAuthorized(Session session, Predicate<User> isRoleEnough) {
+    	String currentUserToken = session.get("token");
+    	if (currentUserToken != null) {
+    		User loggedInUser = User.findByEmail(currentUserToken);
+    		return isRoleEnough.test(loggedInUser);
+    	}
+    		
+        return false;
+    }
 
+    public static Predicate<User> isAdmin = (user) -> (user!= null && user.role == Role.ADMIN);
+    
+    public static Predicate<User> isReserved = (user) -> (user!= null && ( user.role == Role.RESERVED_1 || user.role == Role.RESERVED_2) );
+    
+    public static List<User> findQuickLogins() {
+        return User.find.where().contains("email", "_quick").findList();
+    }
+    
+	public static String quickAuthenticateAdmin(String password) {
+		Optional<User> foundUser = findByQuickPassword(password);
+		if (foundUser.isPresent()) {
+			findQuickLogins().stream().forEach((user) -> User.resetNumberOfBadPasswords(user));
+			return foundUser.get().email;
+		}
+		return null;
+	}
+	
+    public static Optional<User> findByQuickPassword(String password) {
+    	return User.findQuickLogins().stream().filter((user) -> (user.active && user.numberOfBadPasswords <= User.ADMIN_QUICK_MAX_ATTEMPT)).filter((user) -> User.isPasswordMatching(user.email, password)).findFirst();
+    }
 }

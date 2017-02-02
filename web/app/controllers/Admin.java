@@ -8,6 +8,7 @@ import models.Brand;
 import models.BuyRequest;
 import models.Customer;
 import models.ExternalDocument;
+import models.MailTemplate;
 import models.Order;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
@@ -30,10 +31,12 @@ import play.mvc.With;
 import views.html.admin.order_request;
 import views.html.admin.search_results;
 import views.html.admin.order_requests;
+import views.html.admin.prepare_mail;
 import views.html.admin.buy_request;
 import views.html.admin.buy_requests;
 import views.html.admin.orders;
 import views.html.admin.index;
+import views.html.admin.test;
 import views.html.admin.cgv;
 import views.html.admin.quotation;
 import views.html.admin.quotation_form;
@@ -45,7 +48,7 @@ import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.ServiceTestHelper;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@Security.Authenticated(SecuredAdminAndReservedOnly.class)
 @With(NoCacheAction.class)
 public class Admin extends Controller {
 	
@@ -237,9 +240,14 @@ public class Admin extends Controller {
 	    	}
 	    }
 	}
-	
+	@Security.Authenticated(SecuredAdminAndReservedOnly.class)
 	public static Result index() {
 		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied()));
+    }
+	
+	@Security.Authenticated(SecuredAdminOnly.class)
+	public static Result test() {
+		return ok(test.render());
     }
 	
 	public static Result INDEX = redirect(
@@ -250,16 +258,19 @@ public class Admin extends Controller {
 			routes.Admin.displayOrderRequests(0, "requestDate", "desc", "")
 			);
 	
+	@Security.Authenticated(SecuredAdminAndReservedOnly.class)
 	public static Result displayOrderRequests(int page, String sortBy, String order, String filter) {
         return ok(order_requests.render(OrderRequest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
     }
 	
+	@Security.Authenticated(SecuredAdminOnly.class)
 	public static Result search() {
 		DynamicForm requestData = DynamicForm.form().bindFromRequest();
 	    String pattern = requestData.get("pattern");
         return ok(search_results.render(pattern, Searcher.search(pattern)));
     }
 	
+	@Security.Authenticated(SecuredAdminOnly.class)
 	public static Result viewSearchable(String className, Long id) {
 		switch(className.toLowerCase()) {
 			case "customer":
@@ -273,6 +284,7 @@ public class Admin extends Controller {
 		}
 	}
 	
+	@Security.Authenticated(SecuredAdminOnly.class)
 	public static Result editSearchable(String className, Long id) {
 		switch(className.toLowerCase()) {
 		case "customer":
@@ -295,6 +307,15 @@ public class Admin extends Controller {
 			return ok(order_request.render(	OrderRequest.findById(id),
 									PresetQuotationForBrand.findByBrand(OrderRequest.findById(id).brand),
 									PresetQuotationForBrand.findByBrand(Brand.findBySeoName(AUTRE_MARQUE_SEO_NAME))
+								  ));
+		flash("error", "Unknown id");
+		return LIST_ORDERS;
+    }
+	
+	public static Result displayPrepareMail(long id) {
+		if (orderIsValid(id))
+			return ok(prepare_mail.render(OrderRequest.findById(id),
+					MailTemplate.findAll()
 								  ));
 		flash("error", "Unknown id");
 		return LIST_ORDERS;

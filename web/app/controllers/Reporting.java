@@ -19,6 +19,7 @@ import views.html.admin.reports.stock;
 import views.html.admin.reports.legal_register;
 import views.html.admin.reports.invoice_lines;
 import views.html.admin.reports.address_tab;
+import views.html.admin.reports.address_tab_table;
 import views.html.admin.reports.address_tab_alpha;
 import views.html.admin.reports.payments;
 
@@ -51,6 +52,10 @@ public class Reporting extends Controller {
 	
 	public static Result addresses() {
 		return ok(address_tab.render(getCustomers()));
+    }
+	
+	public static Result addressesAlt() {
+		return ok(address_tab_table.render(getCustomers()));
     }
 	
 	public static Result addressBook() {

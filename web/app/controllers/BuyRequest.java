@@ -31,7 +31,7 @@ import views.html.mails.notify_buy_request;
 import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.ServiceTestHelper;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@Security.Authenticated(SecuredAdminAndReservedOnly.class)
 @With(NoCacheAction.class)
 public class BuyRequest extends Controller {
 	

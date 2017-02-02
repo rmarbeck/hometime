@@ -1,0 +1,150 @@
+@(request: OrderRequest, templates: List[MailTemplate])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+
+@end_scripts = {
+<script src="@remote_assets("javascripts/gmail-api-alt.js")"></script>
+<script>
+	  function defaultActionAfterSignin() {
+  		console.log("Gmail API ready");
+	  }
+
+	  function setTitleAndBody(title, body) {
+	  	event.preventDefault();
+	  	$('#mailSubject').val(title)
+	  	$('#mailBody').val(body)
+	  }
+		
+      /**
+       * Create draft
+       */
+      function createDraft() {
+      	event.preventDefault();
+      	var address = '@request.email';
+      	var subject = $('#mailSubject').val();
+      	var message = $('#mailBody').val();
+      	var request;
+      	var emailContent = "From: me\r\nTo:" + address + "\r\n";
+      	if ($('#shouldCopyMainAddress').is(':checked')) {emailContent = emailContent + "CC:"+ 'hometime@@gmail.com' + "\r\n";}
+      	emailContent = emailContent + "Subject:"+ subject + "\r\n\r\n" + message;
+      	if ($('#shouldSendImmediately').is(':checked')) {
+         request = gapi.client.gmail.users.messages.send({
+          'userId': 'me',
+          'raw': window.btoa(emailContent)
+        });
+        } else {
+          request = gapi.client.gmail.users.drafts.create({
+          'userId': 'me',
+          'message': {
+                'raw': window.btoa(emailContent)
+           }
+        });
+        }
+
+        request.execute(function(resp) {
+            var pre = document.getElementById('output');
+	        var textContent = document.createTextNode('OK \n');
+        	pre.appendChild(textContent);
+        });
+      }
+</script> 
+}
+
+@layouts.admin_with_gmail_api("", end_scripts) {
+  <div class="container">
+  <pre id="output"></pre>
+  <button id="authorize-button" style="display: none;">Authorize</button>
+  <button id="signout-button" style="display: none;">Sign Out</button>
+    <div class="row">
+        <div class="title"><h3>Mails pour @request.nameOfCustomer le @display_date(request.requestDate, "dd/MM/yyyy")</h3></div>
+
+		<div class="container">
+    		@display_flash()
+    
+				<form action="#" onsubmit="return createDraft('@request.email', 'toto', 'titi');" class="form-horizontal" role="form">
+				
+				<div class="form-group ">
+				<label for="shouldSendImmediately" class="col-sm-3 control-label">Envoyer directement</label>
+				<div class="col-sm-9 checkbox">
+				    
+				    <input type="checkbox" id="shouldSendImmediately" name="shouldSendImmediately" value="true"  class=""/>
+				    <span></span>
+				
+				    <span class="errors"></span>
+				    <span class="help"></span>
+				</div>
+				</div>
+				
+				<input type="hidden" name="shouldSendImmediately" value="false" />
+				
+				<div class="form-group ">
+				<label for="shouldCopyMainAddress" class="col-sm-3 control-label">Envoyer une copie</label>
+				<div class="col-sm-9 checkbox">
+				    
+				    <input type="checkbox" id="shouldCopyMainAddress" name="shouldCopyMainAddress" value="true" checked="checked" class=""/>
+				    <span></span>
+				
+				    <span class="errors"></span>
+				    <span class="help"></span>
+				</div>
+				</div>
+				
+				
+				<input type="hidden" name="shouldCopyMainAddress" value="false" /> 
+      	
+      	
+      			<div class="form-group ">
+				<label for="mailSubject" class="col-sm-3 control-label">Titre</label>
+				<div class="col-sm-9">
+				    
+				    <input type="text" id="mailSubject" name="mailSubject" class="form-control"/>
+				
+				    <span class="errors"></span>
+				    <span class="help"></span>
+				</div>
+				</div>
+								
+				<div class="form-group ">
+				<label for="mailBody" class="col-sm-3 control-label">Corps du mail</label>
+				<div class="col-sm-9">
+				    
+				    <textarea id="mailBody" name="mailBody" placeholder="Retour" class="form-control" rows="20"></textarea>
+				
+				    <span class="errors"></span>
+				    <span class="help"></span>
+				</div>
+				</div>
+				
+				
+				
+
+<div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">&nbsp;Annuler</span></a>
+          		
+    		    <!-- Split button -->
+    <div class="btn-group text-left">
+      <a class="btn btn-default" href="#" role="button">Sélectionner le mail</a>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+      @for(template <- templates) {
+        <li><a href="#" onclick="setTitleAndBody('@template.title', '@encode_mail_body(template.body)');">@template.displayName</a></li>
+      }
+      
+      </ul>
+    </div>
+      	<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-save">&nbsp;Créer</span></button>
+      
+      </div>
+    </div>				
+            	
+				
+				</form>
+    	</div>
+	  </div>
+	</div>
+}
