@@ -87,6 +87,8 @@
                     <li class="divider hidden-xs"></li>
                     @li_activable(94, index) {<a href="@routes.Feedback.displayAll()">@Messages("admin.navbar.link.text.feedbacks")</a>}
                     @li_activable(95, index) {<a href="@routes.UsefullLink.displayAll()">@Messages("admin.navbar.link.text.links")</a>}
+                    <li class="divider hidden-xs"></li>
+                    @li_activable(37, index) {<a href="@routes.CrudHelper.displayAll("MailTemplates")">@Messages("admin.navbar.link.text.mail.templates")</a>}
                   </ul>
                 }
                 @helper.form(action = routes.Admin.search(), args = 'class -> "navbar-form navbar-left col-xs-12") {

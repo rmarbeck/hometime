@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import fr.hometime.utils.ModelsHelper;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
@@ -43,6 +44,18 @@ public class MailTemplateType extends Model {
     
     public static MailTemplateType findById(Long id) {
         return find.byId(id.toString());
+    }
+    
+    public static List<MailTemplateType> findByDisplayNameAsc() {
+    	return find.where().orderBy("displayName ASC").findList();
+    }
+    
+    public static List<Long> getIdsByDisplayNameAsc() {
+    	return ModelsHelper.getIdsByDisplayNameAsc();
+    }
+    
+    public static List<String> getDisplayNamesByDisplayNameAsc() {
+    	return ModelsHelper.getDisplayNamesByDisplayNameAsc();
     }
     
     public String toString() {

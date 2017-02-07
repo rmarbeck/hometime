@@ -242,6 +242,8 @@ GET     /admin/test			            								controllers.Admin.test()
 
 GET     /admin/watch-to-sell/duplicate/:id       						controllers.WatchesToSell.duplicateWatch(id: Long)
 
+GET     /admin/mail-template/duplicate/:id       						controllers.MailTemplates.duplicateMailTemplate(id: Long)
+
 GET		/admin/create-from-order/PaymentRequests/:id					controllers.PaymentRequests.createFromOrder(id: Long)
 GET		/admin/create-from-invoice/PaymentRequests/:id					controllers.PaymentRequests.createFromInvoice(id: Long)
 

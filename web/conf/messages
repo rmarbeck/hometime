@@ -1368,6 +1368,7 @@ admin.navbar.link.text.payment.methods=Paiements
 admin.navbar.link.text.payment.add.method=Nouveau paiement
 admin.navbar.link.text.payment=Paiement
 admin.navbar.link.text.watches=Montres
+admin.navbar.link.text.mail.templates=Templates de mails
 
 admin.navbar.link.text.reporting=Reporting
 admin.navbar.link.text.reporting.margin.vat=Rapport de TVA sur Marge
@@ -3165,3 +3166,40 @@ admin.payment.form.description2.label.name=Description privée
 admin.payment.form.description2.placeholder.name=
 
 
+admin.mailtemplate.page=Templates de mails
+admin.mailtemplate.page.title=Templates de mails
+admin.mailtemplate.page.type=Type de templates
+admin.mailtemplate.page.display=Nom du template
+
+admin.mailtemplate=Template de mail
+admin.mailtemplate.title=Template de mail
+admin.mailtemplate.templatename.display.label=Nom interne du template
+admin.mailtemplate.displayname.display.label=Nom du template
+admin.mailtemplate.title.display.label=TitreDemande devis Hometime
+admin.mailtemplate.body.display.label=Corps
+admin.mailtemplate.serial.display.label=Serial
+admin.mailtemplate.type.display.label=Type du template
+admin.mailtemplate.active.display.label=Actif
+admin.mailtemplate.sortingindex.display.label=Ordre
+admin.mailtemplate.action.duplicate=Dupliquer
+
+admin.mailtemplate.form=Template de mail
+admin.mailtemplate.form.title=Template de mail
+admin.mailtemplate.action.cancel=Annuler
+admin.mailtemplate.action.save=Enregistrer
+admin.mailtemplate.action.show=Prévisualiser
+admin.mailtemplate.action.edit=Modifier
+admin.mailtemplate.form.type.id.label.name=Type
+admin.mailtemplate.form.templatename.label.name=Nom interne
+admin.mailtemplate.form.templatename.placeholder.name=...
+admin.mailtemplate.form.displayname.label.name=Nom
+admin.mailtemplate.form.displayname.placeholder.name=...
+admin.mailtemplate.form.title.label.name=Titre
+admin.mailtemplate.form.title.placeholder.name=
+admin.mailtemplate.form.body.label.name=Corps
+admin.mailtemplate.form.body.placeholder.name=...
+admin.mailtemplate.form.sortingindex.label.name=Ordre
+admin.mailtemplate.form.sortingindex.placeholder.name=
+admin.mailtemplate.form.active.label.name=Actif
+admin.mailtemplate.form.type.id.default.name=Sélectionner le type
+admin.mailtemplate.action.delete=Supprimer

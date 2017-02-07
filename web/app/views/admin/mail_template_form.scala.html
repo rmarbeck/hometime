@@ -1,0 +1,16 @@
+@(thisInstance: Form[models.MailTemplate], isItNew: Boolean)
+
+@import tags._
+
+@defining(new views.FormDisplay(thisInstance, "MailTemplate", "admin.mailtemplate.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("type.id", false, models.MailTemplateType.getIdsByDisplayNameAsc, models.MailTemplateType.getDisplayNamesByDisplayNameAsc);
+		   formDisplay.addFormField("templateName", true, "input");
+		   formDisplay.addFormField("displayName", true, "input");
+		   formDisplay.addFormField("title", true, "input");
+		   formDisplay.addFormField("body", true, "textarea");
+		   formDisplay.addFormField("sortingIndex", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   formDisplay.addFormField("active", true, "checkbox")
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew)
+}

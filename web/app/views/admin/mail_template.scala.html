@@ -1,0 +1,31 @@
+@(template: models.MailTemplate)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("MailTemplates", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("MailTemplates")
+}
+
+@end_body = {
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10 text-center">
+	    <a class="btn btn-info" href="@routes.MailTemplates.duplicateMailTemplate(template.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.mailtemplate.action.duplicate"))</a>
+      </div>
+    </div>
+}
+
+@defining(new views.ModelDisplay(template, "admin.mailtemplate")) { modelDisplay =>
+		@{ 	modelDisplay.addField("templateName");
+		    modelDisplay.addField("displayName");
+			modelDisplay.addField("title");
+			modelDisplay.addField("body");
+			modelDisplay.addField("type");
+			modelDisplay.addField("active");
+			modelDisplay.addField("sortingIndex");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+}
