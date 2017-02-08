@@ -31,13 +31,13 @@
       	if ($('#shouldSendImmediately').is(':checked')) {
          request = gapi.client.gmail.users.messages.send({
           'userId': 'me',
-          'raw': window.btoa(emailContent)
+          'raw': window.btoa(emailContent).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '')
         });
         } else {
           request = gapi.client.gmail.users.drafts.create({
           'userId': 'me',
           'message': {
-                'raw': window.btoa(emailContent)
+                'raw': window.btoa(emailContent).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '')
            }
         });
         }
