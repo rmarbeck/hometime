@@ -190,7 +190,7 @@
         </div>
  	  </div>
  	  <br />
-      <div class="row">
+      <div class="row dropup">
           @request.method match {
           case OrderRequest.MethodTypes.BOTH => {
             <div class="col-xs-6 text-right">
@@ -212,11 +212,4 @@
           }
         }
     </div>
-    <div class="row">
-    	<div class="col-xs-12 text-center">
-    		<a onclick="readMails()" type="button" class="btn btn-primary btn-xs" href="#" title="@Messages("admin.index.order.requests.action.copy.email.address")"><span class="glyphicon glyphicon-download"></span></a>
-    		
-    		
-    	</div>
-	</div>
 }
