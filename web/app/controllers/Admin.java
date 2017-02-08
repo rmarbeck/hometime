@@ -28,9 +28,11 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
+import scala.PartialFunction.OrElse;
 import views.html.admin.order_request;
 import views.html.admin.search_results;
 import views.html.admin.order_requests;
+import views.html.admin.order_request_infos_form;
 import views.html.admin.prepare_mail;
 import views.html.admin.buy_request;
 import views.html.admin.buy_requests;
@@ -56,6 +58,26 @@ public class Admin extends Controller {
 	private final static int CLOSE_ORDER_REQUEST = 1;
 	private final static int SET_REPLIED_ORDER_REQUEST = 2;
 	private final static int CHANGE_FEEDBACK_ASKED = 3;
+	
+    public static class OrderRequestForm {
+		public Long id;
+		public String privateInfos;
+		
+		public String action = null;
+
+	    public List<ValidationError> validate() {
+	    	return null;
+	    }
+	    
+	    public OrderRequestForm() {
+	    }
+	    
+	    public OrderRequestForm(Long id) {
+	    	OrderRequest orderRequestFound = OrderRequest.findById(id);
+	    	this.id = orderRequestFound.id;
+	    	this.privateInfos = orderRequestFound.privateInfos;
+	    }
+    }
 	
 	public static class QuotationForm {
 		@Constraints.Required
@@ -330,7 +352,8 @@ public class Admin extends Controller {
     }
 	
 	public static Result changeFeedbackAsked(long id) {
-		return updateOrderRequest(id, CHANGE_FEEDBACK_ASKED);
+		return ok(order_request_infos_form.render(Form.form(OrderRequestForm.class).fill(new OrderRequestForm(id))));
+		//return updateOrderRequest(id, CHANGE_FEEDBACK_ASKED);
     }
 	
 	private static Result updateOrderRequest(long id, int action) {
@@ -412,6 +435,35 @@ public class Admin extends Controller {
 		}
 	}
 	
+	public static Promise<Result> manageOrderRequestInfos() {
+		final Form<OrderRequestForm> orderRequestForm = Form.form(OrderRequestForm.class).bindFromRequest();
+		Logger.debug("Managing OrderRequest");
+		if(orderRequestForm.hasErrors()) {
+			Logger.debug("Error in form : {}", orderRequestForm.errors());
+			return Promise.pure((Result) badRequest(order_request_infos_form.render(orderRequestForm)));
+		} else {
+			if ("editAndMark".equals(orderRequestForm.get().action))
+				editInfosOfOrderRequestAndMark(orderRequestForm.get().id, orderRequestForm.get().privateInfos);
+			if ("edit".equals(orderRequestForm.get().action))
+				editInfosOfOrderRequestAndUnMark(orderRequestForm.get().id, orderRequestForm.get().privateInfos);
+			return Promise.pure(INDEX);
+		}
+	}
+	
+	private static void editInfosOfOrderRequestAndMark(Long id, String privateInfos) {
+		editInfosOfOrderRequest(id, privateInfos, true);
+	}
+	
+	private static void editInfosOfOrderRequestAndUnMark(Long id, String privateInfos) {
+		editInfosOfOrderRequest(id, privateInfos, false);
+	}
+	
+	private static void editInfosOfOrderRequest(Long id, String privateInfos, boolean mark) {
+		OrderRequest requestFound = OrderRequest.findById(id);
+		requestFound.privateInfos = privateInfos;
+		requestFound.feedbackAsked = mark;
+		requestFound.update();
+	}
 	
 	private static Promise<Result> displayQuotation(Quotation quotationFilled) {
 		Logger.debug("Displaying Quotation");

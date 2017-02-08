@@ -3203,3 +3203,10 @@ admin.mailtemplate.form.sortingindex.placeholder.name=
 admin.mailtemplate.form.active.label.name=Actif
 admin.mailtemplate.form.type.id.default.name=Sélectionner le type
 admin.mailtemplate.action.delete=Supprimer
+
+admin.order.request.infos.action.edit=Modifier et retirer attente de retour
+admin.order.request.infos.action.edit.and.mark=Modifier et attente de retour
+admin.order.request.infos.form.label.infos=Infos privées
+admin.order.request.infos.form.placeholder.infos=...
+admin.order.request.infos.action.cancel=Annuler
+ 

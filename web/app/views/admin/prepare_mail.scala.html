@@ -31,13 +31,13 @@
       	if ($('#shouldSendImmediately').is(':checked')) {
          request = gapi.client.gmail.users.messages.send({
           'userId': 'me',
-          'raw': window.btoa(emailContent).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '')
+          'raw': encodeContent(emailContent)
         });
         } else {
           request = gapi.client.gmail.users.drafts.create({
           'userId': 'me',
           'message': {
-                'raw': window.btoa(emailContent).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '')
+                'raw': encodeContent(emailContent)
            }
         });
         }
@@ -47,6 +47,10 @@
 	        var textContent = document.createTextNode('OK \n');
         	pre.appendChild(textContent);
         });
+      }
+      
+      function encodeContent(content) {
+      	return window.btoa(content).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '');
       }
 </script> 
 }

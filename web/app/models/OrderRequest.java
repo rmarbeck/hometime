@@ -117,6 +117,9 @@ public class OrderRequest extends Model {
 	@Column(name="feedback_asked")
 	public Boolean feedbackAsked = false;
 	
+	@Column(length = 10000)
+	public String privateInfos;
+	
 	public OrderRequest() {
 		super();
 		requestDate = new Date();
