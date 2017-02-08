@@ -1,0 +1,36 @@
+@(request: Form[Admin.OrderRequestForm])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+
+@end_scripts = {
+
+}
+
+
+
+@actions = {
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9 text-center">
+      	<a class="btn btn-default" href="#" onclick="history.back();return false;"><span class="glyphicon glyphicon-chevron-left">@Html(Messages("admin.order.request.infos.action.cancel"))</a>
+      	@tags.inputHidden(request("id"))
+        <button type="submit" class="btn btn-primary" name="action" value="edit"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.order.request.infos.action.edit"))</button>
+        <button type="submit" class="btn btn-success" name="action" value="editAndMark"><span class="glyphicon glyphicon-save"></span>@Html(Messages("admin.order.request.infos.action.edit.and.mark"))</button>
+      </div>
+    </div>
+}
+
+@layouts.admin("", end_scripts) {
+    <div class="container">
+    	@display_flash()
+    
+            	@helper.form(action = routes.Admin.manageOrderRequestInfos(), 'class -> "form-horizontal", 'role -> "form") {
+            	
+            	@actions
+            	
+            	@simple_admin_textarea(request("privateInfos"), "admin.order.request.infos.form.VARIABLE.infos")
+            	
+                @actions
+            }
+    </div>
+}
