@@ -34,9 +34,9 @@
 	
 	<div>
 		<h2>@Html(Messages("mails.buy.request.mails"))</h2>
-		@mailto(request.email, Messages("mails.notify.buy.request.subject"), Messages("mails.notify.buy.request.body"), Messages("mails.notify.buy.request.label"))
+		@mailto(request.email, Messages("mails.notify.buy.request.subject", request.id), Messages("mails.notify.buy.request.body"), Messages("mails.notify.buy.request.label"))
 		<br /><br />
-		@mailto(request.email, Messages("mails.precisions.buy.request.subject"), Messages("mails.precisions.buy.request.body"), Messages("mails.precisions.buy.request.label"))
+		@mailto(request.email, Messages("mails.precisions.buy.request.subject", request.id), Messages("mails.precisions.buy.request.body"), Messages("mails.precisions.buy.request.label"))
 		<br /><br />
 		<a href="mailto:@request.email">Mail simple</a>
 	</div>

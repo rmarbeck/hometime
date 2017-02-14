@@ -468,7 +468,7 @@ public class Application extends Controller {
 			OrderRequest orderRequest = orderForm.get().getRequest();
 			orderRequest.save();
 			
-			ActionHelper.tryToSendHtmlEmail("Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());
+			ActionHelper.tryToSendHtmlEmail("["+orderRequest.id+"] Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());
 			
 			flash("success", "OK");
 			
@@ -490,7 +490,7 @@ public class Application extends Controller {
 			
 			request.save();
 			
-			ActionHelper.tryToSendHtmlEmail("Nouvelle recherche de montre", notify_buy_request.render(BuyRequest.findById(request.id)).body().toString());
+			ActionHelper.tryToSendHtmlEmail("["+request.id+"] Nouvelle recherche de montre", notify_buy_request.render(BuyRequest.findById(request.id)).body().toString());
 			
 			flash("success", "OK");
 			

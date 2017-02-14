@@ -53,6 +53,7 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  @header("requestId", "Numéro")
                   @header("requestDate", "Date")
                   @header("orderType", "Type")
                   @header("brand", "Marque")
@@ -69,6 +70,9 @@
                   <td>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.displayOrderRequest(request.id)"><span class="glyphicon glyphicon-pencil"></span></a>
 	                <a type="button" class="btn btn-default btn-xs" href="@routes.Admin.displayMail(request.id)"><span class="glyphicon glyphicon-envelope"></span></a>
+                  </td>
+                  <td>
+                    #@request.id
                   </td>
                   <td>
                     @display_date(request.requestDate, "dd/MM")

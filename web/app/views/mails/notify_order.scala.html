@@ -31,22 +31,22 @@
 	
 	<div>
 		<h2>@Html(Messages("mails.order.mails"))</h2>
-		@mailto(order.email, Messages("mails.notify.subject"), Messages("mails.notify.body"), Messages("mails.notify.label"))
+		@mailto(order.email, Messages("mails.notify.subject", order.id), Messages("mails.notify.body"), Messages("mails.notify.label"))
 		<br /><br />
-		@mailto(order.email, Messages("mails.notify.subject"), helper.urlEncode(mails.templates.order_reception_confirmation().toString), Messages("mails.notify.label"))
+		@mailto(order.email, Messages("mails.notify.subject", order.id), helper.urlEncode(mails.templates.order_reception_confirmation().toString), Messages("mails.notify.label"))
 		<br /><br />
-		@mailto(order.email, Messages("mails.precisions.subject"), Messages("mails.precisions.body"), Messages("mails.precisions.label"))
+		@mailto(order.email, Messages("mails.precisions.subject", order.id), Messages("mails.precisions.body"), Messages("mails.precisions.label"))
 		<br /><br />
 		<a href="mailto:@order.email">Mail simple</a>
 		<br /><br />
-		@mailto(order.email, Messages("mails.feedback.subject"), Messages("mails.feedback.body"), Messages("mails.feedback.label"))
+		@mailto(order.email, Messages("mails.feedback.subject", order.id), Messages("mails.feedback.body"), Messages("mails.feedback.label"))
 		<br /><br />
-		@mailto(order.email, Messages("mails.outside.zone.subject"), Messages("mails.outside.zone.body"), Messages("mails.outside.zone.label"))
+		@mailto(order.email, Messages("mails.outside.zone.subject", order.id), Messages("mails.outside.zone.body"), Messages("mails.outside.zone.label"))
 		<br /><br />
-		@mailto(order.email, Messages("mails.outside.zone.subject"), Messages("mails.outside.zone.two.orders.body"), Messages("mails.outside.zone.two.orders.label"))
+		@mailto(order.email, Messages("mails.outside.zone.subject", order.id), Messages("mails.outside.zone.two.orders.body"), Messages("mails.outside.zone.two.orders.label"))
 		<br /><br />
-		@mailto(order.email, Messages("mails.beware.of.spam.subject"), Messages("mails.beware.of.spam.body"), Messages("mails.beware.of.spam.label"))
+		@mailto(order.email, Messages("mails.beware.of.spam.subject", order.id), Messages("mails.beware.of.spam.body"), Messages("mails.beware.of.spam.label"))
 		<br /><br />
-		@mailto(order.email, Messages("mails.beware.of.spam.subject"), Messages("mails.beware.of.spam.two.orders.body"), Messages("mails.beware.of.two.orders.spam.label"))
+		@mailto(order.email, Messages("mails.beware.of.spam.subject", order.id), Messages("mails.beware.of.spam.two.orders.body"), Messages("mails.beware.of.two.orders.spam.label"))
 	</div>
 }

@@ -1559,7 +1559,7 @@ mails.buy.request.price.higher.bound.none=Non spécifié
 mails.buy.request.price.higher.bound=Prix maximum : <b>{0}</b>
 
 mails.notify.label=Accusé de réception simple
-mails.notify.subject=Demande de devis Hometime
+mails.notify.subject=[{0}] - Demande de devis Hometime
 mails.notify.body=Bonjour,%0D%0A\
 %0D%0A\
 Nous avons bien reçu votre demande de devis pour l''entretien de votre montre.%0D%0A\
@@ -1570,7 +1570,7 @@ Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
 mails.precisions.label=Demande de précisions
-mails.precisions.subject=Demande de devis Hometime (besoin de précisions)
+mails.precisions.subject=[{0}] - Demande de devis Hometime (besoin de précisions)
 mails.precisions.body=Bonjour,%0D%0A\
 %0D%0A\
 Nous avons bien reçu votre demande de devis pour l''entretien de votre montre.%0D%0A\
@@ -1585,7 +1585,7 @@ Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
 mails.feedback.label=Relance
-mails.feedback.subject=Devis Hometime
+mails.feedback.subject=[{0}] - Devis Hometime
 mails.feedback.body=Bonjour,%0D%0A\
 %0D%0A\
 Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
@@ -1603,7 +1603,7 @@ Raphaël%0D%0A\
 07 82 43 47 51
 mails.outside.zone.label=Infos solutions de transport
 mails.outside.zone.two.orders.label=Infos solutions de transport (deux devis)
-mails.outside.zone.subject=Devis Hometime - Informations sur la prise en charge
+mails.outside.zone.subject=[{0}] - Devis Hometime - Informations sur la prise en charge
 mails.outside.zone.body=Bonjour,%0D%0A\
 %0D%0A\
 Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
@@ -1644,7 +1644,7 @@ Raphaël%0D%0A\
 07 82 43 47 51
 mails.beware.of.spam.label=Info Spam
 mails.beware.of.two.orders.spam.label=Info Spam (deux devis)
-mails.beware.of.spam.subject=Devis Hometime
+mails.beware.of.spam.subject=[{0}] - Devis Hometime
 mails.beware.of.spam.body=Bonjour,%0D%0A\
 %0D%0A\
 Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
@@ -1677,7 +1677,7 @@ Raphaël%0D%0A\
 07 82 43 47 51
 
 mails.notify.buy.request.label=Accusé de réception simple
-mails.notify.buy.request.subject=Mandat Hometime pour la recherche d''une montre
+mails.notify.buy.request.subject=[{0}] - Mandat Hometime pour la recherche d''une montre
 mails.notify.buy.request.body=Bonjour,%0D%0A\
 %0D%0A\
 Nous avons bien reçu votre demande de recherche d''une montre.%0D%0A\
@@ -1688,7 +1688,7 @@ Cordialement,%0D%0A\
 Raphaël%0D%0A\
 07 82 43 47 51
 mails.precisions.buy.request.label=Demande de précisions
-mails.precisions.buy.request.subject=Mandat Hometime pour la recherche d''une montre (besoin de précisions)
+mails.precisions.buy.request.subject=[{0}] - Mandat Hometime pour la recherche d''une montre (besoin de précisions)
 mails.precisions.buy.request.body=Bonjour,%0D%0A\
 %0D%0A\
 Nous avons bien reçu votre demande de recherche d''une montre.%0D%0A\
@@ -2281,7 +2281,7 @@ admin.buy.request.proposal.action.submit=Générer
 admin.buy.request.proposal.action.preview=Prévisualiser
 admin.buy.request.proposal.action.edit=Modifier
 
-admin.buy.request.proposal.email.subject=Mandat de recherche Hometime.fr
+admin.buy.request.proposal.email.subject=[{0}] - Mandat de recherche Hometime.fr
 admin.buy.request.proposal.email.title=Recherche de {0}
 admin.buy.request.proposal.email.text.version=Cet email est en version HTML seulement
 

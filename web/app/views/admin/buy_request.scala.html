@@ -18,6 +18,12 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td>
+                    Numéro de demande
+                  </td>
+                  <td>#@request.id</td>
+                </tr>
               	@two_cells_table_line(Html(Messages("admin.buy.request.label.request.date")), display_date(request.requestDate, "dd/MM/yyyy HH:mm:ss"))
               	
               	@if_not_null_nor_empty(request.brand) {
