@@ -57,7 +57,7 @@
       
       function checkUserSignedIn() {
 	  	signedInEmail = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail();
-	  	if (signedInEmail === 'hometimefr@gmail.com') {
+	  	if (signedInEmail === 'hometimefrcontact@gmail.com') {
 	  		return 0;
 	  	} else {
 	  		gapi.auth2.getAuthInstance().disconnect();
