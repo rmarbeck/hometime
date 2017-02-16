@@ -1,4 +1,4 @@
-@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest])
+@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch])
 @import tags._
 
 @end_scripts = {
@@ -89,6 +89,42 @@
     } else {
     	<h3>
     		@Html(Messages("admin.index.buy.requests.active.none"))
+    	</h3>
+    }
+    <br />
+    @if(watches != null && watches.size >0) {
+    	<h3>
+    		@Html(Messages("admin.index.watches.active"))
+    	</h3>
+    	<table class="table table-condensed table-striped table-bordered">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages("admin.index.watches.head.name"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.model"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.last.communication.date"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.status"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.actions"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for(watch <- watches) {
+	      	<tr>
+	      		<td>@display_clickable_customer_admin_only(watch.customer)</td>
+	      		<td>@watch.brand</td>
+	      		<td>@watch.model</td>
+	      		<td>@display_date(watch.lastStatusUpdate, "dd/MM/yyyy HH:mm")</td>
+	      		<td>@Html(Messages("admin.index.watches.value.status."+watch.status.name.toString.toLowerCase.replace('_','.')))</td>
+	      		<td>
+	      			<a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.setBackToCustomer(watch.id)" title="@Messages("admin.index.watches.action.back.to.customer.title")"><span class="glyphicon glyphicon-user"></span></a>
+	      		</td>
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
+    } else {
+    	<h3>
+    		@Html(Messages("admin.index.watches.active.none"))
     	</h3>
     }
     <br />

@@ -188,6 +188,7 @@
                 <tr>
                   <td>
                     Informations internes
+                    <a type="button" class="btn btn-success btn-xs" href="@routes.Admin.changeFeedbackAsked(request.id)" title="@Messages("admin.order.action.change.feedback.asked.title")"><span class="glyphicon glyphicon-pencil"></span></a>
                   </td>
                   <td>
                     @if(request.privateInfos ==null || request.privateInfos.isEmpty()) {

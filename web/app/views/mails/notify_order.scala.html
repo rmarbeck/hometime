@@ -31,8 +31,6 @@
 	
 	<div>
 		<h2>@Html(Messages("mails.order.mails"))</h2>
-		@mailto(order.email, Messages("mails.notify.subject", 10000), Messages("mails.notify.body"), Messages("mails.notify.label"))
-		<br /><br />
 		@mailto(order.email, Messages("mails.notify.subject", order.id), helper.urlEncode(mails.templates.order_reception_confirmation().toString), Messages("mails.notify.label"))
 		<br /><br />
 		@mailto(order.email, Messages("mails.precisions.subject", order.id), Messages("mails.precisions.body"), Messages("mails.precisions.label"))

@@ -14,6 +14,7 @@ import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
 import models.PresetQuotationForBrand;
 import models.Quotation;
+import models.CustomerWatch;
 import models.ServiceTest;
 import models.ServiceTest.TestResult;
 import models.Watch;
@@ -62,6 +63,7 @@ public class Admin extends Controller {
     public static class OrderRequestForm {
 		public Long id;
 		public String privateInfos;
+		public boolean replied;
 		
 		public String action = null;
 
@@ -76,6 +78,7 @@ public class Admin extends Controller {
 	    	OrderRequest orderRequestFound = OrderRequest.findById(id);
 	    	this.id = orderRequestFound.id;
 	    	this.privateInfos = orderRequestFound.privateInfos;
+	    	this.replied = orderRequestFound.replied;
 	    }
     }
 	
@@ -264,7 +267,7 @@ public class Admin extends Controller {
 	}
 	@Security.Authenticated(SecuredAdminAndReservedOnly.class)
 	public static Result index() {
-		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied()));
+		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(), CustomerWatch.findAllUnderOurResponsability()));
     }
 	
 	@Security.Authenticated(SecuredAdminOnly.class)
@@ -442,26 +445,32 @@ public class Admin extends Controller {
 			Logger.debug("Error in form : {}", orderRequestForm.errors());
 			return Promise.pure((Result) badRequest(order_request_infos_form.render(orderRequestForm)));
 		} else {
-			if ("editAndMark".equals(orderRequestForm.get().action))
-				editInfosOfOrderRequestAndMark(orderRequestForm.get().id, orderRequestForm.get().privateInfos);
-			if ("edit".equals(orderRequestForm.get().action))
-				editInfosOfOrderRequestAndUnMark(orderRequestForm.get().id, orderRequestForm.get().privateInfos);
-			return Promise.pure(INDEX);
+			if ("editAndGoToRequestDetails".equals(orderRequestForm.get().action)) {
+				editInfosOfOrderRequest(orderRequestForm.get().id, orderRequestForm.get().privateInfos, Optional.empty());
+				return Promise.pure(displayOrderRequest(orderRequestForm.get().id));
+			} else {
+				if ("editAndMark".equals(orderRequestForm.get().action))
+					editInfosOfOrderRequestAndMark(orderRequestForm.get().id, orderRequestForm.get().privateInfos);
+				if ("edit".equals(orderRequestForm.get().action))
+					editInfosOfOrderRequestAndUnMark(orderRequestForm.get().id, orderRequestForm.get().privateInfos);
+				return Promise.pure(INDEX);
+			}
 		}
 	}
 	
 	private static void editInfosOfOrderRequestAndMark(Long id, String privateInfos) {
-		editInfosOfOrderRequest(id, privateInfos, true);
+		editInfosOfOrderRequest(id, privateInfos, Optional.of(true));
 	}
 	
 	private static void editInfosOfOrderRequestAndUnMark(Long id, String privateInfos) {
-		editInfosOfOrderRequest(id, privateInfos, false);
+		editInfosOfOrderRequest(id, privateInfos, Optional.of(false));
 	}
 	
-	private static void editInfosOfOrderRequest(Long id, String privateInfos, boolean mark) {
+	private static void editInfosOfOrderRequest(Long id, String privateInfos, Optional<Boolean> mark) {
 		OrderRequest requestFound = OrderRequest.findById(id);
 		requestFound.privateInfos = privateInfos;
-		requestFound.feedbackAsked = mark;
+		if (mark.isPresent())
+			requestFound.feedbackAsked = mark.get();
 		requestFound.update();
 	}
 	

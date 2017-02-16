@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.Date;
+
+import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -62,6 +65,16 @@ public class CustomerWatch extends Controller {
 			return ok(customerWatchForm(Form.form(models.CustomerWatch.class).fill(existingWatch), false));
 		flash("error", "Unknown watch id");
 		return badRequest(emptyNewWatchForm());
+	}
+	
+	public static Result setBackToCustomer(Long watchId) {
+		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
+		if (existingWatch != null) {
+			existingWatch.status = CustomerWatchStatus.BACK_TO_CUSTOMER;
+			existingWatch.lastStatusUpdate = new Date();
+			existingWatch.update();
+		}
+		return Admin.INDEX;
 	}
 	
 	public static Result manage() {

@@ -135,6 +135,11 @@ public class CustomerWatch extends Model implements Searchable {
         return find.where().orderBy("serial ASC").findList();
     }
     
+    public static List<CustomerWatch> findAllUnderOurResponsability() {
+        return find.where().ne("status", "BACK_TO_CUSTOMER").findList();
+    }
+    
+    
     public static List<String> getSerialsBySerialAsc() {
     	List<CustomerWatch> watches = findAllBySerialAsc();
     	List<String> serials = new ArrayList<String>();

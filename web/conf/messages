@@ -2319,6 +2319,19 @@ admin.index.customers.value.status.prospect=Prospect
 admin.index.customers.value.status.almost.customer=Presque client
 admin.index.customers.value.status.real.customer=Client
 
+admin.index.watches.active=Montres de clients détenues
+admin.index.watches.active.none=Aucune montre détenue
+admin.index.watches.head.name=Client
+admin.index.watches.head.brand=Marque
+admin.index.watches.head.model=Modèle
+admin.index.watches.head.last.communication.date=Date de changement de statut
+admin.index.watches.head.status=Statut
+admin.index.watches.head.actions=Actions
+admin.index.watches.value.status.stored.by.watch.next=Chez Nous
+admin.index.watches.value.status.stored.by.sth=Chez STH
+admin.index.watches.value.status.stored.by.brand=SAV Marque
+admin.index.watches.value.status.stored.by.other.partner=Chez autre partenaire
+
 admin.invoice.form.value.customer.default=Sélectionner le client
 admin.invoice.form.label.customer=Client
 admin.invoice.form.placeholder.customer=...
@@ -3205,6 +3218,7 @@ admin.mailtemplate.form.type.id.default.name=Sélectionner le type
 admin.mailtemplate.action.delete=Supprimer
 
 admin.order.request.infos.action.edit=Modifier et retirer attente de retour
+admin.order.request.infos.action.edit.only=Enregister
 admin.order.request.infos.action.edit.and.mark=Modifier et attente de retour
 admin.order.request.infos.form.label.infos=Infos privées
 admin.order.request.infos.form.placeholder.infos=...
