@@ -4,7 +4,7 @@
 
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"];
 
-      var SCOPES = 'https://www.googleapis.com/auth/gmail.send';
+      var SCOPES = 'https://mail.google.com/';
 
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
