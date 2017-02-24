@@ -1,0 +1,144 @@
+@(currentPage: com.avaje.ebean.Page[models.CustomerWatch], currentSortBy: String, currentOrder: String, currentFilter: String, currentStatus: String)
+@import tags._
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.CustomerWatch.displayWatchesForPartner(newPage, sortBy, order, currentFilter, currentStatus)
+    
+}
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:Html, hideSmall: Boolean = false) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"} @if(hideSmall) {hidden-xs}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@layouts.admin() {
+  <div class="container">
+
+    @admin.fragments.page_header(link(0, "lastStatusUpdate").toString, "model or brand", currentFilter, null)
+    
+    <div class="row filter-status">
+        <div class="col-md-6">  
+            <form action="@routes.CustomerWatch.displayWatchesForPartner(0, "lastStatusUpdate", "asc", currentFilter, currentStatus)" method="GET" class="form-inline" role="form">
+              <div class="form-group">
+                <select id="searchbox" name="status" placeholder="Filter by status..." class="form-control">
+                	<option class="blank" value="">@Messages("admin.customer.watch.watches.label.status")</option>
+            	@for(status <- models.CustomerWatch.CustomerWatchStatus.values) {
+            		<option value="@status.name" @if(status.name.equals(currentStatus)) {selected="selected"})>@Messages("admin.customer.watch.watches.value.status."+status.name.toString.toLowerCase.replace('_','.'))</option>
+            	}
+        		</select>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="submit" id="searchsubmit" value="Filter by status" class="btn primary">
+              </div>
+            </form>
+        </div>
+    </div>
+    
+    <br />
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+    } else {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  @header("lastStatusUpdate", Html(Messages("admin.customer.watch.watches.header.date")))
+                  @header("brand", Html(Messages("admin.customer.watch.watches.header.brand")))
+                  @header("model", Html(Messages("admin.customer.watch.watches.header.model")))
+                  @header("reference", Html(Messages("admin.customer.watch.watches.header.reference")),true)
+                  @header("status", Html(Messages("admin.customer.watch.watches.header.status")))
+                  @header("customer", Html(Messages("admin.customer.watch.watches.header.customer")))
+                </tr>
+              </thead>
+              <tbody>
+              @for((watch, index) <- currentPage.getList.zipWithIndex) {
+                <tr>
+                  <td>
+                  	<a type="button" class="btn btn-default btn-xs" href="@routes.CustomerWatch.display(watch.id)"><span class="glyphicon glyphicon-time"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                  </td>
+                  <td>
+                    @display_date(watch.lastStatusUpdate, "dd/MM HH:mm")
+                  </td>
+                  <td>
+                    @watch.brand
+                  </td>
+                  <td>
+                    @takeif(watch.model)
+                  </td>
+                  <td class="hidden-xs">
+                    @watch.reference
+                  </td>
+                  <td>
+                    @Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.')))
+                  </td>
+                  <td>
+                    @if_not_null_nor_empty(watch.customer) {
+                    <a href="@routes.Customer.display(watch.customer.id)">@watch.customer.name @watch.customer.firstname</a>
+                    }
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-5 col-md-offset-7 text-right">
+                    @if(currentPage.hasPrev) {
+                        <span class="prev">
+                            <a class="btn btn-default" href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
+                        </span>
+                    } else {
+                        <span class="prev disabled">
+                            <a class="btn btn-default" disabled="disabled">&larr; Previous</a>
+                        </span>
+                    }
+                    <span class="current">
+                        Displaying @currentPage.getDisplayXtoYofZ(" to "," of ")
+                    </span>
+                    @if(currentPage.hasNext) {
+                        <span class="next">
+                            <a class="btn btn-default"  href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
+                        </span>
+                    } else {
+                        <span class="next disabled">
+                            <a class="btn btn-default" disabled="disabled" >Next &rarr;</a>
+                        </span>
+                    }
+            </div>
+        </div>
+    }
+    </div>
+}

@@ -1,4 +1,17 @@
-﻿users:
+﻿thepartners:
+    - &partner1 !!models.Partner
+         email:                 simon@hometime.fr
+         internalName:          simon
+         name:                  Simon Rousseau
+         active:                true
+
+    - &partner2 !!models.Partner
+         email:                 test@hometime.fr
+         internalName:          test
+         name:                  Test
+         active:                true
+
+users:
     - &admin1 !!models.User
          email:                 admin@hometime.fr
          password:              default
@@ -55,5 +68,37 @@
          name:                  quick
          active:                true
 
-#Fin
+    - &part1 !!models.User
+         email:                 part1@hometime.fr
+         password:              default
+         role:                  RESERVED_2
+         firstname:             part 1
+         name:                  normal
+         active:                true
 
+    - &part1q !!models.User
+         email:                 part1_quick@hometime.fr
+         password:              "4567"
+         role:                  RESERVED_2
+         firstname:             part 1
+         partner:               *partner1
+         name:                  quick
+         active:                true
+
+    - &part2 !!models.User
+         email:                 part2@hometime.fr
+         password:              default
+         role:                  RESERVED_2
+         firstname:             part 2
+         name:                  normal
+         active:                true
+
+    - &part2q !!models.User
+         email:                 part2_quick@hometime.fr
+         password:              "6789"
+         role:                  RESERVED_2
+         firstname:             part 2
+         name:                  quick
+         active:                true
+
+#Fin

@@ -151,6 +151,7 @@ POST    /admin/manage-customer 											controllers.Customer.manage()
 
 GET     /admin/customer-watch/display/:id								controllers.CustomerWatch.display(id: Long)
 GET     /admin/customer-watch/all    									controllers.CustomerWatch.displayAll(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", status ?= "")
+GET     /admin/customer-watch-part/all    								controllers.CustomerWatch.displayWatchesForPartner(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", status ?= "")
 GET     /admin/customer-watch/create/from-customer/:id 					controllers.CustomerWatch.addFromCustomer(id: Long)
 GET     /admin/customer-watch/create/from-order/:id 					controllers.CustomerWatch.addFromOrder(id: Long)
 GET     /admin/customer-watch/create				 					controllers.CustomerWatch.add()

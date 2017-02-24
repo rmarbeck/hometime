@@ -1,4 +1,4 @@
-@(watch: Form[models.CustomerWatch], isANewWatch: Boolean, customers: List[models.Customer])
+@(watch: Form[models.CustomerWatch], isANewWatch: Boolean, customers: List[models.Customer], partners: List[models.Partner])
 @import tags._
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
@@ -31,6 +31,8 @@
                          'placeholder -> Messages("admin.customer.watch.form.placeholder.customer"), '_label -> Messages("admin.customer.watch.form.label.customer"),
                          'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
+            	@simple_admin_input(watch("b2bId"), "admin.customer.watch.form.VARIABLE.b2b.id")
+            	
             	@simple_admin_input(watch("brand"), "admin.customer.watch.form.VARIABLE.brand")
             	
             	@simple_admin_input(watch("model"), "admin.customer.watch.form.VARIABLE.model")
@@ -51,10 +53,27 @@
                               Seq( models.CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT.toString -> Messages("admin.customer.watch.form.value.status.by.watch.next"),
                                    models.CustomerWatch.CustomerWatchStatus.STORED_BY_STH.toString -> Messages("admin.customer.watch.form.value.status.by.sth"),
                                    models.CustomerWatch.CustomerWatchStatus.STORED_BY_BRAND.toString -> Messages("admin.customer.watch.form.value.status.by.brand"),
+                                   models.CustomerWatch.CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER.toString -> Messages("admin.customer.watch.form.value.status.by.registered.partner"),
                                    models.CustomerWatch.CustomerWatchStatus.STORED_BY_OTHER_PARTNER.toString -> Messages("admin.customer.watch.form.value.status.by.other"),
                                    models.CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER.toString -> Messages("admin.customer.watch.form.value.status.by.customer")
                                    ), '_label -> Html(Messages("admin.customer.watch.form.label.status")),
                               '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                              
+               	@helper.select(watch("partner.id"),
+                         for (s <- partners) yield s.id.toString -> (s.name),
+                         '_default -> Messages("admin.customer.watch.form.value.partner.default"),
+                         'placeholder -> Messages("admin.customer.watch.form.placeholder.partner"), '_label -> Messages("admin.customer.watch.form.label.partner"),
+                         'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+				@simple_admin_textarea(watch("partnerToInfos"), "admin.customer.watch.form.VARIABLE.partner.to.infos")
+
+				@simple_admin_input(watch("serviceDueDate"), "admin.customer.watch.form.VARIABLE.service.due.date", 'type -> "date")
+				
+				@simple_admin_input(watch("serviceStatus"), "admin.customer.watch.form.VARIABLE.service.status", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "1")
+				
+				@simple_admin_input(watch("emergencyLevel"), "admin.customer.watch.form.VARIABLE.emergency.level", 'type -> "number", 'min -> "0", 'step -> "1")
+	
+				<hr />
 
 	            @simple_admin_input(watch("endOfMainWaranty"), "admin.customer.watch.form.VARIABLE.end.of.main.waranty", 'type -> "date")
 	            

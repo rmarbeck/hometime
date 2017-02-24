@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,11 +15,13 @@ import javax.persistence.ManyToOne;
 
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
+import play.mvc.Http.Session;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import fr.hometime.utils.Searcher;
+import fr.hometime.utils.SecurityHelper;
 
 /**
  * Definition of a Watch belonging to a customer
@@ -34,6 +35,7 @@ public class CustomerWatch extends Model implements Searchable {
 	    STORED_BY_STH ("STORED_BY_STH"),
 	    STORED_BY_BRAND ("STORED_BY_BRAND"),
 	    STORED_BY_OTHER_PARTNER ("STORED_BY_OTHER_PARTNER"),
+	    STORED_BY_A_REGISTERED_PARTNER ("STORED_BY_A_REGISTERED_PARTNER"),
 	    BACK_TO_CUSTOMER ("BACK_TO_CUSTOMER");
 	    
 		private String name = "";
@@ -62,6 +64,11 @@ public class CustomerWatch extends Model implements Searchable {
 
 	@Id
 	public Long id;
+	
+	@ManyToOne
+	public Partner partner;
+	
+	public String b2bId;
 	
 	@Column(name="creation_date")
 	public Date creationDate;
@@ -99,6 +106,25 @@ public class CustomerWatch extends Model implements Searchable {
 	@Column(length = 10000)
 	public String otherInfos;
 	
+	@Column(length = 10000)
+	public String partnerFromInfos;
+	
+	@Column(length = 10000)
+	public String partnerToInfos;
+	
+	@Column(name="expected_service_end_date")
+	public Date expectedServiceEndDate;
+	
+	@Column(name="first_entry_in_partner_workshop_date")
+	public Date firstEntryInPartnerWorkshopDate;
+	
+	@Column(name="service_due_date")
+	public Date serviceDueDate;
+	
+	public Long serviceStatus = 0L;
+	
+	public Long emergencyLevel = 0L;
+	
 	@ManyToOne
 	public Customer customer;
 
@@ -129,6 +155,16 @@ public class CustomerWatch extends Model implements Searchable {
     
     public static List<CustomerWatch> findAll() {
         return find.all();
+    }
+    
+    public static List<CustomerWatch> findForLoggedInPartner(Session session) {
+    	Optional<User> loggedInUser = SecurityHelper.getLoggedInUser(session);
+    	System.out.println("!!!!!!!!!!!!!!! "+loggedInUser.get());
+    	System.out.println("!!!!!!!!!!!!!!! "+loggedInUser.get().partner);
+    	if (loggedInUser.isPresent()) {
+    		return find.where().conjunction().eq("partner.id", loggedInUser.get().partner.id).orderBy("firstEntryInPartnerWorkshopDate DESC").findList();
+    	}
+    	return new ArrayList<CustomerWatch>();
     }
     
     public static List<CustomerWatch> findAllBySerialAsc() {
@@ -221,6 +257,19 @@ public class CustomerWatch extends Model implements Searchable {
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
+    }
+    
+    public static Page<CustomerWatch> pageForPartner(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    	if (status == null || "".equals(status))
+    		return page(page, pageSize, sortBy, order, filter);
+        
+    	return find.where().conjunction()
+    						.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%")
+    						.endJunction()
+    						.eq("customer_watch_status", status).eq("partner.id", SecurityHelper.getLoggedInUser(session).get().partner.id)
+    						.orderBy(sortBy + " " + order)
+    						.findPagingList(pageSize)
+                			.getPage(page);
     }
     
 	@Override

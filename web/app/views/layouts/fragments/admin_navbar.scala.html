@@ -15,6 +15,7 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 @li_activable(1, index) {<a href="@routes.Admin.index()"><span class="glyphicon glyphicon-home"></span></a>}
+                @if_admin_or_reserved1() {
                 @li_activable(10, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.requests")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -22,6 +23,15 @@
 	                @li_activable(25, index) {<a href="@routes.BuyRequest.displayBuyRequests()">@Messages("admin.navbar.link.text.buy.requests")</a>}
                 	@li_activable(30, index) {<a href="@routes.Admin.displayServiceTests()">@Messages("admin.navbar.link.text.service.tests")</a>}
                   </ul>
+                }
+                }
+                @if_reserved2() {
+                @li_activable(10, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.requests")) <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    @li_activable(20, index) {<a href="@routes.CustomerWatch.displayWatchesForPartner()">@Messages("admin.navbar.link.text.display.watches.for.partner")</a>}
+                  </ul>
+                }
                 }
                 @if_admin() {
                 @li_activable(34, index) {<a href="@routes.Customer.displayAll()">@Messages("admin.navbar.link.text.customers")</a>}

@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import fr.hometime.utils.SecurityHelper;
@@ -67,6 +68,9 @@ public class User extends Model {
 	public boolean active = true;
 	
 	public int numberOfBadPasswords = 0;
+	
+	@ManyToOne
+	public Partner partner;
 	
 	public User(String email) {
 		this.email = email;

@@ -20,7 +20,8 @@
 }
 
 @layouts.admin("", end_scripts) {
-    <div class="container">
+	<div class="container">
+	@if_admin_or_reserved1() {
     @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
     	<h3>
     		@Html(Messages("admin.index.order.requests.active"))
@@ -158,5 +159,9 @@
     }
     }
     <br />
+    }
+    @if_reserved2() {
+    	@index_partner_content()
+    }
     </div>
 }

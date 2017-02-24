@@ -63,9 +63,23 @@
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.other.infos")), Html(watch.otherInfos))
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.status")), Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.'))))
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.status")), Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.'), if (watch.partner != null) { watch.partner.name } else {"N/A"} )))
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.last.status.update")), display_date_and_countdown(watch.lastStatusUpdate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.due.date")), display_date_and_countdown(watch.serviceDueDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.first.entry.in.partner.workshop.date")), display_date_and_countdown(watch.firstEntryInPartnerWorkshopDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.expected.service.end.date")), display_date_and_countdown(watch.expectedServiceEndDate, "dd/MM/yyyy"))
+              	              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.partner.to.infos")), Html(watch.partnerToInfos))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.partner.from.infos")), Html(watch.partnerFromInfos))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.status")), Html(""+watch.serviceStatus))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.emergency.level")), Html(""+watch.emergencyLevel))
 
               </tbody>
             </table>

@@ -1817,7 +1817,8 @@ admin.customer.watch.form.label.cat.infos=Informations
 admin.customer.watch.form.value.status.by.watch.next=Dans le coffre
 admin.customer.watch.form.value.status.by.sth=Chez STH
 admin.customer.watch.form.value.status.by.brand=SAV de la marque
-admin.customer.watch.form.value.status.by.other=Chez un partenaire
+admin.customer.watch.form.value.status.by.registered.partner=Chez un partenaire principal
+admin.customer.watch.form.value.status.by.other=Chez autre partenaire
 admin.customer.watch.form.value.status.by.customer=Rendue au client
 admin.customer.watch.form.label.status=Où se trouve la montre
 
@@ -1836,6 +1837,19 @@ admin.customer.watch.form.label.movement=Mouvement
 admin.customer.watch.form.placeholder.movement=3035
 admin.customer.watch.form.label.pictures.url=Url des photos
 admin.customer.watch.form.placeholder.pictures.url=http://www.dropbox.com/link
+
+admin.customer.watch.form.label.partner=Partenaire
+admin.customer.watch.form.value.partner.default=Sélectionner le partenaire
+
+admin.customer.watch.form.label.b2b.id=Identifiant chez le client
+admin.customer.watch.form.placeholder.b2b.id=
+admin.customer.watch.form.label.partner.to.infos=Infos vers le partenaire
+admin.customer.watch.form.placeholder.partner.to.infos=
+admin.customer.watch.form.label.service.due.date=Date butoire
+admin.customer.watch.form.label.service.status=Avancement entretien
+admin.customer.watch.form.placeholder.service.status=0->100
+admin.customer.watch.form.label.emergency.level=Niveau d''urgence
+admin.customer.watch.form.placeholder.emergency.level=
 
 admin.customer.watch.watches.header.date=Date
 admin.customer.watch.watches.header.brand=Marque
@@ -1883,7 +1897,8 @@ admin.customer.watch.label.status=Où se trouve la montre
 admin.customer.watch.value.status.stored.by.watch.next=Dans le coffre
 admin.customer.watch.value.status.stored.by.sth=Chez STH
 admin.customer.watch.value.status.stored.by.brand=SAV de la marque
-admin.customer.watch.value.status.stored.by.other.partner=Chez un partenaire
+admin.customer.watch.value.status.stored.by.other.partner=Chez un autre partenaire
+admin.customer.watch.value.status.stored.by.a.registered.partner=Chez un partenaire principal {0}
 admin.customer.watch.value.status.back.to.customer=Chez le client
 admin.customer.watch.label.last.status.update=Dernier changement de situation
 admin.customer.watch.head.watch=<span class="text-muted"><b>{0} - {1}</b></span> de {2} {3}
@@ -1893,6 +1908,14 @@ admin.customer.watch.watches.value.status.stored.by.sth=Chez STH
 admin.customer.watch.watches.value.status.stored.by.brand=SAV de la marque
 admin.customer.watch.watches.value.status.stored.by.other.partner=Chez un partenaire
 admin.customer.watch.watches.value.status.back.to.customer=Chez le client
+
+admin.customer.watch.label.service.due.date=Deadline
+admin.customer.watch.label.first.entry.in.partner.workshop.date=Date d''entrée dans l''atelier
+admin.customer.watch.label.expected.service.end.date=Date de sortie prévue
+admin.customer.watch.label.partner.to.infos=Infos vers le partenaire
+admin.customer.watch.label.partner.from.infos=Infos en provenance du partenaire	
+admin.customer.watch.label.service.status=Avancement
+admin.customer.watch.label.emergency.level=Niveau d''urgence
 
 admin.feedback.head.watch=Avis de {0}
 admin.feedback.label.creation.date=Date de création
@@ -2331,6 +2354,8 @@ admin.index.watches.value.status.stored.by.watch.next=Chez Nous
 admin.index.watches.value.status.stored.by.sth=Chez STH
 admin.index.watches.value.status.stored.by.brand=SAV Marque
 admin.index.watches.value.status.stored.by.other.partner=Chez autre partenaire
+admin.index.watches.value.status.stored.by.a.registered.partner=Chez un partenaire principal
+
 
 admin.invoice.form.value.customer.default=Sélectionner le client
 admin.invoice.form.label.customer=Client

@@ -88,18 +88,31 @@ public class SecurityHelper {
     }
     
     public static boolean isLoggedInUserAuthorized(Session session, Predicate<User> isRoleEnough) {
-    	String currentUserToken = session.get("token");
-    	if (currentUserToken != null) {
-    		User loggedInUser = User.findByEmail(currentUserToken);
-    		return isRoleEnough.test(loggedInUser);
+    	Optional<User> loggedInUser = getLoggedInUser(session);
+    	if (loggedInUser.isPresent()) {
+    		return isRoleEnough.test(loggedInUser.get());
     	}
-    		
         return false;
+    }
+    
+    public static Optional<User> getLoggedInUser(Session session) {
+    	String currentUserToken = session.get("token");
+    	if (currentUserToken != null)
+    		return Optional.ofNullable(User.findByEmail(currentUserToken));
+        return Optional.empty();
     }
 
     public static Predicate<User> isAdmin = (user) -> (user!= null && user.role == Role.ADMIN);
     
     public static Predicate<User> isReserved = (user) -> (user!= null && ( user.role == Role.RESERVED_1 || user.role == Role.RESERVED_2) );
+    
+    public static Predicate<User> isAdminOrReserved1 = (user) -> (user!= null && ( user.role == Role.RESERVED_1 || user.role == Role.ADMIN) );
+    
+    public static Predicate<User> isAdminOrReserved2 = (user) -> (user!= null && ( user.role == Role.RESERVED_2 || user.role == Role.ADMIN) );
+    
+    public static Predicate<User> isReserved1 = (user) -> (user!= null && user.role == Role.RESERVED_1 );
+    
+    public static Predicate<User> isReserved2 = (user) -> (user!= null && user.role == Role.RESERVED_2 );
     
     public static List<User> findQuickLogins() {
         return User.find.where().contains("email", "_quick").findList();

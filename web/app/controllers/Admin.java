@@ -283,7 +283,7 @@ public class Admin extends Controller {
 			routes.Admin.displayOrderRequests(0, "requestDate", "desc", "")
 			);
 	
-	@Security.Authenticated(SecuredAdminAndReservedOnly.class)
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result displayOrderRequests(int page, String sortBy, String order, String filter) {
         return ok(order_requests.render(OrderRequest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
     }
@@ -323,10 +323,12 @@ public class Admin extends Controller {
 		}
 	}
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result cgv() {
         return ok(cgv.render());
     }
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result displayOrderRequest(long id) {
 		if (orderIsValid(id))
 			return ok(order_request.render(	OrderRequest.findById(id),
@@ -337,6 +339,7 @@ public class Admin extends Controller {
 		return LIST_ORDERS;
     }
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result displayPrepareMail(long id) {
 		if (orderIsValid(id))
 			return ok(prepare_mail.render(OrderRequest.findById(id),
@@ -346,14 +349,17 @@ public class Admin extends Controller {
 		return LIST_ORDERS;
     }
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result closeOrderRequest(long id) {
 		return updateOrderRequest(id, CLOSE_ORDER_REQUEST);
     }
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result setRepliedOrderRequest(long id) {
 		return updateOrderRequest(id, SET_REPLIED_ORDER_REQUEST);
     }
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result changeFeedbackAsked(long id) {
 		return ok(order_request_infos_form.render(Form.form(OrderRequestForm.class).fill(new OrderRequestForm(id))));
 		//return updateOrderRequest(id, CHANGE_FEEDBACK_ASKED);
@@ -378,6 +384,7 @@ public class Admin extends Controller {
 		return INDEX;
 	}
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result displayMail(long id) {
 		if (orderIsValid(id))
 			return ok(notify_order.render(OrderRequest.findById(id)));
@@ -389,10 +396,12 @@ public class Admin extends Controller {
 			routes.Admin.displayServiceTests(0, "requestDate", "desc", "")
 			);
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result displayServiceTests(int page, String sortBy, String order, String filter) {
         return ok(service_tests.render(ServiceTest.page(page, 10, sortBy, order, filter), sortBy, order, filter));
     }
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Result displayServiceTest(long id) {
 		if (serviceTestIsValid(id)) {
 			ServiceTest serviceTestFound = ServiceTest.findById(id);
@@ -404,6 +413,7 @@ public class Admin extends Controller {
 		return LIST_SERVICE_TESTS;
     }
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
     public static Result prepareQuotation() {
     	try {
 	        return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm()), getAvailableWatches()));
@@ -412,17 +422,20 @@ public class Admin extends Controller {
     	}
     }
     
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
     public static Result prepareQuotationFromOrder(long orderId, boolean inNetworkIfPossible) {
     	return prepareQuotationFromOrderWithPreset(orderId, (long) -1, inNetworkIfPossible);
     }
     
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
     public static Result prepareQuotationFromOrderWithPreset(long orderId, long presetId, boolean inNetworkIfPossible) {
     	if (orderIsValid(orderId))
     		return ok(quotation_form.render(Form.form(QuotationForm.class).fill(new QuotationForm(OrderRequest.findById(orderId), presetId, inNetworkIfPossible)), getAvailableWatches()));
     	flash("error", "Unknown id");
     	return prepareQuotation();
     }
-
+	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Promise<Result> manageQuotation() {
 		final Form<QuotationForm> quotationForm = Form.form(QuotationForm.class).bindFromRequest();
 		Logger.debug("Managing Quotation");
@@ -438,6 +451,7 @@ public class Admin extends Controller {
 		}
 	}
 	
+	@Security.Authenticated(SecuredAdminAndReserved1Only.class)
 	public static Promise<Result> manageOrderRequestInfos() {
 		final Form<OrderRequestForm> orderRequestForm = Form.form(OrderRequestForm.class).bindFromRequest();
 		Logger.debug("Managing OrderRequest");
