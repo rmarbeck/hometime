@@ -153,6 +153,7 @@
                 <tr>
                   <th>#</th>
                   <th>@Html(Messages("admin.customer.watch.watches.header.date"))</th>
+                  <th>@Html(Messages("admin.customer.watch.watches.header.id"))</th>
                   <th>@Html(Messages("admin.customer.watch.watches.header.brand"))</th>
                   <th>@Html(Messages("admin.customer.watch.watches.header.model"))</th>
                   <th>@Html(Messages("admin.customer.watch.watches.header.reference"))</th>
@@ -169,6 +170,9 @@
                   </td>
                   <td>
                     @display_date(watch.lastStatusUpdate, "dd/MM HH:mm")
+                  </td>
+                  <td>
+                    @watch.b2bId
                   </td>
                   <td>
                     @watch.brand

@@ -1852,6 +1852,7 @@ admin.customer.watch.form.label.emergency.level=Niveau d''urgence
 admin.customer.watch.form.placeholder.emergency.level=
 
 admin.customer.watch.watches.header.date=Date
+admin.customer.watch.watches.header.id=ID
 admin.customer.watch.watches.header.brand=Marque
 admin.customer.watch.watches.header.model=Modèle
 admin.customer.watch.watches.header.reference=Référence
