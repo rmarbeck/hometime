@@ -155,6 +155,8 @@ GET     /admin/customer-watch-part/all    								controllers.Partner.displayAll
 GET     /admin/display/customer-watch-part/page/    					controllers.Partner.displayWatches(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
 GET     /admin/display/customer-watch-part-waiting-acceptance/page/		controllers.Partner.displayWaitingAcceptationWatches(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
 GET     /admin/display/customer-watch-part-waiting-quotation/page/		controllers.Partner.displayWaitingQuotationWatches(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
+GET     /admin/edit/customer-watch-part-waiting-quotation/:id			controllers.Partner.prepareQuotation(id: Long)
+POST    /admin/manage/customer-watch-part-waiting-quotation				controllers.Partner.manageQuotation()
 GET     /admin/customer-watch-part-waiting/accept/:id 					controllers.Partner.acceptWatch(id: Long)
 
 GET     /admin/customer-watch/create/from-customer/:id 					controllers.CustomerWatch.addFromCustomer(id: Long)

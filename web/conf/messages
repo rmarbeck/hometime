@@ -2345,6 +2345,7 @@ admin.index.customers.value.status.real.customer=Client
 
 admin.index.watches.active=Montres de clients détenues
 admin.index.watches.active.none=Aucune montre détenue
+admin.index.watches.head.id=ID
 admin.index.watches.head.name=Client
 admin.index.watches.head.brand=Marque
 admin.index.watches.head.model=Modèle
@@ -3262,7 +3263,7 @@ admin.customer.watch.partner.page.reference=Référence
 admin.customer.watch.partner.page.infos=Remarques
 
 admin.customer.watch.partner.page=Montres en attente
-admin.customer.watch.partner.waiting.acceptation.page.title=Montres en attente de devis
+admin.customer.watch.partner.waiting.acceptation.page.title=Montres en attente d''acceptation
 admin.customer.watch.partner.waiting.acceptation.page.due.date=A faire pour le
 admin.customer.watch.partner.waiting.acceptation.page.brand=Marque	
 admin.customer.watch.partner.waiting.acceptation.page.model=Modèle
@@ -3270,10 +3271,11 @@ admin.customer.watch.partner.waiting.acceptation.page.reference=Référence
 admin.customer.watch.partner.waiting.acceptation.page.infos=Remarques
 admin.customer.watch.partner.page.price=Devis accepté
 
+
 admin.customer.watch.partner.waiting.quotation.page=Devis à faire
 admin.customer.watch.partner.waiting.quotation.page.title=Devis à faire
+admin.customer.watch.partner.waiting.quotation.page.id=ID
 admin.customer.watch.partner.waiting.quotation.page.acceptance.date=Acceptée le
-admin.customer.watch.partner.waiting.quotation.page.title=Montres en attente
 admin.customer.watch.partner.waiting.quotation.page.due.date=A faire pour le
 admin.customer.watch.partner.waiting.quotation.page.brand=Marque	
 admin.customer.watch.partner.waiting.quotation.page.model=Modèle
@@ -3283,3 +3285,19 @@ admin.customer.watch.partner.waiting.quotation.page.infos=Remarques
 admin.navbar.link.text.display.watches.for.partner.work.in.progress=Montres à faire
 admin.navbar.link.text.display.watches.for.partner.waiting.acceptation=Montres à accepter
 admin.navbar.link.text.display.watches.for.partner.waiting.for.quotation=Devis à faire
+
+admin.customer.watch.waiting.for.quotation.form=Devis
+admin.customer.watch.waiting.for.quotation.form.title=Devis
+admin.customer.watch.waiting.for.quotation.action.edit=Modifier
+admin.customer.watch.waiting.for.quotation.action.cancel=Annuler
+admin.customer.watch.waiting.for.quotation.action.show=Prévisualiser
+admin.customer.watch.waiting.for.quotation.action.delete=Supprimer
+admin.customer.watch.waiting.for.quotation.form.serviceprice.label.name=Montant du devis
+admin.customer.watch.waiting.for.quotation.form.serviceprice.placeholder.name=
+admin.customer.watch.waiting.for.quotation.form.partnerfrominfos.label.name=Remarques
+admin.customer.watch.waiting.for.quotation.form.partnerfrominfos.placeholder.name=... 
+admin.customer.watch.waiting.for.quotation.form.expectedserviceenddate.label.name=Date prévisionnelle
+
+admin.customer.watch.partner.waiting.quotation.page.service.price.status=Statut
+service.pricing.to.be.validated=En attente d''acceptation
+service.pricing.to.do=A évaluer

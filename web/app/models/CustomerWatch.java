@@ -312,7 +312,7 @@ public class CustomerWatch extends Model implements Searchable {
     
     private static ExpressionList<CustomerWatch> getCommonQueryForPartner(String filter, String status, Session session) {
     	ExpressionList<CustomerWatch> query = find.where().conjunction()
-    			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%")
+    			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%").ilike("id", "%" + filter + "%")
     			.endJunction()
     			.eq("partner.id", PartnerHelper.getLoggedInPartnerID(session));
     	
@@ -374,6 +374,18 @@ public class CustomerWatch extends Model implements Searchable {
 	
 	public String toString() {
 		return customer.name + " -> " + brand + " " + model;
+	}
+	
+	public String getWatchDetails() {
+		return this.model + " - " + this.reference + " - " + this.serial;
+	}
+	
+	public String getServicePriceStatus() {
+		if (servicePrice == 0)
+			return "service.pricing.to.do";
+		if (servicePriceAccepted == false)
+			return "service.pricing.to.be.validated";
+		return "service.pricing.validated";
 	}
 	
 	@Override

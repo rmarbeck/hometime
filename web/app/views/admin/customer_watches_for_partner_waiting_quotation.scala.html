@@ -7,13 +7,14 @@
 
 
 @defining(new views.PageDisplay(currentPage, "Modèle ou marque", "admin.customer.watch.partner.waiting.quotation.page")) { pageDisplay =>
-	@{  
+	@{  pageDisplay.addTableField("id", "id", "getId", false);
 		pageDisplay.addTableField("firstEntryInPartnerWorkshopDate", "acceptance.date", "getFirstEntryInPartnerWorkshopDate", false, "date medium");
 	    pageDisplay.addTableField("serviceDueDate", "due.date", "getServiceDueDate", false, "date medium");
 	    pageDisplay.addTableField("brand", "brand", "getBrand", false);
-	    pageDisplay.addTableField("model", "model", "getModel", false);
-	    pageDisplay.addTableField("reference", "reference", "getReference", false);
-	    pageDisplay.addTableField("partnerToInfos", "infos", "getPartnerToInfos", false);
+	    pageDisplay.addTableField("model", "model", "getWatchDetails", false, "take 20");
+	    pageDisplay.addTableField("partnerToInfos", "infos", "getPartnerToInfos", false, "take 20");
+	    pageDisplay.addTableField("servicePriceStatus", "service.price.status", "getServicePriceStatus", false, "i18n");
+	    		   
 	}
 	
 	@admin.template.page_with_default_links(pageDisplay, "customer-watch-part-waiting-quotation", null, currentSortBy, currentOrder, currentFilter, currentSize, false, false)

@@ -10,7 +10,7 @@
     	<table class="table table-condensed table-striped table-bordered">
           <thead>
 	        <tr>
-	          <th>@Html(Messages("admin.index.watches.head.name"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.id"))</th>
 	          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
 	          <th>@Html(Messages("admin.index.watches.head.model"))</th>
 	          <th>@Html(Messages("admin.index.watches.head.last.communication.date"))</th>
@@ -21,7 +21,7 @@
 	      <tbody>
 	      	@for(watch <- watches) {
 	      	<tr>
-	      		<td>@display_clickable_customer_admin_only(watch.customer)</td>
+	      		<td>@watch.id</td>
 	      		<td>@watch.brand</td>
 	      		<td>@watch.model</td>
 	      		<td>@display_date(watch.lastStatusUpdate, "dd/MM/yyyy HH:mm")</td>
