@@ -10,17 +10,23 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.avaje.ebean.Expr;
+import com.avaje.ebean.Page;
+
+import controllers.CrudReady;
 import fr.hometime.utils.SecurityHelper;
 import play.Logger;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 /**
  * Definition of a Brand
  */
 @Entity
 @Table(name = "user_table")
-public class User extends Model {
+public class User extends Model implements CrudReady<User, User> {
 	private static final long serialVersionUID = -6051070381002940159L;
+	private static User singleton = null;
 	
 	private static final String ADMIN_QUICK_EMAIL = "admin_quick@hometime.fr";
 	public static final int ADMIN_QUICK_MAX_ATTEMPT = 3;
@@ -71,6 +77,15 @@ public class User extends Model {
 	
 	@ManyToOne
 	public Partner partner;
+	
+	public static User of() {
+    	if (singleton == null)
+    		singleton = new User();
+    	return singleton;
+    }
+	
+	private User() {
+	}
 	
 	public User(String email) {
 		this.email = email;
@@ -171,5 +186,25 @@ public class User extends Model {
     public String toString() {
     	return this.email;
     }
+    
+    public static Page<User> page(int page, int pageSize, String sortBy, String order, String filter) {
+        return
+	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
+	            .orderBy(sortBy + " " + order)
+	            .findPagingList(pageSize)
+	            .getPage(page);
+    }
+    
+
+	@Override
+	public Finder<String, User> getFinder() {
+		return find;
+	}
+
+	@Override
+	public Page<User> getPage(int page, int pageSize, String sortBy,
+			String order, String filter) {
+		return page(page, pageSize, sortBy, order, filter);
+	}
 }
 

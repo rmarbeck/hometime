@@ -1,36 +1,30 @@
 package models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import play.Logger;
-import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.db.ebean.Model;
-import play.i18n.Messages;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
-import fr.hometime.utils.Searcher;
+import controllers.CrudReady;
 
 /**
  * Definition of a Partner
  */
 @Entity 
-public class Partner extends Model {
+public class Partner extends Model implements CrudReady<Partner, Partner> {
 	private static final long serialVersionUID = 7683920524305106015L;
+	private static Partner singleton = null;
 
 	@Id
 	public Long id;
@@ -60,6 +54,12 @@ public class Partner extends Model {
 	public List<User> users;
 	
 	public boolean active = true;
+	
+	public static Partner of() {
+    	if (singleton == null)
+    		singleton = new Partner();
+    	return singleton;
+    }
 	
 	public Partner() {
 	}
@@ -147,5 +147,16 @@ public class Partner extends Model {
     public String toString() {
     	return email;
     }
+
+	@Override
+	public Finder<String, Partner> getFinder() {
+		return find;
+	}
+
+	@Override
+	public Page<Partner> getPage(int page, int pageSize, String sortBy,
+			String order, String filter) {
+		return page(page, pageSize, sortBy, order, filter);
+	}
 }
 

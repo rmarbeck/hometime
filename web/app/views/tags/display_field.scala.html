@@ -1,5 +1,5 @@
 @(to_render: String, rendering_option: String)
-@if(rendering_option == null || "".equals(rendering_option)) {
+@if(rendering_option == null || "".equals(rendering_option) || to_render.equals("null")) {
 	@to_render
 } else {
 	@rendering_option match {

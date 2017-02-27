@@ -18,8 +18,10 @@ import play.db.ebean.Model;
 import play.mvc.Http.Session;
 
 import com.avaje.ebean.Expr;
+import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Page;
 
+import fr.hometime.utils.PartnerHelper;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.SecurityHelper;
 
@@ -124,6 +126,14 @@ public class CustomerWatch extends Model implements Searchable {
 	public Long serviceStatus = 0L;
 	
 	public Long emergencyLevel = 0L;
+	
+	public Long servicePrice = 0L;
+	
+	public boolean servicePriceAccepted = false;
+	
+	public boolean servicePaid = false;
+	
+	public boolean serviceNeeded = true;
 	
 	@ManyToOne
 	public Customer customer;
@@ -260,16 +270,60 @@ public class CustomerWatch extends Model implements Searchable {
     }
     
     public static Page<CustomerWatch> pageForPartner(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
-    	if (status == null || "".equals(status))
-    		return page(page, pageSize, sortBy, order, filter);
+    	if (PartnerHelper.isLoggedInUserAPartner(session)) {
+    		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
+    		
+    		return commonQuery.eq("status", "STORED_BY_A_REGISTERED_PARTNER")
+					.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+        			.getPage(page);
+    	}
         
-    	return find.where().conjunction()
-    						.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%")
-    						.endJunction()
-    						.eq("customer_watch_status", status).eq("partner.id", SecurityHelper.getLoggedInUser(session).get().partner.id)
-    						.orderBy(sortBy + " " + order)
-    						.findPagingList(pageSize)
-                			.getPage(page);
+    	return emptyPage();
+    }
+    
+    public static Page<CustomerWatch> pageForPartnerWaitingAcceptation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    	if (PartnerHelper.isLoggedInUserAPartner(session)) {
+    		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
+
+    		return commonQuery
+    				.eq("status", "STORED_BY_WATCH_NEXT").eq("serviceNeeded", true).eq("servicePriceAccepted", true)
+					.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+        			.getPage(page);
+    	}
+        
+    	return emptyPage();
+    }
+    
+    public static Page<CustomerWatch> pageForPartnerWaitingQuotation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    	if (PartnerHelper.isLoggedInUserAPartner(session)) {
+    		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
+    		
+    		return commonQuery
+    				.eq("status", "STORED_BY_A_REGISTERED_PARTNER").eq("servicePriceAccepted", false)
+					.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+        			.getPage(page);
+    	}
+        
+    	return emptyPage();
+    }
+    
+    private static ExpressionList<CustomerWatch> getCommonQueryForPartner(String filter, String status, Session session) {
+    	ExpressionList<CustomerWatch> query = find.where().conjunction()
+    			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%")
+    			.endJunction()
+    			.eq("partner.id", PartnerHelper.getLoggedInPartnerID(session));
+    	
+    	if (status != null && ! "".equals(status))
+			query = query.eq("customer_watch_status", status);
+    	
+    	return query;
+    }
+    
+    private static Page<CustomerWatch> emptyPage() {
+    	return find.where().eq("id", "-1").findPagingList(10).getPage(0);
     }
     
 	@Override

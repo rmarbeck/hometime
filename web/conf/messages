@@ -3249,3 +3249,36 @@ admin.order.request.infos.form.label.infos=Infos privées
 admin.order.request.infos.form.placeholder.infos=...
 admin.order.request.infos.action.cancel=Annuler
  
+
+
+admin.customer.watch.partner.page=Montres en cours d''entretien 
+admin.customer.watch.partner.page.title=Montres en cours d''entretien
+admin.customer.watch.partner.page.acceptance.date=Acceptée le
+admin.customer.watch.partner.page.due.date=A faire pour le
+admin.customer.watch.partner.page.brand=Marque
+admin.customer.watch.partner.page.model=Modèle
+admin.customer.watch.partner.page.reference=Référence
+admin.customer.watch.partner.page.infos=Remarques
+
+admin.customer.watch.partner.page=Montres en attente
+admin.customer.watch.partner.waiting.acceptation.page.title=Montres en attente
+admin.customer.watch.partner.waiting.acceptation.page.due.date=A faire pour le
+admin.customer.watch.partner.waiting.acceptation.page.brand=Marque	
+admin.customer.watch.partner.waiting.acceptation.page.model=Modèle
+admin.customer.watch.partner.waiting.acceptation.page.reference=Référence
+admin.customer.watch.partner.waiting.acceptation.page.infos=Remarques
+admin.customer.watch.partner.page.price=Devis accepté
+
+admin.customer.watch.partner.waiting.quotation.page=Devis à faire
+admin.customer.watch.partner.waiting.quotation.page.title=Devis à faire
+admin.customer.watch.partner.waiting.quotation.page.acceptance.date=Acceptée le
+admin.customer.watch.partner.waiting.quotation.page.title=Montres en attente
+admin.customer.watch.partner.waiting.quotation.page.due.date=A faire pour le
+admin.customer.watch.partner.waiting.quotation.page.brand=Marque	
+admin.customer.watch.partner.waiting.quotation.page.model=Modèle
+admin.customer.watch.partner.waiting.quotation.page.reference=Référence
+admin.customer.watch.partner.waiting.quotation.page.infos=Remarques
+
+admin.navbar.link.text.display.watches.for.partner.work.in.progress=Montres à faire
+admin.navbar.link.text.display.watches.for.partner.waiting.acceptation=Montres à accepter
+admin.navbar.link.text.display.watches.for.partner.waiting.for.quotation=Devis à faire

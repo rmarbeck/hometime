@@ -1,0 +1,13 @@
+@(currentPage: com.avaje.ebean.Page[models.User], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+@optionallink(id:Long) = {
+    @routes.MailTemplates.duplicateMailTemplate(id)
+}
+
+@defining(new views.PageDisplay(currentPage, "nom", "admin.user.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("email", "email", "getEmail", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "Partners", optionallink, currentSortBy, currentOrder, currentFilter, currentSize)
+}

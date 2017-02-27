@@ -1,4 +1,4 @@
-@(pageDisplay: views.PageDisplay[_], controllerName: String, optionallink: (Long) => Html, currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, displayNewLink: Boolean = true, actionlink: () => Html)
+@(pageDisplay: views.PageDisplay[_], controllerName: String, optionallink: (Long) => Html, currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, displayNewLink: Boolean = true, actionlink: () => Html, optionnalLinkOpensNewPage: Boolean = true)
 @import tags._
 
 @link(newPage:Int, sortBy: String, order: String, currentFilter: String, currentSize: Int) = {
@@ -16,7 +16,7 @@
     @routes.CrudHelper.display(controllerName, id)
 }
 @if(displayNewLink) {
-	@admin.template.page(pageDisplay, link, displaylink, editlink, optionallink, newlink, currentSortBy, currentOrder, currentFilter, currentSize, actionlink)
+	@admin.template.page(pageDisplay, link, displaylink, editlink, optionallink, newlink, currentSortBy, currentOrder, currentFilter, currentSize, actionlink, optionnalLinkOpensNewPage)
 } else {
-	@admin.template.page(pageDisplay, link, displaylink, editlink, optionallink, null, currentSortBy, currentOrder, currentFilter, currentSize, actionlink)
+	@admin.template.page(pageDisplay, link, displaylink, editlink, optionallink, null, currentSortBy, currentOrder, currentFilter, currentSize, actionlink, optionnalLinkOpensNewPage)
 } 

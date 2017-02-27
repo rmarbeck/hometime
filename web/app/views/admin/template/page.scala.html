@@ -1,4 +1,4 @@
-@(pageDisplay: views.PageDisplay[_], link: (Int, String, String, String, Int) => Html, displaylink: (Long) => Html, editlink: (Long) => Html, optionallink: (Long) => Html, newlink: () => Html, currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, actionlink: () => Html)
+@(pageDisplay: views.PageDisplay[_], link: (Int, String, String, String, Int) => Html, displaylink: (Long) => Html, editlink: (Long) => Html, optionallink: (Long) => Html, newlink: () => Html, currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, actionlink: () => Html, optionnalLinkOpensNewPage: Boolean = true)
 @import tags._
 @import scala._
 @****************************************
@@ -104,7 +104,7 @@
                   <td>
 	                @if(displaylink != null) {<a type="button" class="btn btn-default btn-xs" href="@displaylink(pageDisplay.getIdByIndex(index))"><span class="glyphicon glyphicon-user"></span></a>}
 	                @if(editlink != null) {<a type="button" class="btn btn-primary btn-xs" href="@editlink(pageDisplay.getIdByIndex(index))"><span class="glyphicon glyphicon-edit"></span></a>}
-	                @if(optionallink != null) {<a type="button" class="btn btn-info btn-xs" target="_blank" href="@optionallink(pageDisplay.getIdByIndex(index))"><span class="glyphicon glyphicon-new-window"></span></a>}
+	                @if(optionallink != null) {<a type="button" class="btn btn-info btn-xs" @if(optionnalLinkOpensNewPage) {target="_blank"} href="@optionallink(pageDisplay.getIdByIndex(index))"><span class="glyphicon @if(optionnalLinkOpensNewPage) {glyphicon-new-window} else {glyphicon-flash}"></span></a>}
                   </td>
                   @for(currentField <- pageDisplay.getTableFields) {
 	                <td class="@if(currentField.hideSmall) {hidden-xs}@sortColor(currentField.dbField)">

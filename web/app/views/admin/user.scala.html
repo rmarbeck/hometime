@@ -1,0 +1,25 @@
+@(instance: models.User)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("Users", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("Users")
+}
+
+@end_body = {
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10 text-center">
+	    End                
+      </div>
+    </div>
+}
+
+@defining(new views.ModelDisplay(instance, "admin.user")) { modelDisplay =>
+		@{ 	modelDisplay.addField("email");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+}

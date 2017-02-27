@@ -2,19 +2,18 @@
 @import tags._
 
 @optionallink(id:Long) = {
-    
+    @routes.Partner.acceptWatch(id)
 }
 
 
-@defining(new views.PageDisplay(currentPage, "Modèle ou marque", "admin.customer.watch.partner.page")) { pageDisplay =>
+@defining(new views.PageDisplay(currentPage, "Modèle ou marque", "admin.customer.watch.partner.waiting.acceptation.page")) { pageDisplay =>
 	@{  
-	    pageDisplay.addTableField("firstEntryInPartnerWorkshopDate", "acceptance.date", "getFirstEntryInPartnerWorkshopDate", false, "date medium");
 	    pageDisplay.addTableField("serviceDueDate", "due.date", "getServiceDueDate", false, "date medium");
 	    pageDisplay.addTableField("brand", "brand", "getBrand", false);
 	    pageDisplay.addTableField("model", "model", "getModel", false);
-	    pageDisplay.addTableField("servicePrice", "price", "getServicePrice", false, "price");
+	    pageDisplay.addTableField("reference", "reference", "getReference", false);
 	    pageDisplay.addTableField("partnerToInfos", "infos", "getPartnerToInfos", false);
 	}
 	
-	@admin.template.page_with_default_links(pageDisplay, "customer-watch-part", optionallink, currentSortBy, currentOrder, currentFilter, currentSize, false)
+	@admin.template.page_with_default_links(pageDisplay, "customer-watch-part-waiting", optionallink, currentSortBy, currentOrder, currentFilter, currentSize, false, false)
 }
