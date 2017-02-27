@@ -3309,3 +3309,15 @@ admin.customerwatch.brand.display.label=Marque
 admin.customerwatch.model.display.label=Modèle
 admin.customerwatch.reference.display.label=Référence
 admin.customerwatch.serial.display.label=Numéro de série
+admin.customer.watch.waiting.for.quotation.form.id.label.name=Identifiant
+admin.customer.watch.waiting.for.quotation.form.brand.label.name=Marque
+admin.customer.watch.waiting.for.quotation.form.brand.placeholder.name=
+admin.customer.watch.waiting.for.quotation.form.model.label.name=Modèle
+admin.customer.watch.waiting.for.quotation.form.model.placeholder.name=
+admin.customer.watch.waiting.for.quotation.form.reference.label.name=Référence
+admin.customer.watch.waiting.for.quotation.form.reference.placeholder.name=
+admin.customer.watch.waiting.for.quotation.form.serial.label.name=Numéro de série
+admin.customer.watch.waiting.for.quotation.form.serial.placeholder.name=
+admin.customer.watch.waiting.for.quotation.form.partnertoinfos.label.name=Informations
+admin.customer.watch.waiting.for.quotation.form.partnertoinfos.placeholder.name=
+
