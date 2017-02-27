@@ -312,7 +312,7 @@ public class CustomerWatch extends Model implements Searchable {
     
     private static ExpressionList<CustomerWatch> getCommonQueryForPartner(String filter, String status, Session session) {
     	ExpressionList<CustomerWatch> query = find.where().conjunction()
-    			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%")
+    			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%").ilike("CAST(id AS varchar(10))", "%" + filter + "%")
     			.endJunction()
     			.eq("partner.id", PartnerHelper.getLoggedInPartnerID(session));
     	
