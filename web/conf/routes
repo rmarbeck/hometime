@@ -158,6 +158,10 @@ GET     /admin/display/customer-watch-part-waiting-quotation/page/		controllers.
 GET     /admin/edit/customer-watch-part-waiting-quotation/:id			controllers.Partner.prepareQuotation(id: Long)
 POST    /admin/manage/customer-watch-part-waiting-quotation				controllers.Partner.manageQuotation()
 GET     /admin/customer-watch-part-waiting/accept/:id 					controllers.Partner.acceptWatch(id: Long)
+GET     /admin/display/customer-watch-part-waiting-quotation/:id		controllers.Partner.displayWatch(id: Long)
+GET     /admin/display/customer-watch-part/:id							controllers.Partner.displayWatchAlias(id: Long)
+GET     /admin/display/customer-watch-part-waiting-acceptance/:id		controllers.Partner.displayWatchAlias2(id: Long)
+
 
 GET     /admin/customer-watch/create/from-customer/:id 					controllers.CustomerWatch.addFromCustomer(id: Long)
 GET     /admin/customer-watch/create/from-order/:id 					controllers.CustomerWatch.addFromOrder(id: Long)

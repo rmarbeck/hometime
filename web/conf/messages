@@ -3301,3 +3301,11 @@ admin.customer.watch.waiting.for.quotation.form.expectedserviceenddate.label.nam
 admin.customer.watch.partner.waiting.quotation.page.service.price.status=Statut
 service.pricing.to.be.validated=En attente d''acceptation
 service.pricing.to.do=A évaluer
+
+admin.customer.watch.for.partner=Détail de la montre
+admin.customer.watch.for.partner.title=Détail de la montre
+admin.customerwatch.id.display.label=Identifiant interne
+admin.customerwatch.brand.display.label=Marque
+admin.customerwatch.model.display.label=Modèle
+admin.customerwatch.reference.display.label=Référence
+admin.customerwatch.serial.display.label=Numéro de série

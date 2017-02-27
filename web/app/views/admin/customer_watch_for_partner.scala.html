@@ -1,0 +1,18 @@
+@(template: models.CustomerWatch)
+@import tags._
+
+
+@end_body = {
+
+}
+
+@defining(new views.ModelDisplay(template, "admin.customer.watch.for.partner")) { modelDisplay =>
+		@{ 	modelDisplay.addField("id");
+		    modelDisplay.addField("brand");
+			modelDisplay.addField("model");
+			modelDisplay.addField("reference");
+			modelDisplay.addField("serial");
+		}
+	
+	@admin.template.display(modelDisplay, null, null, end_body)
+}

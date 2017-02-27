@@ -13,6 +13,7 @@ import play.twirl.api.Html;
 import views.html.admin.customer_watch_form;
 import views.html.admin.customer_watch_for_partner_waiting_quotation_form;
 import views.html.admin.customer_watches_for_partner;
+import views.html.admin.customer_watch_for_partner;
 import views.html.admin.customer_watches_for_partner_waiting_acceptation;
 import views.html.admin.customer_watches_for_partner_waiting_quotation;
 
@@ -43,6 +44,21 @@ public class Partner extends Controller {
 	public static Result displayWaitingQuotationWatches(int page, String sortBy, String order, String filter, int size, String status) {
         return ok(customer_watches_for_partner_waiting_quotation.render(models.CustomerWatch.pageForPartnerWaitingQuotation(page, size, sortBy, order, filter, status, session()), sortBy, order, filter, size, status));
     }
+	
+	public static Result displayWatch(Long id) {
+		models.CustomerWatch requestedWatch = models.CustomerWatch.findById(id);
+		if (PartnerHelper.isWatchAllocatedToLoggedInPartner(requestedWatch, session()))
+			return ok(customer_watch_for_partner.render(requestedWatch));
+        return LIST_WAITING_ACCEPTATION_WATCHES;
+    }
+	
+	public static Result displayWatchAlias(Long id) {
+		return displayWatch(id);
+	}
+	
+	public static Result displayWatchAlias2(Long id) {
+		return displayWatch(id);
+	}
 
 	public static Result acceptWatch(Long id) {
 		models.CustomerWatch requestedWatch = models.CustomerWatch.findById(id);
