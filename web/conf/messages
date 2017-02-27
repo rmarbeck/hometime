@@ -3261,7 +3261,7 @@ admin.customer.watch.partner.page.reference=Référence
 admin.customer.watch.partner.page.infos=Remarques
 
 admin.customer.watch.partner.page=Montres en attente
-admin.customer.watch.partner.waiting.acceptation.page.title=Montres en attente
+admin.customer.watch.partner.waiting.acceptation.page.title=Montres en attente de devis
 admin.customer.watch.partner.waiting.acceptation.page.due.date=A faire pour le
 admin.customer.watch.partner.waiting.acceptation.page.brand=Marque	
 admin.customer.watch.partner.waiting.acceptation.page.model=Modèle
