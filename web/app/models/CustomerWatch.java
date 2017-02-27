@@ -287,7 +287,7 @@ public class CustomerWatch extends Model implements Searchable {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
 
     		return commonQuery
-    				.eq("status", "STORED_BY_WATCH_NEXT").eq("serviceNeeded", true).eq("servicePriceAccepted", true)
+    				.eq("status", "STORED_BY_WATCH_NEXT").eq("serviceNeeded", true)
 					.orderBy(sortBy + " " + order)
 					.findPagingList(pageSize)
         			.getPage(page);
