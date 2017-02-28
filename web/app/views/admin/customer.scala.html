@@ -137,63 +137,36 @@
         	<a type="button" class="btn btn-primary" href="@routes.CustomerWatch.addFromCustomer(customer.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.customer.action.add.watch"))</a>
         </div>
      </div>
-      
-      @if(watches == null || watches.size == 0) {
+     
       <div class="row">
-        <div class="well">
-            <em>@Html(Messages("admin.customer.watches.no.watch.to.display"))</em>
-        </div>
-      </div>
-      } else {
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches.back.to.customer"))</h3></div>
+     </div>
+     
+     @fragments.watchlist(models.CustomerWatch.findByCustomerBackToCustomer(customer))
+     
       <div class="row">
-       	<div class="table-responsive">
-            <table class="table table-bordered table-striped">
-
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>@Html(Messages("admin.customer.watch.watches.header.date"))</th>
-                  <th>@Html(Messages("admin.customer.watch.watches.header.id"))</th>
-                  <th>@Html(Messages("admin.customer.watch.watches.header.brand"))</th>
-                  <th>@Html(Messages("admin.customer.watch.watches.header.model"))</th>
-                  <th>@Html(Messages("admin.customer.watch.watches.header.reference"))</th>
-                  <th>@Html(Messages("admin.customer.watch.watches.header.customer"))</th>
-                </tr>
-              </thead>
-              <tbody>
-              @for((watch, index) <- watches.zipWithIndex) {
-                <tr>
-                  <td>
-                    <a type="button" class="btn btn-default btn-xs" href="@routes.CustomerWatch.display(watch.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
-	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
-                   	<a type="button" class="btn btn-warning btn-xs" href="@routes.Order.addFromCustomerWatch(watch.id)"><span class="glyphicon glyphicon-arrow-up"></span></a>
-                  </td>
-                  <td>
-                    @display_date(watch.lastStatusUpdate, "dd/MM HH:mm")
-                  </td>
-                  <td>
-                    @watch.b2bId
-                  </td>
-                  <td>
-                    @watch.brand
-                  </td>
-                  <td>
-                    @watch.model
-                  </td>
-                  <td>
-                    @watch.reference
-                  </td>
-                  <td>
-                    @Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.')))
-                  </td>
-                </tr>
-              }
-              </tbody>
-            </table>
-		</div>
-	  </div>
-	}
-	
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches.stored.by.registered.partner"))</h3></div>
+     </div>
+     
+     @fragments.watchlist(models.CustomerWatch.findByCustomerStoredByRegisteredPartner(customer))
+     
+      <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches.stored.by.us"))</h3></div>
+     </div>
+     
+     @fragments.watchlist(models.CustomerWatch.findByCustomerStoredByUs(customer))
+     
+      <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches.other"))</h3></div>
+     </div>
+     
+     @fragments.watchlist(models.CustomerWatch.findByCustomerOtherLocation(customer))
+     
+      <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches.back.to.customer"))</h3></div>
+     </div>
+     
+     @fragments.watchlist(watches)
 	
 	<div class="row">
         <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.order.documents"))</h3></div>

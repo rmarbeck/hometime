@@ -1859,6 +1859,13 @@ admin.customer.watch.watches.header.reference=Référence
 admin.customer.watch.watches.header.status=Statut
 admin.customer.watch.watches.header.customer=Client
 
+admin.customer.watch.no.watch.to.display=Aucune montre à afficher
+
+admin.customer.head.watches.back.to.customer=Montres chez le client
+admin.customer.head.watches.stored.by.registered.partner=Montres chez un partenaire
+admin.customer.head.watches.stored.by.us=Montres chez nous
+admin.customer.head.watches.other=Autres montres
+
 admin.customer.order.documents.no.order.document.to.display=Aucun bon de commande pour ce client
 admin.customer.head.order.documents=Ses bons de commande
 admin.customer.action.add.order.document=&nbsp;Nouveau bon de commande

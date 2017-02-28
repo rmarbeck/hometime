@@ -246,6 +246,36 @@ public class CustomerWatch extends Model implements Searchable {
         			.orderBy("next_partial_service desc").findList();
     }
     
+    public static List<CustomerWatch> findByCustomerBackToCustomer(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+    				.eq("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+        			.orderBy("next_partial_service desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByCustomerStoredByRegisteredPartner(models.Customer customer) {
+    	return find.where().conjunction().eq("customer.id", customer.id)
+    				.disjunction()
+    				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER)
+    				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_STH)
+    				.endJunction()
+        			.orderBy("next_partial_service desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByCustomerStoredByUs(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+    				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT)
+        			.orderBy("next_partial_service desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByCustomerOtherLocation(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+    				.ne("status", CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT)
+    				.ne("status", CustomerWatch.CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER)
+    				.ne("status", CustomerWatch.CustomerWatchStatus.STORED_BY_STH)
+    				.ne("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+        			.orderBy("next_partial_service desc").findList();
+    }
+    
     public static CustomerWatch findBySerial(String serial) {
     	return find.where().eq("serial", serial).findUnique();
     }

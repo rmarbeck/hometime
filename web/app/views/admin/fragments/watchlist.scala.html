@@ -1,0 +1,58 @@
+@(watches: List[models.CustomerWatch], key: String = "admin.customer.watch")
+@import tags._
+
+	@if(watches == null || watches.size == 0) {
+      <div class="row">
+        <div class="well">
+            <em>@Html(Messages(key+".no.watch.to.display"))</em>
+        </div>
+      </div>
+      } else {
+      <div class="row">
+       	<div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>@Html(Messages(key+".watches.header.date"))</th>
+                  <th>@Html(Messages(key+".watches.header.id"))</th>
+                  <th>@Html(Messages(key+".watches.header.brand"))</th>
+                  <th>@Html(Messages(key+".watches.header.model"))</th>
+                  <th>@Html(Messages(key+".watches.header.reference"))</th>
+                  <th>@Html(Messages(key+".watches.header.customer"))</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for((watch, index) <- watches.zipWithIndex) {
+                <tr>
+                  <td>
+                    <a type="button" class="btn btn-default btn-xs" href="@routes.CustomerWatch.display(watch.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
+                   	<a type="button" class="btn btn-warning btn-xs" href="@routes.Order.addFromCustomerWatch(watch.id)"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                  </td>
+                  <td>
+                    @display_date(watch.lastStatusUpdate, "dd/MM HH:mm")
+                  </td>
+                  <td>
+                    @watch.b2bId
+                  </td>
+                  <td>
+                    @watch.brand
+                  </td>
+                  <td>
+                    @watch.model
+                  </td>
+                  <td>
+                    @watch.reference
+                  </td>
+                  <td>
+                    @Html(Messages(key+".value.status."+watch.status.toString.toLowerCase.replace('_','.')))
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+		</div>
+	  </div>
+	}
