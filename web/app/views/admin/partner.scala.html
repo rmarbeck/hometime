@@ -10,6 +10,38 @@
 }
 
 @end_body = {
+
+	
+	<div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.partner.head.watches.waiting.acceptation"))</h3></div>
+    </div>
+	
+	@fragments.watchlist(models.CustomerWatch.findByPartnerWaitingAcceptation(instance))
+	
+	<div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.partner.head.watches.waiting.service.price"))</h3></div>
+    </div>
+    
+    @fragments.watchlist(models.CustomerWatch.findByPartnerWaitingServicePrice(instance))
+	
+	<div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.partner.head.watches.waiting.service.price.to.accept"))</h3></div>
+    </div>
+	
+	@fragments.watchlist(models.CustomerWatch.findByPartnerWaitingServicePriceAcceptation(instance))
+	
+	<div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.partner.head.watches.work.in.progress"))</h3></div>
+    </div>
+	
+	@fragments.watchlist(models.CustomerWatch.findByPartnerWorkInProgress(instance))
+	
+	<div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.partner.head.watches.waiting.to.collect"))</h3></div>
+    </div>
+	
+	@fragments.watchlist(models.CustomerWatch.findByPartnerServiceFinishedWaitingToCollect(instance))
+	
     <div class="form-group">
       <div class="col-sm-offset-1 col-sm-10 text-center">
 	    End                
@@ -25,4 +57,5 @@
 		}
 	
 	@admin.template.display(modelDisplay, null, editlink, end_body)
+
 }

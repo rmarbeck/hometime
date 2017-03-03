@@ -249,7 +249,7 @@ public class CustomerWatch extends Model implements Searchable {
     public static List<CustomerWatch> findByCustomerBackToCustomer(models.Customer customer) {
     	return find.where().eq("customer.id", customer.id)
     				.eq("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
-        			.orderBy("next_partial_service desc").findList();
+        			.orderBy("lastStatusUpdate desc").findList();
     }
     
     public static List<CustomerWatch> findByCustomerStoredByRegisteredPartner(models.Customer customer) {
@@ -258,13 +258,13 @@ public class CustomerWatch extends Model implements Searchable {
     				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER)
     				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_STH)
     				.endJunction()
-        			.orderBy("next_partial_service desc").findList();
+        			.orderBy("firstEntryInPartnerWorkshopDate desc").findList();
     }
     
     public static List<CustomerWatch> findByCustomerStoredByUs(models.Customer customer) {
     	return find.where().eq("customer.id", customer.id)
     				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT)
-        			.orderBy("next_partial_service desc").findList();
+        			.orderBy("lastStatusUpdate desc").findList();
     }
     
     public static List<CustomerWatch> findByCustomerOtherLocation(models.Customer customer) {
@@ -274,6 +274,47 @@ public class CustomerWatch extends Model implements Searchable {
     				.ne("status", CustomerWatch.CustomerWatchStatus.STORED_BY_STH)
     				.ne("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
         			.orderBy("next_partial_service desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByPartnerWaitingAcceptation(models.Partner partner) {
+    	return find.where().eq("partner.id", partner.id)
+    				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT)
+    				.eq("serviceNeeded", true)
+        			.orderBy("creationDate desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByPartnerWaitingServicePrice(models.Partner partner) {
+    	return find.where().eq("partner.id", partner.id)
+    				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER)
+    				.eq("serviceNeeded", true)
+    				.eq("servicePrice", 0)
+        			.orderBy("firstEntryInPartnerWorkshopDate desc").findList();
+    }
+    
+    
+    public static List<CustomerWatch> findByPartnerWaitingServicePriceAcceptation(models.Partner partner) {
+    	return find.where().eq("partner.id", partner.id)
+    				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER)
+    				.eq("serviceNeeded", true)
+    				.ne("servicePrice", 0)
+    				.eq("servicePriceAccepted", false)
+        			.orderBy("firstEntryInPartnerWorkshopDate desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByPartnerWorkInProgress(models.Partner partner) {
+    	return find.where().eq("partner.id", partner.id)
+    				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER)
+    				.eq("serviceNeeded", true)
+    				.ne("servicePrice", 0)
+    				.eq("servicePriceAccepted", true)
+        			.orderBy("firstEntryInPartnerWorkshopDate desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByPartnerServiceFinishedWaitingToCollect(models.Partner partner) {
+    	return find.where().eq("partner.id", partner.id)
+    				.eq("status", CustomerWatch.CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER)
+    				.eq("serviceNeeded", false)
+        			.orderBy("lastStatusUpdate desc").findList();
     }
     
     public static CustomerWatch findBySerial(String serial) {

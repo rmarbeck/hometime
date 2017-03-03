@@ -37,6 +37,7 @@
                 }
                 @if_admin() {
                 @li_activable(34, index) {<a href="@routes.Customer.displayAll()">@Messages("admin.navbar.link.text.customers")</a>}
+                @li_activable(34, index) {<a href="@routes.CrudHelper.displayAll("Partners")">@Messages("admin.navbar.link.text.partners")</a>}
                 @li_activable(35, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.watches")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">

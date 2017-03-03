@@ -1336,6 +1336,7 @@ error.path.result.multiple=Plusieurs résultat pour le chemin spécifié
 admin.text.home=Admin
 admin.navbar.link.text.orders=Commandes
 admin.navbar.link.text.customers=Clients
+admin.navbar.link.text.partners=Partenaires
 admin.navbar.link.text.customer.watches=Montres clients
 admin.navbar.link.text.order.requests=Demandes de devis
 admin.navbar.link.text.service.tests=Evaluations personnalisées
@@ -3329,3 +3330,19 @@ admin.customer.watch.waiting.for.quotation.form.serial.placeholder.name=
 admin.customer.watch.waiting.for.quotation.form.partnertoinfos.label.name=Informations
 admin.customer.watch.waiting.for.quotation.form.partnertoinfos.placeholder.name=
 
+admin.partner=Partenaire
+admin.partner.title=Partenaire
+admin.partner.name.display.label=Nom
+admin.partner.internalname.display.label=Nom interne
+admin.partner.address.display.label=Adresse
+admin.partner.email.display.label=Email
+admin.partner.head.watches.waiting.acceptation=En attente d''acceptation
+admin.partner.head.watches.waiting.service.price=En attente de devis
+admin.partner.head.watches.waiting.service.price.to.accept=Devis à accepter
+admin.partner.head.watches.work.in.progress=Entretien en cours
+admin.partner.head.watches.waiting.to.collect=Entretien terminé, montre à récupérer
+
+admin.partner.page=Partenaires
+admin.partner.page.title=Partenaires
+admin.partner.page.name=Nom
+admin.partner.page.internalname=Nom interne
