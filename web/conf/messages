@@ -1822,6 +1822,7 @@ admin.customer.watch.form.value.status.by.registered.partner=Chez un partenaire 
 admin.customer.watch.form.value.status.by.other=Chez autre partenaire
 admin.customer.watch.form.value.status.by.customer=Rendue au client
 admin.customer.watch.form.label.status=Où se trouve la montre
+admin.customer.watch.form.label.service.price.accepted=Devis accepté
 
 admin.customer.watch.form.label.customer=Client
 admin.customer.watch.form.value.customer.default=Sélectionner le client
@@ -3308,7 +3309,7 @@ admin.customer.watch.waiting.for.quotation.form.partnerfrominfos.placeholder.nam
 admin.customer.watch.waiting.for.quotation.form.expectedserviceenddate.label.name=Date prévisionnelle
 
 admin.customer.watch.partner.waiting.quotation.page.service.price.status=Statut
-service.pricing.to.be.validated=En attente d''acceptation
+service.pricing.to.be.validated=En attente d''accord
 service.pricing.to.do=A évaluer
 
 admin.customer.watch.for.partner=Détail de la montre
@@ -3346,3 +3347,33 @@ admin.partner.page=Partenaires
 admin.partner.page.title=Partenaires
 admin.partner.page.name=Nom
 admin.partner.page.internalname=Nom interne
+
+
+
+admin.customer.watch.partner.work.in.progress.page=Montres en cours d''entretien
+admin.customer.watch.partner.work.in.progress.page.title=Montres en cours d''entretien
+admin.customer.watch.partner.work.in.progress.page.id=ID
+admin.customer.watch.partner.work.in.progress.page.acceptance.date=Date
+admin.customer.watch.partner.work.in.progress.page.due.date=Date butoire 
+admin.customer.watch.partner.work.in.progress.page.brand=Marque
+admin.customer.watch.partner.work.in.progress.page.model=Modèle
+admin.customer.watch.partner.work.in.progress.page.infos=Informations
+admin.customer.watch.partner.work.in.progress.page.service.status=Avancement
+
+admin.customer.watch.work.in.progress.form=Avancement entretien
+admin.customer.watch.work.in.progress.form.title=Avancement entretien
+admin.customer.watch.work.in.progress.action.cancel=Annuler
+admin.customer.watch.work.in.progress.action.edit=Modifier
+admin.customer.watch.work.in.progress.form.id.label.name=ID
+admin.customer.watch.work.in.progress.form.brand.label.name=Marque
+admin.customer.watch.work.in.progress.form.model.label.name=Modèle
+admin.customer.watch.work.in.progress.form.reference.label.name=Référence
+admin.customer.watch.work.in.progress.form.serial.label.name=Numéro de série
+admin.customer.watch.work.in.progress.form.partnertoinfos.label.name=Informations
+admin.customer.watch.work.in.progress.form.partnertoinfos.placeholder.name=...
+admin.customer.watch.work.in.progress.form.serviceprice.label.name=Montant devis
+admin.customer.watch.work.in.progress.form.servicestatus.label.name=Avancement
+admin.customer.watch.work.in.progress.form.expectedserviceenddate.label.name=Date prévisionnelle
+admin.customer.watch.work.in.progress.form.partnerfrominfos.label.name=Remarques
+admin.customer.watch.work.in.progress.form.b2bid.label.name=ID client
+admin.customer.watch.work.in.progress.form.b2bid.placeholder.name=

@@ -29,7 +29,7 @@
                 @li_activable(10, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.requests")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    @li_activable(21, index) {<a href="@routes.Partner.displayWatches()">@Messages("admin.navbar.link.text.display.watches.for.partner.work.in.progress")</a>}
+                    @li_activable(21, index) {<a href="@routes.Partner.displayWorkInProgressWatches()">@Messages("admin.navbar.link.text.display.watches.for.partner.work.in.progress")</a>}
                     @li_activable(22, index) {<a href="@routes.Partner.displayWaitingQuotationWatches()">@Messages("admin.navbar.link.text.display.watches.for.partner.waiting.for.quotation")</a>}
                     @li_activable(23, index) {<a href="@routes.Partner.displayWaitingAcceptationWatches()">@Messages("admin.navbar.link.text.display.watches.for.partner.waiting.acceptation")</a>}
                   </ul>

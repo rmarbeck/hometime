@@ -1,0 +1,35 @@
+@(thisInstance: Form[models.CustomerWatch], isItNew: Boolean)
+
+@import tags._
+
+@actionlink() = @{
+	routes.CrudHelper.manage("customer-watch-part-work-in-progress")
+}
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('button[value="delete"]').hide();
+			$('button[value="show"]').hide();
+		})
+	</script>
+}
+
+@defining(new views.FormDisplay(thisInstance, "customer.watch.work.in.progress", "admin.customer.watch.work.in.progress.form")) { formDisplay =>
+		@{ 
+		   formDisplay.addFormField("id", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("b2bId", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("brand", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("model", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("reference", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("serial", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("partnerToInfos", true, "textarea", 'readonly -> "readonly");
+		   formDisplay.addFormField("servicePrice", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("serviceStatus", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   formDisplay.addFormField("expectedServiceEndDate", true, "input", 'type -> "date");
+		   formDisplay.addFormField("partnerFromInfos", true, "textarea");
+		   formDisplay.addFormField("status", true, "input", 'type -> "hidden", '_class -> "hidden");
+		}
+	
+	@admin.template.form(formDisplay, false, actionlink, end_scripts)
+}

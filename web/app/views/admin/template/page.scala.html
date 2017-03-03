@@ -1,4 +1,4 @@
-@(pageDisplay: views.PageDisplay[_], link: (Int, String, String, String, Int) => Html, displaylink: (Long) => Html, editlink: (Long) => Html, optionallink: (Long) => Html, newlink: () => Html, currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, actionlink: () => Html, optionnalLinkOpensNewPage: Boolean = true)
+@(pageDisplay: views.PageDisplay[_], link: (Int, String, String, String, Int) => Html, displaylink: (Long) => Html, editlink: (Long) => Html, optionallink: (Long) => Html, newlink: () => Html, currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, actionlink: () => Html, optionnalLinkOpensNewPage: Boolean = true, end_scripts_bottom: Html = Html(""))
 @import tags._
 @import scala._
 @****************************************
@@ -68,7 +68,7 @@
 
 @createnewlink() = {@if(newlink != null) {@newlink().toString}}
 
-@layouts.admin_main(pageDisplay.getLabelKey) {
+@layouts.admin_main(pageDisplay.getLabelKey, end_scripts_bottom) {
 
   <div class="container page">
     

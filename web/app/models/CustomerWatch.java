@@ -381,6 +381,20 @@ public class CustomerWatch extends Model implements Searchable {
     	return emptyPage();
     }
     
+    public static Page<CustomerWatch> pageForPartnerWorkInProgress(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    	if (PartnerHelper.isLoggedInUserAPartner(session)) {
+    		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
+    		
+    		return commonQuery
+    				.eq("status", "STORED_BY_A_REGISTERED_PARTNER").eq("servicePriceAccepted", true)
+					.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+        			.getPage(page);
+    	}
+        
+    	return emptyPage();
+    }
+    
     private static ExpressionList<CustomerWatch> getCommonQueryForPartner(String filter, String status, Session session) {
     	ExpressionList<CustomerWatch> query = find.where().conjunction()
     			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%").ilike("CAST(id AS varchar(10))", "%" + filter + "%")
@@ -457,6 +471,12 @@ public class CustomerWatch extends Model implements Searchable {
 		if (servicePriceAccepted == false)
 			return "service.pricing.to.be.validated";
 		return "service.pricing.validated";
+	}
+	
+	public String getFullId() {
+		if (b2bId != null && ! "".equals(b2bId))
+			return id+" ("+b2bId+")";
+		return id.toString();
 	}
 	
 	@Override

@@ -22,7 +22,13 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','//connect.facebook.net/en_US/fbevents.js');
 
 fbq('init', '1673207082934555');
-fbq('track', "PageView");</script>
+fbq('track', "PageView");
+    @if(flash.containsKey("facebook_demande_devis")) {
+        fbq('track', 'DEMANDE_DE_DEVIS',{
+NOMBRE_DE_DEMANDE: 1
+});
+	}
+</script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1673207082934555&ev=PageView&noscript=1"
 /></noscript>

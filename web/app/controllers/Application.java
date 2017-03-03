@@ -472,6 +472,8 @@ public class Application extends Controller {
 			
 			flash("success", "OK");
 			
+			flash("facebook_demande_devis", "-");
+			
 			GoogleAnalyticsHelper.pushEvent("order", "sent", ctx());
 			
 			return redirect(

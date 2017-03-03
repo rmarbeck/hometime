@@ -4,8 +4,6 @@
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
 @in_head = {
     @if(flash.containsKey("success")) {
-        @fragments.send_order_event_facebook()
-        
         @fragments.send_order_event_google_analytics()
     }
 }

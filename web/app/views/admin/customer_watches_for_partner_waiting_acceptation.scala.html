@@ -5,14 +5,25 @@
     @routes.Partner.acceptWatch(id)
 }
 
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('a[class~="btn-default"]').hide();
+			$('a[class~="btn-primary"]').hide();
+			$('a[class~="btn-info"]').append(" Accepter");
+		})
+	</script>
+}
+
+
 
 @defining(new views.PageDisplay(currentPage, "Modèle ou marque", "admin.customer.watch.partner.waiting.acceptation.page")) { pageDisplay =>
-	@{  
+	@{  pageDisplay.addTableField("id", "id", "getFullId", false);
 	    pageDisplay.addTableField("serviceDueDate", "due.date", "getServiceDueDate", false, "date medium");
 	    pageDisplay.addTableField("brand", "brand", "getBrand", false);
 	    pageDisplay.addTableField("model", "model", "getWatchDetails", false);
 	    pageDisplay.addTableField("partnerToInfos", "infos", "getPartnerToInfos", false);
 	}
 	
-	@admin.template.page_with_default_links(pageDisplay, "customer-watch-part-waiting", optionallink, currentSortBy, currentOrder, currentFilter, currentSize, false, false)
+	@admin.template.page_with_default_links(pageDisplay, "customer-watch-part-waiting", optionallink, currentSortBy, currentOrder, currentFilter, currentSize, false, false, end_scripts)
 }

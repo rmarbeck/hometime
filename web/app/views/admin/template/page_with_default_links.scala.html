@@ -1,4 +1,4 @@
-@(pageDisplay: views.PageDisplay[_], controllerName: String, optionallink: (Long) => Html, currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, displayNewLink: Boolean = true, optionnalLinkOpensNewPage: Boolean = true)
+@(pageDisplay: views.PageDisplay[_], controllerName: String, optionallink: (Long) => Html, currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, displayNewLink: Boolean = true, optionnalLinkOpensNewPage: Boolean = true, end_scripts_bottom: Html = Html(""))
 @import tags._
 
-@admin.template.page_with_default_links_and_action(pageDisplay, controllerName, optionallink, currentSortBy, currentOrder, currentFilter, currentSize, displayNewLink, null, optionnalLinkOpensNewPage)
+@admin.template.page_with_default_links_and_action(pageDisplay, controllerName, optionallink, currentSortBy, currentOrder, currentFilter, currentSize, displayNewLink, null, optionnalLinkOpensNewPage, end_scripts_bottom)
