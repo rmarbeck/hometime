@@ -1823,6 +1823,12 @@ admin.customer.watch.form.value.status.by.other=Chez autre partenaire
 admin.customer.watch.form.value.status.by.customer=Rendue au client
 admin.customer.watch.form.label.status=Où se trouve la montre
 admin.customer.watch.form.label.service.price.accepted=Devis accepté
+admin.customer.watch.form.label.service.price=Devis
+admin.customer.watch.form.label.service.needed=Entretien nécessaire (vs terminé)
+admin.customer.watch.form.label.service.paid=Entretien payé au partenaire
+admin.customer.watch.form.label.first.entry.in.partner.workshop.date=Entrée chez le partenaire
+admin.customer.watch.form.label.expected.service.end.date=Date prévisionnelle
+
 
 admin.customer.watch.form.label.customer=Client
 admin.customer.watch.form.value.customer.default=Sélectionner le client
@@ -1847,6 +1853,8 @@ admin.customer.watch.form.label.b2b.id=Identifiant chez le client
 admin.customer.watch.form.placeholder.b2b.id=
 admin.customer.watch.form.label.partner.to.infos=Infos vers le partenaire
 admin.customer.watch.form.placeholder.partner.to.infos=
+admin.customer.watch.form.label.partner.from.infos=Remarques du partenaire
+admin.customer.watch.form.placeholder.partner.from.infos=
 admin.customer.watch.form.label.service.due.date=Date butoire
 admin.customer.watch.form.label.service.status=Avancement entretien
 admin.customer.watch.form.placeholder.service.status=0->100
@@ -3259,7 +3267,7 @@ admin.order.request.infos.action.edit.and.mark=Modifier et attente de retour
 admin.order.request.infos.form.label.infos=Infos privées
 admin.order.request.infos.form.placeholder.infos=...
 admin.order.request.infos.action.cancel=Annuler
- 
+
 
 
 admin.customer.watch.partner.page=Montres en cours d''entretien 

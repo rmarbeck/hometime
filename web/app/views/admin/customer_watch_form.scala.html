@@ -66,14 +66,26 @@
                          'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
 				@simple_admin_textarea(watch("partnerToInfos"), "admin.customer.watch.form.VARIABLE.partner.to.infos")
-
+				
 				@simple_admin_input(watch("serviceDueDate"), "admin.customer.watch.form.VARIABLE.service.due.date", 'type -> "date")
 				
 				@simple_admin_input(watch("serviceStatus"), "admin.customer.watch.form.VARIABLE.service.status", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "1")
 				
 				@simple_admin_input(watch("emergencyLevel"), "admin.customer.watch.form.VARIABLE.emergency.level", 'type -> "number", 'min -> "0", 'step -> "1")
 				
+				@simple_admin_textarea(watch("partnerFromInfos"), "admin.customer.watch.form.VARIABLE.partner.from.infos", 'readonly -> "readonly")
+				
+				@simple_admin_input(watch("firstEntryInPartnerWorkhopDate"), "admin.customer.watch.form.VARIABLE.first.entry.in.partner.workshop.date", 'type -> "date", 'readonly -> "readonly")
+				
+				@simple_admin_input(watch("expectedServiceEndDate"), "admin.customer.watch.form.VARIABLE.expected.service.end.date", 'type -> "date", 'readonly -> "readonly")
+
+				@simple_admin_input(watch("servicePrice"), "admin.customer.watch.form.VARIABLE.service.price", 'type -> "number", 'min -> "0", 'step -> "1", 'readonly -> "readonly")
+				
 				@simple_admin_checkbox(watch("servicePriceAccepted"), "admin.customer.watch.form.VARIABLE.service.price.accepted")
+				
+				@simple_admin_checkbox(watch("serviceNeeded"), "admin.customer.watch.form.VARIABLE.service.needed")
+				
+				@simple_admin_checkbox(watch("servicePaid"), "admin.customer.watch.form.VARIABLE.service.paid")
 	
 				<hr />
 
