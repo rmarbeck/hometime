@@ -15,7 +15,7 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 @li_activable(1, index) {<a href="@routes.Admin.index()"><span class="glyphicon glyphicon-home"></span></a>}
-                @if_admin_or_reserved1() {
+                @if_admin_or_collaborator() {
                 @li_activable(10, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.requests")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -25,7 +25,7 @@
                   </ul>
                 }
                 }
-                @if_reserved2() {
+                @if_partner() {
                 @li_activable(10, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.requests")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">

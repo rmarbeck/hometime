@@ -19,9 +19,9 @@
 </script> 
 }
 
-@layouts.admin("", end_scripts) {
+@layouts.admin("Admin", end_scripts) {
 	<div class="container">
-	@if_admin_or_reserved1() {
+	@if_admin_or_collaborator() {
     @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
     	<h3>
     		@Html(Messages("admin.index.order.requests.active"))
@@ -160,8 +160,11 @@
     }
     <br />
     }
-    @if_reserved2() {
+    @if_partner() {
     	@index_partner_content()
+    }
+    @if_customer() {
+    	@index_customer_content()
     }
     </div>
 }

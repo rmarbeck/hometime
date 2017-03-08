@@ -3385,3 +3385,9 @@ admin.customer.watch.work.in.progress.form.expectedserviceenddate.label.name=Dat
 admin.customer.watch.work.in.progress.form.partnerfrominfos.label.name=Remarques
 admin.customer.watch.work.in.progress.form.b2bid.label.name=ID client
 admin.customer.watch.work.in.progress.form.b2bid.placeholder.name=
+
+
+admin.customer.index.watches.working.active=Montres en cours d''entretien
+admin.customer.index.watches.working.active.none=Aucune montre en cours d''entretien
+admin.customer.index.watches.waiting.to.be.collected.active=Montres en attente de prise en charge
+admin.customer.index.watches.waiting.to.be.collected.active.none=Aucune montre en attente de prise en charge

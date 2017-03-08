@@ -1,0 +1,2 @@
+@()(body: => Html)
+@if(fr.hometime.utils.SecurityHelper.isLoggedInUserAuthorized(session, fr.hometime.utils.SecurityHelper.isCustomer)) {@body}

@@ -13,7 +13,7 @@ import views.html.admin.order_form;
 import views.html.admin.orders;
 import views.html.admin.order;
 
-@Security.Authenticated(SecuredAdminAndReservedOnly.class)
+@Security.Authenticated(SecuredAdminOrCollaboratorOrPartnerOnly.class)
 @With(NoCacheAction.class)
 public class Order extends Controller {
 	

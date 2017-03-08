@@ -86,7 +86,21 @@
 				@simple_admin_checkbox(watch("serviceNeeded"), "admin.customer.watch.form.VARIABLE.service.needed")
 				
 				@simple_admin_checkbox(watch("servicePaid"), "admin.customer.watch.form.VARIABLE.service.paid")
-	
+				
+				<hr />
+				
+				@simple_admin_input(watch("finalCustomerServiceStatus"), "admin.customer.watch.form.VARIABLE.final.customer.service.status", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "1")
+				
+				@simple_admin_input(watch("finalCustomerEmergencyLevel"), "admin.customer.watch.form.VARIABLE.final.customer.emergency.level", 'type -> "number", 'min -> "0", 'step -> "1")
+				
+				@simple_admin_input(watch("finalCustomerServicePrice"), "admin.customer.watch.form.VARIABLE.final.customer.service.price", 'type -> "number", 'min -> "0", 'step -> "1", 'readonly -> "readonly")
+				
+				@simple_admin_checkbox(watch("finalCustomerServicePriceAccepted"), "admin.customer.watch.form.VARIABLE.final.customer.service.price.accepted", 'readonly -> "readonly")
+				
+				@simple_admin_checkbox(watch("finalCustomerServicePaid"), "admin.customer.watch.form.VARIABLE.final.customer.service.paid")
+				
+				@simple_admin_input(watch("backToCustomerDate"), "admin.customer.watch.form.VARIABLE.back.to.customer.date", 'type -> "date", 'readonly -> "readonly")
+				
 				<hr />
 
 	            @simple_admin_input(watch("endOfMainWaranty"), "admin.customer.watch.form.VARIABLE.end.of.main.waranty", 'type -> "date")

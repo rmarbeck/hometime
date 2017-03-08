@@ -11,6 +11,26 @@
          name:                  Test
          active:                true
 
+customers:
+    - &CustomerB2B1 !!models.Customer
+         email:                     customerb2b1@email.com
+         alternativeEmail:          customerb2b1@alternativeemail.com
+         phoneNumber:               "060000001"
+         alternativePhoneNumber:    "070000001"
+         firstname:                 Prénom du b2b customer1 
+         name:                      Nom du b2b customer1
+         billingAddress: |
+              25 rue du customer 1
+              75015 Paris
+         pickupAddress: |
+              25 rue du customer 1
+              75015 Paris
+         returnAddress: |
+              25 rue du customer 1
+              75015 Paris
+         sharedInfos:               Infos partagées
+         privateInfos:              Infos privées
+
 users:
     - &admin1 !!models.User
          email:                 admin@hometime.fr
@@ -55,7 +75,7 @@ users:
     - &coll1 !!models.User
          email:                 coll1@hometime.fr
          password:              default
-         role:                  RESERVED_1
+         role:                  COLLABORATOR
          firstname:             coll 1
          name:                  normal
          active:                true
@@ -63,7 +83,7 @@ users:
     - &coll2 !!models.User
          email:                 coll1_quick@hometime.fr
          password:              "1234"
-         role:                  RESERVED_1
+         role:                  COLLABORATOR
          firstname:             coll 1
          name:                  quick
          active:                true
@@ -71,7 +91,7 @@ users:
     - &part1 !!models.User
          email:                 part1@hometime.fr
          password:              default
-         role:                  RESERVED_2
+         role:                  PARTNER
          firstname:             part 1
          name:                  normal
          active:                true
@@ -79,7 +99,7 @@ users:
     - &part1q !!models.User
          email:                 part1_quick@hometime.fr
          password:              "4567"
-         role:                  RESERVED_2
+         role:                  PARTNER
          firstname:             part 1
          partner:               *partner1
          name:                  quick
@@ -88,7 +108,7 @@ users:
     - &part2 !!models.User
          email:                 part2@hometime.fr
          password:              default
-         role:                  RESERVED_2
+         role:                  PARTNER
          firstname:             part 2
          name:                  normal
          active:                true
@@ -96,9 +116,18 @@ users:
     - &part2q !!models.User
          email:                 part2_quick@hometime.fr
          password:              "6789"
-         role:                  RESERVED_2
+         role:                  PARTNER
          firstname:             part 2
          name:                  quick
          active:                true
+
+    - &custb2b !!models.User
+         email:                 cust_b2b_quick@hometime.fr
+         password:              "8901"
+         role:                  CUSTOMER
+         firstname:             cust
+         name:                  b2b
+         active:                true
+         customer:              *CustomerB2B1
 
 #Fin

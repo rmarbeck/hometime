@@ -19,6 +19,8 @@
 
 @defining(new views.ModelDisplay(instance, "admin.user")) { modelDisplay =>
 		@{ 	modelDisplay.addField("email");
+			modelDisplay.addField("partner");
+			modelDisplay.addField("customer");
 		}
 	
 	@admin.template.display(modelDisplay, null, editlink, end_body)

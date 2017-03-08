@@ -131,6 +131,12 @@ create table customer_watch (
   service_price             bigint,
   service_price_accepted    boolean,
   service_paid              boolean,
+  final_customer_service_price bigint,
+  final_customer_service_price_accepted boolean,
+  final_customer_service_paid boolean,
+  final_customer_emergency_level bigint,
+  final_customer_service_status bigint,
+  back_to_customer_date     timestamp,
   service_needed            boolean,
   customer_id               bigint,
   customer_watch_status     varchar(40),
@@ -474,6 +480,7 @@ create table user_table (
   active                    boolean,
   number_of_bad_passwords   integer,
   partner_id                bigint,
+  customer_id               bigint,
   constraint ck_user_table_role check (role in (0,1,2,3)),
   constraint uq_user_table_email unique (email),
   constraint pk_user_table primary key (id))
@@ -648,12 +655,14 @@ alter table selling_document add constraint fk_selling_document_document_21 fore
 create index ix_selling_document_document_21 on selling_document (document_id);
 alter table user_table add constraint fk_user_table_partner_22 foreign key (partner_id) references partner (id) on delete restrict on update restrict;
 create index ix_user_table_partner_22 on user_table (partner_id);
-alter table watch_to_sell add constraint fk_watch_to_sell_brand_23 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_watch_to_sell_brand_23 on watch_to_sell (brand_id);
-alter table watch_to_sell add constraint fk_watch_to_sell_customerThat_24 foreign key (customer_that_bought_the_watch_id) references customer (id) on delete restrict on update restrict;
-create index ix_watch_to_sell_customerThat_24 on watch_to_sell (customer_that_bought_the_watch_id);
-alter table watch_to_sell add constraint fk_watch_to_sell_purchaseInvo_25 foreign key (purchase_invoice_id) references external_document (id) on delete restrict on update restrict;
-create index ix_watch_to_sell_purchaseInvo_25 on watch_to_sell (purchase_invoice_id);
+alter table user_table add constraint fk_user_table_customer_23 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_user_table_customer_23 on user_table (customer_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_brand_24 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_brand_24 on watch_to_sell (brand_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_customerThat_25 foreign key (customer_that_bought_the_watch_id) references customer (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_customerThat_25 on watch_to_sell (customer_that_bought_the_watch_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_purchaseInvo_26 foreign key (purchase_invoice_id) references external_document (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_purchaseInvo_26 on watch_to_sell (purchase_invoice_id);
 
 
 

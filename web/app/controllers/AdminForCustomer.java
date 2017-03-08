@@ -2,37 +2,64 @@ package controllers;
 
 import java.util.Date;
 
-import models.CustomerWatch.CustomerWatchStatus;
 import fr.hometime.utils.PartnerAndCustomerHelper;
+import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
-import views.html.admin.customer_watch_form;
-import views.html.admin.customer_watch_for_partner_waiting_quotation_form;
-import views.html.admin.customer_watch_for_partner_work_in_progress_form;
-import views.html.admin.customer_watches_for_partner;
-import views.html.admin.customer_watch_for_partner;
-import views.html.admin.customer_watches_for_partner_waiting_acceptation;
-import views.html.admin.customer_watches_for_partner_waiting_quotation;
-import views.html.admin.customer_watches_for_partner_work_in_progress;
 
-@Security.Authenticated(SecuredAdminOrPartnerOnly.class)
+@Security.Authenticated(SecuredAdminOrCustomerOnly.class)
 @With(NoCacheAction.class)
-public class Partner extends Controller {
-	
+public class AdminForCustomer extends Controller {
+	/*
 	public static Result LIST_WAITING_ACCEPTATION_WATCHES = redirect(
-			routes.Partner.displayWaitingAcceptationWatches(0, "lastStatusUpdate", "desc", "", 20, "")
+			routes.AdminForCustomer.displayWaitingAcceptationWatches(0, "lastStatusUpdate", "desc", "", 20, "")
+			);
+	
+	public static Result displayWaitingAcceptationWatches(int page, String sortBy, String order, String filter, int size, String status) {
+        return ok(customer_watches_for_customer_waiting_acceptation.render(models.CustomerWatch.pageForCustomerWaitingAcceptation(page, size, sortBy, order, filter, status, session()), sortBy, order, filter, size, status));
+    }
+	
+	public static Result acceptWatchBack(Long id) {
+		models.CustomerWatch requestedWatch = models.CustomerWatch.findById(id);
+		if (PartnerAndCustomerHelper.isWatchOneOfLoggedInCustomer(requestedWatch, session()))
+			acceptWatchBackAndSave(requestedWatch);
+        return LIST_WAITING_ACCEPTATION_WATCHES;
+    }
+	
+	private static void acceptWatchBackAndSave(models.CustomerWatch requestedWatch) {
+		requestedWatch.status = CustomerWatchStatus.BACK_TO_CUSTOMER;
+		requestedWatch.backToCustomerDate = new Date();
+		requestedWatch.update();
+	}
+	
+	public static Result acceptServicePrice(Long id) {
+		models.CustomerWatch requestedWatch = models.CustomerWatch.findById(id);
+		if (PartnerAndCustomerHelper.isWatchOneOfLoggedInCustomer(requestedWatch, session()))
+			acceptWatchBackAndSave(requestedWatch);
+        return LIST_WAITING_ACCEPTATION_WATCHES;
+    }
+	
+	private static void acceptServicePriceAndSave(models.CustomerWatch requestedWatch) {
+		requestedWatch.status = CustomerWatchStatus.BACK_TO_CUSTOMER;
+		requestedWatch.backToCustomerDate = new Date();
+		requestedWatch.update();
+	}
+	*/
+	
+	/*public static Result LIST_WAITING_ACCEPTATION_WATCHES = redirect(
+			routes.AdminForCustomer.displayWaitingAcceptationWatches(0, "lastStatusUpdate", "desc", "", 20, "")
 			);
 	
 	public static Result LIST_WAITING_QUOTATION_WATCHES = redirect(
-			routes.Partner.displayWaitingQuotationWatches(0, "lastStatusUpdate", "desc", "", 20, "")
+			routes.AdminForCustomer.displayWaitingQuotationWatches(0, "lastStatusUpdate", "desc", "", 20, "")
 			);
 	
 	public static Result LIST_WORK_IN_PROGRESS_WATCHES = redirect(
-			routes.Partner.displayWorkInProgressWatches(0, "lastStatusUpdate", "desc", "", 20, "")
+			routes.AdminForCustomer.displayWorkInProgressWatches(0, "lastStatusUpdate", "desc", "", 20, "")
 			);
 	
 	public static Result displayAll(int page, String sortBy, String order, String filter, int size) {
@@ -57,7 +84,7 @@ public class Partner extends Controller {
 	
 	public static Result displayWatch(Long id) {
 		models.CustomerWatch requestedWatch = models.CustomerWatch.findById(id);
-		if (PartnerAndCustomerHelper.isWatchAllocatedToLoggedInPartner(requestedWatch, session()))
+		if (PartnerHelper.isWatchAllocatedToLoggedInPartner(requestedWatch, session()))
 			return ok(customer_watch_for_partner.render(requestedWatch));
         return LIST_WAITING_ACCEPTATION_WATCHES;
     }
@@ -72,14 +99,14 @@ public class Partner extends Controller {
 
 	public static Result acceptWatch(Long id) {
 		models.CustomerWatch requestedWatch = models.CustomerWatch.findById(id);
-		if (PartnerAndCustomerHelper.isWatchAllocatedToLoggedInPartner(requestedWatch, session()))
+		if (PartnerHelper.isWatchAllocatedToLoggedInPartner(requestedWatch, session()))
 			acceptWatchAndSave(requestedWatch);
         return LIST_WAITING_ACCEPTATION_WATCHES;
     }
 	
 	public static Result markWatchFinishedUnFinished(Long id) {
 		models.CustomerWatch requestedWatch = models.CustomerWatch.findById(id);
-		if (PartnerAndCustomerHelper.isWatchAllocatedToLoggedInPartner(requestedWatch, session()))
+		if (PartnerHelper.isWatchAllocatedToLoggedInPartner(requestedWatch, session()))
 			markFinishedUnFinished(requestedWatch);
         return LIST_WORK_IN_PROGRESS_WATCHES;
     }
@@ -163,5 +190,5 @@ public class Partner extends Controller {
 	private static void markFinishedUnFinished(models.CustomerWatch requestedWatch) {
 		requestedWatch.serviceNeeded = ! requestedWatch.serviceNeeded;
 		requestedWatch.update();
-	}
+	}*/
 }

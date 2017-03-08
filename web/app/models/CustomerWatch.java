@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,8 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Page;
 
-import fr.hometime.utils.PartnerHelper;
+import fr.hometime.utils.CustomerWatchHelper;
+import fr.hometime.utils.PartnerAndCustomerHelper;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.SecurityHelper;
 
@@ -133,6 +135,19 @@ public class CustomerWatch extends Model implements Searchable {
 	
 	public boolean servicePaid = false;
 	
+	public Long finalCustomerServicePrice = 0L;
+	
+	public boolean finalCustomerServicePriceAccepted = false;
+	
+	public boolean finalCustomerServicePaid = false;
+	
+	public Long finalCustomerEmergencyLevel = 0L;
+	
+	public Long finalCustomerServiceStatus = 0L;
+	
+	@Column(name="back_to_customer_date")
+	public Date backToCustomerDate;
+	
 	public boolean serviceNeeded = true;
 	
 	@ManyToOne
@@ -169,12 +184,22 @@ public class CustomerWatch extends Model implements Searchable {
     
     public static List<CustomerWatch> findForLoggedInPartner(Session session) {
     	Optional<User> loggedInUser = SecurityHelper.getLoggedInUser(session);
-    	System.out.println("!!!!!!!!!!!!!!! "+loggedInUser.get());
-    	System.out.println("!!!!!!!!!!!!!!! "+loggedInUser.get().partner);
     	if (loggedInUser.isPresent()) {
     		return find.where().conjunction().eq("partner.id", loggedInUser.get().partner.id).orderBy("firstEntryInPartnerWorkshopDate DESC").findList();
     	}
     	return new ArrayList<CustomerWatch>();
+    }
+    
+    public static List<CustomerWatch> findForLoggedInCustomer(Session session) {
+    	return CustomerWatchHelper.findForLoggedInCustomer(session);
+    }
+    
+    public static List<CustomerWatch> findForLoggedInCustomerWorkingOnIt(Session session) {
+    	return CustomerWatchHelper.findForLoggedInCustomerWorkingOnIt(session);
+    }
+    
+    public static List<CustomerWatch> findForLoggedInCustomerWaitingToBeCollected(Session session) {
+    	return CustomerWatchHelper.findForLoggedInCustomerWaitingToBeCollected(session);
     }
     
     public static List<CustomerWatch> findAllBySerialAsc() {
@@ -267,6 +292,20 @@ public class CustomerWatch extends Model implements Searchable {
         			.orderBy("lastStatusUpdate desc").findList();
     }
     
+    public static List<CustomerWatch> findByCustomerOut(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+    				.ne("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+        			.orderBy("lastStatusUpdate desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByCustomerWaitingToBeCollected(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+    				.eq("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+    				.eq("serviceNeeded", true)
+        			.orderBy("lastStatusUpdate desc").findList();
+    }
+    
+    
     public static List<CustomerWatch> findByCustomerOtherLocation(models.Customer customer) {
     	return find.where().eq("customer.id", customer.id)
     				.ne("status", CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT)
@@ -341,7 +380,7 @@ public class CustomerWatch extends Model implements Searchable {
     }
     
     public static Page<CustomerWatch> pageForPartner(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
-    	if (PartnerHelper.isLoggedInUserAPartner(session)) {
+    	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
     		
     		return commonQuery.eq("status", "STORED_BY_A_REGISTERED_PARTNER").eq("serviceNeeded", true).eq("servicePriceAccepted", true)
@@ -354,7 +393,7 @@ public class CustomerWatch extends Model implements Searchable {
     }
     
     public static Page<CustomerWatch> pageForPartnerWaitingAcceptation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
-    	if (PartnerHelper.isLoggedInUserAPartner(session)) {
+    	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
 
     		return commonQuery
@@ -368,7 +407,7 @@ public class CustomerWatch extends Model implements Searchable {
     }
     
     public static Page<CustomerWatch> pageForPartnerWaitingQuotation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
-    	if (PartnerHelper.isLoggedInUserAPartner(session)) {
+    	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
     		
     		return commonQuery
@@ -382,7 +421,7 @@ public class CustomerWatch extends Model implements Searchable {
     }
     
     public static Page<CustomerWatch> pageForPartnerWorkInProgress(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
-    	if (PartnerHelper.isLoggedInUserAPartner(session)) {
+    	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
     		
     		return commonQuery
@@ -399,7 +438,7 @@ public class CustomerWatch extends Model implements Searchable {
     	ExpressionList<CustomerWatch> query = find.where().conjunction()
     			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%").ilike("CAST(id AS varchar(10))", "%" + filter + "%")
     			.endJunction()
-    			.eq("partner.id", PartnerHelper.getLoggedInPartnerID(session));
+    			.eq("partner.id", PartnerAndCustomerHelper.getLoggedInPartnerID(session));
     	
     	if (status != null && ! "".equals(status))
 			query = query.eq("customer_watch_status", status);
@@ -514,5 +553,14 @@ public class CustomerWatch extends Model implements Searchable {
 		return Searcher.generateDetails(values);
 	}
     
+	public String getStatusClass() {
+		if (serviceStatus == 100)
+			return "finished";
+		if (serviceStatus >= 70)
+			return "almostFinished";
+		if (serviceStatus >= 1)
+			return "started";
+		return "toStart";
+	}
 }
 

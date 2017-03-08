@@ -34,8 +34,8 @@ public class User extends Model implements CrudReady<User, User> {
 	public enum Role {
 	    ADMIN ("1"),
 	    CUSTOMER ("2"),
-	    RESERVED_1 ("3"),
-	    RESERVED_2 ("4");
+	    COLLABORATOR ("3"),
+	    PARTNER ("4");
 	    
 		private String name = "";
 		    
@@ -77,6 +77,9 @@ public class User extends Model implements CrudReady<User, User> {
 	
 	@ManyToOne
 	public Partner partner;
+	
+	@ManyToOne
+	public Customer customer;
 	
 	public static User of() {
     	if (singleton == null)

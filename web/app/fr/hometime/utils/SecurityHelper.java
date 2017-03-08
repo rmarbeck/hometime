@@ -104,15 +104,17 @@ public class SecurityHelper {
 
     public static Predicate<User> isAdmin = (user) -> (user!= null && user.role == Role.ADMIN);
     
-    public static Predicate<User> isReserved = (user) -> (user!= null && ( user.role == Role.RESERVED_1 || user.role == Role.RESERVED_2) );
+    public static Predicate<User> isCollaboratorOrPartner = (user) -> (user!= null && ( user.role == Role.COLLABORATOR || user.role == Role.PARTNER) );
     
-    public static Predicate<User> isAdminOrReserved1 = (user) -> (user!= null && ( user.role == Role.RESERVED_1 || user.role == Role.ADMIN) );
+    public static Predicate<User> isAdminOrCollaborator = (user) -> (user!= null && ( user.role == Role.COLLABORATOR || user.role == Role.ADMIN) );
     
-    public static Predicate<User> isAdminOrReserved2 = (user) -> (user!= null && ( user.role == Role.RESERVED_2 || user.role == Role.ADMIN) );
+    public static Predicate<User> isAdminOrPartner = (user) -> (user!= null && ( user.role == Role.PARTNER || user.role == Role.ADMIN) );
     
-    public static Predicate<User> isReserved1 = (user) -> (user!= null && user.role == Role.RESERVED_1 );
+    public static Predicate<User> isCollaborator = (user) -> (user!= null && user.role == Role.COLLABORATOR );
     
-    public static Predicate<User> isReserved2 = (user) -> (user!= null && user.role == Role.RESERVED_2 );
+    public static Predicate<User> isPartner = (user) -> (user!= null && user.role == Role.PARTNER );
+    
+    public static Predicate<User> isCustomer = (user) -> (user!= null && user.role == Role.CUSTOMER );
     
     public static List<User> findQuickLogins() {
         return User.find.where().contains("email", "_quick").findList();

@@ -1,0 +1,41 @@
+@()
+@import tags._
+
+@displayWatches(watches: List [models.CustomerWatch], key: String = "admin.customer.index.watches")  = {
+	@if(watches != null && watches.size >0) {
+    	<h3>
+    		@Html(Messages(key+".active"))
+    	</h3>
+    	<table class="table table-condensed table-striped table-bordered">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages("admin.index.watches.head.id"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.model"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.last.communication.date"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for(watch <- watches) {
+	      	<tr>
+	      		<td>@watch.b2bId</td>
+	      		<td>@watch.brand</td>
+	      		<td>@watch.model</td>
+	      		<td>@display_date(watch.lastStatusUpdate, "dd/MM/yyyy HH:mm")</td>
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
+    } else {
+    	<h3>
+    		@Html(Messages(key+".active.none"))
+    	</h3>
+    }
+}
+
+@displayWatches(models.CustomerWatch.findForLoggedInCustomer(session), "admin.customer.index.watches.all")
+
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWorkingOnIt(session), "admin.customer.index.watches.working")
+
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingToBeCollected(session), "admin.customer.index.watches.waiting.to.be.collected")
+
