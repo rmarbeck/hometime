@@ -23,8 +23,6 @@
 	    pageDisplay.addTableField("model", "model", "getWatchDetails", false, "take 20");
 	    pageDisplay.addTableField("partnerToInfos", "infos", "getPartnerToInfos", false, "take 20");
 	    pageDisplay.addTableField("servicePriceAccepted", "service.price.status", "getServicePriceStatus", false, "i18n");
-	    pageDisplay.setClass("getStatusClass");
-	    		   
 	}
 	
 	@admin.template.page_with_default_links(pageDisplay, "customer-watch-part-waiting-quotation", null, currentSortBy, currentOrder, currentFilter, currentSize, false, false, end_scripts)
