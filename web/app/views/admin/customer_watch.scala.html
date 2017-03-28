@@ -75,7 +75,7 @@
               	              	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.partner.to.infos")), Html(watch.partnerToInfos))
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.price")), Html(watch.servicePrice.toString))
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.price")), if (watch.servicePrice != null) { Html(watch.servicePrice.toString) } else {Html("N/A")})
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.accepted")), Html(watch.servicePriceAccepted.toString))
               	
