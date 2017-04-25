@@ -1870,6 +1870,7 @@ admin.customer.watch.form.label.emergency.level=Niveau d''urgence
 admin.customer.watch.form.placeholder.emergency.level=
 
 admin.customer.watch.watches.header.creation.date=Création
+admin.customer.watch.watches.header.date=Date
 admin.customer.watch.watches.header.last.status.update.date=Mise à jour
 admin.customer.watch.watches.header.id=ID
 admin.customer.watch.watches.header.brand=Marque
