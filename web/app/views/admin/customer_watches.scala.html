@@ -73,7 +73,8 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  @header("lastStatusUpdate", Html(Messages("admin.customer.watch.watches.header.date")))
+                  @header("creationDate", Html(Messages("admin.customer.watch.watches.header.creation.date")))
+                  @header("lastStatusUpdate", Html(Messages("admin.customer.watch.watches.header.last.status.update.date")))
                   @header("brand", Html(Messages("admin.customer.watch.watches.header.brand")))
                   @header("model", Html(Messages("admin.customer.watch.watches.header.model")))
                   @header("reference", Html(Messages("admin.customer.watch.watches.header.reference")),true)
@@ -89,7 +90,10 @@
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
                   </td>
                   <td>
-                    @display_date(watch.lastStatusUpdate, "dd/MM HH:mm")
+                    @display_date(watch.creationDate, "dd/MM")
+                  </td>
+                  <td>
+                    @display_date(watch.lastStatusUpdate, "dd/MM")
                   </td>
                   <td>
                     @watch.brand

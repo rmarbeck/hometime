@@ -1,7 +1,7 @@
 @()
 @import tags._
 
-@watches = @{models.CustomerWatch.findForLoggedInPartner(session)}
+@watches = @{models.CustomerWatch.findForLoggedInPartnerInWorkshop(session)}
 
 	@if(watches != null && watches.size >0) {
     	<h3>

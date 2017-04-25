@@ -90,9 +90,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12 text-center">
+        <div class="col-xs-6 text-right">
         	<a type="button" class="btn btn-primary" href="@routes.Accounting.addPServiceCByWatchId(watch.id)"><span class="glyphicon glyphicon-certificate"></span>@Html(Messages("admin.customer.watch.action.create.certificate"))</a>
         </div>
+        @if(watch.status != models.CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER) {
+        <div class="col-xs-6 text-left">
+        	<a type="button" class="btn btn-warning" href="@routes.CustomerWatch.setBackToCustomer(watch.id)"><span class="glyphicon glyphicon-send"></span>@Html(Messages("admin.customer.watch.action.back.to.customer"))</a>
+        </div>
+        }
      </div>
   </div>
 }

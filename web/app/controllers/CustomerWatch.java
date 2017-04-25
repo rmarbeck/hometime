@@ -21,7 +21,7 @@ import views.html.admin.customer_watches_for_partner;
 public class CustomerWatch extends Controller {
 	
 	public static Result LIST_CUSTOMER_WATCHES = redirect(
-			routes.CustomerWatch.displayAll(0, "lastStatusUpdate", "desc", "", "")
+			routes.CustomerWatch.displayAll(0, "creationDate", "desc", "", "")
 			);
 
 	public static Result displayAll(int page, String sortBy, String order, String filter, String status) {

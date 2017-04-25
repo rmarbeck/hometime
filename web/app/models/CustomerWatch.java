@@ -183,11 +183,11 @@ public class CustomerWatch extends Model implements Searchable {
     }
     
     public static List<CustomerWatch> findForLoggedInPartner(Session session) {
-    	Optional<User> loggedInUser = SecurityHelper.getLoggedInUser(session);
-    	if (loggedInUser.isPresent()) {
-    		return find.where().conjunction().eq("partner.id", loggedInUser.get().partner.id).orderBy("firstEntryInPartnerWorkshopDate DESC").findList();
-    	}
-    	return new ArrayList<CustomerWatch>();
+    	return CustomerWatchHelper.findForLoggedInPartner(session);
+    }
+    
+    public static List<CustomerWatch> findForLoggedInPartnerInWorkshop(Session session) {
+    	return CustomerWatchHelper.findForLoggedInPartnerInWorkshop(session);
     }
     
     public static List<CustomerWatch> findForLoggedInCustomer(Session session) {

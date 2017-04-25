@@ -1829,6 +1829,13 @@ admin.customer.watch.form.label.service.paid=Entretien payé au partenaire
 admin.customer.watch.form.label.first.entry.in.partner.workshop.date=Entrée chez le partenaire
 admin.customer.watch.form.label.expected.service.end.date=Date prévisionnelle
 
+admin.customer.watch.form.label.final.customer.service.status=Statut communiqué au client
+admin.customer.watch.form.label.final.customer.emergency.level=Niveau d''urgence client
+admin.customer.watch.form.label.final.customer.service.price=Prix client
+admin.customer.watch.form.label.final.customer.service.price.accepted=Accepté
+admin.customer.watch.form.label.final.customer.service.paid=Payé
+admin.customer.watch.form.label.back.to.customer.date=Date de retour au client
+
 
 admin.customer.watch.form.label.customer=Client
 admin.customer.watch.form.value.customer.default=Sélectionner le client
@@ -1861,7 +1868,8 @@ admin.customer.watch.form.placeholder.service.status=0->100
 admin.customer.watch.form.label.emergency.level=Niveau d''urgence
 admin.customer.watch.form.placeholder.emergency.level=
 
-admin.customer.watch.watches.header.date=Date
+admin.customer.watch.watches.header.creation.date=Création
+admin.customer.watch.watches.header.last.status.update.date=Mise à jour
 admin.customer.watch.watches.header.id=ID
 admin.customer.watch.watches.header.brand=Marque
 admin.customer.watch.watches.header.model=Modèle
@@ -1895,6 +1903,7 @@ admin.customer.watch.action.edit=&nbsp;Modifier
 admin.customer.watch.action.delete=&nbsp;Supprimer
 admin.customer.watch.action.cancel=&nbsp;Annuler
 admin.customer.watch.action.create.certificate=&nbsp;Créer certificat
+admin.customer.watch.action.back.to.customer=&nbsp;Marquer rendu au client
 admin.customer.watch.create.call.to.action=Promouvoir le prospect en client
 
 admin.customer.watch.label.brand=Marque
@@ -1926,6 +1935,15 @@ admin.customer.watch.watches.value.status.stored.by.sth=Chez STH
 admin.customer.watch.watches.value.status.stored.by.brand=SAV de la marque
 admin.customer.watch.watches.value.status.stored.by.other.partner=Chez un partenaire
 admin.customer.watch.watches.value.status.back.to.customer=Chez le client
+admin.customer.watch.label.service.price=Prix partenaire
+admin.customer.watch.label.service.accepted=Accepté
+
+
+admin.customer.watch.work.in.progress.form.brand.placeholder.name=
+admin.customer.watch.work.in.progress.form.model.placeholder.name=
+admin.customer.watch.work.in.progress.form.reference.placeholder.name=
+admin.customer.watch.work.in.progress.form.serial.placeholder.name=
+admin.customer.watch.work.in.progress.form.serviceprice.placeholder.name=
 
 admin.customer.watch.label.service.due.date=Deadline
 admin.customer.watch.label.first.entry.in.partner.workshop.date=Date d''entrée dans l''atelier
@@ -2086,7 +2104,7 @@ admin.watch.label.price=Prix de l''essai
 
 admin.action.label.add.new.default=&nbsp;Nouveau
 
-number.of.days={0,choice,-1#dans {0} jours|0#aujourd''hui|1#hier|2<il y a {0} jours}
+number.of.days={0,choice,-1#dans {0}- jours|0#aujourd''hui|1#hier|2<il y a {0} jours}
 
 admin.order.action.save=&nbsp;Créer
 admin.order.action.edit=&nbsp;Modifier
@@ -2374,6 +2392,7 @@ admin.index.watches.value.status.stored.by.sth=Chez STH
 admin.index.watches.value.status.stored.by.brand=SAV Marque
 admin.index.watches.value.status.stored.by.other.partner=Chez autre partenaire
 admin.index.watches.value.status.stored.by.a.registered.partner=Chez un partenaire principal
+admin.index.watches.action.back.to.customer.title=Marquer rendu au client
 
 
 admin.invoice.form.value.customer.default=Sélectionner le client
@@ -3391,3 +3410,4 @@ admin.customer.index.watches.working.active=Montres en cours d''entretien
 admin.customer.index.watches.working.active.none=Aucune montre en cours d''entretien
 admin.customer.index.watches.waiting.to.be.collected.active=Montres en attente de prise en charge
 admin.customer.index.watches.waiting.to.be.collected.active.none=Aucune montre en attente de prise en charge
+
