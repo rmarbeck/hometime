@@ -1,11 +1,42 @@
 @(isTop: Boolean=true)
+@import tags._
+
+@social_buttons = {
+        <span><a href="https://www.facebook.com/HometimeFr/"><img title="La page Facebook de Hometime" class="img" src="@remote_assets("images/social/facebook.png")"/></a></span>
+   		<span><a href="https://www.instagram.com/watchnexthometime/"><img title="Découvrez Hometime sur Instagram" class="img" src="@remote_assets("images/social/instagram.png")"/></a></span>
+   		<span><a href="https://www.linkedin.com/company-beta/11050783/"><img title="Hometime sur LinkedIn" class="img" src="@remote_assets("images/social/linkedin-35.png")"/></a></span>
+   		<span class="hidden-sm"><a href="https://www.google.fr/maps/place/Hometime/@@48.86365,2.359809,15z/data=!4m5!3m4!1s0x0:0xd0cd7665da91391f!8m2!3d48.86365!4d2.359809"><img title="Nous trouver sur Google Business" class="img" src="@remote_assets("images/social/google-35.png")"/></a></span>
+}
+
     <div class="@if(isTop) {call-top hidden-xs} else {call}">
-        @if(isTop) {
-        @Html(Messages("global.text.call.us.reasons")) :&nbsp;<span><span class="glyphicon glyphicon-earphone"></span>&nbsp;@Html(Messages("global.text.phone.number"))</span>
-        } else {
-        @Html(Messages("global.text.call.us.reasons")) :&nbsp;<a href="tel:@Messages("global.href.phone.number")" rel="nofollow"><span><span class="glyphicon glyphicon-earphone"></span>&nbsp;@Html(Messages("global.text.phone.number"))</span></a>
-        }
-        <div class="conditions">
-            <p>@Html(Messages("global.text.footer.conditions.cost")), @Html(Messages("global.text.footer.conditions.when"))</p>
+    	<div class="row">
+    		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+		        @if(isTop) {
+		        @Html(Messages("global.text.call.us.reasons")) :&nbsp;<span><span class="glyphicon glyphicon-earphone"></span>&nbsp;@Html(Messages("global.text.phone.number"))</span>
+		        } else {
+		        @Html(Messages("global.text.call.us.reasons")) :&nbsp;<a href="tel:@Messages("global.href.phone.number")" rel="nofollow"><span><span class="glyphicon glyphicon-earphone"></span>&nbsp;@Html(Messages("global.text.phone.number"))</span></a>
+		        }
+		        <div class="conditions">
+		            <p>@Html(Messages("global.text.footer.conditions.cost")), @Html(Messages("global.text.footer.conditions.when"))</p>
+		        </div>
+			</div>
+			@if(isTop) {
+			<div class="col-sm-2 col-md-2 hidden-xs">
+				<div class="social-buttons">
+		        	<div class="row">
+		        		@social_buttons
+		        	</div>
+	        	</div>
+        	</div>
+        	}
         </div>
+        @if(!isTop) {
+        <div class="visible-xs row">
+        	<div class="social-buttons-xs">
+        		@social_buttons
+	        </div>
+        </div>
+        }
     </div>
+    
+    
