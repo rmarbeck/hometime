@@ -130,6 +130,7 @@ create table customer_watch (
   emergency_level           bigint,
   service_price             bigint,
   service_price_accepted    boolean,
+  new_service_price_needed  boolean,
   service_paid              boolean,
   final_customer_service_price bigint,
   final_customer_service_price_accepted boolean,

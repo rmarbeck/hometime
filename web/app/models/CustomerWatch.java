@@ -517,6 +517,16 @@ public class CustomerWatch extends Model implements Searchable {
 		return "service.pricing.validated";
 	}
 	
+	public String getQuotationClass() {
+		if (newServicePriceNeeded)
+			return "toRedo";
+		if (servicePrice == 0)
+			return "toDdo";
+		if (servicePriceAccepted == false)
+			return "toBeValidated";
+		return "standard";
+	}
+	
 	public String getFullId() {
 		if (b2bId != null && ! "".equals(b2bId))
 			return id+" ("+b2bId+")";
