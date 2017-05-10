@@ -100,6 +100,7 @@
     	<table class="table table-condensed table-striped table-bordered">
           <thead>
 	        <tr>
+	          <th>@Html(Messages("admin.index.watches.head.id"))</th>
 	          <th>@Html(Messages("admin.index.watches.head.name"))</th>
 	          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
 	          <th>@Html(Messages("admin.index.watches.head.model"))</th>
@@ -111,6 +112,7 @@
 	      <tbody>
 	      	@for(watch <- watches) {
 	      	<tr>
+	      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
 	      		<td>@display_clickable_customer_admin_only(watch.customer)</td>
 	      		<td>@watch.brand</td>
 	      		<td>@watch.model</td>

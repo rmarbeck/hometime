@@ -51,6 +51,18 @@
               		@two_cells_table_line(Html(Messages("admin.customer.watch.label.pictures.url")), Html("<a href="+watch.picturesUrl+">"+watch.picturesUrl+"</a>"))
               	}
               	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.status")), Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.'), if (watch.partner != null) { watch.partner.name } else {"N/A"} )))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.last.status.update")), display_date_and_countdown(watch.lastStatusUpdate, "dd/MM/yyyy"))
+              	
+              	<tr><td>-</td><td>@if(watch.status != models.CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER) {
+        <div class="col-xs-12 text-left">
+        	<a type="button" class="btn btn-warning" href="@routes.CustomerWatch.setBackToCustomer(watch.id)"><span class="glyphicon glyphicon-send"></span>@Html(Messages("admin.customer.watch.action.back.to.customer"))</a>
+        	<a type="button" class="btn btn-info" href="@routes.CustomerWatch.setStoredByPartner(watch.id)"><span class="glyphicon glyphicon-retweet"></span>@Html(Messages("admin.customer.watch.action.stored.by.partner"))</a>
+        	<a type="button" class="btn btn-success" href="@routes.CustomerWatch.setStoredByUs(watch.id)"><span class="glyphicon glyphicon-lock"></span>@Html(Messages("admin.customer.watch.action.stored.by.us"))</a>
+        	<a type="button" class="btn btn-danger" href="@routes.CustomerWatch.setStoredByUsOutside(watch.id)"><span class="glyphicon glyphicon-plane"></span>@Html(Messages("admin.customer.watch.action.stored.by.us.outside"))</a>
+        </div>}</td></tr>
+              	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.end.of.main.waranty")), display_date_and_countdown(watch.endOfMainWaranty, "dd/MM/yyyy"))
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.end.of.water.waranty")), display_date_and_countdown(watch.endOfWaterWaranty, "dd/MM/yyyy"))
@@ -63,15 +75,13 @@
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.other.infos")), Html(watch.otherInfos))
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.status")), Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.'), if (watch.partner != null) { watch.partner.name } else {"N/A"} )))
-              	
-              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.last.status.update")), display_date_and_countdown(watch.lastStatusUpdate, "dd/MM/yyyy"))
-              	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.due.date")), display_date_and_countdown(watch.serviceDueDate, "dd/MM/yyyy"))
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.first.entry.in.partner.workshop.date")), display_date_and_countdown(watch.firstEntryInPartnerWorkshopDate, "dd/MM/yyyy"))
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.expected.service.end.date")), display_date_and_countdown(watch.expectedServiceEndDate, "dd/MM/yyyy"))
+              	
+              	<tr><td>-</td><td>-</td></tr>
               	              	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.partner.to.infos")), Html(watch.partnerToInfos))
               	
@@ -90,14 +100,9 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-6 text-right">
+        <div class="col-xs-12 text-center">
         	<a type="button" class="btn btn-primary" href="@routes.Accounting.addPServiceCByWatchId(watch.id)"><span class="glyphicon glyphicon-certificate"></span>@Html(Messages("admin.customer.watch.action.create.certificate"))</a>
         </div>
-        @if(watch.status != models.CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER) {
-        <div class="col-xs-6 text-left">
-        	<a type="button" class="btn btn-warning" href="@routes.CustomerWatch.setBackToCustomer(watch.id)"><span class="glyphicon glyphicon-send"></span>@Html(Messages("admin.customer.watch.action.back.to.customer"))</a>
-        </div>
-        }
      </div>
   </div>
 }

@@ -69,9 +69,25 @@ public class CustomerWatch extends Controller {
 	}
 	
 	public static Result setBackToCustomer(Long watchId) {
+		return updateStatus(watchId, CustomerWatchStatus.BACK_TO_CUSTOMER);
+	}
+	
+	public static Result setStoredByPartner(Long watchId) {
+		return updateStatus(watchId, CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER);
+	}
+	
+	public static Result setStoredByUs(Long watchId) {
+		return updateStatus(watchId, CustomerWatchStatus.STORED_BY_WATCH_NEXT);
+	}
+	
+	public static Result setStoredByUsOutside(Long watchId) {
+		return updateStatus(watchId, CustomerWatchStatus.STORED_BY_WATCH_NEXT_OUTSIDE);
+	}
+	
+	private static Result updateStatus(Long watchId, CustomerWatchStatus newStatus) {
 		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
 		if (existingWatch != null) {
-			existingWatch.status = CustomerWatchStatus.BACK_TO_CUSTOMER;
+			existingWatch.status = newStatus;
 			existingWatch.lastStatusUpdate = new Date();
 			existingWatch.update();
 		}

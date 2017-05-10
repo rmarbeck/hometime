@@ -134,6 +134,8 @@ public class CustomerWatch extends Model implements Searchable {
 	
 	public boolean servicePriceAccepted = false;
 	
+	public boolean newServicePriceNeeded = false;
+	
 	public boolean servicePaid = false;
 	
 	public Long finalCustomerServicePrice = 0L;
@@ -151,7 +153,7 @@ public class CustomerWatch extends Model implements Searchable {
 	
 	public boolean serviceNeeded = true;
 	
-	@ManyToOne
+    @ManyToOne
 	public Customer customer;
 
 	@Constraints.Required
@@ -398,7 +400,7 @@ public class CustomerWatch extends Model implements Searchable {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
 
     		return commonQuery
-    				.eq("status", "STORED_BY_WATCH_NEXT").eq("serviceNeeded", true)
+    				.or(Expr.eq("status", "STORED_BY_WATCH_NEXT"), Expr.eq("status", "STORED_BY_WATCH_NEXT_OUTSIDE")).eq("serviceNeeded", true)
 					.orderBy(sortBy + " " + order)
 					.findPagingList(pageSize)
         			.getPage(page);
@@ -506,6 +508,8 @@ public class CustomerWatch extends Model implements Searchable {
 	}
 	
 	public String getServicePriceStatus() {
+		if (newServicePriceNeeded)
+			return "service.pricing.to.re.do";
 		if (servicePrice == 0)
 			return "service.pricing.to.do";
 		if (servicePriceAccepted == false)

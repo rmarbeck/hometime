@@ -1829,6 +1829,7 @@ admin.customer.watch.form.label.service.needed=Entretien nécessaire (vs termin�
 admin.customer.watch.form.label.service.paid=Entretien payé au partenaire
 admin.customer.watch.form.label.first.entry.in.partner.workshop.date=Entrée chez le partenaire
 admin.customer.watch.form.label.expected.service.end.date=Date prévisionnelle
+admin.customer.watch.form.label.new.service.price.needed=Nouveau devis demandé
 
 admin.customer.watch.form.label.final.customer.service.status=Statut communiqué au client
 admin.customer.watch.form.label.final.customer.emergency.level=Niveau d''urgence client
@@ -1905,8 +1906,11 @@ admin.customer.watch.action.edit=&nbsp;Modifier
 admin.customer.watch.action.delete=&nbsp;Supprimer
 admin.customer.watch.action.cancel=&nbsp;Annuler
 admin.customer.watch.action.create.certificate=&nbsp;Créer certificat
-admin.customer.watch.action.back.to.customer=&nbsp;Marquer rendu au client
+admin.customer.watch.action.back.to.customer=&nbsp;Rendu au client
 admin.customer.watch.create.call.to.action=Promouvoir le prospect en client
+admin.customer.watch.action.stored.by.partner=&nbsp;Chez partenaire
+admin.customer.watch.action.stored.by.us=&nbsp;Chez nous
+admin.customer.watch.action.stored.by.us.outside=&nbsp;En transit
 
 admin.customer.watch.label.brand=Marque
 admin.customer.watch.label.model=Modèle
@@ -3311,6 +3315,7 @@ admin.customer.watch.partner.waiting.acceptation.page.brand=Marque
 admin.customer.watch.partner.waiting.acceptation.page.model=Modèle
 admin.customer.watch.partner.waiting.acceptation.page.reference=Référence
 admin.customer.watch.partner.waiting.acceptation.page.infos=Remarques
+admin.customer.watch.partner.waiting.acceptation.page.id=ID
 admin.customer.watch.partner.page.price=Devis accepté
 
 
@@ -3342,6 +3347,7 @@ admin.customer.watch.waiting.for.quotation.form.expectedserviceenddate.label.nam
 
 admin.customer.watch.partner.waiting.quotation.page.service.price.status=Statut
 service.pricing.to.be.validated=En attente d''accord
+service.pricing.to.re.do=Refusé : à modifier
 service.pricing.to.do=A évaluer
 
 admin.customer.watch.for.partner=Détail de la montre

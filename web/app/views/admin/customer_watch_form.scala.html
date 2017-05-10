@@ -68,6 +68,8 @@
 
 				@simple_admin_textarea(watch("partnerToInfos"), "admin.customer.watch.form.VARIABLE.partner.to.infos")
 				
+				@simple_admin_checkbox(watch("newServicePriceNeeded"), "admin.customer.watch.form.VARIABLE.new.service.price.needed")
+				
 				@simple_admin_input(watch("serviceDueDate"), "admin.customer.watch.form.VARIABLE.service.due.date", 'type -> "date")
 				
 				@simple_admin_input(watch("serviceStatus"), "admin.customer.watch.form.VARIABLE.service.status", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "1")
