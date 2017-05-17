@@ -3309,6 +3309,7 @@ admin.customer.watch.partner.page.infos=Remarques
 admin.customer.watch.partner.page.id=ID
 
 admin.customer.watch.partner.page=Montres en attente
+admin.customer.watch.partner.waiting.acceptation.page=Montres en attente d''acceptation
 admin.customer.watch.partner.waiting.acceptation.page.title=Montres en attente d''acceptation
 admin.customer.watch.partner.waiting.acceptation.page.due.date=A faire pour le
 admin.customer.watch.partner.waiting.acceptation.page.brand=Marque	
