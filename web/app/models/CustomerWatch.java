@@ -518,13 +518,17 @@ public class CustomerWatch extends Model implements Searchable {
 	}
 	
 	public String getQuotationClass() {
-		if (newServicePriceNeeded)
-			return "toRedo";
-		if (servicePrice == 0)
-			return "toDdo";
-		if (servicePriceAccepted == false)
-			return "toBeValidated";
-		return "standard";
+		try {
+			if (newServicePriceNeeded)
+				return "toRedo";
+			if (servicePrice == 0)
+				return "toDdo";
+			if (servicePriceAccepted == false)
+				return "toBeValidated";
+			return "standard";
+		} catch (RuntimeException re) {
+			return "standard";	
+		}
 	}
 	
 	public String getFullId() {
