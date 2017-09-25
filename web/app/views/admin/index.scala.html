@@ -111,7 +111,7 @@
 	      </thead>
 	      <tbody>
 	      	@for(watch <- watches) {
-	      	<tr>
+	      	<tr class="@watch.getQuotationClass">
 	      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
 	      		<td>@display_clickable_customer_admin_only(watch.customer)</td>
 	      		<td>@watch.brand</td>

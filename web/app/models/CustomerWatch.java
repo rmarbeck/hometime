@@ -522,7 +522,7 @@ public class CustomerWatch extends Model implements Searchable {
 			if (newServicePriceNeeded)
 				return "toRedo";
 			if (servicePrice == 0)
-				return "toDdo";
+				return "toDo";
 			if (servicePriceAccepted == false)
 				return "toBeValidated";
 			return "standard";
