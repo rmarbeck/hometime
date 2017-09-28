@@ -1,0 +1,30 @@
+@(thisInstance: Form[models.Customer], isItNew: Boolean)
+
+@import tags._
+
+@actionlink() = @{
+	routes.CrudHelper.manage("customer-part")
+}
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('button[value="delete"]').hide();
+			$('button[value="show"]').hide();
+		})
+	</script>
+}
+
+@defining(new views.FormDisplay(thisInstance, "customer.partner", "admin.customer.partner.form")) { formDisplay =>
+		@{ 
+		   formDisplay.addFormField("email", true, "input");
+		   formDisplay.addFormField("firstname", true, "input");
+		   formDisplay.addFormField("name", true, "input");
+		   formDisplay.addFormField("phoneNumber", true, "input");
+		   formDisplay.addFormField("billingAddress", true, "textarea");
+		   formDisplay.addFormField("alternativeEmail", true, "input");
+		   formDisplay.addFormField("alternativePhoneNumber", true, "input");
+		}
+	
+	@admin.template.form(formDisplay, isItNew, actionlink, end_scripts)
+}

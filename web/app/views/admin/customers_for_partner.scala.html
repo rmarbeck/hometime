@@ -1,0 +1,16 @@
+@(currentPage: com.avaje.ebean.Page[models.Customer], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, currentStatus: String)
+@import tags._
+
+@optionallink(id:Long) = {
+    
+}
+
+
+@defining(new views.PageDisplay(currentPage, "Nom", "admin.customer.partner.page")) { pageDisplay =>
+	@{	
+	    pageDisplay.addTableField("name", "name", "getName", false);
+	    pageDisplay.addTableField("firstName", "firstName", "getFirstname", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "customer-part", optionallink, currentSortBy, currentOrder, currentFilter, currentSize, true)
+}

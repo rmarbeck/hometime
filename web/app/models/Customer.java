@@ -19,10 +19,13 @@ import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.db.ebean.Model;
 import play.i18n.Messages;
+import play.mvc.Http.Session;
 
 import com.avaje.ebean.Expr;
+import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Page;
 
+import fr.hometime.utils.PartnerAndCustomerHelper;
 import fr.hometime.utils.Searcher;
 
 /**
@@ -124,7 +127,7 @@ public class Customer extends Model implements Searchable {
 	@Constraints.Required
 	@Column(name="customer_status", length = 40)
 	@Enumerated(EnumType.STRING)
-	public CustomerStatus status;
+	public CustomerStatus status = CustomerStatus.REAL_CUSTOMER;
 	
 	@Constraints.Required
 	@Column(name="customer_civility", length = 40)
@@ -251,6 +254,34 @@ public class Customer extends Model implements Searchable {
 	            .orderBy(sortBy + " " + order)
 	            .findPagingList(pageSize)
 	            .getPage(page);
+    }
+    
+    private static ExpressionList<Customer> getCommonQueryForPartner(String filter, String status, Session session) {
+    	ExpressionList<Customer> query = find.where().conjunction()
+    			.disjunction().ilike("name", "%" + filter + "%")
+    			.endJunction();
+    	
+    	if (status != null && ! "".equals(status))
+			query = query.eq("customer_status", status);
+    	
+    	return query;
+    }
+    
+    private static Page<Customer> emptyPage() {
+    	return find.where().eq("id", "-1").findPagingList(10).getPage(0);
+    }
+    
+    public static Page<Customer> pageForPartner(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
+    		ExpressionList<Customer> commonQuery = getCommonQueryForPartner(filter, status, session);
+    		
+    		return commonQuery
+					.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+        			.getPage(page);
+    	}
+        
+    	return emptyPage();
     }
 
 	@Override

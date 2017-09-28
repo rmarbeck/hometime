@@ -504,9 +504,12 @@ prices.html.title=Les tarifs
 prices.html.description=Liste des tarifs des prestations pour intervention sur Paris et proche banlieue.
 prices.html.keywords=tarifs, prix, devis, paris, yvelines, hauts de seine
 prices.baseline=Les tarifs des prestations Hometime
-prices.head=Les tarifs
+prices.head=Les tarifs pour les montres mécaniques
 prices.body=Nos tarifs de révision et de réparation sont présentés sous forme de fourchette car un nombre important de facteurs peut faire varier la durée et la complexité de la prestation.\
  Dès la prise de contact avec vous, nous vous fournirons une évaluation beaucoup plus précise à partir des informations que vous nous donnerez.
+prices.quartz.head=Les tarifs pour les montres à quartz
+prices.quartz.body=Les tarifs relatifs aux montres à quartz correspondent aux tarifs habituellement pratiqués, cependant dans certains cas ils peuvent être supérieurs.\
+ Un devis après auscultation est établi gratuitement sur rendez-vous.
  
 prices.table.head.service=Service
 prices.table.head.details=Détails
@@ -518,6 +521,8 @@ prices.table.body.service.prices=Entre <strong>{0}</strong> et <strong>{1}</stro
 prices.table.body.service.details=Les prix indiqués correspondent aux prix moyens constatés. Le prix dépend de votre choix de faire réviser la montre par un horloger généraliste ou par le réseau de la marque et sera détaillé dans un <a href="{0}">devis personnalisé</a>.
 prices.table.body.repair=Réparation
 prices.table.body.repair.prices=Sur devis gratuit uniquement.
+prices.table.body.intermediate.service=Entretien intermédiaire
+prices.table.body.intermediate.service.prices=L''entretien intermédiaire inclut un contrôle de la marche, un polissage et l''étanchéité, les tarifs sont compris entre <strong>{0}</strong> et <strong>{1}</strong>.
 prices.table.body.soft.service=Simple réglage ou démagnétisation
 prices.table.body.soft.service.prices=Les prix sont fournis sur devis, mais des tarifs compris entre <strong>{0}</strong> et <strong>{1}</strong> sont la norme.
 prices.table.body.loan=Essai de montre dans le cadre d''une révision
@@ -527,6 +532,16 @@ prices.table.body.other.prices=Pour les services d''expertise, de conseils ou ve
 prices.table.body.moving=Frais de déplacement
 prices.table.body.moving.prices=Gratuits (sur Paris et première couronne). <br /> Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.
 prices.table.body.footnote.4=<sup>0</sup> Dans de rares cas, pour les interventions très longues le prix de l''essai peut être supérieur. Dans ce cas, le prix est indiqué dans le devis. 
+
+prices.table.body.quartz.service=Changement de pile (avec ou sans étanchéité garantie 2 ans)
+prices.table.body.quartz.service.details=Les prix indiqués correspondent aux prix moyens constatés. Le prix dépend de votre choix de faire réviser la montre par un horloger généraliste ou par le réseau de la marque et sera détaillé dans un <a href="{0}">devis personnalisé</a>.
+prices.table.body.quartz.repair=Réparation (changement de pile insuffisant)
+prices.table.body.quartz.repair.prices=Sur devis gratuit uniquement.
+prices.table.body.quartz.intermediate.service=Forfait polissage + pile + étanchéité
+prices.table.body.quartz.intermediate.service.prices=Ce forfait inclut le changement de pile, un polissage et l''étanchéité, les tarifs sont compris entre <strong>{0}</strong> et <strong>{1}</strong>.
+
+prices.table.body.quartz.service.prices=<strong>{0}</strong> pour changement de pile, <strong>{1}</strong> avec étanchéité garantie 2 ans
+
 
 # Order page
 order.html.title=Devis gratuit pour révision ou réparation de montre
@@ -543,6 +558,15 @@ order.generic.text.explanation=Pour obtenir un devis pour l''entretien d''une mo
 order.generic.html.title=Devis pour révision ou réparation d''une montre {0}
 order.generic.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
 order.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
+
+quartz.generic.baseline=Changement de pile de montre
+quartz.generic.text.explanation=Pour réaliser le changement de la pile de votre montre {0} (ou une autre marque) avec ou sans refaire l''étanchéité, nous vous acceillons dans nos locaux situés 3 rue des Pyramides sur rendez-vous au 07 82 43 47 51.
+quartz.generic.html.title=Devis pour révision ou réparation d''une montre {0}
+quartz.generic.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
+quartz.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
+
+
+quartz.undefined.brand.name=d''une marque supportée par Hometime
 
 order.undefined.brand.name=d''une marque supportée par Hometime
 order.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrera, Oyster, ,Submariner, Daytona, GMT Master, Big Bang, Royal Oak, El Primero, Chronomaster
@@ -3423,3 +3447,28 @@ admin.customer.index.watches.working.active.none=Aucune montre en cours d''entre
 admin.customer.index.watches.waiting.to.be.collected.active=Montres en attente de prise en charge
 admin.customer.index.watches.waiting.to.be.collected.active.none=Aucune montre en attente de prise en charge
 
+
+admin.customer.partner.form=Gestion des clients
+admin.customer.partner.form.title=Gestion des clients
+admin.customer.partner.action.cancel=Annuler
+admin.customer.partner.action.edit=Modifier
+admin.customer.partner.action.save=Créer
+admin.customer.partner.form.email.label.name=Adresse e-mail
+admin.customer.partner.form.email.placeholder.name=xx@bb.cc
+admin.customer.partner.form.firstname.label.name=Prénom
+admin.customer.partner.form.firstname.placeholder.name=
+admin.customer.partner.form.name.label.name=Nom
+admin.customer.partner.form.name.placeholder.name=
+admin.customer.partner.form.phonenumber.label.name=Numéro de téléphone principal
+admin.customer.partner.form.phonenumber.placeholder.name=
+admin.customer.partner.form.billingaddress.label.name=Adresse de facturation
+admin.customer.partner.form.billingaddress.placeholder.name=
+admin.customer.partner.form.alternativeemail.label.name=Adresse e-mail secondaire
+admin.customer.partner.form.alternativeemail.placeholder.name=
+admin.customer.partner.form.alternativephonenumber.label.name=Numéro de téléphone secondaire
+admin.customer.partner.form.alternativephonenumber.placeholder.name=
+
+admin.customer.partner.page=Clients
+admin.customer.partner.page.title=Clients
+admin.customer.partner.page.name=Nom
+admin.customer.partner.page.firstname=Prénom

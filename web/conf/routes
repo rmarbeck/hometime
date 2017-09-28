@@ -40,6 +40,10 @@ GET     /demande-de-devis/montre/reparation/revision/:brand    controllers.Appli
 GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
 
+# Order
+GET     /changement-de-pile         controllers.Application.quartz(brand = null)
+GET     /changement-de-pile/montre/:brand    controllers.Application.quartz(brand)
+
 # BuyRequest
 GET     /rechercher-une-montre      controllers.Application.buyRequest()
 POST    /rechercher-une-montre      controllers.Application.manageBuyRequest()
@@ -165,6 +169,10 @@ GET     /admin/display/customer-watch-part-waiting-quotation/:id		controllers.Pa
 GET     /admin/display/customer-watch-part/:id							controllers.Partner.displayWatchAlias(id: Long)
 GET     /admin/display/customer-watch-part-waiting-acceptance/:id		controllers.Partner.displayWatchAlias2(id: Long)
 
+GET     /admin/display/customer-part/page/    							controllers.Partner.displayCustomers(p:Int ?= 0, s ?= "creation_date", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
+GET     /admin/edit/customer-part/:id									controllers.Partner.prepareCustomer(id: Long)
+GET     /admin/create/customer-part					 					controllers.Partner.addCustomer()
+POST    /admin/manage/customer-part										controllers.Partner.manageCustomer()
 
 GET     /admin/customer-watch/create/from-customer/:id 					controllers.CustomerWatch.addFromCustomer(id: Long)
 GET     /admin/customer-watch/create/from-order/:id 					controllers.CustomerWatch.addFromOrder(id: Long)

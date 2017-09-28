@@ -390,6 +390,15 @@ public class Application extends Controller {
     	}
     }
     
+    public static Result quartz(String brandName) {
+    	try {
+    		
+	        return ok(quartz.render("", Brand.findByInternalName(brandName), SessionWatcher.isItFirstPageOfSession(session())));
+    	} catch (Exception e) {
+    		return internalServerError();
+    	}
+    }
+    
     public static Result buyRequest() {
     	try {
     		
