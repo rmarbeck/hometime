@@ -1,0 +1,76 @@
+					<div class="row price-table">
+                      <table class="table table-striped table-hover table-bordered">
+                        <thead>
+                          <tr>
+                            <th>@Html(Messages("prices.table.head.service"))</th>
+                            <th>@Html(Messages("prices.table.head.details"))</th>
+                            <th>@Html(Messages("prices.table.head.tariff"))</th>
+                            <th>@Html(Messages("prices.table.head.remarks"))</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.service"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>@Html(Messages("prices.table.body.watch.of.category", "3"))*</td>
+                            <td>@Html(Messages("prices.table.body.service.prices", "180€", "250€"))</td>
+                            <td rowspan="3" width="30%">@Html(Messages("prices.table.body.service.details", routes.Application.order(null)))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>@Html(Messages("prices.table.body.watch.of.category", "2"))**</td>
+                            <td>@Html(Messages("prices.table.body.service.prices", "300€", "500€"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>@Html(Messages("prices.table.body.watch.of.category", "1"))***</td>
+                            <td>@Html(Messages("prices.table.body.service.prices", "360€", "600€"))</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.repair"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.repair.prices"))</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.intermediate.service"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.intermediate.service.prices", "100€", "200€"))</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.soft.service"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.soft.service.prices", "50€", "200€"))</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.loan"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.loan.prices", "50€", "200€"))</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.other"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.other.prices", routes.Application.contact()))</td>
+                          </tr>
+                          
+                          <tr>
+                            <td colspan="4">@Html(Messages("prices.table.body.moving"))</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td colspan="3">@Html(Messages("prices.table.body.moving.prices"))</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>

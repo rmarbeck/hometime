@@ -559,14 +559,14 @@ order.generic.html.title=Devis pour révision ou réparation d''une montre {0}
 order.generic.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
 order.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
 
+
 quartz.generic.baseline=Changement de pile de montre
-quartz.generic.text.explanation=Pour réaliser le changement de la pile de votre montre {0} (ou une autre marque) avec ou sans refaire l''étanchéité, nous vous acceillons dans nos locaux situés 3 rue des Pyramides sur rendez-vous au 07 82 43 47 51.
-quartz.generic.html.title=Devis pour révision ou réparation d''une montre {0}
-quartz.generic.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
-quartz.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
-
-
-quartz.undefined.brand.name=d''une marque supportée par Hometime
+quartz.generic.text.explanation=Pour réaliser le changement de la pile de votre montre {0} (ou une autre marque) avec ou sans refaire l''étanchéité, nous vous accueillons dans nos locaux situés 3 rue des Pyramides sur rendez-vous au 07 82 43 47 51.
+quartz.generic.html.title=Devis pour le changement de pile d''une montre {0}
+quartz.generic.html.description=Description du service de changement de la pile d''une montre à quartz {0}, différents modèles  {1}.
+quartz.generic.html.keywords=changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
+quartz.text.disclaimer=Au delà du changement de pile, avec ou sans garantie d''étanchéité, sur les montres à quartz toutes marques, nous proposons des entretiens classiques comme la révision complète, les changements de verres, de poussoirs ou de lunette, ou des restaurations de montres ayant subi de graves dommages (rouille causée par une perte d''étanchéité, chute violente...), nous pouvons proposer des services "à la carte" correspondant à des besoins très spécifiques. N''hésitez par à nous contacter pour réviser, réparer, restaurer ou même personnaliser votre montre !
+quartz.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''un atelier indépendant, avec prise en charge à domicile ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
 
 order.undefined.brand.name=d''une marque supportée par Hometime
 order.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrera, Oyster, ,Submariner, Daytona, GMT Master, Big Bang, Royal Oak, El Primero, Chronomaster
@@ -643,6 +643,80 @@ order.hermes.brand.models=Clipper, Arceay, Cape Code
 order.zzzautre.brand.name=Vacheron Constantin, Lange und Sohne, Patek Philippe 
 order.zzzautre.brand.models=Overseas, Malte, Patrimony, Calatrava, Aquanaut, Nautilus
 
+quartz.undefined.brand.name=d''une marque supportée par Hometime
+quartz.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrera, Oyster, ,Submariner, Daytona, GMT Master, Big Bang, Royal Oak, El Primero, Chronomaster
+
+quartz.baume.brand.name=Baume et Mercier
+quartz.baume.brand.models=clifton, capeland, classima, hampton
+
+quartz.br.brand.name=Bell & Ross
+quartz.br.brand.models=BR 01, BR 03, BR S, Automatic, Chronograph, WW1, WW2, Vintage, Aviation
+
+quartz.breitling.brand.name=Breitling
+quartz.breitling.brand.models=Superocean, Professional, Navitimer, Chronomat, Avenger, Transocean, Galactic, Montbrillant, Colt, Blackbird
+
+quartz.chanel.brand.name=Chanel
+quartz.chanel.brand.models=J12, Chromatic
+
+quartz.chopard.brand.name=Chopard
+quartz.chopard.brand.models=Mille Miglia, Superfast, Monaco Historique, Classic
+
+quartz.fc.brand.name=Frédérique Constant
+quartz.fc.brand.models=Manufacture, Runabout, Vintage Rally, Classiques
+
+quartz.hamilton.brand.name=Hamilton
+quartz.hamilton.brand.models=Jazzmaster, Timeless Classic, Venture, Aviation, Field, Navy
+
+quartz.hublot.brand.name=Hublot
+quartz.hublot.brand.models=Big Bang, Bigger Bang, King Power, Classic Fusion, MP
+
+quartz.iwc.brand.name=IWC
+quartz.iwc.brand.models=Portugaise, Portofino, Aviateur, Ingénieur, Aquatimer, Da Vinci
+
+quartz.jaeger.brand.name=Jaeger LeCoultre
+quartz.jaeger.brand.models=JLC, Reverso, Master Compressor, Navy Seals, Master Control, Rendez Vous, Deep sea
+
+quartz.longines.brand.name=Longines
+quartz.longines.brand.models=Conquest, HydroConquest, Master Collection, Evidenza, Heritage
+
+quartz.omega.brand.name=Omega
+quartz.omega.brand.models=Speedmaster, Seamaster, De Ville, Planet Ocean, Broad Arrow, Aqua Terra, Ploprof, Constellation, Moon watch
+
+quartz.panerai.brand.name=Panerai
+quartz.panerai.brand.models=Officine Panerai, Luminor, Marina, Radiomir
+
+quartz.rado.brand.name=Rado
+quartz.rado.brand.models=Hyperchrome, Esenza, D-Original, Diamaster, Centrix
+
+quartz.rolex.brand.name=Rolex
+quartz.rolex.brand.models=Submariner, Daytona, Date Just, GMT Master, Explorer, Deep sea, Sea Dweller, Air King, Yacht Master, Milgauss
+
+quartz.tag.brand.name=Tag Heuer
+quartz.tag.brand.models=Carrera, Monaco, 1887, Grand Carrera, Link, Aquaracer
+
+quartz.tissot.brand.name=Tissot
+quartz.tissot.brand.models=T-Touch, Heritage, Classic, Trend, Sport
+
+quartz.tudor.brand.name=Tudor
+quartz.tudor.brand.models=Submariner, SnowFlake, Heritage, FastRider, Advisor, Black Bay, Prince Date, Oyster
+
+quartz.zenith.brand.name=Zenith
+quartz.zenith.brand.models=Chronomaster, El Primero, Rainbow, Defy, Pilot, Captain
+
+quartz.audemars.brand.name=Audemars Piguet
+quartz.audemars.brand.models=Royal Oak, Kasparov, Offshore, Millenary, Tradition
+
+quartz.blancpain.brand.name=Blancpain
+quartz.blancpain.brand.models=Le Brassus, Villeret, Léman, Fifty Fathoms
+
+quartz.breguet.brand.name=Breguet
+quartz.breguet.brand.models=Marine, Heritage, Type XX, Tradition
+
+quartz.hermes.brand.name=Hermes
+quartz.hermes.brand.models=Clipper, Arceay, Cape Code
+
+quartz.zzzautre.brand.name=Vacheron Constantin, Lange und Sohne, Patek Philippe 
+quartz.zzzautre.brand.models=Overseas, Malte, Patrimony, Calatrava, Aquanaut, Nautilus
 
 order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)
 order.form.value.type.of.service.repair=Réparation ou <abbr class="" title="Pour les montres anciennes ou très abîmées" >restauration</abbr>
@@ -1676,7 +1750,7 @@ Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
 %0D%0A\
 Nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
-Habituellement nous nous déplaçons à votre domicile ou sur votre lieu de travail, cependant si vous le souhaitez, nous pouvons vous recevoir à l''atelier dans le 3ème arrondissement de Paris du lundi au vendredi.%0D%0A\
+Habituellement nous nous déplaçons à votre domicile ou sur votre lieu de travail, cependant si vous le souhaitez, nous pouvons vous recevoir à l''atelier dans le 1er arrondissement de Paris du lundi au vendredi.%0D%0A\
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\
@@ -1691,7 +1765,7 @@ Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
 %0D%0A\
 Nous venons de vous éditer et de vous envoyer les devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
-Habituellement nous nous déplaçons à votre domicile ou sur votre lieu de travail, cependant si vous le souhaitez, nous pouvons vous recevoir à l''atelier dans le 3ème arrondissement de Paris du lundi au vendredi.%0D%0A\
+Habituellement nous nous déplaçons à votre domicile ou sur votre lieu de travail, cependant si vous le souhaitez, nous pouvons vous recevoir à l''atelier dans le 1er arrondissement de Paris du lundi au vendredi.%0D%0A\
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\

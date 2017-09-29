@@ -79,7 +79,7 @@ public class Brand extends Model {
     }
     
     public static Brand findByInternalName(String internalName) {
-    	return find.where().eq("internal_name", internalName).findUnique();
+    	return find.where().ieq("internal_name", internalName).findUnique();
     }
     
     public static List<String> getDisplayNamesByNameAsc() {

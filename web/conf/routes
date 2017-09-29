@@ -41,8 +41,9 @@ GET     /order                      controllers.Default.redirect(to = "/demande-
 POST    /demande-de-devis           controllers.Application.manageOrder()
 
 # Order
-GET     /changement-de-pile         controllers.Application.quartz(brand = null)
-GET     /changement-de-pile/montre/:brand    controllers.Application.quartz(brand)
+GET     /changement-de-pile/etancheite         controllers.Application.quartz(brand = null)
+GET     /changement-de-pile/etancheite/montre/:brand    controllers.Application.quartz(brand)
+GET     /changement-de-pile         controllers.Default.redirect(to = "/changement-de-pile/etancheite")
 
 # BuyRequest
 GET     /rechercher-une-montre      controllers.Application.buyRequest()

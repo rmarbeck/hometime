@@ -9,140 +9,18 @@
             <div id="offers" class="col-md-12" role="main">
               <div id="prices" class="row">
                 <div class="col-md-10 col-md-offset-1">
-                  <div class="offer-box">
-                    <div class="title"><blockquote><h2>@Html(Messages("prices.head"))</h2></blockquote></div>
-                    <div class="body">@Html(Messages("prices.body"))</div>
-                    <div class="row price-table">
-                      <table class="table table-striped table-hover table-bordered">
-                        <thead>
-                          <tr>
-                            <th>@Html(Messages("prices.table.head.service"))</th>
-                            <th>@Html(Messages("prices.table.head.details"))</th>
-                            <th>@Html(Messages("prices.table.head.tariff"))</th>
-                            <th>@Html(Messages("prices.table.head.remarks"))</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.service"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>@Html(Messages("prices.table.body.watch.of.category", "3"))*</td>
-                            <td>@Html(Messages("prices.table.body.service.prices", "180€", "250€"))</td>
-                            <td rowspan="3" width="30%">@Html(Messages("prices.table.body.service.details", routes.Application.order(null)))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>@Html(Messages("prices.table.body.watch.of.category", "2"))**</td>
-                            <td>@Html(Messages("prices.table.body.service.prices", "300€", "500€"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>@Html(Messages("prices.table.body.watch.of.category", "1"))***</td>
-                            <td>@Html(Messages("prices.table.body.service.prices", "360€", "600€"))</td>
-                          </tr>
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.repair"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td colspan="3">@Html(Messages("prices.table.body.repair.prices"))</td>
-                          </tr>
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.intermediate.service"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td colspan="3">@Html(Messages("prices.table.body.intermediate.service.prices", "100€", "200€"))</td>
-                          </tr>
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.soft.service"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td colspan="3">@Html(Messages("prices.table.body.soft.service.prices", "50€", "200€"))</td>
-                          </tr>
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.loan"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td colspan="3">@Html(Messages("prices.table.body.loan.prices", "50€", "200€"))</td>
-                          </tr>
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.other"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td colspan="3">@Html(Messages("prices.table.body.other.prices", routes.Application.contact()))</td>
-                          </tr>
-                          
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.moving"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td colspan="3">@Html(Messages("prices.table.body.moving.prices"))</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="offer-box">
-                    <div class="title"><blockquote><h2>@Html(Messages("prices.quartz.head"))</h2></blockquote></div>
-                    <div class="body">@Html(Messages("prices.quartz.body"))</div>
-                    <div class="row price-table">
-                      <table class="table table-striped table-hover table-bordered">
-                        <thead>
-                          <tr>
-                            <th>@Html(Messages("prices.table.head.service"))</th>
-                            <th>@Html(Messages("prices.table.head.details"))</th>
-                            <th>@Html(Messages("prices.table.head.tariff"))</th>
-                            <th>@Html(Messages("prices.table.head.remarks"))</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.quartz.service"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>@Html(Messages("prices.table.body.watch.of.category", "3"))*</td>
-                            <td>@Html(Messages("prices.table.body.quartz.service.prices", "20€", "49€"))</td>
-                            <td rowspan="3" width="30%">@Html(Messages("prices.table.body.quartz.service.details", routes.Application.order(null)))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>@Html(Messages("prices.table.body.watch.of.category", "2"))**</td>
-                            <td>@Html(Messages("prices.table.body.quartz.service.prices", "25€", "69€"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>@Html(Messages("prices.table.body.watch.of.category", "1"))***</td>
-                            <td>@Html(Messages("prices.table.body.quartz.service.prices", "35€", "89€"))</td>
-                          </tr>
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.quartz.repair"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td colspan="3">@Html(Messages("prices.table.body.quartz.repair.prices"))</td>
-                          </tr>
-                          <tr>
-                            <td colspan="4">@Html(Messages("prices.table.body.quartz.intermediate.service"))</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td colspan="3">@Html(Messages("prices.table.body.quartz.intermediate.service.prices", "100€", "200€"))</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="footnote">* @Html(Messages("prices.table.body.watch.of.category", "3")) : Alpina, Certina, Festina, Fortis, Hamilton, Ice watch, Michel Herbelin, Nomos, Seiko, Swatch, Tissot, Victorinox</div>
-                    <div class="footnote">** @Html(Messages("prices.table.body.watch.of.category", "2")) : B.R.M., Baume & Mercier, Bell & Ross, Boucheron, Breitling, Chanel, Chaumet, Chopard, Doxa, Ebel, Eberhard, Eterna, Franck Muller, Hermès, Junghans, Lip, Longines, Maurice Lacroix, Mido, Montblanc, Oris, Poiray, Rado, Sinn, Tag Heuer, Tudor, Zenith</div>
-                    <div class="footnote">*** @Html(Messages("prices.table.body.watch.of.category", "1")) : Audemars, Blancpain, Breguet, Bulgari, Cartier, Corum, Girard Perregaux, Hublot, IWC, Jaeger LeCoultre, Omega, Patek Philippe, Piaget, Roger Dubuis, Rolex, Ulysse Nardin, Vacheron Constantin</div>
-                    <div class="footnote">@Html(Messages("prices.table.body.footnote.4"))</div>
-                  </div>
+                	<div class="offer-box">
+	                    <div class="title"><blockquote><h2>@Html(Messages("prices.head"))</h2></blockquote></div>
+	                    <div class="body">@Html(Messages("prices.body"))</div>
+	                  	@fragments.mechanical_prices_table()
+                  	</div>
+                  	<div class="offer-box">
+	                    <div class="title"><blockquote><h2>@Html(Messages("prices.quartz.head"))</h2></blockquote></div>
+	                    <div class="body">@Html(Messages("prices.quartz.body"))</div>
+	                    @fragments.quartz_prices_table()
+	                    @fragments.all_watches_footnotes_for_prices_table()
+	                    @fragments.mechanical_watches_only_footnotes_for_prices_table()
+                  	</div>
                 </div>
               </div>
             </div>
