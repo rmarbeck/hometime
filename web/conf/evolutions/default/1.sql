@@ -34,6 +34,7 @@ create table brand (
   supported                 boolean,
   description               varchar(10000),
   remarks                   varchar(10000),
+  quartz_category           integer,
   constraint uq_brand_internal_name unique (internal_name),
   constraint pk_brand primary key (id))
 ;

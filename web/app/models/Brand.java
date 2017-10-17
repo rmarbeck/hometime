@@ -39,6 +39,8 @@ public class Brand extends Model {
 	@Column(length = 10000)
 	public String remarks;
 	
+	public int quartz_category = 0;
+	
 	public Brand() {
 	}
 	
@@ -68,6 +70,10 @@ public class Brand extends Model {
 
     public static List<Brand> findAllSupportedByAscName() {
         return find.where().eq("supported", true).orderBy("internal_name ASC").findList();
+    }
+
+    public static List<Brand> findAllByQuartzCategoryByAscName(int category) {
+        return find.where().eq("quartz_category", category).orderBy("internal_name ASC").findList();
     }
 
     public static Brand findById(Long id) {
@@ -105,6 +111,10 @@ public class Brand extends Model {
 
     public String toString() {
     	return internal_name;
+    }
+    
+    public int getQuartzCategory() {
+    	return quartz_category;
     }
 }
 

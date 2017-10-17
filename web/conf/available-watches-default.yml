@@ -497,6 +497,7 @@ brands:
          display_name:          Baume & Mercier
          supported:             true
          logo_url:              brands/baume-and-mercier.png
+         quartz_category:       2
 
     - &BR !!models.Brand
          internal_name:         BR
@@ -504,6 +505,7 @@ brands:
          display_name:          Bell & Ross
          supported:             true
          logo_url:              brands/bell-and-ross.png
+         quartz_category:       2
 
     - &Breitling !!models.Brand
          internal_name:         Breitling
