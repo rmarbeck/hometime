@@ -79,6 +79,18 @@
     </url>
     }
     <url>
+      <loc>http://@{request.host()}@routes.Application.quartz(null)</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+    @for(current_brand <- models.Brand.findAllByAscName) {@if(current_brand.getQuartzCategory!=0) {
+    <url>
+      <loc>http://@{request.host()}@routes.Application.quartz(current_brand.internal_name.toLowerCase)</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+    }}
+    <url>
       <loc>http://@{request.host()}@routes.Application.feedback()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>

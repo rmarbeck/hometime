@@ -19,6 +19,7 @@
                 <ul class="nav bs-sidenav">
                     <li><a href="#service">@Messages("offer.menu.text.service")</a></li>
                     <li><a href="#restore">@Messages("offer.menu.text.restore")</a></li>
+                    <li><a href="#quartz">@Messages("offer.menu.text.quartz")</a></li>
                     <li><a href="#loan">@Messages("offer.menu.text.loan")</a></li>
                     <li><a href="#home">@Messages("offer.menu.text.home")</a></li>
                     <li><a href="#other">@Messages("offer.menu.text.other")</a></li>
@@ -41,7 +42,7 @@
                   </div>
                 </div>
               </div>
-              
+        
               <div id="restore" class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="offer-box">
@@ -49,6 +50,18 @@
                     <div class="body">@Html(Messages("offer.restore.body"))</div>
                     <div class="row action">
                       <div class="col-xs-12 text-center"><a class="btn btn-primary order-action" href="@routes.Application.order(null)?type=@OrderRequest.OrderTypes.REPAIR" role="button">@Messages("offer.restore.call.to.action.order")</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="quartz" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="offer-box">
+                    <div class="title"><blockquote><h2>@Html(Messages("offer.quartz.head"))</h2></blockquote></div>
+                    <div class="body">@Html(Messages("offer.quartz.body"))</div>
+                    <div class="row action">
+                      <div class="col-xs-12 text-center"><a class="btn btn-primary order-action" href="@routes.Application.quartz(null)" role="button">@Messages("offer.quartz.call.to.action.order")</a></div>
                     </div>
                   </div>
                 </div>

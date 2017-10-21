@@ -18,6 +18,7 @@ global.navbar.link.text.service.service.test=Quand faire réviser ma montre ?
 global.navbar.link.text.services=Les services
 global.navbar.link.text.services.service=Entretien & révisions
 global.navbar.link.text.services.restore=Restauration
+global.navbar.link.text.services.quartz=Pile et étanchéité
 global.navbar.link.text.services.loan=Essai de montres
 global.navbar.link.text.services.at.home=Déplacements à domicile
 global.navbar.link.text.services.other=Les prestations complémentaires
@@ -63,6 +64,7 @@ global.text.service.content.title=Tout savoir sur l''entretien des montres
 global.text.service.service.test=Quand réviser ma montre&nbsp;?
 global.text.service.service.test.title=Quand faire réviser sa montre ?
 global.text.services.service=Entretien & révisions
+global.text.services.quartz=Tarifs changement de pile
 global.text.services.service.title=Révision de montres et réparation de montres
 global.text.services.broking=Recherche et vente de montres
 global.text.service.around=Bons plans
@@ -412,6 +414,7 @@ offer.html.description=Présentation des services Hometime : révision et répar
 offer.html.keywords=révision, réparation, essai, prêt, montres mécaniques, montres automatiques, domicile, paris, yvelines, hauts de seine
 offer.menu.text.service=Révision & réparations
 offer.menu.text.restore=Service de restauration
+offer.menu.text.quartz=Changement de pile
 offer.menu.text.loan=Essai de montre de luxe
 offer.menu.text.home=Déplacement à domicile
 offer.menu.text.other=Achat/vente
@@ -448,6 +451,13 @@ offer.restore.body=Hometime propose un service de <b>restauration de montres anc
 
 offer.restore.call.to.action.order=Demander un devis de restauration
 
+offer.quartz.head=Changement de pile et étanchéité
+offer.quartz.body=Nous proposons un service de changement de vos piles de montres dans nos locaux situés à <b>Paris dans le 1er arrondissement</b>.\
+ <br /><br />En fonction du type de montre et de vos attentes notre service de changement de pile intégre ou non le processus assurant <b>l''étanchéité de votre montre</b>, conformément au niveau d''étanchéité défini par son fabriquant.\
+ <br /><br />La majeure partie du temps, le changement de pile ne prend que <b>quelques minutes et vous repartez avec votre montre</b>.\
+ <br /><br />Notre service de changement de pile est aussi bien sûr disponible pour nos clients en province par le bias de nos services de transport sécurisés.
+
+offer.quartz.call.to.action.order=Voir les tarifs de changement de pile
 
 offer.loan.head=Essai de montres de luxe
 offer.loan.body=Parce que vous n''avez qu''une seule montre, ou que vous souhaitez porter une nouvelle montre, Hometime vous propose <b>d''essayer l''une de ses montres mythiques pendant toute la durée de l''intervention</b> (<a href="#service">révision ou réparation</a>) sur votre montre.\
@@ -1345,6 +1355,8 @@ site.plan.customization.title=Personnalisation de montres
 site.plan.buy.request.title=Demande de recherche de montres neuves ou d''occasion
 site.plan.broking.title=Recherche de montres neuves ou d''occasion
 site.plan.sell.title=Vendez votre montre d''occasion
+site.plan.quartz.title=Tarifs changement de pile et étanchéité
+site.plan.quartz.brand.title=Tarifs changement de pile et étanchéité pour une montre {0}
 
 
 

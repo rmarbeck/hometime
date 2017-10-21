@@ -12,6 +12,7 @@ $(document).ready(function(){
      		$( '#category-2' ).addClass('hidden');
      		$( '#category-3' ).addClass('hidden');
      		$( '#category-'+category ).removeClass('hidden');
+     		$( '.offer-box-container' ).removeClass('hidden');
     }
     
     function resetDisplayCategory() {
@@ -20,6 +21,7 @@ $(document).ready(function(){
      		$( '#category-1' ).addClass('hidden');
      		$( '#category-2' ).addClass('hidden');
      		$( '#category-3' ).addClass('hidden');
+     		$( '.offer-box-container' ).addClass('hidden');
     }
 
 		if ($("#brandChosen option:selected").val() != "0") {
@@ -90,6 +92,7 @@ $(document).ready(function(){
 				}
         	</select>
         	<br /><br />
+        	<div class="offer-box-container hidden">
         	<div class="offer-box-only-selected hidden">
         		Pour les montres <span id="brand-dname" class="band-name">de cette marque</span>, le tarif de changement de pile sont les suivants :
         		<br /><br />
@@ -107,6 +110,7 @@ $(document).ready(function(){
         		<br />
         		@Html(Messages("prices.table.body.quartz.service.details", routes.Application.order(null)))
         	</div>
+        	</div>
         	<div class="offer-box">
         		@fragments.quartz_prices_table()
         	</div>
@@ -119,13 +123,16 @@ $(document).ready(function(){
       		Nous vous recevons dans nos locaux situés 3 rue des Pyramides dans le 1er arrondissement pour des changements de pile "minutes" et pour tout devis d'entretien plus poussés.
       		<br /><br />
       		<br />
+      		Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:@Messages("global.href.phone.number")" rel="nofollow"><span>@Html(Messages("global.text.phone.number"))</span></a> 
+      		<br /><br />
+      		<br />
       		Vous préférez que nous vous contactions par téléphone&nbsp;?
       		<br />
       		<br />
       		<div class="text-center">
 			<a class="btn btn-default" href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("order.action.alternative"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>		</div>
 			</div>
-        <div class="col-xs-6 col-md-8">
+        <div class="col-xs-6 col-md-7">
 	        <iframe
 			  width="100%"
 			  height="400"
