@@ -38,7 +38,7 @@ public class Payments extends Controller {
     }
 	
 	public static float remainingAmountToPay(Invoice currentInvoice) {
-		float invoiceAmount = currentInvoice.document.getBottomLinePriceIncludingVAT();
+		float invoiceAmount = Math.round(currentInvoice.document.getBottomLinePriceIncludingVAT());
 		float alreadyPayed = existingPaymentsAmount(currentInvoice);
 		return invoiceAmount - alreadyPayed;
 	}
