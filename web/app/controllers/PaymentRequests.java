@@ -11,7 +11,6 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
-import views.html.mails.notify_order;
 import fr.hometime.payment.systempay.DataDictionnary;
 import fr.hometime.payment.systempay.PaymentConfirmation;
 import fr.hometime.payment.systempay.SingleImmediatePF;

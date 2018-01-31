@@ -2,7 +2,7 @@
 @import tags._
 
 @optionallink(id:Long) = {
-    @routes.PaymentRequests.displayForm(models.PaymentRequest.findById(id).accessKey)
+    @routes.PaymentRequestsFreeOfLogin.displayForm(models.PaymentRequest.findById(id).accessKey)
 }
 
 @defining(new views.PageDisplay(currentPage, "description ou access key", "admin.paymentrequest.page")) { pageDisplay =>
