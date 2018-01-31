@@ -15,7 +15,7 @@ public class SecuredNoCheck extends SecuredForRolesOnly {
 	public static Predicate<User> isEnough = value -> true;
 	
     public static boolean isLoggedInUserAuthorized(String token) {
-    	return isLoggedInUserAuthorized(token, isEnough);
+    	return true;
     }
     
     public Predicate<User> isEnough() {
