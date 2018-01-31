@@ -266,6 +266,11 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
     }
     
     public static Page<Customer> page(int page, int pageSize, String sortBy, String order, String filter) {
+    	if (sortBy != null && sortBy.equals("")) {
+    		sortBy = "creationDate";
+    		order = "desc";
+    	}
+
         return
 	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
 	            .orderBy(sortBy + " " + order)
