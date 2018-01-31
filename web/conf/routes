@@ -112,11 +112,11 @@ GET		/links											controllers.Application.usefull_links()
 GET     /avis-clients               					controllers.Application.feedback()
 
 # Payment
-GET	    /paiement/error               					controllers.PaymentRequests.error()
-POST    /paiement/error               					controllers.PaymentRequests.errorPost()
-GET   	/paiement/success              					controllers.PaymentRequests.success()
-POST    /paiement/backoffice           					controllers.PaymentRequests.manageBackOfficeAnswer()
-GET     /paiement/:ak               					controllers.PaymentRequests.displayForm(ak: String)
+GET	    /paiement/error               					controllers.PaymentRequestsFreeOfLogin.error()
+POST    /paiement/error               					controllers.PaymentRequestsFreeOfLogin.errorPost()
+GET   	/paiement/success              					controllers.PaymentRequestsFreeOfLogin.success()
+POST    /paiement/backoffice           					controllers.PaymentRequestsFreeOfLogin.manageBackOfficeAnswer()
+GET     /paiement/:ak               					controllers.PaymentRequestsFreeOfLogin.displayForm(ak: String)
 
 # ADMIN
 GET     /login                      									controllers.Application.login(origin: String ?= "")
