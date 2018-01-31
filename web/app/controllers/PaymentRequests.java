@@ -52,6 +52,7 @@ public class PaymentRequests extends Controller {
 		return crud.create(Form.form(PaymentRequest.class).fill(instance));
     }
 	
+	@Security.Authenticated(SecuredNoCheck.class)
 	public static Result displayForm(String accessKey) {
 		Optional<PaymentRequest> request  = PaymentRequest.getValidRequestFromAccessKey(accessKey);
 		if (request.isPresent())
@@ -59,19 +60,22 @@ public class PaymentRequests extends Controller {
 		return badRequest(views.html.payment.error.render());
     }
 	
-	
+	@Security.Authenticated(SecuredNoCheck.class)
 	public static Result error() {
 		return ok(views.html.payment.error.render());
     }
 	
+	@Security.Authenticated(SecuredNoCheck.class)
 	public static Result errorPost() {
 		return ok(views.html.payment.error.render());
     }
 	
+	@Security.Authenticated(SecuredNoCheck.class)
 	public static Result success() {
 		return ok(views.html.payment.success.render());
     }
 	
+	@Security.Authenticated(SecuredNoCheck.class)
 	public static Result manageBackOfficeAnswer() {
 		DynamicForm requestData = Form.form().bindFromRequest();
 		
