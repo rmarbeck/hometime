@@ -408,6 +408,8 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     }
 
     public static Page<CustomerWatch> page(int page, int pageSize, String sortBy, String order, String filter) {
+    	if (order != null && order.equals(""))
+    		order = "creationDate desc";
         return 
             find.where().or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)

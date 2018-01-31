@@ -3,7 +3,7 @@
 
 
 @defining(new views.PageDisplay(currentPage, "nom", "admin.simplified.customer.page")) { pageDisplay =>
-	@{  pageDisplay.addTableField("fullname", "fullname", "getFullNameWithCivility", false);
+	@{  pageDisplay.addTableField("name", "fullname", "getFullNameWithCivility", false);
 	}
 	
 	@admin.template.page_with_default_links(pageDisplay, "SimplifiedCustomers", null, currentSortBy, currentOrder, currentFilter, currentSize)
