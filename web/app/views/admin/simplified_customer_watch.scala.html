@@ -1,0 +1,22 @@
+@(instance: models.CustomerWatch)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("SimplifiedCustomers", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("SimplifiedCustomers")
+}
+
+@end_body = {
+
+      
+}
+
+@defining(new views.ModelDisplay(instance, "admin.simplified.customer")) { modelDisplay =>
+		@{ 	modelDisplay.addField("brand");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+}

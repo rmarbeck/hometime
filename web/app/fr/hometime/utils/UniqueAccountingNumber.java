@@ -2,8 +2,10 @@ package fr.hometime.utils;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 import models.Invoice;
 import models.OrderDocument;
@@ -40,7 +42,7 @@ public class UniqueAccountingNumber {
 		this.serial = serial;
 	}
 	
-	private static UniqueAccountingNumber fromString(String uan, boolean isItForAnOrder) {
+	public static UniqueAccountingNumber fromString(String uan, boolean isItForAnOrder) {
 		if (isValid(uan))
 			return new UniqueAccountingNumber(Integer.parseInt(uan.substring(0, 6)), Integer.parseInt(uan.substring(7)));
 		
@@ -149,5 +151,23 @@ public class UniqueAccountingNumber {
 		if (this.prefix.intValue() == toCompare.prefix.intValue() && this.serial.intValue() > toCompare.serial.intValue())
 			return true;
 		return false;
+	}
+	
+	public int extractYearFromUAN() {
+		return (int) this.prefix.intValue() / 100;
+	}
+	
+	public int extractMonthFromUAN() {
+		return (int) this.prefix.intValue() - (extractYearFromUAN() * 100);
+	}
+	
+	public YearMonth getYearAndMonthFromUAN() {
+		return YearMonth.of(extractYearFromUAN(), extractMonthFromUAN());
+	}
+	
+	public static Optional<YearMonth> getYearAndMonthFromUAN(UniqueAccountingNumber uan) {
+		if (uan != null)
+			return Optional.of(uan.getYearAndMonthFromUAN());
+		return Optional.empty();
 	}
 }

@@ -1,0 +1,39 @@
+@(thisInstance: Form[models.CustomerWatch], isItNew: Boolean)
+
+@import tags._
+
+@end_scripts = {
+	<script>
+    $(document).ready(function(){
+        $('#status option[value="STORED_BY_WATCH_NEXT"]').prop('selected', true);
+    });
+    </script>
+}
+
+
+@defining(new views.FormDisplay(thisInstance, "SimplifiedCustomerWatch", "admin.simplifiedcustomerwatch.form")) { formDisplay =>
+		@{ 
+		   formDisplay.addFormFieldForSelect("customer.id", false, models.Customer.getIdsByNameAsc, models.Customer.getFullnamesByNameAsc);
+		   formDisplay.addFormField("brand", true, "input");
+		   formDisplay.addFormField("model", true, "input");
+		   formDisplay.addFormField("reference", true, "input");
+		   formDisplay.addFormField("serial", true, "input");
+		   formDisplay.addFormField("movement", true, "input");
+		   formDisplay.addFormField("collectingDate", true, "input", 'type -> "date");
+		   formDisplay.addFormField("quotation", true, "input", 'type -> "number", 'min -> "1", 'step -> "1");
+		   formDisplay.addFormField("picturesDoneOnCollect", true, "checkbox");
+		   formDisplay.addFormField("workingConditionsOnCollect", true, "textarea");
+		   formDisplay.addFormField("boxConditionsOnCollect", true, "textarea");
+		   formDisplay.addFormField("handsConditionsOnCollect", true, "textarea");
+		   formDisplay.addFormField("crownAndPushersConditionsOnCollect", true, "textarea");
+		   formDisplay.addFormField("backConditionsOnCollect", true, "textarea");
+		   formDisplay.addFormField("braceletOrStrapConditionsOnCollect", true, "textarea");
+		   formDisplay.addFormField("wateringConditionsOnCollect", true, "textarea");
+		   formDisplay.addFormField("glassConditionsOnCollect", true, "textarea");
+		   formDisplay.addFormField("otherConditionsRemarksOnCollect", true, "textarea");
+		   formDisplay.addFormField("privateInfos", true, "textarea");
+		   formDisplay.addFormFieldForSelect("status", models.CustomerWatch.CustomerWatchStatus.values.toList)
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
+}

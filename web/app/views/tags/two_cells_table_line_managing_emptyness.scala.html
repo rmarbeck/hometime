@@ -1,0 +1,6 @@
+@(cell1: Html, cell2: Html, default: String, args: (Symbol,String)*)
+@if(cell2 == null || cell2.toString.trim.equals("")) {
+	@two_cells_table_line(cell1, Html(default), args:_*) 
+} else {
+	@two_cells_table_line(cell1, cell2, args:_*)
+}

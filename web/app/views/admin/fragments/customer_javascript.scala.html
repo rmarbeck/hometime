@@ -1,0 +1,89 @@
+
+<script>
+    $(document).ready(function(){
+        $('#billingAddress').on('paste', function(event) {
+        		if ($('#name:text').val().length == 0) {
+        			event.preventDefault();
+        			var pasteData = event.originalEvent.clipboardData.getData('text')
+        			manageAddressPaste($('#billingAddress'), pasteData);
+        		}
+        	});
+    });
+    
+    function manageAddressPaste(textarea, pastedText) {
+    	var pastedValue = pastedText;
+    	var lines = pastedText.split('\r\n');
+    	var civility = lines[0].replace(/^(M\.|Mme|Mme\.|Mr|Mr\.|Dr\.|Dr) .*/g,"$1");
+    	manageCivility(civility);
+    	var fullname = lines[0].replace(/^(M\.|Mme|Mme\.|Mr|Mr\.|Dr\.|Dr) /g,"");
+    	var firstname = manageCase(fullname.replace(/([^ ]*) .*/g,"$1"));
+    	var name = manageCase(fullname.replace(/([^ ]*) (.*)/g,"$2"));
+    	$('#firstname').val(firstname);
+    	$('#name').val(name);
+    	$('#email').val("unknown@@"+name.toLowerCase());
+    	$('#status option:eq(3)').prop('selected', true);
+		lines.splice(0, 1);
+		tryToFindPhoneNumber(lines);
+		tryToFindEmail(lines);
+		textarea.val(lines.join("\n"));
+    }
+    
+    function tryToFindPhoneNumber(lines) {
+    	var phoneNumber = "";
+    	$.each(lines, function( index, element) {
+    		phoneNumber = element.match(/\+*[0-9]{7,15}.*/g);
+    		if (phoneNumber != null && phoneNumber !== "") {
+    			lines.splice(index, 1);
+    			$('#phoneNumber').val(phoneNumber);
+    			return false;	
+    		}
+    	});
+    }
+    
+    function tryToFindEmail(lines) {
+    	var email = "";
+    	$.each(lines, function( index, element) {
+    		email = element.match(/.*@@.*/g);
+    		if (email != null && email !== "") {
+    			lines.splice(index, 1);
+    			$('#email').val(email);
+    			return false;	
+    		}
+    	});
+    }
+    
+    
+    
+    function isUpperCase(str) {
+    	return str === str.toUpperCase();
+	}
+	
+	function isLowerCase(str) {
+    	return str === str.toLowerCase();
+	}
+	
+	function manageCase(str) {
+		if(isUpperCase(str) || isLowerCase(str)) {
+    		return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+    	}
+    	return str;
+	}
+	function manageCivility(str) {
+		switch(str) {
+	        case 'M.':
+	        case 'Dr':
+	        	$('#civility option:eq(1)').prop('selected', true);
+                break;
+	        case 'Mme':
+	        case 'Mme.':
+	            $('#civility option:eq(2)').prop('selected', true);
+	            break;
+	        case 'Mr':
+	            $('#civility option:eq(3)').prop('selected', true);
+	            break;
+	        case 'Miss':
+	            $('#civility option:eq(4)').prop('selected', true);
+	            break;
+	    }
+	}
+</script> 

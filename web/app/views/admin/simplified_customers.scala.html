@@ -1,0 +1,10 @@
+@(currentPage: com.avaje.ebean.Page[models.Customer], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "nom", "admin.simplified.customer.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("fullname", "fullname", "getFullNameWithCivility", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "SimplifiedCustomers", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

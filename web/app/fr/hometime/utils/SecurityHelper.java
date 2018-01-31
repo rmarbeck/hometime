@@ -88,7 +88,11 @@ public class SecurityHelper {
     }
     
     public static boolean isLoggedInUserAuthorized(Session session, Predicate<User> isRoleEnough) {
-    	Optional<User> loggedInUser = getLoggedInUser(session);
+    	return isLoggedInUserAuthorized(session.get("token"), isRoleEnough);
+    }
+    
+    public static boolean isLoggedInUserAuthorized(String token, Predicate<User> isRoleEnough) {
+    	Optional<User> loggedInUser = getLoggedInUser(token);
     	if (loggedInUser.isPresent()) {
     		return isRoleEnough.test(loggedInUser.get());
     	}
@@ -96,9 +100,12 @@ public class SecurityHelper {
     }
     
     public static Optional<User> getLoggedInUser(Session session) {
-    	String currentUserToken = session.get("token");
-    	if (currentUserToken != null)
-    		return Optional.ofNullable(User.findByEmail(currentUserToken));
+    	return getLoggedInUser(session.get("token"));
+    }
+    
+    public static Optional<User> getLoggedInUser(String token) {
+    	if (token != null)
+    		return Optional.ofNullable(User.findByEmail(token));
         return Optional.empty();
     }
 

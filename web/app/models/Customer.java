@@ -18,6 +18,7 @@ import play.Logger;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 import play.i18n.Messages;
 import play.mvc.Http.Session;
 
@@ -25,15 +26,24 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Page;
 
+import controllers.CrudReady;
 import fr.hometime.utils.PartnerAndCustomerHelper;
+import fr.hometime.utils.PhoneHelper;
 import fr.hometime.utils.Searcher;
 
 /**
  * Definition of a Customer
  */
 @Entity 
-public class Customer extends Model implements Searchable {
+public class Customer extends Model implements CrudReady<Customer, Customer>, Searchable {
 	private static final long serialVersionUID = -7161230172856280985L;
+	private static Customer singleton = null;
+	
+	public static Customer of() {
+    	if (singleton == null)
+    		singleton = new Customer();
+    	return singleton;
+    }
 	
 	public enum CustomerStatus {
 	    PROSPECT ("PROSPECT"),
@@ -219,6 +229,13 @@ public class Customer extends Model implements Searchable {
     public static List<Customer> findWithOpenTopic() {
     	return find.where().eq("is_topic_open", true).findList();
     }
+
+    public static List<String> getIdsByNameAsc() {
+    	List<String> ids = new ArrayList<String>();
+    	for (Customer c : findByNameAsc())
+    		ids.add(c.id.toString());
+    	return ids;
+    }
     
     public static List<String> getEmailsByNameAsc() {
     	List<String> emails = new ArrayList<String>();
@@ -265,6 +282,10 @@ public class Customer extends Model implements Searchable {
 			query = query.eq("customer_status", status);
     	
     	return query;
+    }
+    
+    public String getPhoneNumberReadable() {
+    	return PhoneHelper.toReadableFormat(this.phoneNumber);
     }
     
     private static Page<Customer> emptyPage() {
@@ -362,6 +383,17 @@ public class Customer extends Model implements Searchable {
 	@Override
 	public Long retrieveId() {
 		return id;
+	}
+	
+	@Override
+	public Finder<String, Customer> getFinder() {
+		return find;
+	}
+
+	@Override
+	public Page<Customer> getPage(int page, int pageSize, String sortBy,
+			String order, String filter) {
+		return page(page, pageSize, sortBy, order, filter);
 	}
 }
 

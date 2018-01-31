@@ -10,12 +10,14 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.mails.notify_order;
 import fr.hometime.payment.systempay.DataDictionnary;
 import fr.hometime.payment.systempay.PaymentConfirmation;
 import fr.hometime.payment.systempay.SingleImmediatePF;
 import fr.hometime.utils.ActionHelper;
 
+@Security.Authenticated(SecuredAdminOrCollaboratorOnly.class)
 public class PaymentRequests extends Controller {
 	public static Crud<PaymentRequest, PaymentRequest> crud = Crud.of(
 			PaymentRequest.of(),

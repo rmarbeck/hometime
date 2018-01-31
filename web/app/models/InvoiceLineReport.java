@@ -8,8 +8,8 @@ import java.util.Optional;
 import models.AccountingLine.LineType;
 
 public class InvoiceLineReport {
-	private final static String INVOICE_KEY = "admin.report.invoice.type.invoice";
-	private final static String SELLING_DOCUMENT_KEY = "admin.report.invoice.type.selling.document";
+	protected final static String INVOICE_KEY = "admin.report.invoice.type.invoice";
+	protected final static String SELLING_DOCUMENT_KEY = "admin.report.invoice.type.selling.document";
 	
 	public Date date;
 	public String invoiceType;
@@ -43,7 +43,7 @@ public class InvoiceLineReport {
 		}
 	}
 	
-	private static Optional<String> guessInvoiceType(AccountingDocument document) {
+	protected static Optional<String> guessInvoiceType(AccountingDocument document) {
 		if (Invoice.findByAccountingDocument(document) != null)
 			return Optional.of(INVOICE_KEY);
 		if (SellingDocument.findByAccountingDocument(document) != null)
@@ -52,7 +52,7 @@ public class InvoiceLineReport {
 		return Optional.empty();
 	}
 	
-	private static Optional<String> guessUAN(AccountingDocument document) {
+	protected static Optional<String> guessUAN(AccountingDocument document) {
 		Invoice foundInvoice = Invoice.findByAccountingDocument(document);
 		if (foundInvoice != null)
 			return Optional.of(foundInvoice.uniqueAccountingNumber);
@@ -74,15 +74,15 @@ public class InvoiceLineReport {
 		return report;
 	}
 	
-	private static boolean lineIsNotEmpty(AccountingLine line) {
+	protected static boolean lineIsNotEmpty(AccountingLine line) {
 		return ! lineIsEmpty(line);
 	}
 	
-	private static boolean lineIsEmpty(AccountingLine line) {
+	protected static boolean lineIsEmpty(AccountingLine line) {
 		return (line.unit == null || line.unit == 0f || line.unitPrice == null || line.unitPrice == 0f);
 	}
 	
-	private static boolean lineIsInvoice(AccountingLine line) {
+	protected static boolean lineIsInvoice(AccountingLine line) {
 		switch (guessInvoiceType(line.document).orElse("")) {
 			case INVOICE_KEY:
 				return true;

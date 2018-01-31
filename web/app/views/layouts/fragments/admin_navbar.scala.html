@@ -35,6 +35,9 @@
                   </ul>
                 }
                 }
+                @if_collaborator() {
+                	@li_activable(34, index) {<a href="@routes.CrudHelper.displayAll("SimplifiedCustomers")">@Messages("admin.navbar.link.text.simplified.customers")</a>}
+                }
                 @if_admin() {
                 @li_activable(34, index) {<a href="@routes.Customer.displayAll()">@Messages("admin.navbar.link.text.customers")</a>}
                 @li_activable(34, index) {<a href="@routes.CrudHelper.displayAll("Partners")">@Messages("admin.navbar.link.text.partners")</a>}

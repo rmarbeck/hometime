@@ -15,7 +15,9 @@ import models.Payment;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
+@Security.Authenticated(SecuredAdminOnly.class)
 public class Payments extends Controller {
 	public static Crud<Payment, Payment> crud = Crud.of(
 			Payment.of(),

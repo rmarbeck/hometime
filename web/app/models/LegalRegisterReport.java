@@ -46,16 +46,20 @@ public class LegalRegisterReport {
 		return description.toString();
 	}
 	
-	public static List<LegalRegisterReport> generateReport() {
+	public static List<LegalRegisterReport> generateReport(Long startingIndex) {
 		List<LegalRegisterReport> report = new ArrayList<LegalRegisterReport>();
 		List<WatchToSell> watches = WatchToSell.findAllByPurchaseDateAsc();
-		Long index = 1L;
+		Long index = startingIndex;
 		for(WatchToSell watch : watches)
 			if (lineIsSupposedToBeDisplayed(watch)) {
 				report.add(new LegalRegisterReport(watch, index++));
 
 			}
 		return report;
+	}
+	
+	public static List<LegalRegisterReport> generateReport() {
+		return generateReport(1L);
 	}
 	
 	private static boolean lineIsSupposedToBeDisplayed(WatchToSell watch) {

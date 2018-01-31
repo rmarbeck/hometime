@@ -1,0 +1,483 @@
+<style type="text/css">
+	body {
+		-webkit-print-color-adjust: exact;
+		font-family: Calibri, Arial, sans-serif;
+	}
+	
+	.header {
+		margin: 20px 0px;
+		padding-left: 2px;
+		padding-top: -5px;
+	}
+	
+	.header h3, .header h4, .header h5 {
+		margin: 0px 2px;
+	}
+	
+	.customer-details {
+		padding-top: 3px;
+		padding-bottom: 3px;
+		margin: 10px 0px;
+		border: 1px solid #bfbfbf;
+	}
+	
+	.customer-details div {
+		margin: 0px 1em;
+	}
+	
+	.customer-details .cd-label {
+		font-style: italic;
+	}
+	
+	.customer-details .name, .customer-details .address {
+		margin-left: 2em;
+	}
+	
+	.customer-details .name {
+		font-weight: bold;
+	}
+	
+	.customer-details .address {
+		display: block;
+	    white-space: pre;
+	}
+	
+	
+	h2, h3, h4, .date {
+		font-weight: bold;
+	}
+	
+	h2 {
+		font-family: 'Arial Black';
+		font-size: 24px;
+	}
+	
+	h3 {
+		font-size: 20px;
+	}
+	
+	h4 {
+		font-size: 18px;
+	}
+	
+	h5 {
+		font-size: 15px;
+	}
+	
+	
+	.legal {
+		font-size: 10px;
+		margin: 20px 0px;
+		padding-left: 2px;
+		padding-top: -5px;
+		text-align: justify;
+	    text-justify: inter-word;
+	}
+	
+	.footer {
+		font-family: Arial;
+		color: #888888;
+		font-size: 11px;
+		margin: 20px 0px;
+		padding-left: 2px;
+		padding-top: -5px;
+		text-align: center;
+		width: 100%;
+		position:absolute;
+		top: 835px;
+		left: auto;
+	}
+	
+	.footer div {
+		margin: -2px 2px;
+	}
+	
+	.footer .banking {
+		font-weight: bold;
+	}
+	
+	
+	.table-bordered {
+		border: 2px solid #000;
+	}
+	
+	th {
+		text-align: center;
+		padding: 1px;
+	}
+	
+	th, td {
+	    border:solid #000 !important;
+	    border-width:0 1px 1px 0 !important;
+	    padding: 1px 3px !important;
+	    vertical-align: bottom !important;
+	}
+	
+	
+	.vat, .sub-total {
+		background-color: #d5d5d5;
+		font-weight: bold;
+	}
+	
+	.total, th {
+		background-color: #a5a5a5;
+	}
+	
+	.total {
+		font-weight: bold;
+	}
+	
+	.payment-infos, .descriptions {
+	
+	}
+	
+	.detailed_infos {
+		margin-top: -1.5em;
+		font-size: 0.8em;
+		margin-bottom: 1.5em;
+	}
+	
+	.validity {
+		font-weight: bold;
+	}
+	
+	.signing {
+		margin-top: 1em;
+		text-align: right;
+	}
+	
+	.post-selling-certificate {
+		font-size: 12px;
+	}
+	
+	.post-selling-certificate h2 {
+		font-size: 16px;
+	}
+	
+	.post-selling-certificate h3 {
+		text-decoration: underline;
+	}
+	
+	.certificate .type h2 {
+		text-align: center;
+	}
+	
+	.certificate h3, .certificate h4 {
+		margin: 0;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	.certificate .watch h3, .certificate .watch h4, .certificate .watch p {
+		margin: 0 !important;
+	}
+	
+	.certificate h3 {
+		font-size: 14px;
+	}
+	
+	.certificate h4 {
+		font-size: 12px;
+		font-weight: normal;
+		font-style: italic;
+		padding-left: 1em;
+	}
+	
+	.certificate p {
+		font-size: 12px;
+		font-weight: normal;
+		font-style: normal;
+		padding-left: 2em;
+		margin: 0;
+		white-space: pre;
+	}
+	
+	.certificate p.footnote {
+		font-size: 10px;
+	}
+	
+	
+	.certificate p.main {
+		padding-left: 0;
+		margin-bottom: 1em;
+		white-space: normal;
+	}
+	
+	
+	.certificate hr {
+		width: 80px;
+		border: 0;
+		height: 1px;
+		background: #aaa;
+		margin-top: 0.4em;
+		margin-bottom: 0em;
+	}
+	
+	.certificate .stamp h3 {
+		text-align: right;
+		margin-right: 15em;
+		text-decoration: none;
+	}
+	
+	.cgv .container {
+	  position: absolute;
+	  top: 970px;
+	  max-width: 1170px;
+	  min-width: 600px;
+	  margin: 0 auto;
+	  left: 0;
+	  right: 0;
+	}
+	
+	.cgv {
+		font-family: Cambria,Georgia,serif;
+		font-size: 10px;
+		color: #000;
+	}
+	
+	.cgv .title {
+		font-size: 14px;
+		text-align: center;
+		font-weight: bold;
+		margin-bottom: 7px !important;
+	}
+	
+	.cgv .title .small {
+		font-size: 12px;
+	}
+	
+	.cgv .row {
+		margin: 0 -15px;
+	}
+	
+	.cgv .col-xs-2 {
+		width: 20%;
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+	
+	
+	.cgv .content {
+		text-align: justify;
+	    text-justify: inter-word;
+	}
+	
+	
+	.cgv .sub-title, .cgv .bullet {
+		font-weight: bold;
+	}
+	
+	.cgv .bullet {
+		list-style-type: disc;
+		padding-left: 4em;
+		margin-top: -2px !important;
+		margin-bottom: 5px !important;
+	}
+	
+	.cgv p {
+		margin-bottom: 6px !important;
+	}
+	
+	.cgv p:last-of-type {
+		margin-bottom: 0px !important;
+	}
+	
+	.cgv ul {
+	  margin-bottom: 6px !important;
+	}
+	
+	
+	.cgv ul.list {
+	  list-style-type: none;
+	  padding-left: 2em;
+	}
+	
+	.cgv ul.list > li:before {
+	  content: "–"; /* en dash */
+	  position: absolute;
+	  margin-left: -1.1em; 
+	}
+	
+	.cgv p.end {
+		white-space: pre;
+		margin-top: -6px;
+		text-align: center;
+	}
+	
+	.disclaimer, .stamp, .signature {
+		font-style: italic;
+	}
+	
+	.stamp h3, .signature h3 {
+		margin-top: 10px;
+	}
+	
+	.simplified_customer_watch_row {
+		text-align: center;
+	}
+	
+	.simplified_customer_watch_row td {
+		height: 40px;
+		vertical-align: middle !important;
+	}
+	
+	.disclaimer {
+		text-align: justify;
+		margin-top: 40px;
+	}
+	
+	
+	@@page  
+	{ 
+	    size: A4;   /* auto is the initial value */ 
+	
+	    /* this affects the margin in the printer settings */ 
+	    margin: 19mm 16mm 19mm 16mm;  
+	}
+	
+	@@media print {
+		body {
+			font-size: 5.5mm;
+		}
+		
+		h2 {
+			font-size: 9mm;
+		}
+		
+		.header h3 {
+			font-size: 8mm;
+		}
+		
+		.header h4 {
+			font-size: 7mm;
+		}
+		
+		.header h5 {
+			font-size: 6mm;
+		}
+		
+		.footer {
+			font-size: 4.9mm;
+			top: 300mm;
+		}
+		
+		.legal {
+			font-size: 4mm;
+		}
+		
+		.footer {
+			font-size: 4.5mm;
+			margin: 1em 0;
+			padding-left: 0.5em;
+			padding-top: -0.5em;
+			position:absolute;
+			top: initial;
+			bottom: 0 !important;
+		}
+		
+		.footer div {
+			margin: -0.2em 0.5em;
+		}
+		
+		.descriptions, .payment-infos {
+			font-size: 5.4mm;
+		}
+		
+		.table-bordered {
+			border: 0.8mm solid #000;
+		}
+		
+		.detailed_infos {
+			margin-top: -1em;
+			font-size: 0.8em;
+			margin-bottom: 1em;
+		}
+	
+		.cgv .container {
+			overflow:initial !important;
+			position: relative;
+			top: initial;
+			page-break-before: always !important;
+			margin: 0 auto;
+			width: 100%;
+		}
+		.cgv {
+			font-size: 2.42mm;
+		}
+		
+		.cgv .title {
+			font-size: 5mm;
+			margin-bottom: 0.5em !important;
+		}
+		
+		.cgv .title .small {
+			font-size: 4mm;
+		}
+		
+		.cgv .row {
+			margin: 0 -1em;
+		}
+	
+		.cgv .col-xs-2 {
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+		}
+		
+		
+		.cgv .bullet {
+			margin-top: -0.3em !important;
+			margin-bottom: 0.5em !important;
+		}
+		
+		.cgv p {
+			margin-bottom: 0.3em !important;
+		}
+		
+		.cgv ul {
+		  margin-bottom: 0.3em !important;
+		}
+		
+		.cgv p.end {
+			margin-top: -0.5em;
+		}
+		
+		.post-selling-certificate {
+			font-size: 4.8mm;
+		}
+					
+		.certificate h2 {
+			font-size: 6mm;
+		}
+			
+		.certificate h3 {
+			font-size: 5.5mm;
+		}
+		
+		.certificate h4 {
+			font-size: 4.8mm;
+		}
+		
+		.certificate p {
+			font-size: 4.8mm;
+		}
+		
+		.certificate p.footnote {
+			font-size: 4mm;
+		}
+		
+		.simplified_customer_watch {
+			font-size: 90%;
+		}
+		
+		.simplified_customer_watch_row td {
+			height: 60px;
+		}
+		
+		.disclaimer {
+			font-size: 4mm;
+			margin-top: 120px;
+		}
+		
+	}
+	    
+</style>

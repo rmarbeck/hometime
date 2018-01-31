@@ -1,0 +1,31 @@
+@(title: String = "Admin", document_date: Date, customer: models.Customer, alternate: Boolean = false, end_scripts_bottom: Html = Html(""))(content: Html)
+
+@import tags._
+
+@head = {
+        <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="description" content="@Messages("to.print.html.description")">
+        <meta name="author" content="@Messages("to.print.html.author")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap_for_printing-v1.0.min.css")">
+        @views.html.admin.fragments.styles_documents()
+        }
+
+@footer = {
+
+}
+
+@end_scripts = {
+}
+
+@layouts.admin_root(head, footer, end_scripts) {
+
+  <div class="container">
+	@views.html.admin.fragments.header_documents(document_date, customer, alternate)
+
+    @content
+    
+  </div>
+
+	@views.html.admin.fragments.footer_documents()
+}

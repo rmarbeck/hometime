@@ -15,7 +15,9 @@ import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import play.mvc.Security;
 
+@Security.Authenticated(SecuredAdminOnly.class)
 public class ExternalDocuments extends Controller {
 	public static Crud<ExternalDocument, ExternalDocument> crud = Crud.of(
 			ExternalDocument.of(),

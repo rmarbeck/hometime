@@ -7,7 +7,9 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
+@Security.Authenticated(SecuredAdminOnly.class)
 public class WatchesToSell extends Controller {
 	public static Crud<WatchToSell, WatchToSell> crud = Crud.of(
 			WatchToSell.of(),

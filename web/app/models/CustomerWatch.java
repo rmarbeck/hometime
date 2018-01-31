@@ -16,12 +16,14 @@ import javax.persistence.ManyToOne;
 
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 import play.mvc.Http.Session;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Page;
 
+import controllers.CrudReady;
 import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import fr.hometime.utils.Searcher;
@@ -31,8 +33,15 @@ import fr.hometime.utils.SecurityHelper;
  * Definition of a Watch belonging to a customer
  */
 @Entity 
-public class CustomerWatch extends Model implements Searchable {
+public class CustomerWatch extends Model implements CrudReady<CustomerWatch, CustomerWatch>, Searchable {
 	private static final long serialVersionUID = -1122053555762637015L;
+	private static CustomerWatch singleton = null;
+	
+	public static CustomerWatch of() {
+    	if (singleton == null)
+    		singleton = new CustomerWatch();
+    	return singleton;
+    }
 	
 	public enum CustomerWatchStatus {
 	    STORED_BY_WATCH_NEXT ("STORED_BY_WATCH_NEXT"),
@@ -103,6 +112,9 @@ public class CustomerWatch extends Model implements Searchable {
 	@Column(name="next_partial_service")
 	public Date nextPartialService;
 	
+	@Column(name="collecting_date")
+	public Date collectingDate;
+	
 	public Date lastStatusUpdate;
 	
 	@Column(length = 10000)
@@ -153,6 +165,37 @@ public class CustomerWatch extends Model implements Searchable {
 	
 	public boolean serviceNeeded = true;
 	
+	public Long quotation = 0L;
+	
+	public boolean picturesDoneOnCollect = true;
+	
+	@Column(length = 10000)
+	public String workingConditionsOnCollect;
+	
+	@Column(length = 10000)
+	public String boxConditionsOnCollect;
+	
+	@Column(length = 10000)
+	public String handsConditionsOnCollect;
+	
+	@Column(length = 10000)
+	public String crownAndPushersConditionsOnCollect;
+	
+	@Column(length = 10000)
+	public String backConditionsOnCollect;
+	
+	@Column(length = 10000)
+	public String braceletOrStrapConditionsOnCollect;
+	
+	@Column(length = 10000)
+	public String wateringConditionsOnCollect;
+	
+	@Column(length = 10000)
+	public String glassConditionsOnCollect;
+	
+	@Column(length = 10000)
+	public String otherConditionsRemarksOnCollect;
+	
     @ManyToOne
 	public Customer customer;
 
@@ -164,6 +207,7 @@ public class CustomerWatch extends Model implements Searchable {
 	public CustomerWatch() {
 		this.creationDate = new Date();
 		this.lastStatusUpdate = creationDate;
+		this.collectingDate = creationDate;
 	}
 	
 	public CustomerWatch(Customer customer) {
@@ -565,6 +609,10 @@ public class CustomerWatch extends Model implements Searchable {
 	public String getDisplayName() {
 		return brand+" "+model;
 	}
+	
+	public String getCustomerFullName() {
+		return customer.getFullName();
+	}
 
 	@Override
 	public String getDetails() {
@@ -580,6 +628,16 @@ public class CustomerWatch extends Model implements Searchable {
 		if (serviceStatus >= 1)
 			return "started";
 		return "toStart";
+	}
+
+	@Override
+	public Finder<String, CustomerWatch> getFinder() {
+		return find;
+	}
+
+	@Override
+	public Page<CustomerWatch> getPage(int page, int pageSize, String sortBy, String order, String filter) {
+		return page(page, pageSize, sortBy, order, filter);
 	}
 }
 

@@ -1,7 +1,9 @@
 package controllers;
 
 import play.mvc.Controller;
+import play.mvc.Security;
 
+@Security.Authenticated(SecuredAdminOnly.class)
 public class PostServiceCertificates extends Controller {
 	public static Crud<models.PostServiceCertificate, models.PostServiceCertificate> crud = Crud.of(
 			models.PostServiceCertificate.of(),

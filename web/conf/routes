@@ -244,6 +244,8 @@ POST    /admin/manage-selling-document            						controllers.Accounting.m
 GET     /admin/selling-documents            							controllers.Accounting.displayAllSellingDocument(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")
 GET     /admin/selling-document/:id         							controllers.Accounting.viewSellingDocument(id: Long)
 
+GET     /admin/display/SimplifiedCustomerWatches/All		            controllers.Default.redirect(to = "/admin/display/SimplifiedCustomers/All")
+
 GET		/admin/display/:model/All										controllers.CrudHelper.displayAll(model: String, d:Int ?=20)
 GET		/admin/display/:model/:id										controllers.CrudHelper.display(model: String, id: Long)
 GET		/admin/display/:model/page/										controllers.CrudHelper.page(model: String, p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "", d:Int ?=10)
@@ -268,6 +270,8 @@ GET     /admin/legal-register	            							controllers.Reporting.legalRegi
 GET     /admin/payments			            							controllers.Reporting.payments()
 
 GET     /admin/test			            								controllers.Admin.test()
+GET     /admin/testC		            								controllers.Admin.testCollaboratorOnly()
+GET     /admin/testP		            								controllers.Admin.testPartnerOnly()
 
 GET     /admin/watch-to-sell/duplicate/:id       						controllers.WatchesToSell.duplicateWatch(id: Long)
 
@@ -275,6 +279,11 @@ GET     /admin/mail-template/duplicate/:id       						controllers.MailTemplates
 
 GET		/admin/create-from-order/PaymentRequests/:id					controllers.PaymentRequests.createFromOrder(id: Long)
 GET		/admin/create-from-invoice/PaymentRequests/:id					controllers.PaymentRequests.createFromInvoice(id: Long)
+
+GET		/admin/create-for-customer/SimplifiedCustomerWatch/:id			controllers.SimplifiedCustomerWatches.createForCustomer(id: Long)
+GET		/admin/view/SimplifiedCustomerWatch/:id							controllers.SimplifiedCustomerWatches.displayCollectingForm(id: Long)
+
+
 
 GET		/admin/create-from-invoice/Payments/:id							controllers.Payments.createFromInvoice(id: Long)
 

@@ -3,7 +3,9 @@ package controllers;
 import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 import play.mvc.Controller;
@@ -11,7 +13,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@Security.Authenticated(SecuredLoggedOnOnly.class)
 @With(NoCacheAction.class)
 public class CrudHelper extends Controller {
 
@@ -67,13 +69,46 @@ public class CrudHelper extends Controller {
 		
 		crudField = guessControllerByName(controllerName).map(clazz -> {
 			try {
-				return Optional.of(clazz.getField("crud"));
+				if (userIsAuthorizedForThisController(clazz))
+					return Optional.of(clazz.getField("crud"));
+				return Optional.ofNullable((Field) null);
 			} catch (Exception e) {
 				return Optional.ofNullable((Field) null);
 			}
 		}).orElse(Optional.empty());
 		
 		return crudField;
+	}
+	
+	private static boolean userIsAuthorizedForThisController(Class<?> foundClass) {
+		Optional<Security.Authenticated> securityLevel = getSecurityAnnotationForThisControllerifExists(foundClass);
+		
+		if (securityLevel.isPresent())
+			return isLoggedInUserHasEnoughPrivileges(securityLevel.get());
+		
+		return false;
+	}
+	
+	private static Optional<Security.Authenticated> getSecurityAnnotationForThisControllerifExists(Class<?> foundControllerClass) {
+		Annotation[] annotations = foundControllerClass.getAnnotations();
+
+		for(Annotation annotation : annotations)
+			if (annotation instanceof Security.Authenticated)
+				return Optional.of((Security.Authenticated) annotation);
+
+		return Optional.empty();
+	}
+	
+	private static boolean isLoggedInUserHasEnoughPrivileges(Security.Authenticated securityLevel) {
+		String securityClassName = securityLevel.value().getName();
+		try {
+			return (boolean) Class.forName(securityClassName).getMethod("isLoggedInUserAuthorized", String.class).invoke(null, session().getOrDefault("token", ""));
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}	
+		
+		return false;
 	}
 
 	private static Optional<Class<?>> guessControllerByName(String controllerName) {
@@ -97,6 +132,10 @@ public class CrudHelper extends Controller {
 		StringBuilder controllerName = new StringBuilder();
 		if (modelName.equals("WatchToSell")) {
 			return Optional.of(new String("WatchesToSell"));
+		} else if (modelName.equals("Customer")) {
+			return Optional.of(new String("SimplifiedCustomers"));
+		} else if (modelName.equals("CustomerWatch")) {
+			return Optional.of(new String("SimplifiedCustomerWatches"));
 		} else if (modelName.endsWith("y")) {
 			controllerName.append(removeLastChar(modelName));
 			controllerName.append("ie");

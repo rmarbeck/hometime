@@ -1,0 +1,13 @@
+@(currentPage: com.avaje.ebean.Page[models.CustomerWatch], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "nom", "admin.simplified.customer.watch.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("brand", "brand", "getBrand", false);
+		pageDisplay.addTableField("model", "model", "getModel", false);
+		pageDisplay.addTableField("reference", "reference", "getReference", false);
+		pageDisplay.addTableField("customer", "customer", "getCustomerFullName", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "SimplifiedCustomerWatches", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

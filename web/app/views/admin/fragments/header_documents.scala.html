@@ -1,0 +1,67 @@
+@(document_date: Date, customer: models.Customer, alternate: Boolean = false, key: String = "admin.invoice.head")
+@import tags._
+
+	@if(alternate == false) {
+     <div class="row">
+        <div class="col-xs-4">
+        	<div class="header">
+		        <h3>@Html(Messages(key+".company"))</h3>
+		        <h4>@Html(Messages(key+".description"))</h4>
+		        <h5><br />@Html(Messages(key+".url"))</h5>
+		        <h5>@Html(Messages(key+".phone.number"))</h5>
+	        </div>
+        </div>
+        <div class="col-xs-7 col-xs-offset-1">
+        	<div class="row">
+        		<div class="col-xs-12">
+			        <div class="date text-right">
+			        	<br />
+			        	@Html(Messages(key+".document.date", document_date))
+			        </div>
+					@if(customer!=null) {
+						<div class="customer-details text-left">
+			        		<div class="cd-label">@Html(Messages(key+".customer.details"))</div>
+			        		<div class="name">@if(customer.civility != null) {@Html(Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.')+".short"))} @customer.firstname @customer.name</div>
+			        		<div class="address">@customer.billingAddress</div>
+			        	</div>
+					}	        
+			    </div>
+        	</div>
+        </div>
+     </div>
+     } else {
+     <div class="row">
+        <div class="col-xs-6">
+        	<div class="row">
+        		<div class="col-xs-12">
+			        <div class="date text-right">
+			        	<br />
+			        	&nbsp;
+			        </div>
+					@if(customer!=null) {
+						<div class="customer-details text-left">
+			        		<div class="cd-label">@Html(Messages(key+".customer.details"))</div>
+			        		<div class="name">@if(customer.civility != null) {@Html(Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.')+".short"))} @customer.firstname @customer.name</div>
+			        		<div class="address">@customer.billingAddress</div>
+			        	</div>
+					}	        
+			    </div>
+        	</div>
+        </div>
+        <div class="col-xs-5 col-xs-offset-1">
+        	<div class="row">
+        		<div class="col-xs-12">
+			        <div class="date text-right">
+			        	<br />
+			        	@display_date(document_date, "d MMMM yyyy")
+			        </div>
+					<div class="customer-details text-left">
+		        		<div class="cd-label">@Html(Messages(key+".company.details"))</div>
+		        		<div class="name">@Html(Messages(key+".company.name"))</div>
+		        		<div class="address">@Html(Messages(key+".company.address"))</div>
+		        	</div>
+			    </div>
+        	</div>
+        </div>
+     </div>     
+     }
