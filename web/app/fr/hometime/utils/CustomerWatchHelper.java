@@ -130,7 +130,7 @@ public class CustomerWatchHelper {
     		return CustomerWatchDetailedStatusForCustomer.WAITING_FOR_QUOTATION_ACCEPTATION;
     	} else if (watch.serviceNeeded) {
     		return CustomerWatchDetailedStatusForCustomer.WORKING;
-    	} else if (!watch.serviceNeeded && watch.serviceStatus == 100) {
+    	} else if (!watch.serviceNeeded && watch.serviceStatus == 100 && !watch.status.equals(CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)) {
     		return CustomerWatchDetailedStatusForCustomer.FINISHED_STORED_BY_US;
     	} else if (!watch.serviceNeeded && watch.status.equals(CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER) && !watch.finalCustomerServicePaid) {
     		return CustomerWatchDetailedStatusForCustomer.FINISHED_TO_BILL;
