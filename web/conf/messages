@@ -3768,6 +3768,7 @@ admin.customer.watch.customer.action.edit.watch=&nbsp;Modifier la montre
 
 admin.customer.watch.customer.head.watches=Montres en entretien chez Hometime
 admin.customer.watch.customer.head.new.watch=&nbsp;Créer une nouvelle montre
-admin.customer.watch.customer.action.accept.quotation=Accepter le devis
-admin.customer.watch.customer.action.refuse.quotation=Refuser le devis
+admin.customer.watch.customer.action.accept.quotation=&nbsp;Accepter le devis
+admin.customer.watch.customer.action.refuse.quotation=&nbsp;Refuser le devis
+admin.customer.watch.customer.action.accept.watch.back=&nbsp;Accepter le retour de la montre
 

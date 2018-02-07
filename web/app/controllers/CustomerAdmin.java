@@ -63,6 +63,15 @@ public class CustomerAdmin extends Controller {
 		});
     }
 	
+	public static Result acceptWatchBack(Long watchId) {
+		return checkCustomerForWatch(watchId, (foundWatch) -> {
+			foundWatch.status = CustomerWatchStatus.BACK_TO_CUSTOMER;
+			foundWatch.backToCustomerDate = new Date();
+			foundWatch.update();
+			return INDEX;
+		});
+    }
+	
 	public static Result prepareRefuseQuotation(Long watchId) {
 		flash("warning", "Expliquer dans la zone \"Informations spécifiques\" les raisons du refus de devis.");
 		return checkCustomerForWatch(watchId, (foundWatch) -> ok(customer_watch_for_customer_form.render(Form.form(models.CustomerWatch.class).fill(foundWatch), false)));

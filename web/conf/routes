@@ -305,6 +305,7 @@ GET     /private/new	                      						    controllers.CustomerAdmin.p
 GET     /private/edit/:id	                      						controllers.CustomerAdmin.prepareWatchEdition(id: Long)
 GET     /private/accept/:id	                      						controllers.CustomerAdmin.acceptQuotation(id: Long)
 GET     /private/refuse/:id	                      						controllers.CustomerAdmin.prepareRefuseQuotation(id: Long)
+GET     /private/get-watch-back/:id	                      				controllers.CustomerAdmin.acceptWatchBack(id: Long)
 
 
 

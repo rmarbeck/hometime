@@ -167,6 +167,12 @@ public class CustomerWatchHelper {
 	   return false;
    }
    
+   public static boolean isWorkDone(Long watchId) {
+	   if (watchId != null)
+		   return evaluateStatusForCustomer(CustomerWatch.findById(watchId)).equals(CustomerWatchDetailedStatusForCustomer.FINISHED_STORED_BY_US);
+	   return false;
+   }
+   
    public static boolean isWaitingQuotation(Long watchId) {
 	   if (watchId != null)
 		   return evaluateStatusForCustomer(CustomerWatch.findById(watchId)).equals(CustomerWatchDetailedStatusForCustomer.TO_QUOTE);

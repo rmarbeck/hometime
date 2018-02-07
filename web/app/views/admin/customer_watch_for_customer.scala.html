@@ -7,10 +7,14 @@
 	<div class="row for-editing-action">
         <div class="text-center col-xs-12">
         	@if(CustomerWatchHelper.isWaitingQuotationAcceptation(template.id)) {
-        	<a type="button" class="btn btn-success" href="@routes.CustomerAdmin.acceptQuotation(template.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.customer.watch.customer.action.accept.quotation"))</a>
-        	<a type="button" class="btn btn-danger" href="@routes.CustomerAdmin.prepareRefuseQuotation(template.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.customer.watch.customer.action.refuse.quotation"))</a>
+        	<a type="button" class="btn btn-success" href="@routes.CustomerAdmin.acceptQuotation(template.id)"><span class="glyphicon glyphicon-ok"></span>@Html(Messages("admin.customer.watch.customer.action.accept.quotation"))</a>
+        	<a type="button" class="btn btn-danger" href="@routes.CustomerAdmin.prepareRefuseQuotation(template.id)"><span class="glyphicon glyphicon-remove"></span>@Html(Messages("admin.customer.watch.customer.action.refuse.quotation"))</a>
         	} else {
-        	<a type="button" class="btn btn-primary" href="@routes.CustomerAdmin.prepareWatchEdition(template.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.customer.watch.customer.action.edit.watch"))</a>
+        		@if(CustomerWatchHelper.isWorkDone(template.id)) {
+        		<a type="button" class="btn btn-success" href="@routes.CustomerAdmin.acceptWatchBack(template.id)"><span class="glyphicon glyphicon-log-in"></span>@Html(Messages("admin.customer.watch.customer.action.accept.watch.back"))</a>
+        		} else {
+        		<a type="button" class="btn btn-primary" href="@routes.CustomerAdmin.prepareWatchEdition(template.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.customer.watch.customer.action.edit.watch"))</a>
+        		}
         	}
         </div>
     </div>
