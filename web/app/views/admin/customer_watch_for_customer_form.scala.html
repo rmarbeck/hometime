@@ -1,0 +1,57 @@
+@(thisInstance: Form[models.CustomerWatch], isItNew: Boolean)
+
+@import tags._
+@import fr.hometime.utils._
+
+@actionlink() = @{
+	routes.CrudHelper.manage("customer-watch-customer")
+}
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+		@if(!CustomerWatchHelper.isEditableByCustomer(thisInstance.get.id)) {
+			$('button[value="delete"]').hide();
+		}
+			$('button[value="show"]').hide();
+			
+			$('button[value="delete"]').on('click',function(e){
+				
+			    if (window.confirm('Are you sure？')== false) {
+			      e.preventDefault();
+			    }
+  			});
+			
+		})
+	</script>
+}
+
+
+@defining(new views.FormDisplay(thisInstance, "customer.watch.customer.create", "admin.customer.watch.customer.create.form")) { formDisplay =>
+		@{ 
+		   if(isItNew || (!isItNew && CustomerWatchHelper.isEditableByCustomer(thisInstance.get.id))) {
+		   formDisplay.addFormField("b2bId", true, "input");
+		   formDisplay.addFormField("brand", true, "input");
+		   formDisplay.addFormField("model", true, "input");
+		   formDisplay.addFormField("reference", true, "input");
+		   formDisplay.addFormField("serial", true, "input");
+		   formDisplay.addFormField("quotation", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   formDisplay.addFormField("finalCustomerEmergencyLevel", true, "input", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "50");
+		   } else {
+		   formDisplay.addFormField("b2bId", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("brand", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("model", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("reference", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("serial", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("quotation", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("finalCustomerEmergencyLevel", true, "input", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "50", 'readonly -> "readonly");
+		   }
+		   formDisplay.addFormField("finalCustomerFromInfos", true, "textarea");
+		   formDisplay.addFormField("customer.id", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("status", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("finalCustomerServicePrice", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("finalCustomerServicePriceAccepted", true, "input", 'type -> "hidden", '_class -> "hidden");
+		}
+	
+	@admin.template.form(formDisplay, isItNew, actionlink, end_scripts)
+}

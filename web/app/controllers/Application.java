@@ -33,8 +33,11 @@ import play.data.validation.ValidationError;
 import play.i18n.Messages;
 import play.libs.ws.*;
 import play.mvc.*;
+import play.twirl.api.Html;
+import play.twirl.api.Template2;
 import views.html.*;
 import views.html.admin.login;
+import views.html.admin.customer_login;
 import views.html.admin.quick_login;
 import views.html.mails.notify_order;
 import views.html.mails.notify_buy_request;
@@ -289,11 +292,19 @@ public class Application extends Controller {
     }
     
     public static Result login(String originInQueryString) {
-        return ok(login.render(Form.form(LoginForm.class), originToUse(originInQueryString)));
+    	return logger(login.ref(), Form.form(LoginForm.class), originInQueryString);
+    }
+    
+    public static Result customerLogin(String originInQueryString) {
+        return logger(customer_login.ref(), Form.form(LoginForm.class), originInQueryString);
     }
     
     public static Result quickAdminLogin(String originInQueryString) {
-        return ok(quick_login.render(Form.form(QuickLoginForm.class), originToUse(originInQueryString)));
+    	return logger(quick_login.ref(), Form.form(QuickLoginForm.class), originInQueryString);
+    }
+    
+    private static <A> Result logger(Template2<Form<A>, String, Html> loginview, Form<A> form, String originInQueryString) {
+    	return ok(loginview.render(form, originToUse(originInQueryString)));
     }
     
     private static String originToUse(String originInQueryString) {
@@ -311,11 +322,28 @@ public class Application extends Controller {
         );
     }
     
+    
+    public static Result customerLogout() {
+        session().clear();
+        flash("success", "Déconnexion réussie");
+        return redirect(
+            routes.Application.customerLogin("")
+        );
+    }
+    
     public static Result authenticate() {
-        Form<LoginForm> loginForm = Form.form(LoginForm.class).bindFromRequest();
+    	return authenticator(routes.Admin.index(), login.ref());
+    }
+    
+    public static Result customerAuthenticate() {
+    	return authenticator(routes.CustomerAdmin.index(), customer_login.ref());
+    }
+    
+    private static Result authenticator(Call successCall, Template2<Form<LoginForm>, String , Html> loginPage) {
+    	Form<LoginForm> loginForm = Form.form(LoginForm.class).bindFromRequest();
         if (loginForm.hasErrors()) {
-        	Logger.info("Login failed");
-            return badRequest(login.render(loginForm, ActionHelper.getOriginOfCall(ctx())));
+        	Logger.info("Mauvais login/mot de passe !");
+            return badRequest(loginPage.render(loginForm, ActionHelper.getOriginOfCall(ctx())));
         } else {
         	String origin = loginForm.get().origin;
             session().clear();
@@ -323,9 +351,9 @@ public class Application extends Controller {
             if (origin != null && !"".equals(origin))
             	return redirect(origin);
             return redirect(
-                routes.Admin.index()
+            		successCall
             );
-        }
+        }    	
     }
     
     public static Result quickAdminAuthenticate() {

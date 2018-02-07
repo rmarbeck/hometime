@@ -1934,7 +1934,7 @@ admin.customer.watch.form.value.status.by.sth=Chez STH
 admin.customer.watch.form.value.status.by.brand=SAV de la marque
 admin.customer.watch.form.value.status.by.registered.partner=Chez un partenaire principal
 admin.customer.watch.form.value.status.by.other=Chez autre partenaire
-admin.customer.watch.form.value.status.by.customer=Rendue au client
+admin.customer.watch.form.value.status.by.customer=Chez le client
 admin.customer.watch.form.label.status=Où se trouve la montre
 admin.customer.watch.form.label.service.price.accepted=Devis accepté
 admin.customer.watch.form.label.service.price=Devis
@@ -1995,6 +1995,7 @@ admin.customer.watch.watches.header.customer=Client
 
 admin.customer.watch.no.watch.to.display=Aucune montre à afficher
 
+admin.customer.head.watches.to.accept=Montres à accepter
 admin.customer.head.watches.back.to.customer=Montres chez le client
 admin.customer.head.watches.stored.by.registered.partner=Montres chez un partenaire
 admin.customer.head.watches.stored.by.us=Montres chez nous
@@ -3454,7 +3455,7 @@ admin.customer.watch.waiting.for.quotation.action.edit=Modifier
 admin.customer.watch.waiting.for.quotation.action.cancel=Annuler
 admin.customer.watch.waiting.for.quotation.action.show=Prévisualiser
 admin.customer.watch.waiting.for.quotation.action.delete=Supprimer
-admin.customer.watch.waiting.for.quotation.form.serviceprice.label.name=Montant du devis
+admin.customer.watch.waiting.for.quotation.form.serviceprice.label.name=Montant du devis (€ HT)
 admin.customer.watch.waiting.for.quotation.form.serviceprice.placeholder.name=
 admin.customer.watch.waiting.for.quotation.form.partnerfrominfos.label.name=Remarques
 admin.customer.watch.waiting.for.quotation.form.partnerfrominfos.placeholder.name=... 
@@ -3471,6 +3472,7 @@ admin.customerwatch.id.display.label=Identifiant interne
 admin.customerwatch.brand.display.label=Marque
 admin.customerwatch.model.display.label=Modèle
 admin.customerwatch.reference.display.label=Référence
+admin.customerwatch.quotation.display.label=Estimation de la montre
 admin.customerwatch.serial.display.label=Numéro de série
 admin.customer.watch.waiting.for.quotation.form.id.label.name=Identifiant
 admin.customer.watch.waiting.for.quotation.form.brand.label.name=Marque
@@ -3530,13 +3532,7 @@ admin.customer.watch.work.in.progress.form.expectedserviceenddate.label.name=Dat
 admin.customer.watch.work.in.progress.form.partnerfrominfos.label.name=Remarques
 admin.customer.watch.work.in.progress.form.b2bid.label.name=ID client
 admin.customer.watch.work.in.progress.form.b2bid.placeholder.name=
-
-
-admin.customer.index.watches.working.active=Montres en cours d''entretien
-admin.customer.index.watches.working.active.none=Aucune montre en cours d''entretien
-admin.customer.index.watches.waiting.to.be.collected.active=Montres en attente de prise en charge
-admin.customer.index.watches.waiting.to.be.collected.active.none=Aucune montre en attente de prise en charge
-
+admin.customer.watch.work.in.progress.form.partnerfrominfos.placeholder.name=
 
 admin.customer.partner.form=Gestion des clients
 admin.customer.partner.form.title=Gestion des clients
@@ -3696,3 +3692,80 @@ admin.simplified.customer.watch.value.status.back.to.customer=Chez le client
 admin.simplified.customer.watch.value.status.stored.by.other.partner=Chez autre partenaire
 admin.simplified.customer.watch.value.status.stored.by.a.registered.partner=Chez un partenaire principal
 admin.simplified.customer.watch.value.status.stored.by.watch.next.outside=En transit
+
+
+admin.customer.text.home=Accès sécurisé
+admin.customer.navbar.link.text.logout=Déconnexion
+admin.customer.login.page.title=Accès sécurisé client
+admin.customer.login.page.placeholder.email=Email
+admin.customer.login.page.placeholder.password=Mot de passe
+admin.customer.login.page.action.sign.in=OK
+admin.customer.login.page.help=Besoin d''aide ? Appelez nous au <b>07 82 43 47 51</b> ou <b>06 52 39 16 31</b>
+
+admin.customer.index.watches.waiting.for.quotation.active.none=Aucune montre en attente de devis
+admin.customer.index.watches.waiting.for.quotation.active=Montres en attente de devis
+admin.customer.index.watches.waiting.for.quotation.approval.active=Montres en attente d''accord de devis
+admin.customer.index.watches.waiting.for.quotation.approval.active.none=Aucune montre en attente d''accord de devis
+admin.customer.index.watches.work.done.active=Montres terminées
+admin.customer.index.watches.work.done.active.none=Aucune montre terminée
+admin.customer.index.watches.working.active=Montres en cours d''entretien
+admin.customer.index.watches.working.active.none=Aucune montre en cours d''entretien
+admin.customer.index.watches.waiting.to.be.collected.active=Montres en attente de prise en charge
+admin.customer.index.watches.waiting.to.be.collected.active.none=Aucune montre en attente de prise en charge
+
+admin.index.watches.head.service.price=Devis
+admin.index.watches.head.service.status=Avancement
+admin.customerwatch.b2bid.display.label=Identifiant
+admin.customerwatch.customerstatus.display.label=Etat d''avancement
+admin.customerwatch.customernextstep.display.label=Prochaine étape
+FINISHED_STORED_BY_US=Entretien terminé (montre à restituer)
+FINISHED_TO_BILL=En attente de paiement
+TO_BE_ACCEPTED=Montre à collecter par hometime
+TO_QUOTE=En cours d''auscultation pour établissement de devis
+WAITING_FOR_QUOTATION_ACCEPTATION=Devis établi, en attente d''accord client
+WORKING=Entretien en cours
+CLOSE=Montre restituée et entretien payé
+UNCONSISTENT=Etat inconnu
+
+admin.customer.watch.customer.create.form=Ajout d''une nouvelle montre
+admin.customer.watch.customer.create.form.quotation.label.name=Estimation de la montre (en €)
+admin.customer.watch.customer.create.form.title=Gestion des montres
+admin.customer.watch.customer.create.form.b2bid.label.name=Identifiant client
+admin.customer.watch.customer.create.form.b2bid.placeholder.name=votre identifiant interne pour la montre
+admin.customer.watch.customer.create.form.brand.label.name=Marque
+admin.customer.watch.customer.create.form.brand.placeholder.name=
+admin.customer.watch.customer.create.form.model.label.name=Modèle
+admin.customer.watch.customer.create.form.model.placeholder.name=
+admin.customer.watch.customer.create.form.reference.label.name=Référence du modèle
+admin.customer.watch.customer.create.form.reference.placeholder.name=
+admin.customer.watch.customer.create.form.serial.label.name=Numéro de série
+admin.customer.watch.customer.create.form.serial.placeholder.name=
+admin.customer.watch.customer.create.form.partnerfrominfos.label.name=Infos
+admin.customer.watch.customer.create.form.partnerfrominfos.placeholder.name=
+admin.customer.watch.customer.create.form.finalcustomeremergencylevel.label.name=Niveau d''urgence (0 normale, 50 moyenne, 100 élevée)
+admin.customer.watch.customer.create.form.finalcustomeremergencylevel.placeholder.name=
+admin.customer.watch.customer.create.form.finalcustomerfrominfos.label.name=Informations à destination de Hometime
+admin.customer.watch.customer.create.form.finalcustomerserviceprice.label.name=Devis en € HT
+admin.customer.watch.customer.create.form.finalcustomerfrominfos.placeholder.name=
+admin.customer.watch.customer.create.action.cancel=&nbsp;Annuler
+admin.customer.watch.customer.create.action.edit=&nbsp;Enregistrer
+admin.customer.watch.customer.create.action.save=&nbsp;Créer
+admin.customer.watch.customer.create.action.delete=&nbsp;Supprimer
+
+admin.customerwatch.finalcustomeremergencylevel.display.label=Niveau d''urgence (0 normale, 50 moyenne, 100 élevée)
+admin.customerwatch.finalcustomerfrominfos.display.label=Informations à destination de Hometime
+admin.customerwatch.finalcustomertoinfos.display.label=Message de la part de Hometime
+admin.customerwatch.finalcustomerserviceprice.display.label=Devis
+admin.customerwatch.finalcustomerservicepriceaccepted.display.label=Devis accepté
+admin.customerwatch.collectingdate.display.label=Date de collecte
+
+admin.customer.watch.true=Oui
+admin.customer.watch.false=Non
+
+admin.customer.watch.customer.action.edit.watch=&nbsp;Modifier la montre
+
+admin.customer.watch.customer.head.watches=Montres en entretien chez Hometime
+admin.customer.watch.customer.head.new.watch=&nbsp;Créer une nouvelle montre
+admin.customer.watch.customer.action.accept.quotation=Accepter le devis
+admin.customer.watch.customer.action.refuse.quotation=Refuser le devis
+

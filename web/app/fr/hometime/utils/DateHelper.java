@@ -1,5 +1,6 @@
 package fr.hometime.utils;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -7,6 +8,7 @@ import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.Locale;
 
 import play.Logger;
 
@@ -72,5 +74,11 @@ public class DateHelper {
 	
 	public static Date toDate(Instant instant) {
 		return new Date(instant.toEpochMilli());
+	}
+	
+	public static String asShortDate(Date date) {
+		if (date != null)
+			return new SimpleDateFormat("dd/MM/yyyy", new Locale("fr", "FR")).format(date).toString();
+		return "?";
 	}
 }

@@ -11,12 +11,16 @@
 
 @end_body = {
 	<div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches.to.accept"))</h3></div>
+    </div>
+	@fragments.watchlistForSimplifiedCustomers(models.CustomerWatch.findByCustomerWaitingToBeCollected(instance))
+	<div class="row">
         <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches"))</h3></div>
         <div class="text-right col-md-6">
         	<a type="button" class="btn btn-success" href="@routes.SimplifiedCustomerWatches.createForCustomer(instance.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.customer.head.new.watch"))</a>
         </div>
     </div>
-	@fragments.watchlistForSimplifiedCustomers(models.CustomerWatch.findByCustomer(instance))
+	@fragments.watchlistForSimplifiedCustomers(models.CustomerWatch.findByCustomerAllButWaitingToBeCollected(instance))
       
 }
 

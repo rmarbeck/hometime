@@ -25,6 +25,7 @@ import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
 import fr.hometime.utils.CustomerWatchHelper;
+import fr.hometime.utils.DateHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.SecurityHelper;
@@ -129,6 +130,12 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	@Column(length = 10000)
 	public String partnerToInfos;
 	
+	@Column(length = 10000)
+	public String finalCustomerFromInfos;
+	
+	@Column(length = 10000)
+	public String finalCustomerToInfos;
+	
 	@Column(name="expected_service_end_date")
 	public Date expectedServiceEndDate;
 	
@@ -165,7 +172,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public boolean serviceNeeded = true;
 	
-	public Long quotation = 0L;
+	public Long quotation = 1L;
 	
 	public boolean picturesDoneOnCollect = true;
 	
@@ -241,12 +248,21 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     	return CustomerWatchHelper.findForLoggedInCustomer(session);
     }
     
+
+    public static List<CustomerWatch> findForLoggedInCustomerWaitingForQuotation(Session session) {
+    	return CustomerWatchHelper.findForLoggedInCustomerWaitingForQuotation(session);
+    }
+    
+    public static List<CustomerWatch> findForLoggedInCustomerWaitingForQuotationApproval(Session session) {
+    	return CustomerWatchHelper.findForLoggedInCustomerWaitingForQuotationApproval(session);
+    }
+    
     public static List<CustomerWatch> findForLoggedInCustomerWorkingOnIt(Session session) {
     	return CustomerWatchHelper.findForLoggedInCustomerWorkingOnIt(session);
     }
     
-    public static List<CustomerWatch> findForLoggedInCustomerWaitingToBeCollected(Session session) {
-    	return CustomerWatchHelper.findForLoggedInCustomerWaitingToBeCollected(session);
+    public static List<CustomerWatch> findForLoggedInCustomerWorkDone(Session session) {
+    	return CustomerWatchHelper.findForLoggedInCustomerWorkDone(session);
     }
     
     public static List<CustomerWatch> findAllBySerialAsc() {
@@ -324,6 +340,41 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
         			.orderBy("lastStatusUpdate desc").findList();
     }
     
+    public static List<CustomerWatch> findForLoggedInCustomerWaitingToBeCollected(Session session) {
+    	return CustomerWatchHelper.findForLoggedInCustomerWaitingToBeCollected(session);
+    }
+    
+    public static List<CustomerWatch> findByCustomerWaitingForQuotation(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+    				.eq("finalCustomerServicePrice", 0)
+    				.eq("serviceNeeded", true)
+    				.ne("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+        			.orderBy("lastStatusUpdate desc, creationDate desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByCustomerWaitingForQuotationApproval(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+    				.ne("finalCustomerServicePrice", 0)
+    				.eq("finalCustomerServicePriceAccepted", false)
+    				.eq("serviceNeeded", true)
+    				.ne("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+        			.orderBy("lastStatusUpdate desc, creationDate desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByCustomerWorkingOnIt(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+				.eq("finalCustomerServicePriceAccepted", true)
+				.eq("serviceNeeded", true)
+				.ne("serviceStatus", 100)
+    			.orderBy("lastStatusUpdate desc, creationDate desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByCustomerWorkDone(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+				.eq("serviceNeeded", false)
+    			.orderBy("lastStatusUpdate desc, creationDate desc").findList();
+    }
+    
     public static List<CustomerWatch> findByCustomerStoredByRegisteredPartner(models.Customer customer) {
     	return find.where().conjunction().eq("customer.id", customer.id)
     				.disjunction()
@@ -349,8 +400,16 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     	return find.where().eq("customer.id", customer.id)
     				.eq("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
     				.eq("serviceNeeded", true)
-        			.orderBy("lastStatusUpdate desc").findList();
+        			.orderBy("lastStatusUpdate desc, creationDate desc").findList();
     }
+    
+    public static List<CustomerWatch> findByCustomerAllButWaitingToBeCollected(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+    				.ne("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+    				.eq("serviceNeeded", true)
+        			.orderBy("lastStatusUpdate desc, creationDate desc").findList();
+    }
+    
     
     
     public static List<CustomerWatch> findByCustomerOtherLocation(models.Customer customer) {
@@ -638,6 +697,22 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	@Override
 	public Page<CustomerWatch> getPage(int page, int pageSize, String sortBy, String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
+	}
+	
+	public String getStatusForCustomer() {
+		return CustomerWatchHelper.getStatusForCustomer(this);
+	}
+	
+	public String getNextStepForCustomer() {
+		return CustomerWatchHelper.getNextStepForCustomer(this);
+	}
+	
+	public String getFinalCustomerServicePriceAcceptedAsMessageKey() {
+		return "admin.customer.watch."+finalCustomerServicePriceAccepted;
+	}
+	
+	public String getCollectingDateAsShortDate() {
+		return DateHelper.asShortDate(collectingDate);
 	}
 }
 

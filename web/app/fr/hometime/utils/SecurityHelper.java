@@ -117,6 +117,8 @@ public class SecurityHelper {
     
     public static Predicate<User> isAdminOrPartner = (user) -> (user!= null && ( user.role == Role.PARTNER || user.role == Role.ADMIN) );
     
+    public static Predicate<User> isAdminOrCollaboratorOrPartner = (user) -> (user!= null && ( user.role == Role.PARTNER || user.role == Role.COLLABORATOR || user.role == Role.ADMIN) );
+    
     public static Predicate<User> isCollaborator = (user) -> (user!= null && user.role == Role.COLLABORATOR );
     
     public static Predicate<User> isPartner = (user) -> (user!= null && user.role == Role.PARTNER );

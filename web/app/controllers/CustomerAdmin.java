@@ -1,8 +1,16 @@
 package controllers;
 
 import java.util.Date;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
+import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
+import models.BuyRequest;
+import models.Customer;
+import models.CustomerWatch;
+import models.OrderRequest;
 import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
 import play.mvc.Controller;
@@ -10,10 +18,97 @@ import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
+import views.html.admin.customer_watch_for_customer;
+import views.html.admin.customer_watch_for_customer_form;
+import views.html.admin.index;
+import views.html.admin.index_customer_content;
 
 @Security.Authenticated(SecuredAdminOrCustomerOnly.class)
 @With(NoCacheAction.class)
-public class AdminForCustomer extends Controller {
+public class CustomerAdmin extends Controller {
+	
+	public static Result INDEX = redirect(
+			routes.CustomerAdmin.index()
+			);
+	
+	public static Result index() {
+		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(), models.CustomerWatch.findAllUnderOurResponsability()));
+    }
+	
+	public static Result displayWatch(Long watchId) {
+		return checkCustomerForWatch(watchId, (foundWatch) -> ok(customer_watch_for_customer.render(foundWatch)));
+    }
+	
+	public static Result prepareNewWatchCreation() {
+		Optional<Customer> currentCustomer = PartnerAndCustomerHelper.getLoggedInCustomer(session()); 
+		if (currentCustomer.isPresent()) {
+			models.CustomerWatch newWatch = new models.CustomerWatch(currentCustomer.get());
+			newWatch.status = CustomerWatchStatus.BACK_TO_CUSTOMER;
+			return ok(customer_watch_for_customer_form.render(Form.form(models.CustomerWatch.class).fill(newWatch), true));
+		}
+		return INDEX;
+    }
+	
+	public static Result prepareWatchEdition(Long watchId) {
+		return checkCustomerForWatch(watchId, (foundWatch) -> ok(customer_watch_for_customer_form.render(Form.form(models.CustomerWatch.class).fill(foundWatch), false)));
+    }
+	
+	public static Result acceptQuotation(Long watchId) {
+		return checkCustomerForWatch(watchId, (foundWatch) -> {
+			foundWatch.finalCustomerServicePriceAccepted = true;
+			if (PartnerAndCustomerHelper.isWatchAllocatedToInternalPartner(foundWatch))
+				foundWatch.servicePriceAccepted = true;
+			foundWatch.update();
+			return INDEX;
+		});
+    }
+	
+	public static Result prepareRefuseQuotation(Long watchId) {
+		flash("warning", "Expliquer dans la zone \"Informations spécifiques\" les raisons du refus de devis.");
+		return checkCustomerForWatch(watchId, (foundWatch) -> ok(customer_watch_for_customer_form.render(Form.form(models.CustomerWatch.class).fill(foundWatch), false)));
+    }
+	
+	private static Result checkCustomerForWatch(Long watchId, Function<models.CustomerWatch, Result> manageWatch) {
+		return checkCustomerAndThen(() -> {
+			models.CustomerWatch foundWatch = models.CustomerWatch.findById(watchId);
+			if (foundWatch != null && PartnerAndCustomerHelper.isWatchOneOfLoggedInCustomer(foundWatch, session()))
+				return manageWatch.apply(foundWatch);
+			return INDEX;
+		});
+	}
+	
+	private static Result checkCustomerAndThen(Supplier<Result> manage) {
+		Optional<Customer> currentCustomer = PartnerAndCustomerHelper.getLoggedInCustomer(session()); 
+		if (currentCustomer.isPresent()) {
+			return manage.get();
+		}
+		return INDEX;
+	}
+	
+	public static Result manageWatch() {
+		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
+		String action = Form.form().bindFromRequest().get("action");
+		if (watchForm.hasErrors()) {
+			if ("save".equals(action))
+				return badRequest(customer_watch_for_customer_form.render(watchForm, true));
+			return badRequest(customer_watch_for_customer_form.render(watchForm, false));
+		} else {
+			models.CustomerWatch watch = watchForm.get();
+			if ("save".equals(action)) {
+				watch.partner = PartnerAndCustomerHelper.findInternalPartner();
+				watch.save();
+			} else if ("delete".equals(action)) {
+				models.CustomerWatch customerWatchInDB = models.CustomerWatch.findById(watch.id);
+				customerWatchInDB.delete();
+			} else {
+				CustomerWatchHelper.updateWatchEnsuringOnlyEditableDataByCustomerAreChanged(watch);
+			}
+		}
+		return INDEX;
+	}
+
+	
+	
 	/*
 	public static Result LIST_WAITING_ACCEPTATION_WATCHES = redirect(
 			routes.AdminForCustomer.displayWaitingAcceptationWatches(0, "lastStatusUpdate", "desc", "", 20, "")

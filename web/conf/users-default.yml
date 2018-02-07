@@ -55,6 +55,7 @@ users:
          firstname:             utilisateur
          name:                  numéro 1
          active:                true
+         customer:              *CustomerB2B1
 
     - &user2 !!models.User
          email:                 user2@hometime.fr

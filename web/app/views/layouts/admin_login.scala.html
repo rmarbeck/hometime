@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String, end_scripts_bottom: Html = Html(""), in_head_content: Html = Html(""))(content: Html)
 @import tags._
 <!DOCTYPE html>
 
@@ -23,6 +23,8 @@
 	    <![endif]-->
 
 		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+		
+		@in_head_content
 	</head>
 	<body>
 		<div class="container">
@@ -35,5 +37,7 @@
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    	
+    	@end_scripts_bottom
 	</body>
 </html>

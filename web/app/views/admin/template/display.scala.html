@@ -8,6 +8,8 @@
   	<div class="row display">
     	<div class="col-xs-12">
     		<h1>@Html(Messages(modelDisplay.getLabelKey+".title"))</h1>
+    	</div>
+    </div>
 
 	@if(newlink != null) {
     <div class="row display">
@@ -20,12 +22,13 @@
       @for(currentField <- modelDisplay.getFields) {
 	    <div class="row display @currentField.getRenderingOption">
       		<div class="col-xs-12 @if(currentField.hideSmall) {hidden-xs}">
-				<span class="display-label">@Messages(currentField.getKey)</span>&nbsp;:&nbsp;<span class="display-value">@currentField.display</span> 
+				<span class="display-label">@Messages(currentField.getKey)</span>&nbsp;:&nbsp;<span class="display-value">@Messages(currentField.display)</span> 
 			</div>
 	    </div>      	
       }
-  </div>
+  
   
   @body
 
+</div>
 }

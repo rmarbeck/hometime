@@ -10,11 +10,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="@routes.Admin.index()">@Messages("admin.text.home")</a>
+              
+              @if_customer() {
+    			<a class="navbar-brand" href="@routes.CustomerAdmin.index()">@Messages("admin.customer.text.home")</a>
+    		  }
+    		  @if_admin_or_collaborator_or_partner() {
+    		  	<a class="navbar-brand" href="@routes.Admin.index()">@Messages("admin.text.home")</a>
+    		  }
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                @li_activable(1, index) {<a href="@routes.Admin.index()"><span class="glyphicon glyphicon-home"></span></a>}
+              	@if_customer() {
+              		@li_activable(1, index) {<a href="@routes.CustomerAdmin.index()"><span class="glyphicon glyphicon-home"></span></a>}
+              	}
+              	@if_admin_or_collaborator_or_partner() {
+    		  		@li_activable(1, index) {<a href="@routes.Admin.index()"><span class="glyphicon glyphicon-home"></span></a>}
+    		  	}
+                
                 @if_admin_or_collaborator() {
                 @li_activable(10, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.requests")) <b class="caret"></b></a>
@@ -117,7 +129,13 @@
                 
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                @li_activable(100, index) {<a href="@routes.Application.logout()">@Messages("admin.navbar.link.text.logout")</a>}
+                
+                @if_customer() {
+    				@li_activable(100, index) {<a href="@routes.Application.customerLogout()">@Messages("admin.customer.navbar.link.text.logout")</a>}
+    		  	}
+    		  	@if_admin_or_collaborator_or_partner() {
+    		  		@li_activable(100, index) {<a href="@routes.Application.logout()">@Messages("admin.navbar.link.text.logout")</a>}
+    		  	}
               </ul>
             </div>
           </div>

@@ -2,7 +2,9 @@ package controllers;
 
 import java.util.Date;
 
+import models.CustomerWatch;
 import models.CustomerWatch.CustomerWatchStatus;
+import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import play.data.Form;
 import play.mvc.Controller;
@@ -122,11 +124,13 @@ public class Partner extends Controller {
 				models.CustomerWatch customerWatchInDB = models.CustomerWatch.findById(watch.id);
 				customerWatchInDB.delete();
 			} else {
-				watch.update();
+				CustomerWatchHelper.updateWatchEnsuringOnlyEditableDataByPartnerAreChanged(watch, session());
 			}
 		}
 		return LIST_WAITING_QUOTATION_WATCHES;
 	}
+	
+
 	
 	public static Result manageWorkInProgress() {
 		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
@@ -143,7 +147,7 @@ public class Partner extends Controller {
 				models.CustomerWatch customerWatchInDB = models.CustomerWatch.findById(watch.id);
 				customerWatchInDB.delete();
 			} else {
-				watch.update();
+				CustomerWatchHelper.updateWatchEnsuringOnlyEditableDataByPartnerAreChanged(watch, session());
 			}
 		}
 		return LIST_WORK_IN_PROGRESS_WATCHES;

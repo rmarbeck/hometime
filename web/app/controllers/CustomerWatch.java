@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.Date;
 
+import fr.hometime.utils.PartnerAndCustomerHelper;
 import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
 import play.mvc.Controller;
@@ -54,6 +55,27 @@ public class CustomerWatch extends Controller {
 		}
 		flash("error", "Unknown customer id");
 		return badRequest(emptyNewWatchForm());
+	}
+	
+	public static Result acceptWatchFromCustomer(Long watchId) {
+		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
+		if (acceptWatch(existingWatch))
+			return Customer.display(existingWatch.customer.id);
+		flash("error", "Unknown watch id");
+		return LIST_CUSTOMER_WATCHES;
+	}
+	
+	protected static boolean acceptWatch(models.CustomerWatch watchToAccept) {
+		if (watchToAccept != null) {
+			watchToAccept.collectingDate = new Date();
+			watchToAccept.status = CustomerWatchStatus.STORED_BY_WATCH_NEXT_OUTSIDE;
+			watchToAccept.status = CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER;
+			watchToAccept.partner = PartnerAndCustomerHelper.findInternalPartner();
+			watchToAccept.update();
+			return true;
+		}
+		return false;
+		
 	}
 	
 	public static Result add() {
@@ -115,11 +137,11 @@ public class CustomerWatch extends Controller {
 		return LIST_CUSTOMER_WATCHES;
 	}
 	
-	private static Html customerWatchForm(Form<models.CustomerWatch> watchForm, boolean isItANewWatch) {
+	protected static Html customerWatchForm(Form<models.CustomerWatch> watchForm, boolean isItANewWatch) {
 		return customer_watch_form.render(watchForm, isItANewWatch, models.Customer.findByNameAsc(), models.Partner.findAllByEmailAsc());
 	}
 	
-	private static Html emptyNewWatchForm() {
+	protected static Html emptyNewWatchForm() {
 		return customerWatchForm(Form.form(models.CustomerWatch.class), true);
 	}
 }

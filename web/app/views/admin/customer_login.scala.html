@@ -1,0 +1,33 @@
+@(form: Form[Application.LoginForm], origin: String)
+
+@import tags._
+@import helper.twitterBootstrap._
+
+@in_head_styling = {
+	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/customer.min.css")">
+}
+
+@layouts.admin_login("Accès client Hometime", Html(""), in_head_styling) {
+	<div class="row" id="logo">
+		<div class="col-xs-12">
+			<img class="img-responsive" src="@routes.Assets.at("images/logo-transparent-600.png")" alt="logo">
+		</div>
+	</div>
+
+	@helper.form(action = routes.Application.customerAuthenticate(), args = 'class -> "form-signin") {
+        <h2 class="form-signin-heading text-center">@Html(Messages("admin.customer.login.page.title"))</h2>
+        <input name="email" type="email" class="form-control" placeholder="@Messages("admin.customer.login.page.placeholder.email")" value="@form("email").value" autofocus>
+        <input name="password" type="password" class="form-control" placeholder="@Messages("admin.customer.login.page.placeholder.password")">
+        
+        <input name="origin" type="hidden" value="@origin">
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">@Html(Messages("admin.customer.login.page.action.sign.in"))</button>
+	}
+	
+	<div class="row" id="footnotes">
+		<div class="col-xs-12 text-center">
+			@Html(Messages("admin.customer.login.page.help"))
+		</div>
+	</div>
+	
+}

@@ -1,6 +1,8 @@
 @(watches: List[models.CustomerWatch], key: String = "admin.simplified.customer.watch")
 @import tags._
 
+@import fr.hometime.utils._
+
 	@if(watches == null || watches.size == 0) {
       <div class="row">
         <div class="well">
@@ -26,9 +28,13 @@
               @for((watch, index) <- watches.zipWithIndex) {
                 <tr>
                   <td>
+                  	@if(CustomerWatchHelper.isToBeAccepted(watch.id)) {
+                   		<a type="button" class="btn btn-success btn-xs" href="@routes.SimplifiedCustomerWatches.acceptWatch(watch.id)" title="Accepter la montre"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                   	} else {
                     <a type="button" class="btn btn-default btn-xs" href="@routes.SimplifiedCustomerWatches.displayCollectingForm(watch.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.edit("SimplifiedCustomerWatches", watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
                    	<!--<a type="button" class="btn btn-warning btn-xs" href="@routes.Order.addFromCustomerWatch(watch.id)"><span class="glyphicon glyphicon-arrow-up"></span></a>-->
+                   	}
                   </td>
                   <td>
                     @watch.id

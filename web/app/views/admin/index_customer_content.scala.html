@@ -1,10 +1,12 @@
 @()
 @import tags._
 
-@displayWatches(watches: List [models.CustomerWatch], key: String = "admin.customer.index.watches")  = {
+@displayWatches(watches: List [models.CustomerWatch], key: String = "admin.customer.index.watches", typeOfDisplay: String = "std")  = {
+
+
 	@if(watches != null && watches.size >0) {
     	<h3>
-    		@Html(Messages(key+".active"))
+    		@Html(Messages(key+".active")) (@watches.size)
     	</h3>
     	<table class="table table-condensed table-striped table-bordered">
           <thead>
@@ -12,16 +14,50 @@
 	          <th>@Html(Messages("admin.index.watches.head.id"))</th>
 	          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
 	          <th>@Html(Messages("admin.index.watches.head.model"))</th>
-	          <th>@Html(Messages("admin.index.watches.head.last.communication.date"))</th>
+
+	          @typeOfDisplay match {
+				  case "std" => {
+				    <th>@Html(Messages("admin.index.watches.head.last.communication.date"))</th>
+				  }
+				  
+				  case "quotation" => {
+				    <th>@Html(Messages("admin.index.watches.head.service.price"))</th>
+				  }
+				  
+				  case "working" => {
+				    <th>@Html(Messages("admin.index.watches.head.service.status"))</th>
+				  }
+				
+				  case _ => {
+				    <th>-</th>
+				  }
+				}
 	        </tr>
 	      </thead>
 	      <tbody>
 	      	@for(watch <- watches) {
 	      	<tr>
-	      		<td>@watch.b2bId</td>
+	      		<td><a href="@routes.CustomerAdmin.displayWatch(watch.id)">#@watch.b2bId</a></td>
 	      		<td>@watch.brand</td>
 	      		<td>@watch.model</td>
-	      		<td>@display_date(watch.lastStatusUpdate, "dd/MM/yyyy HH:mm")</td>
+	      		
+	      		@typeOfDisplay match {
+				  case "std" => {
+				    <td>@display_date(watch.lastStatusUpdate, "dd/MM/yyyy")</td>
+				  }
+				  
+				  case "quotation" => {
+				    <td>@display_price(watch.finalCustomerServicePrice.toFloat)</td>
+				  }
+				  
+				  case "working" => {
+				    <td>@watch.serviceStatus %</td>
+				  }
+				
+				  case _ => {
+				    <td>-</td>
+				  }
+				}
 	      	</tr>
 	      	}
 		  </tbody>
@@ -33,9 +69,22 @@
     }
 }
 
-@displayWatches(models.CustomerWatch.findForLoggedInCustomer(session), "admin.customer.index.watches.all")
-
-@displayWatches(models.CustomerWatch.findForLoggedInCustomerWorkingOnIt(session), "admin.customer.index.watches.working")
+	<div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.watch.customer.head.watches"))</h3></div>
+        <div class="text-right col-md-6">
+        	<a type="button" class="btn btn-success" href="@routes.CustomerAdmin.prepareNewWatchCreation()"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.customer.watch.customer.head.new.watch"))</a>
+        </div>
+    </div>
 
 @displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingToBeCollected(session), "admin.customer.index.watches.waiting.to.be.collected")
+
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForQuotation(session), "admin.customer.index.watches.waiting.for.quotation")
+
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForQuotationApproval(session), "admin.customer.index.watches.waiting.for.quotation.approval", "quotation")
+
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWorkingOnIt(session), "admin.customer.index.watches.working", "working")
+
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWorkDone(session), "admin.customer.index.watches.work.done")
+
+
 

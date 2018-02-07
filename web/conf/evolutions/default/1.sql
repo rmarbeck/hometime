@@ -135,6 +135,8 @@ create table customer_watch (
   other_infos               varchar(10000),
   partner_from_infos        varchar(10000),
   partner_to_infos          varchar(10000),
+  final_customer_from_infos varchar(10000),
+  final_customer_to_infos   varchar(10000),
   expected_service_end_date timestamp,
   first_entry_in_partner_workshop_date timestamp,
   service_due_date          timestamp,

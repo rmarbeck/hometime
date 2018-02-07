@@ -65,4 +65,31 @@ public class PartnerAndCustomerHelper {
 			return watch.customer.equals(customer.get());
 		return false;
 	}
+	
+	
+	public static Partner findInternalPartner() {
+		return models.Partner.findByInternalName("simon");
+	}
+	
+	public static boolean isItInternalPartner(Partner partner) {
+		if (partner != null)
+			return isItInternalPartner(partner.id);
+		return false;
+	}
+	
+	public static boolean isItInternalPartner(Long partnerId) {
+		return partnerId == findInternalPartner().id;
+	}
+	
+	public static boolean isLoggedInUserInternalPartner(Session session) {
+		if (isLoggedInUserAPartner(session))
+			if (isItInternalPartner(getLoggedInPartner(session).get()))
+				return true;
+		return false;
+	}
+	
+	public static boolean isWatchAllocatedToInternalPartner(CustomerWatch watch) {
+		return isItInternalPartner(watch.partner);
+		
+	}
 }

@@ -100,6 +100,10 @@ public class Partner extends Model implements CrudReady<Partner, Partner> {
     	return find.where().eq("phoneNumber", phoneNumber).findUnique();
     }
     
+    public static Partner findByInternalName(String internalName) {
+    	return find.where().eq("internalName", internalName).findUnique();
+    }
+    
     public static List<Partner> findByName(String name) {
     	return find.where().eq("name", name).findList();
     }

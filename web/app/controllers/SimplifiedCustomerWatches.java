@@ -41,4 +41,12 @@ public class SimplifiedCustomerWatches extends Controller {
 		    
 		return badRequest("error");
     }
+	
+	public static Result acceptWatch(Long watchId) {
+		CustomerWatch instance = CustomerWatch.findById(watchId);
+		if (controllers.CustomerWatch.acceptWatch(instance))
+			return SimplifiedCustomers.crud.display(instance.customer.id);
+		
+		return badRequest("error");
+	}
 }
