@@ -69,6 +69,10 @@ public class CustomerWatchHelper {
    		return genericFindForLoggedInCustomer(session, CustomerWatch::findByCustomerWorkDone);
     }
     
+    public static List<CustomerWatch> findForLoggedInCustomerWaitingForPayment(Session session) {
+   		return genericFindForLoggedInCustomer(session, CustomerWatch::findByCustomerWaitingForPayment);
+    }
+    
     public static List<CustomerWatch> findForLoggedInCustomerWaitingToBeCollected(Session session) {
     	return genericFindForLoggedInCustomer(session, CustomerWatch::findByCustomerWaitingToBeCollected);
     }

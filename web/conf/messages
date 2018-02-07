@@ -3712,6 +3712,8 @@ admin.customer.index.watches.working.active=Montres en cours d''entretien
 admin.customer.index.watches.working.active.none=Aucune montre en cours d''entretien
 admin.customer.index.watches.waiting.to.be.collected.active=Montres en attente de prise en charge
 admin.customer.index.watches.waiting.to.be.collected.active.none=Aucune montre en attente de prise en charge
+admin.customer.index.watches.waiting.payment.active=Montre en attente de paiement
+admin.customer.index.watches.waiting.payment.active.none=Aucune montre en attente de paiement
 
 admin.index.watches.head.service.price=Devis
 admin.index.watches.head.service.status=Avancement

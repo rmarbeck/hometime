@@ -265,6 +265,10 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     	return CustomerWatchHelper.findForLoggedInCustomerWorkDone(session);
     }
     
+    public static List<CustomerWatch> findForLoggedInCustomerWaitingForPayment(Session session) {
+    	return CustomerWatchHelper.findForLoggedInCustomerWaitingForPayment(session);
+    }
+    
     public static List<CustomerWatch> findAllBySerialAsc() {
         return find.where().orderBy("serial ASC").findList();
     }
@@ -371,6 +375,15 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     public static List<CustomerWatch> findByCustomerWorkDone(models.Customer customer) {
     	return find.where().eq("customer.id", customer.id)
 				.eq("serviceNeeded", false)
+				.ne("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+    			.orderBy("lastStatusUpdate desc, creationDate desc").findList();
+    }
+    
+    public static List<CustomerWatch> findByCustomerWaitingForPayment(models.Customer customer) {
+    	return find.where().eq("customer.id", customer.id)
+				.eq("serviceNeeded", false)
+				.eq("status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+				.eq("finalCustomerServicePaid", false)
     			.orderBy("lastStatusUpdate desc, creationDate desc").findList();
     }
     
