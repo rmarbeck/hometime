@@ -141,6 +141,19 @@ public class CustomerWatchHelper {
     	}
     }
     
+    public static Long getStatusForCustomerAsLong(CustomerWatch watch) {
+    	switch(evaluateStatusForCustomer(watch)) {
+    		case TO_BE_ACCEPTED: return 1L;
+    		case TO_QUOTE: return 2L;
+    		case WAITING_FOR_QUOTATION_ACCEPTATION: return 3L;
+    		case WORKING: return 4L;
+    		case FINISHED_STORED_BY_US: return 5L;
+    		case FINISHED_TO_BILL: return 6L;
+    		case CLOSE: return 7L;
+    		default: return 0L;
+    	}
+    }
+    
     private static CustomerWatchDetailedStatusForCustomer evaluateNextStepForCustomer(CustomerWatch watch) {
     	switch(evaluateStatusForCustomer(watch)) {
     		case TO_BE_ACCEPTED : return CustomerWatchDetailedStatusForCustomer.TO_QUOTE;

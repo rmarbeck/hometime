@@ -4,6 +4,11 @@
 
 
 @end_body = {
+	<div id="steps" class="row">
+		<div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+			<img class="img-responsive center-block" src="@routes.Assets.at("images/step"+CustomerWatchHelper.getStatusForCustomerAsLong(template)+".png")" alt="step"+CustomerWatchHelper.getStatusForCustomerAsLong(template)+"">
+		</div>
+	</div>
 	<div class="row for-editing-action">
         <div class="text-center col-xs-12">
         	@if(CustomerWatchHelper.isWaitingQuotationAcceptation(template.id)) {
@@ -18,7 +23,6 @@
         	}
         </div>
     </div>
-
 }
 
 
@@ -48,3 +52,10 @@
 	
 	@admin.template.display(modelDisplay, null, null, end_body)
 }
+
+    
+    <script>
+    	$(document).ready(function(){
+	        $('#steps').detach().insertAfter( $( ".row" ).first() );
+	    });
+    </script>

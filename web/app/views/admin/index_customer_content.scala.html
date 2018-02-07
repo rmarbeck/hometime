@@ -1,9 +1,13 @@
 @()
 @import tags._
 
-@displayWatches(watches: List [models.CustomerWatch], key: String = "admin.customer.index.watches", typeOfDisplay: String = "std")  = {
+@displayWatches(watches: List [models.CustomerWatch], step: Long, key: String = "admin.customer.index.watches", typeOfDisplay: String = "std")  = {
 
-
+	<div class="row vertical-align">
+	<div class="col-xs-2 col-sm-1">
+		<img class="img-responsive" src="@routes.Assets.at("images/step"+step+"_only.png")" alt="step"+step+"">
+	</div>
+	<div class="col-xs-10 col-sm-11">
 	@if(watches != null && watches.size >0) {
     	<h3>
     		@Html(Messages(key+".active")) (@watches.size)
@@ -67,6 +71,8 @@
     		@Html(Messages(key+".active.none"))
     	</h3>
     }
+    </div>
+    </div>
 }
 
 	<div class="row">
@@ -76,17 +82,17 @@
         </div>
     </div>
 
-@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingToBeCollected(session), "admin.customer.index.watches.waiting.to.be.collected")
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingToBeCollected(session), 1, "admin.customer.index.watches.waiting.to.be.collected")
 
-@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForQuotation(session), "admin.customer.index.watches.waiting.for.quotation")
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForQuotation(session), 2, "admin.customer.index.watches.waiting.for.quotation")
 
-@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForQuotationApproval(session), "admin.customer.index.watches.waiting.for.quotation.approval", "quotation")
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForQuotationApproval(session), 3, "admin.customer.index.watches.waiting.for.quotation.approval", "quotation")
 
-@displayWatches(models.CustomerWatch.findForLoggedInCustomerWorkingOnIt(session), "admin.customer.index.watches.working", "working")
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWorkingOnIt(session), 4, "admin.customer.index.watches.working", "working")
 
-@displayWatches(models.CustomerWatch.findForLoggedInCustomerWorkDone(session), "admin.customer.index.watches.work.done")
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWorkDone(session), 5, "admin.customer.index.watches.work.done")
 
-@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForPayment(session), "admin.customer.index.watches.waiting.payment")
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForPayment(session), 6, "admin.customer.index.watches.waiting.payment")
 
 
 
