@@ -365,7 +365,6 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     	return find.where().eq("customer.id", customer.id)
 				.eq("finalCustomerServicePriceAccepted", true)
 				.eq("serviceNeeded", true)
-				.ne("serviceStatus", 100)
     			.orderBy("lastStatusUpdate desc, creationDate desc").findList();
     }
     
