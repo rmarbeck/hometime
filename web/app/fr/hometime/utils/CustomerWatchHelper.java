@@ -222,6 +222,7 @@ public class CustomerWatchHelper {
 		if (PartnerAndCustomerHelper.isLoggedInUserInternalPartner(session)) {
 			watch.finalCustomerServicePrice = watch.servicePrice;
 			watch.finalCustomerServiceStatus = watch.serviceStatus;
+			watch.finalCustomerToInfos = watch.partnerFromInfos;
 		} else {
 			watch.finalCustomerServicePrice = currentWatchInDB.finalCustomerServicePrice;
 			watch.finalCustomerServiceStatus = currentWatchInDB.finalCustomerServiceStatus;
