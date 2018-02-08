@@ -1949,6 +1949,9 @@ admin.customer.watch.form.label.final.customer.emergency.level=Niveau d''urgence
 admin.customer.watch.form.label.final.customer.service.price=Prix client
 admin.customer.watch.form.label.final.customer.service.price.accepted=Accepté
 admin.customer.watch.form.label.final.customer.service.paid=Payé
+
+admin.customer.watch.form.label.final.customer.from.infos=Infos du client
+admin.customer.watch.form.label.final.customer.to.infos=Infos vers le client
 admin.customer.watch.form.label.back.to.customer.date=Date de retour au client
 
 
