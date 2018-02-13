@@ -209,7 +209,7 @@ public class CustomerWatchHelper {
 		watch.serviceNeeded = currentWatchInDB.serviceNeeded;
 		watch.servicePaid = currentWatchInDB.servicePaid;
 		watch.servicePrice = currentWatchInDB.servicePrice;
-		watch.servicePriceAccepted = currentWatchInDB.servicePriceAccepted;
+		//watch.servicePriceAccepted = currentWatchInDB.servicePriceAccepted;
 		watch.serviceStatus = currentWatchInDB.serviceStatus;
 		watch.status = currentWatchInDB.status;
 		

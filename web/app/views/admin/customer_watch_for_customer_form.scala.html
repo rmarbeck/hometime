@@ -35,6 +35,7 @@
 		   formDisplay.addFormField("model", true, "input");
 		   formDisplay.addFormField("reference", true, "input");
 		   formDisplay.addFormField("serial", true, "input");
+		   formDisplay.addFormField("finalCustomerWatchInfos", true, "textarea");
 		   formDisplay.addFormField("quotation", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
 		   formDisplay.addFormField("finalCustomerEmergencyLevel", true, "input", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "50");
 		   } else {
@@ -46,11 +47,20 @@
 		   formDisplay.addFormField("quotation", true, "input", 'readonly -> "readonly");
 		   formDisplay.addFormField("finalCustomerEmergencyLevel", true, "input", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "50", 'readonly -> "readonly");
 		   }
+		   
+		   if(CustomerWatchHelper.isWaitingQuotationAcceptation(thisInstance.get.id)) {
+		   formDisplay.addFormField("finalCustomerToInfos", true, "textarea", 'readonly -> "readonly");
+		   formDisplay.addFormField("finalCustomerServicePrice", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("finalCustomerServicePriceAcceptedInfos", true, "textarea");
+		   } else {
+		   formDisplay.addFormField("finalCustomerServicePriceAcceptedInfos", true, "textarea", 'readonly -> "readonly");
+		   }
 		   formDisplay.addFormField("finalCustomerFromInfos", true, "textarea");
 		   formDisplay.addFormField("customer.id", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("status", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("finalCustomerServicePrice", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("finalCustomerServicePriceAccepted", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("servicePriceAccepted", true, "input", 'type -> "hidden", '_class -> "hidden");
 		}
 	
 	@admin.template.form(formDisplay, isItNew, actionlink, end_scripts)

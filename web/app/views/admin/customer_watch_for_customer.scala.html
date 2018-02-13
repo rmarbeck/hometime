@@ -12,7 +12,7 @@
 	<div class="row for-editing-action">
         <div class="text-center col-xs-12">
         	@if(CustomerWatchHelper.isWaitingQuotationAcceptation(template.id)) {
-        	<a type="button" class="btn btn-success" href="@routes.CustomerAdmin.acceptQuotation(template.id)"><span class="glyphicon glyphicon-ok"></span>@Html(Messages("admin.customer.watch.customer.action.accept.quotation"))</a>
+        	<a type="button" class="btn btn-success" href="@routes.CustomerAdmin.prepareAcceptQuotation(template.id)"><span class="glyphicon glyphicon-ok"></span>@Html(Messages("admin.customer.watch.customer.action.accept.quotation"))</a>
         	<a type="button" class="btn btn-danger" href="@routes.CustomerAdmin.prepareRefuseQuotation(template.id)"><span class="glyphicon glyphicon-remove"></span>@Html(Messages("admin.customer.watch.customer.action.refuse.quotation"))</a>
         	} else {
         		@if(CustomerWatchHelper.isWorkDone(template.id)) {
@@ -32,9 +32,11 @@
 			modelDisplay.addField("model");
 			modelDisplay.addField("reference");
 			modelDisplay.addField("serial");
+			modelDisplay.addField("finalCustomerWatchInfos", "getFinalCustomerWatchInfos", false, "" , "customer_watch_infos");
 			modelDisplay.addField("quotation", "getQuotation", false, "" , "customer_quotation");
 			modelDisplay.addField("finalCustomerEmergencyLevel");
 			modelDisplay.addField("finalCustomerFromInfos", "getFinalCustomerFromInfos", false, "" , "from_customer_info");
+			modelDisplay.addField("finalCustomerServicePriceAcceptedInfos", "getFinalCustomerServicePriceAcceptedInfos", false, "" , "from_customer_service_price_accepted_info");
 			
 			if(!CustomerWatchHelper.isToBeAccepted(template.id)) {
 				modelDisplay.addField("collectingDate", "getCollectingDateAsShortDate");

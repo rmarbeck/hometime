@@ -31,6 +31,10 @@
 				  case "working" => {
 				    <th>@Html(Messages("admin.index.watches.head.service.status"))</th>
 				  }
+				  
+				  case "payment" => {
+				    <th>@Html(Messages("admin.index.watches.head.service.price.final"))</th>
+				  }
 				
 				  case _ => {
 				    <th>-</th>
@@ -56,6 +60,10 @@
 				  
 				  case "working" => {
 				    <td>@watch.serviceStatus %</td>
+				  }
+				  
+				  case "payment" => {
+				    <td>@display_price(watch.finalCustomerServicePrice.toFloat)</td>
 				  }
 				
 				  case _ => {
@@ -92,7 +100,7 @@
 
 @displayWatches(models.CustomerWatch.findForLoggedInCustomerWorkDone(session), 5, "admin.customer.index.watches.work.done")
 
-@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForPayment(session), 6, "admin.customer.index.watches.waiting.payment")
+@displayWatches(models.CustomerWatch.findForLoggedInCustomerWaitingForPayment(session), 6, "admin.customer.index.watches.waiting.payment", "payment")
 
 
 

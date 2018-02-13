@@ -63,6 +63,25 @@ public class CustomerAdmin extends Controller {
 		});
     }
 	
+	
+	public static Result prepareAcceptQuotation(Long watchId) {
+		flash("warning", "Expliquer dans la zone \"Remarques devis\" les éventuelles options choisies ou refusées.");
+		return checkCustomerForWatch(watchId, (foundWatch) -> {
+			foundWatch.finalCustomerServicePriceAccepted = true;
+			if (PartnerAndCustomerHelper.isWatchAllocatedToInternalPartner(foundWatch)) {
+				foundWatch.servicePriceAccepted = true;
+			} else {
+				foundWatch.servicePriceAccepted = false;
+			}
+			return ok(customer_watch_for_customer_form.render(Form.form(models.CustomerWatch.class).fill(foundWatch), false));
+		});
+    }
+	
+	public static Result prepareRefuseQuotation(Long watchId) {
+		flash("warning", "Expliquer dans la zone \"Informations spécifiques\" les raisons du refus de devis.");
+		return checkCustomerForWatch(watchId, (foundWatch) -> ok(customer_watch_for_customer_form.render(Form.form(models.CustomerWatch.class).fill(foundWatch), false)));
+    }
+	
 	public static Result acceptWatchBack(Long watchId) {
 		return checkCustomerForWatch(watchId, (foundWatch) -> {
 			foundWatch.status = CustomerWatchStatus.BACK_TO_CUSTOMER;
@@ -72,10 +91,15 @@ public class CustomerAdmin extends Controller {
 		});
     }
 	
-	public static Result prepareRefuseQuotation(Long watchId) {
-		flash("warning", "Expliquer dans la zone \"Informations spécifiques\" les raisons du refus de devis.");
-		return checkCustomerForWatch(watchId, (foundWatch) -> ok(customer_watch_for_customer_form.render(Form.form(models.CustomerWatch.class).fill(foundWatch), false)));
+	public static Result cancelWatch(Long watchId) {
+		return checkCustomerForWatch(watchId, (foundWatch) -> {
+			foundWatch.status = CustomerWatchStatus.BACK_TO_CUSTOMER;
+			foundWatch.backToCustomerDate = new Date();
+			foundWatch.update();
+			return INDEX;
+		});
     }
+
 	
 	private static Result checkCustomerForWatch(Long watchId, Function<models.CustomerWatch, Result> manageWatch) {
 		return checkCustomerAndThen(() -> {

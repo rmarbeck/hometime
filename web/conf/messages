@@ -1944,6 +1944,12 @@ admin.customer.watch.form.label.first.entry.in.partner.workshop.date=Entrée che
 admin.customer.watch.form.label.expected.service.end.date=Date prévisionnelle
 admin.customer.watch.form.label.new.service.price.needed=Nouveau devis demandé
 
+admin.customer.watch.form.label.final.customer.watch.infos=Infos sur le modèle fournies par le client
+admin.customer.watch.form.placeholder.final.customer.watch.infos=
+admin.customer.watch.form.label.final.customer.service.price.accepted.infos=Mentions lors de l''acceptation du devis
+admin.customer.watch.form.placeholder.final.customer.service.price.accepted.infos=
+
+
 admin.customer.watch.form.label.final.customer.service.status=Statut communiqué au client
 admin.customer.watch.form.label.final.customer.emergency.level=Niveau d''urgence client
 admin.customer.watch.form.label.final.customer.service.price=Prix client
@@ -3719,6 +3725,7 @@ admin.customer.index.watches.waiting.payment.active=Montre en attente de paiemen
 admin.customer.index.watches.waiting.payment.active.none=Aucune montre en attente de paiement
 
 admin.index.watches.head.service.price=Devis
+admin.index.watches.head.service.price.final=Montant à payer (HT)
 admin.index.watches.head.service.status=Avancement
 admin.customerwatch.b2bid.display.label=Identifiant
 admin.customerwatch.customerstatus.display.label=Etat d''avancement
@@ -3756,11 +3763,22 @@ admin.customer.watch.customer.create.action.cancel=&nbsp;Annuler
 admin.customer.watch.customer.create.action.edit=&nbsp;Enregistrer
 admin.customer.watch.customer.create.action.save=&nbsp;Créer
 admin.customer.watch.customer.create.action.delete=&nbsp;Supprimer
+admin.customer.watch.customer.create.form.finalcustomerwatchinfos.label.name=Informations sur la montre
+admin.customer.watch.customer.create.form.finalcustomerwatchinfos.placeholder.name=
+admin.customer.watch.customer.create.form.finalcustomerservicepriceacceptedinfos.label.name=Précisions sur l''acceptation du devis
+admin.customer.watch.customer.create.form.finalcustomerservicepriceacceptedinfos.placeholder.name=
+admin.customer.watch.customer.create.form.finalcustomertoinfos.label.name=Information en provenance d''Hometime
+admin.customer.watch.customer.create.form.finalcustomertoinfos.placeholder.name=
+admin.customer.watch.customer.create.form.finalcustomerserviceprice.label.name=Montant du devis (en € HT)
+admin.customer.watch.customer.create.form.finalcustomerserviceprice.placeholder.name=
 
 admin.customerwatch.finalcustomeremergencylevel.display.label=Niveau d''urgence (0 normale, 50 moyenne, 100 élevée)
+admin.customerwatch.finalcustomerwatchinfos.display.label=Informations sur la montre
+
 admin.customerwatch.finalcustomerfrominfos.display.label=Informations à destination de Hometime
 admin.customerwatch.finalcustomertoinfos.display.label=Message de la part de Hometime
 admin.customerwatch.finalcustomerserviceprice.display.label=Devis
+admin.customerwatch.finalcustomerservicepriceacceptedinfos.display.label=Message lors de l''acceptation de devis
 admin.customerwatch.finalcustomerservicepriceaccepted.display.label=Devis accepté
 admin.customerwatch.collectingdate.display.label=Date de collecte
 

@@ -131,10 +131,16 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	public String partnerToInfos;
 	
 	@Column(length = 10000)
+	public String finalCustomerWatchInfos;
+	
+	@Column(length = 10000)
 	public String finalCustomerFromInfos;
 	
 	@Column(length = 10000)
 	public String finalCustomerToInfos;
+	
+	@Column(length = 10000)
+	public String finalCustomerServicePriceAcceptedInfos;
 	
 	@Column(name="expected_service_end_date")
 	public Date expectedServiceEndDate;
