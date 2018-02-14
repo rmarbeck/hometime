@@ -1447,6 +1447,7 @@ admin.text.home=Admin
 admin.navbar.link.text.orders=Commandes
 admin.navbar.link.text.customers=Clients
 admin.navbar.link.text.simplified.customers=Clients
+admin.navbar.link.text.simplified.customers.for.admin=Clients (simplifiés)
 admin.navbar.link.text.simplified.customers.watches=Montres
 admin.navbar.link.text.partners=Partenaires
 admin.navbar.link.text.customer.watches=Montres clients
