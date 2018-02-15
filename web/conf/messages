@@ -1459,7 +1459,7 @@ admin.navbar.link.text.customers=Clients
 admin.navbar.link.text.simplified.customers=Clients
 admin.navbar.link.text.simplified.customers.big=Clients Pro
 admin.navbar.link.text.simplified.customers.for.admin=Clients (simplifiés)
-admin.navbar.link.text.simplified.customers.for.admin.big==Clients Pro
+admin.navbar.link.text.simplified.customers.for.admin.big=Clients Pro
 admin.navbar.link.text.simplified.customers.watches=Montres
 admin.navbar.link.text.partners=Partenaires
 admin.navbar.link.text.customer.watches=Montres clients
@@ -3619,7 +3619,7 @@ admin.simplified.customer.watch.value.status.to.quote=Devis à faire
 admin.simplified.customer.watch.value.status.to.be.accepted=Montre à collecter
 admin.simplified.customer.watch.value.status.finished.to.bill=A payer
 admin.simplified.customer.watch.value.status.finished.stored.by.us=Terminé (à rendre)
-admin.simplified.customer.watch.value.status.wainting.for.quotation.acceptation=Devis à accepter
+admin.simplified.customer.watch.value.status.waiting.for.quotation.acceptation=Devis à accepter
 admin.simplified.customer.watch.value.status.working=Entretien en cours
 admin.simplified.customer.watch.value.status.close=Rendue et payée
 admin.simplified.customer.watch.value.status.unconsistent=Etat anormal
