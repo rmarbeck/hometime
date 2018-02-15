@@ -444,6 +444,15 @@ public class Application extends Controller {
     	}
     }
     
+    public static Result appointment() {
+    	try {
+	        return ok(appointment.render("", SessionWatcher.isItFirstPageOfSession(session())));
+    	} catch (Exception e) {
+    		return internalServerError();
+    	}
+    }
+    
+    
     public static Result callRequest() {
     	try {
 	        return ok(call.render("", Form.form(CallForm.class).fill(new CallForm())));

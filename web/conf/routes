@@ -54,6 +54,9 @@ GET     /nous-contacter             controllers.Application.contact(title: Strin
 GET     /hardCodedToContact         controllers.Default.redirect(to = "/nous-contacter")
 POST    /nous-contacter             controllers.Application.manageContact()
 
+GET     /venir-nous-voir            controllers.Application.appointment()
+GET     /hardCodedToAppointment     controllers.Default.redirect(to = "/venir-nous-voir")
+
 # CallRequest
 GET     /demande-de-rappel          controllers.Application.callRequest()
 POST    /demande-de-rappel          controllers.Application.manageCallRequest()
@@ -247,7 +250,9 @@ GET     /admin/selling-document/:id         							controllers.Accounting.viewSe
 
 GET     /admin/display/SimplifiedCustomerWatches/All		            controllers.Default.redirect(to = "/admin/display/SimplifiedCustomers/All")
 
-POST     /admin/manage/customer-watch-customer							controllers.CustomerAdmin.manageWatch()
+POST    /admin/manage/customer-watch-customer							controllers.CustomerAdmin.manageWatch()
+
+GET     /admin/display/SimplifiedCustomersBig/All		            	controllers.SimplifiedCustomers.pageOfSpecialCustomers(p:Int ?= 0, s ?= "creationDate", o ?= "desc", f ?= "", size:Int ?= 0)
 
 GET		/admin/display/:model/All										controllers.CrudHelper.displayAll(model: String, d:Int ?=20)
 GET		/admin/display/:model/:id										controllers.CrudHelper.display(model: String, id: Long)
@@ -286,7 +291,6 @@ GET		/admin/create-from-invoice/PaymentRequests/:id					controllers.PaymentReque
 GET		/admin/create-for-customer/SimplifiedCustomerWatch/:id			controllers.SimplifiedCustomerWatches.createForCustomer(id: Long)
 GET		/admin/view/SimplifiedCustomerWatch/:id							controllers.SimplifiedCustomerWatches.displayCollectingForm(id: Long)
 GET		/admin/accept/SimplifiedCustomerWatch/:id						controllers.SimplifiedCustomerWatches.acceptWatch(id: Long)
-
 
 GET		/admin/create-from-invoice/Payments/:id							controllers.Payments.createFromInvoice(id: Long)
 

@@ -101,6 +101,11 @@
       <priority>0.5</priority>
     </url>
     <url>
+      <loc>http://@{request.host()}@routes.Application.appointment()</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.5</priority>
+    </url>
+    <url>
       <loc>http://@{request.host()}@routes.Application.legal()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>

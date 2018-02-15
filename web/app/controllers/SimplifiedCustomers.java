@@ -1,5 +1,7 @@
 package controllers;
 
+import static play.mvc.Results.ok;
+
 import java.util.List;
 
 import models.Customer;
@@ -16,4 +18,8 @@ public class SimplifiedCustomers extends Controller {
 			views.html.admin.simplified_customer.ref(),
 			views.html.admin.simplified_customer_form.ref(),
 			views.html.admin.simplified_customers.ref());
+	
+    public static Result pageOfSpecialCustomers(int page, String sortBy, String order, String filter, int pageSize) {
+        return ok(views.html.admin.simplified_customers.render(Customer.pageOfSpecialCustomers(page, pageSize, sortBy, order, filter), sortBy, order, filter, pageSize));
+    }
 }

@@ -102,6 +102,7 @@ global.text.footer.conditions.when=du&nbsp;lundi&nbsp;au&nbsp;samedi de&nbsp;8h&
 global.text.customization=Personnalisation de montres
 global.text.store.closed=Hometime fermé pour une semaine
 global.text.store.closed.consequences=jusqu''au 2 janvier nous serons un peu moins réactifs, soyez indulgents
+global.text.coming=Venir chez Hometime
 
 # Home page
 home.html.title=Révision, réparation et essai de montres à domicile sur Paris
@@ -569,6 +570,14 @@ order.generic.html.title=Devis pour révision ou réparation d''une montre {0}
 order.generic.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
 order.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
 
+
+appointment.generic.baseline=Venir chez Hometime
+appointment.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''un atelier indépendant, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
+appointment.generic.text.explanation=Toutes les informations pour prendre rendez-vous et nous rencontrer dans nos locaux situés dans le 1er arrondissement de Paris.
+appointment.generic.html.title=Venir chez Hometime
+appointment.generic.html.description=Comment venir dans nos locaux à Paris pour déposer une montre pour une révision complète, un entretien partiel, un polissage, un changement de pile ou tout autre service horloger
+appointment.generic.html.keywords=Locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
+appointment.text.disclaimer=Nous pouvons vous recevoir pour répondre à l''ensemble de vos questions et pour vous proposer tous nos services horlogers.
 
 quartz.generic.baseline=Changement de pile de montre
 quartz.generic.text.explanation=Pour réaliser le changement de la pile de votre montre {0} (ou une autre marque) avec ou sans refaire l''étanchéité, nous vous accueillons dans nos locaux situés 3 rue des Pyramides à Paris 1er arrondissement sur rendez-vous au 07 82 43 47 51.
@@ -1357,6 +1366,7 @@ site.plan.broking.title=Recherche de montres neuves ou d''occasion
 site.plan.sell.title=Vendez votre montre d''occasion
 site.plan.quartz.title=Tarifs changement de pile et étanchéité
 site.plan.quartz.brand.title=Tarifs changement de pile et étanchéité pour une montre {0}
+site.plan.appointment.title=Venir chez Hometime
 
 
 
@@ -1447,7 +1457,9 @@ admin.text.home=Admin
 admin.navbar.link.text.orders=Commandes
 admin.navbar.link.text.customers=Clients
 admin.navbar.link.text.simplified.customers=Clients
+admin.navbar.link.text.simplified.customers.big=Clients Pro
 admin.navbar.link.text.simplified.customers.for.admin=Clients (simplifiés)
+admin.navbar.link.text.simplified.customers.for.admin.big==Clients Pro
 admin.navbar.link.text.simplified.customers.watches=Montres
 admin.navbar.link.text.partners=Partenaires
 admin.navbar.link.text.customer.watches=Montres clients
@@ -3602,6 +3614,15 @@ admin.simplified.customer.page.fullname=Nom complet
 admin.simplified.customer=Fiche client
 admin.simplified.customer.title=Fiche client
 admin.simplified.customer.watch.no.watch.to.display=Aucune montre à afficher
+
+admin.simplified.customer.watch.value.status.to.quote=Devis à faire
+admin.simplified.customer.watch.value.status.to.be.accepted=Montre à collecter
+admin.simplified.customer.watch.value.status.finished.to.bill=A payer
+admin.simplified.customer.watch.value.status.finished.stored.by.us=Terminé (à rendre)
+admin.simplified.customer.watch.value.status.wainting.for.quotation.acceptation=Devis à accepter
+admin.simplified.customer.watch.value.status.working=Entretien en cours
+admin.simplified.customer.watch.value.status.close=Rendue et payée
+admin.simplified.customer.watch.value.status.unconsistent=Etat anormal
 
 admin.simplified.customer.watch.text.head=PV de collecte et état de la montre <span class="small">(exemplaire client)</span>
 admin.simplified.customer.watch.title.collecting=Fiche état montre - {0}

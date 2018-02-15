@@ -160,6 +160,9 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
 	public List<CustomerWatch> watches;
 	
+	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
+	public List<User> users;
+	
 	public Customer() {
 	}
 	
@@ -277,6 +280,21 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 	            .findPagingList(pageSize)
 	            .getPage(page);
     }
+    
+    public static Page<Customer> pageOfSpecialCustomers(int page, int pageSize, String sortBy, String order, String filter) {
+    	if (sortBy != null && sortBy.equals("")) {
+    		sortBy = "creationDate";
+    		order = "desc";
+    	}
+
+        return
+	        find.fetch("users", "active").where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
+	        	.eq("users.active", true)
+	            .orderBy(sortBy + " " + order)
+	            .findPagingList(pageSize)
+	            .getPage(page);
+    }
+    
     
     private static ExpressionList<Customer> getCommonQueryForPartner(String filter, String status, Session session) {
     	ExpressionList<Customer> query = find.where().conjunction()

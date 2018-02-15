@@ -1,0 +1,81 @@
+@(message: String = "", is_it_first_page: Boolean)
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+@end_scripts = {
+
+}
+@in_head = {
+
+}
+
+@title = {
+	@Messages("appointment.generic.html.title")
+}
+
+@description = {
+	@Messages("appointment.generic.html.description")
+}
+
+@keywords = {
+	@Messages("appointment.generic.html.keywords")
+}
+
+
+@layouts.main_with_options(title.toString.trim, description.toString.trim, keywords.toString.trim, end_scripts, in_head) {
+    @layouts.fragments.navbar(101)
+    
+    <div class="container pure-content-call-block-ahead order">
+	  <div class="row visible-xs">
+        <div class="col-xs-12">
+        	@layouts.fragments.top_banner(false)
+        </div>
+      </div>
+      @baseline("appointment.generic.baseline", true)
+      <div class="row explanation">
+          <div class="col-sm-10 col-sm-offset-1">
+            @if(is_it_first_page) {
+            <div class="head"><img class="img-responsive" src="/assets/images/order/movement.jpg" alt="@Messages("order.movement.alt")"></div>
+            <div class="quick-sumup explanation-body">@Html(Messages("appointment.text.pre.explanation", routes.Application.index(), routes.Application.about()))</div>
+            }
+            <div class="explanation-body">@Html(Messages("appointment.generic.text.explanation"))</div>
+          </div>
+      </div>
+     
+      <div class="row content">
+      <hr>
+      	<div class="col-xs-12 col-md-3 col-md-offset-1 text-justify">
+      	            
+      		Nous vous recevons dans nos locaux situés <b>3 rue des Pyramides</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h</b>.
+      		<br /><br />
+      		Une fois sur les lieux, après la porte cochère : <b>première porte à droite (en verre), puis 3ème étage à gauche, la sonnette bleue.</b>
+      		<br /><br />
+      		Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:@Messages("global.href.phone.number")" rel="nofollow"><span>@Html(Messages("global.text.phone.number"))</span></a> 
+      		<br /><br />
+      		<br />
+      		Vous préférez que nous vous contactions par téléphone&nbsp;?
+      		<br />
+      		<br />
+      		<div class="text-center">
+			<a class="btn btn-default" href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("order.action.alternative"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
+			</div>
+			<br /><br />
+		</div>
+        <div class="col-xs-12 col-md-7">
+	        <iframe
+			  width="100%"
+			  height="400"
+			  frameborder="0" style="border:0"
+			  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc
+			    &q=3+rue+des+pyramides,Paris" allowfullscreen>
+			</iframe>
+		</div>
+	  </div>
+      <hr>
+      <div class="row disclaimer">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="disclaimer-body">@Html(Messages("appointment.text.disclaimer"))</div>
+          </div>
+      </div>
+    </div><!-- /.container -->
+}    

@@ -49,11 +49,7 @@
                     @watch.reference
                   </td>
                   <td>
-                  	@if(watch.partner != null) {
-                    	@Html(Messages(key+".value.status."+watch.status.toString.toLowerCase.replace('_','.'), watch.partner.name))
-                    } else {
-                    	@Html(Messages(key+".value.status."+watch.status.toString.toLowerCase.replace('_','.')))
-                    }
+                  	@Html(Messages(key+".value.status."+CustomerWatchHelper.getStatusForCustomer(watch).toLowerCase.replace('_','.')))
                   </td>
                 </tr>
               }
