@@ -29,7 +29,7 @@ public class ActionHelper {
 	private static String FLASH_ORIGIN = "flashscope_origin";
 	
 	private static String TEAM_ADDRESS_1 = "contact@hometime.fr";
-	private static String TEAM_FROM_ADDRESS = "watchnextforsmtp@gmail.com";
+	private static String TEAM_FROM_ADDRESS = "rmarbeck@free.fr";
 
 
 	/**
