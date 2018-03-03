@@ -2629,7 +2629,7 @@ admin.invoice.delivery.line.selling.a.watch=Remise en mains propres à domicile 
 
 admin.invoice.of.year= datant de {0}
 admin.invoice.new.watch=
-admin.invoice.used.watch=d''occasion
+admin.invoice.used.watch=
 admin.invoice.box.and.papers=avec boite et papiers d''origine
 admin.invoice.box.only=avec boite d''origine
 admin.invoice.papers.only=avec papiers d''origine
