@@ -220,7 +220,8 @@ public class CustomerWatchHelper {
 		models.CustomerWatch currentWatchInDB = CustomerWatch.findById(watch.id);
 		watch.emergencyLevel = currentWatchInDB.emergencyLevel;
 		if (PartnerAndCustomerHelper.isLoggedInUserInternalPartner(session)) {
-			watch.finalCustomerServicePrice = watch.servicePrice;
+			if (watch.servicePrice != 0)
+				watch.finalCustomerServicePrice = watch.servicePrice;
 			watch.finalCustomerServiceStatus = watch.serviceStatus;
 			watch.finalCustomerToInfos = watch.partnerFromInfos;
 		} else {
