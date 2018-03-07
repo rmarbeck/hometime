@@ -3552,6 +3552,7 @@ admin.customer.watch.work.in.progress.form.serviceprice.label.name=Montant devis
 admin.customer.watch.work.in.progress.form.servicestatus.label.name=Avancement
 admin.customer.watch.work.in.progress.form.expectedserviceenddate.label.name=Date prévisionnelle
 admin.customer.watch.work.in.progress.form.partnerfrominfos.label.name=Remarques
+admin.customer.watch.work.in.progress.form.finalCustomerServicePriceAccepted.label.name=Infos acceptation de devis
 admin.customer.watch.work.in.progress.form.b2bid.label.name=ID client
 admin.customer.watch.work.in.progress.form.b2bid.placeholder.name=
 admin.customer.watch.work.in.progress.form.partnerfrominfos.placeholder.name=
