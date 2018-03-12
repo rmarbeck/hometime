@@ -167,6 +167,9 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public boolean finalCustomerServicePriceAccepted = false;
 	
+	@Column(name="final_customer_acceptance_date")
+	public Date finalCustomerServicePriceAcceptedDate;
+	
 	public boolean finalCustomerServicePaid = false;
 	
 	public Long finalCustomerEmergencyLevel = 0L;
@@ -732,5 +735,10 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	public String getCollectingDateAsShortDate() {
 		return DateHelper.asShortDate(collectingDate);
 	}
+	
+	public String getFinalCustomerServicePriceAcceptedDateAsShortDate() {
+		return DateHelper.asShortDate(finalCustomerServicePriceAcceptedDate);
+	}
+	
 }
 

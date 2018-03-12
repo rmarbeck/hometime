@@ -3804,6 +3804,7 @@ admin.customerwatch.finalcustomerserviceprice.display.label=Devis
 admin.customerwatch.finalcustomerservicepriceacceptedinfos.display.label=Message lors de l''acceptation de devis
 admin.customerwatch.finalcustomerservicepriceaccepted.display.label=Devis accepté
 admin.customerwatch.collectingdate.display.label=Date de collecte
+admin.customerwatch.finalcustomerservicepriceaccepteddate.display.label=Date d''acceptation de devis
 
 admin.customer.watch.true=Oui
 admin.customer.watch.false=Non

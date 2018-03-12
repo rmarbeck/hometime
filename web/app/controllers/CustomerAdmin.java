@@ -56,6 +56,7 @@ public class CustomerAdmin extends Controller {
 	public static Result acceptQuotation(Long watchId) {
 		return checkCustomerForWatch(watchId, (foundWatch) -> {
 			foundWatch.finalCustomerServicePriceAccepted = true;
+			foundWatch.finalCustomerServicePriceAcceptedDate = new Date();
 			if (PartnerAndCustomerHelper.isWatchAllocatedToInternalPartner(foundWatch))
 				foundWatch.servicePriceAccepted = true;
 			foundWatch.update();

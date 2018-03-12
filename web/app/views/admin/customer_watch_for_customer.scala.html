@@ -38,6 +38,10 @@
 			modelDisplay.addField("finalCustomerFromInfos", "getFinalCustomerFromInfos", false, "" , "from_customer_info");
 			modelDisplay.addField("finalCustomerServicePriceAcceptedInfos", "getFinalCustomerServicePriceAcceptedInfos", false, "" , "from_customer_service_price_accepted_info");
 			
+			if(CustomerWatchHelper.isWorking(template.id)) {
+				modelDisplay.addField("finalCustomerServicePriceAcceptedDate", "getFinalCustomerServicePriceAcceptedDateAsShortDate");
+			}
+			
 			if(!CustomerWatchHelper.isToBeAccepted(template.id)) {
 				modelDisplay.addField("collectingDate", "getCollectingDateAsShortDate");
 				if(!CustomerWatchHelper.isWaitingQuotation(template.id)) {

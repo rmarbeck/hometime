@@ -138,6 +138,10 @@ public class User extends Model implements CrudReady<User, User> {
     		return false;
     	if (loggedInUser.isPasswordCorrect(password)) {
         	return true;
+    	} else if (loggedInUser.isPasswordToChangeAtFirstUse()) {
+    		loggedInUser.password = password;
+    		loggedInUser.encryptPasswordInDB();
+    		return true;
     	} else {
    			incrementNumberOfBadPasswords(loggedInUser);
         	return false;
@@ -173,6 +177,10 @@ public class User extends Model implements CrudReady<User, User> {
     private boolean doesPasswordMatch(String password) {
     	Logger.debug("Checking clear password");
     	return this.password.equals(password);
+    }
+    
+    private boolean isPasswordToChangeAtFirstUse() {
+    	return "tochangeatfirstuse".equals(password);
     }
     
     private boolean encryptPasswordInDB() {

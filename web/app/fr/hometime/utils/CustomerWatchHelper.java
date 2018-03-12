@@ -168,35 +168,36 @@ public class CustomerWatchHelper {
     	}
    }
     
-   public static boolean isEditableByCustomer(Long watchId) {
+   private static boolean is(Long watchId, CustomerWatchDetailedStatusForCustomer toTest) {
 	   if (watchId != null)
-		   return evaluateStatusForCustomer(CustomerWatch.findById(watchId)).equals(CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED);
+		   return evaluateStatusForCustomer(CustomerWatch.findById(watchId)).equals(toTest);
 	   return false;
+   }
+    
+   public static boolean isEditableByCustomer(Long watchId) {
+	   return is(watchId, CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED);
    }
    
    public static boolean isWaitingQuotationAcceptation(Long watchId) {
-	   if (watchId != null)
-		   return evaluateStatusForCustomer(CustomerWatch.findById(watchId)).equals(CustomerWatchDetailedStatusForCustomer.WAITING_FOR_QUOTATION_ACCEPTATION);
-	   return false;
+	   return is(watchId, CustomerWatchDetailedStatusForCustomer.WAITING_FOR_QUOTATION_ACCEPTATION);
    }
    
    public static boolean isWorkDone(Long watchId) {
-	   if (watchId != null)
-		   return evaluateStatusForCustomer(CustomerWatch.findById(watchId)).equals(CustomerWatchDetailedStatusForCustomer.FINISHED_STORED_BY_US);
-	   return false;
+	   return is(watchId, CustomerWatchDetailedStatusForCustomer.FINISHED_STORED_BY_US);
    }
    
    public static boolean isWaitingQuotation(Long watchId) {
-	   if (watchId != null)
-		   return evaluateStatusForCustomer(CustomerWatch.findById(watchId)).equals(CustomerWatchDetailedStatusForCustomer.TO_QUOTE);
-	   return false;
+	   return is(watchId, CustomerWatchDetailedStatusForCustomer.TO_QUOTE);
    }
    
    public static boolean isToBeAccepted(Long watchId) {
-	   if (watchId != null)
-		   return evaluateStatusForCustomer(CustomerWatch.findById(watchId)).equals(CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED);
-	   return false;
+	   return is(watchId, CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED);
    }
+
+   public static boolean isWorking(Long watchId) {
+	   return is(watchId, CustomerWatchDetailedStatusForCustomer.WORKING);
+   }
+   
    
 	public static void updateWatchEnsuringOnlyEditableDataByCustomerAreChanged(models.CustomerWatch watch) {
 		models.CustomerWatch currentWatchInDB = CustomerWatch.findById(watch.id);
