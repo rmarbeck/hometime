@@ -2,6 +2,26 @@
 
 @import tags._
 
+@end_scripts = {
+<script>
+    $(document).ready(function(){
+    		$('#priceInEuros').parent().after("<div class='col-sm-offset-3 col-sm-9' id='evals'></div>");
+    		
+    		evalPrices($('#priceInEuros').val());
+    	
+	        $('#priceInEuros').on('change', function(event) {
+	        	evalPrices($('#priceInEuros').val())
+	        	
+	        });
+    });
+
+    function evalPrices(value) {
+    	$('#evals').html('20% : '+value*.2+'€, 30% : '+value*.3+'€, 80% : '+value*.8+'€, 70% : '+value*.7+'€');
+    }
+    
+</script> 
+}
+
 @defining(new views.FormDisplay(thisInstance, "PaymentRequest", "admin.paymentrequest.form")) { formDisplay =>
 		@{ formDisplay.addFormFieldForSelect("customer.email", false, models.Customer.getEmailsByNameAsc, models.Customer.getFullnamesByNameAsc);
 		   formDisplay.addFormField("orderNumber", true, "input");
@@ -19,5 +39,5 @@
 		   formDisplay.addFormField("amexOnly", true, "checkbox")
 		}
 	
-	@admin.template.form_with_default_links(formDisplay, isItNew)
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
 }

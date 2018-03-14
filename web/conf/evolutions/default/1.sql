@@ -150,6 +150,7 @@ create table customer_watch (
   service_paid              boolean,
   final_customer_service_price bigint,
   final_customer_service_price_accepted boolean,
+  final_customer_acceptance_date timestamp,
   final_customer_service_paid boolean,
   final_customer_emergency_level bigint,
   final_customer_service_status bigint,
