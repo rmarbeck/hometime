@@ -122,6 +122,10 @@ public class AccountingLine extends Model {
     	return find.fetch("document", "customer").fetch("document", "creationDate").orderBy("document.creationDate DESC").findList();
     }
     
+    public static List<AccountingLine> findAllWithoutCustomerInfosByDescendingDate() {
+    	return find.fetch("document").fetch("document", "creationDate").orderBy("document.creationDate DESC").findList();
+    }
+    
     public static List<AccountingLine> findByAccountingDocumentId(Long id) {
         return find.where().eq("document.id", id)
     			.orderBy("ranking, id ASC").findList();

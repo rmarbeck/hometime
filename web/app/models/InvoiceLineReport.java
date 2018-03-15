@@ -66,7 +66,7 @@ public class InvoiceLineReport {
 	
 	public static List<InvoiceLineReport> generateReport() {
 		List<InvoiceLineReport> report = new ArrayList<InvoiceLineReport>();
-		List<AccountingLine> lines = AccountingLine.findAllByDescendingDate();
+		List<AccountingLine> lines = AccountingLine.findAllWithoutCustomerInfosByDescendingDate();
 		for(AccountingLine line : lines)
 			if (lineIsInvoice(line))
 				if (lineIsNotEmpty(line))
