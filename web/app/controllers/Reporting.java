@@ -42,6 +42,10 @@ public class Reporting extends Controller {
 		return ok(invoice_lines.render(InvoiceLineReport.generateReport()));
     }
 	
+	public static Result invoiceLinesEnhanced() {
+		return ok(invoice_lines.render(InvoiceLineReport.generateReportEnhanced()));
+    }
+	
 	public static Result stock() {
 		return ok(stock.render(StockReport.generateReport()));
     }

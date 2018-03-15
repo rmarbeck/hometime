@@ -74,6 +74,18 @@ public class InvoiceLineReport {
 		return report;
 	}
 	
+	public static List<InvoiceLineReport> generateReportEnhanced() {
+		List<InvoiceLineReport> report = new ArrayList<InvoiceLineReport>();
+		List<Invoice> invoices = Invoice.findAllByDescendingDate();
+		for(Invoice invoice : invoices) {
+			List<AccountingLine> lines = AccountingLine.findByAccountingDocumentId(invoice.id);
+			for(AccountingLine line : lines)
+					if (lineIsNotEmpty(line))
+						report.add(new InvoiceLineReport(line));
+		}
+		return report;
+	}
+	
 	protected static boolean lineIsNotEmpty(AccountingLine line) {
 		return ! lineIsEmpty(line);
 	}
