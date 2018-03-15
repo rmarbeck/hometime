@@ -46,8 +46,8 @@ public class Reporting extends Controller {
 		return ok(stock.render(StockReport.generateReport()));
     }
 	
-	public static Result legalRegister() {
-		return ok(legal_register.render(LegalRegisterReport.generateReport()));
+	public static Result legalRegister(Long starting) {
+		return ok(legal_register.render(LegalRegisterReport.generateReport(starting)));
     }
 	
 	public static Result addresses() {

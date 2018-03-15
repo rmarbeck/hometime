@@ -274,7 +274,7 @@ GET     /admin/addresses		            							controllers.Reporting.addresses()
 GET     /admin/addresses-table	            							controllers.Reporting.addressesAlt()
 GET     /admin/addressbook		            							controllers.Reporting.addressBook()
 GET     /admin/stock			            							controllers.Reporting.stock()
-GET     /admin/legal-register	            							controllers.Reporting.legalRegister()
+GET     /admin/legal-register	            							controllers.Reporting.legalRegister(starting:Long ?=1)
 GET     /admin/payments			            							controllers.Reporting.payments()
 
 GET     /admin/test			            								controllers.Admin.test()
