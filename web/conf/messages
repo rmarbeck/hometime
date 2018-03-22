@@ -1956,16 +1956,26 @@ admin.customer.watch.form.label.service.paid=Entretien payé au partenaire
 admin.customer.watch.form.label.first.entry.in.partner.workshop.date=Entrée chez le partenaire
 admin.customer.watch.form.label.expected.service.end.date=Date prévisionnelle
 admin.customer.watch.form.label.new.service.price.needed=Nouveau devis demandé
+admin.customer.watch.form.label.quotation=Valeur de la montre (en €)
+admin.customer.watch.form.placeholder.quotation=
+admin.customer.watch.form.placeholder.final.customer.from.infos=
+admin.customer.watch.form.placeholder.final.customer.to.infos=
+
+admin.customer.watch.form.label.tester.email=Testeur
+admin.customer.watch.form.placeholder.tester.email=
+
+admin.customer.watch.form.label.service.on.hold=Service bloqué (attente de pièces)
 
 admin.customer.watch.form.label.final.customer.watch.infos=Infos sur le modèle fournies par le client
 admin.customer.watch.form.placeholder.final.customer.watch.infos=
 admin.customer.watch.form.label.final.customer.service.price.accepted.infos=Mentions lors de l''acceptation du devis
 admin.customer.watch.form.placeholder.final.customer.service.price.accepted.infos=
 
+admin.customer.watch.form.label.service.definitively.refused=Entretien refusé définitivement
 
 admin.customer.watch.form.label.final.customer.service.status=Statut communiqué au client
 admin.customer.watch.form.label.final.customer.emergency.level=Niveau d''urgence client
-admin.customer.watch.form.label.final.customer.service.price=Prix client
+admin.customer.watch.form.label.final.customer.service.price=Prix client  (en € HT)
 admin.customer.watch.form.label.final.customer.service.price.accepted=Accepté
 admin.customer.watch.form.label.final.customer.service.paid=Payé
 
@@ -2014,6 +2024,8 @@ admin.customer.watch.watches.header.model=Modèle
 admin.customer.watch.watches.header.reference=Référence
 admin.customer.watch.watches.header.status=Statut
 admin.customer.watch.watches.header.customer=Client
+
+
 
 admin.customer.watch.no.watch.to.display=Aucune montre à afficher
 
@@ -3817,3 +3829,46 @@ admin.customer.watch.customer.action.accept.quotation=&nbsp;Accepter le devis
 admin.customer.watch.customer.action.refuse.quotation=&nbsp;Refuser le devis
 admin.customer.watch.customer.action.accept.watch.back=&nbsp;Accepter le retour de la montre
 
+
+admin.watch.watches.actions=Actions
+admin.index.watches.actions=Actions
+
+admin.watch.watches.action.mark.in.house.servicing=Faire en interne
+admin.watch.watches.action.mark.service.price.to.evaluate=Marquer "devis à faire"
+admin.watch.watches.action.mark.service.price.accepted=Marquer "devis accepté"
+admin.watch.watches.action.mark.service.price.accepted.and.start.service=Lancer l''entretien
+admin.watch.watches.action.mark.service.price.declined=Marquer "nouveau devis attendu"
+admin.watch.watches.action.mark.service.price.definitively.refused=Marquer comme refusé définitivement
+admin.watch.watches.action.mark.servicing.on.hold=Marquer "entretien bloqué" 
+admin.watch.watches.action.mark.service.finished.testing=Marquer "entretien terminé - début test"
+admin.watch.watches.action.mark.service.testing.failed=Marquer "test en echec - retour entretien"
+admin.watch.watches.action.mark.service.testing.finished=Marquer "test terminé"
+admin.watch.watches.action.mark.back.to.customer.and.paid=Marqué "rendu au client et payé"
+admin.watch.watches.action.mark.back.to.customer.and.waiting.payment=Marqué "rendu au client et en attente de paiement"
+admin.watch.watches.action.mark.back.to.customer.and.canceled=Marqué "rendu au client et annulé"
+
+admin.index.watches.action.mark.in.house.servicing=Faire en interne
+admin.index.watches.action.mark.service.price.to.evaluate=Marquer "devis à faire"
+admin.index.watches.action.mark.service.price.accepted=Marquer "devis accepté par le client"
+admin.index.watches.action.mark.service.price.accepted.and.start.service=Lancer l''entretien auprès du partenaire
+admin.index.watches.action.mark.service.price.declined=Marquer "nouveau devis attendu"
+admin.index.watches.action.mark.service.price.definitively.refused=Marquer comme refusé définitivement
+admin.index.watches.action.mark.servicing.on.hold=Marquer "entretien bloqué" 
+admin.index.watches.action.mark.service.finished.testing=Marquer "entretien terminé - début test"
+admin.index.watches.action.mark.service.testing.finished=Marquer "test terminé"
+admin.index.watches.action.mark.back.to.customer.and.paid=Marqué "rendu au client et payé"
+admin.index.watches.action.mark.back.to.customer.and.waiting.payment=Marqué "rendu au client et en attente de paiement"
+admin.index.watches.action.mark.back.to.customer.and.canceled=Marqué "rendu au client et annulé"
+
+
+customer.watch.status.to.quote=Devis à faire
+waiting.for.quotation.acceptation.from.final.customer=En attente accord client
+customer.watch.status.waiting.for.quotation.acceptation=Devis partenaire non accepté
+customer.watch.status.work.to.start=Entretien à commencer
+customer.watch.status.working=Entretien en cours
+customer.watch.status.testing=Test en cours
+customer.watch.status.finished.stored.by.us.to.deliver=Entretien et test terminés
+customer.watch.status.finished.waiting.payment.after.delivery=Montre rendue, attente paiement
+customer.watch.status.close=Montre terminée et rendue
+customer.watch.status.unconsistent=Statut anormal
+customer.watch.status.to.be.accepted=Montre à accepter

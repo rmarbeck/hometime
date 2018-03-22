@@ -61,9 +61,15 @@ public class CustomerWatchHelper {
 	    TO_QUOTE ("CUSTOMER_WATCH_STATUS_TO_QUOTE"),
 	    WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER ("WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER"),
 	    WAITING_FOR_QUOTATION_ACCEPTATION ("CUSTOMER_WATCH_STATUS_WAITING_FOR_QUOTATION_ACCEPTATION"),
+	    WORK_TO_START ("CUSTOMER_WATCH_STATUS_WORK_TO_START"),
 	    WORKING ("CUSTOMER_WATCH_STATUS_WORKING"),
-	    FINISHED_STORED_BY_US ("CUSTOMER_WATCH_STATUS_FINISHED_STORED_BY_US"),
-	    FINISHED_TO_BILL ("CUSTOMER_WATCH_STATUS_FINISHED_TO_BILL"),
+	    TESTING ("CUSTOMER_WATCH_STATUS_TESTING"),
+	    FINISHED_STORED_BY_US_TO_DELIVER ("CUSTOMER_WATCH_STATUS_FINISHED_STORED_BY_US_TO_DELIVER"),
+	    FINISHED_TO_BILL_BEFORE_DELIVERY ("CUSTOMER_WATCH_STATUS_FINISHED_TO_BILL_BEFORE_DELIVERY"),
+	    FINISHED_WAITING_PAYMENT_BEFORE_DELIVERY ("CUSTOMER_WATCH_STATUS_FINISHED_WAITING_PAYMENT_BEFORE_DELIVERY"),
+	    FINISHED_STORED_BY_US_PAID ("CUSTOMER_WATCH_STATUS_FINISHED_STORED_BY_US_PAID"),
+	    FINISHED_TO_BILL_AFTER_DELIVERY ("CUSTOMER_WATCH_STATUS_FINISHED_TO_BILL_AFTER_DELIVERY"),
+	    FINISHED_WAITING_PAYMENT_AFTER_DELIVERY ("CUSTOMER_WATCH_STATUS_FINISHED_WAITING_PAYMENT_AFTER_DELIVERY"),
 	    CLOSE ("CUSTOMER_WATCH_STATUS_CLOSE"),
 	    UNCONSISTENT ("CUSTOMER_WATCH_STATUS_UNCONSISTENT");
 	    
@@ -160,36 +166,102 @@ public class CustomerWatchHelper {
     		case TO_BE_ACCEPTED: return CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED;
     		case TO_QUOTE: return CustomerWatchDetailedStatusForCustomer.TO_QUOTE;
     		case WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER: return CustomerWatchDetailedStatusForCustomer.WAITING_FOR_QUOTATION_ACCEPTATION;
-    		case WAITING_FOR_QUOTATION_ACCEPTATION: case WORKING: return CustomerWatchDetailedStatusForCustomer.WORKING;
-    		case FINISHED_STORED_BY_US: return CustomerWatchDetailedStatusForCustomer.FINISHED_STORED_BY_US;
-    		case FINISHED_TO_BILL: return CustomerWatchDetailedStatusForCustomer.FINISHED_TO_BILL;
+    		case WAITING_FOR_QUOTATION_ACCEPTATION:
+    		case WORK_TO_START:
+    		case WORKING:
+    		case TESTING:
+    			return CustomerWatchDetailedStatusForCustomer.WORKING;
+    		case FINISHED_STORED_BY_US_TO_DELIVER:
+    		case FINISHED_TO_BILL_BEFORE_DELIVERY:
+    		case FINISHED_WAITING_PAYMENT_BEFORE_DELIVERY:
+    			return CustomerWatchDetailedStatusForCustomer.FINISHED_STORED_BY_US;
+    		case FINISHED_TO_BILL_AFTER_DELIVERY:
+    		case FINISHED_WAITING_PAYMENT_AFTER_DELIVERY:
+    			return CustomerWatchDetailedStatusForCustomer.FINISHED_TO_BILL;
     		case CLOSE: return CustomerWatchDetailedStatusForCustomer.CLOSE;
     		default: return CustomerWatchDetailedStatusForCustomer.UNCONSISTENT;
     	}
     }
     
+    public static String getStatusName(CustomerWatch watch) {
+    	return evaluateStatus(watch).name;
+    }
+    
     private static CustomerWatchDetailedStatus evaluateStatus(CustomerWatch watch) {
     	if (watch == null)
     		return CustomerWatchDetailedStatus.UNCONSISTENT;
-    	if (watch.status.equals(CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER) && watch.serviceNeeded) {
+    	
+    	if (watch.serviceDefinitivelyRefused)
+    		return CustomerWatchDetailedStatus.FINISHED_STORED_BY_US_TO_DELIVER;
+    	
+    	if (byCustomerOrbackToCustomer(watch) && watch.serviceNeeded)
     		return CustomerWatchDetailedStatus.TO_BE_ACCEPTED;
-    	} else if (watch.serviceNeeded && watch.finalCustomerServicePrice == 0) {
+    	
+    	if (watch.serviceNeeded && watch.finalCustomerServicePrice == 0)
     		return CustomerWatchDetailedStatus.TO_QUOTE;
-    	} else if (watch.serviceNeeded && !watch.finalCustomerServicePriceAccepted) {
+
+    	if (watch.serviceNeeded && !watch.finalCustomerServicePriceAccepted)
     		return CustomerWatchDetailedStatus.WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER;
-    	} else if (watch.serviceNeeded && !watch.servicePriceAccepted) {
+
+    	if (watch.serviceNeeded && !watch.servicePriceAccepted)
     		return CustomerWatchDetailedStatus.WAITING_FOR_QUOTATION_ACCEPTATION;
-    	} else if (watch.serviceNeeded) {
+    	
+    	if (watch.serviceNeeded && serviceStatusAt0(watch))
+    		return CustomerWatchDetailedStatus.WORK_TO_START;
+
+    	if (watch.serviceNeeded && serviceStatusBetween1and99(watch))
     		return CustomerWatchDetailedStatus.WORKING;
-    	} else if (!watch.serviceNeeded && watch.serviceStatus == 100 && !watch.status.equals(CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)) {
-    		return CustomerWatchDetailedStatus.FINISHED_STORED_BY_US;
-    	} else if (!watch.serviceNeeded && watch.status.equals(CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER) && !watch.finalCustomerServicePaid) {
-    		return CustomerWatchDetailedStatus.FINISHED_TO_BILL;
-    	} else if (!watch.serviceNeeded && watch.status.equals(CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER) && watch.finalCustomerServicePaid) {
+    	
+    	if (watch.serviceNeeded && serviceStatusAt100(watch))
+    		return CustomerWatchDetailedStatus.TESTING;
+    	
+    	if (watch.customer.isAPro()) {
+    		if (!watch.serviceNeeded && serviceStatusAt100(watch) && holdByUs(watch))
+    			return CustomerWatchDetailedStatus.FINISHED_STORED_BY_US_TO_DELIVER;
+    		
+    		if (!watch.serviceNeeded && byCustomerOrbackToCustomer(watch) && !watch.serviceInvoiced)
+    			return CustomerWatchDetailedStatus.FINISHED_TO_BILL_AFTER_DELIVERY;
+    		
+    		if (!watch.serviceNeeded && byCustomerOrbackToCustomer(watch) && !watch.finalCustomerServicePaid)
+    			return CustomerWatchDetailedStatus.FINISHED_WAITING_PAYMENT_AFTER_DELIVERY;
+    	} else {
+    		if (holdByUs(watch) && serviceStatusAt100(watch)) {
+    			if (!watch.serviceNeeded && !watch.serviceInvoiced && !watch.finalCustomerServicePaid)
+    				return CustomerWatchDetailedStatus.FINISHED_TO_BILL_BEFORE_DELIVERY;
+    			
+    			if (!watch.serviceNeeded && watch.serviceInvoiced && !watch.finalCustomerServicePaid)
+    				return CustomerWatchDetailedStatus.FINISHED_WAITING_PAYMENT_BEFORE_DELIVERY;
+    			
+    			if (!watch.serviceNeeded && watch.serviceInvoiced && watch.finalCustomerServicePaid)
+    				return CustomerWatchDetailedStatus.FINISHED_STORED_BY_US_TO_DELIVER;
+    		}
+    	}
+
+    	if (!watch.serviceNeeded && byCustomerOrbackToCustomer(watch) && watch.finalCustomerServicePaid) {
     		return CustomerWatchDetailedStatus.CLOSE;
     	} else {
     		return CustomerWatchDetailedStatus.UNCONSISTENT;
     	}
+    }
+    
+    private static boolean serviceStatusAt100(CustomerWatch watch) {
+    	return watch.serviceStatus == 100;
+    }
+    
+    private static boolean serviceStatusAt0(CustomerWatch watch) {
+    	return watch.serviceStatus == 0;
+    }
+    
+    private static boolean serviceStatusBetween1and99(CustomerWatch watch) {
+    	return !(serviceStatusAt100(watch) || serviceStatusAt0(watch));
+    }
+    
+    private static boolean byCustomerOrbackToCustomer(CustomerWatch watch) {
+    	return watch.status.equals(CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER);
+    }
+    
+    private static boolean holdByUs(CustomerWatch watch) {
+    	return !byCustomerOrbackToCustomer(watch);
     }
     
     public static Long getStatusForCustomerAsLong(CustomerWatch watch) {
@@ -223,15 +295,21 @@ public class CustomerWatchHelper {
     	switch(evaluateStatus(watch)) {
     		case TO_BE_ACCEPTED: return 1L;
     		case TO_QUOTE: return 2L;
-    		case WAITING_FOR_QUOTATION_ACCEPTATION: return 3L;
-    		case WORKING: return 4L;
-    		case FINISHED_STORED_BY_US: return 5L;
-    		case FINISHED_TO_BILL: return 6L;
-    		case CLOSE: return 7L;
+    		case WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER: return 3L;
+    		case WAITING_FOR_QUOTATION_ACCEPTATION: return 4L;
+    		case WORK_TO_START: return 5L;
+    		case WORKING: return 6L;
+    		case TESTING: return 7L;
+    		case FINISHED_STORED_BY_US_TO_DELIVER: return 8L;
+    		case FINISHED_TO_BILL_BEFORE_DELIVERY: return 9L;
+    		case FINISHED_WAITING_PAYMENT_BEFORE_DELIVERY: return 10L;
+    		case FINISHED_STORED_BY_US_PAID: return 11L;
+    		case FINISHED_TO_BILL_AFTER_DELIVERY: return 12L;
+    		case FINISHED_WAITING_PAYMENT_AFTER_DELIVERY: return 13L;
+    		case CLOSE: return 14L;
     		default: return 0L;
     	}
     }
-    
     
    private static boolean is(Long watchId, CustomerWatchDetailedStatusForCustomer toTest) {
 	   if (watchId != null)
@@ -278,6 +356,7 @@ public class CustomerWatchHelper {
 		//watch.servicePriceAccepted = currentWatchInDB.servicePriceAccepted;
 		watch.serviceStatus = currentWatchInDB.serviceStatus;
 		watch.status = currentWatchInDB.status;
+		watch.serviceOnHold = currentWatchInDB.serviceOnHold;
 		
 		watch.update();
 	}
@@ -304,7 +383,16 @@ public class CustomerWatchHelper {
 		watch.finalCustomerEmergencyLevel = currentWatchInDB.finalCustomerEmergencyLevel;
 		watch.status = currentWatchInDB.status;
 		watch.quotation = currentWatchInDB.quotation;
+		watch.serviceOnHold = currentWatchInDB.serviceOnHold;
 		
 		watch.update();
 	}
+	
+    public static Optional<List<User>> findByCustomer(Customer customer) {
+    	List<User> users = User.find.where().eq("customer.id", customer.id).orderBy("id ASC").findList();
+    	if (users != null && !users.isEmpty())
+    		return Optional.of(users);
+    	return Optional.empty();
+    }
+    
 }

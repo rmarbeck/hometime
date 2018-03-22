@@ -189,6 +189,8 @@ GET     /admin/customer-watch/set-stored-by-us-outside/:id 				controllers.Custo
 GET     /admin/customer-watch/accept/:id			 					controllers.CustomerWatch.acceptWatchFromCustomer(id: Long)
 POST    /admin/manage-customer-watch 									controllers.CustomerWatch.manage()
 
+GET     /admin/customer-watch/doAction/:action/:id		    			controllers.CustomerWatch.doAction(action: String, id: Long)
+
 GET     /admin/watch/display/:id										controllers.Watch.display(id: Long)
 GET     /admin/watch/all    											controllers.Watch.displayAll(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "")
 GET     /admin/watch/create				 								controllers.Watch.add()

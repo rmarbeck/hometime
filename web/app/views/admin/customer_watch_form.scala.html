@@ -48,6 +48,8 @@
             	@simple_admin_input(watch("picturesUrl"), "admin.customer.watch.form.VARIABLE.pictures.url")
             	
             	@simple_admin_textarea(watch("additionnalModelInfos"), "admin.customer.watch.form.VARIABLE.additionnal.model.infos")
+            	
+            	<hr />
 
 				@tags.myInputRadioGroup(watch("status"),
                               Seq( models.CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT.toString -> Messages("admin.customer.watch.form.value.status.by.watch.next"),
@@ -86,7 +88,13 @@
 				
 				@simple_admin_checkbox(watch("servicePriceAccepted"), "admin.customer.watch.form.VARIABLE.service.price.accepted")
 				
+				<hr />
+				
+				@simple_admin_input(watch("testerEmail"), "admin.customer.watch.form.VARIABLE.tester.email", 'readonly -> "readonly")
+				
 				@simple_admin_checkbox(watch("serviceNeeded"), "admin.customer.watch.form.VARIABLE.service.needed")
+				
+				@simple_admin_checkbox(watch("serviceOnHold"), "admin.customer.watch.form.VARIABLE.service.on.hold")
 				
 				@simple_admin_checkbox(watch("servicePaid"), "admin.customer.watch.form.VARIABLE.service.paid")
 				
@@ -100,7 +108,9 @@
 				
 				@simple_admin_checkbox(watch("finalCustomerServicePriceAccepted"), "admin.customer.watch.form.VARIABLE.final.customer.service.price.accepted", 'readonly -> "readonly")
 				
-				@simple_admin_input(watch("quotation"), "admin.customer.watch.form.VARIABLE.quotation.date", 'readonly -> "readonly")
+				@simple_admin_checkbox(watch("serviceDefinitivelyRefused"), "admin.customer.watch.form.VARIABLE.service.definitively.refused", 'readonly -> "readonly")
+				
+				@simple_admin_input(watch("quotation"), "admin.customer.watch.form.VARIABLE.quotation", 'readonly -> "readonly")
 				
 				@simple_admin_checkbox(watch("finalCustomerServicePaid"), "admin.customer.watch.form.VARIABLE.final.customer.service.paid")
 				

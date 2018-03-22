@@ -159,6 +159,8 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public boolean servicePriceAccepted = false;
 	
+	public boolean serviceDefinitivelyRefused = false;
+	
 	public boolean newServicePriceNeeded = false;
 	
 	public boolean servicePaid = false;
@@ -181,7 +183,13 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public boolean serviceNeeded = true;
 	
+	public boolean serviceOnHold = false;
+	
+	public boolean serviceInvoiced = false;
+	
 	public Long quotation = 1L;
+	
+	public String testerEmail;
 	
 	public boolean picturesDoneOnCollect = true;
 	

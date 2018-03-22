@@ -1,6 +1,8 @@
 @(currentPage: com.avaje.ebean.Page[models.CustomerWatch], currentSortBy: String, currentOrder: String, currentFilter: String, currentStatus: String)
 @import tags._
 
+@import fr.hometime.utils._
+
 @****************************************
 * Helper generating navigation links    *
 ****************************************@
@@ -37,7 +39,18 @@
     </th>
 }
 
-@layouts.admin() {
+@end_scripts = {
+<script>
+	  function doAction(url) {
+  		$.get(url);
+  		location.reload();
+	  }
+</script>
+
+}
+
+
+@layouts.admin("", end_scripts) {
   <div class="container">
 
     @admin.fragments.page_header(link(0, "lastStatusUpdate").toString, "model or brand", currentFilter, routes.CustomerWatch.add().url)
@@ -88,6 +101,7 @@
                   <td>
                   	<a type="button" class="btn btn-default btn-xs" href="@routes.CustomerWatch.display(watch.id)"><span class="glyphicon glyphicon-time"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
+				    @watch_actions_button(watch, "admin.watch.watches", 'commonclass -> "btn-success")
                   </td>
                   <td>
                     @display_date(watch.creationDate, "dd/MM")
@@ -105,7 +119,8 @@
                     @watch.reference
                   </td>
                   <td>
-                    @Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.')))
+                    <!--@Html(Messages("admin.customer.watch.value.status."+watch.status.toString.toLowerCase.replace('_','.')))-->
+                    @Messages(CustomerWatchHelper.getStatusName(watch).toLowerCase.replace('_','.'))
                   </td>
                   <td>
                     @if_not_null_nor_empty(watch.customer) {

@@ -27,6 +27,7 @@ import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
+import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import fr.hometime.utils.PhoneHelper;
 import fr.hometime.utils.Searcher;
@@ -417,6 +418,14 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 	public Page<Customer> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
+	}
+	
+	public boolean isACustomerWithActiveUsers() {
+		return CustomerWatchHelper.findByCustomer(this).isPresent();
+	}
+	
+	public boolean isAPro() {
+		return isACustomerWithActiveUsers();
 	}
 }
 

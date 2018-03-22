@@ -1,0 +1,24 @@
+@**
+ * Generate a button for actions to a watch.
+ *
+ *@
+@(currentWatch: models.CustomerWatch, key: String, args: (Symbol,String)*) 
+@import fr.hometime.utils._
+@if_admin_or_collaborator() {
+<div class="btn-group text-left">
+  <span class="btn btn-xs @args.toMap.get('spanclass) @args.toMap.get('commonclass)">@Html(Messages(key+".actions"))</span>
+  <button type="button" class="btn btn-xs dropdown-toggle @args.toMap.get('buttonclass) @args.toMap.get('commonclass)" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+  @for(action <- CustomerWatchActions.CustomerWatchActionList.values) {
+  	@if(CustomerWatchActions.canDoAction(action, currentWatch)) {
+  		<li><a href="#" onclick='doAction("@routes.CustomerWatch.doAction(action.name, currentWatch.id)");'>@Messages(key+".action."+action.name.toString.toLowerCase.replace('_','.'))</a></li>
+  	} else {
+  		<li><a href="#" class="disabled">@Messages(key+".action."+action.name.toString.toLowerCase.replace('_','.'))</a></li>
+  	}
+  }
+  </ul>
+</div>
+}

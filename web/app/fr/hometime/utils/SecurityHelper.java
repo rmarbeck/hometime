@@ -141,4 +141,12 @@ public class SecurityHelper {
     public static Optional<User> findByQuickPassword(String password) {
     	return User.findQuickLogins().stream().filter((user) -> (user.active && user.numberOfBadPasswords <= User.ADMIN_QUICK_MAX_ATTEMPT)).filter((user) -> User.isPasswordMatching(user.email, password)).findFirst();
     }
+    
+	
+	public static String getLoggedInUserEmail(Session session) {
+		Optional<User> loggedInUser = SecurityHelper.getLoggedInUser(session);
+		if (loggedInUser.isPresent())
+			return loggedInUser.get().email;
+		return "?";
+	}
 }

@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.Date;
 
+import fr.hometime.utils.CustomerWatchActions;
+import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
@@ -80,6 +82,11 @@ public class CustomerWatch extends Controller {
 	
 	public static Result add() {
 		return ok(emptyNewWatchForm());		
+	}
+	
+	public static Result doAction(String actionName, Long watchId) {
+		CustomerWatchActions.doAction(CustomerWatchActions.CustomerWatchActionList.fromString(actionName), models.CustomerWatch.findById(watchId), session());
+		return LIST_CUSTOMER_WATCHES;
 	}
 	
 	public static Result edit(Long watchId) {
