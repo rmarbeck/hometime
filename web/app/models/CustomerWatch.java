@@ -294,6 +294,10 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
         return find.where().ne("status", "BACK_TO_CUSTOMER").findList();
     }
     
+    public static List<CustomerWatch> findAllUnderOurResponsabilityOrderedByID() {
+        return find.where().ne("status", "BACK_TO_CUSTOMER").orderBy("id desc").findList();
+    }
+    
     
     public static List<String> getSerialsBySerialAsc() {
     	List<CustomerWatch> watches = findAllBySerialAsc();
@@ -661,6 +665,10 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 		} catch (RuntimeException re) {
 			return "standard";	
 		}
+	}
+	
+	public String getWatchStatusClass() {
+		return CustomerWatchHelper.getStatusName(this);
 	}
 	
 	public String getFullId() {

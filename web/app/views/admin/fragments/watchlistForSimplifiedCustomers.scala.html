@@ -32,8 +32,10 @@
                    		<a type="button" class="btn btn-success btn-xs" href="@routes.SimplifiedCustomerWatches.acceptWatch(watch.id)" title="Accepter la montre"><span class="glyphicon glyphicon-arrow-down"></span></a>
                    	} else {
                     <a type="button" class="btn btn-default btn-xs" href="@routes.SimplifiedCustomerWatches.displayCollectingForm(watch.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
-	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.edit("SimplifiedCustomerWatches", watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.edit("SimplifiedCustomerWatches", watch.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
                    	<!--<a type="button" class="btn btn-warning btn-xs" href="@routes.Order.addFromCustomerWatch(watch.id)"><span class="glyphicon glyphicon-arrow-up"></span></a>-->
+                   	@if_admin() {<a type="button" class="btn btn-warning btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>}
+                   	@watch_actions_button(watch, "admin.watch.watches", 'commonclass -> "btn-success")
                    	}
                   </td>
                   <td>

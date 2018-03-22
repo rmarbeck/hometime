@@ -97,6 +97,16 @@ public class CustomerWatch extends Controller {
 		return badRequest(emptyNewWatchForm());
 	}
 	
+	public static Result duplicate(Long watchId) {
+		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
+		if (existingWatch != null) {
+			existingWatch.additionnalModelInfos = "duplicate";
+			return ok(customerWatchForm(Form.form(models.CustomerWatch.class).fill(existingWatch), true));
+		}
+		flash("error", "Unknown watch id");
+		return badRequest(emptyNewWatchForm());
+	}
+	
 	public static Result setBackToCustomer(Long watchId) {
 		return updateStatus(watchId, CustomerWatchStatus.BACK_TO_CUSTOMER);
 	}

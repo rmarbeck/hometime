@@ -267,7 +267,7 @@ public class Admin extends Controller {
 	}
 	@Security.Authenticated(SecuredLoggedOnOnly.class)
 	public static Result index() {
-		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(), CustomerWatch.findAllUnderOurResponsability()));
+		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
     }
 	
 	@Security.Authenticated(SecuredAdminOnly.class)

@@ -39,18 +39,7 @@
     </th>
 }
 
-@end_scripts = {
-<script>
-	  function doAction(url) {
-  		$.get(url);
-  		location.reload();
-	  }
-</script>
-
-}
-
-
-@layouts.admin("", end_scripts) {
+@layouts.admin("") {
   <div class="container">
 
     @admin.fragments.page_header(link(0, "lastStatusUpdate").toString, "model or brand", currentFilter, routes.CustomerWatch.add().url)

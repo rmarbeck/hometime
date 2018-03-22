@@ -17,6 +17,13 @@
       }
 
       @end_scripts
+      
+      <script>
+      	doAction = function(url) {
+		    $.get(url);
+		    return location.reload();
+		  };
+      </script>
 
     </body>
 </html>
