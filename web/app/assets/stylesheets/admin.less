@@ -42,28 +42,36 @@ h3 {
     white-space: pre;
 }
 
-tr.almostFinished td {
-    background-color: #AED6F1 !important;
+tr.CUSTOMER_WATCH_STATUS_FINISHED_TO_BILL_BEFORE_DELIVERY td,tr.CUSTOMER_WATCH_STATUS_FINISHED_STORED_BY_US_TO_DELIVER td, tr.CUSTOMER_WATCH_STATUS_FINISHED_TO_BILL_BEFORE_DELIVERY td, tr.CUSTOMER_WATCH_STATUS_FINISHED_STORED_BY_US_PAID td {
+
 }
 
-tr.finished td {
-    background-color: #D5F5E3 !important;
+tr.CUSTOMER_WATCH_STATUS_FINISHED_STORED_BY_US_PAID td,tr.CUSTOMER_WATCH_STATUS_FINISHED_TO_BILL_AFTER_DELIVERY td {
+
 }
 
-tr.started td {
-    background-color: #D6EAF8 !important;
-}
-
-tr.toDo td {
+tr.CUSTOMER_WATCH_STATUS_TO_QUOTE td {
     background-color: #a2dede !important;
 }
 
-tr.toRedo td {
-    background-color: #f2dede !important;
+tr.WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER td, tr.CUSTOMER_WATCH_STATUS_WAITING_FOR_QUOTATION_ACCEPTATION td {
+    background-color: #c4f5f5 !important;
 }
 
-tr.toBeValidated td {
-    background-color: #AED6F1 !important;
+tr.CUSTOMER_WATCH_STATUS_WORK_TO_START td {
+    background-color: #99cae2 !important;
+}
+
+tr.CUSTOMER_WATCH_STATUS_WORKING td {
+	background-color: #d9edf7 !important;
+}
+
+tr.CUSTOMER_WATCH_STATUS_TESTING td {
+	background-color: #80d45c !important;
+}
+
+tr.CUSTOMER_WATCH_STATUS_UNCONSISTENT td {
+    background-color: #ea5c59 !important;
 }
 
 @import "_display.less";
