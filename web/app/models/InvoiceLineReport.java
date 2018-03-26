@@ -121,8 +121,11 @@ public class InvoiceLineReport {
 		InvoiceLineReport previousLine = null;
 		if (! currentReport.isEmpty())
 			previousLine = currentReport.get(currentReport.size()-1);
-		if (previousLine != null && DateHelper.isWithinSameMonth(previousLine.date, newLine.date))
-			previousLine.turnOverAmountDuringMonth = previousLine.turnOverAmountDuringMonth + previousLine.turnOverAmount + newLine.turnOverAmount;
+		if (previousLine != null && DateHelper.isWithinSameMonth(previousLine.date, newLine.date)) {
+			newLine.turnOverAmountDuringMonth = previousLine.turnOverAmountDuringMonth + newLine.turnOverAmount;
+		} else {
+			newLine.turnOverAmountDuringMonth = newLine.turnOverAmount;
+		}
 		currentReport.add(newLine);
 	}
 	
