@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import fr.hometime.utils.AccountingDocumentHelper;
 import models.AccountingLine.LineType;
 
 public class InvoiceLineReport {
@@ -74,7 +75,17 @@ public class InvoiceLineReport {
 		return report;
 	}
 	
-	public static List<InvoiceLineReport> generateReportEnhanced() {
+	public static List<InvoiceLineReport> generateReportEnhanced(Long nbOfMonths) {
+		List<InvoiceLineReport> report = new ArrayList<InvoiceLineReport>();
+		List<AccountingLine> lines = AccountingDocumentHelper.retrieveInvoiceLines(Math.abs(nbOfMonths.intValue())).get();
+		for(AccountingLine line : lines)
+			if (lineIsInvoice(line))
+				if (lineIsNotEmpty(line))
+					report.add(new InvoiceLineReport(line));
+		return report;
+	}
+	
+	public static List<InvoiceLineReport> generateReportEnhanced2() {
 		List<InvoiceLineReport> report = new ArrayList<InvoiceLineReport>();
 		List<Invoice> invoices = Invoice.findAllByDescendingDate();
 		for(Invoice invoice : invoices) {

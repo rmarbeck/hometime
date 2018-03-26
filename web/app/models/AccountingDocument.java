@@ -60,6 +60,10 @@ public class AccountingDocument extends Model {
 		this.customer = customer;
 	}
 	
+    // -- Queries
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public static Model.Finder<String,AccountingDocument> find = new Model.Finder(String.class, AccountingDocument.class);
+	
 	public void deleteLines() {
 		if (id != null)
 			for(AccountingLine line : AccountingLine.findByAccountingDocumentId(id))

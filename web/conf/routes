@@ -273,7 +273,7 @@ GET     /admin/margin-vat-report            							controllers.Reporting.marginV
 GET     /admin/export-sales-report            							controllers.Reporting.exportSales()
 GET     /admin/with-vat-report            								controllers.Reporting.withVat()
 GET     /admin/invoice-lines											controllers.Reporting.invoiceLines()
-GET     /admin/invoice-lines-enhanced									controllers.Reporting.invoiceLinesEnhanced()
+GET     /admin/invoice-lines-enhanced									controllers.Reporting.invoiceLinesEnhanced(month: Long ?= 12)
 GET     /admin/addresses		            							controllers.Reporting.addresses()
 GET     /admin/addresses-table	            							controllers.Reporting.addressesAlt()
 GET     /admin/addressbook		            							controllers.Reporting.addressBook()
