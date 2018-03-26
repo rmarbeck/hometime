@@ -19,11 +19,11 @@ import models.AccountingLine;
 
 public class AccountingDocumentHelper {
 	public static Optional<List<AccountingLine>> retrieveInvoiceLines(int nbOfMonthBack) {
-		return retrieveInvoiceLines(() -> AccountingDocument.find.where().gt("creation_date", DateHelper.toDate(ZonedDateTime.now().minusMonths(nbOfMonthBack).toInstant())).findList());
+		return retrieveInvoiceLines(() -> AccountingDocument.find.where().gt("creation_date", DateHelper.toDate(ZonedDateTime.now().minusMonths(nbOfMonthBack).toInstant())).orderBy("creation_date DESC").findList());
 	}
 	
 	public static Optional<List<AccountingLine>> retrieveInvoiceLines() {
-		return retrieveInvoiceLines(() -> AccountingDocument.find.all()); 
+		return retrieveInvoiceLines(() -> AccountingDocument.find.orderBy("creation_date DESC").findList()); 
 	}
 	
 	private static Optional<List<AccountingLine>> retrieveInvoiceLines(Supplier<List<AccountingDocument>> supplier) {

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Locale;
@@ -46,6 +47,12 @@ public class DateHelper {
 	
 	public static boolean isAfterNow(Date date) {
 		return !isBeforeNow(date);
+	}
+	
+	public static boolean isWithinSameMonth(Date date1, Date date2) {
+		ZonedDateTime dateZ1 = ZonedDateTime.ofInstant(date1.toInstant(), ZoneId.systemDefault());
+		ZonedDateTime dateZ2 = ZonedDateTime.ofInstant(date2.toInstant(), ZoneId.systemDefault());
+		return dateZ1.getMonth() == dateZ2.getMonth();
 	}
 	
 	private static long differenceBetweenTwoDates(Date date1, Date date2) {

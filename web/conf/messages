@@ -3228,6 +3228,7 @@ admin.invoice.line.page.invoice.name=UAN
 admin.invoice.line.page.line.type=Type de ligne
 admin.invoice.line.page.line.amount=Montant
 admin.invoice.line.page.turnover.amount=Chiffre d''affaires
+admin.invoice.line.page.turnover.amount.month=CA mois
 admin.report.invoice.type.selling.document=Papier de vente
 admin.report.invoice.type.invoice=Facture
 

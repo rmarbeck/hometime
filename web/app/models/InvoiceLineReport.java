@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import fr.hometime.utils.AccountingDocumentHelper;
+import fr.hometime.utils.DateHelper;
 import models.AccountingLine.LineType;
 
 public class InvoiceLineReport {
@@ -18,6 +20,7 @@ public class InvoiceLineReport {
 	public LineType lineType;
 	public Float lineAmount;
 	public Float turnOverAmount;
+	public Float turnOverAmountDuringMonth = 0f;
 	
 	private InvoiceLineReport(AccountingLine accountingLine) {
 		AccountingDocument currentDocument = accountingLine.document;
@@ -66,22 +69,20 @@ public class InvoiceLineReport {
 	}
 	
 	public static List<InvoiceLineReport> generateReport() {
-		List<InvoiceLineReport> report = new ArrayList<InvoiceLineReport>();
-		List<AccountingLine> lines = AccountingLine.findAllWithoutCustomerInfosByDescendingDate();
-		for(AccountingLine line : lines)
-			if (lineIsInvoice(line))
-				if (lineIsNotEmpty(line))
-					report.add(new InvoiceLineReport(line));
-		return report;
+		return generateReport(() -> AccountingLine.findAllWithoutCustomerInfosByDescendingDate());
 	}
 	
 	public static List<InvoiceLineReport> generateReportEnhanced(Long nbOfMonths) {
+		return generateReport(() -> AccountingDocumentHelper.retrieveInvoiceLines(Math.abs(nbOfMonths.intValue())).get());
+	}
+	
+	private static List<InvoiceLineReport> generateReport(Supplier<List<AccountingLine>> supplier) {
 		List<InvoiceLineReport> report = new ArrayList<InvoiceLineReport>();
-		List<AccountingLine> lines = AccountingDocumentHelper.retrieveInvoiceLines(Math.abs(nbOfMonths.intValue())).get();
+		List<AccountingLine> lines = supplier.get();
 		for(AccountingLine line : lines)
 			if (lineIsInvoice(line))
 				if (lineIsNotEmpty(line))
-					report.add(new InvoiceLineReport(line));
+					addNewLine(new InvoiceLineReport(line), report);
 		return report;
 	}
 	
@@ -114,6 +115,15 @@ public class InvoiceLineReport {
 			default :
 				return false;					
 		}
+	}
+	
+	private static void addNewLine(InvoiceLineReport newLine, List<InvoiceLineReport> currentReport) {
+		InvoiceLineReport previousLine = null;
+		if (! currentReport.isEmpty())
+			previousLine = currentReport.get(currentReport.size()-1);
+		if (previousLine != null && DateHelper.isWithinSameMonth(previousLine.date, newLine.date))
+			previousLine.turnOverAmountDuringMonth = previousLine.turnOverAmountDuringMonth + previousLine.turnOverAmount + newLine.turnOverAmount;
+		currentReport.add(newLine);
 	}
 	
 }
