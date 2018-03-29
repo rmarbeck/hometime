@@ -22,7 +22,7 @@
 }
 
 @layouts.admin("Admin", end_scripts) {
-	<div class="container">
+	<div class="container">@message
 	@if_admin_or_collaborator() {
     @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
     	<h3>
