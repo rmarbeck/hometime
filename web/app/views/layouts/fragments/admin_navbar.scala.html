@@ -110,7 +110,7 @@
                 @li_activable(80, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.reporting")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    @li_activable(70, index) {<a href="@routes.Reporting.invoiceLines()">@Messages("admin.navbar.link.text.reporting.invoice.lines")</a>}
+                    @li_activable(70, index) {<a href="@routes.Reporting.invoiceLinesEnhanced(12)">@Messages("admin.navbar.link.text.reporting.invoice.lines")</a>}
                     @li_activable(71, index) {<a href="@routes.Reporting.marginVat()">@Messages("admin.navbar.link.text.reporting.margin.vat")</a>}
                     @li_activable(71, index) {<a href="@routes.Reporting.exportSales()">@Messages("admin.navbar.link.text.reporting.export.sales")</a>}
                     @li_activable(71, index) {<a href="@routes.Reporting.withVat()">@Messages("admin.navbar.link.text.reporting.with.vat.sales")</a>}

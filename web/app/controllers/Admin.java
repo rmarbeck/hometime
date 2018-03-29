@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import models.Brand;
 import models.BuyRequest;
@@ -47,6 +48,7 @@ import views.html.admin.service_test;
 import views.html.admin.service_tests;
 import views.html.mails.notify_order;
 import views.html.mails.notify_buy_request;
+import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.ServiceTestHelper;
@@ -267,7 +269,7 @@ public class Admin extends Controller {
 	}
 	@Security.Authenticated(SecuredLoggedOnOnly.class)
 	public static Result index() {
-		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
+		return ok(index.render(">> "+CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)), Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
     }
 	
 	@Security.Authenticated(SecuredAdminOnly.class)
