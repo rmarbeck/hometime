@@ -1,0 +1,31 @@
+@(message: String = "", stats: List[fr.hometime.utils.DataHolder])
+@import tags._
+
+@import fr.hometime.utils._
+
+@end_scripts = {
+<script>
+
+</script> 
+}
+
+@layouts.admin("Admin", end_scripts) {
+	<div class="container">
+		@for(stat <- stats) {
+			<div class="row display">
+				<div class="col-xs-12">
+					<span class="display-label">@Messages(stat.getDataKey)</span>&nbsp;:&nbsp;<span class="display-value">
+					@{stat.getDataType match {
+						case DataHolder.DataType.VALUE => stat.getNumericValue
+						case DataHolder.DataType.PRICE => display_price(stat.getNumericValue)
+					    case DataHolder.DataType.BOOLEAN => display_boolean(stat.getBooleanValue)
+					    case _ => "?"
+					}}
+					
+					
+					</span>
+				</div>
+			</div>
+		}
+	</div>
+}

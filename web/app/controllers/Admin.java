@@ -40,6 +40,7 @@ import views.html.admin.buy_request;
 import views.html.admin.buy_requests;
 import views.html.admin.orders;
 import views.html.admin.index;
+import views.html.admin.stats;
 import views.html.admin.test;
 import views.html.admin.cgv;
 import views.html.admin.quotation;
@@ -49,6 +50,7 @@ import views.html.admin.service_tests;
 import views.html.mails.notify_order;
 import views.html.mails.notify_buy_request;
 import fr.hometime.utils.CustomerWatchHelper;
+import fr.hometime.utils.DataHolder;
 import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.ServiceTestHelper;
@@ -269,7 +271,21 @@ public class Admin extends Controller {
 	}
 	@Security.Authenticated(SecuredLoggedOnOnly.class)
 	public static Result index() {
-		return ok(index.render(">> "+CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)), Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
+		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
+    }
+	
+	@Security.Authenticated(SecuredAdminOnly.class)
+	public static Result stats() {
+		DataHolder forwardServicing = DataHolder.ofAsPrice("admin.forward.servicing", CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
+		DataHolder waitingFeedback = DataHolder.ofAsPrice("admin.waiting.feedback", CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) == 3L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
+		DataHolder workingNb = DataHolder.ofAsNumericValue("admin.working.nb", CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> 1)).floatValue());
+		DataHolder waitingFeedbackNb = DataHolder.ofAsNumericValue("admin.waiting.feedback.nb", CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) == 3L)).collect(Collectors.summingLong(w -> 1)).floatValue());
+		List<DataHolder> datas = new ArrayList<DataHolder>();
+		datas.add(forwardServicing);
+		datas.add(waitingFeedback);
+		datas.add(workingNb);
+		datas.add(waitingFeedbackNb);
+		return ok(stats.render("Admin", datas));
     }
 	
 	@Security.Authenticated(SecuredAdminOnly.class)

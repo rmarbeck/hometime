@@ -129,6 +129,8 @@ POST    /quick-login                   									controllers.Application.quickAdm
 GET     /logout                     									controllers.Application.logout()
 GET     /admin/		                    								controllers.Admin.index()
 
+GET     /admin/stats                    								controllers.Admin.stats()
+
 POST    /admin/search													controllers.Admin.search()
 GET     /admin/search/view/:pattern/:id    								controllers.Admin.viewSearchable(pattern: String, id: Long)
 GET     /admin/search/edit/:pattern/:id									controllers.Admin.editSearchable(pattern: String, id: Long)

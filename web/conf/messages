@@ -3875,3 +3875,8 @@ customer.watch.status.close=Montre terminée et rendue
 customer.watch.status.unconsistent=Statut anormal
 customer.watch.status.to.be.accepted=Montre à accepter
 customer.watch.status.finished.to.bill.before.delivery=En attente de paiement avant livraison
+
+admin.forward.servicing=CA montres à faire
+admin.waiting.feedback=CA montres en attente d''accord
+admin.working.nb=Nombre de montres en cours d''entretien
+admin.waiting.feedback.nb=Nombre de montres en attente de retour client
