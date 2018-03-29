@@ -276,10 +276,11 @@ public class Admin extends Controller {
 	
 	@Security.Authenticated(SecuredAdminOnly.class)
 	public static Result stats() {
-		DataHolder forwardServicing = DataHolder.ofAsPrice("admin.forward.servicing", CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
-		DataHolder waitingFeedback = DataHolder.ofAsPrice("admin.waiting.feedback", CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) == 3L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
-		DataHolder workingNb = DataHolder.ofAsNumericValue("admin.working.nb", CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> 1)).floatValue());
-		DataHolder waitingFeedbackNb = DataHolder.ofAsNumericValue("admin.waiting.feedback.nb", CustomerWatch.findAll().stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) == 3L)).collect(Collectors.summingLong(w -> 1)).floatValue());
+		List<CustomerWatch> watches = CustomerWatch.findAll();
+		DataHolder forwardServicing = DataHolder.ofAsPrice("admin.forward.servicing", watches.stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
+		DataHolder waitingFeedback = DataHolder.ofAsPrice("admin.waiting.feedback", watches.stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) == 3L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
+		DataHolder workingNb = DataHolder.ofAsNumericValue("admin.working.nb", watches.stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> 1)).floatValue());
+		DataHolder waitingFeedbackNb = DataHolder.ofAsNumericValue("admin.waiting.feedback.nb", watches.stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) == 3L)).collect(Collectors.summingLong(w -> 1)).floatValue());
 		List<DataHolder> datas = new ArrayList<DataHolder>();
 		datas.add(forwardServicing);
 		datas.add(waitingFeedback);
