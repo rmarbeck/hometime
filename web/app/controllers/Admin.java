@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import models.Brand;
@@ -277,17 +278,42 @@ public class Admin extends Controller {
 	@Security.Authenticated(SecuredAdminOnly.class)
 	public static Result stats() {
 		List<CustomerWatch> watches = CustomerWatch.findAll();
-		DataHolder forwardServicing = DataHolder.ofAsPrice("admin.forward.servicing", watches.stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
-		DataHolder waitingFeedback = DataHolder.ofAsPrice("admin.waiting.feedback", watches.stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) == 3L)).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
-		DataHolder workingNb = DataHolder.ofAsNumericValue("admin.working.nb", watches.stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) > 4L && CustomerWatchHelper.getStatusAsLong(w) < 10L)).collect(Collectors.summingLong(w -> 1)).floatValue());
-		DataHolder waitingFeedbackNb = DataHolder.ofAsNumericValue("admin.waiting.feedback.nb", watches.stream().filter((w) -> (CustomerWatchHelper.getStatusAsLong(w) == 3L)).collect(Collectors.summingLong(w -> 1)).floatValue());
+		DataHolder workToBeDone = DataHolder.ofAsPrice("admin.forward.work.to.be.done", watches.stream().filter(workToBeDone()).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
+		DataHolder testing = DataHolder.ofAsPrice("admin.forward.testing", watches.stream().filter(testing()).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
+		DataHolder forwardServicing = DataHolder.ofAsPrice("admin.forward.servicing", watches.stream().filter(servicing()).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
+		DataHolder waitingFeedback = DataHolder.ofAsPrice("admin.waiting.feedback", watches.stream().filter(waitingFeedback()).collect(Collectors.summingLong(w -> w.finalCustomerServicePrice)).floatValue());
+		
+		DataHolder workToBeDoneNb = DataHolder.ofAsNumericValue("admin.forward.work.to.be.done.nb", watches.stream().filter(workToBeDone()).collect(Collectors.summingLong(w -> 1)).floatValue());
+		DataHolder testingNb = DataHolder.ofAsNumericValue("admin.waiforward.testing.nb", watches.stream().filter(testing()).collect(Collectors.summingLong(w -> 1)).floatValue());
+		DataHolder forwardServicingNb = DataHolder.ofAsNumericValue("admin.forward.working.nb", watches.stream().filter(servicing()).collect(Collectors.summingLong(w -> 1)).floatValue());
+		DataHolder waitingFeedbackNb = DataHolder.ofAsNumericValue("admin.waiting.feedback.nb", watches.stream().filter(waitingFeedback()).collect(Collectors.summingLong(w -> 1)).floatValue());
 		List<DataHolder> datas = new ArrayList<DataHolder>();
+		datas.add(workToBeDone);
+		datas.add(testing);
 		datas.add(forwardServicing);
 		datas.add(waitingFeedback);
-		datas.add(workingNb);
+		datas.add(workToBeDoneNb);
+		datas.add(testingNb);
+		datas.add(forwardServicingNb);
 		datas.add(waitingFeedbackNb);
 		return ok(stats.render("Admin", datas));
     }
+	
+	private static Predicate<CustomerWatch> workToBeDone() {
+		return watch -> CustomerWatchHelper.getStatusAsLong(watch) == 5L || CustomerWatchHelper.getStatusAsLong(watch) == 6L;
+	}
+	
+	private static Predicate<CustomerWatch> testing() {
+		return watch -> CustomerWatchHelper.getStatusAsLong(watch) == 7L;
+	}
+	
+	private static Predicate<CustomerWatch> servicing() {
+		return watch -> (CustomerWatchHelper.getStatusAsLong(watch) > 4L && CustomerWatchHelper.getStatusAsLong(watch) < 10L);
+	}
+	
+	private static Predicate<CustomerWatch> waitingFeedback() {
+		return watch -> CustomerWatchHelper.getStatusAsLong(watch) == 3L;
+	}
 	
 	@Security.Authenticated(SecuredAdminOnly.class)
 	public static Result test() {
