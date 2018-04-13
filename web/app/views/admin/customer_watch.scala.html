@@ -104,6 +104,22 @@
       <div class="row">
         <div class="col-xs-12 text-center">
         	<a type="button" class="btn btn-primary" href="@routes.Accounting.addPServiceCByWatchId(watch.id)"><span class="glyphicon glyphicon-certificate"></span>@Html(Messages("admin.customer.watch.action.create.certificate"))</a>
+        	<!-- Split button -->
+		    <div class="btn-group text-left dropup">
+		      <span class="btn btn-success">@Html(Messages("admin.customer.watch.action.new.invoice.quick.service"))</span>
+		      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+		        <span class="caret"></span>
+		        <span class="sr-only">Toggle Dropdown</span>
+		      </button>
+		      <ul class="dropdown-menu" role="menu">
+		        <li><a href="@routes.Accounting.addInvoiceFormByWatchToQuickServiceId(watch.id, 16.67f, false)">@Html(Messages("admin.customer.watch.action.new.invoice.quick.service.without.water", "20"))</a></li>
+		        <li><a href="@routes.Accounting.addInvoiceFormByWatchToQuickServiceId(watch.id, 20.83f, false)">@Html(Messages("admin.customer.watch.action.new.invoice.quick.service.without.water", "25"))</a></li>
+		        <li><a href="@routes.Accounting.addInvoiceFormByWatchToQuickServiceId(watch.id, 29.17f, false)">@Html(Messages("admin.customer.watch.action.new.invoice.quick.service.without.water", "35"))</a></li>
+		        <li><a href="@routes.Accounting.addInvoiceFormByWatchToQuickServiceId(watch.id, 40.83f, true)">@Html(Messages("admin.customer.watch.action.new.invoice.quick.service.with.water", "49"))</a></li>
+		        <li><a href="@routes.Accounting.addInvoiceFormByWatchToQuickServiceId(watch.id, 57.5f, true)">@Html(Messages("admin.customer.watch.action.new.invoice.quick.service.with.water", "69"))</a></li>
+		        <li><a href="@routes.Accounting.addInvoiceFormByWatchToQuickServiceId(watch.id, 74.17f, true)">@Html(Messages("admin.customer.watch.action.new.invoice.quick.service.with.water", "89"))</a></li>
+		      </ul>
+		    </div>
         </div>
      </div>
   </div>

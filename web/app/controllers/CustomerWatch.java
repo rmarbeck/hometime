@@ -84,6 +84,7 @@ public class CustomerWatch extends Controller {
 		return ok(emptyNewWatchForm());		
 	}
 	
+	@Security.Authenticated(SecuredAdminOrCollaboratorOnly.class)
 	public static Result doAction(String actionName, Long watchId) {
 		CustomerWatchActions.doAction(CustomerWatchActions.CustomerWatchActionList.fromString(actionName), models.CustomerWatch.findById(watchId), session());
 		return LIST_CUSTOMER_WATCHES;

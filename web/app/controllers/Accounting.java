@@ -65,6 +65,10 @@ public class Accounting extends Controller {
 		return ok(newInvoiceFormByWatchToSellId(id));		
 	}
 	
+	public static Result addInvoiceFormByWatchToQuickServiceId(Long id, float price, boolean waterResistance) {
+		return ok(newInvoiceFormByWatchToQuickServiceId(id, price, waterResistance));		
+	}
+	
 	public static Result addInvoiceByOrderId(Long id) {
 		return ok(newInvoiceFormByOrderId(id));		
 	}
@@ -142,6 +146,30 @@ public class Accounting extends Controller {
 		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
 	}
 	
+	
+	private static Html newInvoiceFormByWatchToQuickServiceId(long id, float price, boolean waterResistance) {
+		models.CustomerWatch watch = CustomerWatch.findById(id);
+		if (watch == null)
+			return emptyNewInvoiceForm();
+		models.Invoice newInvoice = new Invoice();
+		newInvoice.changeUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
+		newInvoice.document.customer = watch.customer;
+		newInvoice.type = InvoiceType.VAT;
+		if (waterResistance) {
+			newInvoice.description = Messages.get("admin.invoice.description.quick.servicing.a.watch.with.water.resistance", watch.brand, watch.model);
+		} else {
+			newInvoice.description = Messages.get("admin.invoice.description.quick.servicing.a.watch.without.water.resistance", watch.brand, watch.model);
+		}
+		newInvoice.addLine(LineType.WITH_VAT_BY_UNIT, getMainLineForInvoiceForQuickServicing(watch, waterResistance), Long.valueOf(1), price);
+		if (waterResistance) {
+			newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.waranty.line.quick.servicing.a.watch.with.water.resistance"), Long.valueOf(1), Float.valueOf(0));
+		} else {
+			newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.waranty.line.quick.servicing.a.watch.without.water.resistance"), Long.valueOf(1), Float.valueOf(0));
+		}
+		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.delivery.line.quick.servicing.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
+	}
+	
 	private static Html newInvoiceFormByOrderId(long id) {
 		models.OrderDocument orderToInspireFrom = OrderDocument.findById(id);
 		if (orderToInspireFrom == null)
@@ -179,6 +207,18 @@ public class Accounting extends Controller {
 							watchToSell.isNew?"":watchToSell.year!=null && !watchToSell.year.equals("")?Messages.get("admin.invoice.of.year",watchToSell.year):"",
 							watchToSell.additionnalInfos!=null && !watchToSell.additionnalInfos.equals("")?" "+watchToSell.additionnalInfos:"",
 							watchToSell.hasBox?(watchToSell.hasPapers?Messages.get("admin.invoice.box.and.papers"):Messages.get("admin.invoice.box.only")):(watchToSell.hasPapers?Messages.get("admin.invoice.papers.only"):Messages.get("admin.invoice.default")));
+	}
+	
+	private static String getMainLineForInvoiceForQuickServicing(CustomerWatch watch, boolean waterResistance) {
+		if (waterResistance) {
+			return Messages.get("admin.invoice.main.line.quick.servicing.a.watch.with.water.resistance",
+				watch.brand,
+				watch.model);
+		} else {
+			return Messages.get("admin.invoice.main.line.quick.servicing.a.watch.without.water.resistance",
+					watch.brand,
+					watch.model);
+		}
 	}
 	
 	private static Html existingInvoiceForm(models.Invoice invoice) {

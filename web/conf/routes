@@ -192,7 +192,7 @@ GET     /admin/customer-watch/set-stored-by-us-outside/:id 				controllers.Custo
 GET     /admin/customer-watch/accept/:id			 					controllers.CustomerWatch.acceptWatchFromCustomer(id: Long)
 POST    /admin/manage-customer-watch 									controllers.CustomerWatch.manage()
 
-GET     /admin/customer-watch/doAction/:action/:id		    			controllers.CustomerWatch.doAction(action: String, id: Long)
+GET     /admin/customer-watch/doaction/:action/:id		    			controllers.CustomerWatch.doAction(action: String, id: Long)
 
 GET     /admin/watch/display/:id										controllers.Watch.display(id: Long)
 GET     /admin/watch/all    											controllers.Watch.displayAll(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "")
@@ -232,6 +232,7 @@ POST    /admin/manage-quotation     									controllers.Admin.manageQuotation()
 GET     /admin/invoice            										controllers.Accounting.display()
 GET     /admin/invoice/create          									controllers.Accounting.addInvoice()
 GET     /admin/invoice/create/by/watch-to-sell/:id						controllers.Accounting.addInvoiceByWatchToSellId(id: Long)
+GET     /admin/invoice/create/by/watch-to-service/:id					controllers.Accounting.addInvoiceFormByWatchToQuickServiceId(id: Long, price: Float, water: Boolean ?=false)
 GET     /admin/invoice/create/by/customer/:id							controllers.Accounting.addInvoiceFromCustomer(id: Long)
 GET     /admin/invoice/create/by/order/:id								controllers.Accounting.addInvoiceByOrderId(id: Long)
 GET     /admin/invoice/edit/:id         								controllers.Accounting.editInvoice(id: Long)

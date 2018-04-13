@@ -11,7 +11,7 @@
     <span class="caret"></span>
     <span class="sr-only">Toggle Dropdown</span>
   </button>
-  <ul class="dropdown-menu" role="menu">
+  <ul class="dropdown-menu dropdown-menu-right" role="menu">
   @for(action <- CustomerWatchActions.CustomerWatchActionList.values) {
   	@if(CustomerWatchActions.canDoAction(action, currentWatch)) {
   		<li><a href="#anchor_@currentWatch.id" onclick='doAction("@routes.CustomerWatch.doAction(action.name, currentWatch.id)");'>@Messages(key+".action."+action.name.toString.toLowerCase.replace('_','.'))</a></li>
