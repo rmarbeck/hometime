@@ -327,7 +327,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     private static String displayWatchByCustomer(CustomerWatch watch) {
     	StringBuilder result = new StringBuilder();
     	if (watch.customer != null) {
-    		result.append(watch.customer.getFullName());
+    		result.append(watch.customer.getFullNameInversed());
     	} else {
     		result.append("unknown");
     	}

@@ -144,6 +144,8 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
 	public String getOpenStatus() {
 		if (closed)
 			return "spare_closed";
+		if (found)
+			return "spare_open_found";
 		return "spare_open";
 	}
 }

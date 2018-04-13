@@ -3927,6 +3927,7 @@ admin.sparepart.page.title=Pièces détachées
 admin.sparepart.page.watch=Montre
 admin.sparepart.page.description=Description
 admin.sparepart.page.otherinfos=Infos
+admin.sparepart.page.found=Trouvée
 
 admin.sparepart=Pièce détachée
 admin.sparepart.title=Pièce détachée
