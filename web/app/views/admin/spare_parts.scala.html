@@ -1,0 +1,13 @@
+@(currentPage: com.avaje.ebean.Page[models.SparePart], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "description", "admin.sparepart.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("watch", "watch", "getWatchDescription", false);
+		pageDisplay.addTableField("description", "description", "getDescription", false);
+		pageDisplay.addTableField("otherInfos", "otherInfos", "getOtherInfos", false);
+		pageDisplay.setClass("getOpenStatus");
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "SpareParts", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

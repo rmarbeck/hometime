@@ -260,6 +260,9 @@ POST    /admin/manage/customer-watch-customer							controllers.CustomerAdmin.ma
 
 GET     /admin/display/SimplifiedCustomersBig/All		            	controllers.SimplifiedCustomers.pageOfSpecialCustomers(p:Int ?= 0, s ?= "creationDate", o ?= "desc", f ?= "", size:Int ?= 0)
 
+GET     /admin/display/SparePartsOpen/All				            	controllers.SpareParts.pageOfOpenSpareParts(p:Int ?= 0, s ?= "creationDate", o ?= "desc", f ?= "", size:Int ?= 40)
+
+
 GET		/admin/display/:model/All										controllers.CrudHelper.displayAll(model: String, d:Int ?=20)
 GET		/admin/display/:model/:id										controllers.CrudHelper.display(model: String, id: Long)
 GET		/admin/display/:model/page/										controllers.CrudHelper.page(model: String, p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "", d:Int ?=10)

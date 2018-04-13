@@ -29,15 +29,15 @@ import views.html.admin.customers_for_partner;
 public class Partner extends Controller {
 	
 	public static Result LIST_WAITING_ACCEPTATION_WATCHES = redirect(
-			routes.Partner.displayWaitingAcceptationWatches(0, "lastStatusUpdate", "desc", "", 20, "")
+			routes.Partner.displayWaitingAcceptationWatches(0, "lastStatusUpdate", "desc", "", 0, "")
 			);
 	
 	public static Result LIST_WAITING_QUOTATION_WATCHES = redirect(
-			routes.Partner.displayWaitingQuotationWatches(0, "lastStatusUpdate", "desc", "", 20, "")
+			routes.Partner.displayWaitingQuotationWatches(0, "lastStatusUpdate", "desc", "", 0, "")
 			);
 	
 	public static Result LIST_WORK_IN_PROGRESS_WATCHES = redirect(
-			routes.Partner.displayWorkInProgressWatches(0, "lastStatusUpdate", "desc", "", 20, "")
+			routes.Partner.displayWorkInProgressWatches(0, "lastStatusUpdate", "desc", "", 0, "")
 			);
 	
 	public static Result displayAll(int page, String sortBy, String order, String filter, int size) {

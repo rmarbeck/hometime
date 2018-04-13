@@ -1,0 +1,21 @@
+@(thisInstance: Form[models.SparePart], isItNew: Boolean)
+
+@import tags._
+
+@defining(new views.FormDisplay(thisInstance, "SparePart", "admin.sparepart.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.CustomerWatch.getIdsByCustomersAsc, models.CustomerWatch.getWatchesByCustomersAsc);
+		   formDisplay.addFormField("description", true, "textarea");
+		   formDisplay.addFormField("unitNeeded", true, "input", 'type -> "number", 'min -> "1", 'step -> "1");
+		   formDisplay.addFormField("otherInfos", true, "textarea");
+		   formDisplay.addFormField("emergencyLevel", true, "input", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "10");
+		   formDisplay.addFormField("expectedAvailability", true, "input", 'type -> "date");
+		   formDisplay.addFormField("expectedInPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   formDisplay.addFormField("realInPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   formDisplay.addFormField("outPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   formDisplay.addFormField("found", true, "checkbox");
+		   formDisplay.addFormField("got", true, "checkbox");
+		   formDisplay.addFormField("closed", true, "checkbox");
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew)
+}

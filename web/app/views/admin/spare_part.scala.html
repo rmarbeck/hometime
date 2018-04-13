@@ -1,0 +1,33 @@
+@(instance: models.SparePart)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("SpareParts", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("SpareParts")
+}
+
+@end_body = {
+
+}
+
+@defining(new views.ModelDisplay(instance, "admin.sparepart")) { modelDisplay =>
+		@{ 	modelDisplay.addField("watch", "getWatchDescription");
+			modelDisplay.addField("description");
+			modelDisplay.addField("unitNeeded");
+			modelDisplay.addField("otherInfos");
+			modelDisplay.addField("emergencyLevel");
+			modelDisplay.addField("expectedAvailability");
+			modelDisplay.addField("expectedInPrice");
+			modelDisplay.addField("realInPrice");
+			modelDisplay.addField("outPrice");
+			modelDisplay.addField("found");
+			modelDisplay.addField("got");
+			modelDisplay.addField("closed");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+
+}
