@@ -5,8 +5,35 @@
     @routes.PaymentRequestsFreeOfLogin.displayForm(models.PaymentRequest.findById(id).accessKey)
 }
 
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('table > tbody  > tr').each(function(){
+				addButtonForAction($(this).children("td:first"));
+			});
+			
+			updateIds();
+			
+			function guessIDFromTd(location) {
+    			return $(location).children("a:first").attr('href').split('/').slice(-1)[0];
+   			}
+			
+			function addButtonForAction(location) {
+    			location.append('<a id="'+guessIDFromTd(location)+'" type="button" class="btn btn-success btn-xs action-js" href="@routes.Payments.createFromPaymentRequest(-1)"><span class="glyphicon glyphicon-euro"></span></a>');
+   			}
+   			
+   			function updateIds() {
+	   			$('.action-js').each(function(){
+					$(this).attr('href', $(this).attr('href').substring(0, $(this).attr('href').length -2)+$(this).attr('id'));
+				});
+   			}
+		})
+	</script>
+}
+
 @defining(new views.PageDisplay(currentPage, "description ou access key", "admin.paymentrequest.page")) { pageDisplay =>
 	@{  pageDisplay.addTableField("creationDate", "creation.date", "getCreationDate", false, "date short");
+	    pageDisplay.addTableField("closingDate", "closing.date", "getClosingDate", false, "date short");
 	    pageDisplay.addTableField("customer.name", "customer", "getFullName", false);
 	    pageDisplay.addTableField("priceInEuros", "price.in.euros", "getPriceInEuros", false, "price float");
 		pageDisplay.addTableField("accessKey", "access.key", "getAccessKey", false);
@@ -14,5 +41,5 @@
 		pageDisplay.addTableField("isOpen", "is.open", "getIsOpen", false);
 	}
 	
-	@admin.template.page_with_default_links(pageDisplay, "PaymentRequests", optionallink, currentSortBy, currentOrder, currentFilter, currentSize)
+	@admin.template.page_with_default_links(pageDisplay, "PaymentRequests", optionallink, currentSortBy, currentOrder, currentFilter, currentSize, true, true, end_scripts)
 }

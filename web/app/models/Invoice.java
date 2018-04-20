@@ -153,6 +153,11 @@ public class Invoice extends Model {
     	return find.fetch("document.customer").where().eq("document.customer.id", customer.id)
     			.orderBy("unique_accounting_number ASC").findList();
     }
+    
+    public static Invoice findLastByCustomer(models.Customer customer) {
+    	return find.fetch("document.customer").where().eq("document.customer.id", customer.id)
+    			.orderBy("unique_accounting_number DESC").findList().get(0);
+    }
 
     public static Page<Invoice> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 

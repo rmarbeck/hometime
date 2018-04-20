@@ -379,5 +379,9 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 		instance.amexOnly = false;
 		return instance;
 	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
 }
 

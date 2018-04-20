@@ -3310,6 +3310,7 @@ reserved.4=Non implémenté
 admin.paymentrequest.page=Demande de paiement CB
 admin.paymentrequest.page.title=Demande de paiement CB
 admin.paymentrequest.page.creation.date=Date
+admin.paymentrequest.page.closing.date=Validation
 admin.paymentrequest.page.customer=Client
 admin.paymentrequest.page.price.in.euros=Prix
 admin.paymentrequest.page.access.key=Clef d''accès

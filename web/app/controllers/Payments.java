@@ -12,6 +12,8 @@ import java.util.TimeZone;
 import fr.hometime.utils.DateHelper;
 import models.Invoice;
 import models.Payment;
+import models.Payment.PaymentMethod;
+import models.PaymentRequest;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -39,6 +41,21 @@ public class Payments extends Controller {
 		return crud.create(Form.form(Payment.class).fill(instance));
     }
 	
+	public static Result createFromPaymentRequest(long id) {
+		Payment instance = new Payment();
+		PaymentRequest request = PaymentRequest.findById(id);
+		
+		instance.paymentDate = new Date();
+		if (request != null) {
+			instance.invoice = guessInvoiceByPaymentRequest(request);
+			instance.paymentMethod = PaymentMethod.CB;
+			instance.amountInEuros = request.priceInEuros;
+			instance.paymentDate = request.closingDate;
+		}
+		instance.inBankDate = DateHelper.toDate(Instant.now().plus(2, ChronoUnit.DAYS));
+		return crud.create(Form.form(Payment.class).fill(instance));
+    }
+	
 	public static float remainingAmountToPay(Invoice currentInvoice) {
 		float invoiceAmount = Math.round(currentInvoice.document.getBottomLinePriceIncludingVAT());
 		float alreadyPayed = existingPaymentsAmount(currentInvoice);
@@ -50,5 +67,9 @@ public class Payments extends Controller {
 		if (payments.isPresent())
 			return (float) payments.get().stream().mapToDouble(p -> p.amountInEuros).sum();
 		return 0f;
+	}
+	
+	private static Invoice guessInvoiceByPaymentRequest(PaymentRequest request) {
+		return Invoice.findLastByCustomer(request.getCustomer());
 	}
 }

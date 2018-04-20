@@ -303,6 +303,7 @@ GET		/admin/view/SimplifiedCustomerWatch/:id							controllers.SimplifiedCustome
 GET		/admin/accept/SimplifiedCustomerWatch/:id						controllers.SimplifiedCustomerWatches.acceptWatch(id: Long)
 
 GET		/admin/create-from-invoice/Payments/:id							controllers.Payments.createFromInvoice(id: Long)
+GET		/admin/create-from-payment-requets/Payments/:id					controllers.Payments.createFromPaymentRequest(id: Long)
 
 GET     /admin/cgv				            							controllers.Admin.cgv()
 
