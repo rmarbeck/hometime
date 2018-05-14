@@ -272,7 +272,7 @@ public class Admin extends Controller {
 	}
 	@Security.Authenticated(SecuredLoggedOnOnly.class)
 	public static Result index() {
-		return ok(index.render("", Customer.findWithOpenTopic(), OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
+		return ok(index.render("", null/*Customer.findWithOpenTopic()*/, OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(5), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
     }
 	
 	@Security.Authenticated(SecuredAdminOnly.class)

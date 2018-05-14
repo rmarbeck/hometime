@@ -189,6 +189,18 @@ public class BuyRequest extends Model {
         						,Expr.eq("closed", false))
         		.orderBy("requestDate DESC").findList();
     }
+    
+    public static List<BuyRequest> findAllUnReplied(int maxRows) {
+        return find.where()
+        		.and(
+        				Expr.and(
+        						Expr.eq("replied", false),
+        						Expr.eq("waiting_for_customer", false)
+        						)
+        						,Expr.eq("closed", false))
+        		.setMaxRows(maxRows)
+        		.orderBy("requestDate DESC").findList();
+    }
 
     public static BuyRequest findById(Long id) {
         return find.byId(id.toString());

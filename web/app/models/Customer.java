@@ -233,6 +233,10 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
     public static List<Customer> findWithOpenTopic() {
     	return find.where().eq("is_topic_open", true).findList();
     }
+    
+    public static List<Customer> findWithOpenTopic(int maxRows) {
+    	return find.where().eq("is_topic_open", true).setMaxRows(maxRows).findList();
+    }
 
     public static List<String> getIdsByNameAsc() {
     	List<String> ids = new ArrayList<String>();
