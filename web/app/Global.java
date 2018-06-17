@@ -69,6 +69,11 @@ public class Global extends GlobalSettings {
 				}
 			}
 		}
+		
+		public static void insertLiveConfigOnly(Application app) {
+					Map<String,List<Object>> liveConfig = (Map<String,List<Object>>)Yaml.load("liveconfig-default.yml");
+					Ebean.save(liveConfig.get("liveConfig"));
+		}
 
 	}
 	
@@ -76,9 +81,10 @@ public class Global extends GlobalSettings {
     public void onStart(Application app) {
 		if (!app.isTest()) {
 			Logger.info("Application has started");
-		InitialData.insert(app);
+			InitialData.insert(app);
 		} else {
 			Logger.info("Application has started in test mode.");
+			InitialData.insertLiveConfigOnly(app);
 		}
     }
 

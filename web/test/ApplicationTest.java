@@ -26,7 +26,7 @@ public class ApplicationTest {
 
     @Test
     public void renderTemplate() {
-        Html html = views.html.index.render("Your new application is ready.", new ArrayList<Brand>(),"");
+        Html html = views.html.index.render("Your new application is ready.", new ArrayList<Brand>(),"", null);
         assertThat(contentType(html)).isEqualTo("text/html");
         assertThat(contentAsString(html)).contains("Your new application is ready.");
     }
