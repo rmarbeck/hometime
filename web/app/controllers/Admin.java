@@ -53,6 +53,7 @@ import views.html.mails.notify_buy_request;
 import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.DataHolder;
 import fr.hometime.utils.MailjetAdapter;
+import fr.hometime.utils.MailjetAdapterv3_1;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.ServiceTestHelper;
 
@@ -553,7 +554,7 @@ public class Admin extends Controller {
 		return Promise.pure(ok(quotation.render(quotationFilled)));
     }
 
-	private static Promise<Result> sendQuotation(final Form<QuotationForm> quotationForm) {
+	private static Promise<Result> sendQuotationOld(final Form<QuotationForm> quotationForm) {
 		Logger.debug("Sending Quotation");
 		try {
 			final Quotation quotationFilled = quotationForm.get().getQuotation();
@@ -577,6 +578,26 @@ public class Admin extends Controller {
 			});
 			
 			return recoverPromise;
+		} catch (Exception e) {
+			Logger.debug("5");
+			flash("error", e.getMessage());
+			return Promise.pure((Result) badRequest(quotation_form.render(quotationForm, getAvailableWatches())));	
+		}
+    }
+	
+	private static Promise<Result> sendQuotation(final Form<QuotationForm> quotationForm) {
+		Logger.debug("Sending Quotation");
+		try {
+			final Quotation quotationFilled = quotationForm.get().getQuotation();
+			String subject = getSubjectFromQuotation(quotationFilled);
+			String title = getTitleFromQuotation(quotationFilled);
+			String email = quotationFilled.customerEmail;
+			String html = quotation.render(quotationFilled).body();
+			String textVersion = Messages.get("admin.quotation.order.email.text.version");
+
+			MailjetAdapterv3_1.createACampaignWithHtmlContent(subject, title, email, html, textVersion);
+			
+			return Promise.pure(INDEX);
 		} catch (Exception e) {
 			Logger.debug("5");
 			flash("error", e.getMessage());

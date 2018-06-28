@@ -8,10 +8,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.ning.http.client.AsyncHttpClient;
 
+import akka.japi.Function;
 import models.LiveConfig;
 import play.Logger;
 import play.libs.F.Promise;
@@ -28,6 +30,11 @@ import com.mailjet.client.MailjetRequest;
 import com.mailjet.client.MailjetResponse;
 import com.mailjet.client.ClientOptions;
 import com.mailjet.client.resource.Contact;
+import com.mailjet.client.resource.Contactslist;
+import com.mailjet.client.resource.ContactslistManageContact;
+import com.mailjet.client.resource.Campaigndraft;
+import com.mailjet.client.resource.CampaigndraftDetailcontent;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -92,7 +99,9 @@ public class MailjetAdapterv3_1 {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		return new MailjetClient(apiKey, apiSecretKey);
+		MailjetClient client = new MailjetClient(apiKey, apiSecretKey); 
+		client.setDebug(MailjetClient.VERBOSE_DEBUG);
+		return client;
 	}
 	
 	private static boolean shouldAPIBeInitialized() {
@@ -118,39 +127,131 @@ public class MailjetAdapterv3_1 {
 	}
 	
 	
-	public static Optional<Integer> createContact(String email) throws MailjetException, MailjetSocketTimeoutException {
-	    MailjetRequest request = new MailjetRequest(Contact.resource).property(Contact.EMAIL, email);
-	    MailjetResponse response = getClient().post(request);
-	    
-	    if (response.getStatus() == 200 && response.getData().getJSONObject(0).has("ID"))
-	    	return Optional.of(response.getData().getJSONObject(0).getInt("ID"));
-	    return Optional.empty();
+	/*
+	 * 
+	 * ----------------------------------------------
+	 * 
+	 */
+	
+	public static Optional<Integer> createContact(String email) throws MailAdapterException {
+	    return getIdFromRequest(() -> new MailjetRequest(Contact.resource).property(Contact.EMAIL, email), getClient()::post);
 	}
 	
-	public static Optional<Integer> getContactByEmail(String email) throws MailjetException, MailjetSocketTimeoutException {
-	    MailjetRequest request = new MailjetRequest(Contact.resource, email);
-	    MailjetResponse response = getClient().get(request);
-	    
-	    if (response.getStatus() == 200 && response.getData().getJSONObject(0).has("ID"))
-	    	return Optional.of(response.getData().getJSONObject(0).getInt("ID"));
-	    return Optional.empty();
+	public static Optional<Integer> getContactByEmail(String email) throws MailAdapterException {
+	    return getIdFromRequest(() -> new MailjetRequest(Contact.resource, email), getClient()::get);
 	}
 	
 	public static Optional<Integer> getOrCreateContactByEmail(String email) {
-		Optional<Integer> foundAlreadyExistingContact;
+		return getOrCreateByKey(MailjetAdapterv3_1::getContactByEmail, MailjetAdapterv3_1::createContact, email);
+	}
+	
+	public static Optional<Integer> createEmptyContactsListByName(String name) throws MailAdapterException {
+	    return getIdFromRequest(() -> new MailjetRequest(Contactslist.resource).property(Contactslist.NAME, name), getClient()::post);
+	}
+	
+	public static Optional<Integer> getContactsListByName(String name) throws MailAdapterException {
+		return getIdFromRequest(() -> new MailjetRequest(Contactslist.resource).filter(Contactslist.NAME, name), getClient()::get);
+	}
+	
+	public static void deleteContactsListByName(String name) throws Exception {
+		Optional<Integer> foundContactsList = getContactsListByName(name);
+		if (foundContactsList.isPresent())
+			getClient().delete(new MailjetRequest(Contactslist.resource, foundContactsList.get()));
+	}
+	
+	public static Optional<Integer> getOrCreatePopulatedContactsListForOneSingleEmail(String email) throws MailAdapterException {
+		Optional<Integer> foundContactsList = getOrCreateEmptyContactsListForOneSingleEmail(email);
+		Optional<Integer> numberOfContactsInList = retrieveNumberOfContactsInContactsList(foundContactsList.get());
+		if (numberOfContactsInList.get() == 0)
+			addContactToList(foundContactsList.get(), email);
+		return foundContactsList;
+	}
+	
+	public static Optional<Integer> retrieveNumberOfContactsInContactsList(Integer id) throws MailAdapterException  {
+	    return getIntegerFromRequest(() -> new MailjetRequest(Contactslist.resource, id), getClient()::get, "SubscriberCount");
+	}
+	
+	public static void addContactToList(Integer id, String email) throws MailAdapterException  {
+		getResponseFromRequest(() -> new MailjetRequest(ContactslistManageContact.resource, id).property(ContactslistManageContact.EMAIL, email).property(ContactslistManageContact.ACTION, "addnoforce"), getClient()::post);
+	}
+	
+	public static Optional<Integer> getOrCreateEmptyContactsListForOneSingleEmail(String email) throws MailAdapterException {
+		return getOrCreateByKey(MailjetAdapterv3_1::getContactsListByName, MailjetAdapterv3_1::createEmptyContactsListByName, email);
+	}
+	
+	public static Optional<Integer> getIdFromRequest(Supplier<MailjetRequest> requestSupplier, Function<MailjetRequest, MailjetResponse> action) throws MailAdapterException {
+		return getIntegerFromRequest(requestSupplier, action, "ID");
+	}
+	
+	public static Optional<Integer> getIntegerFromRequest(Supplier<MailjetRequest> requestSupplier, Function<MailjetRequest, MailjetResponse> action, String NameOfIntegerInResponse) throws MailAdapterException {
+		MailjetResponse response = getResponseFromRequest(requestSupplier, action).get();
+		if (response.getData().getJSONObject(0).has(NameOfIntegerInResponse))
+	    	return Optional.of(response.getData().getJSONObject(0).getInt(NameOfIntegerInResponse));
+	    return Optional.empty();
+	}
+	
+	public static Optional<MailjetResponse> getResponseFromRequest(Supplier<MailjetRequest> requestSupplier, Function<MailjetRequest, MailjetResponse> action) throws MailAdapterException {
+		Optional<MailjetResponse> response;
+		System.out.println("+++++++++++++++ - "+requestSupplier.get().getBody());
 		try {
-			foundAlreadyExistingContact = getContactByEmail(email);
-			if (foundAlreadyExistingContact.isPresent())
-				return foundAlreadyExistingContact;
-			return createContact(email);
-		} catch (MailjetException e) {
-			e.printStackTrace();
-		} catch (MailjetSocketTimeoutException e) {
-			e.printStackTrace();
+			response = Optional.of(action.apply(requestSupplier.get()));
+			if (response.isPresent() && isResponseOk(response.get()))
+				return response;
+		} catch (Exception e) {
+			throw new MailAdapterException(e);
+		}
+		if (response.isPresent())
+			throw new MailAdapterException(response.get());
+		throw new MailAdapterException(new Exception("Unknown root cause"));
+	}
+	
+	public static Optional<Integer> getOrCreateByKey(Function<String, Optional<Integer>> getFunction, Function<String, Optional<Integer>> createFunction, String key) {
+		Optional<Integer> foundAlreadyExisting;
+		try {
+			foundAlreadyExisting = getFunction.apply(key);
+			if (foundAlreadyExisting.isPresent())
+				return foundAlreadyExisting;
+		} catch (Exception e) {
+			try {
+				return createFunction.apply(key);	
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		return Optional.empty();
-		
 	}
+	
+	private static boolean isResponseOk(MailjetResponse response) {
+		return response.getStatus() >= 200 || response.getStatus() <= 204;
+	}
+	
+	public static Optional<Integer> createACampaignWithHtmlContent(String subject, String title, String email, String html, String text) throws MailAdapterException {
+		Optional<Integer> contactsListId = getOrCreatePopulatedContactsListForOneSingleEmail(email);
+		System.out.println("---------->  "+contactsListId.get());
+		Optional<Integer> idOfDraft = getIdFromRequest(() -> new MailjetRequest(Campaigndraft.resource)
+													.property(Campaigndraft.SUBJECT, subject)
+													.property(Campaigndraft.TITLE, title)
+													.property(Campaigndraft.EDITMODE, "html2")
+													.property("ContactsListID", ""+contactsListId.get())
+													.property(Campaigndraft.SENDER, fromName)
+													.property(Campaigndraft.SENDEREMAIL, fromEmail)
+													.property(Campaigndraft.LOCALE, "fr_FR")
+				, getClient()::post);
+		if (idOfDraft.isPresent())
+			getResponseFromRequest(() -> new MailjetRequest(CampaigndraftDetailcontent.resource, idOfDraft.get())
+													.property(CampaigndraftDetailcontent.HTMLPART, html)
+													.property(CampaigndraftDetailcontent.TEXTPART, text)
+				, getClient()::post);
+		return idOfDraft;
+	}
+	
+	/*
+	 * ------------------------------------------------------
+	 */
+	
+	
+	
+	
 	
 	
 	public static Promise<String> wsCreateACampaignWithHtmlContent(String subject, String title, String email, String html, String text) throws Exception {
