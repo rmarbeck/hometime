@@ -597,7 +597,8 @@ public class Admin extends Controller {
 
 			Optional<String> url = MailjetAdapterv3_1.createACampaignWithHtmlContentAndGetUrlToCheckIt(subject, title, email, html, textVersion);
 			
-			flash("success", Messages.get("admin.quotation.success", url));
+			if (url.isPresent())
+				flash("success", Messages.get("admin.quotation.success", url.get()));
 			
 			return Promise.pure(INDEX);
 		} catch (Exception e) {
