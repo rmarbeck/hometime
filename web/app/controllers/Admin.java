@@ -595,7 +595,9 @@ public class Admin extends Controller {
 			String html = quotation.render(quotationFilled).body();
 			String textVersion = Messages.get("admin.quotation.order.email.text.version");
 
-			MailjetAdapterv3_1.createACampaignWithHtmlContent(subject, title, email, html, textVersion);
+			Optional<String> url = MailjetAdapterv3_1.createACampaignWithHtmlContentAndGetUrlToCheckIt(subject, title, email, html, textVersion);
+			
+			flash("success", Messages.get("admin.quotation.success", url));
 			
 			return Promise.pure(INDEX);
 		} catch (Exception e) {

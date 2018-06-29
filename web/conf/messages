@@ -425,7 +425,7 @@ offer.menu.text.prices=Les tarifs
 offer.baseline=Les services et les prestations Hometime
 
 offer.service.head=Révision & réparations
-offer.service.body=Hometime prend en charge la révision ou la réparation de votre montre. L''ensemble des opérations sont réalisées soit par un <b>horloger indépendant</b>, soit directement par <b>la marque elle-même</b>. Hometime vous conseille, et <b>c''est vous qui choisissez</b>.\
+offer.service.body=Hometime prend en charge la révision ou la réparation de votre montre. L''ensemble des opérations sont réalisées soit par <b>notre horloger</b>, soit directement par <b>la marque elle-même</b>. Hometime vous conseille, et <b>c''est vous qui choisissez</b>.\
  <br /><br />Hometime se charge pour vous de :\
  <ul><li>Vous apporter toutes les informations et conseils préalables à l''intervention</li>\
  <li>Prendre en <b>photo</b> votre montre afin de faire un <b>état des lieux précis avant la prise en charge</b></li>\
@@ -751,9 +751,9 @@ order.form.value.brand.default=Sélectionnez la marque de votre montre
 order.form.label.model=* Modèle
 order.form.placeholder.model=Nom du modèle - Année
 order.form.label.method=* Réseau
-order.form.help.method=Un horloger indépendant sélectionné par Hometime sera plus rapide et moins cher.
+order.form.help.method=Notre horloger sera plus rapide et moins cher.
 order.form.value.method.brand=Je souhaite que ma montre soit entretenue par son fabricant
-order.form.value.method.outlet=Je souhaite que ma montre soit entretenue par un <abbr class="" title="Hometime ne travaille qu''avec des professionnels réputés disposant d''ateliers dans Paris" >horloger indépendant</abbr>
+order.form.value.method.outlet=Je souhaite que ma montre soit entretenue par un <abbr class="" title="Hometime ne travaille qu''avec des professionnels diplomés et très expérimentés" >horloger indépendant</abbr>
 order.form.value.method.both=Je souhaite un devis comparant les deux modes d''entretien
 order.form.label.remark=Remarques
 order.form.placeholder.remark=Vous souhaitez préciser quelque-chose
@@ -1612,10 +1612,10 @@ admin.order.price.fixed=de {0}€ TTC
 admin.order.price.loan={0}€ TTC
 
 admin.quotation.order.email.subject.for.in.brand=Proposition de devis Hometime (au sein du réseau  {0})
-admin.quotation.order.email.subject.for.out.not.only=Proposition de devis alternatif Hometime (via un horloger indépendant)
+admin.quotation.order.email.subject.for.out.not.only=Proposition de devis alternatif Hometime (via notre horloger)
 admin.quotation.order.email.subject.for.out.only=Proposition de devis Hometime
-admin.quotation.order.email.title.for.in.brand=Proposition de devis (Réseau officiel) - {0}
-admin.quotation.order.email.title.for.out=Proposition de devis (Horloger indépendant) - {0}
+admin.quotation.order.email.title.for.in.brand={0} - devis (officiel)
+admin.quotation.order.email.title.for.out={0} - devis (interne)
 admin.quotation.order.email.text.version=Cet email est en version HTML seulement
 
 admin.quotation.success=<a href="{0}" target="_blank">Prévisualiser</a>

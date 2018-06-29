@@ -7,15 +7,19 @@
     $(document).ready(function(){
     	
 	        $('#paymentDate').on('change', function(event) {
-	        	if ( $('#paymentMethod option:selected').val() == 'CB' || $('#paymentMethod option:selected').val() == 'CHECK' || $('#paymentMethod option:selected').val() == 'CASH' ) {
-	        		var newdate = $('#paymentDate').val();
-	        		$('#inBankDate').val(add2Days(newdate));
-				} else {
-					var newdate = $('#paymentDate').val();
-	        		$('#inBankDate').val(newdate);
-				}   		
+	        	updateActualDate();   		
 	        });
     });
+    
+    function updateActualDate() {
+    	if ( $('#paymentMethod option:selected').val() == 'CB' || $('#paymentMethod option:selected').val() == 'CHECK' || $('#paymentMethod option:selected').val() == 'CASH' ) {
+    		var newdate = $('#paymentDate').val();
+    		$('#inBankDate').val(add2Days(newdate));
+		} else {
+			var newdate = $('#paymentDate').val();
+    		$('#inBankDate').val(newdate);
+		}
+    }
 
     function add2Days(newdate) {
     	var asDate=new Date(newdate);
