@@ -300,6 +300,9 @@ GET		/admin/create-from-invoice/PaymentRequests/:id					controllers.PaymentReque
 
 GET		/admin/create-for-customer/SimplifiedCustomerWatch/:id			controllers.SimplifiedCustomerWatches.createForCustomer(id: Long)
 GET		/admin/view/SimplifiedCustomerWatch/:id							controllers.SimplifiedCustomerWatches.displayCollectingForm(id: Long)
+GET		/admin/view/SimplifiedCustomerWatch/Sheet/:id					controllers.SimplifiedCustomerWatches.displayServicingSheet(id: Long)
+
+
 GET		/admin/accept/SimplifiedCustomerWatch/:id						controllers.SimplifiedCustomerWatches.acceptWatch(id: Long)
 
 GET		/admin/create-from-invoice/Payments/:id							controllers.Payments.createFromInvoice(id: Long)

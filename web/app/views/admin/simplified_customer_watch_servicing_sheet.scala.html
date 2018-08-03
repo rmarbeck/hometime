@@ -1,0 +1,124 @@
+@(instance : models.CustomerWatch)
+@import tags._
+@import java.lang.String; var title=""
+@import models.Customer; var customer=new models.Customer()
+
+@get_model = {
+	@if(instance.model != null && !instance.model.equals("")) {
+		@Html(instance.brand) - @instance.model
+	} else {
+		@Html(instance.brand)
+	}
+}
+
+@get_references = {
+	@if(instance.reference != null && !instance.reference.equals("")) {
+		@if(instance.serial != null && !instance.serial.equals("")) {
+			@instance.reference / @instance.serial
+		} else {
+			@instance.reference
+		}
+	} else {
+		@if(instance.serial != null && !instance.serial.equals("")) {
+			@instance.serial
+		} else {
+			?
+		}
+	} 
+}
+
+@two_cells(cell1: Html, cell2: String) = {
+	@two_cells_table_line_managing_emptyness(cell1, Html(cell2), "RAS", 'datatrclass -> "simplified_customer_watch_row")
+}
+
+@{
+	title=Messages("admin.simplified.customer.watch.title.collecting", instance.brand);
+	if(instance.customer.id != null) {
+		customer = models.Customer.findById(instance.customer.id);
+		if(customer != null && customer.civility!=null) {
+			title=title+" - "+Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.'));
+		}
+		if(customer != null) {
+			title=title+" "+customer.firstname+" "+customer.name;
+		}
+	}
+	
+}
+
+@layouts.admin_to_print_a5(title, instance.collectingDate, instance.customer) {
+     
+     <div class="row">
+        <div class="type col-xs-12">
+	        <h2>@Html(Messages("admin.simplified.customer.watch.servicing.sheet.text.head", instance.id))</h2>
+        </div>
+     </div>
+     
+     @admin_accounting_info_field(get_model.toString, "admin.simplified.customer.watch.brand", 'dataclass -> "descriptions simplified_customer_watch")
+     @admin_accounting_info_field(get_references.toString, "admin.simplified.customer.watch.reference", 'dataclass -> "descriptions simplified_customer_watch")
+     @admin_accounting_info_field(display_boolean(instance.picturesDoneOnCollect).toString, "admin.simplified.customer.watch.pictures", 'dataclass -> "descriptions simplified_customer_watch")
+
+     <br />
+     
+     <div class="row">
+     	<div class="col-xs-12">
+	        <div class="table-responsive">
+	            <table class="table table-bordered">
+	              <colgroup>
+	                <col class="col-xs-4">
+	                <col class="col-xs-8">
+	              </colgroup>
+	              <thead>
+	                <tr>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check.result"))</th>
+					</tr>
+				  </thead>
+				  <tbody>
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.working.conditions")), instance.workingConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.box.conditions")), instance.boxConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.hands.conditions")), instance.handsConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.crown.and.pushers.conditions")), instance.crownAndPushersConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.back.conditions")), instance.backConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.bracelet.conditions")), instance.braceletOrStrapConditionsOnCollect)
+				  		@two_cells_table_line_managing_emptyness(Html(Messages("admin.simplified.customer.watch.watering.conditions")), Html(instance.wateringConditionsOnCollect), "Non visible de l'extérieur", 'datatrclass -> "simplified_customer_watch_row")
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.glass.conditions")), instance.glassConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.other.conditions")), instance.otherConditionsRemarksOnCollect)
+	              </tbody>
+	            </table>
+	       </div>
+        </div>
+      </div>
+      
+     <div class="row">
+        <div class="col-xs-12">
+	        <div class="table-responsive">
+	            <table class="table table-bordered">
+	              <colgroup>
+	                <col class="col-xs-4">
+	                <col class="col-xs-4">
+	                <col class="col-xs-4">
+	                <col class="col-xs-4">
+	              </colgroup>
+	              <thead>
+	                <tr>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check.result"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check.result"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check.result"))</th>
+					</tr>
+				  </thead>
+				  <tbody>
+				  	<tr>
+				  		<td>1</td>
+				  		<td>2</td>
+				  		<td>3</td>
+				  		<td>4</td>
+				  	</tr>
+	              </tbody>
+	            </table>
+	       </div>
+        </div>
+     </div>
+
+
+}
