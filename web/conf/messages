@@ -1944,7 +1944,7 @@ admin.customer.watch.form.label.other.infos=Autres infos
 admin.customer.watch.form.label.cat.infos=Informations
 admin.customer.watch.form.value.status.by.watch.next=Dans le coffre
 admin.customer.watch.form.value.status.by.watch.next.outside=Hors coffre (transit)
-admin.customer.watch.form.value.status.by.sth=Chez STH
+admin.customer.watch.form.value.status.by.sth=Déprecié (ne pas utiliser)
 admin.customer.watch.form.value.status.by.brand=SAV de la marque
 admin.customer.watch.form.value.status.by.registered.partner=Chez un partenaire principal
 admin.customer.watch.form.value.status.by.other=Chez autre partenaire
@@ -2060,6 +2060,10 @@ admin.customer.watch.create.call.to.action=Promouvoir le prospect en client
 admin.customer.watch.action.stored.by.partner=&nbsp;Chez partenaire
 admin.customer.watch.action.stored.by.us=&nbsp;Chez nous
 admin.customer.watch.action.stored.by.us.outside=&nbsp;En transit
+admin.customer.watch.action.stored.by.us.secured.1=&nbsp;Sécurisé (103)
+admin.customer.watch.action.stored.by.us.secured.2=&nbsp;Sécurisé (9)
+admin.customer.watch.action.stored.by.us.secured.3=&nbsp;Sécurisé (réservé)
+
 
 admin.customer.watch.action.new.invoice.quick.service=Créer une facture
 admin.customer.watch.action.new.invoice.quick.service.without.water=Changement de pile à {0} €
@@ -2081,21 +2085,27 @@ admin.customer.watch.label.service.infos=Infos entretien
 admin.customer.watch.label.other.infos=Autres infos
 admin.customer.watch.label.status=Où se trouve la montre
 admin.customer.watch.value.status.stored.by.watch.next=Dans le coffre
-admin.customer.watch.value.status.stored.by.sth=Chez STH
+admin.customer.watch.value.status.stored.by.sth=Déprecié (ne pas utiliser)
 admin.customer.watch.value.status.stored.by.brand=SAV de la marque
 admin.customer.watch.value.status.stored.by.other.partner=Chez un autre partenaire
 admin.customer.watch.value.status.stored.by.a.registered.partner=Chez un partenaire principal {0}
 admin.customer.watch.value.status.back.to.customer=Chez le client
 admin.customer.watch.value.status.stored.by.watch.next.outside=Hors coffre (transit)
+admin.customer.watch.value.status.stored.by.watch.next.secured.1=Sécurisé (103)
+admin.customer.watch.value.status.stored.by.watch.next.secured.2=Sécurisé (9)
+admin.customer.watch.value.status.stored.by.watch.next.secured.3=Sécurisé (réservé)
 admin.customer.watch.label.last.status.update=Dernier changement de situation
 admin.customer.watch.head.watch=<span class="text-muted"><b>{0} - {1}</b></span> de {2} {3}
 admin.customer.watch.watches.label.status=Filtrer par statut
 admin.customer.watch.watches.value.status.stored.by.watch.next=Dans le coffre
-admin.customer.watch.watches.value.status.stored.by.sth=Chez STH
+admin.customer.watch.watches.value.status.stored.by.sth=Déprécié (ne pas utiliser)
 admin.customer.watch.watches.value.status.stored.by.brand=SAV de la marque
 admin.customer.watch.watches.value.status.stored.by.other.partner=Chez un partenaire
 admin.customer.watch.watches.value.status.back.to.customer=Chez le client
 admin.customer.watch.watches.value.status.stored.by.watch.next.outside=Hors coffre (transit)
+admin.customer.watch.watches.value.status.stored.by.watch.next.secured.1=Sécurisé (103)
+admin.customer.watch.watches.value.status.stored.by.watch.next.secured.2=Sécurisé (9)
+admin.customer.watch.watches.value.status.stored.by.watch.next.secured.3=Sécurisé (réservé)
 admin.customer.watch.label.service.price=Prix partenaire
 admin.customer.watch.label.service.accepted=Accepté
 
@@ -2549,11 +2559,14 @@ admin.index.watches.head.last.communication.date=Date de changement de statut
 admin.index.watches.head.status=Statut
 admin.index.watches.head.actions=Actions
 admin.index.watches.value.status.stored.by.watch.next=Chez Nous
-admin.index.watches.value.status.stored.by.sth=Chez STH
+admin.index.watches.value.status.stored.by.sth=Déprécié (ne pas utiliser)
 admin.index.watches.value.status.stored.by.brand=SAV Marque
 admin.index.watches.value.status.stored.by.other.partner=Chez autre partenaire
 admin.index.watches.value.status.stored.by.a.registered.partner=Chez un partenaire principal
 admin.index.watches.value.status.stored.by.watch.next.outside=En transit
+admin.index.watches.value.status.stored.by.watch.next.secured.1=Sécurisé (103)
+admin.index.watches.value.status.stored.by.watch.next.secured.2=Sécurisé (9)
+admin.index.watches.value.status.stored.by.watch.next.secured.3=Sécurisé (réservé)
 admin.index.watches.action.back.to.customer.title=Marquer rendu au client
 
 
@@ -3738,12 +3751,15 @@ admin.simplifiedcustomerwatch.action.edit=Modifier
 admin.simplifiedcustomerwatch.action.delete=_jstohide_
 
 admin.simplifiedcustomerwatch.form.status.value.name.stored.by.watch.next=Chez Nous
-admin.simplifiedcustomerwatch.form.status.value.name.stored.by.sth=Chez STH
+admin.simplifiedcustomerwatch.form.status.value.name.stored.by.sth=Déprécié (ne pas utiliser)
 admin.simplifiedcustomerwatch.form.status.value.name.stored.by.brand=SAV Marque
 admin.simplifiedcustomerwatch.form.status.value.name.back.to.customer=Chez le client
 admin.simplifiedcustomerwatch.form.status.value.name.stored.by.other.partner=Chez autre partenaire
 admin.simplifiedcustomerwatch.form.status.value.name.stored.by.a.registered.partner=Chez un partenaire principal
 admin.simplifiedcustomerwatch.form.status.value.name.stored.by.watch.next.outside=En transit
+admin.simplifiedcustomerwatch.form.status.value.name.stored.by.watch.next.secured.1=Sécurisé (103)
+admin.simplifiedcustomerwatch.form.status.value.name.stored.by.watch.next.secured.2=Sécurisé (9)
+admin.simplifiedcustomerwatch.form.status.value.name.stored.by.watch.next.secured.3=Sécurisé (réservé)
 
 admin.simplified.customer.watch.watches.header.brand=Marque
 admin.simplified.customer.watch.watches.header.id=ID
@@ -3751,12 +3767,16 @@ admin.simplified.customer.watch.watches.header.model=Modèle
 admin.simplified.customer.watch.watches.header.reference=Référence
 admin.simplified.customer.watch.watches.header.status=Statut
 admin.simplified.customer.watch.value.status.stored.by.watch.next=Chez Nous
-admin.simplified.customer.watch.value.status.stored.by.sth=Chez STH
+admin.simplified.customer.watch.value.status.stored.by.sth=Déprécié (ne pas utiliser)
 admin.simplified.customer.watch.value.status.stored.by.brand=SAV Marque
 admin.simplified.customer.watch.value.status.back.to.customer=Chez le client
 admin.simplified.customer.watch.value.status.stored.by.other.partner=Chez autre partenaire
 admin.simplified.customer.watch.value.status.stored.by.a.registered.partner=Chez un partenaire principal
 admin.simplified.customer.watch.value.status.stored.by.watch.next.outside=En transit
+admin.simplified.customer.watch.value.status.stored.by.watch.next.secured.1=Sécurisé (103)
+admin.simplified.customer.watch.value.status.stored.by.watch.next.secured.2=Sécurisé (9)
+admin.simplified.customer.watch.value.status.stored.by.watch.next.secured.3=Sécurisé (réservé)
+
 
 
 admin.customer.text.home=Accès sécurisé
