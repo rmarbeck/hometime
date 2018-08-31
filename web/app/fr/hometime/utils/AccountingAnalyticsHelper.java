@@ -139,6 +139,13 @@ public class AccountingAnalyticsHelper {
 		return -1f;
 	}
 	
+	public static boolean isAnalysed(Invoice invoice) {
+		for(AccountingLine line : invoice.document.lines)
+			if (!isAccountingLineFullyQualified(line))
+				return false;
+		return true;
+	}
+	
 	public static boolean isAccountingLineFullyQualified(AccountingLine line) {
 		if (isNotZero(line) && isAnInvoice(line)) {
 			return amountQualified(line).compareTo(getFLoatValue(line)) >= 0;

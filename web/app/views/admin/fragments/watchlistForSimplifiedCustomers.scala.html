@@ -34,6 +34,7 @@
                     <a type="button" class="btn btn-default btn-xs" href="@routes.SimplifiedCustomerWatches.displayCollectingForm(watch.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.edit("SimplifiedCustomerWatches", watch.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
                    	<!--<a type="button" class="btn btn-warning btn-xs" href="@routes.Order.addFromCustomerWatch(watch.id)"><span class="glyphicon glyphicon-arrow-up"></span></a>-->
+                   	<a type="button" class="btn btn-default btn-xs" href="@routes.SimplifiedCustomerWatches.displayServicingSheet(watch.id)"><span class="glyphicon glyphicon-print"></span></a>
                    	@if_admin() {<a type="button" class="btn btn-warning btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>}
                    	@watch_actions_button(watch, "admin.watch.watches", 'commonclass -> "btn-success")
                    	}

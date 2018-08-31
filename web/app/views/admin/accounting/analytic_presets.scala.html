@@ -3,8 +3,8 @@
 
 
 @defining(new views.PageDisplay(currentPage, "code/description", "admin.analytic.preset.page")) { pageDisplay =>
-	@{  pageDisplay.addTableField("code", "metaAnalyticCode", "getMetaAnalyticCode", false);
-		pageDisplay.addTableField("isActive", "active", "getActive", false);
+	@{  pageDisplay.addTableField("metaAnalyticCode", "metaAnalyticCode", "getMetaAnalyticCode", false);
+		pageDisplay.addTableField("active", "active", "getActive", false);
 		pageDisplay.addTableField("fullyFilled", "fullyFilled", "getFullyFilled", false);
 		pageDisplay.addTableField("description", "description", "getDescription", false);
 	}

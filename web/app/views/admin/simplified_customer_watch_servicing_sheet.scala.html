@@ -5,7 +5,7 @@
 
 @get_model = {
 	@if(instance.model != null && !instance.model.equals("")) {
-		@Html(instance.brand) - @instance.model
+		@Html(instance.brand) @instance.model
 	} else {
 		@Html(instance.brand)
 	}
@@ -48,19 +48,24 @@
 @layouts.admin_to_print_a5(title, instance.collectingDate, instance.customer) {
      
      <div class="row">
-        <div class="type col-xs-12">
+     	<div class="type col-xs-8">
+	        <h2>@get_model.toString - @get_references.toString</h2>
+        </div>
+        <div class="text-right col-xs-4">
 	        <h2>@Html(Messages("admin.simplified.customer.watch.servicing.sheet.text.head", instance.id))</h2>
         </div>
      </div>
      
-     @admin_accounting_info_field(get_model.toString, "admin.simplified.customer.watch.brand", 'dataclass -> "descriptions simplified_customer_watch")
-     @admin_accounting_info_field(get_references.toString, "admin.simplified.customer.watch.reference", 'dataclass -> "descriptions simplified_customer_watch")
-     @admin_accounting_info_field(display_boolean(instance.picturesDoneOnCollect).toString, "admin.simplified.customer.watch.pictures", 'dataclass -> "descriptions simplified_customer_watch")
-
+     <div class="row">
+     	<div class="type col-xs-8">
+     @admin_accounting_info_field(display_boolean(instance.picturesDoneOnCollect).toString, "admin.simplified.customer.watch.servicing.sheet.pictures", 'dataclass -> "descriptions simplified_customer_watch")
+		</div>
+     </div>
      <br />
      
      <div class="row">
-     	<div class="col-xs-12">
+     	<div class="col-xs-6">
+     		<h3 class="text-center">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.document.date", instance.creationDate))</h3>
 	        <div class="table-responsive">
 	            <table class="table table-bordered">
 	              <colgroup>
@@ -69,20 +74,45 @@
 	              </colgroup>
 	              <thead>
 	                <tr>
-						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check"))</th>
-						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check.result"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.watch.servicing.head.check"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.watch.servicing.head.check.result"))</th>
 					</tr>
 				  </thead>
 				  <tbody>
-				  		@two_cells(Html(Messages("admin.simplified.customer.watch.working.conditions")), instance.workingConditionsOnCollect)
-				  		@two_cells(Html(Messages("admin.simplified.customer.watch.box.conditions")), instance.boxConditionsOnCollect)
-				  		@two_cells(Html(Messages("admin.simplified.customer.watch.hands.conditions")), instance.handsConditionsOnCollect)
-				  		@two_cells(Html(Messages("admin.simplified.customer.watch.crown.and.pushers.conditions")), instance.crownAndPushersConditionsOnCollect)
-				  		@two_cells(Html(Messages("admin.simplified.customer.watch.back.conditions")), instance.backConditionsOnCollect)
-				  		@two_cells(Html(Messages("admin.simplified.customer.watch.bracelet.conditions")), instance.braceletOrStrapConditionsOnCollect)
-				  		@two_cells_table_line_managing_emptyness(Html(Messages("admin.simplified.customer.watch.watering.conditions")), Html(instance.wateringConditionsOnCollect), "Non visible de l'extérieur", 'datatrclass -> "simplified_customer_watch_row")
-				  		@two_cells(Html(Messages("admin.simplified.customer.watch.glass.conditions")), instance.glassConditionsOnCollect)
-				  		@two_cells(Html(Messages("admin.simplified.customer.watch.other.conditions")), instance.otherConditionsRemarksOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.working.conditions")), instance.workingConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.box.conditions")), instance.boxConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.hands.conditions")), instance.handsConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.crown.and.pushers.conditions")), instance.crownAndPushersConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.back.conditions")), instance.backConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.bracelet.conditions")), instance.braceletOrStrapConditionsOnCollect)
+				  		@two_cells_table_line_managing_emptyness(Html(Messages("admin.simplified.customer.watch.servicing.sheet.watering.conditions")), Html(instance.wateringConditionsOnCollect), "Non visible de l'extérieur", 'datatrclass -> "simplified_customer_watch_row")
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.glass.conditions")), instance.glassConditionsOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.other.conditions")), instance.otherConditionsRemarksOnCollect)
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.other.infos")), instance.otherInfos)
+	              </tbody>
+	            </table>
+	       </div>
+        </div>
+        <div class="col-xs-6">
+        	<h3 class="text-center">Devis</h3>
+	        <div class="table-responsive">
+	            <table class="table table-bordered">
+	              <colgroup>
+	                <col class="col-xs-4">
+	                <col class="col-xs-8">
+	              </colgroup>
+	              <thead>
+	                <tr>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.head.quotation.topic"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.head.quotation.result"))</th>
+					</tr>
+				  </thead>
+				  <tbody>
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.need.to.do")), "<input type=\"checkbox\" name=\"quotationStatus\" class=\"big-size\"> < - RH  ? <br /><input type=\"checkbox\" name=\"quotationStatus\" class=\"big-size\"> < - EP  ? <br /><input type=\"checkbox\" name=\"quotationStatus\" class=\"big-size\"> < - Autre (préciser) ? <br /><br /><br />")
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.spare.parts.needed")), "<br /><br /><br />")
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.spare.parts.needed.price")), "<br /><br /><br />")
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.remarks")), "<br /><br /><br />")
+				  		@two_cells(Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation")), "<br/><br/><br/>")
 	              </tbody>
 	            </table>
 	       </div>
@@ -94,25 +124,47 @@
 	        <div class="table-responsive">
 	            <table class="table table-bordered">
 	              <colgroup>
-	                <col class="col-xs-4">
-	                <col class="col-xs-4">
-	                <col class="col-xs-4">
-	                <col class="col-xs-4">
+	                <col class="col-xs-3">
+	                <col class="col-xs-3">
+	                <col class="col-xs-3">
+	                <col class="col-xs-3">
 	              </colgroup>
 	              <thead>
 	                <tr>
-						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check"))</th>
-						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check.result"))</th>
-						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check.result"))</th>
-						<th class="header">@Html(Messages("admin.simplified.customer.watch.head.check.result"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation.status"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.customer.acceptance.status"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.customer.servicing.status"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.customer.testing.status"))</th>
 					</tr>
 				  </thead>
 				  <tbody>
 				  	<tr>
-				  		<td>1</td>
-				  		<td>2</td>
-				  		<td>3</td>
-				  		<td>4</td>
+				  		<td>
+				  		<input type="checkbox" name="quotationStatus" class="big-size"> < - @Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation.status.quotation.finished"))
+				  		<br />
+				  		<input type="checkbox" name="quotationStatus" class="big-size"> < - @Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation.status.quotation.sent"))
+				  		</td>
+				  		<td>
+				  		<input type="checkbox" name="quotationStatus" class="big-size"> < - @Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation.status.quotation.accepted"))
+				  		<br />
+				  		<input type="checkbox" name="quotationStatus" class="big-size"> < - @Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation.status.quotation.refused"))
+				  		</td>
+				  		<td>
+				  		<input type="checkbox" name="quotationStatus" class="big-size"> < - @Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation.status.servicing.started"))
+				  		<br />
+				  		<input type="checkbox" name="quotationStatus" class="big-size"> < - @Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation.status.servicing.finished"))
+				  		</td>
+				  		<td>
+				  		<input type="checkbox" name="quotationStatus" class="big-size"> < - @Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation.status.testing.started"))
+				  		<br />
+				  		<input type="checkbox" name="quotationStatus" class="big-size"> < - @Html(Messages("admin.simplified.customer.watch.servicing.sheet.quotation.status.testing.finished"))
+				  		</td>
+				  	</tr>
+				  	<tr>
+				  		<td><br /><br /></td>
+				  		<td></td>
+				  		<td></td>
+				  		<td></td>
 				  	</tr>
 	              </tbody>
 	            </table>

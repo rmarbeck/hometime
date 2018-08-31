@@ -20,23 +20,47 @@
         <div class="col-md-6"><h4>@line.description</h4></div>
         <div class="col-md-6">
         @if(!AccountingAnalyticsHelper.isAccountingLineFullyQualified(line)) {
-                <div class="text-right col-md-6">
         	<a type="button" class="btn btn-success" href="@routes.AccountingLineAnalytics.createForAccountingLine(line.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.invoice.for.analytic.head.new.analytic"))</a>
-        </div>
-        }
-        @for(analytic <- line.analytics) {
-        	<div class="row">
-        		<div class="col-md-6">
-        			@analytic.analyticCode
-        		</div>
-        		<div class="col-md-6">
-        			@analytic.price
-        		</div>
-        	</div>
         }
         </div>
     </div>
-    }  
+   	<div class="row">
+   		<div class="col-md-12">
+      		<div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>@Html(Messages("admin.accounting.analytic.code.header.id"))</th>
+                  <th>@Html(Messages("admin.accounting.analytic.price.header.id"))</th>
+                  <th>@Html(Messages("admin.accounting.analytic.cost.header.id"))</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for(analytic <- line.analytics) {
+                <tr>
+                  <td>
+                  	x
+                  </td>
+                  <td>
+                    @analytic.analyticCode
+                  </td>
+                  <td>
+                    @analytic.price
+                  </td>
+                  <td>
+                    @analytic.cost
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+			</div>
+        </div>
+    </div>
+    }
+
 	
 }
 

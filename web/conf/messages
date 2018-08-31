@@ -2610,6 +2610,7 @@ admin.invoice.form.placeholder.supported.payment.methods=
 admin.invoice.form.label.payment.method.used=Moyen de paiement utilisé
 admin.invoice.form.placeholder.payment.method.used=
 admin.invoice.form.label.lines=Lignes
+admin.invoice.form.placeholder.line.one.time.cost=Coût unique
 
 admin.invoice.action.save=&nbsp;Créer
 admin.invoice.action.show=&nbsp;Prévisualiser
@@ -2624,7 +2625,6 @@ admin.invoice.head.url=www.hometime.fr
 admin.invoice.head.phone.number=07 82 43 47 51
 admin.invoice.title.bill=Facture {0}
 admin.invoice.text.bill=Facture
-admin.invoice.head.document.date=Document établi le {0, date,d MMMM yyyy}
 
 admin.invoice.header.description=Désignation
 admin.invoice.header.quantity=Quantité
@@ -3681,7 +3681,16 @@ admin.simplified.customer.watch.value.status.close=Rendue et payée
 admin.simplified.customer.watch.value.status.unconsistent=Etat anormal
 
 admin.simplified.customer.watch.text.head=PV de collecte et état de la montre <span class="small">(exemplaire client)</span>
-admin.simplified.customer.watch.servicing.sheet.text.head=ID : {0}
+
+admin.simplified.customer.watch.servicing.sheet.text.head=ID : #{0}
+admin.simplified.customer.watch.servicing.sheet.pictures=Prise de photos (oui/non) :
+admin.simplified.customer.watch.servicing.sheet.document.date=Collectée le {0, date,d MMMM yyyy}
+
+admin.simplified.customer.watch.servicing.sheet.quotation.status=Devis
+admin.simplified.customer.watch.servicing.sheet.customer.acceptance.status=Accord client
+admin.simplified.customer.watch.servicing.sheet.customer.servicing.status=Avancement
+admin.simplified.customer.watch.servicing.sheet.customer.testing.status=Test
+
 admin.simplified.customer.watch.title.collecting=Fiche état montre - {0}
 admin.simplified.customer.watch.brand=Marque de la montre :
 admin.simplified.customer.watch.reference=Références :
@@ -3702,6 +3711,40 @@ admin.simplified.customer.watch.text.stamp=Cachet Watch Next
 admin.simplified.customer.watch.text.signature=Date et signature du client
 admin.simplified.customer.watch.text.disclaimer=Le présent document fait office de preuve de dépôt de la montre décrite ci-dessus auprès de la société watch next qui s''engage à réaliser les opérations convenues avec le client et à disposer d''une assurance couvrant tous les risques pouvant altérer l''intégrité du bien confié.
 
+admin.simplified.customer.watch.servicing.sheet.head.check=Contrôle
+admin.simplified.customer.watch.servicing.sheet.head.check.result=Remarques
+admin.simplified.customer.watch.servicing.sheet.working.conditions=Etat de fonctionnement
+admin.simplified.customer.watch.servicing.sheet.box.conditions=Boitier<br/>(marques, rayures, coups)
+admin.simplified.customer.watch.servicing.sheet.hands.conditions=Aiguilles
+admin.simplified.customer.watch.servicing.sheet.crown.and.pushers.conditions=Couronne(s) et poussoir(s)
+admin.simplified.customer.watch.servicing.sheet.back.conditions=Fond de boite
+admin.simplified.customer.watch.servicing.sheet.bracelet.conditions=Bracelet et boucle
+admin.simplified.customer.watch.servicing.sheet.watering.conditions=Marques d''oxydation ou présence de buée
+admin.simplified.customer.watch.servicing.sheet.glass.conditions=Verre
+admin.simplified.customer.watch.servicing.sheet.other.conditions=Autre
+admin.simplified.customer.watch.servicing.sheet.other.infos=Info privées
+admin.simplified.customer.watch.servicing.sheet.quotation=Montant devis
+admin.simplified.customer.watch.servicing.sheet.need.to.do=Diagnostic
+admin.simplified.customer.watch.servicing.sheet.spare.parts.needed=Pièces ?
+admin.simplified.customer.watch.servicing.sheet.spare.parts.needed.price=Coût des pièces
+admin.simplified.customer.watch.servicing.sheet.remarks=Remarques (délai...)
+
+admin.simplified.customer.watch.watch.servicing.head.check=Contrôle
+admin.simplified.customer.watch.watch.servicing.head.check.result=Remarques
+
+admin.simplified.customer.watch.servicing.sheet.head.quotation.topic=Sujet
+admin.simplified.customer.watch.servicing.sheet.head.quotation.result=Evaluation
+
+admin.simplified.customer.watch.servicing.sheet.quotation.status.quotation.finished=Devis finalisé
+admin.simplified.customer.watch.servicing.sheet.quotation.status.quotation.sent=Devis envoyé
+admin.simplified.customer.watch.servicing.sheet.quotation.status.quotation.accepted=Devis accepté
+admin.simplified.customer.watch.servicing.sheet.quotation.status.quotation.refused=Devis refusé
+admin.simplified.customer.watch.servicing.sheet.quotation.status.servicing.started=En cours
+admin.simplified.customer.watch.servicing.sheet.quotation.status.servicing.finished=Terminé
+admin.simplified.customer.watch.servicing.sheet.quotation.status.testing.started=En cours
+admin.simplified.customer.watch.servicing.sheet.quotation.status.testing.finished=OK
+
+admin.simplified.customer.watch.other.infos=Infos privées
 
 admin.simplified.customer.fullname.display.label=Nom du client
 admin.simplified.customer.phone.number.display.label=Numéro de téléphone
@@ -4055,6 +4098,7 @@ admin.invoice.for.analytic.title=Facture et analytics
 admin.invoice.for.analytic.date.display.label=Date de facture
 admin.invoice.for.analytic.uan.display.label=Numéro de facture
 admin.invoice.for.analytic.description.display.label=Description
+admin.invoice.for.analytic.accounting.lines=Ventilation analytique
 
 admin.accounting.analytic.preset.item.code.header.id=Code
 admin.accounting.analytic.preset.item.fixed.price.header.id=Prix fixe
@@ -4063,6 +4107,11 @@ admin.accounting.analytic.preset.item.fixed.cost.header.id=Coût fixe
 admin.accounting.analytic.preset.item.proportional.cost.header.id=Coût variable
 admin.accounting.analytic.preset.item.proportional.one.time.cost.header.id=Coût unique
 admin.accounting.analytic.preset.no.item.to.display=Aucun item associé (situation anormale)
+
+admin.accounting.analytic.code.header.id=Code analytique
+admin.accounting.analytic.price.header.id=Prix
+admin.accounting.analytic.cost.header.id=Coût
+
 
 admin.analytic.preset.item.page=Element de configuration des codes analytiques
 admin.analytic.preset.item.page.title=Element de configuration des codes analytiques

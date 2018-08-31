@@ -1,5 +1,6 @@
 @(currentPage: com.avaje.ebean.Page[models.Invoice], currentSortBy: String, currentOrder: String, currentFilter: String)
 @import tags._
+@import fr.hometime.utils._
 
 @****************************************
 * Helper generating navigation links    *
@@ -68,6 +69,8 @@
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editInvoice(invoice.id)"><span class="glyphicon glyphicon-edit"></span></a>
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.PaymentRequests.createFromInvoice(invoice.id)"><span class="glyphicon glyphicon-credit-card"></span></a>
 	                @if(!invoice.hasBeenPayed) {<a type="button" class="btn btn-primary btn-xs" href="@routes.Payments.createFromInvoice(invoice.id)"><span class="glyphicon glyphicon-euro"></span></a>}
+	                @if(AccountingAnalyticsHelper.isAnalysed(invoice)) {<a type="button" class="btn btn-success btn-xs" href="@routes.Accounting.viewInvoiceForAnalytics(invoice.id)"><span class="glyphicon glyphicon-folder-close"></span></a>}
+	                @if(!AccountingAnalyticsHelper.isAnalysed(invoice)) {<a type="button" class="btn btn-warning btn-xs" href="@routes.Accounting.viewInvoiceForAnalytics(invoice.id)"><span class="glyphicon glyphicon-folder-open"></span></a>}
                   </td>
                   <td class="hidden-xs">
                     @display_date(invoice.document.creationDate, "dd/MM")
