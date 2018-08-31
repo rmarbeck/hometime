@@ -1,0 +1,20 @@
+@(thisInstance: Form[models.AccountingLineAnalytic], isItNew: Boolean)
+
+@import tags._
+
+@end_scripts = {
+}
+
+
+@defining(new views.FormDisplay(thisInstance, "AccountingLineAnalytic", "admin.analytic.form")) { formDisplay =>
+		@{ 
+		   formDisplay.addFormField("accountingLine.description", false, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("accountingLine.unitPrice", false, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("accountingLine.id", false, "input", 'readonly -> "readonly");
+		   formDisplay.addFormFieldForSelect("analyticCode.id", false, models.AnalyticCode.getIdsByDescriptionAsc, models.AnalyticCode.getDescriptionsWithCodeByDescriptionAsc);
+		   formDisplay.addFormField("price", true, "input", 'type -> "number", 'min -> "-1", 'step -> "0.01");
+		   formDisplay.addFormField("cost", true, "input", 'type -> "number", 'min -> "-1", 'step -> "0.01");
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
+}

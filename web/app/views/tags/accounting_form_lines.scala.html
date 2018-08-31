@@ -16,5 +16,19 @@
 			@simple_admin_input(line("unitPrice"), key+".line.unit.price", '_class -> "col-xs-3", '_body_class -> "", '_label_class -> "hidden", 'type -> "number",  'step -> "0.01")    				
 			
 			@simple_admin_input(line("info"), key+".line.info", '_class -> "col-xs-offset-4 col-xs-8")
+			
+			<div class="row analytics-in-document">
+			<br />
+			@simple_admin_select_enhanced(line("preset.id"), models.AccountingLineAnalyticPreset.getIdsByDescriptionAsc.zip(models.AccountingLineAnalyticPreset.getDescriptionsWithCodeByDescriptionAsc), "Pas de code analytique associé", '_class -> "col-xs-8", '_label_class -> "hidden")
+			
+			@simple_admin_input(line("oneTimeCost"), key+".line.one.time.cost", '_class -> "col-xs-4", '_body_class -> "", '_label_class -> "hidden", 'type -> "number",  'step -> "0.01")
+			<br />
+			</div>
+						
+			@if(line("analytics").indexes.size !=0) {
+				@helper.repeat(line("analytics"), min = 0) { analytic =>
+					@analytic("analyticCode").value
+				}
+			}
 		</div>
 }

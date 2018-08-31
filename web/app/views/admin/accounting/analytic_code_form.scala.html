@@ -1,0 +1,17 @@
+@(thisInstance: Form[models.AnalyticCode], isItNew: Boolean)
+
+@import tags._
+
+@end_scripts = {
+}
+
+
+@defining(new views.FormDisplay(thisInstance, "AnalyticCode", "admin.analyticcode.form")) { formDisplay =>
+		@{ 
+		   formDisplay.addFormField("analyticCode", true, "input", 'type -> "number", 'min -> "1", 'step -> "1");
+		   formDisplay.addFormField("lbl", true, "textarea");
+		   formDisplay.addFormField("description", true, "textarea");
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
+}

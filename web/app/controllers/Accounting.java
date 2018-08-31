@@ -5,13 +5,18 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
+import fr.hometime.utils.AccountingAnalyticsHelper;
+import fr.hometime.utils.UniqueAccountingNumber;
+import fr.hometime.utils.UsefullHelper;
+import fr.hometime.utils.VATHelper;
 import models.AccountingDocument;
 import models.AccountingLine;
 import models.AccountingLine.LineType;
+import models.AccountingLineAnalyticPreset;
 import models.Customer;
 import models.CustomerWatch;
 import models.Invoice;
@@ -22,20 +27,20 @@ import models.PostServiceCertificate;
 import models.SellingDocument;
 import models.WatchToSell;
 import play.data.Form;
+import play.data.Form.Field;
 import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
+import views.html.admin.accounting.invoice_for_analytics;
 import views.html.admin.accounting.invoice_form;
 import views.html.admin.accounting.invoices;
 import views.html.admin.accounting.order_document_form;
 import views.html.admin.accounting.order_documents;
 import views.html.admin.accounting.selling_document_form;
 import views.html.admin.accounting.selling_documents;
-import fr.hometime.utils.UniqueAccountingNumber;
-import fr.hometime.utils.VATHelper;
 
 @Security.Authenticated(SecuredAdminOnly.class)
 @With(NoCacheAction.class)
@@ -95,6 +100,13 @@ public class Accounting extends Controller {
 		return badRequest("error");
 	}
 	
+	public static Result viewInvoiceForAnalytics(Long invoiceId) {
+		models.Invoice currentInvoice = models.Invoice.findById(invoiceId);
+		if (currentInvoice != null)
+			return ok(invoice_for_analytics.render(currentInvoice));
+		return badRequest("error");
+	}
+	
 	public static Result manageInvoice() {
 		final Form<models.Invoice> invoiceForm = Form.form(models.Invoice.class).bindFromRequest();
 		String action = Form.form().bindFromRequest().get("action");
@@ -105,6 +117,7 @@ public class Accounting extends Controller {
 		} else {
 			models.Invoice currentInvoice = getInvoiceFromForm(invoiceForm);
 			if ("save".equals(action)) {
+				manageAnalyticsBeforeSavingInvoice(invoiceForm, currentInvoice);
 				currentInvoice.document.documentData = getInvoiceHtml(currentInvoice).body().getBytes(StandardCharsets.UTF_8);
 				currentInvoice.save();
 			} else if ("delete".equals(action)) {
@@ -113,6 +126,7 @@ public class Accounting extends Controller {
 			} else if ("show".equals(action)) {
 				return displayInvoice(currentInvoice);
 			} else {
+				manageAnalyticsBeforeUpdatingInvoice(invoiceForm, currentInvoice);
 				updateInvoice(invoiceForm);
 			}
 		}
@@ -140,7 +154,7 @@ public class Accounting extends Controller {
 		newInvoice.document.customer = watchToSell.customerThatBoughtTheWatch;
 		newInvoice.type = InvoiceType.MARGIN_VAT;
 		newInvoice.description = Messages.get("admin.invoice.description.selling.a.watch", watchToSell.brand.display_name, watchToSell.model);
-		newInvoice.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLineForInvoice(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice));
+		newInvoice.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLineForInvoice(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForSellingAWatch(watchToSell)), (float) watchToSell.purchasingPrice);
 		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.waranty.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
 		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.delivery.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
 		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
@@ -160,7 +174,7 @@ public class Accounting extends Controller {
 		} else {
 			newInvoice.description = Messages.get("admin.invoice.description.quick.servicing.a.watch.without.water.resistance", watch.brand, watch.model);
 		}
-		newInvoice.addLine(LineType.WITH_VAT_BY_UNIT, getMainLineForInvoiceForQuickServicing(watch, waterResistance), Long.valueOf(1), price);
+		newInvoice.addLine(LineType.WITH_VAT_BY_UNIT, getMainLineForInvoiceForQuickServicing(watch, waterResistance), Long.valueOf(1), price, AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingQuartzWatch(waterResistance, false)), -1f);
 		if (waterResistance) {
 			newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.waranty.line.quick.servicing.a.watch.with.water.resistance"), Long.valueOf(1), Float.valueOf(0));
 		} else {
@@ -181,7 +195,7 @@ public class Accounting extends Controller {
 		newInvoice.description = orderToInspireFrom.description;
 		if (orderToInspireFrom.document.retrieveLines() != null)
 			for(AccountingLine line : orderToInspireFrom.document.retrieveLines())
-				newInvoice.addLine(line.type, line.description, line.unit, line.unitPrice);
+				newInvoice.addLine(line.type, line.description, line.unit, line.unitPrice, line.preset, line.oneTimeCost);
 
 		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
 	}
@@ -280,6 +294,22 @@ public class Accounting extends Controller {
 		}
 	}
 	
+	
+	private static void manageAnalyticsBeforeSavingInvoice(Form<models.Invoice> invoiceForm, models.Invoice invoice) {
+		Field lines = invoiceForm.field("document.lines");
+		lines.indexes().stream().forEach(index -> manageAnalyticForAccountingLine(invoice, index, UsefullHelper.getLongFromString(invoiceForm.data().get("document.lines["+index+"].preset.id")), UsefullHelper.getFloatFromString(invoiceForm.data().get("document.lines["+index+"].oneTimeCost"))));
+	}
+	
+	private static void manageAnalyticsBeforeUpdatingInvoice(Form<models.Invoice> invoiceForm, models.Invoice invoice) {
+		manageAnalyticsBeforeSavingInvoice(invoiceForm, invoice);
+	}
+	
+	private static void manageAnalyticForAccountingLine(Invoice invoice, int index, Optional<Long> fpresetId, Optional<Float> foneTimeCost) {
+		if (fpresetId.isPresent())
+			AccountingAnalyticsHelper.addAnalyticsToLine(invoice, index, fpresetId.get(), foneTimeCost.orElse(-1f));
+	}
+	
+	
 	/*
 	 * ORDER DOCUMENT
 	 */
@@ -353,7 +383,7 @@ public class Accounting extends Controller {
 		newOrder.document.customer = watchToSell.customerThatBoughtTheWatch;
 		newOrder.type = InvoiceType.MARGIN_VAT;
 		newOrder.description = Messages.get("admin.order.document.description.selling.a.watch", watchToSell.brand.display_name, watchToSell.model);
-		newOrder.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLineForOrder(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice));
+		newOrder.addLine(LineType.WITHOUT_VAT_BY_UNIT, getMainLineForOrder(watchToSell), Long.valueOf(1), Float.valueOf(watchToSell.sellingPrice), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForSellingAWatch(watchToSell)), (float) watchToSell.purchasingPrice);
 		newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.document.waranty.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
 		newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.document.delivery.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
 		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(newOrder), true);

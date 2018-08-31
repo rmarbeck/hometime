@@ -280,7 +280,7 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
     	}
 
         return
-	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
+	        find.where().disjunction().ilike("email", "%" + filter + "%").ilike("name", "%" + filter + "%").ilike("phoneNumber", "%" + filter + "%").ilike("alternativePhoneNumber", "%" + filter + "%").endJunction()
 	            .orderBy(sortBy + " " + order)
 	            .findPagingList(pageSize)
 	            .getPage(page);
@@ -293,7 +293,7 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
     	}
 
         return
-	        find.fetch("users", "active").where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
+	        find.fetch("users", "active").where().disjunction().ilike("email", "%" + filter + "%").ilike("name", "%" + filter + "%").ilike("phoneNumber", "%" + filter + "%").ilike("alternativePhoneNumber", "%" + filter + "%").endJunction()
 	        	.eq("users.active", true)
 	            .orderBy(sortBy + " " + order)
 	            .findPagingList(pageSize)

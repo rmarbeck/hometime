@@ -1,0 +1,17 @@
+@(currentPage: com.avaje.ebean.Page[models.AccountingLineAnalyticPresetItem], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "code/label", "admin.analytic.preset.item.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("analyticCode", "analyticCode", "getAnalyticCode", false);
+		pageDisplay.addTableField("accountingLineAnalyticPreset.metaAnalyticCode", "accountingLineAnalyticPreset", "getAccountingLineAnalyticPreset", false);
+		pageDisplay.addTableField("fixedPrice", "fixedPrice", "getFixedPrice", false);
+		pageDisplay.addTableField("proportionalPrice", "proportionalPrice", "getProportionalPrice", false);
+		pageDisplay.addTableField("fixedCost", "fixedCost", "getFixedCost", false);
+		pageDisplay.addTableField("proportionalCost", "proportionalCost", "getProportionalCost", false);
+		pageDisplay.addTableField("oneTimeCost", "oneTimeCost", "getOneTimeCost", false);
+		pageDisplay.addTableField("orderNumber", "orderNumber", "getOrderNumber", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "AccountingLineAnalyticPresetItems", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

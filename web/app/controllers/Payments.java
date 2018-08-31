@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.TimeZone;
 
 import fr.hometime.utils.DateHelper;
+import fr.hometime.utils.PaymentHelper;
 import models.Invoice;
 import models.Payment;
 import models.Payment.PaymentMethod;
@@ -63,7 +64,7 @@ public class Payments extends Controller {
 	}
 	
 	private static float existingPaymentsAmount(Invoice currentInvoice) {
-		Optional<List<Payment>> payments = Payment.findByInvoiceId(currentInvoice.id);
+		Optional<List<Payment>> payments = PaymentHelper.findByInvoiceId(currentInvoice.id);
 		if (payments.isPresent())
 			return (float) payments.get().stream().mapToDouble(p -> p.amountInEuros).sum();
 		return 0f;

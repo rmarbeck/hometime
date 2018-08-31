@@ -2,7 +2,6 @@ package models;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -123,17 +122,6 @@ public class Payment extends Model implements CrudReady<Payment, Payment> {
     
     public static List<Payment> findAllByInBankDate(String orderDirection) {
         return find.where().orderBy("inBankDate "+orderDirection).findList();
-    }
-    
-    public static Optional<List<Payment>> findByInvoiceId(long invoiceId) {
-    	Invoice invoiceFound = Invoice.findById(invoiceId);
-    	List<Payment> paymentsFound = null;
-    	if (invoiceFound != null)
-    		paymentsFound = find.where().eq("invoice.id", invoiceId).findList();
-    	
-    	if (paymentsFound != null && !paymentsFound.isEmpty())
-    		return Optional.of(paymentsFound);
-    	return Optional.empty();
     }
     
     public static Page<Payment> page(int page, int pageSize, String sortBy, String order, String filter) {

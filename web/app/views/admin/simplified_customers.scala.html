@@ -2,7 +2,7 @@
 @import tags._
 
 
-@defining(new views.PageDisplay(currentPage, "nom", "admin.simplified.customer.page")) { pageDisplay =>
+@defining(new views.PageDisplay(currentPage, "nom/tel", "admin.simplified.customer.page")) { pageDisplay =>
 	@{  pageDisplay.addTableField("name", "fullname", "getFullNameWithCivility", false);
 	}
 	

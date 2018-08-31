@@ -1,0 +1,12 @@
+@(currentPage: com.avaje.ebean.Page[models.AnalyticCode], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "code/label", "admin.analytic.code.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("analyticCode", "analyticCode", "getAnalyticCode", false);
+		pageDisplay.addTableField("lbl", "label", "getLbl", false);
+		pageDisplay.addTableField("description", "description", "getDescription", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "AnalyticCodes", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

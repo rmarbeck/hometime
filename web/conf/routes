@@ -240,6 +240,8 @@ POST    /admin/manage-invoice            								controllers.Accounting.manageIn
 GET     /admin/invoices            										controllers.Accounting.displayAllInvoice(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")
 GET     /admin/invoice/:id         										controllers.Accounting.viewInvoice(id: Long)
 
+GET     /admin/invoice/for-analytics/:id         						controllers.Accounting.viewInvoiceForAnalytics(id: Long)
+
 GET     /admin/order-document/create          							controllers.Accounting.addOrderDocument()
 GET     /admin/order-document/create/by/watch-to-sell/:id				controllers.Accounting.addOrderDocumentByWatchToSellId(id: Long)
 GET     /admin/order-document/create/by/customer/:id					controllers.Accounting.addOrderDocumentFromCustomer(id: Long)
@@ -302,7 +304,6 @@ GET		/admin/create-for-customer/SimplifiedCustomerWatch/:id			controllers.Simpli
 GET		/admin/view/SimplifiedCustomerWatch/:id							controllers.SimplifiedCustomerWatches.displayCollectingForm(id: Long)
 GET		/admin/view/SimplifiedCustomerWatch/Sheet/:id					controllers.SimplifiedCustomerWatches.displayServicingSheet(id: Long)
 
-
 GET		/admin/accept/SimplifiedCustomerWatch/:id						controllers.SimplifiedCustomerWatches.acceptWatch(id: Long)
 
 GET		/admin/create-from-invoice/Payments/:id							controllers.Payments.createFromInvoice(id: Long)
@@ -311,6 +312,10 @@ GET		/admin/create-from-payment-requets/Payments/:id					controllers.Payments.cr
 GET     /admin/cgv				            							controllers.Admin.cgv()
 
 GET		/admin/watchesAsJson											controllers.WatchesToSell.watchesAsJSon()
+
+GET		/admin/create-item/AccountingLinePreset/:id						controllers.AccountingLineAnalyticPresetItems.createItemForPreset(id: Long)
+
+GET		/admin/create-for-line/AccountingAnalytic/:id					controllers.AccountingLineAnalytics.createForAccountingLine(id: Long)
 
 # CUSTOMER ACCESS
 GET     /private/login                      							controllers.Application.customerLogin(origin: String ?= "")

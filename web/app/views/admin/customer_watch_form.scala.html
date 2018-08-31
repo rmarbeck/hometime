@@ -52,14 +52,8 @@
             	<hr />
 
 				@tags.myInputRadioGroup(watch("status"),
-                              Seq( models.CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT.toString -> Messages("admin.customer.watch.form.value.status.by.watch.next"),
-                                   models.CustomerWatch.CustomerWatchStatus.STORED_BY_STH.toString -> Messages("admin.customer.watch.form.value.status.by.sth"),
-                                   models.CustomerWatch.CustomerWatchStatus.STORED_BY_BRAND.toString -> Messages("admin.customer.watch.form.value.status.by.brand"),
-                                   models.CustomerWatch.CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER.toString -> Messages("admin.customer.watch.form.value.status.by.registered.partner"),
-                                   models.CustomerWatch.CustomerWatchStatus.STORED_BY_OTHER_PARTNER.toString -> Messages("admin.customer.watch.form.value.status.by.other"),
-                                   models.CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER.toString -> Messages("admin.customer.watch.form.value.status.by.customer"),
-                                   models.CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT_OUTSIDE.toString -> Messages("admin.customer.watch.form.value.status.by.watch.next.outside")
-                                   ), '_label -> Html(Messages("admin.customer.watch.form.label.status")),
+							  for ( s <- models.CustomerWatch.CustomerWatchStatus.values.toList) yield s.toString -> Messages("admin.customer.watch.form.value.status."+s.name.toLowerCase.replace('_','.'))
+                              , '_label -> Html(Messages("admin.customer.watch.form.label.status")),
                               '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
                               
                	@helper.select(watch("partner.id"),

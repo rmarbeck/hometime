@@ -96,6 +96,10 @@ public class OrderDocument extends Model {
     public void  addLine(LineType type, String description, Long unit, Float unitPrice) {
     	this.document.addLine(type, description, unit, unitPrice);
     }
+    
+    public void  addLine(LineType type, String description, Long unit, Float unitPrice, AccountingLineAnalyticPreset preset, Float oneTimeCost) {
+    	this.document.addLine(type, description, unit, unitPrice, preset, oneTimeCost);
+    }
 
 	@Override
 	public void save() {

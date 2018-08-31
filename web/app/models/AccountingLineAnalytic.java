@@ -15,19 +15,28 @@ import play.db.ebean.Model;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
+import controllers.CrudReady;
+
 /**
  * Definition of an analytic information about an accounting line
  */
 @Entity 
-public class AccountingLineAnalytic extends Model {
+public class AccountingLineAnalytic extends Model implements CrudReady<AccountingLineAnalytic, AccountingLineAnalytic> {
 	private static final long serialVersionUID = 160414590466772458L;
 
 	@Id
 	public Long id;
 	
-	public Long analyticCode = 0L;
+	@ManyToOne
+	public AnalyticCode analyticCode;
 
-	public Float marginRate = -1f;
+	public Float price = -1f;
+	
+	public Float cost = -1f;
+	
+	public boolean checked = false;
+	
+	public boolean doubleChecked = false;
 	
 	@Column(length = 10000)
 	public String remark;
@@ -35,8 +44,17 @@ public class AccountingLineAnalytic extends Model {
 	@Column(length = 10000)
 	public String reserved;
 	
-	@OneToOne
-	public AccountingLine documentLine;
+	@ManyToOne
+	public AccountingLine accountingLine;
+	
+	
+	private static AccountingLineAnalytic singleton = null;
+	
+	public static AccountingLineAnalytic of() {
+    	if (singleton == null)
+    		singleton = new AccountingLineAnalytic();
+    	return singleton;
+    }
 	
 	public AccountingLineAnalytic() {
 		
@@ -44,17 +62,18 @@ public class AccountingLineAnalytic extends Model {
 	
 	public AccountingLineAnalytic(AccountingLine documentLine) {
 		this();
-		this.documentLine = documentLine;
+		this.accountingLine = documentLine;
 	}
 	
-	public AccountingLineAnalytic(AccountingLine documentLine, Long analyticCode) {
-		this(documentLine, analyticCode, -1F);
+	public AccountingLineAnalytic(AccountingLine documentLine, AnalyticCode analyticCode) {
+		this(documentLine, analyticCode, -1f);
 	}
 	
-	public AccountingLineAnalytic(AccountingLine documentLine, Long analyticCode, Float marginRate) {
+	public AccountingLineAnalytic(AccountingLine documentLine, AnalyticCode analyticCode, Float price) {
 		this(documentLine);
 		this.analyticCode = analyticCode;
-		this.marginRate = marginRate;
+		this.price = price;
+		this.cost = 0f;
 	}
 	
 	
@@ -72,10 +91,20 @@ public class AccountingLineAnalytic extends Model {
 
     public static Page<AccountingLineAnalytic> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where().or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand", "%" + filter + "%"))
+            find.where().ilike("analyticCode.analyticCode", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
     }
+
+	@Override
+	public Finder<String, AccountingLineAnalytic> getFinder() {
+		return find;
+	}
+
+	@Override
+	public Page<AccountingLineAnalytic> getPage(int page, int pageSize, String sortBy, String order, String filter) {
+		return page(page, pageSize, sortBy, order, filter);
+	}
 }
 

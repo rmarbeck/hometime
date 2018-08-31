@@ -1,0 +1,138 @@
+﻿anayticCodes:
+    - &VMODVPART !!models.AnalyticCode
+         analyticCode:          1001
+         lbl:                 VMODVPART
+         description:           Vente de montre occasion dépôt vente particulier
+         active:                true
+
+    - &VMODVPRO !!models.AnalyticCode
+         analyticCode:          1002
+         lbl:                 VMODVPRO
+         description:           Vente de montre occasion dépôt vente professionnel
+         active:                true
+
+    - &VMOSTPART !!models.AnalyticCode
+         analyticCode:          1011
+         lbl:                 VMOSTPART
+         description:           Vente de montre occasion en stock suite rachat particulier
+         active:                true
+
+    - &VMO !!models.AnalyticCode
+         analyticCode:          1099
+         lbl:                 VMO
+         description:           Vente de montre occasion non classée
+         active:                true
+
+    - &VMN !!models.AnalyticCode
+         analyticCode:          1199
+         lbl:                 VMN
+         description:           Vente de montre neuve non classée
+         active:                true
+
+    - &EI !!models.AnalyticCode
+         analyticCode:          2099
+         lbl:                 EI
+         description:           Entretien en interne non classé
+         active:                true
+
+    - &VP !!models.AnalyticCode
+         analyticCode:          3199
+         lbl:                 VP
+         description:           Vente de pièce non classé
+         active:                true
+
+    - &F !!models.AnalyticCode
+         analyticCode:          4199
+         lbl:                 F
+         description:           Frais non classés
+         active:                true
+
+    - &FEN !!models.AnalyticCode
+         analyticCode:          4001
+         lbl:                 FEN
+         description:           Frais d'envoi nationnaux
+
+preset:
+    - &P10011 !!models.AccountingLineAnalyticPreset
+         metaAnalyticCode:      10011
+         description:           Vente de montre occasion dépôt vente particulier
+         active:                true
+         fullyFilled:           true
+
+    - &P10021 !!models.AccountingLineAnalyticPreset
+         metaAnalyticCode:      10021
+         description:           Vente de montre occasion dépôt vente professionnel
+         active:                true
+         fullyFilled:           true
+
+    - &P20011 !!models.AccountingLineAnalyticPreset
+         metaAnalyticCode:      20011
+         description:           Entretien en interne RH montre mécanique
+         active:                true
+         fullyFilled:           true
+
+    - &P40011 !!models.AccountingLineAnalyticPreset
+         metaAnalyticCode:      40011
+         description:           Frais d'envoi nationnaux
+         active:                true
+         fullyFilled:           true
+
+    - &P20022 !!models.AccountingLineAnalyticPreset
+         metaAnalyticCode:      20022
+         description:           Entretien en interne Restauration montre mécanique avec pièce
+         active:                true
+         fullyFilled:           true
+
+presetItems:
+    - !!models.AccountingLineAnalyticPresetItem
+         accountingLineAnalyticPreset:         *P10011
+         analyticCode:          *VMODVPART
+         fixedPrice:            -1
+         proportionalPrice:     100
+         fixedCost:             -1
+         proportionalCost:      -1
+         oneTimeCost:           true
+         orderNumber:           1
+
+    - !!models.AccountingLineAnalyticPresetItem
+         accountingLineAnalyticPreset:         *P10021
+         analyticCode:          *VMODVPRO
+         fixedPrice:            -1
+         proportionalPrice:     100
+         fixedCost:             -1
+         proportionalCost:      -1
+         oneTimeCost:           true
+         orderNumber:           1
+
+    - !!models.AccountingLineAnalyticPresetItem
+         accountingLineAnalyticPreset:         *P40011
+         analyticCode:          *FEN
+         fixedPrice:            -1
+         proportionalPrice:     100
+         fixedCost:             20
+         proportionalCost:      -1
+         oneTimeCost:           false
+         orderNumber:           1
+
+    - !!models.AccountingLineAnalyticPresetItem
+         accountingLineAnalyticPreset:         *P20022
+         analyticCode:          *EI
+         fixedPrice:            -1
+         proportionalPrice:     90
+         fixedCost:             0
+         proportionalCost:      0
+         oneTimeCost:           false
+         orderNumber:           1
+
+    - !!models.AccountingLineAnalyticPresetItem
+         accountingLineAnalyticPreset:         *P20022
+         analyticCode:          *VP
+         fixedPrice:            -1
+         proportionalPrice:     10
+         fixedCost:             -1
+         proportionalCost:      -1
+         oneTimeCost:           true
+         orderNumber:           1
+
+#Fin
+

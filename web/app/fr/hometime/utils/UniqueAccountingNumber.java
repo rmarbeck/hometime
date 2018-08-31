@@ -14,6 +14,8 @@ import play.db.ebean.Model;
 
 public class UniqueAccountingNumber {
 	private final static String SEPARATOR = "-";
+	private final static Integer FIRST_FINANCIAL_YEAR = 2014;
+	private final static Integer LAST_MONTH_IN_FINANCIAL_YEAR_INCLUDED = 9;
 	private final static Integer START_YEAR_USING_PADDING = 2017;
 	private final static int PADDING = 3; // STARTING FROM START_YEAR_USING_PADDING only
 	private final static Integer ordersYearShifting = 6000;
@@ -168,6 +170,32 @@ public class UniqueAccountingNumber {
 	public static Optional<YearMonth> getYearAndMonthFromUAN(UniqueAccountingNumber uan) {
 		if (uan != null)
 			return Optional.of(uan.getYearAndMonthFromUAN());
+		return Optional.empty();
+	}
+	
+	public static Optional<Integer> getFinancialYearSequenceNumberFromUAN(UniqueAccountingNumber uan) {
+		Optional<YearMonth> ym = getYearAndMonthFromUAN(uan);
+		if (ym.isPresent()) {
+			if (ym.get().getMonthValue() > LAST_MONTH_IN_FINANCIAL_YEAR_INCLUDED)
+				return Optional.of(ym.get().getYear() - FIRST_FINANCIAL_YEAR + 2);
+			return Optional.of(ym.get().getYear() - FIRST_FINANCIAL_YEAR + 1);
+		}
+		return Optional.empty();
+	}
+	
+	public Optional<Boolean> areTheseUANInSameFinancialYear(UniqueAccountingNumber uan1, UniqueAccountingNumber uan2) {
+		Optional<Integer> fYearOfUan1 = getFinancialYearSequenceNumberFromUAN(uan1);
+		Optional<Integer> fYearOfUan2 = getFinancialYearSequenceNumberFromUAN(uan2);
+		if (fYearOfUan1.isPresent() && fYearOfUan2.isPresent())
+			return Optional.of(fYearOfUan1.get() == fYearOfUan2.get());
+		return Optional.empty();
+	}
+	
+	public Optional<Boolean> areTheseUANInSameMonth(UniqueAccountingNumber uan1, UniqueAccountingNumber uan2) {
+		Optional<YearMonth> yearAndMonthOfUan1 = getYearAndMonthFromUAN(uan1);
+		Optional<YearMonth> yearAndMonthOfUan2 = getYearAndMonthFromUAN(uan2);
+		if (yearAndMonthOfUan1.isPresent() && yearAndMonthOfUan2.isPresent())
+			return Optional.of(yearAndMonthOfUan1.get().compareTo(yearAndMonthOfUan2.get()) == 0);
 		return Optional.empty();
 	}
 }

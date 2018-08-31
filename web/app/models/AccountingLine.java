@@ -2,12 +2,14 @@ package models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
@@ -79,6 +81,14 @@ public class AccountingLine extends Model {
 	@Enumerated(EnumType.STRING)
 	public LineType type = LineType.WITH_VAT_BY_UNIT;
 	
+	@OneToMany(mappedBy="accountingLine", cascade = CascadeType.ALL)
+	public List<AccountingLineAnalytic> analytics;
+	
+	@ManyToOne
+	public AccountingLineAnalyticPreset preset;
+	
+	public Float oneTimeCost = -1f;
+	
 	public AccountingLine() {
 		
 	}
@@ -97,12 +107,18 @@ public class AccountingLine extends Model {
 	}
 	
 	public AccountingLine(AccountingDocument document, LineType type, String description, Long unit, Float unitPrice, int order) {
+		this(document, type, description, unit, unitPrice, order, null, -1f);
+	}
+	
+	public AccountingLine(AccountingDocument document, LineType type, String description, Long unit, Float unitPrice, int order, AccountingLineAnalyticPreset preset, Float oneTimeCost) {
 		this(document);
 		this.type = type;
 		this.description = description;
 		this.unit = unit;
 		this.unitPrice = unitPrice;
 		this.order = order;
+		this.preset = preset;
+		this.oneTimeCost = oneTimeCost;
 	}
 	
 	
@@ -116,6 +132,10 @@ public class AccountingLine extends Model {
     
     public static AccountingLine findById(Long id) {
         return find.byId(id.toString());
+    }
+    
+    public static AccountingLine findByIdWithAnalytics(Long id) {
+        return find.fetch("analytics").where().eq("id", id).findUnique();
     }
     
     public static List<AccountingLine> findAllByDescendingDate() {

@@ -1,0 +1,23 @@
+@(instance: models.AccountingLineAnalytic)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("AccountingLineAnalytics", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("AccountingLineAnalytics")
+}
+
+@end_body = {
+      
+}
+
+@defining(new views.ModelDisplay(instance, "admin.analytic")) { modelDisplay =>
+		@{ 	modelDisplay.addField("analyticCode", "getAnalyticCode", "false", "admin.analytic.code.display.label");
+			modelDisplay.addField("price", "getPrice", "false", "admin.analytic.price.label.display.label");
+			modelDisplay.addField("cost", "getCost", "false", "admin.analytic.cost.description.display.label");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+}

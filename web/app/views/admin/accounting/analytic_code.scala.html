@@ -1,0 +1,23 @@
+@(instance: models.AnalyticCode)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("AnalyticCodes", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("AnalyticCodes")
+}
+
+@end_body = {
+      
+}
+
+@defining(new views.ModelDisplay(instance, "admin.analytic.code")) { modelDisplay =>
+		@{ 	modelDisplay.addField("analyticCode", "getAnalyticCode", "false", "admin.analytic.code.code.display.label");
+			modelDisplay.addField("lbl", "getLbl", "false", "admin.analytic.code.label.display.label");
+			modelDisplay.addField("description", "getDescription", "false", "admin.analytic.code.description.display.label");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+}

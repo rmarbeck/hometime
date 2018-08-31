@@ -1,0 +1,13 @@
+@(currentPage: com.avaje.ebean.Page[models.AccountingLineAnalyticPreset], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "code/description", "admin.analytic.preset.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("code", "metaAnalyticCode", "getMetaAnalyticCode", false);
+		pageDisplay.addTableField("isActive", "active", "getActive", false);
+		pageDisplay.addTableField("fullyFilled", "fullyFilled", "getFullyFilled", false);
+		pageDisplay.addTableField("description", "description", "getDescription", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "AccountingLineAnalyticPresets", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

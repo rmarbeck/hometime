@@ -85,6 +85,12 @@ public class AccountingDocument extends Model {
 		lines.add(new AccountingLine(this, type, description, unit, unitPrice, linesIndex++));
 	}
 	
+	public void addLine(LineType type, String description, Long unit, Float unitPrice, AccountingLineAnalyticPreset preset, Float oneTimeCost) {
+		if (lines == null)
+			lines = new ArrayList<AccountingLine>();
+		lines.add(new AccountingLine(this, type, description, unit, unitPrice, linesIndex++, preset, oneTimeCost));
+	}
+	
 	public void setDocumentCreationDate(Date newDate) {
 		creationDate = newDate;
 	}

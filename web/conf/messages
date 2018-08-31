@@ -1119,7 +1119,7 @@ legal.html.keywords=description, hometime, watchnext, contact, mentions légales
 legal.baseline=Mentions légales
 legal.head.1=Présentation
 legal.body.1=<p>En vertu de l''article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l''économie numérique, il est précisé aux Utilisateurs du site <a href="/" title="Watch next SAS - www.hometime.fr">www.hometime.fr</a> l''identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p> \
-<p><strong>Propriétaire</strong> : Watch next SAS – Société par Actions Simplifiée au capital de 20 000€ – N° SIRET : 800 198 418 00017 – 103 avenue Marceau, 78600 Le Mesnil-Le-Roi, France<br /> \
+<p><strong>Propriétaire</strong> : Watch next SAS – Société par Actions Simplifiée au capital de 22 000€ – N° SIRET : 800 198 418 00033 – 322 rue Saint Honoré, 75001 Paris, France<br /> \
 <strong>Créateur</strong>  : <a href="http://watchnext.fr">Raphaël Marbeck</a>, Président fondateur de la société<br /> \
 <strong>Responsable publication</strong> : Raphaël Marbeck – contact@watchnext.fr<br /> \
 Le responsable publication est une personne physique.<br /> \
@@ -1496,6 +1496,11 @@ admin.navbar.link.text.payment.add.method=Nouveau paiement
 admin.navbar.link.text.payment=Paiement
 admin.navbar.link.text.watches=Montres
 admin.navbar.link.text.mail.templates=Templates de mails
+
+admin.navbar.link.text.analytics=Compta Analytique
+admin.navbar.link.text.analytics.codes=(param) Codes Analytiques
+admin.navbar.link.text.analytics.presets=(param) Méta Codes
+admin.navbar.link.text.analytics.lines=Lignes Analytiques
 
 admin.navbar.link.text.reporting=Reporting
 admin.navbar.link.text.reporting.margin.vat=Rapport de TVA sur Marge
@@ -1942,13 +1947,16 @@ admin.customer.watch.form.label.service.infos=Infos entretien
 admin.customer.watch.form.placeholder.other.infos=
 admin.customer.watch.form.label.other.infos=Autres infos
 admin.customer.watch.form.label.cat.infos=Informations
-admin.customer.watch.form.value.status.by.watch.next=Dans le coffre
-admin.customer.watch.form.value.status.by.watch.next.outside=Hors coffre (transit)
-admin.customer.watch.form.value.status.by.sth=Déprecié (ne pas utiliser)
-admin.customer.watch.form.value.status.by.brand=SAV de la marque
-admin.customer.watch.form.value.status.by.registered.partner=Chez un partenaire principal
-admin.customer.watch.form.value.status.by.other=Chez autre partenaire
-admin.customer.watch.form.value.status.by.customer=Chez le client
+admin.customer.watch.form.value.status.stored.by.watch.next=Dans le coffre
+admin.customer.watch.form.value.status.stored.by.watch.next.outside=Hors coffre (transit)
+admin.customer.watch.form.value.status.stored.by.sth=Déprecié (ne pas utiliser)
+admin.customer.watch.form.value.status.stored.by.brand=SAV de la marque
+admin.customer.watch.form.value.status.stored.by.a.registered.partner=Chez un partenaire principal
+admin.customer.watch.form.value.status.stored.by.other.partner=Chez autre partenaire
+admin.customer.watch.form.value.status.stored.by.watch.next.secured.1=Sécurisé (103)
+admin.customer.watch.form.value.status.stored.by.watch.next.secured.2=Sécurisé (9)
+admin.customer.watch.form.value.status.stored.by.watch.next.secured.3=Sécurisé (réservé)
+admin.customer.watch.form.value.status.back.to.customer=Chez le client
 admin.customer.watch.form.label.status=Où se trouve la montre
 admin.customer.watch.form.label.service.price.accepted=Devis accepté
 admin.customer.watch.form.label.service.price=Devis
@@ -2437,7 +2445,7 @@ admin.buy.request.proposal.value.timeframe.within.month=L''acquisition de la mon
 admin.buy.request.proposal.value.timeframe.within.3.months=L''acquisition de la montre est souhaitée sous 3 mois
 admin.buy.request.proposal.value.timeframe.opportunity=L''achat sera effectué lorsque l''occasion se présentera
 admin.buy.request.proposal.action.unsubscribe=cliquez ici pour vous désabonner
-admin.buy.request.proposal.footer.address=Watch next SAS, N° SIRET : 800 198 418 00017 RCS de Versailles<br />Représentée par son président, Raphaël Marbeck<br />Siège social : 103 avenue Marceau, 78600 Le Mesnil-Le-Roi<br />
+admin.buy.request.proposal.footer.address=Watch next SAS, N° SIRET : 800 198 418 00033 RCS de Paris<br />Représentée par son président, Raphaël Marbeck<br />Siège social : 322 rue Saint Honoré, 75001 Paris<br />
 admin.buy.request.proposal.footer.email.sent.to=Cet email a été envoyé à 
 admin.buy.request.proposal.action.view.online.version=Voir la version en ligne
 admin.buy.request.proposal.waranties.head=Garanties Hometime :
@@ -2574,7 +2582,9 @@ admin.invoice.form.value.customer.default=Sélectionner le client
 admin.invoice.form.label.customer=Client
 admin.invoice.form.placeholder.customer=...
 admin.invoice.form.label.description=Description
+admin.invoice.form.label.private.description=Infos privées
 admin.invoice.form.placeholder.description=Révision...|Réparation...|Vente...
+admin.invoice.form.placeholder.private.description=
 admin.invoice.form.label.unique.accounting.number=Numéro de facture
 admin.invoice.form.placeholder.unique.accounting.number=2015XX-YY
 admin.invoice.form.label.creation.date=Date de facture
@@ -3965,3 +3975,128 @@ admin.sparepart.outprice.display.label=Prix de revente (HT)
 admin.sparepart.found.display.label=Trouvée ?
 admin.sparepart.got.display.label=Obtenue ?
 admin.sparepart.closed.display.label=Fermée ?
+
+admin.analytic.code.page=Codes Analytiques
+admin.analytic.code.page.title=Codes Analytiques
+admin.analytic.code.page.analyticcode=Code
+admin.analytic.code.page.label=Libellé
+admin.analytic.code.page.description=Description
+admin.analyticcode.form.analyticcode.label.name=Code
+admin.analyticcode.form.lbl.label.name=Libellé
+admin.analyticcode.form.lbl.placeholder.name=VM...
+admin.analyticcode.form.description.label.name=Description
+admin.analyticcode.form.description.placeholder.name=Vente..
+admin.analyticcode.form=Code analytique
+admin.analyticcode.form.title=Code analytique
+admin.analyticcode.action.save=&nbsp;Créer
+admin.analyticcode.action.edit=&nbsp;Modifier
+admin.analyticcode.action.show=&nbsp;Prévisualiser
+admin.analyticcode.action.delete=&nbsp;Supprimer
+admin.analyticcode.action.cancel=&nbsp;Annuler
+
+admin.analytic.code=Code Analytique
+admin.analytic.code.title=Code Analytique
+admin.analytic.code.code.display.label=Code analytique
+admin.analytic.code.label.display.label=Libellé
+admin.analytic.code.description.display.label=Description 
+admin.analyticcode.action.cancel=&nbsp;Annuler
+
+admin.analytic.preset.page=Ventilation par codes analytiques
+admin.analytic.preset.page.title=Ventilation par codes analytiques
+admin.analytic.preset.page.metaanalyticcode=Code (5 chiffres)
+admin.analytic.preset.page.active=Actif
+admin.analytic.preset.page.fullyfilled=Complet (vs à compléter systématiquement)
+admin.analytic.preset.page.description=Description
+
+admin.analyticpreset.form=Ventilation par codes analytiques
+admin.analyticpreset.form.title=Ventilation par codes analytiques
+admin.accountinglineanalyticpreset.form.metaanalyticcode.label.name=Code (5 chiffres) 
+admin.accountinglineanalyticpreset.form.description.label.name=Description
+admin.accountinglineanalyticpreset.form.description.placeholder.name=Vente...
+admin.accountinglineanalyticpreset.form.active.label.name=Actif
+admin.accountinglineanalyticpreset.form.fullyfilled.label.name=Complet (vs à compléter systématiquement)
+admin.accountinglineanalyticpreset.action.save=&nbsp;Créer
+admin.accountinglineanalyticpreset.action.edit=&nbsp;Modifier
+admin.accountinglineanalyticpreset.action.show=&nbsp;Prévisualiser
+admin.accountinglineanalyticpreset.action.delete=&nbsp;Supprimer
+admin.accountinglineanalyticpreset.action.cancel=&nbsp;Annuler
+admin.analytic.preset=Code de ventilation
+admin.analytic.preset.title=Code de ventilation
+admin.analytic.preset.code.display.label=Code
+admin.analytic.preset.description.display.label=Description
+
+admin.accounting.analytic.preset.head.items=Codes analytiques associés
+admin.accounting.analytic.preset.head.new.item=&nbsp;Nouveau
+
+admin.accountinglineanalyticpresetitem.form=Sous-code de ventilation
+admin.accountinglineanalyticpresetitem.form.title=Sous-code de ventilation
+admin.accountinglineanalyticpresetitem.form.accountinglineanalyticpreset.id.label.name=Code de ventilation
+admin.accountinglineanalyticpresetitem.form.accountinglineanalyticpreset.id.default.name=Choisir le code de ventilation
+admin.accountinglineanalyticpresetitem.form.analyticcode.id.label.name=Code analytique
+admin.accountinglineanalyticpresetitem.form.analyticcode.id.default.name=Choisir le code analytique
+admin.accountinglineanalyticpresetitem.form.fixedprice.label.name=Prix fixe
+admin.accountinglineanalyticpresetitem.form.proportionalprice.label.name=Prix proportionnel
+admin.accountinglineanalyticpresetitem.form.proportionalprice.placeholder.name=0 à 100
+admin.accountinglineanalyticpresetitem.form.fixedcost.label.name=Coût fixe
+admin.accountinglineanalyticpresetitem.form.proportionalcost.label.name=Coût proportionnel
+admin.accountinglineanalyticpresetitem.form.proportionalcost.placeholder.name=0 à 100
+admin.accountinglineanalyticpresetitem.form.onetimecost.label.name=Coût unique
+admin.accountinglineanalyticpresetitem.form.onetimecost.placeholder.name=
+admin.accountinglineanalyticpresetitem.form.ordernumber.label.name=Ordre d''affichage
+admin.accountinglineanalyticpresetitem.form.ordernumber.placeholder.name=
+admin.accountinglineanalyticpresetitem.action.save=&nbsp;Créer
+admin.accountinglineanalyticpresetitem.action.edit=&nbsp;Modifier
+admin.accountinglineanalyticpresetitem.action.show=&nbsp;Prévisualiser
+admin.accountinglineanalyticpresetitem.action.delete=&nbsp;Supprimer
+admin.accountinglineanalyticpresetitem.action.cancel=&nbsp;Annuler
+
+admin.invoice.for.analytic=Facture et analytics
+admin.invoice.for.analytic.title=Facture et analytics
+admin.invoice.for.analytic.date.display.label=Date de facture
+admin.invoice.for.analytic.uan.display.label=Numéro de facture
+admin.invoice.for.analytic.description.display.label=Description
+
+admin.accounting.analytic.preset.item.code.header.id=Code
+admin.accounting.analytic.preset.item.fixed.price.header.id=Prix fixe
+admin.accounting.analytic.preset.item.proportional.price.header.id=Prix variable
+admin.accounting.analytic.preset.item.fixed.cost.header.id=Coût fixe
+admin.accounting.analytic.preset.item.proportional.cost.header.id=Coût variable
+admin.accounting.analytic.preset.item.proportional.one.time.cost.header.id=Coût unique
+admin.accounting.analytic.preset.no.item.to.display=Aucun item associé (situation anormale)
+
+admin.analytic.preset.item.page=Element de configuration des codes analytiques
+admin.analytic.preset.item.page.title=Element de configuration des codes analytiques
+admin.analytic.preset.item.page.analyticcode=Code
+admin.analytic.preset.item.page.accountinglineanalyticpreset=Meta code (parent)
+admin.analytic.preset.item.page.fixedprice=Prix fixe
+admin.analytic.preset.item.page.proportionalprice=Prix variable
+admin.analytic.preset.item.page.fixedcost=Coût fixe
+admin.analytic.preset.item.page.proportionalcost=Coût variable
+admin.analytic.preset.item.page.onetimecost=Coût unique
+admin.analytic.preset.item.page.ordernumber=Ordre d''affichage
+
+admin.analytic.page=Lignes de coût
+admin.analytic.page.title=Lignes de coût
+admin.analytic.page.analyticcode=Code analytique
+admin.analytic.page.price=Chiffre d''affaires
+admin.analytic.page.cost=Coût
+
+admin.analytic.form=Ligne analytique
+admin.analytic.form.title=Ligne analytique
+admin.accountinglineanalytic.form.accountingline.description.label.name=Libellé de la ligne
+admin.accountinglineanalytic.form.accountingline.unitprice.label.name=Prix unitaire
+admin.accountinglineanalytic.form.accountingline.id.label.name=Identifiant technique
+admin.accountinglineanalytic.form.analyticcode.id.label.name=Code analytique
+admin.accountinglineanalytic.form.price.label.name=Chiffre d''affaires
+admin.accountinglineanalytic.form.cost.label.name=Coût
+admin.accountinglineanalytic.action.save=&nbsp;Créer
+admin.accountinglineanalytic.action.edit=&nbsp;Modifier
+admin.accountinglineanalytic.action.show=&nbsp;Prévisualiser
+admin.accountinglineanalytic.action.delete=&nbsp;Supprimer
+admin.accountinglineanalytic.action.cancel=&nbsp;Annuler
+
+admin.analytic=Ligne de compta analytique
+admin.analytic.title=Ligne de compta analytique
+admin.analytic.code.display.label=Code analytique
+admin.analytic.price.label.display.label=Chiffre d''affaires
+admin.analytic.cost.description.display.label=Coût

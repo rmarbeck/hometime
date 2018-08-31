@@ -1,0 +1,22 @@
+@(thisInstance: Form[models.AccountingLineAnalyticPresetItem], isItNew: Boolean)
+
+@import tags._
+
+@end_scripts = {
+}
+
+
+@defining(new views.FormDisplay(thisInstance, "AccountingLineAnalyticPresetItem", "admin.accountinglineanalyticpresetitem.form")) { formDisplay =>
+		@{ 
+		   formDisplay.addFormFieldForSelect("accountingLineAnalyticPreset.id", false, models.AccountingLineAnalyticPreset.getIdsByDescriptionAsc, models.AccountingLineAnalyticPreset.getDescriptionsWithCodeByDescriptionAsc);
+		   formDisplay.addFormFieldForSelect("analyticCode.id", false, models.AnalyticCode.getIdsByDescriptionAsc, models.AnalyticCode.getDescriptionsWithCodeByDescriptionAsc);
+		   formDisplay.addFormField("fixedPrice", true, "input", 'type -> "number", 'min -> "-1", 'step -> "0.01");
+		   formDisplay.addFormField("proportionalPrice", true, "input", 'type -> "number", 'min -> "-1", 'max -> "100", 'step -> "1");
+		   formDisplay.addFormField("fixedCost", true, "input", 'type -> "number", 'min -> "-1", 'step -> "0.01");
+		   formDisplay.addFormField("proportionalCost", true, "input", 'type -> "number", 'min -> "-1", 'max -> "100", 'step -> "1");
+		   formDisplay.addFormField("oneTimeCost", true, "checkbox");
+		   formDisplay.addFormField("orderNumber", true, "input", 'type -> "number", 'min -> "1", 'step -> "1");
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
+}

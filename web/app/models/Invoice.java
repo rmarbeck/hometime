@@ -3,8 +3,6 @@ package models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,6 +19,7 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.Payments;
+import fr.hometime.utils.DateHelper;
 
 /**
  * Definition of an invoice
@@ -97,6 +96,9 @@ public class Invoice extends Model {
 	@OneToMany(mappedBy="invoice", cascade = CascadeType.ALL)
 	public List<Payment> payments;
 	
+	@Column(length = 10000)
+	public String privateInfos;
+	
 	public Invoice() {
 		this.document = new AccountingDocument();
 	}
@@ -119,10 +121,6 @@ public class Invoice extends Model {
     
     public static List<Invoice> findAllByDescendingDate() {
         return find.orderBy("document.creationDate DESC").findList();
-    }
-
-    public static Optional<List<Invoice>> tryTofindAllByDescendingDate() {
-        return Optional.ofNullable(findAllByDescendingDate());
     }
     
     public static List<Long> findAllByDescendingDateIds() {
@@ -170,6 +168,10 @@ public class Invoice extends Model {
     public void  addLine(LineType type, String description, Long unit, Float unitPrice) {
     	this.document.addLine(type, description, unit, unitPrice);
     }
+    
+    public void  addLine(LineType type, String description, Long unit, Float unitPrice, AccountingLineAnalyticPreset preset, Float oneTimeCost) {
+    	this.document.addLine(type, description, unit, unitPrice, preset, oneTimeCost);
+    }
 
 	@Override
 	public void save() {
@@ -193,6 +195,10 @@ public class Invoice extends Model {
 	
 	public Date getCreationDate() {
 		return this.document.creationDate;
+	}
+	
+	public String getCreationDateAsShortDate() {
+		return DateHelper.asShortDate(getCreationDate());
 	}
 	
 	public boolean hasBeenPayed() {

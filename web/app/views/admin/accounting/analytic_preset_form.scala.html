@@ -1,0 +1,18 @@
+@(thisInstance: Form[models.AccountingLineAnalyticPreset], isItNew: Boolean)
+
+@import tags._
+
+@end_scripts = {
+}
+
+
+@defining(new views.FormDisplay(thisInstance, "AccountingLineAnalyticPreset", "admin.analyticpreset.form")) { formDisplay =>
+		@{ 
+		   formDisplay.addFormField("metaAnalyticCode", true, "input", 'type -> "number", 'min -> "1", 'step -> "1");
+		   formDisplay.addFormField("description", true, "textarea");
+		   formDisplay.addFormField("active", true, "checkbox");
+		   formDisplay.addFormField("fullyFilled", true, "checkbox");
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
+}

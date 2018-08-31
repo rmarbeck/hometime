@@ -1,0 +1,85 @@
+@(instance: models.AccountingLineAnalyticPreset)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("AccountingLineAnalyticPresets", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("AccountingLineAnalyticPresets")
+}
+
+@end_body = {
+	<br />
+    <div class="row">
+        <div class="title col-md-6"><h3>@Html(Messages("admin.accounting.analytic.preset.head.items"))</h3></div>
+        <div class="text-right col-md-6">
+        	<a type="button" class="btn btn-success" href="@routes.AccountingLineAnalyticPresetItems.createItemForPreset(instance.id)"><span class="glyphicon glyphicon-plus"></span>@Html(Messages("admin.accounting.analytic.preset.head.new.item"))</a>
+        </div>
+    </div>
+        
+      @if(instance.accountingLineAnalyticItems == null || instance.accountingLineAnalyticItems.size == 0) {
+      <div class="row">
+        <div class="well">
+            <em>@Html(Messages("admin.accounting.analytic.preset.no.item.to.display"))</em>
+        </div>
+      </div>
+      } else {
+      <div class="row">
+       	<div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>@Html(Messages("admin.accounting.analytic.preset.item.code.header.id"))</th>
+                  <th>@Html(Messages("admin.accounting.analytic.preset.item.fixed.price.header.id"))</th>
+                  <th>@Html(Messages("admin.accounting.analytic.preset.item.proportional.price.header.id"))</th>
+                  <th>@Html(Messages("admin.accounting.analytic.preset.item.fixed.cost.header.id"))</th>
+                  <th>@Html(Messages("admin.accounting.analytic.preset.item.proportional.cost.header.id"))</th>
+                  <th>@Html(Messages("admin.accounting.analytic.preset.item.proportional.one.time.cost.header.id"))</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for((item, index) <- instance.accountingLineAnalyticItems.zipWithIndex) {
+                <tr>
+                  <td>
+                  	x
+                  </td>
+                  <td>
+                    @item.analyticCode
+                  </td>
+                  <td>
+                    @item.fixedPrice
+                  </td>
+                  <td>
+                    @item.proportionalCost
+                  </td>
+                  <td>
+                    @item.fixedCost
+                  </td>
+                  <td>
+                    @item.proportionalCost
+                  </td>
+                  <td>
+                    @item.oneTimeCost
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+		</div>
+	  </div>
+	}
+        
+        
+
+}
+
+@defining(new views.ModelDisplay(instance, "admin.analytic.preset")) { modelDisplay =>
+		@{ 	modelDisplay.addField("metaAnalyticCode", "getMetaAnalyticCode", "false", "admin.analytic.preset.code.display.label");
+			modelDisplay.addField("description", "getDescription", "false", "admin.analytic.preset.description.display.label");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+}

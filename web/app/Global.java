@@ -66,6 +66,11 @@ public class Global extends GlobalSettings {
 					Map<String,List<Object>> templates = (Map<String,List<Object>>)Yaml.load("mail-templates-default.yml");
 					Ebean.save(templates.get("mailTemplatesTypes"));
 					Ebean.save(templates.get("mailTemplates"));
+					
+					Map<String,List<Object>> analytics = (Map<String,List<Object>>)Yaml.load("analytics.yml");
+					Ebean.save(analytics.get("anayticCodes"));
+					Ebean.save(analytics.get("preset"));
+					Ebean.save(analytics.get("presetItems"));
 				}
 			}
 		}

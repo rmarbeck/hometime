@@ -1,0 +1,20 @@
+@(instance: models.AccountingLineAnalyticPresetItem)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("AccountingLineAnalyticPresetItems", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("AccountingLineAnalyticPresetItems")
+}
+
+@end_body = {
+}
+
+@defining(new views.ModelDisplay(instance, "admin.analytic.preset.item")) { modelDisplay =>
+		@{ 	modelDisplay.addField("analyticCode", "getAnalyticCode", "false", "admin.analytic.preset.item.code.display.label");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+}

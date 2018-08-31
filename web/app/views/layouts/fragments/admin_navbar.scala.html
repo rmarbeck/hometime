@@ -141,6 +141,16 @@
                     @li_activable(37, index) {<a href="@routes.CrudHelper.displayAll("MailTemplates")">@Messages("admin.navbar.link.text.mail.templates")</a>}
                   </ul>
                 }
+                @li_activable(100, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.analytics")) <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    @li_activable(101, index) {<a href="@routes.CrudHelper.displayAll("AnalyticCodes")">@Messages("admin.navbar.link.text.analytics.codes")</a>}
+                    <li class="divider hidden-xs"></li>
+                    @li_activable(102, index) {<a href="@routes.CrudHelper.displayAll("AccountingLineAnalyticPresets")">@Messages("admin.navbar.link.text.analytics.presets")</a>}
+                    <li class="divider hidden-xs"></li>
+                    @li_activable(103, index) {<a href="@routes.CrudHelper.displayAll("AccountingLineAnalytics")">@Messages("admin.navbar.link.text.analytics.lines")</a>}
+                  </ul>
+                }
                 @helper.form(action = routes.Admin.search(), args = 'class -> "navbar-form navbar-left col-xs-12") {
 			        <div class="form-group col-xs-10">
 			          <input name="pattern" type="text" class="form-control" placeholder="Recherche">

@@ -1,0 +1,12 @@
+@(currentPage: com.avaje.ebean.Page[models.AccountingLineAnalytic], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "code/label", "admin.analytic.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("analyticCode.analyticCode", "analyticCode", "getAnalyticCode", false);
+		pageDisplay.addTableField("price", "price", "getPrice", false);
+		pageDisplay.addTableField("cost", "cost", "getCost", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "AccountingLineAnalytics", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}
