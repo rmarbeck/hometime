@@ -33,6 +33,7 @@
 		   formDisplay.addFormField("otherConditionsRemarksOnCollect", true, "textarea");
 		   formDisplay.addFormField("otherInfos", true, "textarea");
 		   formDisplay.addFormFieldForSelect("status", models.CustomerWatch.CustomerWatchStatus.values.toList)
+		   formDisplay.addFormFieldForSelect("type", models.CustomerWatch.CustomerWatchType.values.toList)
 		   formDisplay.addFormField("servicePrice", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("finalCustomerFinalServicePrice", true, "input", 'type -> "hidden", '_class -> "hidden");
 		}

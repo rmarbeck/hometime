@@ -55,6 +55,11 @@
 							  for ( s <- models.CustomerWatch.CustomerWatchStatus.values.toList) yield s.toString -> Messages("admin.customer.watch.form.value.status."+s.name.toLowerCase.replace('_','.'))
                               , '_label -> Html(Messages("admin.customer.watch.form.label.status")),
                               '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+				@tags.myInputRadioGroup(watch("type"),
+							  for ( s <- models.CustomerWatch.CustomerWatchType.values.toList) yield s.toString -> Messages("admin.customer.watch.form.value.type."+s.name.toLowerCase.replace('_','.'))
+                              , '_label -> Html(Messages("admin.customer.watch.form.label.type")),
+                              '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
                               
                	@helper.select(watch("partner.id"),
                          for (s <- partners) yield s.id.toString -> (s.name),

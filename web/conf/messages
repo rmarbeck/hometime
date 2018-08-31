@@ -3682,9 +3682,33 @@ admin.simplified.customer.watch.value.status.unconsistent=Etat anormal
 
 admin.simplified.customer.watch.text.head=PV de collecte et état de la montre <span class="small">(exemplaire client)</span>
 
-admin.simplified.customer.watch.servicing.sheet.text.head=ID : #{0}
+admin.simplified.customer.watch.servicing.sheet.text.head=ID : #{0,number,####}
 admin.simplified.customer.watch.servicing.sheet.pictures=Prise de photos (oui/non) :
 admin.simplified.customer.watch.servicing.sheet.document.date=Collectée le {0, date,d MMMM yyyy}
+admin.simplified.customer.watch.servicing.sheet.testing.date=Test démarré le
+
+admin.simplified.customer.watch.watch.servicing.testing.head.check=Contrôle
+admin.simplified.customer.watch.watch.servicing.testing.head.check.result=Résultat
+
+admin.simplifiedcustomerwatch.form.otherinfos.label.name=Infos privées
+admin.simplifiedcustomerwatch.form.otherinfos.placeholder.name=
+admin.simplifiedcustomerwatch.form.type.label.name=Type de montres
+admin.simplifiedcustomerwatch.form.type.default.name=Choisir le type de montres
+
+admin.simplified.customer.watch.watch.servicing.testing.check.auto=Test remontage automatique (pré requis montre déchargée) - Sans toucher à la couronne, redémarrage au poignet au bout de quelques secondes - <i>OK ou KO</i>	
+admin.simplified.customer.watch.watch.servicing.testing.check.auto.no.chrono.start=Tenue d''heure sur 24h <b>sans chrono</b> : Mise à l''heure initiale (synchronisation avec horloge quartz) - <i>Indiquer date et heure de mise à l''heure</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.auto.no.chrono.result=Tenue d''heure sur 24h <b>sans chrono</b> : Contrôle à H+24 - <i>OK ou KO</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.auto.chrono.start=Tenue d''heure sur 24h <b>avec chrono</b> : Mise à l''heure initiale (synchronisation avec horloge quartz) - <i>Indiquer date et heure de mise à l''heure</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.auto.chrono.result=Tenue d''heure sur 24h <b>avec chrono</b> : Contrôle à H+24 - <i>OK ou KO</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.dial.hands=Contrôle visuel cadran/aiguilles - <i>OK ou KO</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.general=Contrôle visuel boite/fond/bracelet - <i>OK ou KO</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.glass=Contrôle visuel verre - <i>OK ou KO</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.operating=Contrôle fonctionnel couronne (mise à l''heure, remontage, vissage, fonctions annexes) - <i>OK ou KO</i>	
+admin.simplified.customer.watch.watch.servicing.testing.check.date=Si Date : Contrôle date rapide sur l'ensemble du dato et passage à minuit sur 2 dates - <i>OK ou KO</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.other=En fonction de la montre : Test fonctionnement lunette, boucle, correcteurs
+
+admin.simplified.customer.watch.watch.servicing.testing.stamp=Cachet Watch Next
+admin.simplified.customer.watch.watch.servicing.testing.signature=Date et signature du testeur
 
 admin.simplified.customer.watch.servicing.sheet.quotation.status=Devis
 admin.simplified.customer.watch.servicing.sheet.customer.acceptance.status=Accord client
@@ -3813,6 +3837,33 @@ admin.simplifiedcustomerwatch.form.status.value.name.stored.by.watch.next.outsid
 admin.simplifiedcustomerwatch.form.status.value.name.stored.by.watch.next.secured.1=Sécurisé (103)
 admin.simplifiedcustomerwatch.form.status.value.name.stored.by.watch.next.secured.2=Sécurisé (9)
 admin.simplifiedcustomerwatch.form.status.value.name.stored.by.watch.next.secured.3=Sécurisé (réservé)
+
+admin.simplifiedcustomerwatch.form.type.value.name.meca.simple=Manuelle simple
+admin.simplifiedcustomerwatch.form.type.value.name.meca.chrono=Manuelle chrono
+admin.simplifiedcustomerwatch.form.type.value.name.meca.complex=Manuelle complication
+admin.simplifiedcustomerwatch.form.type.value.name.auto.simple=Automatique simple
+admin.simplifiedcustomerwatch.form.type.value.name.auto.chrono=Automatique chrono
+admin.simplifiedcustomerwatch.form.type.value.name.auto.complex=Automatique complication
+admin.simplifiedcustomerwatch.form.type.value.name.quartz.simple=Quartz simple
+admin.simplifiedcustomerwatch.form.type.value.name.quartz.complex=Quartz complication
+admin.simplifiedcustomerwatch.form.type.value.name.reserved.1=Réservé
+admin.simplifiedcustomerwatch.form.type.value.name.reserved.2=Réservé
+admin.simplifiedcustomerwatch.form.type.value.name.reserved.3=Réservé
+admin.simplifiedcustomerwatch.form.type.value.name.other=Autre type (non renseigné)
+
+admin.customer.watch.form.label.type=Type de montre
+admin.customer.watch.form.value.type.meca.simple=Manuelle simple
+admin.customer.watch.form.value.type.meca.chrono=Manuelle chrono
+admin.customer.watch.form.value.type.meca.complex=Manuelle complication
+admin.customer.watch.form.value.type.auto.simple=Automatique simple
+admin.customer.watch.form.value.type.auto.chrono=Automatique chrono
+admin.customer.watch.form.value.type.auto.complex=Automatique complication
+admin.customer.watch.form.value.type.quartz.simple=Quartz simple
+admin.customer.watch.form.value.type.quartz.complex=Quartz complication
+admin.customer.watch.form.value.type.reserved.1=Réservé
+admin.customer.watch.form.value.type.reserved.2=Réservé
+admin.customer.watch.form.value.type.reserved.3=Réservé
+admin.customer.watch.form.value.type.other=Autre type (non renseigné)
 
 admin.simplified.customer.watch.watches.header.brand=Marque
 admin.simplified.customer.watch.watches.header.id=ID

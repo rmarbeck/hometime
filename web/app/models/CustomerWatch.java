@@ -79,6 +79,44 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	        throw new IllegalArgumentException("Illegal type name: " + name);
 	    }
 	}
+	
+	public enum CustomerWatchType {
+	    MECA_SIMPLE ("MECA_SIMPLE"),
+	    MECA_CHRONO ("MECA_CHRONO"),
+	    MECA_COMPLEX ("MECA_COMPLEX"),
+	    AUTO_SIMPLE ("AUTO_SIMPLE"),
+	    AUTO_CHRONO ("AUTO_CHRONO"),
+	    AUTO_COMPLEX ("AUTO_COMPLEX"),
+	    QUARTZ_SIMPLE ("QUARTZ_SIMPLE"),
+	    QUARTZ_COMPLEX ("QUARTZ_COMPLEX"),
+	    RESERVED_1 ("RESERVED_1"),
+	    RESERVED_2 ("RESERVED_2"),
+	    RESERVED_3 ("RESERVED_3"),
+	    OTHER ("OTHER");
+	    
+		private String name = "";
+		    
+		CustomerWatchType(String name){
+		    this.name = name;
+		}
+
+		public String toString(){
+		    return name;
+		}
+		
+		public int intValue() {
+			return Integer.valueOf(name);
+		}
+		
+		public static CustomerWatchType fromString(String name) {
+	        for (CustomerWatchType type : CustomerWatchType.values()) {
+	            if (type.name.equals(name)) {
+	                return type;
+	            }
+	        }
+	        throw new IllegalArgumentException("Illegal type name: " + name);
+	    }
+	}
 
 	@Id
 	public Long id;
@@ -230,6 +268,10 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	@Column(name="customer_watch_status", length = 40)
 	@Enumerated(EnumType.STRING)
 	public CustomerWatchStatus status;
+	
+	@Column(name="customer_watch_type", length = 40)
+	@Enumerated(EnumType.STRING)
+	public CustomerWatchType type = CustomerWatchType.OTHER;
 	
 	public CustomerWatch() {
 		this.creationDate = new Date();
