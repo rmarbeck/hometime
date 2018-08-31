@@ -91,12 +91,12 @@ public class AccountingLineAnalytic extends Model implements CrudReady<Accountin
 
     public static Page<AccountingLineAnalytic> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where().ilike("analyticCode.analyticCode", "%" + filter + "%")
+            find.where().ilike("cast (analyticCode.analyticCode as varchar)", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
     }
-
+    
 	@Override
 	public Finder<String, AccountingLineAnalytic> getFinder() {
 		return find;

@@ -97,7 +97,7 @@ public class AnalyticCode extends Model implements CrudReady<AnalyticCode, Analy
 
     public static Page<AnalyticCode> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where().disjunction().ilike("analyticCode", "%" + filter + "%").ilike("lbl", "%" + filter + "%").ilike("description", "%" + filter + "%")
+            find.where().disjunction().ilike("cast (analyticCode as varchar)", "%" + filter + "%").ilike("lbl", "%" + filter + "%").ilike("description", "%" + filter + "%")
             	.endJunction()
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)

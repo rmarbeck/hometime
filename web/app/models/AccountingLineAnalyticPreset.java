@@ -106,12 +106,12 @@ public class AccountingLineAnalyticPreset extends Model implements CrudReady<Acc
 
     public static Page<AccountingLineAnalyticPreset> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where().or(Expr.ilike("metaAnalyticCode", "%" + filter + "%"), Expr.ilike("description", "%" + filter + "%"))
+            find.where().or(Expr.ilike("cast (metaAnalyticCode as varchar)", "%" + filter + "%"), Expr.ilike("description", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
     }
-
+    
 	@Override
 	public Finder<String, AccountingLineAnalyticPreset> getFinder() {
 		return find;

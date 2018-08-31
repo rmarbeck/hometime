@@ -77,7 +77,7 @@ public class AccountingLineAnalyticPresetItem extends Model implements CrudReady
 
     public static Page<AccountingLineAnalyticPresetItem> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-            find.where().ilike("analyticCode", "%" + filter + "%")
+            find.where().ilike("cast (analyticCode as varchar)", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
