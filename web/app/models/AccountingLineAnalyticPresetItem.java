@@ -19,7 +19,7 @@ import play.db.ebean.Model;
  * Definition of an analytic information about an accounting line
  */
 @Entity
-@Table(name = "accounting_table")
+@Table(name = "accounting_preset_item_table")
 public class AccountingLineAnalyticPresetItem extends Model implements CrudReady<AccountingLineAnalyticPresetItem, AccountingLineAnalyticPresetItem> {
 	private static final long serialVersionUID = 7924622628794002310L;
 

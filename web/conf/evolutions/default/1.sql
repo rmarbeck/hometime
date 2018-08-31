@@ -50,7 +50,7 @@ create table accounting_line_analytic_preset (
   constraint pk_accounting_line_analytic_pres primary key (id))
 ;
 
-create table accounting_table (
+create table accounting_preset_item_table (
   id                        bigint not null,
   analytic_code_id          bigint,
   fixed_price               float,
@@ -60,7 +60,7 @@ create table accounting_table (
   one_time_cost             boolean,
   order_number              integer,
   accounting_line_analytic_preset_id bigint,
-  constraint pk_accounting_table primary key (id))
+  constraint pk_accounting_preset_item_table primary key (id))
 ;
 
 create table analytic_code (
@@ -654,7 +654,7 @@ create sequence accounting_line_analytic_seq;
 
 create sequence accounting_line_analytic_preset_seq;
 
-create sequence accounting_table_seq;
+create sequence accounting_preset_item_table_seq;
 
 create sequence analytic_code_seq;
 
@@ -724,10 +724,10 @@ alter table accounting_line_analytic add constraint fk_accounting_line_analytic_
 create index ix_accounting_line_analytic_an_4 on accounting_line_analytic (analytic_code_id);
 alter table accounting_line_analytic add constraint fk_accounting_line_analytic_ac_5 foreign key (accounting_line_id) references accounting_line (id) on delete restrict on update restrict;
 create index ix_accounting_line_analytic_ac_5 on accounting_line_analytic (accounting_line_id);
-alter table accounting_table add constraint fk_accounting_table_analyticCo_6 foreign key (analytic_code_id) references analytic_code (id) on delete restrict on update restrict;
-create index ix_accounting_table_analyticCo_6 on accounting_table (analytic_code_id);
-alter table accounting_table add constraint fk_accounting_table_accounting_7 foreign key (accounting_line_analytic_preset_id) references accounting_line_analytic_preset (id) on delete restrict on update restrict;
-create index ix_accounting_table_accounting_7 on accounting_table (accounting_line_analytic_preset_id);
+alter table accounting_preset_item_table add constraint fk_accounting_preset_item_tabl_6 foreign key (analytic_code_id) references analytic_code (id) on delete restrict on update restrict;
+create index ix_accounting_preset_item_tabl_6 on accounting_preset_item_table (analytic_code_id);
+alter table accounting_preset_item_table add constraint fk_accounting_preset_item_tabl_7 foreign key (accounting_line_analytic_preset_id) references accounting_line_analytic_preset (id) on delete restrict on update restrict;
+create index ix_accounting_preset_item_tabl_7 on accounting_preset_item_table (accounting_line_analytic_preset_id);
 alter table analytic_code add constraint fk_analytic_code_accountingLin_8 foreign key (accounting_line_analytic_preset_id) references accounting_line_analytic_preset (id) on delete restrict on update restrict;
 create index ix_analytic_code_accountingLin_8 on analytic_code (accounting_line_analytic_preset_id);
 alter table buy_request add constraint fk_buy_request_brand_9 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
@@ -795,7 +795,7 @@ drop table if exists accounting_line_analytic;
 
 drop table if exists accounting_line_analytic_preset;
 
-drop table if exists accounting_table;
+drop table if exists accounting_preset_item_table;
 
 drop table if exists analytic_code;
 
@@ -865,7 +865,7 @@ drop sequence if exists accounting_line_analytic_seq;
 
 drop sequence if exists accounting_line_analytic_preset_seq;
 
-drop sequence if exists accounting_table_seq;
+drop sequence if exists accounting_preset_item_table_seq;
 
 drop sequence if exists analytic_code_seq;
 
