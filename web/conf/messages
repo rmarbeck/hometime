@@ -1497,7 +1497,7 @@ admin.navbar.link.text.payment=Paiement
 admin.navbar.link.text.watches=Montres
 admin.navbar.link.text.mail.templates=Templates de mails
 
-admin.navbar.link.text.analytics=Compta Analytique
+admin.navbar.link.text.analytics=Compta
 admin.navbar.link.text.analytics.codes=(param) Codes Analytiques
 admin.navbar.link.text.analytics.presets=(param) Méta Codes
 admin.navbar.link.text.analytics.lines=Lignes Analytiques
