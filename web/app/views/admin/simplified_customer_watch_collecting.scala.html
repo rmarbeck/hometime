@@ -53,6 +53,7 @@
         </div>
      </div>
      
+     @admin_accounting_info_field("%s".format(instance.id), "admin.simplified.customer.watch.collecting.id", 'dataclass -> "descriptions simplified_customer_watch")
      @admin_accounting_info_field(get_model.toString, "admin.simplified.customer.watch.brand", 'dataclass -> "descriptions simplified_customer_watch")
      @admin_accounting_info_field(get_references.toString, "admin.simplified.customer.watch.reference", 'dataclass -> "descriptions simplified_customer_watch")
      @admin_accounting_info_field(display_boolean(instance.picturesDoneOnCollect).toString, "admin.simplified.customer.watch.pictures", 'dataclass -> "descriptions simplified_customer_watch")
