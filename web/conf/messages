@@ -4203,8 +4203,6 @@ admin.analytic.title=Ligne de compta analytique
 admin.analytic.code.display.label=Code analytique
 admin.analytic.price.label.display.label=Chiffre d''affaires
 admin.analytic.cost.description.display.label=Coût
-<<<<<<< HEAD
-=======
 
 admin.accounting.footer.company=Watch next - Société par actions simplifiée - Capital : 22 000 Euros
 admin.accounting.footer.company.holder=Représentée par son président Raphaël MARBECK
@@ -4214,9 +4212,6 @@ admin.accounting.footer.company.vat.numbers=Numéro de TVA Intracommunautaire : 
 admin.accounting.footer.company.banking.1=Domiciliation bancaire : Agence Bred Republique 41 bis, boulevard Voltaire, 75011 Paris
 admin.accounting.footer.company.banking.2=IBAN : FR76 1010 7001 0500 5290 2067 418
 admin.accounting.footer.company.banking.3=Code BIC : BREDFRPPXXX
-<<<<<<< HEAD
->>>>>>> 6eab32119f5327af7fc04884f3e7b334bb309d6b
-=======
+
 
 #end
->>>>>>> b14b701818424dfa51319b978b79c2677b1e303b
