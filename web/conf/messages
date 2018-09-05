@@ -2621,7 +2621,7 @@ admin.invoice.action.cancel=&nbsp;Annuler
 admin.invoice.head.customer.details=Identification du client :
 admin.invoice.head.company=Watch next S.A.S.
 admin.invoice.head.description=Services Horlogers
-admin.invoice.head.url=www.hometime.fr
+admin.invoice.head.url=322 rue Saint Honoré, 75001 Paris<br/>www.hometime.fr
 admin.invoice.head.phone.number=07 82 43 47 51
 admin.invoice.title.bill=Facture {0}
 admin.invoice.text.bill=Facture
@@ -3688,6 +3688,8 @@ admin.simplified.customer.watch.servicing.sheet.pictures=Prise de photos (oui/no
 admin.simplified.customer.watch.servicing.sheet.document.date=Collectée le {0, date,d MMMM yyyy}
 admin.simplified.customer.watch.servicing.sheet.testing.date=Test démarré le
 
+admin.simplified.customer.watch.collecting.id=Numéro de collecte :
+
 admin.simplified.customer.watch.watch.servicing.testing.head.check=Contrôle
 admin.simplified.customer.watch.watch.servicing.testing.head.check.result=Résultat
 
@@ -4201,3 +4203,15 @@ admin.analytic.title=Ligne de compta analytique
 admin.analytic.code.display.label=Code analytique
 admin.analytic.price.label.display.label=Chiffre d''affaires
 admin.analytic.cost.description.display.label=Coût
+<<<<<<< HEAD
+=======
+
+admin.accounting.footer.company=Watch next - Société par actions simplifiée - Capital : 22 000 Euros
+admin.accounting.footer.company.holder=Représentée par son président Raphaël MARBECK
+admin.accounting.footer.company.location=Siège social : 322 rue Saint Honoré, 75001 Paris
+admin.accounting.footer.company.resgistry.numbers=N° SIRET : 800 198 418 00033, Code NAF : 9525Z
+admin.accounting.footer.company.vat.numbers=Numéro de TVA Intracommunautaire : FR 78 800198418
+admin.accounting.footer.company.banking.1=Domiciliation bancaire : Agence Bred Republique 41 bis, boulevard Voltaire, 75011 Paris
+admin.accounting.footer.company.banking.2=IBAN : FR76 1010 7001 0500 5290 2067 418
+admin.accounting.footer.company.banking.3=Code BIC : BREDFRPPXXX
+>>>>>>> 6eab32119f5327af7fc04884f3e7b334bb309d6b
