@@ -4212,3 +4212,5 @@ admin.accounting.footer.company.vat.numbers=Numéro de TVA Intracommunautaire : 
 admin.accounting.footer.company.banking.1=Domiciliation bancaire : Agence Bred Republique 41 bis, boulevard Voltaire, 75011 Paris
 admin.accounting.footer.company.banking.2=IBAN : FR76 1010 7001 0500 5290 2067 418
 admin.accounting.footer.company.banking.3=Code BIC : BREDFRPPXXX
+
+#end
