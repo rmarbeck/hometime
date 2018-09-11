@@ -5,13 +5,13 @@
 
 @layouts.admin_login("Signin admin") {
 	@helper.form(action = routes.Application.authenticate(), args = 'class -> "form-signin") {
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">@Html(Messages("admin.sign.in.login.title"))</h2>
         <input name="email" type="email" class="form-control" placeholder="Email" value="@form("email").value" autofocus>
         <input name="password" type="password" class="form-control" placeholder="Password">
         
         <input name="origin" type="hidden" value="@origin">
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">@Html(Messages("admin.sign.in.login.action"))</button>
 	}
 	
 	<div class="text-center"><a href="@routes.Application.quickAdminLogin(origin)">Quick Admin Login</a></div>
