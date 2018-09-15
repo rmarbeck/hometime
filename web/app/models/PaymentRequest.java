@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -240,33 +239,7 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
         return find.byId(id.toString());
     }
     
-    public static Optional<PaymentRequest> getFromAccessKey(String accessKey) {
-    	if (accessKey == null)
-    		return Optional.empty();
-
-    	List<PaymentRequest> requests = find.where().eq("access_key", accessKey).findList();
-    	return getFirstIfExists(requests);
-    }
-    
-    public static Optional<PaymentRequest> getValidRequestFromAccessKey(String accessKey) {
-    	Optional<PaymentRequest> request = getFromAccessKey(accessKey);
-    	
-    	if (request.isPresent())
-    		if (request.get().isValid())
-    			return request;
-    	
-   		return Optional.empty();
-    }
-    
-    public static Optional<PaymentRequest> getLastFromOrderId(String orderId) {
-    	if (orderId == null)
-    		return Optional.empty();
-    	
-    	List<PaymentRequest> requests = find.where().eq("order_number", orderId).orderBy("creation_date DESC").findList();
-    	return getFirstIfExists(requests);
-    }
-    
-    private boolean isValid() {
+    public boolean isValid() {
     	return this.isOpen && DateHelper.isAfterNow(getEnOfTheDayValidityDate()) && this.requestStatus.equals(Status.OPEN);
     }
     
@@ -358,12 +331,6 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 		default:
 			break;
 		}
-	}
-	
-	private static Optional<PaymentRequest> getFirstIfExists(List<PaymentRequest> list) {
-		if (list != null && list.size() >= 1)
-    		return Optional.of(list.get(0));
-    	return Optional.empty();
 	}
 	
 	public static PaymentRequest getDefaultValues() {

@@ -16,10 +16,11 @@ import fr.hometime.payment.systempay.DataDictionnary;
 import fr.hometime.payment.systempay.PaymentConfirmation;
 import fr.hometime.payment.systempay.SingleImmediatePF;
 import fr.hometime.utils.ActionHelper;
+import fr.hometime.utils.PaymentRequestHelper;
 
 public class PaymentRequestsFreeOfLogin extends Controller {
 	public static Result displayForm(String accessKey) {
-		Optional<PaymentRequest> request  = PaymentRequest.getValidRequestFromAccessKey(accessKey);
+		Optional<PaymentRequest> request  = PaymentRequestHelper.getValidRequestFromAccessKey(accessKey);
 		if (request.isPresent())
 			return ok(views.html.payment.display_form.render(request.get(), SingleImmediatePF.of(request.get())));
 		return badRequest(views.html.payment.error.render());
@@ -46,7 +47,7 @@ public class PaymentRequestsFreeOfLogin extends Controller {
 		String calculatedSignature = confirmation.getSignature();
 		
 		if (receivedSignature.equals(calculatedSignature)) {
-			Optional<PaymentRequest> foundRequest = PaymentRequest.getLastFromOrderId(confirmation.getOrderId());
+			Optional<PaymentRequest> foundRequest = PaymentRequestHelper.getLastFromOrderId(confirmation.getOrderId());
 			if (foundRequest.isPresent()) {
 				foundRequest.get().updateAfterConfirmationResult(confirmation);
 				sendEmailNotification(foundRequest.get());

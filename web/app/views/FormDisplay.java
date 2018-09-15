@@ -14,6 +14,7 @@ import scala.Tuple2;
 /**
  * Definition of Form in order to be displayed
  */
+@SuppressWarnings("unchecked")
 public class FormDisplay {
 	private static final String MAIN_KEY = "admin.MODELNAME";
 	private static final String ACTION_KEY = MAIN_KEY+".action";

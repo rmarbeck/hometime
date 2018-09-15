@@ -1,4 +1,4 @@
-package models;
+package reporting;
 
 import java.time.YearMonth;
 import java.util.ArrayList;
@@ -8,6 +8,8 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import fr.hometime.utils.UniqueAccountingNumber;
+import models.AccountingDocument;
+import models.AccountingLine;
 import models.AccountingLine.LineType;
 
 public class AnalyticsReport {

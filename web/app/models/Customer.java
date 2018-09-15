@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -375,7 +374,7 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
     }
 
 	@Override
-	public Optional<List<? extends Searchable>> findMatching(String pattern) {
+	public List<? extends Searchable> findMatching(String pattern) {
 		if (pattern != null) {
 			List<Customer> results = find.where().disjunction()
 					.ilike("firstname", "%" + pattern + "%")
@@ -386,10 +385,9 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 					.ilike("alternativePhoneNumber", "%" + pattern + "%")
 					.findList();
 			if (results != null && results.size() != 0)
-				return Optional.of(results);
+				return results;
 		}
-		
-		return Optional.empty();
+		return null;
 	}
 
 	@Override

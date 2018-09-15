@@ -1,4 +1,4 @@
-package models;
+package reporting;
 
 import java.util.Date;
 import java.util.List;
@@ -8,6 +8,8 @@ import java.util.stream.Stream;
 
 import static fr.hometime.utils.ListHelper.streamFromNullableList;
 import fr.hometime.utils.VATHelper;
+import models.Invoice;
+import models.WatchToSell;
 
 public class WatchSalesReport {
 	public Date date;

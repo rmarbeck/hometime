@@ -1,4 +1,4 @@
-@(lines: List[models.WatchSalesReport])
+@(lines: List[reporting.WatchSalesReport])
 @import tags._
 
 @defining(new views.admin.reports.Report(lines, "admin.export.sales.page")) { report =>

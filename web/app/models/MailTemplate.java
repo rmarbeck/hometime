@@ -1,7 +1,6 @@
 package models;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -85,9 +84,9 @@ public class MailTemplate extends Model implements CrudReady<MailTemplate, MailT
     }
     
 	public static MailTemplate duplicate(Long id) {
-		Optional<MailTemplate> foundTemplate = Optional.ofNullable(findById(id));
-    	if (foundTemplate.isPresent())
-    		return duplicateTemplate(foundTemplate.get());
+		MailTemplate foundTemplate = findById(id);
+    	if (foundTemplate != null)
+    		return duplicateTemplate(foundTemplate);
     	return new MailTemplate();
     }
     

@@ -2,16 +2,16 @@ package controllers;
 
 import java.util.List;
 
-import models.InvoiceLineReport;
 import models.LegalRegisterReport;
 import models.PaymentsReport;
 import models.StockReport;
 import models.Invoice.InvoiceType;
-import models.WatchSalesReport;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
+import reporting.InvoiceLineReport;
+import reporting.WatchSalesReport;
 import views.html.admin.reports.margin_vat;
 import views.html.admin.reports.with_vat;
 import views.html.admin.reports.export_sales;

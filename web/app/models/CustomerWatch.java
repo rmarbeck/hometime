@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -723,7 +721,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	}
 	
 	@Override
-	public Optional<List<? extends Searchable>> findMatching(String pattern) {
+	public List<? extends Searchable> findMatching(String pattern) {
 		if (pattern != null) {
 			List<CustomerWatch> results = find.where().disjunction()
 					.ilike("brand", "%" + pattern + "%")
@@ -735,10 +733,10 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 					.ilike("otherInfos", "%" + pattern + "%")
 					.findList();
 			if (results != null && results.size() != 0)
-				return Optional.of(results);
+				return results;
 		}
 		
-		return Optional.empty();
+		return null;
 	}
 
 	@Override

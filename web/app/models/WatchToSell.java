@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -199,9 +198,9 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     }
 	
 	public static WatchToSell duplicate(Long id) {
-		Optional<WatchToSell> foundWatch = Optional.ofNullable(findById(id));
-    	if (foundWatch.isPresent())
-    		return duplicateWatch(foundWatch.get());
+		WatchToSell foundWatch = findById(id);
+    	if (foundWatch != null)
+    		return duplicateWatch(foundWatch);
     	return new WatchToSell();
     }
 
@@ -408,7 +407,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	}
 
 	@Override
-	public Optional<List<? extends Searchable>> findMatching(String pattern) {
+	public List<? extends Searchable> findMatching(String pattern) {
 		if (pattern != null) {
 			List<WatchToSell> results = find.where().disjunction()
 					.ilike("brand.display_name", "%" + pattern + "%")
@@ -422,10 +421,10 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 					.ilike("privateInfos", "%" + pattern + "%")
 					.findList();
 			if (results != null && results.size() != 0)
-				return Optional.of(results);
+				return results;
 		}
 		
-		return Optional.empty();
+		return null;
 	}
 	
 	@Override

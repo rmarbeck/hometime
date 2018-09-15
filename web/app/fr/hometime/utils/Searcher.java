@@ -27,7 +27,7 @@ public class Searcher {
 		CustomerWatch custW =  new CustomerWatch();
 
 		List<? extends Searchable> results = Stream.of(cust, wts, custW)
-				.flatMap(s -> s.findMatching(pattern).orElse(emptyList()).stream())
+				.flatMap(s -> ((Optional<List<? extends Searchable>>) s.findMatchingIfAny(pattern)).orElse(emptyList()).stream())
 				.collect(Collectors.toList());
 		
 		if (!results.isEmpty())
@@ -36,6 +36,7 @@ public class Searcher {
 		return Optional.empty();
 	}
 
+	@SuppressWarnings("unchecked")
 	private static List<? extends Searchable> emptyList() {
 		return new ArrayList();
 	}

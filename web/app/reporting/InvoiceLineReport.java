@@ -1,4 +1,4 @@
-package models;
+package reporting;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,6 +8,10 @@ import java.util.function.Supplier;
 
 import fr.hometime.utils.AccountingDocumentHelper;
 import fr.hometime.utils.DateHelper;
+import models.AccountingDocument;
+import models.AccountingLine;
+import models.Invoice;
+import models.SellingDocument;
 import models.AccountingLine.LineType;
 
 public class InvoiceLineReport {
