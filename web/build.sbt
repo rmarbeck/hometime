@@ -2,7 +2,7 @@ name := "web"
 
 version := "0.9"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava, SbtWeb)
+lazy val root = (project in file(".")).enablePlugins(PlayJava, SbtWeb, PlayEbean)
 
 scalaVersion := "2.11.1"
 
@@ -12,10 +12,10 @@ libraryDependencies ++= Seq(
   "commons-io" % "commons-io" % "2.4",
   "com.mailjet" % "mailjet-client" % "4.1.1",
   javaJdbc,
-  javaEbean,
   filters,
   cache,
-  javaWs
+  javaWs,
+  evolutions
 )
 
 
