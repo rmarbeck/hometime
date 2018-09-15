@@ -4213,5 +4213,10 @@ admin.accounting.footer.company.banking.1=Domiciliation bancaire : Agence Bred R
 admin.accounting.footer.company.banking.2=IBAN : FR76 1010 7001 0500 5290 2067 418
 admin.accounting.footer.company.banking.3=Code BIC : BREDFRPPXXX
 
+admin.quick.sign.in.login.title=Se connecter
+admin.sign.in.login.title=Se connecter
+admin.quick.sign.in.login.action=Se connecter
+admin.sign.in.login.action=Se connecter
+
 
 #end
