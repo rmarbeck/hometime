@@ -10,10 +10,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import com.avaje.ebean.Expr;
-import com.avaje.ebean.Page;
+import com.avaje.ebean.PagedList;
 
 import play.data.validation.Constraints;
-import play.db.ebean.Model;
+import com.avaje.ebean.Model;
 
 /**
  * Links

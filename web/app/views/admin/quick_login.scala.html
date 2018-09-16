@@ -1,7 +1,6 @@
 @(form: Form[Application.QuickLoginForm], origin: String)
 
 @import tags._
-@import helper.twitterBootstrap._
 
 @layouts.admin_login("Quick Signin admin") {
 	@helper.form(action = routes.Application.quickAdminAuthenticate(), args = 'class -> "form-signin") {

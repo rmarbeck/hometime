@@ -6,7 +6,7 @@ import java.util.List;
 
 import static fr.hometime.utils.ReflectionHelper.guessPossibleAccessorMethodsForAField;
 import static fr.hometime.utils.ReflectionHelper.getStringValue;
-import play.db.ebean.Model;
+import com.avaje.ebean.Model;
 
 /**
  * Definition of Model in order to be displayed

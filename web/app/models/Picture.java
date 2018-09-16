@@ -8,9 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import play.db.ebean.Model;
+import com.avaje.ebean.Model;
 
-import com.avaje.ebean.Page;
+import com.avaje.ebean.PagedList;
 
 /**
  * Definition of a Picture

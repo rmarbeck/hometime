@@ -4,7 +4,7 @@ version := "0.9"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava, SbtWeb, PlayEbean)
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.6"
 
 libraryDependencies ++= Seq(
   "com.typesafe.play.plugins" %% "play-plugins-mailer" % "2.3.1",
@@ -29,4 +29,4 @@ LessKeys.compress in Assets := true
 
 WebKeys.webTarget := target.value / "scala-web"
 
-artifactPath in PlayKeys.playPackageAssets := WebKeys.webTarget.value / (artifactPath in PlayKeys.playPackageAssets).value.getName
+

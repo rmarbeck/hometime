@@ -15,11 +15,11 @@ import javax.persistence.OneToOne;
 
 import play.Logger;
 import play.data.validation.Constraints;
-import play.db.ebean.Model;
+import com.avaje.ebean.Model;
 import play.i18n.Messages;
 
 import com.avaje.ebean.Expr;
-import com.avaje.ebean.Page;
+import com.avaje.ebean.PagedList;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import controllers.CrudReady;

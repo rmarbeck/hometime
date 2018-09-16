@@ -9,11 +9,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.avaje.ebean.Expr;
-import com.avaje.ebean.Page;
+import com.avaje.ebean.PagedList;
 
 import controllers.CrudReady;
 import play.data.validation.Constraints;
-import play.db.ebean.Model;
+import com.avaje.ebean.Model;
 
 /**
  * Definition of an analytic information about an accounting line

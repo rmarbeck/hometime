@@ -10,10 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import play.db.ebean.Model;
+import com.avaje.ebean.Model;
 
 import com.avaje.ebean.Expr;
-import com.avaje.ebean.Page;
+import com.avaje.ebean.PagedList;
 
 import controllers.CrudReady;
 

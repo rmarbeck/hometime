@@ -1,7 +1,6 @@
 @(form: Form[Application.LoginForm], origin: String)
 
 @import tags._
-@import helper.twitterBootstrap._
 
 @layouts.admin_login("Signin admin") {
 	@helper.form(action = routes.Application.authenticate(), args = 'class -> "form-signin") {

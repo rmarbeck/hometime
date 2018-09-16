@@ -2,10 +2,10 @@ package controllers;
 
 import java.lang.reflect.Field;
 
-import com.avaje.ebean.Page;
+import com.avaje.ebean.PagedList;
+import com.avaje.ebean.Model;
 
 import play.data.Form;
-import play.db.ebean.Model;
 
 public interface CrudReady<T, F> {
 	@SuppressWarnings("unchecked")
@@ -28,7 +28,7 @@ public interface CrudReady<T, F> {
 	
 	Model.Finder<String, T> getFinder();
 	
-	Page<T> getPage(int page, int pageSize, String sortBy, String order, String filter);
+	PagedList<T> getPage(int page, int pageSize, String sortBy, String order, String filter);
 	
 	@SuppressWarnings("unchecked")
 	default Form<F> fillForm(Form<F> form, boolean forceFillingFromInstance) {

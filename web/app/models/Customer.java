@@ -16,14 +16,14 @@ import javax.persistence.OneToMany;
 import play.Logger;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
-import play.db.ebean.Model;
-import play.db.ebean.Model.Finder;
+import com.avaje.ebean.Model;
+import com.avaje.ebean.Model.Finder;
 import play.i18n.Messages;
 import play.mvc.Http.Session;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
-import com.avaje.ebean.Page;
+import com.avaje.ebean.PagedListdList;
 
 import controllers.CrudReady;
 import fr.hometime.utils.CustomerWatchHelper;
@@ -272,7 +272,7 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
     	return existingCustomer;
     }
     
-    public static Page<Customer> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Customer> page(int page, int pageSize, String sortBy, String order, String filter) {
     	if (sortBy != null && sortBy.equals("")) {
     		sortBy = "creationDate";
     		order = "desc";
@@ -285,7 +285,7 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 	            .getPage(page);
     }
     
-    public static Page<Customer> pageOfSpecialCustomers(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Customer> pageOfSpecialCustomers(int page, int pageSize, String sortBy, String order, String filter) {
     	if (sortBy != null && sortBy.equals("")) {
     		sortBy = "creationDate";
     		order = "desc";
@@ -295,8 +295,7 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 	        find.fetch("users", "active").where().disjunction().ilike("email", "%" + filter + "%").ilike("name", "%" + filter + "%").ilike("phoneNumber", "%" + filter + "%").ilike("alternativePhoneNumber", "%" + filter + "%").endJunction()
 	        	.eq("users.active", true)
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
     }
     
     
@@ -315,18 +314,17 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
     	return PhoneHelper.toReadableFormat(this.phoneNumber);
     }
     
-    private static Page<Customer> emptyPage() {
-    	return find.where().eq("id", "-1").findPagingList(10).getPage(0);
+    private static PagedList<Customer> emptyPage() {
+    	return find.where().eq("id", "-1").findPagedList(0,10);
     }
     
-    public static Page<Customer> pageForPartner(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    public static PagedList<Customer> pageForPartner(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
     	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
     		ExpressionList<Customer> commonQuery = getCommonQueryForPartner(filter, status, session);
     		
     		return commonQuery
 					.orderBy(sortBy + " " + order)
-					.findPagingList(pageSize)
-        			.getPage(page);
+					.findPagedList(page, pageSize);
     	}
         
     	return emptyPage();
@@ -387,6 +385,7 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 			if (results != null && results.size() != 0)
 				return results;
 		}
+
 		return null;
 	}
 
@@ -417,7 +416,7 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 	}
 
 	@Override
-	public Page<Customer> getPage(int page, int pageSize, String sortBy,
+	public PagedList<Customer> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

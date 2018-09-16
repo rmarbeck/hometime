@@ -6,7 +6,7 @@ import static fr.hometime.utils.ReflectionHelper.getValue;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.avaje.ebean.Page;
+import com.avaje.ebean.PagedList;
 
 /**
  * Definition of Page in order to be displayed
@@ -37,22 +37,22 @@ public class PageDisplay<T> {
 		
 	}
 	
-	private Page<T> page;
+	private PagedList<T> page;
 	private List<TableField> tableFields;
 	public String defaultSortingField;
 	public String filterByLabel;
 	public String labelKey;
 	public String classGenerator;
 	
-	public PageDisplay(Page<T> page) {
+	public PageDisplay(PagedList<T> page) {
 		this(page, "to define");
 	}
 	
-	public PageDisplay(Page<T> page, String filterByLabel) {
+	public PageDisplay(PagedList<T> page, String filterByLabel) {
 		this(page, filterByLabel, "admin");
 	}
 	
-	public PageDisplay(Page<T> page, String filterByLabel, String labelKey) {
+	public PageDisplay(PagedList<T> page, String filterByLabel, String labelKey) {
 		this.page = page;
 		this.filterByLabel = filterByLabel;
 		this.labelKey = labelKey;
@@ -90,7 +90,7 @@ public class PageDisplay<T> {
 		return this.labelKey;
 	}
 	
-	public Page<T> getPage() {
+	public PagedList<T> getPage() {
 		return page;
 	}
 	

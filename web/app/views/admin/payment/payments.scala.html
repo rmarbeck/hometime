@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[models.Payment], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@(currentPage: com.avaje.ebean.PagedList[models.Payment], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
 @import tags._
 
 @defining(new views.PageDisplay(currentPage, "description ou numéro de facture", "admin.payment.page")) { pageDisplay =>

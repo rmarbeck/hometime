@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import play.db.ebean.Model;
+import com.avaje.ebean.Model;
 
 /**
  * Definition of a ContactRequest

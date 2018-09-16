@@ -10,7 +10,7 @@ import java.util.Optional;
 import models.Invoice;
 import models.OrderDocument;
 import models.SellingDocument;
-import play.db.ebean.Model;
+import com.avaje.ebean.Model;
 
 public class UniqueAccountingNumber {
 	private final static String SEPARATOR = "-";

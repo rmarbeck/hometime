@@ -15,7 +15,7 @@ import javax.persistence.Transient;
 
 import fr.hometime.utils.VATHelper;
 import models.AccountingLine.LineType;
-import play.db.ebean.Model;
+import com.avaje.ebean.Model;
 
 /**
  * Definition of an Accounting document
