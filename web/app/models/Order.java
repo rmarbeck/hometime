@@ -184,12 +184,12 @@ public class Order extends Model {
         			.orderBy("creation_date desc").findList();
     }
     
-    public static Page<Order> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Order> page(int page, int pageSize, String sortBy, String order, String filter) {
         return
 	        find.where().or(Expr.ilike("customer.email", "%" + filter + "%"), Expr.ilike("customer.name", "%" + filter + "%"))
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
+	            
     }
     
 	@Override

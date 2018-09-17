@@ -19,12 +19,12 @@ import com.avaje.ebean.PagedList;
 public class Crud<T extends Model & CrudReady<T, F>, F> {
 	private Template1<T,Html> showTemplate;
 	private Template2<Form<F>, Boolean, Html> editTemplate;
-	private Template5<Page<T>, String, String, String, Integer, Html> pageTemplate;
+	private Template5<PagedList<T>, String, String, String, Integer, Html> pageTemplate;
     private final CrudReady<T, F> tInstance;
     private final Form<F> form;
 	private final Logger.ALogger logger;
 
-    public Crud(Template1<T,Html> showTemplate, Template2<Form<F>, Boolean, Html> editTemplate, Template5<Page<T>, String, String, String, Integer, Html> pageTemplate, CrudReady<T, F> tInstance, Form<F> form, Logger.ALogger logger) {
+    public Crud(Template1<T,Html> showTemplate, Template2<Form<F>, Boolean, Html> editTemplate, Template5<PagedList<T>, String, String, String, Integer, Html> pageTemplate, CrudReady<T, F> tInstance, Form<F> form, Logger.ALogger logger) {
     	this.showTemplate = showTemplate;
     	this.editTemplate = editTemplate;
     	this.pageTemplate = pageTemplate;
@@ -34,12 +34,12 @@ public class Crud<T extends Model & CrudReady<T, F>, F> {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	public static <A extends Model & CrudReady<A, B>, B> Crud<A, B> of(A tInstance, Template1<A,Html> showTemplate, Template2<Form<B>, Boolean, Html> editTemplate, Template5<Page<A>, String, String, String, Integer, Html> pageTemplate, Form<B> form) {
+	public static <A extends Model & CrudReady<A, B>, B> Crud<A, B> of(A tInstance, Template1<A,Html> showTemplate, Template2<Form<B>, Boolean, Html> editTemplate, Template5<PagedList<A>, String, String, String, Integer, Html> pageTemplate, Form<B> form) {
     	return new Crud(showTemplate, editTemplate, pageTemplate, tInstance, form, Logger.of(tInstance.getClass()));
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	public static <A extends Model & CrudReady<A, A>> Crud<A, A> of(A tInstance, Template1<A,Html> showTemplate, Template2<Form<A>, Boolean, Html> editTemplate, Template5<Page<A>, String, String, String, Integer, Html> pageTemplate) {
+	public static <A extends Model & CrudReady<A, A>> Crud<A, A> of(A tInstance, Template1<A,Html> showTemplate, Template2<Form<A>, Boolean, Html> editTemplate, Template5<PagedList<A>, String, String, String, Integer, Html> pageTemplate) {
     	return new Crud(showTemplate, editTemplate, pageTemplate, tInstance, Form.form(tInstance.getClass()), Logger.of(tInstance.getClass()));
     }
     

@@ -95,13 +95,13 @@ public class AnalyticCode extends Model implements CrudReady<AnalyticCode, Analy
     	return find.order("description ASC").findList();
     }
 
-    public static Page<AnalyticCode> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<AnalyticCode> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().disjunction().ilike("cast (analyticCode as varchar)", "%" + filter + "%").ilike("lbl", "%" + filter + "%").ilike("description", "%" + filter + "%")
             	.endJunction()
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
 
 
@@ -112,7 +112,7 @@ public class AnalyticCode extends Model implements CrudReady<AnalyticCode, Analy
 
 
 	@Override
-	public Page<AnalyticCode> getPage(int page, int pageSize, String sortBy, String order, String filter) {
+	public PagedList<AnalyticCode> getPage(int page, int pageSize, String sortBy, String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}
 	

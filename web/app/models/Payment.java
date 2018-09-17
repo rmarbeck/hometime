@@ -124,7 +124,7 @@ public class Payment extends Model implements CrudReady<Payment, Payment> {
         return find.where().orderBy("inBankDate "+orderDirection).findList();
     }
     
-    public static Page<Payment> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Payment> page(int page, int pageSize, String sortBy, String order, String filter) {
     	if (sortBy == null || sortBy.equals("")) {
     		sortBy = "paymentDate";
     		order = "DESC";
@@ -132,8 +132,8 @@ public class Payment extends Model implements CrudReady<Payment, Payment> {
         return 
             find.where().or(Expr.ilike("description", "%" + filter + "%"), Expr.ilike("invoice.uniqueAccountingNumber", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
 
     
@@ -156,7 +156,7 @@ public class Payment extends Model implements CrudReady<Payment, Payment> {
 	}
 
 	@Override
-	public Page<Payment> getPage(int page, int pageSize, String sortBy,
+	public PagedList<Payment> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

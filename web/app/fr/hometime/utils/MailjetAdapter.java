@@ -14,7 +14,7 @@ import play.Logger;
 import play.libs.F.Promise;
 import play.libs.ws.WS;
 import play.libs.ws.WSClient;
-import play.libs.ws.WSRequestHolder;
+import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
 import fr.hometime.utils.mailjet.Campaign;
 
@@ -204,7 +204,7 @@ public class MailjetAdapter {
 		return doGetCallWithJsonAsOutput(customURL(method), queryString);
 	}
 	
-	private static Promise<WSResponse> doGetCallWithJsonAsOutput(WSRequestHolder holder, String queryString) throws Exception {
+	private static Promise<WSResponse> doGetCallWithJsonAsOutput(WSRequest holder, String queryString) throws Exception {
 		prepareCallWithJsonAsOutput();
 		Logger.info("about to call webservices ["+holder.getUrl()+"] through a GET call");
 		Promise<WSResponse> response = holder.setQueryString(queryString).get().map(getResponse -> {
@@ -221,7 +221,7 @@ public class MailjetAdapter {
 		return doPostCallWithJsonAsOutput(buildUrl(method), body);
 	}
 	
-	private static Promise<WSResponse> doPostCallWithJsonAsOutput(WSRequestHolder holder, String body) throws Exception {
+	private static Promise<WSResponse> doPostCallWithJsonAsOutput(WSRequest holder, String body) throws Exception {
 		prepareCallWithJsonAsOutput();
 		Logger.info("about to call webservices ["+holder.getUrl()+"] through a POST call");
 		Promise<WSResponse> response = holder.setContentType("application/x-www-form-urlencoded").post(body).map(getResponse -> {
@@ -285,11 +285,11 @@ public class MailjetAdapter {
 		throw new Exception(message);
 	}
 	
-	private static WSRequestHolder buildUrl(String method) {
+	private static WSRequest buildUrl(String method) {
 		return WS.url(MAILJET_API_PROTOCOL+"://"+MAILJET_API_HOST+":"+MAILJET_API_PORT+"/"+MAILJET_API_VERSION+"/"+method).setAuth(apiKey, apiSecretKey).setQueryParameter(MAILJET_API_OUTPUT_PARAM, currentOutput);
 	}
 	
-	private static WSRequestHolder customURL(String method) {
+	private static WSRequest customURL(String method) {
 		if (customClient != null) {
 			AsyncHttpClient client = (AsyncHttpClient) customClient.getUnderlying();
 			client.close();

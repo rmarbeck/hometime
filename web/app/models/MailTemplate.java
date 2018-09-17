@@ -70,7 +70,7 @@ public class MailTemplate extends Model implements CrudReady<MailTemplate, MailT
         return find.where().eq("type", type).findList();
     }
     
-    public static Page<MailTemplate> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<MailTemplate> page(int page, int pageSize, String sortBy, String order, String filter) {
     	if (sortBy == null || sortBy.equals("")) {
     		sortBy = "title";
     		order = "ASC";
@@ -79,8 +79,8 @@ public class MailTemplate extends Model implements CrudReady<MailTemplate, MailT
             find.fetch("type").where().disjunction().add(Expr.ilike("title", "%" + filter + "%"))
             										 .add(Expr.contains("body", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
 	public static MailTemplate duplicate(Long id) {
@@ -105,7 +105,7 @@ public class MailTemplate extends Model implements CrudReady<MailTemplate, MailT
 	}
 
 	@Override
-	public Page<MailTemplate> getPage(int page, int pageSize, String sortBy,
+	public PagedList<MailTemplate> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

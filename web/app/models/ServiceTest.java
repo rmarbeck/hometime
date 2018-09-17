@@ -262,12 +262,12 @@ public class ServiceTest extends Model {
         return find.byId(id.toString());
     }
     
-    public static Page<ServiceTest> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<ServiceTest> page(int page, int pageSize, String sortBy, String order, String filter) {
         return
 	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("nameOfCustomer", "%" + filter + "%"))
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
+	            
     }
     
     public String toString() {

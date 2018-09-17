@@ -91,12 +91,12 @@ public class UsefullLink extends Model {
         		.orderBy("creation_date DESC").findList();
     }
     
-    public static Page<UsefullLink> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<UsefullLink> page(int page, int pageSize, String sortBy, String order, String filter) {
         return
 	        find.where().ilike("name", "%" + filter + "%")
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
+	            
     }
     
 }

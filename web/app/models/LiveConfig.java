@@ -137,13 +137,13 @@ public class LiveConfig extends Model {
      * @param order Sort order (either or asc or desc)
      * @param filter Filter applied on the name column
      */
-    public static Page<LiveConfig> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<LiveConfig> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where()
                 .ilike("key", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
 
 

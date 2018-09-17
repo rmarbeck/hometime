@@ -121,12 +121,12 @@ public class Watch extends Model {
         return find.byId(id.toString());
     }
 
-    public static Page<Watch> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Watch> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().or(Expr.ilike("full_name", "%" + filter + "%"), Expr.ilike("brand", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
 	@Override

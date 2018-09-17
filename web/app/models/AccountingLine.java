@@ -156,12 +156,12 @@ public class AccountingLine extends Model {
         			.orderBy("next_partial_service desc").findList();
     }
 
-    public static Page<AccountingLine> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<AccountingLine> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
 }
 

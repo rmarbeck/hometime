@@ -6,7 +6,7 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import play.libs.Json;
-import play.libs.ws.WSRequestHolder;
+import play.libs.ws.WSRequest;
 
 public class Campaign {
 	private final String EDITION_TYPE_FULL = "full";
@@ -136,7 +136,7 @@ public class Campaign {
 		this.editionType = EDITION_TYPE_ULIGHT;
 	}
 	
-	public void appendQueryParameters(WSRequestHolder request) {
+	public void appendQueryParameters(WSRequest request) {
 		Map<String, String> params = getParamsAsAMap();
 		
 		for (String key : params.keySet()) {

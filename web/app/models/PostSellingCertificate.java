@@ -103,12 +103,12 @@ public class PostSellingCertificate extends Model implements CrudReady<PostSelli
         			.orderBy("creationDate desc").findList();
     }
 
-    public static Page<PostSellingCertificate> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<PostSellingCertificate> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.fetch("watch").where().or(Expr.ilike("owner.name", "%" + filter + "%"), Expr.ilike("watch.brand.display_name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
 	@Override
@@ -130,7 +130,7 @@ public class PostSellingCertificate extends Model implements CrudReady<PostSelli
 	}
 
 	@Override
-	public Page<PostSellingCertificate> getPage(int page, int pageSize, String sortBy,
+	public PagedList<PostSellingCertificate> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

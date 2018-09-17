@@ -65,12 +65,12 @@ public class ExternalDocument extends Model implements CrudReady<ExternalDocumen
         return find.orderBy("creationDate DESC").findList();
     }
     
-    public static Page<ExternalDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<ExternalDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().or(Expr.ilike("description", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
 
 	@Override
@@ -87,7 +87,7 @@ public class ExternalDocument extends Model implements CrudReady<ExternalDocumen
     }
 
 	@Override
-	public Page<ExternalDocument> getPage(int page, int pageSize,
+	public PagedList<ExternalDocument> getPage(int page, int pageSize,
 			String sortBy, String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

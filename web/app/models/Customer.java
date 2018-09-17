@@ -23,7 +23,7 @@ import play.mvc.Http.Session;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
-import com.avaje.ebean.PagedListdList;
+import com.avaje.ebean.PagedList;
 
 import controllers.CrudReady;
 import fr.hometime.utils.CustomerWatchHelper;
@@ -281,8 +281,8 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
         return
 	        find.where().disjunction().ilike("email", "%" + filter + "%").ilike("name", "%" + filter + "%").ilike("phoneNumber", "%" + filter + "%").ilike("alternativePhoneNumber", "%" + filter + "%").endJunction()
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
+	            
     }
     
     public static PagedList<Customer> pageOfSpecialCustomers(int page, int pageSize, String sortBy, String order, String filter) {

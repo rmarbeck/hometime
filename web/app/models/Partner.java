@@ -119,12 +119,12 @@ public class Partner extends Model implements CrudReady<Partner, Partner> {
     	return emails;
     }
     
-    public static Page<Partner> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Partner> page(int page, int pageSize, String sortBy, String order, String filter) {
         return
 	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
+	            
     }
 
 	@Override
@@ -158,7 +158,7 @@ public class Partner extends Model implements CrudReady<Partner, Partner> {
 	}
 
 	@Override
-	public Page<Partner> getPage(int page, int pageSize, String sortBy,
+	public PagedList<Partner> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

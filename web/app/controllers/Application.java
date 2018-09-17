@@ -721,7 +721,7 @@ public class Application extends Controller {
     
     public static Result autoHead(String originalPath) throws IllegalAccessException {
     	Logger.debug("In autoHead with {}", originalPath);
-        WSRequestHolder forwardedRequest = WS.url("http://" + request().host() + request().path());
+        WSRequest forwardedRequest = WS.url("http://" + request().host() + request().path());
         // this header will allow you to make additional choice i.e. avoid tracking the request or something else
         // see condition in index() action
         forwardedRequest.setHeader("X_FORWARD_FROM_HEAD", "true");

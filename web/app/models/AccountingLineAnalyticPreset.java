@@ -104,12 +104,12 @@ public class AccountingLineAnalyticPreset extends Model implements CrudReady<Acc
     	return find.order("description ASC").findList();
     }
 
-    public static Page<AccountingLineAnalyticPreset> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<AccountingLineAnalyticPreset> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().or(Expr.ilike("cast (metaAnalyticCode as varchar)", "%" + filter + "%"), Expr.ilike("description", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
 	@Override
@@ -118,7 +118,7 @@ public class AccountingLineAnalyticPreset extends Model implements CrudReady<Acc
 	}
 
 	@Override
-	public Page<AccountingLineAnalyticPreset> getPage(int page, int pageSize, String sortBy, String order,
+	public PagedList<AccountingLineAnalyticPreset> getPage(int page, int pageSize, String sortBy, String order,
 			String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

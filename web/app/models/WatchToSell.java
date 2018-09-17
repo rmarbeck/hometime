@@ -282,7 +282,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     	return find.where().eq("serial", serial).findUnique();
     }
 
-    public static Page<WatchToSell> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<WatchToSell> page(int page, int pageSize, String sortBy, String order, String filter) {
     	if (sortBy == null || sortBy.equals("")) {
     		sortBy = "brand.display_name";
     		order = "ASC";
@@ -293,11 +293,11 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
             										 .add(Expr.ilike("serial", "%" + filter + "%"))
             										 .add(Expr.ilike("brand.display_name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
-    public static Page<WatchToSell> page(int page, int pageSize, String sortBy, String order, String filter, String status) {
+    public static PagedList<WatchToSell> page(int page, int pageSize, String sortBy, String order, String filter, String status) {
     	if (status == null || "".equals(status))
     		return page(page, pageSize, sortBy, order, filter);
         
@@ -311,8 +311,8 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
             				)
             		, Expr.eq("customer_watch_status", status))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
 	@Override
@@ -339,7 +339,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	}
 
 	@Override
-	public Page<WatchToSell> getPage(int page, int pageSize, String sortBy,
+	public PagedList<WatchToSell> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

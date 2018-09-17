@@ -96,12 +96,12 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
         return find.byId(id.toString());
     }
     
-    public static Page<SparePart> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<SparePart> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().ilike("description", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
 	@Override
 	public void save() {
@@ -122,16 +122,16 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
 	}
 
 	@Override
-	public Page<SparePart> getPage(int page, int pageSize, String sortBy, String order, String filter) {
+	public PagedList<SparePart> getPage(int page, int pageSize, String sortBy, String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}
 	
-	public static Page<SparePart> pageOfOpenSpareParts(int page, int pageSize, String sortBy, String order, String filter) {
+	public static PagedList<SparePart> pageOfOpenSpareParts(int page, int pageSize, String sortBy, String order, String filter) {
         return 
                 find.where().and(Expr.ilike("description", "%" + filter + "%"), Expr.eq("closed", false))
                     .orderBy(sortBy + " " + order)
-                    .findPagingList(pageSize)
-                    .getPage(page);
+                    .findPagedList(page, pageSize);
+                    
 	}
 	
 	

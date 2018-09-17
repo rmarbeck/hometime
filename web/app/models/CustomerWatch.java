@@ -542,75 +542,75 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     	return find.where().eq("serial", serial).findUnique();
     }
 
-    public static Page<CustomerWatch> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<CustomerWatch> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
-    public static Page<CustomerWatch> page(int page, int pageSize, String sortBy, String order, String filter, String status) {
+    public static PagedList<CustomerWatch> page(int page, int pageSize, String sortBy, String order, String filter, String status) {
     	if (status == null || "".equals(status))
     		return page(page, pageSize, sortBy, order, filter);
         
     	return 
             find.where().and(Expr.or(Expr.ilike("model", "%" + filter + "%"), Expr.ilike("brand", "%" + filter + "%")), Expr.eq("customer_watch_status", status))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
-    public static Page<CustomerWatch> pageForPartner(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    public static PagedList<CustomerWatch> pageForPartner(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
     	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
     		
     		return commonQuery.eq("status", "STORED_BY_A_REGISTERED_PARTNER").eq("serviceNeeded", true).eq("servicePriceAccepted", true)
 					.orderBy(sortBy + " " + order)
-					.findPagingList(pageSize)
-        			.getPage(page);
+					.findPagedList(page, pageSize);
+        			
     	}
         
     	return emptyPage();
     }
     
-    public static Page<CustomerWatch> pageForPartnerWaitingAcceptation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    public static PagedList<CustomerWatch> pageForPartnerWaitingAcceptation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
     	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
 
     		return commonQuery
     				.or(Expr.eq("status", "STORED_BY_WATCH_NEXT"), Expr.eq("status", "STORED_BY_WATCH_NEXT_OUTSIDE")).eq("serviceNeeded", true)
 					.orderBy(sortBy + " " + order)
-					.findPagingList(pageSize)
-        			.getPage(page);
+					.findPagedList(page, pageSize);
+        			
     	}
         
     	return emptyPage();
     }
     
-    public static Page<CustomerWatch> pageForPartnerWaitingQuotation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    public static PagedList<CustomerWatch> pageForPartnerWaitingQuotation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
     	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
     		
     		return commonQuery
     				.eq("status", "STORED_BY_A_REGISTERED_PARTNER").eq("servicePriceAccepted", false)
 					.orderBy(sortBy + " " + order)
-					.findPagingList(pageSize)
-        			.getPage(page);
+					.findPagedList(page, pageSize);
+        			
     	}
         
     	return emptyPage();
     }
     
-    public static Page<CustomerWatch> pageForPartnerWorkInProgress(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+    public static PagedList<CustomerWatch> pageForPartnerWorkInProgress(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
     	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {
     		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForPartner(filter, status, session);
     		
     		return commonQuery
     				.eq("status", "STORED_BY_A_REGISTERED_PARTNER").eq("servicePriceAccepted", true)
 					.orderBy(sortBy + " " + order)
-					.findPagingList(pageSize)
-        			.getPage(page);
+					.findPagedList(page, pageSize);
+        			
     	}
         
     	return emptyPage();
@@ -628,8 +628,8 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     	return query;
     }
     
-    private static Page<CustomerWatch> emptyPage() {
-    	return find.where().eq("id", "-1").findPagingList(10).getPage(0);
+    private static PagedList<CustomerWatch> emptyPage() {
+    	return find.where().eq("id", "-1").findPagedList(0,10);
     }
     
 	@Override
@@ -775,7 +775,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	}
 
 	@Override
-	public Page<CustomerWatch> getPage(int page, int pageSize, String sortBy, String order, String filter) {
+	public PagedList<CustomerWatch> getPage(int page, int pageSize, String sortBy, String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}
 	

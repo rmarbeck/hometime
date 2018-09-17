@@ -85,12 +85,12 @@ public class OrderDocument extends Model {
         			.orderBy("unique_accounting_number ASC").findList();
     }
 
-    public static Page<OrderDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<OrderDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
         	find.where().or(Expr.ilike("uniqueAccountingNumber", "%" + filter + "%"), Expr.ilike("document.customer.name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
     public void  addLine(LineType type, String description, Long unit, Float unitPrice) {

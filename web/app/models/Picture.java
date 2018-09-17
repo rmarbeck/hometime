@@ -56,13 +56,13 @@ public class Picture extends Model {
         return find.byId(id.toString());
     }
 
-    public static Page<Picture> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Picture> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where()
                 .ilike("title", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
 }
 

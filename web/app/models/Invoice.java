@@ -157,12 +157,12 @@ public class Invoice extends Model {
     			.orderBy("unique_accounting_number DESC").findList().get(0);
     }
 
-    public static Page<Invoice> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Invoice> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
         	find.where().or(Expr.ilike("uniqueAccountingNumber", "%" + filter + "%"), Expr.ilike("document.customer.name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
     public void  addLine(LineType type, String description, Long unit, Float unitPrice) {

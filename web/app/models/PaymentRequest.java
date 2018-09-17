@@ -247,7 +247,7 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
     	return DateHelper.toDate(DateHelper.endOfTheDay(validUntilDate));
     }
     
-    public static Page<PaymentRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<PaymentRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
     	if (sortBy == null || sortBy.equals("")) {
     		sortBy = "creation_date";
     		order = "DESC";
@@ -255,8 +255,8 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
         return 
             find.where().or(Expr.ilike("description", "%" + filter + "%"), Expr.ilike("access_key", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
 
     
@@ -279,7 +279,7 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
 	}
 
 	@Override
-	public Page<PaymentRequest> getPage(int page, int pageSize, String sortBy,
+	public PagedList<PaymentRequest> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

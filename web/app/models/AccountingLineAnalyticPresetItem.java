@@ -75,12 +75,12 @@ public class AccountingLineAnalyticPresetItem extends Model implements CrudReady
         return find.byId(id.toString());
     }
 
-    public static Page<AccountingLineAnalyticPresetItem> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<AccountingLineAnalyticPresetItem> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where().ilike("cast (analyticCode as varchar)", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
 
 	@Override
@@ -89,7 +89,7 @@ public class AccountingLineAnalyticPresetItem extends Model implements CrudReady
 	}
 
 	@Override
-	public Page<AccountingLineAnalyticPresetItem> getPage(int page, int pageSize, String sortBy, String order,
+	public PagedList<AccountingLineAnalyticPresetItem> getPage(int page, int pageSize, String sortBy, String order,
 			String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

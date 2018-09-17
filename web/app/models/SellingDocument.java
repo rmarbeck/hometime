@@ -69,12 +69,12 @@ public class SellingDocument extends Model {
     	return find.where().eq("document.customer.id", customer.id).findList();
     }
 
-    public static Page<SellingDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<SellingDocument> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
         	find.where().or(Expr.ilike("uniqueAccountingNumber", "%" + filter + "%"), Expr.ilike("document.customer.name", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
+                .findPagedList(page, pageSize);
+                
     }
     
     public void  addLine(LineType type, String description, Long unit, Float unitPrice, int order) {

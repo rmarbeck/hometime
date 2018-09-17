@@ -104,12 +104,12 @@ public class Feedback extends Model {
         		.orderBy("display_date DESC").findList();
     }
 
-    public static Page<Feedback> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Feedback> page(int page, int pageSize, String sortBy, String order, String filter) {
         return
 	        find.where().ilike("author", "%" + filter + "%")
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
+	            
     }
     
 }

@@ -198,12 +198,12 @@ public class User extends Model implements CrudReady<User, User> {
     	return this.email;
     }
     
-    public static Page<User> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<User> page(int page, int pageSize, String sortBy, String order, String filter) {
         return
 	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("name", "%" + filter + "%"))
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
+	            
     }
     
 
@@ -213,7 +213,7 @@ public class User extends Model implements CrudReady<User, User> {
 	}
 
 	@Override
-	public Page<User> getPage(int page, int pageSize, String sortBy,
+	public PagedList<User> getPage(int page, int pageSize, String sortBy,
 			String order, String filter) {
 		return page(page, pageSize, sortBy, order, filter);
 	}

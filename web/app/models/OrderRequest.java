@@ -153,12 +153,12 @@ public class OrderRequest extends Model {
         return find.byId(id.toString());
     }
     
-    public static Page<OrderRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<OrderRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
         return
 	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("nameOfCustomer", "%" + filter + "%"))
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
+	            
     }
     
     public OrderRequest close() {

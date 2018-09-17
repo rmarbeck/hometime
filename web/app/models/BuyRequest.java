@@ -206,12 +206,12 @@ public class BuyRequest extends Model {
         return find.byId(id.toString());
     }
     
-    public static Page<BuyRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<BuyRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
         return
 	        find.where().or(Expr.ilike("email", "%" + filter + "%"), Expr.ilike("nameOfCustomer", "%" + filter + "%"))
 	            .orderBy(sortBy + " " + order)
-	            .findPagingList(pageSize)
-	            .getPage(page);
+	            .findPagedList(page, pageSize);
+	            
     }
     
     public BuyRequest close() {
