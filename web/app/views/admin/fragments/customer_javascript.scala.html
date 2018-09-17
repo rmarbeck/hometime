@@ -4,7 +4,7 @@
         $('#billingAddress').on('paste', function(event) {
         		if ($('#name:text').val().length == 0) {
         			event.preventDefault();
-        			var pasteData = event.originalEvent.clipboardData.getData('text')
+        			var pasteData = event.originalEvent.clipboardData.getData('text');
         			manageAddressPaste($('#billingAddress'), pasteData);
         		}
         	});
@@ -12,7 +12,7 @@
     
     function manageAddressPaste(textarea, pastedText) {
     	var pastedValue = pastedText;
-    	var lines = pastedText.split('\r\n');
+    	var lines = pastedText.split(/\r?\n/);
     	var civility = lines[0].replace(/^(M\.|Mme|Mme\.|Mr|Mr\.|Dr\.|Dr) .*/g,"$1");
     	manageCivility(civility);
     	var fullname = lines[0].replace(/^(M\.|Mme|Mme\.|Mr|Mr\.|Dr\.|Dr) /g,"");
