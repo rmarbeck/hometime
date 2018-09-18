@@ -59,6 +59,7 @@ public class CustomerWatchHelper {
 	public enum CustomerWatchDetailedStatus {
 	    TO_BE_ACCEPTED ("CUSTOMER_WATCH_STATUS_TO_BE_ACCEPTED"),
 	    TO_QUOTE ("CUSTOMER_WATCH_STATUS_TO_QUOTE"),
+	    QUOTATION_TO_SEND_TO_CUSTOMER ("QUOTATION_TO_SEND_TO_CUSTOMER"),
 	    WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER ("WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER"),
 	    WAITING_FOR_QUOTATION_ACCEPTATION ("CUSTOMER_WATCH_STATUS_WAITING_FOR_QUOTATION_ACCEPTATION"),
 	    WORK_TO_START ("CUSTOMER_WATCH_STATUS_WORK_TO_START"),
@@ -200,7 +201,10 @@ public class CustomerWatchHelper {
     	if (watch.serviceNeeded && watch.finalCustomerServicePrice == 0)
     		return CustomerWatchDetailedStatus.TO_QUOTE;
 
-    	if (watch.serviceNeeded && !watch.finalCustomerServicePriceAccepted)
+    	if (watch.serviceNeeded && !watch.finalCustomerQuotationSent)
+    		return CustomerWatchDetailedStatus.QUOTATION_TO_SEND_TO_CUSTOMER;
+    	
+    	if (watch.serviceNeeded && watch.finalCustomerQuotationSent && !watch.finalCustomerServicePriceAccepted)
     		return CustomerWatchDetailedStatus.WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER;
 
     	if (watch.serviceNeeded && !watch.servicePriceAccepted)
@@ -291,23 +295,24 @@ public class CustomerWatchHelper {
     	}
    }
     
-    public static Long getStatusAsLong(CustomerWatch watch) {
+    public static Float getStatusAsFloat(CustomerWatch watch) {
     	switch(evaluateStatus(watch)) {
-    		case TO_BE_ACCEPTED: return 1L;
-    		case TO_QUOTE: return 2L;
-    		case WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER: return 3L;
-    		case WAITING_FOR_QUOTATION_ACCEPTATION: return 4L;
-    		case WORK_TO_START: return 5L;
-    		case WORKING: return 6L;
-    		case TESTING: return 7L;
-    		case FINISHED_STORED_BY_US_TO_DELIVER: return 8L;
-    		case FINISHED_TO_BILL_BEFORE_DELIVERY: return 9L;
-    		case FINISHED_WAITING_PAYMENT_BEFORE_DELIVERY: return 10L;
-    		case FINISHED_STORED_BY_US_PAID: return 11L;
-    		case FINISHED_TO_BILL_AFTER_DELIVERY: return 12L;
-    		case FINISHED_WAITING_PAYMENT_AFTER_DELIVERY: return 13L;
-    		case CLOSE: return 14L;
-    		default: return 0L;
+    		case TO_BE_ACCEPTED: return 1F;
+    		case TO_QUOTE: return 2F;
+    		case QUOTATION_TO_SEND_TO_CUSTOMER: return 2.5F;
+    		case WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER: return 3F;
+    		case WAITING_FOR_QUOTATION_ACCEPTATION: return 4F;
+    		case WORK_TO_START: return 5F;
+    		case WORKING: return 6F;
+    		case TESTING: return 7F;
+    		case FINISHED_STORED_BY_US_TO_DELIVER: return 8F;
+    		case FINISHED_TO_BILL_BEFORE_DELIVERY: return 9F;
+    		case FINISHED_WAITING_PAYMENT_BEFORE_DELIVERY: return 10F;
+    		case FINISHED_STORED_BY_US_PAID: return 11F;
+    		case FINISHED_TO_BILL_AFTER_DELIVERY: return 12F;
+    		case FINISHED_WAITING_PAYMENT_AFTER_DELIVERY: return 13F;
+    		case CLOSE: return 14F;
+    		default: return 0F;
     	}
     }
     
@@ -393,6 +398,29 @@ public class CustomerWatchHelper {
     	if (users != null && !users.isEmpty())
     		return Optional.of(users);
     	return Optional.empty();
+    }
+    
+    public static Optional<CustomerWatch> tryTofindByPattern(String supposedId) {
+    	if (supposedId != null) {
+    		try {
+    			 Long foundId = Long.decode(supposedId);
+    			 if (foundId != null) {
+    				 CustomerWatch foundWatch = CustomerWatch.findById(Long.decode(supposedId));
+    				 if (foundWatch != null)
+    					 return Optional.of(foundWatch);
+    			 }
+    		} catch (NumberFormatException nfe) {
+    			
+    		}
+    	}
+    	return Optional.empty();
+    }
+    
+    public static CustomerWatch findByPattern(String supposedId) {
+    	Optional<CustomerWatch> foundWatch = tryTofindByPattern(supposedId);
+    	if (foundWatch.isPresent())
+    		return foundWatch.get();
+    	return null;
     }
     
 }

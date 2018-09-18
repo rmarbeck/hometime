@@ -301,19 +301,19 @@ public class Admin extends Controller {
     }
 	
 	private static Predicate<CustomerWatch> workToBeDone() {
-		return watch -> CustomerWatchHelper.getStatusAsLong(watch) == 5L || CustomerWatchHelper.getStatusAsLong(watch) == 6L;
+		return watch -> CustomerWatchHelper.getStatusAsFloat(watch) == 5L || CustomerWatchHelper.getStatusAsFloat(watch) == 6L;
 	}
 	
 	private static Predicate<CustomerWatch> testing() {
-		return watch -> CustomerWatchHelper.getStatusAsLong(watch) == 7L;
+		return watch -> CustomerWatchHelper.getStatusAsFloat(watch) == 7L;
 	}
 	
 	private static Predicate<CustomerWatch> servicing() {
-		return watch -> (CustomerWatchHelper.getStatusAsLong(watch) > 4L && CustomerWatchHelper.getStatusAsLong(watch) < 10L);
+		return watch -> (CustomerWatchHelper.getStatusAsFloat(watch) > 4L && CustomerWatchHelper.getStatusAsFloat(watch) < 10L);
 	}
 	
 	private static Predicate<CustomerWatch> waitingFeedback() {
-		return watch -> CustomerWatchHelper.getStatusAsLong(watch) == 3L;
+		return watch -> CustomerWatchHelper.getStatusAsFloat(watch) == 3L;
 	}
 	
 	@Security.Authenticated(SecuredAdminOnly.class)
@@ -348,6 +348,9 @@ public class Admin extends Controller {
 	public static Result search() {
 		DynamicForm requestData = DynamicForm.form().bindFromRequest();
 	    String pattern = requestData.get("pattern");
+	    CustomerWatch foundWatch = CustomerWatchHelper.findByPattern(pattern);
+	    if (foundWatch != null)
+	    	return controllers.CustomerWatch.display(foundWatch.id);
         return ok(search_results.render(pattern, Searcher.search(pattern)));
     }
 	

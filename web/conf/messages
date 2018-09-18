@@ -35,6 +35,7 @@ global.navbar.link.text.about=Qui&nbsp;sommes&nbsp;nous&nbsp;?
 global.navbar.link.text.water.content=Ma montre a pris l''eau
 global.navbar.link.text.broking=Trouver et acheter une montre
 global.navbar.link.text.sell=Vendre sa montre
+global.navbar.link.text.appointment=Venir nous voir
 #   global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Demander un devis
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
@@ -667,6 +668,62 @@ quartz.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrer
 
 quartz.baume.brand.name=Baume et Mercier
 quartz.baume.brand.models=clifton, capeland, classima, hampton
+
+quartz.alpina.brand.name=Alpina
+quartz.alpina.brand.models=montres Alpina
+
+quartz.brm.brand.name=B.R.M.
+quartz.brm.brand.models=v6, v8, v12
+
+quartz.bulgari.brand.name=Bulgari
+quartz.bulgari.brand.models=Diagono, Octo
+
+quartz.cartier.brand.name=Cartier
+quartz.cartier.brand.models=Must, Tank, Pasha
+
+quartz.certina.brand.name=Certina
+quartz.certina.brand.models=montres Certina
+
+quartz.festina.brand.name=Festina
+quartz.festina.brand.models=montres Festina
+
+quartz.fortis.brand.name=Fortis
+quartz.fortis.brand.models=montres Fortis
+
+quartz.girardperregaux.brand.name=Girard Perregaux
+quartz.girardperregaux.brand.models=montres Girard Perregaux
+
+quartz.icewatch.brand.name=Ice Watch
+quartz.icewatch.brand.models=montres Ice Watch
+
+quartz.michelherbelin.brand.name=Michel Herbelin
+quartz.michelherbelin.brand.models=montres Michel Herbelin
+
+quartz.montblanc.brand.name=Montblanc
+quartz.montblanc.brand.models=montres Montblanc
+
+quartz.nomos.brand.name=Nomos
+quartz.nomos.brand.models=montres Nomos
+
+quartz.patek.brand.name=Patek Philippe
+quartz.patek.brand.models=nautilus, caltrava, aquanaut
+
+quartz.swatch.brand.name=Swatch
+quartz.swatch.brand.models=montres Swatch
+
+quartz.seiko.brand.name=Seiko
+quartz.seiko.brand.models=montres Seiko
+
+quartz.ulyssenardin.brand.name=Ulysse Nardin
+quartz.ulyssenardin.brand.models=montres Ulysse Nardin
+
+quartz.vacheron.brand.name=Vacheron Constantin
+quartz.vacheron.brand.models=montres Vacheron Constantin
+
+quartz.victorinox.brand.name=Victorinox
+quartz.victorinox.brand.models=montres Victorinox
+
+
 
 quartz.br.brand.name=Bell & Ross
 quartz.br.brand.models=BR 01, BR 03, BR S, Automatic, Chronograph, WW1, WW2, Vintage, Aviation
@@ -1988,6 +2045,8 @@ admin.customer.watch.form.label.final.customer.service.price=Prix client  (en �
 admin.customer.watch.form.label.final.customer.service.price.accepted=Accepté
 admin.customer.watch.form.label.final.customer.service.paid=Payé
 
+admin.customer.watch.form.label.final.customer.quotation.sent=Devis envoyé
+
 admin.customer.watch.form.label.final.customer.from.infos=Infos du client
 admin.customer.watch.form.label.final.customer.to.infos=Infos vers le client
 admin.customer.watch.form.label.back.to.customer.date=Date de retour au client
@@ -2071,6 +2130,8 @@ admin.customer.watch.action.stored.by.us.outside=&nbsp;En transit
 admin.customer.watch.action.stored.by.us.secured.1=&nbsp;Sécurisé (103)
 admin.customer.watch.action.stored.by.us.secured.2=&nbsp;Sécurisé (9)
 admin.customer.watch.action.stored.by.us.secured.3=&nbsp;Sécurisé (réservé)
+
+admin.customer.watch.action.quotation.sent=&nbsp;Marquer devis envoyé
 
 
 admin.customer.watch.action.new.invoice.quick.service=Créer une facture
@@ -3673,6 +3734,7 @@ admin.simplified.customer.title=Fiche client
 admin.simplified.customer.watch.no.watch.to.display=Aucune montre à afficher
 
 admin.simplified.customer.watch.value.status.to.quote=Devis à faire
+admin.simplified.customer.watch.value.status.quotation.to.send=Devis à envoyer
 admin.simplified.customer.watch.value.status.to.be.accepted=Montre à collecter
 admin.simplified.customer.watch.value.status.finished.to.bill=A payer
 admin.simplified.customer.watch.value.status.finished.stored.by.us=Terminé (à rendre)
@@ -4013,6 +4075,8 @@ admin.index.watches.action.mark.back.to.customer.and.canceled=Marqué "rendu au 
 customer.watch.status.to.quote=Devis à faire
 waiting.for.quotation.acceptation.from.final.customer=En attente accord client
 customer.watch.status.waiting.for.quotation.acceptation=Devis partenaire non accepté
+customer.watch.status.quotation.to.send=Devis à envoyer
+quotation.to.send.to.customer=Devis à envoyer
 customer.watch.status.work.to.start=Entretien à commencer
 customer.watch.status.working=Entretien en cours
 customer.watch.status.testing=Test en cours

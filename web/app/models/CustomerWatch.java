@@ -206,6 +206,8 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public Long finalCustomerServicePrice = 0L;
 	
+	public boolean finalCustomerQuotationSent = false;
+	
 	public boolean finalCustomerServicePriceAccepted = false;
 	
 	@Column(name="final_customer_acceptance_date")
