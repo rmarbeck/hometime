@@ -668,6 +668,62 @@ quartz.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrer
 quartz.baume.brand.name=Baume et Mercier
 quartz.baume.brand.models=clifton, capeland, classima, hampton
 
+quartz.alpina.brand.name=Aplina
+quartz.alpina.brand.models=montres Alpina
+
+quartz.brm.brand.name=B.R.M.
+quartz.brm.brand.models=v6, v8, v12
+
+quartz.bulgari.brand.name=Bulgari
+quartz.bulgari.brand.models=Diagono, Octo
+
+quartz.cartier.brand.name=Cartier
+quartz.cartier.brand.models=Must, Tank, Pasha
+
+quartz.certina.brand.name=Certina
+quartz.certina.brand.models=montres Certina
+
+quartz.festina.brand.name=Festina
+quartz.festina.brand.models=montres Festina
+
+quartz.fortis.brand.name=Fortis
+quartz.fortis.brand.models=montres Fortis
+
+quartz.girardperregaux.brand.name=Girard Perregaux
+quartz.girardperregaux.brand.models=montres Girard Perregaux
+
+quartz.icewatch.brand.name=Ice Watch
+quartz.icewatch.brand.models=montres Ice Watch
+
+quartz.michelherbelin.brand.name=Michel Herbelin
+quartz.michelherbelin.brand.models=montres Michel Herbelin
+
+quartz.montblanc.brand.name=Montblanc
+quartz.montblanc.brand.models=montres Montblanc
+
+quartz.nomos.brand.name=Nomos
+quartz.nomos.brand.models=montres Nomos
+
+quartz.patek.brand.name=Patek Philippe
+quartz.patek.brand.models=nautilus, caltrava, aquanaut
+
+quartz.swatch.brand.name=Swatch
+quartz.swatch.brand.models=montres Swatch
+
+quartz.seiko.brand.name=Seiko
+quartz.seiko.brand.models=montres Seiko
+
+quartz.ulyssenardin.brand.name=Ulysse Nardin
+quartz.ulyssenardin.brand.models=montres Ulysse Nardin
+
+quartz.vacheron.brand.name=Vacheron Constantin
+quartz.vacheron.brand.models=montres Vacheron Constantin
+
+quartz.victorinox.brand.name=Victorinox
+quartz.victorinox.brand.models=montres Victorinox
+
+
+
 quartz.br.brand.name=Bell & Ross
 quartz.br.brand.models=BR 01, BR 03, BR S, Automatic, Chronograph, WW1, WW2, Vintage, Aviation
 
