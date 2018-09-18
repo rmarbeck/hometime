@@ -61,7 +61,13 @@
                 }
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                @li_activable(100, index) {<button type="button" onclick="window.location = '@routes.Application.order(null)';return false;" class="visible-lg btn btn-primary navbar-btn">@Html(Messages("global.navbar.link.text.order"))</button><a href="@routes.Application.order(null)" class="hidden-lg">@Html(Messages("global.navbar.link.text.order"))</a>}
+                @li_activable(90, index) {<a href="@routes.Application.appointment()" class="visible-xs"><span class="glyphicon glyphicon-globe"></span>&nbsp;@Html(Messages("global.navbar.link.text.appointment"))</a>}
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                @li_activable(100, index) {<button type="button" onclick="window.location = '@routes.Application.order(null)';return false;" class="visible-lg btn btn-primary navbar-btn">@Html(Messages("global.navbar.link.text.order"))</button><a href="@routes.Application.order(null)" class="hidden-lg"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;@Html(Messages("global.navbar.link.text.order"))</a>}
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                @li_activable(90, index) {<button type="button" onclick="window.location = '@routes.Application.appointment()';return false;" class="visible-lg btn btn-success navbar-btn">@Html(Messages("global.navbar.link.text.appointment"))</button>}
               </ul>
             </div>
           </div>
