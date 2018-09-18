@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.Date;
+import java.util.function.Consumer;
 
 import fr.hometime.utils.CustomerWatchActions;
 import fr.hometime.utils.CustomerWatchHelper;
@@ -108,6 +109,10 @@ public class CustomerWatch extends Controller {
 		return badRequest(emptyNewWatchForm());
 	}
 	
+	public static Result setQuotationSent(Long watchId) {
+		return updateWatch(watchId, (watch) -> {watch.finalCustomerQuotationSent = true;});
+	}
+	
 	public static Result setBackToCustomer(Long watchId) {
 		return updateStatus(watchId, CustomerWatchStatus.BACK_TO_CUSTOMER);
 	}
@@ -125,9 +130,13 @@ public class CustomerWatch extends Controller {
 	}
 	
 	private static Result updateStatus(Long watchId, CustomerWatchStatus newStatus) {
+		return updateWatch(watchId, (watch) -> {watch.status = newStatus;});
+	}
+	
+	private static Result updateWatch(Long watchId, Consumer<models.CustomerWatch> toDo) {
 		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
 		if (existingWatch != null) {
-			existingWatch.status = newStatus;
+			toDo.accept(existingWatch);
 			existingWatch.lastStatusUpdate = new Date();
 			existingWatch.update();
 		}

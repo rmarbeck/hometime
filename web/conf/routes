@@ -185,6 +185,7 @@ GET     /admin/customer-watch/create/from-order/:id 					controllers.CustomerWat
 GET     /admin/customer-watch/create				 					controllers.CustomerWatch.add()
 GET     /admin/customer-watch/edit/:id 									controllers.CustomerWatch.edit(id: Long)
 GET     /admin/customer-watch/duplicate/:id 							controllers.CustomerWatch.duplicate(id: Long)
+GET     /admin/customer-watch/set-quotation-sent/:id 					controllers.CustomerWatch.setQuotationSent(id: Long)
 GET     /admin/customer-watch/set-back-to-customer/:id 					controllers.CustomerWatch.setBackToCustomer(id: Long)
 GET     /admin/customer-watch/set-stored-by-partner/:id 				controllers.CustomerWatch.setStoredByPartner(id: Long)
 GET     /admin/customer-watch/set-stored-by-us/:id 						controllers.CustomerWatch.setStoredByUs(id: Long)

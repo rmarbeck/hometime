@@ -99,6 +99,8 @@
 				
 				<hr />
 				
+				@simple_admin_checkbox(watch("finalCustomerQuotationSent"), "admin.customer.watch.form.VARIABLE.final.customer.quotation.sent")
+				
 				@simple_admin_input(watch("finalCustomerServiceStatus"), "admin.customer.watch.form.VARIABLE.final.customer.service.status", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "1")
 				
 				@simple_admin_input(watch("finalCustomerEmergencyLevel"), "admin.customer.watch.form.VARIABLE.final.customer.emergency.level", 'type -> "number", 'min -> "0", 'step -> "1")
