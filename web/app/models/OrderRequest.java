@@ -138,13 +138,20 @@ public class OrderRequest extends Model {
     }
     
     public static List<OrderRequest> findAllUnReplied() {
-        return find.where()
-        		.and(
-        				Expr.and(
-        						Expr.eq("replied", false),
-        						Expr.eq("waiting_for_customer", false)
-        						)
-        						,Expr.eq("closed", false))
+        return find.where().conjunction().eq("replied", false)
+        								 .eq("waiting_for_customer", false)
+        								 .eq("closed", false)
+        				   .endJunction()
+        		.orderBy("requestDate DESC").findList();
+    }
+    
+    
+    public static List<OrderRequest> findAllUnManaged() {
+        return find.where().conjunction().eq("replied", false)
+										 .eq("waiting_for_customer", false)
+										 .eq("feedback_asked", false)
+										 .eq("closed", false)
+				 		   .endJunction()
         		.orderBy("requestDate DESC").findList();
     }
 
@@ -214,6 +221,14 @@ public class OrderRequest extends Model {
     	content.append("\n");
     	content.append("Additional informations : " + ((this.remark==null)?("none"):(this.remark)));
     	return content.toString();
+    }
+    
+    public static int numberOfFeedbacksWaited() {
+    	return find.where().conjunction().eq("replied", false)
+										 .eq("waiting_for_customer", false)
+										 .eq("feedback_asked", true)
+										 .eq("closed", false)
+		 .endJunction().findRowCount();
     }
 }
 

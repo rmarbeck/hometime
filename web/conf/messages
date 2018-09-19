@@ -2598,6 +2598,8 @@ admin.index.order.requests.head.email=email
 admin.index.order.requests.head.details=Détails
 admin.index.order.requests.head.actions=Actions
 
+admin.index.order.requests.number.waiting=Et {0} marqués en attente de retour client
+
 admin.index.buy.requests.active=Demandes de recherche ouvertes
 admin.index.buy.requests.action.copy.email.address=Copier l''adresse
 admin.index.buy.requests.action.set.replied.title=Marquer comme répondue

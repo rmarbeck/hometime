@@ -129,6 +129,8 @@ POST    /quick-login                   									controllers.Application.quickAdm
 GET     /logout                     									controllers.Application.logout()
 GET     /admin/		                    								controllers.Admin.index()
 
+GET     /admin/requests                    								controllers.Admin.currentOrderRequests()
+
 GET     /admin/stats                    								controllers.Admin.stats()
 
 POST    /admin/search													controllers.Admin.search()

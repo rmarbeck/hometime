@@ -41,6 +41,7 @@ import views.html.admin.buy_request;
 import views.html.admin.buy_requests;
 import views.html.admin.orders;
 import views.html.admin.index;
+import views.html.admin.order_requests_listing;
 import views.html.admin.stats;
 import views.html.admin.test;
 import views.html.admin.cgv;
@@ -273,7 +274,12 @@ public class Admin extends Controller {
 	}
 	@Security.Authenticated(SecuredLoggedOnOnly.class)
 	public static Result index() {
-		return ok(index.render("", null/*Customer.findWithOpenTopic()*/, OrderRequest.findAllUnReplied(), BuyRequest.findAllUnReplied(5), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
+		return ok(index.render("", null/*Customer.findWithOpenTopic()*/, OrderRequest.findAllUnManaged(), BuyRequest.findAllUnReplied(5), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
+    }
+	
+	@Security.Authenticated(SecuredLoggedOnOnly.class)
+	public static Result currentOrderRequests() {
+		return ok(order_requests_listing.render("", OrderRequest.findAllUnReplied()));
     }
 	
 	@Security.Authenticated(SecuredAdminOnly.class)
