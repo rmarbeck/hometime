@@ -59,7 +59,7 @@
 		</table>
     } else {
     	<h3>
-    		@Html(Messages("admin.index.order.requests.active.none"))
+    		@Html(Messages("admin.index.order.requests.active.none")) <a href="@routes.Admin.currentOrderRequests()">@Html(Messages("admin.index.order.requests.number.waiting", OrderRequest.numberOfFeedbacksWaited()))</a>
     	</h3>
     }
     <br />
