@@ -1,15 +1,9 @@
 package controllers;
 
-import java.util.List;
-
 import models.Partner;
-import play.data.Form;
-import play.libs.Json;
 import play.mvc.Controller;
-import play.mvc.Result;
-import play.mvc.Security;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 public class Partners extends Controller {
 	public static Crud<Partner, Partner> crud = Crud.of(
 			Partner.of(),

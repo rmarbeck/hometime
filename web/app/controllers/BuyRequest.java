@@ -1,37 +1,21 @@
 package controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import models.Brand;
+import fr.hometime.utils.MailjetAdapter;
 import models.BuyRequestProposal;
-import models.Order;
-import models.OrderRequest;
-import models.OrderRequest.OrderTypes;
-import models.PresetQuotationForBrand;
-import models.Quotation;
-import models.ServiceTest;
-import models.ServiceTest.TestResult;
-import models.Watch;
 import play.Logger;
 import play.data.Form;
-import play.data.validation.Constraints;
-import play.data.validation.ValidationError;
 import play.i18n.Messages;
 import play.libs.F.Promise;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.With;
-import views.html.admin.buy_request_proposal_form;
-import views.html.admin.buy_request_proposal;
 import views.html.admin.buy_request;
+import views.html.admin.buy_request_proposal;
+import views.html.admin.buy_request_proposal_form;
 import views.html.admin.buy_requests;
 import views.html.mails.notify_buy_request;
-import fr.hometime.utils.MailjetAdapter;
-import fr.hometime.utils.ServiceTestHelper;
 
-@Security.Authenticated(SecuredAdminOrCollaboratorOrPartnerOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.COLLABORATOR, models.User.Role.PARTNER})
 @With(NoCacheAction.class)
 public class BuyRequest extends Controller {
 	

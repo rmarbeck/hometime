@@ -1,13 +1,11 @@
 package controllers;
 
 import models.AccountingLineAnalyticPresetItem;
-import models.CustomerWatch;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 public class AccountingLineAnalyticPresetItems extends Controller {
 	public static Crud<AccountingLineAnalyticPresetItem, AccountingLineAnalyticPresetItem> crud = Crud.of(
 			AccountingLineAnalyticPresetItem.of(),

@@ -9,21 +9,17 @@ import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import models.BuyRequest;
 import models.Customer;
-import models.CustomerWatch;
-import models.OrderRequest;
 import models.CustomerWatch.CustomerWatchStatus;
+import models.OrderRequest;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.With;
-import play.twirl.api.Html;
 import views.html.admin.customer_watch_for_customer;
 import views.html.admin.customer_watch_for_customer_form;
 import views.html.admin.index;
-import views.html.admin.index_customer_content;
 
-@Security.Authenticated(SecuredAdminOrCustomerOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.CUSTOMER})
 @With(NoCacheAction.class)
 public class CustomerAdmin extends Controller {
 	

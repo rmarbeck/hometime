@@ -2,17 +2,15 @@ package controllers;
 
 import controllers.routes;
 import models.OrderRequest;
-import play.Logger;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.With;
 import views.html.admin.customer_form;
 import views.html.admin.customers;
 import views.html.admin.customer;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
 public class Customer extends Controller {
 	

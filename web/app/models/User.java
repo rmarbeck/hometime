@@ -35,7 +35,8 @@ public class User extends Model implements CrudReady<User, User> {
 	    ADMIN ("1"),
 	    CUSTOMER ("2"),
 	    COLLABORATOR ("3"),
-	    PARTNER ("4");
+	    PARTNER ("4"),
+	    MASTER_WATCHMAKER ("5");
 	    
 		private String name = "";
 		    

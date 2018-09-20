@@ -1,21 +1,11 @@
 package controllers;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.List;
-
-import fr.hometime.utils.DateHelper;
 import models.CustomerWatch;
-import models.Invoice;
-import models.Payment;
 import play.data.Form;
-import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 
-@Security.Authenticated(SecuredAdminOrCollaboratorOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.COLLABORATOR})
 public class SimplifiedCustomerWatches extends Controller {
 	public static Crud<CustomerWatch, CustomerWatch> crud = Crud.of(
 			CustomerWatch.of(),

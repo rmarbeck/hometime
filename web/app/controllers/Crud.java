@@ -4,17 +4,17 @@ import static play.mvc.Results.badRequest;
 import static play.mvc.Results.notFound;
 import static play.mvc.Results.ok;
 import static play.mvc.Results.redirect;
+
+import com.avaje.ebean.Page;
+
 import play.Logger;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.twirl.api.Html;
 import play.twirl.api.Template1;
 import play.twirl.api.Template2;
 import play.twirl.api.Template5;
-
-import com.avaje.ebean.Page;
 
 public class Crud<T extends Model & CrudReady<T, F>, F> {
 	private Template1<T,Html> showTemplate;

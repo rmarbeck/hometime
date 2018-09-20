@@ -89,6 +89,14 @@ users:
          name:                  quick
          active:                true
 
+    - &mh1 !!models.User
+         email:                 mh1_quick@hometime.fr
+         password:              "7890"
+         role:                  MASTER_WATCHMAKER
+         firstname:             watchmaker 1
+         name:                  quick
+         active:                true
+
     - &part1 !!models.User
          email:                 part1@hometime.fr
          password:              default

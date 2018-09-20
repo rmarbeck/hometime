@@ -1,22 +1,13 @@
 package controllers;
 
-import java.util.Optional;
-
 import models.Invoice;
 import models.OrderDocument;
 import models.PaymentRequest;
-import play.Logger;
-import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
-import fr.hometime.payment.systempay.DataDictionnary;
-import fr.hometime.payment.systempay.PaymentConfirmation;
-import fr.hometime.payment.systempay.SingleImmediatePF;
-import fr.hometime.utils.ActionHelper;
 
-@Security.Authenticated(SecuredAdminOrCollaboratorOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 public class PaymentRequests extends Controller {
 	public static Crud<PaymentRequest, PaymentRequest> crud = Crud.of(
 			PaymentRequest.of(),

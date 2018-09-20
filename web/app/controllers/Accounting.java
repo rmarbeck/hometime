@@ -31,7 +31,6 @@ import play.data.Form.Field;
 import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
 import views.html.admin.accounting.invoice_for_analytics;
@@ -42,7 +41,7 @@ import views.html.admin.accounting.order_documents;
 import views.html.admin.accounting.selling_document_form;
 import views.html.admin.accounting.selling_documents;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
 public class Accounting extends Controller {
 	

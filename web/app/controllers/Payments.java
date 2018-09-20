@@ -1,13 +1,10 @@
 package controllers;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.TimeZone;
 
 import fr.hometime.utils.DateHelper;
 import fr.hometime.utils.PaymentHelper;
@@ -18,9 +15,8 @@ import models.PaymentRequest;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 public class Payments extends Controller {
 	public static Crud<Payment, Payment> crud = Crud.of(
 			Payment.of(),

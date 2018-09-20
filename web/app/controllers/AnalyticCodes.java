@@ -2,10 +2,8 @@ package controllers;
 
 import models.AnalyticCode;
 import play.mvc.Controller;
-import play.mvc.Result;
-import play.mvc.Security;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 public class AnalyticCodes extends Controller {
 	public static Crud<AnalyticCode, AnalyticCode> crud = Crud.of(
 			AnalyticCode.of(),

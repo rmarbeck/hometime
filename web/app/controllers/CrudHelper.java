@@ -1,19 +1,17 @@
 package controllers;
 
-import static play.mvc.Results.badRequest;
-import static play.mvc.Results.ok;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
+import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 
-@Security.Authenticated(SecuredLoggedOnOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.COLLABORATOR, models.User.Role.CUSTOMER, models.User.Role.PARTNER, models.User.Role.MASTER_WATCHMAKER})
 @With(NoCacheAction.class)
 public class CrudHelper extends Controller {
 
@@ -82,11 +80,26 @@ public class CrudHelper extends Controller {
 	
 	private static boolean userIsAuthorizedForThisController(Class<?> foundClass) {
 		Optional<Security.Authenticated> securityLevel = getSecurityAnnotationForThisControllerifExists(foundClass);
-		
 		if (securityLevel.isPresent())
 			return isLoggedInUserHasEnoughPrivileges(securityLevel.get());
 		
+		
+		Optional<SecurityEnhanced.Authenticated> securityEnhancedLevel = getSecurityEnhancedAnnotationForThisControllerifExists(foundClass);
+		if (securityEnhancedLevel.isPresent())
+			return isLoggedInUserHasEnoughPrivileges(securityEnhancedLevel.get());
+		
+		
 		return false;
+	}
+	
+	private static Optional<SecurityEnhanced.Authenticated> getSecurityEnhancedAnnotationForThisControllerifExists(Class<?> foundControllerClass) {
+		Annotation[] annotations = foundControllerClass.getAnnotations();
+
+		for(Annotation annotation : annotations)
+			if (annotation instanceof SecurityEnhanced.Authenticated)
+				return Optional.of((SecurityEnhanced.Authenticated) annotation);
+
+		return Optional.empty();
 	}
 	
 	private static Optional<Security.Authenticated> getSecurityAnnotationForThisControllerifExists(Class<?> foundControllerClass) {
@@ -103,6 +116,20 @@ public class CrudHelper extends Controller {
 		String securityClassName = securityLevel.value().getName();
 		try {
 			return (boolean) Class.forName(securityClassName).getMethod("isLoggedInUserAuthorized", String.class).invoke(null, session().getOrDefault("token", ""));
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}	
+		
+		return false;
+	}
+	
+	private static boolean isLoggedInUserHasEnoughPrivileges(SecurityEnhanced.Authenticated securityLevel) {
+		String securityClassName = securityLevel.value().getName();
+		User.Role[] rolesAuthorized = securityLevel.rolesAuthorized();
+		
+		try {
+			return (boolean) Class.forName(securityClassName).getMethod("isRoleAuthorized", String.class, User.Role[].class).invoke(null, session().getOrDefault("token", ""), rolesAuthorized);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException | ClassNotFoundException e) {
 			e.printStackTrace();

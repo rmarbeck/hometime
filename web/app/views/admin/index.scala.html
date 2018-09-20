@@ -23,6 +23,7 @@
 
 @layouts.admin("Admin", end_scripts) {
 	<div class="container">
+	@if_admin_or_watchmaker_or_collaborator() {
 	@if_admin_or_collaborator() {
     @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
     	<h3>
@@ -96,6 +97,7 @@
     	<h3>
     		@Html(Messages("admin.index.buy.requests.active.none"))
     	</h3>
+    }
     }
     <br />
     @if(watches != null && watches.size >0) {

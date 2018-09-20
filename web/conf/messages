@@ -3590,6 +3590,20 @@ admin.navbar.link.text.display.watches.for.partner.work.in.progress=Montres à f
 admin.navbar.link.text.display.watches.for.partner.waiting.acceptation=Montres à accepter
 admin.navbar.link.text.display.watches.for.partner.waiting.for.quotation=Devis à faire/en attente d''accord
 
+admin.navbar.link.text.display.watches.for.watchmaker.work.in.progress=Montres à faire
+admin.navbar.link.text.display.watches.for.watchmaker.waiting.for.quotation=Devis à faire/en attente d''accord
+
+admin.customer.watch.watchmaker.waiting.quotation.page=Devis à faire
+admin.customer.watch.watchmaker.waiting.quotation.page.title=Devis à faire
+admin.customer.watch.watchmaker.waiting.quotation.page.id=ID
+admin.customer.watch.watchmaker.waiting.quotation.page.acceptance.date=Acceptée le
+admin.customer.watch.watchmaker.waiting.quotation.page.due.date=A faire pour le
+admin.customer.watch.watchmaker.waiting.quotation.page.brand=Marque	
+admin.customer.watch.watchmaker.waiting.quotation.page.model=Modèle
+admin.customer.watch.watchmaker.waiting.quotation.page.reference=Référence
+admin.customer.watch.watchmaker.waiting.quotation.page.infos=Remarques
+admin.customer.watch.watchmaker.waiting.quotation.page.service.price.status=Statut
+
 admin.customer.watch.waiting.for.quotation.form=Devis
 admin.customer.watch.waiting.for.quotation.form.title=Devis
 admin.customer.watch.waiting.for.quotation.action.edit=Modifier
@@ -3655,6 +3669,17 @@ admin.customer.watch.partner.work.in.progress.page.brand=Marque
 admin.customer.watch.partner.work.in.progress.page.model=Modèle
 admin.customer.watch.partner.work.in.progress.page.infos=Informations
 admin.customer.watch.partner.work.in.progress.page.service.status=Avancement
+
+admin.customer.watch.watchmaker.work.in.progress.page=Montres en cours d''entretien
+admin.customer.watch.watchmaker.work.in.progress.page.title=Montres en cours d''entretien
+admin.customer.watch.watchmaker.work.in.progress.page.id=ID
+admin.customer.watch.watchmaker.work.in.progress.page.acceptance.date=Date
+admin.customer.watch.watchmaker.work.in.progress.page.due.date=Date butoire 
+admin.customer.watch.watchmaker.work.in.progress.page.brand=Marque
+admin.customer.watch.watchmaker.work.in.progress.page.model=Modèle
+admin.customer.watch.watchmaker.work.in.progress.page.infos=Informations
+admin.customer.watch.watchmaker.work.in.progress.page.service.status=Avancement
+
 
 admin.customer.watch.work.in.progress.form=Avancement entretien
 admin.customer.watch.work.in.progress.form.title=Avancement entretien

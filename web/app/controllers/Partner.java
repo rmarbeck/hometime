@@ -2,29 +2,26 @@ package controllers;
 
 import java.util.Date;
 
-import models.CustomerWatch;
-import models.CustomerWatch.CustomerWatchStatus;
 import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
+import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
+import views.html.admin.customer_for_partner_form;
 import views.html.admin.customer_form;
-import views.html.admin.customer_watch_form;
+import views.html.admin.customer_watch_for_partner;
 import views.html.admin.customer_watch_for_partner_waiting_quotation_form;
 import views.html.admin.customer_watch_for_partner_work_in_progress_form;
 import views.html.admin.customer_watches_for_partner;
-import views.html.admin.customer_watch_for_partner;
 import views.html.admin.customer_watches_for_partner_waiting_acceptation;
 import views.html.admin.customer_watches_for_partner_waiting_quotation;
 import views.html.admin.customer_watches_for_partner_work_in_progress;
-import views.html.admin.customer_for_partner_form;
 import views.html.admin.customers_for_partner;
 
-@Security.Authenticated(SecuredAdminOrPartnerOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.PARTNER})
 @With(NoCacheAction.class)
 public class Partner extends Controller {
 	

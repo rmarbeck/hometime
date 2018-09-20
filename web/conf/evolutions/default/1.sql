@@ -577,7 +577,7 @@ create table user_table (
   number_of_bad_passwords   integer,
   partner_id                bigint,
   customer_id               bigint,
-  constraint ck_user_table_role check (role in (0,1,2,3)),
+  constraint ck_user_table_role check (role in (0,1,2,3,4)),
   constraint uq_user_table_email unique (email),
   constraint pk_user_table primary key (id))
 ;

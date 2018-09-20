@@ -3,15 +3,14 @@ package controllers;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
-import views.html.admin.watches;
 import views.html.admin.watch;
 import views.html.admin.watch_form;
+import views.html.admin.watches;
 
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER})
 @With(NoCacheAction.class)
 public class Watch extends Controller {
 	

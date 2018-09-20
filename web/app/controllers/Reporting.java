@@ -23,7 +23,7 @@ import views.html.admin.reports.address_tab_table;
 import views.html.admin.reports.address_tab_alpha;
 import views.html.admin.reports.payments;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
 public class Reporting extends Controller {
 	public static Result marginVat() {

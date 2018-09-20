@@ -7,9 +7,8 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 public class WatchesToSell extends Controller {
 	public static Crud<WatchToSell, WatchToSell> crud = Crud.of(
 			WatchToSell.of(),

@@ -1,13 +1,11 @@
 package controllers;
 
 import models.AccountingLineAnalytic;
-import models.CustomerWatch;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 public class AccountingLineAnalytics extends Controller {
 	public static Crud<AccountingLineAnalytic, AccountingLineAnalytic> crud = Crud.of(
 			AccountingLineAnalytic.of(),

@@ -562,6 +562,47 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
                 .findPagingList(pageSize)
                 .getPage(page);
     }
+
+    public static Page<CustomerWatch> pageForWatchmaker(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+   		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForWatchmaker(filter, status, session);
+    		
+   		return commonQuery.eq("serviceNeeded", true).eq("servicePriceAccepted", true)
+					.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+        			.getPage(page);
+    }
+    
+    public static Page<CustomerWatch> pageForWatchmakerWaitingQuotation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForWatchmaker(filter, status, session);
+		
+		return commonQuery
+				.eq("serviceNeeded", true).eq("servicePriceAccepted", false)
+				.orderBy(sortBy + " " + order)
+				.findPagingList(pageSize)
+    			.getPage(page);
+    }
+    
+    public static Page<CustomerWatch> pageForWatchmakerWorkInProgress(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+   		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForWatchmaker(filter, status, session);
+    		
+   		return commonQuery
+   					.eq("serviceNeeded", true).eq("servicePriceAccepted", true)
+					.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+        			.getPage(page);
+
+    }
+    
+    private static ExpressionList<CustomerWatch> getCommonQueryForWatchmaker(String filter, String status, Session session) {
+    	ExpressionList<CustomerWatch> query = find.where().conjunction()
+    			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%").ilike("CAST(id AS varchar(10))", "%" + filter + "%")
+    			.endJunction();
+    	
+    	if (status != null && ! "".equals(status))
+			query = query.eq("customer_watch_status", status);
+    	
+    	return query;
+    }
     
     public static Page<CustomerWatch> pageForPartner(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
     	if (PartnerAndCustomerHelper.isLoggedInUserAPartner(session)) {

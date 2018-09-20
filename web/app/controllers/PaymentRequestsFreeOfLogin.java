@@ -2,21 +2,17 @@ package controllers;
 
 import java.util.Optional;
 
-import models.Invoice;
-import models.OrderDocument;
+import fr.hometime.payment.systempay.DataDictionnary;
+import fr.hometime.payment.systempay.PaymentConfirmation;
+import fr.hometime.payment.systempay.SingleImmediatePF;
+import fr.hometime.utils.ActionHelper;
+import fr.hometime.utils.PaymentRequestHelper;
 import models.PaymentRequest;
 import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
-import views.html.mails.notify_order;
-import fr.hometime.payment.systempay.DataDictionnary;
-import fr.hometime.payment.systempay.PaymentConfirmation;
-import fr.hometime.payment.systempay.SingleImmediatePF;
-import fr.hometime.utils.ActionHelper;
-import fr.hometime.utils.PaymentRequestHelper;
 
 public class PaymentRequestsFreeOfLogin extends Controller {
 	public static Result displayForm(String accessKey) {

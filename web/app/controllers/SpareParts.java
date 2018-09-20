@@ -1,17 +1,10 @@
 package controllers;
 
-import java.util.List;
-
-import models.Customer;
-import models.Partner;
 import models.SparePart;
-import play.data.Form;
-import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 
-@Security.Authenticated(SecuredAdminOrCollaboratorOrPartnerOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.COLLABORATOR})
 public class SpareParts extends Controller {
 	public static Crud<SparePart, SparePart> crud = Crud.of(
 			SparePart.of(),

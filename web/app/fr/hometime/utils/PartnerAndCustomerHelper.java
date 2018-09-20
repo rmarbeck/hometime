@@ -9,7 +9,7 @@ import models.User;
 import play.mvc.Http.Session;
 
 /**
- * Security class containing functions for manging Partners 
+ * Security class containing functions for managing Partners 
  * 
  * @author Raphael
  *

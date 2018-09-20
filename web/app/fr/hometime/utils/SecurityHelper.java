@@ -2,6 +2,7 @@ package fr.hometime.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.*;
+import java.util.Currency;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -77,14 +78,20 @@ public class SecurityHelper {
     public static String retrieveUsername(Context ctx, Predicate<User> isRoleEnough) {
     	String currentUserToken = ctx.session().get("token");
     	if (currentUserToken != null) {
-    		User loggedInUser = User.findByEmail(currentUserToken);
-    		Logger.debug("There seems to be a user in session : {}", loggedInUser);
-    		if (isRoleEnough.test(loggedInUser))
-    			return loggedInUser.email;
-    		Logger.debug("User in session is not authorized for this page ({}): {}", ctx.request().path(), loggedInUser);
+    		Optional<User> oLoggedInUser = tryToGetUserByEmail(currentUserToken);
+    		if (oLoggedInUser.isPresent()) {
+    			Logger.debug("There seems to be a user in session : {}", oLoggedInUser.get());
+	    		if (isRoleEnough.test(oLoggedInUser.get()))
+	    			return oLoggedInUser.get().email;
+	    		Logger.debug("User in session is not authorized for this page ({}): {}", ctx.request().path(), oLoggedInUser.get());
+    		}
     	}
     		
         return null;
+    }
+    
+    public static String retrieveUsername(Context ctx) {
+        return retrieveUsername(ctx, (user) -> true);
     }
     
     public static boolean isLoggedInUserAuthorized(Session session, Predicate<User> isRoleEnough) {
@@ -108,6 +115,15 @@ public class SecurityHelper {
     		return Optional.ofNullable(User.findByEmail(token));
         return Optional.empty();
     }
+    
+    public static boolean isUserAuthorized(String username, User.Role[] rolesAuthorized) {
+    	Optional<User> oFoundUser = tryToGetUserByUsername(username);
+    	if (oFoundUser.isPresent())
+    		for (User.Role currentRole : rolesAuthorized)
+    			if (oFoundUser.get().role.equals(currentRole))
+    				return true;
+    	return false;
+    }
 
     public static Predicate<User> isAdmin = (user) -> (user!= null && user.role == Role.ADMIN);
     
@@ -124,6 +140,12 @@ public class SecurityHelper {
     public static Predicate<User> isPartner = (user) -> (user!= null && user.role == Role.PARTNER );
     
     public static Predicate<User> isCustomer = (user) -> (user!= null && user.role == Role.CUSTOMER );
+    
+    public static Predicate<User> isWatchmaker = (user) -> (user!= null && user.role == Role.MASTER_WATCHMAKER );
+    
+    public static Predicate<User> isAdminOrWatchmakerOrCollaborator = (user) -> (user!= null && ( user.role == Role.ADMIN || user.role == Role.COLLABORATOR || user.role == Role.MASTER_WATCHMAKER) );
+    
+    
     
     public static List<User> findQuickLogins() {
         return User.find.where().contains("email", "_quick").findList();
@@ -148,5 +170,16 @@ public class SecurityHelper {
 		if (loggedInUser.isPresent())
 			return loggedInUser.get().email;
 		return "?";
+	}
+	
+	private static Optional<User> tryToGetUserByEmail(String email) {
+		return tryToGetUserByUsername(email);
+	}
+	
+	private static Optional<User> tryToGetUserByUsername(String username) {
+		User loggedInUser = User.findByEmail(username);
+		if (loggedInUser != null)
+			return Optional.of(loggedInUser);
+		return Optional.empty();
 	}
 }

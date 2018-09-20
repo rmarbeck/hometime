@@ -3,14 +3,13 @@ package controllers;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
 import views.html.admin.feedback;
 import views.html.admin.feedback_form;
 import views.html.admin.feedbacks;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
 public class Feedback extends Controller {
 	

@@ -3,14 +3,13 @@ package controllers;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
 import views.html.admin.usefull_link;
 import views.html.admin.usefull_link_form;
 import views.html.admin.usefull_links;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.COLLABORATOR})
 @With(NoCacheAction.class)
 public class UsefullLink extends Controller {
 	

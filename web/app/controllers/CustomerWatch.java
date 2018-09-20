@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.function.Consumer;
 
 import fr.hometime.utils.CustomerWatchActions;
-import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
@@ -13,14 +12,11 @@ import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import play.twirl.api.Html;
-import views.html.admin.customer;
-import views.html.admin.customer_form;
+import views.html.admin.customer_watch;
 import views.html.admin.customer_watch_form;
 import views.html.admin.customer_watches;
-import views.html.admin.customer_watch;
-import views.html.admin.customer_watches_for_partner;
 
-@Security.Authenticated(SecuredAdminOnly.class)
+@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
 public class CustomerWatch extends Controller {
 	
@@ -85,7 +81,7 @@ public class CustomerWatch extends Controller {
 		return ok(emptyNewWatchForm());		
 	}
 	
-	@Security.Authenticated(SecuredAdminOrCollaboratorOnly.class)
+	@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.COLLABORATOR})
 	public static Result doAction(String actionName, Long watchId) {
 		CustomerWatchActions.doAction(CustomerWatchActions.CustomerWatchActionList.fromString(actionName), models.CustomerWatch.findById(watchId), session());
 		return LIST_CUSTOMER_WATCHES;
