@@ -185,8 +185,8 @@ POST    /admin/manage/customer-part										controllers.Partner.manageCustomer(
 
 GET     /admin/customer-watch-watchmaker/all    						controllers.Watchmaker.displayAll(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0)
 GET     /admin/display/customer-watch-watchmaker/page/    				controllers.Watchmaker.displayWatches(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
-GET     /admin/display/customer-watch-watchmaker-work-in-progress/page/	controllers.Watchmaker.displayWorkInProgressWatches(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
-GET     /admin/display/customer-watch-watchmaker-waiting-quotation/page/	controllers.Watchmaker.displayWaitingQuotationWatches(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
+GET     /admin/display/customer-watch-watchmaker-work-in-progress/page/	controllers.Watchmaker.displayWorkInProgressWatches(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
+GET     /admin/display/customer-watch-watchmaker-waiting-quotation/page/	controllers.Watchmaker.displayWaitingQuotationWatches(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
 GET     /admin/edit/customer-watch-watchmaker-waiting-quotation/:id		controllers.Watchmaker.prepareQuotation(id: Long)
 GET     /admin/edit/customer-watch-watchmaker-work-in-progress/:id		controllers.Watchmaker.prepareWorkInProgress(id: Long)
 POST    /admin/manage/customer-watch-watchmaker-waiting-quotation		controllers.Watchmaker.manageQuotation()

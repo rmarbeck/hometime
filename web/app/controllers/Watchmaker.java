@@ -81,7 +81,7 @@ public class Watchmaker extends Controller {
 	}
 	
 	public static Result manageQuotation() {
-		return	manageWatchUpdate(LIST_WORK_IN_PROGRESS_WATCHES);
+		return	manageWatchUpdate(LIST_WAITING_QUOTATION_WATCHES);
 	}
 	
 
