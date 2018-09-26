@@ -596,7 +596,12 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     private static ExpressionList<CustomerWatch> getCommonQueryForWatchmaker(String filter, String status, Session session) {
     	ExpressionList<CustomerWatch> query = find.where().conjunction()
     			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%").ilike("CAST(id AS varchar(10))", "%" + filter + "%")
-    			.endJunction();
+    			.endJunction()
+    			.conjunction().ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+					  .ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.STORED_BY_BRAND)
+					  .ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.STORED_BY_OTHER_PARTNER)
+					  .ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.STORED_BY_STH)
+				.endJunction();
     	
     	if (status != null && ! "".equals(status))
 			query = query.eq("customer_watch_status", status);
