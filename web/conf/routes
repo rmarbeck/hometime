@@ -130,6 +130,7 @@ GET     /logout                     									controllers.Application.logout()
 GET     /admin/		                    								controllers.Admin.index()
 
 GET     /admin/requests                    								controllers.Admin.currentOrderRequests()
+GET     /admin/watches                    								controllers.Admin.currentWatches()
 
 GET     /admin/stats                    								controllers.Admin.stats()
 

@@ -40,6 +40,7 @@ import views.html.admin.order_request;
 import views.html.admin.order_request_infos_form;
 import views.html.admin.order_requests;
 import views.html.admin.order_requests_listing;
+import views.html.admin.customer_watches_listing;
 import views.html.admin.prepare_mail;
 import views.html.admin.quotation;
 import views.html.admin.quotation_form;
@@ -271,6 +272,10 @@ public class Admin extends Controller {
 	
 	public static Result currentOrderRequests() {
 		return ok(order_requests_listing.render("", OrderRequest.findAllUnReplied()));
+    }
+	
+	public static Result currentWatches() {
+		return ok(customer_watches_listing.render("", CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
     }
 	
 	@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})

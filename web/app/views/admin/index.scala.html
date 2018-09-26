@@ -113,10 +113,12 @@
 	          <th>@Html(Messages("admin.index.watches.head.model"))</th>
 	          <!--<th>@Html(Messages("admin.index.watches.head.last.communication.date"))</th>-->
 	          <th>@Html(Messages("admin.index.watches.head.status"))</th>
-	          <th>@Html(Messages("admin.index.watches.head.actions"))</th>
 	        </tr>
 	      </thead>
 	      <tbody>
+	        <tr>
+	      		<td colspan="5"><a href="@routes.Admin.currentWatches()">@Html(Messages("admin.index.watches"))</a></td>
+	      	</tr>
 	      	@for(watch <- watches) {
 	      	<tr class="@watch.getQuotationClass @watch.getWatchStatusClass">
 	      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
@@ -126,10 +128,6 @@
 	      		<!--<td>@display_date(watch.lastStatusUpdate, "dd/MM/yyyy HH:mm")</td>-->
 	      		<!--<td>@Html(Messages("admin.index.watches.value.status."+watch.status.name.toString.toLowerCase.replace('_','.')))</td>-->
 	      		<td>@Messages(CustomerWatchHelper.getStatusName(watch).toLowerCase.replace('_','.'))</td>
-	      		<td>
-	      			<!--<a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.setBackToCustomer(watch.id)" title="@Messages("admin.index.watches.action.back.to.customer.title")"><span class="glyphicon glyphicon-user"></span></a>-->
-	      			@watch_actions_button(watch, "admin.index.watches", 'commonclass -> "btn-success")
-	      		</td>
 	      	</tr>
 	      	}
 		  </tbody>

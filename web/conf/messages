@@ -2599,6 +2599,7 @@ admin.index.order.requests.head.details=Détails
 admin.index.order.requests.head.actions=Actions
 
 admin.index.order.requests.number.waiting=Et {0} marqués en attente de retour client
+admin.index.watches=Gérer les actions sur les montres en cours
 
 admin.index.buy.requests.active=Demandes de recherche ouvertes
 admin.index.buy.requests.action.copy.email.address=Copier l''adresse
