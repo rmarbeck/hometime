@@ -13,10 +13,12 @@ import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 /**
  * Definition of a Spare Part associated belonging to a customer watch
  */
+@SuppressWarnings("unused")
 @Entity 
 public class SparePart extends Model implements CrudReady<SparePart, SparePart> {
 	private static final long serialVersionUID = 1423684174998061395L;

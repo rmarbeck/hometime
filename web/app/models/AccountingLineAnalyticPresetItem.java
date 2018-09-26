@@ -8,16 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
-import play.data.validation.Constraints;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 /**
  * Definition of an analytic information about an accounting line
  */
+@SuppressWarnings("unused")
 @Entity
 @Table(name = "accounting_preset_item_table")
 public class AccountingLineAnalyticPresetItem extends Model implements CrudReady<AccountingLineAnalyticPresetItem, AccountingLineAnalyticPresetItem> {

@@ -4,22 +4,19 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
-import play.db.ebean.Model;
-
-import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
+import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 /**
  * Definition of an analytic information about an accounting line
  */
+@SuppressWarnings("unused")
 @Entity 
 public class AccountingLineAnalytic extends Model implements CrudReady<AccountingLineAnalytic, AccountingLineAnalytic> {
 	private static final long serialVersionUID = 160414590466772458L;

@@ -8,16 +8,17 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 /**
  * Definition of an analytic information about an accounting line
  */
+@SuppressWarnings("unused")
 @Entity 
 public class AnalyticCode extends Model implements CrudReady<AnalyticCode, AnalyticCode> {
 	private static final long serialVersionUID = 403537072207335098L;

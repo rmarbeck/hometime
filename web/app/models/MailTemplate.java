@@ -14,10 +14,12 @@ import controllers.CrudReady;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 /**
  * Definition of a mail template
  */
+@SuppressWarnings("unused")
 @Entity
 public class MailTemplate extends Model implements CrudReady<MailTemplate, MailTemplate> {
 	private static final long serialVersionUID = 3301115479489050285L;

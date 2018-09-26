@@ -12,10 +12,12 @@ import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 /**
  * Definition of a document provided by an external source (partner...)
  */
+@SuppressWarnings("unused")
 @Entity
 public class ExternalDocument extends Model implements CrudReady<ExternalDocument, ExternalDocument> {
 	private static final long serialVersionUID = 9172312438070646082L;

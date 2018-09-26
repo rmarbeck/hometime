@@ -6,24 +6,21 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import play.data.validation.Constraints;
-import play.db.ebean.Model;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
+import play.data.validation.Constraints;
+import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 /**
  * Definition of an analytic information about an accounting line
  */
+@SuppressWarnings("unused")
 @Entity 
 public class AccountingLineAnalyticPreset extends Model implements CrudReady<AccountingLineAnalyticPreset, AccountingLineAnalyticPreset> {
 	private static final long serialVersionUID = -6542614203999532229L;

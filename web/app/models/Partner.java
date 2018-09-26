@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import play.Logger;
 import play.data.validation.ValidationError;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
@@ -21,6 +22,7 @@ import controllers.CrudReady;
 /**
  * Definition of a Partner
  */
+@SuppressWarnings("unused")
 @Entity 
 public class Partner extends Model implements CrudReady<Partner, Partner> {
 	private static final long serialVersionUID = 7683920524305106015L;
