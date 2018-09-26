@@ -1,10 +1,7 @@
 package controllers;
 
-import java.util.Date;
-
 import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
-import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -24,11 +21,11 @@ public class Watchmaker extends Controller {
 	public static Result INDEX = Admin.INDEX;
 	
 	public static Result LIST_WAITING_QUOTATION_WATCHES = redirect(
-			routes.Watchmaker.displayWaitingQuotationWatches(0, "lastStatusUpdate", "desc", "", 0, "")
+			routes.Watchmaker.displayWaitingQuotationWatches(0, "id", "desc", "", 0, "")
 			);
 	
 	public static Result LIST_WORK_IN_PROGRESS_WATCHES = redirect(
-			routes.Watchmaker.displayWorkInProgressWatches(0, "lastStatusUpdate", "desc", "", 0, "")
+			routes.Watchmaker.displayWorkInProgressWatches(0, "id", "desc", "", 0, "")
 			);
 	
 	public static Result displayAll(int page, String sortBy, String order, String filter, int size) {
@@ -84,29 +81,17 @@ public class Watchmaker extends Controller {
 	}
 	
 	public static Result manageQuotation() {
-		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
-		String action = Form.form().bindFromRequest().get("action");
-		if (watchForm.hasErrors()) {
-			if ("save".equals(action))
-				return badRequest(customerWatchForm(watchForm, true));
-			return badRequest(customerWatchForm(watchForm, false));
-		} else {
-			models.CustomerWatch watch = watchForm.get();
-			if ("save".equals(action)) {
-				watch.save();
-			} else if ("delete".equals(action)) {
-				models.CustomerWatch customerWatchInDB = models.CustomerWatch.findById(watch.id);
-				customerWatchInDB.delete();
-			} else {
-				CustomerWatchHelper.updateWatchEnsuringOnlyEditableDataByPartnerAreChanged(watch, session());
-			}
-		}
-		return LIST_WAITING_QUOTATION_WATCHES;
+		return	manageWatchUpdate(LIST_WORK_IN_PROGRESS_WATCHES);
 	}
 	
 
 	
 	public static Result manageWorkInProgress() {
+		return	manageWatchUpdate(LIST_WORK_IN_PROGRESS_WATCHES);
+	}
+	
+	
+	private static Result manageWatchUpdate(Result successResult) {
 		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
 		String action = Form.form().bindFromRequest().get("action");
 		if (watchForm.hasErrors()) {
@@ -121,12 +106,11 @@ public class Watchmaker extends Controller {
 				models.CustomerWatch customerWatchInDB = models.CustomerWatch.findById(watch.id);
 				customerWatchInDB.delete();
 			} else {
-				CustomerWatchHelper.updateWatchEnsuringOnlyEditableDataByPartnerAreChanged(watch, session());
+				CustomerWatchHelper.updateWatchEnsuringOnlyEditableDataByWatchmasterAreChanged(watch, session());
 			}
 		}
-		return LIST_WORK_IN_PROGRESS_WATCHES;
+		return successResult;
 	}
-	
 	
 	private static Html customerWatchForm(Form<models.CustomerWatch> watchForm, boolean isItANewWatch) {
 		return customer_watch_for_watchmaker_waiting_quotation_form.render(watchForm, isItANewWatch);
@@ -134,12 +118,6 @@ public class Watchmaker extends Controller {
 	
 	private static Html customerWatchForWorkInProgressForm(Form<models.CustomerWatch> watchForm, boolean isItANewWatch) {
 		return customer_watch_for_watchmaker_work_in_progress_form.render(watchForm, isItANewWatch);
-	}
-	
-	private static void acceptWatchAndSave(models.CustomerWatch requestedWatch) {
-		requestedWatch.status = CustomerWatchStatus.STORED_BY_A_REGISTERED_PARTNER;
-		requestedWatch.firstEntryInPartnerWorkshopDate = new Date();
-		requestedWatch.update();
 	}
 	
 	private static void markFinishedUnFinished(models.CustomerWatch requestedWatch) {

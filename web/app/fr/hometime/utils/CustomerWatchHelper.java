@@ -393,6 +393,28 @@ public class CustomerWatchHelper {
 		watch.update();
 	}
 	
+	public static void updateWatchEnsuringOnlyEditableDataByWatchmasterAreChanged(models.CustomerWatch watch, Session session) {
+		models.CustomerWatch currentWatchInDB = CustomerWatch.findById(watch.id);
+		watch.emergencyLevel = currentWatchInDB.emergencyLevel;
+		if (watch.servicePrice != 0)
+			watch.finalCustomerServicePrice = watch.servicePrice;
+		watch.finalCustomerServiceStatus = watch.serviceStatus;
+		watch.finalCustomerToInfos = watch.partnerFromInfos;
+		
+		watch.finalCustomerServicePaid = currentWatchInDB.finalCustomerServicePaid;
+		watch.newServicePriceNeeded = currentWatchInDB.newServicePriceNeeded;
+		watch.picturesDoneOnCollect = currentWatchInDB.picturesDoneOnCollect;
+		watch.serviceNeeded = currentWatchInDB.serviceNeeded;
+		watch.servicePaid = currentWatchInDB.servicePaid;
+		watch.servicePriceAccepted = currentWatchInDB.servicePriceAccepted;
+		watch.finalCustomerEmergencyLevel = currentWatchInDB.finalCustomerEmergencyLevel;
+		watch.status = currentWatchInDB.status;
+		watch.quotation = currentWatchInDB.quotation;
+		watch.serviceOnHold = currentWatchInDB.serviceOnHold;
+		
+		watch.update();
+	}
+	
     public static Optional<List<User>> findByCustomer(Customer customer) {
     	List<User> users = User.find.where().eq("customer.id", customer.id).orderBy("id ASC").findList();
     	if (users != null && !users.isEmpty())
