@@ -3,30 +3,6 @@
 @import java.lang.String; var title=""
 @import models.Customer; var customer=new models.Customer()
 
-@get_model = {
-	@if(instance.model != null && !instance.model.equals("")) {
-		@Html(instance.brand) @instance.model
-	} else {
-		@Html(instance.brand)
-	}
-}
-
-@get_references = {
-	@if(instance.reference != null && !instance.reference.equals("")) {
-		@if(instance.serial != null && !instance.serial.equals("")) {
-			@instance.reference / @instance.serial
-		} else {
-			@instance.reference
-		}
-	} else {
-		@if(instance.serial != null && !instance.serial.equals("")) {
-			@instance.serial
-		} else {
-			?
-		}
-	} 
-}
-
 
 @two_cells(cell1: Html, cell2: String) = {
 	@two_cells_table_line_managing_emptyness(cell1, Html(cell2), "RAS", 'datatrclass -> "simplified_customer_watch_row")
@@ -54,7 +30,7 @@
      
      <div class="row">
      	<div class="type col-xs-8">
-	        <h2>@get_model.toString - @get_references.toString</h2>
+	        <h2>@sheet_get_model(instance).toString - @sheet_get_references(instance).toString</h2>
         </div>
         <div class="text-right col-xs-4">
 	        <h2>@Html(Messages("admin.simplified.customer.watch.servicing.sheet.text.head", instance.id))</h2>
@@ -176,66 +152,5 @@
 	       </div>
         </div>
      </div>
-
-
-<div class="row">
-     	<div class="type col-xs-8">
-	        <h2>@get_model.toString - @get_references.toString</h2>
-        </div>
-        <div class="text-right col-xs-4">
-	        <h2>@Html(Messages("admin.simplified.customer.watch.servicing.sheet.text.head", instance.id))</h2>
-        </div>
-     </div>
-     
-     <div class="row">
-     	<div class="type col-xs-6">
-     	@admin_accounting_info_field(display_boolean(instance.picturesDoneOnCollect).toString, "admin.simplified.customer.watch.servicing.sheet.pictures", 'dataclass -> "descriptions simplified_customer_watch")
-     	</div>
-     	<div class="type col-xs-6">
-     	@Html(Messages("admin.simplified.customer.watch.servicing.sheet.testing.date", ""))
-		</div>
-     </div>
-     <br />
-     
-     <div class="row">
-     	<div class="col-xs-12">
-	        <div class="table-responsive">
-	            <table class="table table-bordered">
-	              <colgroup>
-	                <col class="col-xs-6">
-	                <col class="col-xs-6">
-	              </colgroup>
-	              <thead>
-	                <tr>
-						<th class="header">@Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.head.check"))</th>
-						<th class="header">@Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.head.check.result"))</th>
-					</tr>
-				  </thead>
-				  <tbody>
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.auto")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.auto.no.chrono.start")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.auto.no.chrono.result")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.auto.chrono.start")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.auto.chrono.result")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.dial.hands")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.general")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.glass")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.operating")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.date")), "<br /><br />")
-				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.other")), "<br /><br /><br />")
-	              </tbody>
-	            </table>
-	       </div>
-        </div>
-        
-        <div class="row">
-     	<div class="type col-xs-6">
-	        <h3>@Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.stamp"))</h3>
-        </div>
-        <div class="text-right col-xs-6">
-	        <h3>@Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.signature"))</h3>
-        </div>
-     </div>
-
 
 }

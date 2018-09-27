@@ -1,0 +1,15 @@
+@(instance : models.CustomerWatch)
+
+@if(instance.reference != null && !instance.reference.equals("")) {
+	@if(instance.serial != null && !instance.serial.equals("")) {
+		@instance.reference / @instance.serial
+	} else {
+		@instance.reference
+	}
+} else {
+	@if(instance.serial != null && !instance.serial.equals("")) {
+		@instance.serial
+	} else {
+		?
+	}
+}

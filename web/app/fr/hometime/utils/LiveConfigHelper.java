@@ -1,6 +1,6 @@
 package fr.hometime.utils;
 
-
+import play.Play;
 
 /**
  * Helper for Live Config operations.
@@ -10,5 +10,7 @@ package fr.hometime.utils;
  */
 
 public class LiveConfigHelper {
-
+	public static boolean isInIntegrationMode() {
+		return Play.application().configuration().getBoolean("integrationMode");
+	}
 }

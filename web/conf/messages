@@ -2133,6 +2133,9 @@ admin.customer.watch.action.stored.by.us.secured.3=&nbsp;Sécurisé (réservé)
 
 admin.customer.watch.action.quotation.sent=&nbsp;Marquer devis envoyé
 
+admin.customer.watch.action.print.servicing=&nbsp;Fiche de service
+admin.customer.watch.action.print.testing=&nbsp;Fiche de test
+
 
 admin.customer.watch.action.new.invoice.quick.service=Créer une facture
 admin.customer.watch.action.new.invoice.quick.service.without.water=Changement de pile à {0} €
@@ -3793,6 +3796,8 @@ admin.simplified.customer.watch.watch.servicing.testing.check.auto.no.chrono.sta
 admin.simplified.customer.watch.watch.servicing.testing.check.auto.no.chrono.result=Tenue d''heure sur 24h <b>sans chrono</b> : Contrôle à H+24 - <i>OK ou KO</i>
 admin.simplified.customer.watch.watch.servicing.testing.check.auto.chrono.start=Tenue d''heure sur 24h <b>avec chrono</b> : Mise à l''heure initiale (synchronisation avec horloge quartz) - <i>Indiquer date et heure de mise à l''heure</i>
 admin.simplified.customer.watch.watch.servicing.testing.check.auto.chrono.result=Tenue d''heure sur 24h <b>avec chrono</b> : Contrôle à H+24 - <i>OK ou KO</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.working.start=Tenue d''heure sur 24h : Mise à l''heure initiale (synchronisation avec horloge quartz) - <i>Indiquer date et heure de mise à l''heure</i>
+admin.simplified.customer.watch.watch.servicing.testing.check.working.result=Tenue d''heure sur 24h : Contrôle à H+24 - <i>OK ou KO</i>
 admin.simplified.customer.watch.watch.servicing.testing.check.dial.hands=Contrôle visuel cadran/aiguilles - <i>OK ou KO</i>
 admin.simplified.customer.watch.watch.servicing.testing.check.general=Contrôle visuel boite/fond/bracelet - <i>OK ou KO</i>
 admin.simplified.customer.watch.watch.servicing.testing.check.glass=Contrôle visuel verre - <i>OK ou KO</i>
@@ -3860,6 +3865,9 @@ admin.simplified.customer.watch.servicing.sheet.quotation.status.servicing.start
 admin.simplified.customer.watch.servicing.sheet.quotation.status.servicing.finished=Terminé
 admin.simplified.customer.watch.servicing.sheet.quotation.status.testing.started=En cours
 admin.simplified.customer.watch.servicing.sheet.quotation.status.testing.finished=OK
+
+admin.simplified.customer.watch.title.testing=Contrôle de la montre - {0}
+
 
 admin.simplified.customer.watch.other.infos=Infos privées
 

@@ -104,6 +104,8 @@
       </div>
       <div class="row">
         <div class="col-xs-12 text-center">
+	        <a type="button" class="btn btn-default" href="@routes.SimplifiedCustomerWatches.displayServicingSheet(watch.id)"><span class="glyphicon glyphicon-print"></span>@Html(Messages("admin.customer.watch.action.print.servicing"))</a>
+	        <a type="button" class="btn btn-default" href="@routes.SimplifiedCustomerWatches.displayTestingSheet(watch.id)"><span class="glyphicon glyphicon glyphicon-search"></span>@Html(Messages("admin.customer.watch.action.print.testing"))</a>
         	<a type="button" class="btn btn-primary" href="@routes.Accounting.addPServiceCByWatchId(watch.id)"><span class="glyphicon glyphicon-certificate"></span>@Html(Messages("admin.customer.watch.action.create.certificate"))</a>
         	<!-- Split button -->
 		    <div class="btn-group text-left dropup">

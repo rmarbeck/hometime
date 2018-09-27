@@ -1,0 +1,7 @@
+@(instance : models.CustomerWatch)
+
+@if(instance.model != null && !instance.model.equals("")) {
+	@Html(instance.brand) @instance.model
+} else {
+	@Html(instance.brand)
+}
