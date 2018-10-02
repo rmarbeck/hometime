@@ -2830,7 +2830,7 @@ admin.invoice.payment.method.used=Moyen de paiement utilisé :
 admin.selling.customer.details=Identification du vendeur :
 admin.selling.company.details=Identification de l''acheteur :
 admin.selling.company.name=Société Watch next SAS
-admin.selling.company.address=103 avenue Marceau<br/>78600 Le Mesnil-Le-Roi
+admin.selling.company.address=322 rue Saint Honoré<br/>75001 Paris
 
 admin.invoice.form.label.type=Type de facture
 admin.invoice.form.value.type.default=Sélectionner le type de facture
