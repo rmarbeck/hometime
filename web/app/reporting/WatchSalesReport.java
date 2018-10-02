@@ -63,7 +63,8 @@ public class WatchSalesReport {
 	
 	private static boolean vatPriceIsAlmostTheSame(Float unitPrice, long sellingPrice) {
 		float diff = VATHelper.getPriceAfterVAT(unitPrice) - (float) sellingPrice;
-		if (Math.abs(diff) < 1)
+		float diffWithoutVAT = unitPrice - (float) sellingPrice;
+		if (Math.abs(diff) < 5 || Math.abs(diffWithoutVAT) < 5)
 			return true;
 		return false;
 	}
