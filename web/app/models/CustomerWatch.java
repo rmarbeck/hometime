@@ -847,5 +847,9 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 		return DateHelper.asShortDate(finalCustomerServicePriceAcceptedDate);
 	}
 	
+	public CustomerWatchType getTypeOfWatch() {
+		return type;
+	}
+	
 }
 

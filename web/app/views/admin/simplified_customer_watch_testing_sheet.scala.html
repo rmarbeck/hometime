@@ -63,10 +63,10 @@
 					</tr>
 				  </thead>
 				  <tbody>
-				  	@if(instance.getType() == CustomerWatchType.AUTO_SIMPLE || instance.getType() == CustomerWatchType.AUTO_CHRONO || instance.getType() == CustomerWatchType.AUTO_COMPLEX) {
+				  	@if(instance.getTypeOfWatch == CustomerWatchType.AUTO_SIMPLE || instance.getTypeOfWatch == CustomerWatchType.AUTO_CHRONO || instance.getTypeOfWatch == CustomerWatchType.AUTO_COMPLEX) {
 				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.auto")), "<br /><br />")
 				  	}
-				  	@if(instance.getType() == CustomerWatchType.MECA_CHRONO || instance.getType() == CustomerWatchType.AUTO_CHRONO || instance.getType() == CustomerWatchType.AUTO_COMPLEX || instance.getType() == CustomerWatchType.MECA_COMPLEX) {
+				  	@if(instance.getTypeOfWatch == CustomerWatchType.MECA_CHRONO || instance.getTypeOfWatch == CustomerWatchType.AUTO_CHRONO || instance.getTypeOfWatch == CustomerWatchType.AUTO_COMPLEX || instance.getTypeOfWatch == CustomerWatchType.MECA_COMPLEX) {
 				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.auto.no.chrono.start")), "<br /><br />")
 				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.auto.no.chrono.result")), "<br /><br />")
 				  		@two_cells_without_RAS(Html(Messages("admin.simplified.customer.watch.watch.servicing.testing.check.auto.chrono.start")), "<br /><br />")
