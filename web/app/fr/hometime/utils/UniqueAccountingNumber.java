@@ -177,13 +177,25 @@ public class UniqueAccountingNumber {
 		Optional<YearMonth> ym = getYearAndMonthFromUAN(uan);
 		if (ym.isPresent()) {
 			if (ym.get().getMonthValue() > LAST_MONTH_IN_FINANCIAL_YEAR_INCLUDED)
-				return Optional.of(ym.get().getYear() - FIRST_FINANCIAL_YEAR + 2);
-			return Optional.of(ym.get().getYear() - FIRST_FINANCIAL_YEAR + 1);
+				return Optional.of(ym.get().getYear() - FIRST_FINANCIAL_YEAR.intValue() + 2);
+			return Optional.of(ym.get().getYear() - FIRST_FINANCIAL_YEAR.intValue() + 1);
 		}
 		return Optional.empty();
 	}
 	
-	public Optional<Boolean> areTheseUANInSameFinancialYear(UniqueAccountingNumber uan1, UniqueAccountingNumber uan2) {
+	public static Integer getCurrentFinancialYearSequenceNumber() {
+		return getFinancialYearSequenceNumberFromUAN(new UniqueAccountingNumber()).get();
+	}
+		
+	public boolean isInCurrentFinancialYear() {
+		return getFinancialYearSequenceNumberFromUAN(this).orElse(-1).equals(getCurrentFinancialYearSequenceNumber());
+	}
+	
+	public boolean isInPreviousFinancialYear() {
+		return getFinancialYearSequenceNumberFromUAN(this).orElse(-1).equals(getCurrentFinancialYearSequenceNumber()-1);
+	}
+	
+	public static Optional<Boolean> areTheseUANInSameFinancialYear(UniqueAccountingNumber uan1, UniqueAccountingNumber uan2) {
 		Optional<Integer> fYearOfUan1 = getFinancialYearSequenceNumberFromUAN(uan1);
 		Optional<Integer> fYearOfUan2 = getFinancialYearSequenceNumberFromUAN(uan2);
 		if (fYearOfUan1.isPresent() && fYearOfUan2.isPresent())
@@ -191,7 +203,7 @@ public class UniqueAccountingNumber {
 		return Optional.empty();
 	}
 	
-	public Optional<Boolean> areTheseUANInSameMonth(UniqueAccountingNumber uan1, UniqueAccountingNumber uan2) {
+	public static Optional<Boolean> areTheseUANInSameMonth(UniqueAccountingNumber uan1, UniqueAccountingNumber uan2) {
 		Optional<YearMonth> yearAndMonthOfUan1 = getYearAndMonthFromUAN(uan1);
 		Optional<YearMonth> yearAndMonthOfUan2 = getYearAndMonthFromUAN(uan2);
 		if (yearAndMonthOfUan1.isPresent() && yearAndMonthOfUan2.isPresent())
