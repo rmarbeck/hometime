@@ -23,8 +23,8 @@ public class AnalyticsReport {
 		private final Predicate<UniqueAccountingNumber> isCurrentMonth = (value) -> (value.getYearAndMonthFromUAN().equals(YearMonth.now()));
 		private final Predicate<UniqueAccountingNumber> isLastMonth = (value) -> (value.getYearAndMonthFromUAN().equals(YearMonth.now().minusMonths(1)));
 		
-		private final Predicate<UniqueAccountingNumber> isCurrentAccounting = (value) -> (value.isInCurrentFinancialYear());
-		private final Predicate<UniqueAccountingNumber> isLastAccounting = (value) -> (value.isInPreviousFinancialYear());
+		private final Predicate<UniqueAccountingNumber> isCurrentAccounting = UniqueAccountingNumber::isInCurrentFinancialYear;
+		private final Predicate<UniqueAccountingNumber> isLastAccounting = UniqueAccountingNumber::isInPreviousFinancialYear;
 		
 		public Float currentMonthMargin = 0f;
 		public Float lastMonthMargin = 0f;

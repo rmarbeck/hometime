@@ -1,53 +1,75 @@
 @(report: reporting.AnalyticsReport)
 @import tags._
 
+@display_price_formated(price: Float) = {
+@java.text.NumberFormat.getCurrencyInstance.format(price)
+}
+
 @layouts.admin() {
-    <div>Current month Margin : @report.figures.currentMonthMargin</div>
-    
-    <div>Last month Margin : @report.figures.lastMonthMargin</div>
-    
-    <div>Current accounting Margin : @report.figures.currentAccountingMargin</div>
-    
-    <div>Last accounting Margin : @report.figures.lastAccountingMargin</div>
-    
-    <div>Current month Turnover : @report.figures.currentMonthTurnOver</div>
-    
-    <div>Last month Turnover : @report.figures.lastMonthTurnOver</div>
-    
-    <div>Current accounting Turnover : @report.figures.currentAccountingTurnOver</div>
-    
-    <div>Last accounting Turnover : @report.figures.lastAccountingTurnOver</div>
-    
-    <div>Current month Margin Local Servicing : @report.figures.currentMonthMarginLocalServicingOnly</div>
-    
-    <div>Last month Margin Local Servicing : @report.figures.lastMonthMarginLocalServicingOnly</div>
-    
-    <div>Current accounting Margin Local Servicing : @report.figures.currentAccountingMarginLocalServicingOnly</div>
-    
-    <div>Last accounting Margin Local Servicing : @report.figures.lastAccountingMarginLocalServicingOnly</div>
-    
-    <div>Current month Turnover Local Servicing : @report.figures.currentMonthTurnOverLocalServicingOnly</div>
-    
-    <div>Last month Turnover Local Servicing : @report.figures.lastMonthTurnOverLocalServicingOnly</div>
 
-    <div>Current accounting Turnover Local Servicing : @report.figures.currentAccountingTurnOverLocalServicingOnly</div>
+    <div>Current month Margin : @display_price_formated(report.figures.currentMonthMargin)</div>
     
-    <div>Last accounting Turnover Local Servicing : @report.figures.lastAccountingTurnOverLocalServicingOnly</div>
+    <div>Last month Margin : @display_price_formated(report.figures.lastMonthMargin)</div>
     
-    <div>Current month Margin Selling Only : @report.figures.currentMonthMarginSellingOnly</div>
+    <div>Current accounting Margin : @display_price_formated(report.figures.currentAccountingMargin)</div>
     
-    <div>Last month Margin Selling Only : @report.figures.lastMonthMarginSellingOnly</div>
+    <div>Last accounting Margin : @display_price_formated(report.figures.lastAccountingMargin)</div>
     
-    <div>Current accounting Margin Selling Only : @report.figures.currentAccountingMarginSellingOnly</div>
+    <br />
     
-    <div>Last accounting Margin Selling Only : @report.figures.lastAccountingMarginSellingOnly</div>
+    <div>Current month Turnover : @display_price_formated(report.figures.currentMonthTurnOver)</div>
     
-    <div>Current month Turnover Selling Only : @report.figures.currentMonthTurnOverSellingOnly</div>
+    <div>Last month Turnover : @display_price_formated(report.figures.lastMonthTurnOver)</div>
     
-    <div>Last month Turnover Selling Only : @report.figures.lastMonthTurnOverSellingOnly</div>
+    <div>Current accounting Turnover : @display_price_formated(report.figures.currentAccountingTurnOver)</div>
+    
+    <div>Last accounting Turnover : @display_price_formated(report.figures.lastAccountingTurnOver)</div>
+    
+    
+    <br />
+    <hr />
+    <br />
+    
+    <div>Current month Margin Local Servicing : @display_price_formated(report.figures.currentMonthMarginLocalServicingOnly)</div>
+    
+    <div>Last month Margin Local Servicing : @display_price_formated(report.figures.lastMonthMarginLocalServicingOnly)</div>
+    
+    <div>Current accounting Margin Local Servicing : @display_price_formated(report.figures.currentAccountingMarginLocalServicingOnly)</div>
+    
+    <div>Last accounting Margin Local Servicing : @display_price_formated(report.figures.lastAccountingMarginLocalServicingOnly)</div>
+    
+    <br />
+    
+    <div>Current month Turnover Local Servicing : @display_price_formated(report.figures.currentMonthTurnOverLocalServicingOnly)</div>
+    
+    <div>Last month Turnover Local Servicing : @display_price_formated(report.figures.lastMonthTurnOverLocalServicingOnly)</div>
 
-    <div>Current accounting Turnover Selling Only : @report.figures.currentAccountingTurnOverSellingOnly</div>
+    <div>Current accounting Turnover Local Servicing : @display_price_formated(report.figures.currentAccountingTurnOverLocalServicingOnly)</div>
     
-    <div>Last accounting Turnover Selling Only : @report.figures.lastAccountingTurnOverSellingOnly</div>
+    <div>Last accounting Turnover Local Servicing : @display_price_formated(report.figures.lastAccountingTurnOverLocalServicingOnly)</div>
     
+    <br />
+    <hr />
+    <br />
+    
+    <div>Current month Margin Selling Only : @display_price_formated(report.figures.currentMonthMarginSellingOnly)</div>
+    
+    <div>Last month Margin Selling Only : @display_price_formated(report.figures.lastMonthMarginSellingOnly)</div>
+    
+    <div>Current accounting Margin Selling Only : @display_price_formated(report.figures.currentAccountingMarginSellingOnly)</div>
+    
+    <div>Last accounting Margin Selling Only : @display_price_formated(report.figures.lastAccountingMarginSellingOnly)</div>
+    
+    <br />
+    
+    <div>Current month Turnover Selling Only : @display_price_formated(report.figures.currentMonthTurnOverSellingOnly)</div>
+    
+    <div>Last month Turnover Selling Only : @display_price_formated(report.figures.lastMonthTurnOverSellingOnly)</div>
+
+    <div>Current accounting Turnover Selling Only : @display_price_formated(report.figures.currentAccountingTurnOverSellingOnly)</div>
+    
+    <div>Last accounting Turnover Selling Only : @display_price_formated(report.figures.lastAccountingTurnOverSellingOnly)</div>
+    
+    <br />
+    <br />
 }
