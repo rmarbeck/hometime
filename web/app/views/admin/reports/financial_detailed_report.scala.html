@@ -1,0 +1,21 @@
+@(lines: List[reporting.AnalyticsDetailedReport])
+@import tags._
+
+
+@defining(new views.admin.reports.Report(lines, "admin.analytics.line.page")) { report =>
+	@{  report.addCol("year", "getYear", false);
+		report.addCol("month", "getMonth", false);
+		report.addCol("financialYearIndex", "getFinancialYearIndex", false);
+		report.addCol("analyticCode", "getAnalyticCode", false);
+		report.addCol("analyticCodeXX", "getAnalyticCodeXX", false);
+		report.addCol("analyticCodeXXX", "getAnalyticCodeXXX", false);
+		report.addCol("price", "getPrice", false, "price", null);
+		report.addCol("cost", "getCost", false, "price", null);
+		report.addCol("checked", "getChecked", false);
+		report.addCol("doubleChecked", "getDoubleChecked", false);
+	}
+	
+	@layouts.admin() {
+	    @admin.reports.fragments.report(report)
+	}
+}

@@ -305,6 +305,7 @@ GET     /admin/stock			            							controllers.Reporting.stock()
 GET     /admin/legal-register	            							controllers.Reporting.legalRegister(starting:Long ?=1)
 GET     /admin/payments			            							controllers.Reporting.payments()
 GET     /admin/financial		            							controllers.Reporting.financialReport()
+GET     /admin/detailed-financial		            					controllers.Reporting.financialDetailedReport()
 
 GET     /admin/test			            								controllers.Admin.test()
 GET     /admin/testC		            								controllers.Admin.testCollaboratorOnly()

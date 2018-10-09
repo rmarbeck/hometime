@@ -4318,5 +4318,22 @@ admin.sign.in.login.title=Se connecter
 admin.quick.sign.in.login.action=Se connecter
 admin.sign.in.login.action=Se connecter
 
+admin.analytics.line.page=Analyses comptables
+admin.analytics.line.page.title=Analyses comptables
+admin.analytics.line.page.year=Année
+admin.analytics.line.page.month=Mois
+admin.analytics.line.page.financialYearIndex=Index fiscal
+admin.analytics.line.page.analyticCode=Code analytique
+admin.analytics.line.page.analyticCodeXX=Sous code analytique 2
+admin.analytics.line.page.analyticCodeXXX=Sous code analytique 3
+admin.analytics.line.page.price=Prix
+admin.analytics.line.page.cost=Coût
+admin.analytics.line.page.checked=Vérifé
+admin.analytics.line.page.doubleChecked=Vérifié 2 fois
+
+
+
 
 #end
+
+

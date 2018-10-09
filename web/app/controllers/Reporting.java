@@ -11,6 +11,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import reporting.AnalyticsReport;
+import reporting.AnalyticsDetailedReport;
 import reporting.InvoiceLineReport;
 import reporting.WatchSalesReport;
 import views.html.admin.reports.margin_vat;
@@ -24,6 +25,7 @@ import views.html.admin.reports.address_tab_table;
 import views.html.admin.reports.address_tab_alpha;
 import views.html.admin.reports.payments;
 import views.html.admin.reports.financial_report;
+import views.html.admin.reports.financial_detailed_report;
 
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
@@ -31,6 +33,11 @@ public class Reporting extends Controller {
 	public static Result financialReport() {
 		return ok(financial_report.render(AnalyticsReport.generateReport()));
     }
+	
+	public static Result financialDetailedReport() {
+		return ok(financial_detailed_report.render(AnalyticsDetailedReport.generateReport()));
+    }
+	
 	
 	public static Result marginVat() {
 		return ok(margin_vat.render(WatchSalesReport.generateReport(invoice -> InvoiceType.MARGIN_VAT.equals(invoice.type))));
