@@ -18,6 +18,7 @@ public class AnalyticsReport {
 	private final static Predicate<Long> isLocalServicing = (value) -> (value > 2000L && value < 2100L);
 	private final static Predicate<Long> isExternalServicing = (value) -> (value > 2100L && value < 3000L);
 	private final static Predicate<Long> isValueAddedServiceProviding = (value) -> (value > 6000L && value < 7000L);
+	private final static Predicate<Long> isQuartzSimpleService = (value) -> (value >= 2054L && value <= 2057L);
 	
 	public class OvertimeFigures {
 		private final Predicate<UniqueAccountingNumber> isCurrentMonth = (value) -> (value.getYearAndMonthFromUAN().equals(YearMonth.now()));
@@ -51,6 +52,15 @@ public class AnalyticsReport {
 		public Float currentAccountingTurnOverSellingOnly = 0f;
 		public Float lastAccountingTurnOverSellingOnly = 0f;
 		
+		public Float currentMonthMarginSimpleQuartzOnly = 0f;
+		public Float lastMonthMarginSimpleQuartzOnly = 0f;
+		public Float currentAccountingMarginSimpleQuartzOnly = 0f;
+		public Float lastAccountingMarginSimpleQuartzOnly = 0f;
+		public Float currentMonthTurnOverSimpleQuartzOnly = 0f;
+		public Float lastMonthTurnOverSimpleQuartzOnly = 0f;
+		public Float currentAccountingTurnOverSimpleQuartzOnly = 0f;
+		public Float lastAccountingTurnOverSimpleQuartzOnly = 0f;
+		
 		public void add(UniqueAccountingNumber uan, Long type, float marginValue, float turnoverValue) {
 			currentMonthMargin += add(uan, isCurrentMonth, type, alwaysTrue, marginValue);
 			lastMonthMargin += add(uan, isLastMonth, type, alwaysTrue, marginValue);
@@ -78,6 +88,15 @@ public class AnalyticsReport {
 			lastMonthTurnOverSellingOnly += add(uan, isLastMonth, type, isWatchSelling, turnoverValue);
 			currentAccountingTurnOverSellingOnly += add(uan, isCurrentAccounting, type, isWatchSelling, turnoverValue);
 			lastAccountingTurnOverSellingOnly += add(uan, isLastAccounting, type, isWatchSelling, turnoverValue);
+			
+			currentMonthMarginSimpleQuartzOnly += add(uan, isCurrentMonth, type, isQuartzSimpleService, marginValue);
+			lastMonthMarginSimpleQuartzOnly += add(uan, isLastMonth, type, isQuartzSimpleService, marginValue);
+			currentAccountingMarginSimpleQuartzOnly += add(uan, isCurrentAccounting, type, isQuartzSimpleService, marginValue);
+			lastAccountingMarginSimpleQuartzOnly += add(uan, isLastAccounting, type, isQuartzSimpleService, marginValue);
+			currentMonthTurnOverSimpleQuartzOnly += add(uan, isCurrentMonth, type, isQuartzSimpleService, turnoverValue);
+			lastMonthTurnOverSimpleQuartzOnly += add(uan, isLastMonth, type, isQuartzSimpleService, turnoverValue);
+			currentAccountingTurnOverSimpleQuartzOnly += add(uan, isCurrentAccounting, type, isQuartzSimpleService, turnoverValue);
+			lastAccountingTurnOverSimpleQuartzOnly += add(uan, isLastAccounting, type, isQuartzSimpleService, turnoverValue);
 			
 		}
 		

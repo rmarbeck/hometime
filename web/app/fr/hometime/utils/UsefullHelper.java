@@ -1,5 +1,6 @@
 package fr.hometime.utils;
 
+import java.text.DecimalFormat;
 import java.util.Optional;
 
 /**
@@ -28,5 +29,14 @@ public class UsefullHelper {
 		      return Optional.empty();
 		    }
 		return Optional.empty();
+	}
+	
+	public static String formatAsReadableAmount(float number) {
+		return customFormat("##,###.##", number);
+	}
+	
+	public static String customFormat(String pattern, double value ) {
+	      DecimalFormat myFormatter = new DecimalFormat(pattern);
+	      return myFormatter.format(value);
 	}
 }

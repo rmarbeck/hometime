@@ -2,7 +2,7 @@
 @import tags._
 
 @display_price_formated(price: Float) = {
-@java.text.NumberFormat.getCurrencyInstance.format(price)
+@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price)
 }
 
 @layouts.admin() {
@@ -69,6 +69,29 @@
     <div>Current accounting Turnover Selling Only : @display_price_formated(report.figures.currentAccountingTurnOverSellingOnly)</div>
     
     <div>Last accounting Turnover Selling Only : @display_price_formated(report.figures.lastAccountingTurnOverSellingOnly)</div>
+    
+    <br />
+    <hr />
+    <br />
+    
+    <div>Current month Margin SimpleQuartz Only : @display_price_formated(report.figures.currentMonthMarginSimpleQuartzOnly)</div>
+    
+    <div>Last month Margin SimpleQuartz Only : @display_price_formated(report.figures.lastMonthMarginSimpleQuartzOnly)</div>
+    
+    <div>Current accounting Margin SimpleQuartz Only : @display_price_formated(report.figures.currentAccountingMarginSimpleQuartzOnly)</div>
+    
+    <div>Last accounting Margin SimpleQuartz Only : @display_price_formated(report.figures.lastAccountingMarginSimpleQuartzOnly)</div>
+    
+    <br />
+    
+    <div>Current month Turnover SimpleQuartz Only : @display_price_formated(report.figures.currentMonthTurnOverSimpleQuartzOnly)</div>
+    
+    <div>Last month Turnover SimpleQuartz Only : @display_price_formated(report.figures.lastMonthTurnOverSimpleQuartzOnly)</div>
+
+    <div>Current accounting Turnover SimpleQuartz Only : @display_price_formated(report.figures.currentAccountingTurnOverSimpleQuartzOnly)</div>
+    
+    <div>Last accounting Turnover SimpleQuartz Only : @display_price_formated(report.figures.lastAccountingTurnOverSimpleQuartzOnly)</div>
+    
     
     <br />
     <br />

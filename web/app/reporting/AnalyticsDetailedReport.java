@@ -1,6 +1,5 @@
 package reporting;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +29,8 @@ public class AnalyticsDetailedReport {
 		UniqueAccountingNumber invoiceUAN = UniqueAccountingNumber.fromString(sInvoiceUAN, false);
 		
 		this.year = invoiceUAN.extractYearFromUAN()+"";
-		this.month = invoiceUAN.extractMonthFromUAN()+"";
+		int iMonth = invoiceUAN.extractMonthFromUAN();
+		this.month = (iMonth<10?"0"+iMonth:""+iMonth);
 		this.financialYearIndex = UniqueAccountingNumber.getFinancialYearSequenceNumberFromUAN(invoiceUAN).get()+"";
 		
 		String foundAnalyticCode = lAnalyticCode.toString(); 
@@ -67,7 +67,7 @@ public class AnalyticsDetailedReport {
 		List<AccountingLineAnalytic> lines = supplier.get();
 		for(AccountingLineAnalytic line : lines)
 			addNewLine(new AnalyticsDetailedReport(line), reportBuilder);
-		return reportBuilder.values().stream().sorted(Comparator.comparing((value) -> evaluateKey(value))).collect(Collectors.toList());
+		return reportBuilder.values().stream().sorted(Comparator.comparing(AnalyticsDetailedReport::evaluateKey).reversed()).collect(Collectors.toList());
 	}
 
 	private static void addNewLine(AnalyticsDetailedReport newLine, HashMap<String, AnalyticsDetailedReport> reportBuilder) {
