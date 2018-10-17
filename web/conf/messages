@@ -122,7 +122,7 @@ home.caption.2.alt.body=Hometime vous propose tous les services pour prendre soi
 home.caption.2.alt.call.to.action=Découvrez nos services !
 
 home.caption.3.head=Ne vous déplacez plus&nbsp;!
-home.caption.3.body=Hometime intervient à domicile et confie votre montre au <b>service après vente officiel</b> ou à l''un des <b>meilleurs horlogers de Paris</b>, c''est vous qui choisissez.
+home.caption.3.body=Hometime intervient à domicile et confie votre montre au <b>service après vente officiel</b> ou à <b>l''un de nos horlogers</b>, c''est vous qui choisissez.
 home.caption.3.call.to.action=Demandez un devis !
 
 home.caption.4.head=Trouvez votre prochaine montre&nbsp;!
@@ -138,17 +138,17 @@ home.promise.1.body=Une montre est conçue pour <b>durer longtemps</b> et se tra
 home.promise.1.call.to.action=Tout savoir sur l''entretien
 home.promise.1.call.to.action.title=Comprendre l''entretien et la révision d''une montre
 
-home.promise.2.alt=Montre de légende - Rolex Submariner
-home.promise.2.head=Essayez
-home.promise.2.body=<b>Portez une montre de légende</b> pendant toute <b>la durée de la révision</b> ou de la réparation <b>de votre montre</b>. Découvrez vite la montre qui vous plaît le plus dans notre catalogue. 
-home.promise.2.call.to.action=Les montres disponibles
-home.promise.2.call.to.action.title=Le catalogue des montres proposées pour un essai prolongé
+home.promise.2.alt=Atelier Hometime - 322 rue Saint Honoré
+home.promise.2.head=A l''atelier
+home.promise.2.body=Nous vous accueillons sur <b>Paris, dans notre atelier du 322 rue Saint Honoré</b> du Lundi au vendredi de 10h à 18h30. Venez avec ou sans rendez-vous pour déposer une montre ou simplement nous rencontrer ! 
+home.promise.2.call.to.action=Découvrir nos services
+home.promise.2.call.to.action.title=Les services Hometime
 
 home.promise.2.alt.alt=Montre de légende - Rolex Submariner
-home.promise.2.alt.head=Simplement
-home.promise.2.alt.body=Vous ne savez pas comment entretenir ou faire réparer votre montre, vous n''avez pas le temps de vous en occuper, vous redoutez des tarifs exhorbitants, <b>Hometime s''occupe de tout au meilleur prix</b>. 
-home.promise.2.alt.call.to.action=Les services Hometime
-home.promise.2.alt.call.to.action.title=Découvrez tous les services Hometime (révision, réparation, restauration)
+home.promise.2.alt.head=Essayez
+home.promise.2.alt.body=<b>Portez une montre de légende</b> pendant toute <b>la durée de la révision</b> ou de la réparation <b>de votre montre</b>. Découvrez vite la montre qui vous plaît le plus dans notre catalogue. 
+home.promise.2.alt.call.to.action=Les montres disponibles
+home.promise.2.alt.call.to.action.title=Le catalogue des montres proposées pour un essai prolongé
 
 home.promise.3.alt=Déplacement à domicile
 home.promise.3.head=A domicile
@@ -175,9 +175,9 @@ home.order.links.by.brand.title=Demander un devis gratuit pour une réparation o
 home.order.links.by.brand=Réparation ou révision {0}
 
 home.text.what.is.it=Hometime, qu''est-ce que c''est&nbsp;?
-home.what.is.it.1.body=Hometime est un service de conciergerie horlogère. Nous intervenons à domicile sur Paris et sa région et proposons des solutions de transport sures partout ailleurs. 
-home.what.is.it.2.body=Nous sélectionnons les meilleurs acteurs du marché de l''horlogerie pour vous apporter tous les services que vous pouvez attendre pour vos montres : entretien, essai, achat, vente.
-home.what.is.it.3.body=Hometime ne dispose pas de boutique afin de vous offrir ses services aux tarifs les plus compétitifs.
+home.what.is.it.1.body=Hometime propose tous les services horlogers partout en France avec des solutions adaptées à chacun. 
+home.what.is.it.2.body=Nous disposons de nos horlogers et par ailleurs nous sélectionnons les meilleurs acteurs du marché pour vous apporter tous nos services : entretien, essai, achat, vente.
+home.what.is.it.3.body=Nous faisons des choix nous permettant d'offrir les tarifs les plus justes et les délais les plus courts possible.
 home.what.is.it.4.body=Nous adoptons une démarche de protection de l''environnement en n''utilisant que des moyens de transport verts.
 home.what.is.it.5.body=Nous pouvons <a href="{0}">personnaliser vos montres</a> pour les rendre uniques.
 
@@ -188,7 +188,7 @@ home.reason.4.body=Je peux faire entretenir plusieurs montres à la fois&nbsp;!
 home.reason.3.body=Je peux juste vérifier l''étanchéité ou faire régler ma montre&nbsp;!
 home.reason.2.body=Je peux porter une montre de légende pendant quelques semaines&nbsp;!
 home.reason.5.body=Pour un entretien au sein du réseau officiel, hometime s''occupe de tout&nbsp;!
-home.reason.6.body=Pour un entretien chez un horloger, hometime sélectionne les meilleurs&nbsp;!
+home.reason.6.body=Pour un entretien auprès de nos horlogers, profitez de nos conseils&nbsp;!
 home.reason.7.body=Si je suis pressé, hometime me propose une solution en quelques jours seulement&nbsp;!
 home.reason.8.body=Je possède une montre ancienne ou vintage, je peux la faire restaurer&nbsp;!
 
@@ -285,7 +285,7 @@ water.content.2.body=<div class="sub-title"></div>Le maître mot lorsque de l''e
  <br /><br />Les dégâts occasionnés par l''eau peuvent être vite importants, surtout s''il s''agit d''eau de mer ou d''eau chlorée, mais si l''<b>intervention est très rapide il est possible d''éviter toute conséquence</b>.\
  <br /><br />Une fois dans l''atelier horloger, la cause de l''intrusion d''eau est détectée puis la montre est démontée, séchée, nettoyée (pour être débarrassée de toute source de corrosion).\
  Lors du remontage de la montre, les joints sont changés et l''étanchéité est contrôlée.\
- <br /><br />Hometime vous propose d''intervenir dès que vous détectez un problème d''étanchéité et s''engage à réaliser les travaux nécessaires en quelques heures seulement auprès des meilleurs ateliers horlogers parisiens.
+ <br /><br />Hometime vous propose d''intervenir dès que vous détectez un problème d''étanchéité et s''engage à réaliser les travaux nécessaires en quelques heures seulement.
 water.2.to.action=Demander une intervention en urgence
 water.1.alt=Monaco embuée
 water.2.alt=Monaco ouverte
@@ -426,7 +426,7 @@ offer.menu.text.prices=Les tarifs
 offer.baseline=Les services et les prestations Hometime
 
 offer.service.head=Révision & réparations
-offer.service.body=Hometime prend en charge la révision ou la réparation de votre montre. L''ensemble des opérations sont réalisées soit par <b>notre horloger</b>, soit directement par <b>la marque elle-même</b>. Hometime vous conseille, et <b>c''est vous qui choisissez</b>.\
+offer.service.body=Hometime prend en charge la révision ou la réparation de votre montre. L''ensemble des opérations sont réalisées soit par <b>l''un de nos horlogers</b>, soit directement par <b>la marque elle-même</b>. Hometime vous conseille, et <b>c''est vous qui choisissez</b>.\
  <br /><br />Hometime se charge pour vous de :\
  <ul><li>Vous apporter toutes les informations et conseils préalables à l''intervention</li>\
  <li>Prendre en <b>photo</b> votre montre afin de faire un <b>état des lieux précis avant la prise en charge</b></li>\
@@ -435,7 +435,7 @@ offer.service.body=Hometime prend en charge la révision ou la réparation de vo
  <li>Prendre rendez-vous avec vous pour la restitution de votre montre dès qu''elle est prête</li>\
  <li>Vous remettre les documents décrivant les opérations effectuées et la nouvelle garantie</li></ul>\
  <br />Pendant tout le temps de l''intervention, Hometime est à votre disposition pour vous donner les informations que vous souhaitez ou pour annuler une opération.\
- <br /><br />Hometime peut prendre en charge les montres des marques suivantes : <b>Baume & Mercier, Bell & Ross, Chanel, Chopard, Breitling, Frédérique Constant, Hamilton, Hublot, IWC, Jaeger LeCoultre, Longines, Omega, Panerai, Tag Heuer, Tissot, Tudor, Rado, Rolex, Zenith</b>.\
+ <br /><br />Hometime peut prendre en charge les montres des marques suivantes : <b>Alpina, Audemars Piguet, Baume & Mercier, Blancpain, Bell & Ross, Breguet, Breitling, B.R.M, Bulgari, Cartier, Certina, Chanel, Chopard, Frédérique Constant, Festina, Fortis, Girard Perregaux, Hamilton, Hermès, Hublot, Ice Watch, IWC, Jaeger LeCoultre, Longines, Michel Herbelin, Montblanc, Nomos, Omega, Panerai, Patek Philippe, Rado, Rolex, Seiko, Swatch, Tag Heuer, Tissot, Tudor, Ulysse Nardin, Vacheron Constantin, Victorinox, Zenith</b>.\
  <br /><br />Si la marque de votre montre ne figure pas dans cette liste, vous pouvez nous <a href="mailto:contact@hometime.fr">contacter par mail</a> pour que nous puissions déterminer si nous pouvons intervenir.
 
 offer.service.call.to.action.more=Pourquoi réviser ?
@@ -560,10 +560,10 @@ order.html.title=Devis gratuit pour révision ou réparation de montre
 order.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration avec choix en option l''essai d''une montre.
 order.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine
 order.baseline=Demande de devis gratuit
-order.text.explanation=Pour obtenir un devis d''entretien de votre montre, veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé. <b>Veuillez excuser un délai de réponse plus long jusqu''au 29 août.</b>
+order.text.explanation=Pour obtenir un devis d''entretien de votre montre, veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
 order.text.disclaimer=Au delà des entretiens classiques comme la révision complète, les changements de verres, de poussoirs ou de lunette, ou des restaurations de montres ayant subi de graves dommages (rouille causée par une perte d''étanchéité, chute violente...), nous pouvons proposer des services "à la carte" correspondant à des besoins très spécifiques. N''hésitez par à nous contacter pour réviser, réparer, restaurer ou même personnaliser votre montre !\
   <br />Dans certains cas, il est possible que nous ne soyons pas en mesure de vous proposer des devis comparatifs mais uniquement un devis dans le SAV officiel ou un devis chez un horloger partenaire. Nous vous en informons dans notre réponse. 
-order.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''un atelier indépendant, avec prise en charge à domicile ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a> 
+order.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''horlogers indépendants diplômés, avec prise en charge à domicile ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a> 
 
 order.generic.baseline=Demande de devis gratuit
 order.generic.text.explanation=Pour obtenir un devis pour l''entretien d''une montre {0} (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé. <b>Veuillez excuser un délai de réponse plus long jusqu''au 29 août.</b>
@@ -573,7 +573,7 @@ order.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger ag
 
 
 appointment.generic.baseline=Venir chez Hometime
-appointment.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''un atelier indépendant, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
+appointment.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''horlogers indépendants diplômés, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
 appointment.generic.text.explanation=Toutes les informations pour prendre rendez-vous et nous rencontrer dans nos locaux situés dans le 1er arrondissement de Paris.
 appointment.generic.html.title=Venir chez Hometime
 appointment.generic.html.description=Comment venir dans nos locaux à Paris pour déposer une montre pour une révision complète, un entretien partiel, un polissage, un changement de pile ou tout autre service horloger
@@ -586,7 +586,7 @@ quartz.generic.html.title=Devis pour le changement de pile d''une montre {0}
 quartz.generic.html.description=Description du service de changement de la pile d''une montre à quartz {0}, différents modèles  {1}.
 quartz.generic.html.keywords=changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
 quartz.text.disclaimer=Au delà du changement de pile, avec ou sans garantie d''étanchéité, sur les montres à quartz toutes marques, nous proposons des entretiens classiques comme la révision complète, les changements de verres, de poussoirs ou de lunette, ou des restaurations de montres ayant subi de graves dommages (rouille causée par une perte d''étanchéité, chute violente...), nous pouvons proposer des services "à la carte" correspondant à des besoins très spécifiques. N''hésitez par à nous contacter pour réviser, réparer, restaurer ou même personnaliser votre montre !
-quartz.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''un atelier indépendant, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
+quartz.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''horlogers indépendants diplômés, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
 
 order.undefined.brand.name=d''une marque supportée par Hometime
 order.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrera, Oyster, ,Submariner, Daytona, GMT Master, Big Bang, Royal Oak, El Primero, Chronomaster
@@ -810,7 +810,7 @@ order.form.placeholder.model=Nom du modèle - Année
 order.form.label.method=* Réseau
 order.form.help.method=Notre horloger sera plus rapide et moins cher.
 order.form.value.method.brand=Je souhaite que ma montre soit entretenue par son fabricant
-order.form.value.method.outlet=Je souhaite que ma montre soit entretenue par un <abbr class="" title="Hometime ne travaille qu''avec des professionnels diplomés et très expérimentés" >horloger indépendant</abbr>
+order.form.value.method.outlet=Je souhaite que ma montre soit entretenue par un <abbr class="" title="Nos horlogers sont des professionnels diplomés et très expérimentés" >horloger indépendant</abbr>
 order.form.value.method.both=Je souhaite un devis comparant les deux modes d''entretien
 order.form.label.remark=Remarques
 order.form.placeholder.remark=Vous souhaitez préciser quelque-chose
@@ -1302,7 +1302,7 @@ faq.baseline=Les questions fréquemment posées par nos clients
 faq.head.1=Etes-vous horloger&nbsp;?
 faq.body.1=Hometime propose des services à ses clients en sélectionnant des partenaires de renom et de confiance disposant d''une longue expérience. \
  <br /><br />Lorsque le client choisit une intervention en dehors du réseau de la marque, révisions et réparations sont confiées à des horlogers diplômés partenaires d''Hometime. Ils disposent tous des infrastructures, sources d''approvisionnement et assurances garantissant un travail de très grande qualité.
-faq.head.2=Faut-il préférer l''entretien dans le réseau officiel ou auprès d''un horloger indépendant&nbsp;?
+faq.head.2=Faut-il préférer l''entretien dans le réseau officiel ou auprès d''horlogers indépendants diplômés&nbsp;?
 faq.body.2=Le choix entre entretien auprès de la marque ou auprès d''un horloger indépendant dépend d''un grand nombre de facteurs, comme la marque de la montre, son ancienneté, les contraintes de temps que vous pouvez avoir.\
  <br /><br />Dans certains cas, il est impératif de confier sa montre à la marque, dans d''autres cas il est nécessaire de passer par un horloger indépendant. \
  <br /><br />Chez Hometime, nous sommes là pour vous conseiller et vous aider à faire le bon choix.
