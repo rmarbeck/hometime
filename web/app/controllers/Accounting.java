@@ -514,7 +514,7 @@ public class Accounting extends Controller {
 		} else {
 			mainLineContent = Messages.get("admin.order.description.servicing.a.watch.without.water.resistance", watch.brand, watch.model);
 		}
-		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, mainLineContent, Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingMecanicalWatch(waterResistance, false)), -1f);
+		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, mainLineContent, Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForServicingMecanicalWatch()), -1f);
 		if (waterResistance) {
 			newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.waranty.line.servicing.a.watch.with.water.resistance"), Long.valueOf(1), Float.valueOf(0));
 		} else {
@@ -547,8 +547,8 @@ public class Accounting extends Controller {
 		} else {
 			mainLineContent = Messages.get("admin.order.description.repairing.a.watch.without.water.resistance", watch.brand, watch.model);
 		}
-		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, mainLineContent, Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingMecanicalWatch(waterResistance, false)), -1f);
-		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, "", Long.valueOf(1), 0f, AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingMecanicalWatch(waterResistance, false)), -1f);
+		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, mainLineContent, Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForRepairingMecanicalWatch()), -1f);
+		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, "", Long.valueOf(1), 0f, AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForSpareParts()), -1f);
 		if (waterResistance) {
 			newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.waranty.line.repairing.a.watch.with.water.resistance"), Long.valueOf(1), Float.valueOf(0));
 		} else {
@@ -559,7 +559,7 @@ public class Accounting extends Controller {
 	
 	private static void populateOrderFormByWatchEmpty(models.OrderDocument newOrder, models.CustomerWatch watch, boolean waterResistance) {
 		newOrder.description = Messages.get("admin.order.description.empty", watch.brand, watch.model);
-		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, Messages.get("admin.order.description.empty", watch.brand, watch.model), Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingMecanicalWatch(waterResistance, false)), -1f);
+		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, Messages.get("admin.order.description.empty", watch.brand, watch.model), Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), null, -1f);
 		if (waterResistance) {
 			newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.waranty.line.empty"), Long.valueOf(1), Float.valueOf(0));
 		}

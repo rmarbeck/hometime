@@ -43,6 +43,8 @@ public class AccountingAnalyticsHelper {
 	private static Long META_CODE_FOR_RESTORING_MECANICAL_WATCH = 20031l;
 	private static Long META_CODE_FOR_REPAIRING_MECANICAL_WATCH = 20031l;
 	
+	private static Long META_CODE_FOR_SPARE_PARTS_ON_ORDER = 31011l;
+	
 	
 	public static Long findMetaCodeForSellingAWatch(WatchToSell watch) {
 		if (watch.isNew) {
@@ -84,6 +86,18 @@ public class AccountingAnalyticsHelper {
 				return META_CODE_FOR_PARTIAL_SERVICING_MECANICAL_WATCH_WITHOUT_WATERING_BUT_POLISHING;
 			return META_CODE_FOR_PARTIAL_SERVICING_MECANICAL_WATCH_WITHOUT_WATERING;
 		}
+	}
+	
+	public static Long findMetaCodeForServicingMecanicalWatch() {
+		return META_CODE_FOR_SERVICING_MECANICAL_WATCH;
+	}
+	
+	public static Long findMetaCodeForRepairingMecanicalWatch() {
+		return META_CODE_FOR_REPAIRING_MECANICAL_WATCH;
+	}
+	
+	public static Long findMetaCodeForSpareParts() {
+		return META_CODE_FOR_SPARE_PARTS_ON_ORDER;
 	}
 	
 	public static void addAnalyticsToLine(AccountingLine line, AccountingLineAnalyticPreset preset, Float oneTimeCostValue) {
