@@ -266,6 +266,13 @@ POST    /admin/manage-order-document            						controllers.Accounting.man
 GET     /admin/order-documents            								controllers.Accounting.displayAllOrderDocument(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")
 GET     /admin/order-document/:id         								controllers.Accounting.viewOrderDocument(id: Long)
 
+GET     /admin/order/create/by/watch-to-service/:id						controllers.Accounting.addOrderFormFormByWatchToService(id: Long, water: Boolean ?=false)
+GET     /admin/order/create/by/watch-to-repair/:id						controllers.Accounting.addOrderFormFormByWatchToRepair(id: Long, water: Boolean ?=false)
+GET     /admin/order/create/by/watch-to-quick-service/:id				controllers.Accounting.addInvoiceFormByWatchToQuickService(id: Long, water: Boolean ?=false)
+GET     /admin/order/create/by/watch/:id								controllers.Accounting.addInvoiceFormByWatchEmpty(id: Long, water: Boolean ?=false)
+
+
+
 GET     /admin/selling-document/create          						controllers.Accounting.addSellingDocument()
 GET     /admin/selling-document/edit/:id         						controllers.Accounting.editSellingDocument(id: Long)
 POST    /admin/manage-selling-document            						controllers.Accounting.manageSellingDocument()

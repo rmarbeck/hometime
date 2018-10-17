@@ -45,6 +45,11 @@ import views.html.admin.accounting.selling_documents;
 @With(NoCacheAction.class)
 public class Accounting extends Controller {
 	
+	@FunctionalInterface
+	public interface TriConsumer<T,U,S> {
+		void accept(T t, U u, S s);
+	}
+	
 	public static Result INVOICE = redirect(
 			routes.Accounting.display()
 			);
@@ -83,6 +88,22 @@ public class Accounting extends Controller {
 	
 	public static Result addInvoice() {
 		return ok(emptyNewInvoiceForm());		
+	}
+	
+	public static Result addOrderFormFormByWatchToService(Long id, boolean waterResistance) {
+		return ok(newOrderFormByWatchToService(id, waterResistance));		
+	}
+	
+	public static Result addOrderFormFormByWatchToRepair(Long id, boolean waterResistance) {
+		return ok(newOrderFormByWatchToRepair(id, waterResistance));		
+	}
+	
+	public static Result addInvoiceFormByWatchToQuickService(Long id, boolean waterResistance) {
+		return ok(newOrderFormByWatchToQuickService(id, waterResistance));		
+	}
+	
+	public static Result addInvoiceFormByWatchEmpty(Long id, boolean waterResistance) {
+		return ok(newOrderFormByWatchEmpty(id, waterResistance));		
 	}
 	
 	public static Result editInvoice(Long invoiceId) {
@@ -466,6 +487,102 @@ public class Accounting extends Controller {
 		if (currentOrderDocument != null)
 			return ok(new String(currentOrderDocument.document.documentData, StandardCharsets.UTF_8)).as("text/html; charset=utf-8");
 		return badRequest("error");
+	}
+	
+	private static Html newOrderFormByWatchToService(long id, boolean waterResistance) {
+		return newOrderGeneric(id, waterResistance, Accounting::populateOrderFormByWatchService);
+	}
+	
+	private static Html newOrderFormByWatchToQuickService(long id, boolean waterResistance) {
+		return newOrderGeneric(id, waterResistance, Accounting::populateOrderFormByWatchToQuickService);
+	}
+	
+	private static Html newOrderFormByWatchToRepair(long id, boolean waterResistance) {
+		return newOrderGeneric(id, waterResistance, Accounting::populateOrderFormByWatchToRepair);
+	}
+	
+	private static Html newOrderFormByWatchEmpty(long id, boolean waterResistance) {
+		return newOrderGeneric(id, waterResistance, Accounting::populateOrderFormByWatchEmpty);
+	}
+	
+	private static void populateOrderFormByWatchService(models.OrderDocument newOrder, models.CustomerWatch watch, boolean waterResistance) {
+		newOrder.description = Messages.get("admin.order.document.description.servicing.a.watch", watch.brand, watch.model);
+		newOrder.detailedInfos = Messages.get("admin.order.document.details.servicing.a.watch");
+		String mainLineContent = "";
+		if (waterResistance) {
+			mainLineContent = Messages.get("admin.order.description.servicing.a.watch.with.water.resistance", watch.brand, watch.model);
+		} else {
+			mainLineContent = Messages.get("admin.order.description.servicing.a.watch.without.water.resistance", watch.brand, watch.model);
+		}
+		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, mainLineContent, Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingMecanicalWatch(waterResistance, false)), -1f);
+		if (waterResistance) {
+			newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.waranty.line.servicing.a.watch.with.water.resistance"), Long.valueOf(1), Float.valueOf(0));
+		} else {
+			newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.waranty.line.servicing.a.watch.without.water.resistance"), Long.valueOf(1), Float.valueOf(0));
+		}
+		populateOrderFormGeneric(newOrder, watch, waterResistance);
+	}
+	
+	private static void populateOrderFormByWatchToQuickService(models.OrderDocument newOrder, models.CustomerWatch watch, boolean waterResistance) {
+		newOrder.description = Messages.get("admin.order.document.description.quick.servicing.a.watch", watch.brand, watch.model);
+		String mainLineContent = "";
+		if (waterResistance) {
+			mainLineContent = Messages.get("admin.order.description.quick.servicing.a.watch.with.water.resistance", watch.brand, watch.model);
+		} else {
+			mainLineContent = Messages.get("admin.order.description.quick.servicing.a.watch.without.water.resistance", watch.brand, watch.model);
+		}
+		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, mainLineContent, Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingMecanicalWatch(waterResistance, false)), -1f);
+		if (waterResistance) {
+			newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.waranty.line.quick.servicing.a.watch.with.water.resistance"), Long.valueOf(1), Float.valueOf(0));
+		}
+		populateOrderFormGeneric(newOrder, watch, waterResistance);
+	}
+	
+	private static void populateOrderFormByWatchToRepair(models.OrderDocument newOrder, models.CustomerWatch watch, boolean waterResistance) {
+		newOrder.description = Messages.get("admin.order.document.description.repairing.a.watch", watch.brand, watch.model);
+		newOrder.detailedInfos = Messages.get("admin.order.document.details.repairing.a.watch");
+		String mainLineContent = "";
+		if (waterResistance) {
+			mainLineContent = Messages.get("admin.order.description.repairing.a.watch.with.water.resistance", watch.brand, watch.model);
+		} else {
+			mainLineContent = Messages.get("admin.order.description.repairing.a.watch.without.water.resistance", watch.brand, watch.model);
+		}
+		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, mainLineContent, Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingMecanicalWatch(waterResistance, false)), -1f);
+		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, "", Long.valueOf(1), 0f, AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingMecanicalWatch(waterResistance, false)), -1f);
+		if (waterResistance) {
+			newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.waranty.line.repairing.a.watch.with.water.resistance"), Long.valueOf(1), Float.valueOf(0));
+		} else {
+			newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.waranty.line.repairing.a.watch.without.water.resistance"), Long.valueOf(1), Float.valueOf(0));
+		}
+		populateOrderFormGeneric(newOrder, watch, waterResistance);
+	}
+	
+	private static void populateOrderFormByWatchEmpty(models.OrderDocument newOrder, models.CustomerWatch watch, boolean waterResistance) {
+		newOrder.description = Messages.get("admin.order.description.empty", watch.brand, watch.model);
+		newOrder.addLine(LineType.WITH_VAT_BY_UNIT, Messages.get("admin.order.description.empty", watch.brand, watch.model), Long.valueOf(1), watch.finalCustomerServicePrice.floatValue(), AccountingLineAnalyticPreset.findByMetaCode(AccountingAnalyticsHelper.findMetaCodeForPartialServicingMecanicalWatch(waterResistance, false)), -1f);
+		if (waterResistance) {
+			newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.waranty.line.empty"), Long.valueOf(1), Float.valueOf(0));
+		}
+		populateOrderFormGeneric(newOrder, watch, waterResistance);
+	}
+	
+	private static void populateOrderFormGeneric(models.OrderDocument newOrder, models.CustomerWatch watch, boolean waterResistance) {
+		newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.delivery.line"), Long.valueOf(1), Float.valueOf(0));
+	}
+	
+	private static Html newOrderGeneric(long id, boolean waterResistance, TriConsumer<models.OrderDocument, models.CustomerWatch, Boolean> populater) {
+		models.CustomerWatch watch = CustomerWatch.findById(id);
+		if (watch == null)
+			return emptyNewOrderDocumentForm();
+		models.OrderDocument newOrder = new OrderDocument();
+		newOrder.setUniqueAccountingNumber(UniqueAccountingNumber.getNextForOrders().toString());
+		newOrder.document.customer = watch.customer;
+		newOrder.type = InvoiceType.VAT;
+		newOrder.paymentConditions= Messages.get("admin.order.document.conditions.generic");
+		newOrder.supportedPaymentMethods= Messages.get("admin.order.document.methods.generic");
+		newOrder.delay= Messages.get("admin.order.document.delay.generic");
+		populater.accept(newOrder, watch, waterResistance);
+		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(newOrder), true);
 	}
 	
 	/*

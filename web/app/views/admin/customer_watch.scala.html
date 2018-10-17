@@ -109,6 +109,23 @@
         	<a type="button" class="btn btn-primary" href="@routes.Accounting.addPServiceCByWatchId(watch.id)"><span class="glyphicon glyphicon-certificate"></span>@Html(Messages("admin.customer.watch.action.create.certificate"))</a>
         	<!-- Split button -->
 		    <div class="btn-group text-left dropup">
+		      <span class="btn btn-warning">@Html(Messages("admin.customer.watch.action.new.orders"))</span>
+		      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+		        <span class="caret"></span>
+		        <span class="sr-only">Toggle Dropdown</span>
+		      </button>
+		      <ul class="dropdown-menu" role="menu">
+		        <li><a href="@routes.Accounting.addOrderFormFormByWatchToService(watch.id, false)">@Html(Messages("admin.customer.watch.action.new.order.service.without.water"))</a></li>
+		        <li><a href="@routes.Accounting.addOrderFormFormByWatchToService(watch.id, true)">@Html(Messages("admin.customer.watch.action.new.order.service.with.water"))</a></li>
+		        <li><a href="@routes.Accounting.addOrderFormFormByWatchToRepair(watch.id, false)">@Html(Messages("admin.customer.watch.action.new.order.repair.without.water"))</a></li>
+		        <li><a href="@routes.Accounting.addOrderFormFormByWatchToRepair(watch.id, true)">@Html(Messages("admin.customer.watch.action.new.order.repair.with.water"))</a></li>
+		        <li><a href="@routes.Accounting.addInvoiceFormByWatchToQuickService(watch.id, false)">@Html(Messages("admin.customer.watch.action.new.order.quick.service.without.water"))</a></li>
+		        <li><a href="@routes.Accounting.addInvoiceFormByWatchToQuickService(watch.id, true)">@Html(Messages("admin.customer.watch.action.new.order.quick.service.with.water"))</a></li>
+		        <li><a href="@routes.Accounting.addInvoiceFormByWatchEmpty(watch.id, false)">@Html(Messages("admin.customer.watch.action.new.order.empty"))</a></li>
+		      </ul>
+		    </div>
+        	<!-- Split button -->
+		    <div class="btn-group text-left dropup">
 		      <span class="btn btn-success">@Html(Messages("admin.customer.watch.action.new.invoice.quick.service"))</span>
 		      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
 		        <span class="caret"></span>

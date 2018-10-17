@@ -2134,6 +2134,8 @@ admin.customer.watch.action.stored.by.us.secured.1=&nbsp;Sécurisé (103)
 admin.customer.watch.action.stored.by.us.secured.2=&nbsp;Sécurisé (9)
 admin.customer.watch.action.stored.by.us.secured.3=&nbsp;Sécurisé (réservé)
 
+admin.customer.watch.action.new.orders=Créer un devis
+
 admin.customer.watch.action.quotation.sent=&nbsp;Marquer devis envoyé
 
 admin.customer.watch.action.print.servicing=&nbsp;Fiche de service
@@ -2143,6 +2145,16 @@ admin.customer.watch.action.print.testing=&nbsp;Fiche de test
 admin.customer.watch.action.new.invoice.quick.service=Créer une facture
 admin.customer.watch.action.new.invoice.quick.service.without.water=Changement de pile à {0} €
 admin.customer.watch.action.new.invoice.quick.service.with.water=Changement de pile et étanchéité à {0} €
+
+
+admin.customer.watch.action.new.order.service.without.water=RH sans étanchéité
+admin.customer.watch.action.new.order.service.with.water=RH
+admin.customer.watch.action.new.order.repair.without.water=Réparation sans étanchéité
+admin.customer.watch.action.new.order.repair.with.water=Réparation
+admin.customer.watch.action.new.order.quick.service.without.water=Entretien partiel sans étanchéité
+admin.customer.watch.action.new.order.quick.service.with.water=Entretien partiel
+admin.customer.watch.action.new.order.empty=Générique
+
 
 admin.customer.watch.label.brand=Marque
 admin.customer.watch.label.model=Modèle
@@ -2741,6 +2753,40 @@ admin.invoice.main.line.quick.servicing.a.watch.without.water.resistance=Changem
 admin.invoice.waranty.line.quick.servicing.a.watch.with.water.resistance=Fonctionnement de la pile et étanchéité garantis pendant 2 ans
 admin.invoice.waranty.line.quick.servicing.a.watch.without.water.resistance=Fonctionnement de la pile garanti pendant 2 ans
 admin.invoice.delivery.line.quick.servicing.a.watch=Remise en mains propres à domicile
+
+
+admin.order.description.servicing.a.watch.with.water.resistance=Révision complète* d''une montre {0} {1}
+admin.order.description.servicing.a.watch.without.water.resistance=Révision complète* d''une montre {0} {1}
+admin.order.document.description.servicing.a.watch=Révision complète d''une montre {0}
+admin.order.document.details.servicing.a.watch=* La révision complète comprend : démontage du mouvement, nettoyage, remplacement de pièces usuellement remplacées, huilage, polissage de la montre, remontage, contrôle et/ou changement des joints, contrôle des performances
+admin.order.document.conditions.servicing.a.watch=100% à la fin des travaux (si acceptés) avant la livraison
+
+admin.order.document.conditions.generic=100% à la fin des travaux (si acceptés) avant la livraison
+admin.order.document.methods.generic=Chèque à l''ordre de "watch next", virement bancaire, CB en ligne
+admin.order.document.delay.generic=de 3 semaines environ
+
+admin.order.waranty.line.servicing.a.watch.with.water.resistance=Fonctionnement garanti pendant 1 an et étanchéité pendant 2 ans
+admin.order.waranty.line.servicing.a.watch.without.water.resistance=Fonctionnement garanti pendant 1 an
+admin.order.description.quick.servicing.a.watch.with.water.resistance=Entretien partiel d''une montre {0} {1}
+admin.order.description.quick.servicing.a.watch.without.water.resistance=Entretien partiel d''une montre {0} {1}
+admin.order.waranty.line.quick.servicing.a.watch.with.water.resistance=Etanchéité garantie pendant 2 ans
+admin.order.document.description.quick.servicing.a.watch=Entretien partiel d''une montre {0}
+
+
+admin.order.description.repairing.a.watch.with.water.resistance=Révision complète* d''une montre {0} {1}
+admin.order.description.repairing.a.watch.without.water.resistance=Révision complète* d''une montre {0} {1}
+admin.order.waranty.line.repairing.a.watch.with.water.resistance=Fonctionnement garanti pendant 1 an et étanchéité pendant 2 ans
+admin.order.waranty.line.repairing.a.watch.without.water.resistance=Fonctionnement garanti pendant 1 an
+admin.order.document.description.repairing.a.watch=Réparation d''une montre {0}
+admin.order.document.details.repairing.a.watch=* La révision complète comprend : démontage du mouvement, nettoyage, remplacement de pièces usuellement remplacées, huilage, polissage de la montre, remontage, contrôle et/ou changement des joints, contrôle des performances
+
+admin.order.description.empty=Entretien d''une montre {0} {1}
+admin.order.waranty.line.empty=Etanchéité garantie pendant 2 ans
+admin.order.document.description.empty=Entretien d''une montre {0}
+
+admin.order.delivery.line=Remise en mains propres à domicile
+
+
 
 
 admin.invoice.description.selling.a.watch=Vente d''une montre {0} {1}
