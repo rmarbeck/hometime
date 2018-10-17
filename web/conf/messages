@@ -1567,6 +1567,9 @@ admin.navbar.link.text.reporting.invoice.lines=Rapport de Chiffre d''affaires
 admin.navbar.link.text.reporting.stock=Rapport de Stock
 admin.navbar.link.text.reporting.legal.register=Registre
 admin.navbar.link.text.reporting.payments=Rapport méthodes de paiement
+admin.navbar.link.text.reporting.financial=Rapport financier
+admin.navbar.link.text.reporting.financial.detailed=Rapport financier détaillé
+admin.navbar.link.text.reporting.current.orders=Rapport "Commandes en cours"
 
 admin.page.nothing.to.display=Aucun article à afficher
 admin.page.text.display.all=Tous
@@ -4330,6 +4333,13 @@ admin.analytics.line.page.price=Prix
 admin.analytics.line.page.cost=Coût
 admin.analytics.line.page.checked=Vérifé
 admin.analytics.line.page.doubleChecked=Vérifié 2 fois
+
+
+admin.current.orders.line.page=Commandes en cours
+admin.current.orders.line.page.title=Commandes en cours
+admin.current.orders.line.page.sStatus=Statut
+admin.current.orders.line.page.price=Prix
+
 
 
 

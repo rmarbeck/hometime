@@ -306,6 +306,7 @@ GET     /admin/legal-register	            							controllers.Reporting.legalRegi
 GET     /admin/payments			            							controllers.Reporting.payments()
 GET     /admin/financial		            							controllers.Reporting.financialReport()
 GET     /admin/detailed-financial		            					controllers.Reporting.financialDetailedReport()
+GET     /admin/current-orders			            					controllers.Reporting.currentOrdersReport()
 
 GET     /admin/test			            								controllers.Admin.test()
 GET     /admin/testC		            								controllers.Admin.testCollaboratorOnly()
