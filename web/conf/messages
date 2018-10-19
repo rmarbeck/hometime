@@ -593,206 +593,233 @@ order.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrera
 
 order.baume.brand.name=Baume et Mercier
 order.baume.brand.models=clifton, capeland, classima, hampton
+quartz.baume.brand.name=Baume et Mercier
+quartz.baume.brand.models=clifton, capeland, classima, hampton
 
 order.br.brand.name=Bell & Ross
 order.br.brand.models=BR 01, BR 03, BR S, Automatic, Chronograph, WW1, WW2, Vintage, Aviation
+quartz.br.brand.name=Bell & Ross
+quartz.br.brand.models=BR 01, BR 03, BR S, Automatic, Chronograph, WW1, WW2, Vintage, Aviation
 
 order.breitling.brand.name=Breitling
 order.breitling.brand.models=Superocean, Professional, Navitimer, Chronomat, Avenger, Transocean, Galactic, Montbrillant, Colt, Blackbird
+quartz.breitling.brand.name=Breitling
+quartz.breitling.brand.models=Superocean, Professional, Navitimer, Chronomat, Avenger, Transocean, Galactic, Montbrillant, Colt, Blackbird
 
 order.chanel.brand.name=Chanel
 order.chanel.brand.models=J12, Chromatic
+quartz.chanel.brand.name=Chanel
+quartz.chanel.brand.models=J12, Chromatic
 
 order.chopard.brand.name=Chopard
 order.chopard.brand.models=Mille Miglia, Superfast, Monaco Historique, Classic
+quartz.chopard.brand.name=Chopard
+quartz.chopard.brand.models=Mille Miglia, Superfast, Monaco Historique, Classic
 
 order.fc.brand.name=Frédérique Constant
 order.fc.brand.models=Manufacture, Runabout, Vintage Rally, Classiques
+quartz.fc.brand.name=Frédérique Constant
+quartz.fc.brand.models=Manufacture, Runabout, Vintage Rally, Classiques
 
 order.hamilton.brand.name=Hamilton
 order.hamilton.brand.models=Jazzmaster, Timeless Classic, Venture, Aviation, Field, Navy
+quartz.hamilton.brand.name=Hamilton
+quartz.hamilton.brand.models=Jazzmaster, Timeless Classic, Venture, Aviation, Field, Navy
 
 order.hublot.brand.name=Hublot
 order.hublot.brand.models=Big Bang, Bigger Bang, King Power, Classic Fusion, MP
+quartz.hublot.brand.name=Hublot
+quartz.hublot.brand.models=Big Bang, Bigger Bang, King Power, Classic Fusion, MP
 
 order.iwc.brand.name=IWC
 order.iwc.brand.models=Portugaise, Portofino, Aviateur, Ingénieur, Aquatimer, Da Vinci
+quartz.iwc.brand.name=IWC
+quartz.iwc.brand.models=Portugaise, Portofino, Aviateur, Ingénieur, Aquatimer, Da Vinci
 
 order.jaeger.brand.name=Jaeger LeCoultre
 order.jaeger.brand.models=JLC, Reverso, Master Compressor, Navy Seals, Master Control, Rendez Vous, Deep sea
+quartz.jaeger.brand.name=Jaeger LeCoultre
+quartz.jaeger.brand.models=JLC, Reverso, Master Compressor, Navy Seals, Master Control, Rendez Vous, Deep sea
 
 order.longines.brand.name=Longines
 order.longines.brand.models=Conquest, HydroConquest, Master Collection, Evidenza, Heritage
+quartz.longines.brand.name=Longines
+quartz.longines.brand.models=Conquest, HydroConquest, Master Collection, Evidenza, Heritage
 
 order.omega.brand.name=Omega
 order.omega.brand.models=Speedmaster, Seamaster, De Ville, Planet Ocean, Broad Arrow, Aqua Terra, Ploprof, Constellation, Moon watch
+quartz.omega.brand.name=Omega
+quartz.omega.brand.models=Speedmaster, Seamaster, De Ville, Planet Ocean, Broad Arrow, Aqua Terra, Ploprof, Constellation, Moon watch
 
 order.panerai.brand.name=Panerai
 order.panerai.brand.models=Officine Panerai, Luminor, Marina, Radiomir
+quartz.panerai.brand.name=Panerai
+quartz.panerai.brand.models=Officine Panerai, Luminor, Marina, Radiomir
 
 order.rado.brand.name=Rado
 order.rado.brand.models=Hyperchrome, Esenza, D-Original, Diamaster, Centrix
+quartz.rado.brand.name=Rado
+quartz.rado.brand.models=Hyperchrome, Esenza, D-Original, Diamaster, Centrix
 
 order.rolex.brand.name=Rolex
 order.rolex.brand.models=Submariner, Daytona, Date Just, GMT Master, Explorer, Deep sea, Sea Dweller, Air King, Yacht Master, Milgauss
+quartz.rolex.brand.name=Rolex
+quartz.rolex.brand.models=Submariner, Daytona, Date Just, GMT Master, Explorer, Deep sea, Sea Dweller, Air King, Yacht Master, Milgauss
 
 order.tag.brand.name=Tag Heuer
 order.tag.brand.models=Carrera, Monaco, 1887, Grand Carrera, Link, Aquaracer
+quartz.tag.brand.name=Tag Heuer
+quartz.tag.brand.models=Carrera, Monaco, 1887, Grand Carrera, Link, Aquaracer
 
 order.tissot.brand.name=Tissot
 order.tissot.brand.models=T-Touch, Heritage, Classic, Trend, Sport
+quartz.tissot.brand.name=Tissot
+quartz.tissot.brand.models=T-Touch, Heritage, Classic, Trend, Sport
 
 order.tudor.brand.name=Tudor
 order.tudor.brand.models=Submariner, SnowFlake, Heritage, FastRider, Advisor, Black Bay, Prince Date, Oyster
+quartz.tudor.brand.name=Tudor
+quartz.tudor.brand.models=Submariner, SnowFlake, Heritage, FastRider, Advisor, Black Bay, Prince Date, Oyster
 
 order.zenith.brand.name=Zenith
 order.zenith.brand.models=Chronomaster, El Primero, Rainbow, Defy, Pilot, Captain
+quartz.zenith.brand.name=Zenith
+quartz.zenith.brand.models=Chronomaster, El Primero, Rainbow, Defy, Pilot, Captain
 
 order.audemars.brand.name=Audemars Piguet
 order.audemars.brand.models=Royal Oak, Kasparov, Offshore, Millenary, Tradition
+quartz.audemars.brand.name=Audemars Piguet
+quartz.audemars.brand.models=Royal Oak, Kasparov, Offshore, Millenary, Tradition
 
 order.blancpain.brand.name=Blancpain
 order.blancpain.brand.models=Le Brassus, Villeret, Léman, Fifty Fathoms
+quartz.blancpain.brand.name=Blancpain
+quartz.blancpain.brand.models=Le Brassus, Villeret, Léman, Fifty Fathoms
 
 order.breguet.brand.name=Breguet
 order.breguet.brand.models=Marine, Heritage, Type XX, Tradition
+quartz.breguet.brand.name=Breguet
+quartz.breguet.brand.models=Marine, Heritage, Type XX, Tradition
 
 order.hermes.brand.name=Hermes
 order.hermes.brand.models=Clipper, Arceay, Cape Code
+quartz.hermes.brand.name=Hermes
+quartz.hermes.brand.models=Clipper, Arceay, Cape Code
 
 order.zzzautre.brand.name=Vacheron Constantin, Lange und Sohne, Patek Philippe 
 order.zzzautre.brand.models=Overseas, Malte, Patrimony, Calatrava, Aquanaut, Nautilus
+quartz.zzzautre.brand.name=Vacheron Constantin, Lange und Sohne, Patek Philippe 
+quartz.zzzautre.brand.models=Overseas, Malte, Patrimony, Calatrava, Aquanaut, Nautilus
 
 quartz.undefined.brand.name=d''une marque supportée par Hometime
 quartz.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrera, Oyster, ,Submariner, Daytona, GMT Master, Big Bang, Royal Oak, El Primero, Chronomaster
 
-quartz.baume.brand.name=Baume et Mercier
-quartz.baume.brand.models=clifton, capeland, classima, hampton
-
+order.alpina.brand.name=Alpina
+order.alpina.brand.models=montres Alpina
 quartz.alpina.brand.name=Alpina
 quartz.alpina.brand.models=montres Alpina
 
+order.brm.brand.name=B.R.M.
+order.brm.brand.models=v6, v8, v12
 quartz.brm.brand.name=B.R.M.
 quartz.brm.brand.models=v6, v8, v12
 
+order.bulgari.brand.name=Bulgari
+order.bulgari.brand.models=Diagono, Octo
 quartz.bulgari.brand.name=Bulgari
 quartz.bulgari.brand.models=Diagono, Octo
 
+order.cartier.brand.name=Cartier
+order.cartier.brand.models=Must, Tank, Pasha
 quartz.cartier.brand.name=Cartier
 quartz.cartier.brand.models=Must, Tank, Pasha
 
+order.certina.brand.name=Certina
+order.certina.brand.models=montres Certina
 quartz.certina.brand.name=Certina
 quartz.certina.brand.models=montres Certina
 
+order.festina.brand.name=Festina
+order.festina.brand.models=montres Festina
 quartz.festina.brand.name=Festina
 quartz.festina.brand.models=montres Festina
 
+order.fortis.brand.name=Fortis
+order.fortis.brand.models=montres Fortis
 quartz.fortis.brand.name=Fortis
 quartz.fortis.brand.models=montres Fortis
 
+order.girardperregaux.brand.name=Girard Perregaux
+order.girardperregaux.brand.models=montres Girard Perregaux
 quartz.girardperregaux.brand.name=Girard Perregaux
 quartz.girardperregaux.brand.models=montres Girard Perregaux
 
+order.icewatch.brand.name=Ice Watch
+order.icewatch.brand.models=montres Ice Watch
 quartz.icewatch.brand.name=Ice Watch
 quartz.icewatch.brand.models=montres Ice Watch
 
+order.michelherbelin.brand.name=Michel Herbelin
+order.michelherbelin.brand.models=montres Michel Herbelin
 quartz.michelherbelin.brand.name=Michel Herbelin
 quartz.michelherbelin.brand.models=montres Michel Herbelin
 
+order.montblanc.brand.name=Montblanc
+order.montblanc.brand.models=montres Montblanc
 quartz.montblanc.brand.name=Montblanc
 quartz.montblanc.brand.models=montres Montblanc
 
+order.nomos.brand.name=Nomos
+order.nomos.brand.models=montres Nomos
 quartz.nomos.brand.name=Nomos
 quartz.nomos.brand.models=montres Nomos
 
+order.patek.brand.name=Patek Philippe
+order.patek.brand.models=nautilus, caltrava, aquanaut
 quartz.patek.brand.name=Patek Philippe
 quartz.patek.brand.models=nautilus, caltrava, aquanaut
 
+order.swatch.brand.name=Swatch
+order.swatch.brand.models=montres Swatch
 quartz.swatch.brand.name=Swatch
 quartz.swatch.brand.models=montres Swatch
 
+order.seiko.brand.name=Seiko
+order.seiko.brand.models=montres Seiko
 quartz.seiko.brand.name=Seiko
 quartz.seiko.brand.models=montres Seiko
 
+order.ulyssenardin.brand.name=Ulysse Nardin
+order.ulyssenardin.brand.models=montres Ulysse Nardin
 quartz.ulyssenardin.brand.name=Ulysse Nardin
 quartz.ulyssenardin.brand.models=montres Ulysse Nardin
 
+order.vacheron.brand.name=Vacheron Constantin
+order.vacheron.brand.models=montres Vacheron Constantin
 quartz.vacheron.brand.name=Vacheron Constantin
 quartz.vacheron.brand.models=montres Vacheron Constantin
 
+order.victorinox.brand.name=Victorinox
+order.victorinox.brand.models=montres Victorinox
 quartz.victorinox.brand.name=Victorinox
 quartz.victorinox.brand.models=montres Victorinox
 
+order.ebel.brand.name=Ebel
+order.ebel.brand.models=Wave, Belluga, Discovery, Sport Classic, Brasilia
+quartz.ebel.brand.name=Ebel
+quartz.ebel.brand.models=Wave, Belluga, Discovery, Sport Classic, Brasilia
+
+order.concord.brand.name=Concord
+order.concord.brand.models=Impresario, Mariner, Saratoga, Delirium
+quartz.concord.brand.name=Concord
+quartz.concord.brand.models=Impresario, Mariner, Saratoga, Delirium
+
+order.movado.brand.name=Movado
+order.movado.brand.models=Edge, Modern classic, Museum Classic, Ultra slim, Red Label, Circa, Masino, Sapphire, SE Pilot, Series 800, Synergy, Vizio
+quartz.movado.brand.name=Movado
+quartz.movado.brand.models=Edge, Modern classic, Museum Classic, Ultra slim, Red Label, Circa, Masino, Sapphire, SE Pilot, Series 800, Synergy, Vizio
 
 
-quartz.br.brand.name=Bell & Ross
-quartz.br.brand.models=BR 01, BR 03, BR S, Automatic, Chronograph, WW1, WW2, Vintage, Aviation
-
-quartz.breitling.brand.name=Breitling
-quartz.breitling.brand.models=Superocean, Professional, Navitimer, Chronomat, Avenger, Transocean, Galactic, Montbrillant, Colt, Blackbird
-
-quartz.chanel.brand.name=Chanel
-quartz.chanel.brand.models=J12, Chromatic
-
-quartz.chopard.brand.name=Chopard
-quartz.chopard.brand.models=Mille Miglia, Superfast, Monaco Historique, Classic
-
-quartz.fc.brand.name=Frédérique Constant
-quartz.fc.brand.models=Manufacture, Runabout, Vintage Rally, Classiques
-
-quartz.hamilton.brand.name=Hamilton
-quartz.hamilton.brand.models=Jazzmaster, Timeless Classic, Venture, Aviation, Field, Navy
-
-quartz.hublot.brand.name=Hublot
-quartz.hublot.brand.models=Big Bang, Bigger Bang, King Power, Classic Fusion, MP
-
-quartz.iwc.brand.name=IWC
-quartz.iwc.brand.models=Portugaise, Portofino, Aviateur, Ingénieur, Aquatimer, Da Vinci
-
-quartz.jaeger.brand.name=Jaeger LeCoultre
-quartz.jaeger.brand.models=JLC, Reverso, Master Compressor, Navy Seals, Master Control, Rendez Vous, Deep sea
-
-quartz.longines.brand.name=Longines
-quartz.longines.brand.models=Conquest, HydroConquest, Master Collection, Evidenza, Heritage
-
-quartz.omega.brand.name=Omega
-quartz.omega.brand.models=Speedmaster, Seamaster, De Ville, Planet Ocean, Broad Arrow, Aqua Terra, Ploprof, Constellation, Moon watch
-
-quartz.panerai.brand.name=Panerai
-quartz.panerai.brand.models=Officine Panerai, Luminor, Marina, Radiomir
-
-quartz.rado.brand.name=Rado
-quartz.rado.brand.models=Hyperchrome, Esenza, D-Original, Diamaster, Centrix
-
-quartz.rolex.brand.name=Rolex
-quartz.rolex.brand.models=Submariner, Daytona, Date Just, GMT Master, Explorer, Deep sea, Sea Dweller, Air King, Yacht Master, Milgauss
-
-quartz.tag.brand.name=Tag Heuer
-quartz.tag.brand.models=Carrera, Monaco, 1887, Grand Carrera, Link, Aquaracer
-
-quartz.tissot.brand.name=Tissot
-quartz.tissot.brand.models=T-Touch, Heritage, Classic, Trend, Sport
-
-quartz.tudor.brand.name=Tudor
-quartz.tudor.brand.models=Submariner, SnowFlake, Heritage, FastRider, Advisor, Black Bay, Prince Date, Oyster
-
-quartz.zenith.brand.name=Zenith
-quartz.zenith.brand.models=Chronomaster, El Primero, Rainbow, Defy, Pilot, Captain
-
-quartz.audemars.brand.name=Audemars Piguet
-quartz.audemars.brand.models=Royal Oak, Kasparov, Offshore, Millenary, Tradition
-
-quartz.blancpain.brand.name=Blancpain
-quartz.blancpain.brand.models=Le Brassus, Villeret, Léman, Fifty Fathoms
-
-quartz.breguet.brand.name=Breguet
-quartz.breguet.brand.models=Marine, Heritage, Type XX, Tradition
-
-quartz.hermes.brand.name=Hermes
-quartz.hermes.brand.models=Clipper, Arceay, Cape Code
-
-quartz.zzzautre.brand.name=Vacheron Constantin, Lange und Sohne, Patek Philippe 
-quartz.zzzautre.brand.models=Overseas, Malte, Patrimony, Calatrava, Aquanaut, Nautilus
 
 order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)
 order.form.value.type.of.service.repair=Réparation ou <abbr class="" title="Pour les montres anciennes ou très abîmées" >restauration</abbr>

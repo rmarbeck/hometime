@@ -665,14 +665,14 @@ brands:
          internal_name:         Patek
          seo_name:              patek-philippe
          display_name:          Patek Philippe
-         supported:             false
+         supported:             true
          logo_url:              brands/patek.png
 
     - &Lange  !!models.Brand
          internal_name:         Lange
          seo_name:              a-lange-und-sohne
          display_name:          A Lange & Söhne
-         supported:             false
+         supported:             true
          logo_url:              brands/lange.png
 
     - &BRM  !!models.Brand
@@ -700,7 +700,7 @@ brands:
          internal_name:         Montblanc
          seo_name:              montblanc
          display_name:          Montblanc
-         supported:             false
+         supported:             true
          logo_url:              brands/montblanc.png
 
     - &RichardMille  !!models.Brand
@@ -714,14 +714,14 @@ brands:
          internal_name:         Vacheron
          seo_name:              vacheron-constantin
          display_name:          Vacheron Constantin
-         supported:             false
+         supported:             true
          logo_url:              brands/vacheron.png
 
     - &UlysseNardin  !!models.Brand
          internal_name:         UlysseNardin
          seo_name:              ulysse-nardin
          display_name:          Ulysse Nardin
-         supported:             false
+         supported:             true
          logo_url:              brands/ulyssenardin.png
 
     - &JacquetDroz  !!models.Brand
@@ -730,6 +730,55 @@ brands:
          display_name:          Jacquet Droz
          supported:             false
          logo_url:              brands/jacquetdroz.png
+
+    - &Ebel  !!models.Brand
+         internal_name:         Ebel
+         seo_name:              ebel
+         display_name:          Ebel
+         supported:             true
+         logo_url:              brands/ebel.png
+
+    - &Concord  !!models.Brand
+         internal_name:         Concord
+         seo_name:              concord
+         display_name:          Concord
+         supported:             true
+         logo_url:              brands/concord.png
+
+    - &MichelHerbelin  !!models.Brand
+         internal_name:         MichelHerbelin
+         seo_name:              michelherbelin
+         display_name:          Michel Herbelin
+         supported:             true
+         logo_url:              brands/michelherbelin.png
+
+    - &Nomos  !!models.Brand
+         internal_name:         Nomos
+         seo_name:              nomos
+         display_name:          Nomos
+         supported:             true
+         logo_url:              brands/nomos.png
+
+    - &Seiko  !!models.Brand
+         internal_name:         Seiko
+         seo_name:              seiko
+         display_name:          Seiko
+         supported:             true
+         logo_url:              brands/seiko.png
+
+    - &Bulgari  !!models.Brand
+         internal_name:         Bulgari
+         seo_name:              bulgari
+         display_name:          Bulgari
+         supported:             true
+         logo_url:              brands/bulgari.png
+
+    - &Cartier  !!models.Brand
+         internal_name:         Cartier
+         seo_name:              cartier
+         display_name:          Cartier
+         supported:             true
+         logo_url:              brands/cartier.png
 
 presets:
     - &Rolex1 !!models.PresetQuotationForBrand
