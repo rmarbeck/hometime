@@ -29,17 +29,20 @@
 @layouts.admin_to_print_a5(title, instance.collectingDate, instance.customer) {
      
      <div class="row">
-     	<div class="type col-xs-8">
-	        <h2>@sheet_get_model(instance).toString - @sheet_get_references(instance).toString</h2>
+     	<div class="type col-xs-9">
+	        <h2>@sheet_get_model(instance).toString - @sheet_get_references(instance).toString - @customer.firstname @customer.name</h2>
         </div>
-        <div class="text-right col-xs-4">
+        <div class="text-right col-xs-3">
 	        <h2>@Html(Messages("admin.simplified.customer.watch.servicing.sheet.text.head", instance.id))</h2>
         </div>
      </div>
      
      <div class="row">
-     	<div class="type col-xs-8">
+     	<div class="type col-xs-6">
      @admin_accounting_info_field(display_boolean(instance.picturesDoneOnCollect).toString, "admin.simplified.customer.watch.servicing.sheet.pictures", 'dataclass -> "descriptions simplified_customer_watch")
+		</div>
+		<div class="type col-xs-6">
+		     @Html(Messages("admin.simplified.customer.watch.watch.servicing.waterresistance.check.before"))
 		</div>
      </div>
      <br />
