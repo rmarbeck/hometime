@@ -566,7 +566,7 @@ order.text.disclaimer=Au delà des entretiens classiques comme la révision comp
 order.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''horlogers indépendants diplômés, avec prise en charge à domicile ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a> 
 
 order.generic.baseline=Demande de devis gratuit
-order.generic.text.explanation=Pour obtenir un devis pour l''entretien d''une montre {0} (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé. <b>Veuillez excuser un délai de réponse plus long jusqu''au 29 août.</b>
+order.generic.text.explanation=Pour obtenir un devis pour l''entretien d''une montre {0} (ou une autre marque), veuillez renseigner les informations ci-dessous. Choisissez si vous souhaitez essayer une montre pendant la durée de l''entretien. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
 order.generic.html.title=Devis pour révision ou réparation d''une montre {0}
 order.generic.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
 order.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
