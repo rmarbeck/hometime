@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import play.mvc.Http.Session;
 import models.CustomerWatch;
@@ -413,6 +415,15 @@ public class CustomerWatchHelper {
 		watch.serviceOnHold = currentWatchInDB.serviceOnHold;
 		
 		watch.update();
+	}
+	
+	public static List<CustomerWatch> findUnderOurResponsabilityFilteredByStatusName(String statusFiltered) {
+		return findUnderOurResponsabilityFilteredByStatus(CustomerWatchDetailedStatus.fromString(statusFiltered));
+	}
+	
+	public static List<CustomerWatch> findUnderOurResponsabilityFilteredByStatus(CustomerWatchDetailedStatus statusFiltered) {
+		List<CustomerWatch> watches = CustomerWatch.findAllUnderOurResponsability();
+		return watches.stream().filter(watch -> evaluateStatusForCustomer(watch).equals(statusFiltered)).collect(Collectors.toList());
 	}
 	
     public static Optional<List<User>> findByCustomer(Customer customer) {

@@ -1,0 +1,14 @@
+@(watches: List[models.CustomerWatch])
+@import tags._
+
+
+
+@defining(new views.admin.reports.Report(watches, "admin.watches.by.status.page")) { report =>
+	@{  report.addCol("status", "getWatchStatusClass", false, "i18n", null);
+		report.addCol("finalCustomerServicePrice", "getFinalCustomerServicePrice", false, "price", null); 	
+	}
+	
+	@layouts.admin() {
+	    @admin.reports.fragments.report(report)
+	}
+}

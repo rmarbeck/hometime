@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.function.Consumer;
 
 import fr.hometime.utils.CustomerWatchActions;
+import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
@@ -14,6 +15,7 @@ import play.twirl.api.Html;
 import views.html.admin.customer_watch;
 import views.html.admin.customer_watch_form;
 import views.html.admin.customer_watches;
+import views.html.admin.reports.customer_watch_by_status;
 
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
@@ -74,6 +76,10 @@ public class CustomerWatch extends Controller {
 		}
 		return false;
 		
+	}
+	
+	public static Result displayByStatusName(String statusName) {
+		return ok(customer_watch_by_status.render(CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatusName(statusName)));
 	}
 	
 	public static Result add() {

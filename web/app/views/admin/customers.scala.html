@@ -69,6 +69,7 @@
                   <td>
 	                <a type="button" class="btn btn-default btn-xs" href="@routes.Customer.display(customer.id)"><span class="glyphicon glyphicon-user"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Customer.edit(customer.id)"><span class="glyphicon glyphicon-edit"></span></a>
+	                <a type="button" class="btn btn-default btn-xs" href="@routes.CrudHelper.display("SimplifiedCustomers", customer.id)"><span class="glyphicon glyphicon-user"></span></a>
                   </td>
                   <td class="hidden-xs">
                     @display_date(customer.creationDate, "dd/MM")

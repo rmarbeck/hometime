@@ -287,6 +287,7 @@ GET     /admin/display/SimplifiedCustomersBig/All		            	controllers.Simp
 
 GET     /admin/display/SparePartsOpen/All				            	controllers.SpareParts.pageOfOpenSpareParts(p:Int ?= 0, s ?= "creationDate", o ?= "desc", f ?= "", size:Int ?= 40)
 
+GET		/admin/display/CustomerWatchByStatus/:statusName				controllers.CustomerWatch.displayByStatusName(statusName: String)
 
 GET		/admin/display/:model/All										controllers.CrudHelper.displayAll(model: String, d:Int ?=20)
 GET		/admin/display/:model/:id										controllers.CrudHelper.display(model: String, id: Long)
