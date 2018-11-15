@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="@remote_assets("images/home/vintages.jpg")" alt="Second slide">
+          <img data-src="@remote_assets("images/home/vintages.jpg")" class="lazyload" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
               @if(variant == "alt") {
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="@remote_assets("images/home/tudor-red.jpg")" alt="Third slide">
+          <img data-src="@remote_assets("images/home/tudor-red.jpg")" class="lazyload" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
               <div class="caption-title"><h2>@Html(Messages("home.caption.3.head"))</h2></div>
@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="@remote_assets("images/home/orange.jpg")" alt="Fourth slide">
+          <img data-src="@remote_assets("images/home/orange.jpg")" class="lazyload" alt="Fourth slide">
           <div class="container">
             <div class="carousel-caption">
               <div class="caption-title"><h2>@Html(Messages("home.caption.4.head"))</h2></div>
@@ -103,7 +103,7 @@
         </div>
         } else {
         <div class="col-sm-4 promise">
-          <img class="img-circle head hidden-xs" src="@remote_assets("images/home/workshop.jpg")" alt="@Messages("home.promise.2.alt")">
+          <img class="img-circle head hidden-xs lazyload" data-src="@remote_assets("images/home/workshop.jpg")" alt="@Messages("home.promise.2.alt")">
           <div class="promise-head"><h2>@Html(Messages("home.promise.2.head"))</h2></div>
           <img class="img-circle head visible-xs" src="@remote_assets("images/home/workshop.jpg")" alt="@Messages("home.promise.2.alt")">
           <div class="promise-body"><h3>@Html(Messages("home.promise.2.body"))</h3></div>
@@ -111,7 +111,7 @@
         </div>
         }
         <div class="col-sm-4 promise">
-          <img class="img-circle head hidden-xs" src="@remote_assets("images/home/at-home.png")" alt="@Messages("home.promise.3.alt")">
+          <img class="img-circle head hidden-xs lazyload" data-src="@remote_assets("images/home/at-home.png")" alt="@Messages("home.promise.3.alt")">
           <div class="promise-head"><h2>@Html(Messages("home.promise.3.head"))</h2></div>
           <img class="img-circle head visible-xs" src="@remote_assets("images/home/at-home.png")" alt="@Messages("home.promise.3.alt")">
           <div class="promise-body"><h3>@Html(Messages("home.promise.3.body"))</h3></div>
@@ -191,7 +191,7 @@
       </div>
       <div class="row">
         @for(brand <- supported_brands) {
-        <div class="col-xs-3 col-sm-2 col-md-1"><a href="@routes.Application.order(brand.seo_name)" title="@Messages("home.order.links.by.brand.title", brand.display_name)"><img class="img-responsive" src="@guess_url(brand.logo_url)" alt="Logo @brand.display_name" title="@Messages("home.order.links.by.brand.title", brand.display_name)"></a></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><a href="@routes.Application.order(brand.seo_name)" title="@Messages("home.order.links.by.brand.title", brand.display_name)"><img class="img-responsive" data-src="@guess_url(brand.logo_url)" class="lazyload" alt="Logo @brand.display_name" title="@Messages("home.order.links.by.brand.title", brand.display_name)"></a></div>
         }
       </div>
       <div class="row">
