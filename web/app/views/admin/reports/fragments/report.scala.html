@@ -22,7 +22,7 @@
 	      	@for((currentLine, index) <- report.getLines.zipWithIndex) {
 	      	<tr @if(report.hasClass) {class="@report.getClassByIndex(index)"}>
 	      		@for(currentCol <- report.getCols) {
-	                <td class="@if(currentCol.shouldHideSmall) {hidden-xs}currentCol.getCssClass)">
+	                <td class="@if(currentCol.shouldHideSmall) {hidden-xs} @(currentCol.getCssClass)">
 	                	@display_field(report.display(currentLine, currentCol.getFieldAccessorMethod), currentCol.getRenderingOption)
                   	</td>
                 }

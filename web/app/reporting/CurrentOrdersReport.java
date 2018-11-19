@@ -47,4 +47,8 @@ public class CurrentOrdersReport {
 		return newLine.sStatus;
 	}
 	
+	public static String toLink(int index) {
+		return "to_link";
+	}
+	
 }

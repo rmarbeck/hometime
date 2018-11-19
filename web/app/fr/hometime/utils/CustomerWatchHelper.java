@@ -423,7 +423,7 @@ public class CustomerWatchHelper {
 	
 	public static List<CustomerWatch> findUnderOurResponsabilityFilteredByStatus(CustomerWatchDetailedStatus statusFiltered) {
 		List<CustomerWatch> watches = CustomerWatch.findAllUnderOurResponsability();
-		return watches.stream().filter(watch -> evaluateStatusForCustomer(watch).equals(statusFiltered)).collect(Collectors.toList());
+		return watches.stream().filter(watch -> evaluateStatus(watch).equals(statusFiltered)).collect(Collectors.toList());
 	}
 	
     public static Optional<List<User>> findByCustomer(Customer customer) {
