@@ -4415,12 +4415,14 @@ admin.current.orders.line.page=Commandes en cours
 admin.current.orders.line.page.title=Commandes en cours
 admin.current.orders.line.page.sStatus=Statut
 admin.current.orders.line.page.price=Prix
-
+admin.current.orders.line.page.link=Filtre
 
 admin.watches.by.status.page.title=Montres filtrées par statut
 admin.watches.by.status.page.status=Statut
 admin.watches.by.status.page.finalCustomerServicePrice=Montant de l''entretien
 admin.watches.by.status.page.empty=Aucune montre avec ce statut
+admin.watches.by.status.page.watch=Montre
+admin.watches.by.status.page.customer=Client
 
 
 

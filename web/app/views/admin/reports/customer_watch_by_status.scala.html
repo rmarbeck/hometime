@@ -5,6 +5,8 @@
 
 @defining(new views.admin.reports.Report(watches, "admin.watches.by.status.page")) { report =>
 	@{  report.addCol("status", "getWatchStatusClass", false, "i18n", null);
+		report.addCol("customer", "getCustomerFullName", false, null, null);
+		report.addCol("watch", "getDisplayName", false, null, null);
 		report.addCol("finalCustomerServicePrice", "getFinalCustomerServicePrice", false, "price", null); 	
 	}
 	

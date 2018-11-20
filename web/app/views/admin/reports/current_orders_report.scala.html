@@ -5,13 +5,14 @@
 @end_scripts = {
 	<script>
 		$(document).ready(function(){
-			value = $('td[class~="toLink"]').text()
-			
-			$('td[class~="toLink"]').wrap(function() {
-		       var link = $('<a/>');
-		       link.attr('href', '@routes.CustomerWatch.displayByStatusName("")'+value.trim());
-		       link.text("");
-		       return link;
+			$('td[class~="toLink"]').each(function() {
+				var text  = $(this).html();
+				$(this).html(function() {
+			       var link = $('<a/>');
+			       link.attr('href', '@routes.CustomerWatch.displayByStatusName("")'+text.trim());
+			       link.text("#");
+			       return link;
+		       });
 		    });
 		})
 	</script>
@@ -22,7 +23,7 @@
 
 @defining(new views.admin.reports.Report(lines, "admin.current.orders.line.page")) { report =>
 	@{  
-		report.addCol("sStatus", "getSStatus", false, null, "toLink");
+		report.addCol("link", "getSStatus", false, null, "toLink");
 		report.addCol("sStatus", "getSStatus", false, "i18n", null);
 		report.addCol("price", "getPrice", false, "price", null);
 	}
