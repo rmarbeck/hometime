@@ -1,8 +1,9 @@
 package fr.hometime.utils;
 
 import java.io.UnsupportedEncodingException;
-import java.security.*;
-import java.util.Currency;
+import java.security.InvalidKeyException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -10,11 +11,11 @@ import java.util.function.Predicate;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-import play.Logger;
-import play.mvc.Http.Session;
-import play.mvc.Http.Context;
 import models.User;
 import models.User.Role;
+import play.Logger;
+import play.mvc.Http.Context;
+import play.mvc.Http.Session;
 
 /**
  * Security class containing functions for security purpose 

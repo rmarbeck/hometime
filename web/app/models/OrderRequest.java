@@ -12,7 +12,9 @@ import javax.persistence.ManyToOne;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
+import fr.hometime.utils.SecurityHelper;
 import play.db.ebean.Model;
+import play.mvc.Http.Session;
 
 /**
  * Definition of an OrderMy
@@ -97,7 +99,7 @@ public class OrderRequest extends Model {
 	public String remark;
 	
 	@ManyToOne
-	public Watch watchChosen = null;
+	public User managedBy = null;
 
 	public String nameOfCustomer;
 
@@ -119,6 +121,9 @@ public class OrderRequest extends Model {
 	
 	@Column(length = 10000)
 	public String privateInfos;
+
+	@ManyToOne
+	public Watch watchChosen = null;
 	
 	public OrderRequest() {
 		super();
@@ -183,6 +188,16 @@ public class OrderRequest extends Model {
     	return this;
     }
     
+    public OrderRequest setManaged(User user) {
+    	this.managedBy = user;
+    	return this;
+    }
+    
+    public OrderRequest setUnManaged() {
+    	this.managedBy = null;
+    	return this;
+    }
+    
     public String toString() {
     	StringBuilder content = new StringBuilder();
     	content.append(this.getClass().getSimpleName() + " : [");
@@ -229,6 +244,24 @@ public class OrderRequest extends Model {
 										 .eq("feedback_asked", true)
 										 .eq("closed", false)
 		 .endJunction().findRowCount();
+    }
+    
+    public String getNameIfManaged() {
+    	if (managedBy != null) {
+    		return managedBy.firstname;
+    	}
+    	return "";
+    }
+    
+    public boolean isManagedByCurrentLogin(Session currentSession) {
+    	if (managedBy != null) {
+    		return SecurityHelper.getLoggedInUser(currentSession).get().equals(managedBy);
+    	}
+    	return false;
+    }
+    
+    public boolean isManagedByNobody() {
+    	 return managedBy == null;
     }
 }
 

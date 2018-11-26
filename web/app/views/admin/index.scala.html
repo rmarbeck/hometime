@@ -25,44 +25,8 @@
 	<div class="container">
 	@if_admin_or_watchmaker_or_collaborator() {
 	@if_admin_or_collaborator() {
-    @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
-    	<h3>
-    		@Html(Messages("admin.index.order.requests.active"))
-    	</h3>
-    	<table class="table table-condensed table-striped table-bordered">
-          <thead>
-	        <tr>
-	          <th>@Html(Messages("admin.index.order.requests.head.link.to"))</th>
-	          <th>@Html(Messages("admin.index.order.requests.head.request.date"))</th>
-	          <th>@Html(Messages("admin.index.order.requests.head.email"))</th>
-	          <th>@Html(Messages("admin.index.order.requests.head.details"))</th>
-	          <th>@Html(Messages("admin.index.order.requests.head.actions"))</th>
-	        </tr>
-	      </thead>
-	      <tbody>
-	      	@for(request <- unrepliedOrderRequests) {
-	      	<tr class="feedback_asked_@request.feedbackAsked">
-	      		<td><a href="@routes.Admin.displayOrderRequest(request.id)">#@request.id</a></td>
-	      		<td>@display_date(request.requestDate, "dd/MM/yyyy HH:mm")</td>
-	      		<td>@display_copyable_email_admin_only(request.email, "admin.index.order.requests.action.copy.email.address")</td>
-	      		<td>@(request.brand), @takeif(request.model, 30), @(request.city)</td>
-	      		<td>
-		      		<a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.setRepliedOrderRequest(request.id)" title="@Messages("admin.index.order.requests.action.set.replied.title")"><span class="glyphicon glyphicon-new-window"></span></a>
-	                <a type="button" class="btn btn-warning btn-xs" href="@routes.Admin.closeOrderRequest(request.id)" title="@Messages("admin.index.order.requests.action.close.title")"><span class="glyphicon glyphicon-remove"></span></a>
-	                <a type="button" class="btn btn-success btn-xs" href="@routes.Admin.changeFeedbackAsked(request.id)" title="@Messages("admin.index.order.requests.action.change.feedback.asked.title")"><span class="glyphicon glyphicon-envelope"></span></a>
-                </td>
-	      	</tr>
-	      	}
-	      	<tr>
-	      		<td colspan="5"><a href="@routes.Admin.currentOrderRequests()">@Html(Messages("admin.index.order.requests.number.waiting", OrderRequest.numberOfFeedbacksWaited()))</a></td>
-	      	</tr>
-		  </tbody>
-		</table>
-    } else {
-    	<h3>
-    		@Html(Messages("admin.index.order.requests.active.none")) <a href="@routes.Admin.currentOrderRequests()">@Html(Messages("admin.index.order.requests.number.waiting", OrderRequest.numberOfFeedbacksWaited()))</a>
-    	</h3>
-    }
+	@fragments.orderlist(unrepliedOrderRequests, true, "admin.index.order.requests")
+
     <br />
     @if(unrepliedBuyRequests != null && unrepliedBuyRequests.size >0) {
     	<h3>

@@ -11,6 +11,7 @@ import fr.hometime.utils.DataHolder;
 import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.MailjetAdapterv3_1;
 import fr.hometime.utils.Searcher;
+import fr.hometime.utils.SecurityHelper;
 import fr.hometime.utils.ServiceTestHelper;
 import models.Brand;
 import models.BuyRequest;
@@ -59,6 +60,8 @@ public class Admin extends Controller {
 	private final static int CLOSE_ORDER_REQUEST = 1;
 	private final static int SET_REPLIED_ORDER_REQUEST = 2;
 	private final static int CHANGE_FEEDBACK_ASKED = 3;
+	private final static int SET_ORDER_REQUEST_MANAGED = 4;
+	private final static int SET_ORDER_REQUEST_UNMANAGED = 5;
 	
     public static class OrderRequestForm {
 		public Long id;
@@ -421,6 +424,16 @@ public class Admin extends Controller {
     }
 	
 	@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.COLLABORATOR})
+	public static Result setOrderRequestManaged(long id) {
+		return updateOrderRequest(id, SET_ORDER_REQUEST_MANAGED);
+	}
+	
+	@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.COLLABORATOR})
+	public static Result unsetOrderRequestManaged(long id) {
+		return updateOrderRequest(id, SET_ORDER_REQUEST_UNMANAGED);
+	}
+	
+	@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.COLLABORATOR})
 	public static Result changeFeedbackAsked(long id) {
 		return ok(order_request_infos_form.render(Form.form(OrderRequestForm.class).fill(new OrderRequestForm(id))));
 		//return updateOrderRequest(id, CHANGE_FEEDBACK_ASKED);
@@ -437,6 +450,12 @@ public class Admin extends Controller {
 				break;
 			case CHANGE_FEEDBACK_ASKED:
 				OrderRequest.findById(id).changeFeedbackAsked().update();
+				break;
+			case SET_ORDER_REQUEST_MANAGED:
+				OrderRequest.findById(id).setManaged(SecurityHelper.getLoggedInUser(session()).orElse(null)).update();
+				break;
+			case SET_ORDER_REQUEST_UNMANAGED:
+				OrderRequest.findById(id).setUnManaged().update();
 				break;
 			}
 			return INDEX;

@@ -2642,6 +2642,7 @@ admin.index.order.requests.head.request.date=Date
 admin.index.order.requests.head.email=email
 admin.index.order.requests.head.details=Détails
 admin.index.order.requests.head.actions=Actions
+admin.index.order.requests.head.managed.by=Géré par
 
 admin.index.order.requests.number.waiting=Et {0} marqués en attente de retour client
 admin.index.watches=Gérer les actions sur les montres en cours

@@ -145,6 +145,8 @@ GET     /admin/order-request-close/:id   								controllers.Admin.closeOrderReq
 GET     /admin/order-request-set-replied/:id							controllers.Admin.setRepliedOrderRequest(id: Long)
 GET     /admin/order-request-change-feedback-asked/:id					controllers.Admin.changeFeedbackAsked(id: Long)
 GET     /admin/order-request-set-infos									controllers.Admin.manageOrderRequestInfos()
+GET     /admin/order-request-set-managed/:id							controllers.Admin.setOrderRequestManaged(id: Long)
+GET     /admin/order-request-set-unmanaged/:id							controllers.Admin.unsetOrderRequestManaged(id: Long)
 
 GET     /admin/buy-request/all    										controllers.BuyRequest.displayBuyRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/buy-request/:id    										controllers.BuyRequest.displayBuyRequest(id: Long)
