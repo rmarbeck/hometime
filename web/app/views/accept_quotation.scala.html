@@ -1,0 +1,63 @@
+@(message: String = "", accept: Form[Application.AcceptForm])
+@import tags._
+@import helper._
+@implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
+
+@layouts.main("accept.quotation") {
+    @layouts.fragments.navbar(0)
+
+    <div class="container pure-content call-back">
+      @baseline("accept.quotation.baseline")
+      @if(flash.containsKey("success")) {
+      <div class="row success">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="panel panel-success">
+              <div class="panel-heading">@Html(Messages("accept.quotation.success.panel.heading"))</div>
+              <div class="panel-body">
+                @Html(Messages("accept.quotation.success.panel.body"))
+              </div>
+            </div>
+        </div>
+      </div>
+      } else {
+      <div class="row explanation">
+          <div class="col-sm-10 col-sm-offset-1">
+            <div class="explanation-body">@Html(Messages("accept.quotation.text.explanation"))</div>
+            <hr>
+          </div>
+      </div>
+      <div class="row content">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+		@helper.form(action = routes.Application.manageAcceptQuotation(), 'class -> "form-horizontal", 'role -> "form") {
+
+                @helper.inputText(accept("orderId"),
+                                'placeholder -> Messages("accept.quotation.form.placeholder.order.id"), '_label -> Messages("accept.quotation.form.label.order.id"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false, 'readonly -> "readonly")
+                
+                @helper.inputText(accept("price"),
+                                'placeholder -> Messages("accept.quotation.form.placeholder.price"), '_label -> Messages("accept.quotation.form.label.price"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false, 'readonly -> "readonly")
+                
+                @helper.inputText(accept("delay"),
+                                'placeholder -> Messages("accept.quotation.form.placeholder.delay"), '_label -> Messages("accept.quotation.form.label.delay"),
+                                'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false, 'readonly -> "readonly")
+
+                @helper.textarea(accept("address"),
+                                'placeholder -> Messages("accept.quotation.form.placeholder.address"), '_label -> Messages("accept.quotation.form.label.address"),
+                                'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+                <div>
+                    @Html(Messages("accept.quotation.form.mandatory.mark.explanation"))
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-9 text-center call-action">
+                    <button type="submit" class="btn btn-primary">@Html(Messages("accept.quotation.action.submit"))</button>
+                  </div>
+                </div>
+            }
+        </div>
+      </div>
+      }
+    </div><!-- /.container -->
+    
+}

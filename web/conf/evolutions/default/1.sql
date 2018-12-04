@@ -502,6 +502,18 @@ create table preset_quotation_for_brand (
   constraint pk_preset_quotation_for_brand primary key (id))
 ;
 
+create table sms (
+  id                        bigint not null,
+  phone_number              varchar(255),
+  sender                    varchar(255),
+  sending_date              timestamp,
+  message                   varchar(255),
+  status                    varchar(255),
+  sms_count                 integer,
+  message_id                varchar(255),
+  constraint pk_sms primary key (id))
+;
+
 create table selling_document (
   id                        bigint not null,
   description               varchar(10000),
@@ -704,6 +716,8 @@ create sequence post_service_certificate_seq;
 
 create sequence preset_quotation_for_brand_seq;
 
+create sequence sms_seq;
+
 create sequence selling_document_seq;
 
 create sequence service_test_seq;
@@ -847,6 +861,8 @@ drop table if exists post_service_certificate;
 
 drop table if exists preset_quotation_for_brand;
 
+drop table if exists sms;
+
 drop table if exists selling_document;
 
 drop table if exists service_test;
@@ -916,6 +932,8 @@ drop sequence if exists post_selling_certificate_seq;
 drop sequence if exists post_service_certificate_seq;
 
 drop sequence if exists preset_quotation_for_brand_seq;
+
+drop sequence if exists sms_seq;
 
 drop sequence if exists selling_document_seq;
 

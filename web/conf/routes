@@ -39,6 +39,8 @@ GET     /demande-de-devis           controllers.Application.order(brand = null)
 GET     /demande-de-devis/montre/reparation/revision/:brand    controllers.Application.order(brand)
 GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
+GET 	/accepter-le-devis			controllers.Application.acceptQuotation(orderId: Long, price: String, delay: String)
+POST	/accepter-le-devis			controllers.Application.manageAcceptQuotation()
 
 # Order
 GET     /changement-de-pile/etancheite         controllers.Application.quartz(brand = null)
@@ -147,6 +149,8 @@ GET     /admin/order-request-change-feedback-asked/:id					controllers.Admin.cha
 GET     /admin/order-request-set-infos									controllers.Admin.manageOrderRequestInfos()
 GET     /admin/order-request-set-managed/:id							controllers.Admin.setOrderRequestManaged(id: Long)
 GET     /admin/order-request-set-unmanaged/:id							controllers.Admin.unsetOrderRequestManaged(id: Long)
+
+GET     /admin/test-sms													controllers.SMS.testSMS()
 
 GET     /admin/buy-request/all    										controllers.BuyRequest.displayBuyRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
 GET     /admin/buy-request/:id    										controllers.BuyRequest.displayBuyRequest(id: Long)

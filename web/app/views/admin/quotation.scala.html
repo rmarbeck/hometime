@@ -53,6 +53,24 @@
 										  }
 										}
 										</p>
+										<u>Résumé du devis :</u>
+										<ul class="main">
+											<li>Montant de l'entretien : <strong>@{quotation.price}</strong></li>
+											<li>Délais prévisionnels : <strong>@{quotation.delay}</strong></li>
+											<li><strong>Retrouvez tous les détails ci-dessous</strong></li>
+										</ul>
+										<p align="center">
+										@if(quotation.request!=null) {
+											<a class="btn" href="https://@{request.host()}@routes.Application.acceptQuotation(quotation.request.id, quotation.price, quotation.delay)" style="margin: 5px 0;padding: 10px 20px 10px 20px;font-family: Arial;color: #ffffff;background: #961b21;background-image: linear-gradient(to bottom, #dea6a6, #961b21);-webkit-border-radius: 4;-moz-border-radius: 4;border-radius: 4px;font-size: 14px;text-decoration: none;text-align: center;cursor: pointer;display: inline-block;">Accepter le devis&nbsp;!</a>
+										}
+										
+										@if(quotation.outsideZone) {										
+											<a class="btn" href="https://@{request.host()}@routes.Application.callRequest()" style="margin: 5px 0;padding: 10px 20px 10px 20px;font-family: Arial;color: #ffffff;background: #961b21;background-image: linear-gradient(to bottom, #dea6a6, #961b21);-webkit-border-radius: 4;-moz-border-radius: 4;border-radius: 4px;font-size: 14px;text-decoration: none;text-align: center;cursor: pointer;display: inline-block;">Etre rappelé&nbsp;!</a>
+										} else {
+											<a class="btn" href="https://@{request.host()}@routes.Application.appointment()" style="margin: 5px 0;padding: 10px 20px 10px 20px;font-family: Arial;color: #ffffff;background: #961b21;background-image: linear-gradient(to bottom, #dea6a6, #961b21);-webkit-border-radius: 4;-moz-border-radius: 4;border-radius: 4px;font-size: 14px;text-decoration: none;text-align: center;cursor: pointer;display: inline-block;">Venir nous voir&nbsp;!</a>
+										}
+										</p>
+										<br>
 										<u>Rappel de la demande :</u>
 										<ul class="main">
 											<li>@Html(Messages("admin.quotation.request.service.type.value."+quotation.serviceType.intValue, quotation.watch)).</li>
@@ -191,10 +209,10 @@
             					<tr>
             						<td align="left" valign="top" style="vertical-align: top; text-align: left; color: #444444; background-color: #eeeeee; border-color: #eeeeee; align: left; font-family: arial; font-size: 11px; ">
             							<div id="nl_footer" style="display: block; text-align: left; margin: 0;">Cet email a été envoyé à <a href="mailto:[[EMAIL_TO]]" style="color:#000000;border: none;">[[EMAIL_TO]]</a>, <a href="[[UNSUB_LINK_FR]]" style="color:#000000;border: none;">cliquez ici pour vous désabonner</a>.</div>
-            							<div id="footer_address" style="display: block; text-align: left; margin: 5px 0 0;">Watch next SAS, N° SIRET : 800 198 418 00017 RCS de Versailles<br>
+            							<div id="footer_address" style="display: block; text-align: left; margin: 5px 0 0;">Watch next SAS, N° SIRET : 800 198 418 00033 RCS de Paris<br>
             								Représentée par son président, Raphaël Marbeck
             								<br>
-            								Siège social : 103 avenue Marceau, 78600 Le Mesnil-Le-Roi
+            								Siège social : 322 rue Saint Honoré, 75001 Paris
             								<br>
             							</div>
             						</td>

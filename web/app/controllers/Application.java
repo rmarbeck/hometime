@@ -282,6 +282,50 @@ public class Application extends Controller {
 	    }
 	}
 	
+	public static class AcceptForm {
+
+		@Constraints.Required
+		@Formats.NonEmpty
+		public Long orderId;
+		@Constraints.Required
+		@Formats.NonEmpty
+		public String price;
+		@Constraints.Required
+		@Formats.NonEmpty
+		public String delay;
+		@Constraints.Required
+		@Formats.NonEmpty
+		public String address;
+		
+	    public List<ValidationError> validate() {
+	    	List<ValidationError> errors = new ArrayList<ValidationError>();
+	        if (doesFieldContainSPAM(address))
+	    		errors.add(new ValidationError("address", Messages.get("accept.quotation.validation.error.reason.spam.detected")));
+	        return errors.isEmpty() ? null : errors;
+	    }
+	    
+	    public AcceptForm() {
+	    	super();
+	    }
+	    
+	    public AcceptForm(Long orderId, String price, String delay) {
+	    	this.orderId = orderId;
+	    	this.price = price;
+	    	this.delay = delay;
+	    }
+	    
+	    public String toString() {
+	    	StringBuilder content = new StringBuilder();
+	    	content.append(this.getClass().getSimpleName() + " : [");
+	    	content.append(" Order ID is : " + this.orderId);
+	    	content.append(", Price is : " + this.price);
+	    	content.append(", Delay is : " + this.delay);
+	    	content.append(", address is : " + this.address);
+	    	content.append("]");
+	    	return content.toString();
+	    }
+	}
+	
 
     public static Result index() {
         return ok(index.render("", getSupportedBrands(), "", getOneEmphasizableFeedbackRandomly()));
@@ -460,7 +504,7 @@ public class Application extends Controller {
     		return internalServerError();
     	}
     }
-    
+        
     public static Result service_test() {
     	try {
 	        return ok(service_test.render("", Form.form(ServiceTestForm.class).fill(new ServiceTestForm())));
@@ -587,6 +631,21 @@ public class Application extends Controller {
 	}
 	
 	
+	public static Result manageAcceptQuotation() {
+		Form<AcceptForm> acceptForm = Form.form(AcceptForm.class).bindFromRequest();
+		if(acceptForm.hasErrors()) {
+			return badRequest(accept_quotation.render("", acceptForm));
+		} else {
+			ActionHelper.tryToNotifyTeamByEmail("Devis accepté", acceptForm.toString());
+			
+			flash("success", "OK");
+			
+			GoogleAnalyticsHelper.pushEvent("contact", "sent", ctx());
+			
+			return callRequest();
+		}
+	}
+	
 	
 	public static Result manageServiceTest() {
 		Form<ServiceTestForm> serviceTestForm = Form.form(ServiceTestForm.class).bindFromRequest();
@@ -632,6 +691,15 @@ public class Application extends Controller {
     public static Result siteplan() {
     	return ok(site_plan.render(getDisplayableWatches(), getSupportedBrands()));
     }
+    
+    public static Result acceptQuotation(Long orderId, String price, String delay) {
+    	try {
+	        return ok(accept_quotation.render("", Form.form(AcceptForm.class).fill(new AcceptForm(orderId, price, delay))));
+    	} catch (Exception e) {
+    		return internalServerError();
+    	}
+    }
+    
     
     public static Result usefull_links() {
     	return ok(usefull_links.render(getDisplayableUsefullLinks()));

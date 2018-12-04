@@ -85,6 +85,7 @@ function GetRoute() {
     
             @helper.form(action = routes.Admin.manageQuotation(), 'class -> "form-horizontal", 'role -> "form") {
             
+	            @tags.inputHidden(quotation("orderRequestId"))
             	@tags.inputHidden(quotation("customerEmail"))
             	@tags.inputHidden(quotation("customerCity"))
         

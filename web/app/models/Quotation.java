@@ -75,6 +75,8 @@ public class Quotation {
 	
 	public Boolean delayCanBeReduced;
 	
+	public OrderRequest request;
+	
 	public String infosGivenByCustomer1 = null;
 	public String infosGivenByCustomer2 = null;
 	public String infosGivenByCustomer3 = null;

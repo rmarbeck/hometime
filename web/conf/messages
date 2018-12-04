@@ -521,7 +521,7 @@ prices.body=Nos tarifs de révision et de réparation sont présentés sous form
  Dès la prise de contact avec vous, nous vous fournirons une évaluation beaucoup plus précise à partir des informations que vous nous donnerez.
 prices.quartz.head=Les tarifs pour les montres à quartz
 prices.quartz.body=Les tarifs relatifs aux montres à quartz correspondent aux tarifs habituellement pratiqués, cependant dans certains cas ils peuvent être supérieurs.\
- Un devis après auscultation est établi gratuitement sur rendez-vous.
+ Un devis après auscultation est établi gratuitement sans rendez-vous.
  
 prices.table.head.service=Service
 prices.table.head.details=Détails
@@ -581,7 +581,7 @@ appointment.generic.html.keywords=Locaux Hometime Paris, révision complète mon
 appointment.text.disclaimer=Nous pouvons vous recevoir pour répondre à l''ensemble de vos questions et pour vous proposer tous nos services horlogers.
 
 quartz.generic.baseline=Changement de pile de montre
-quartz.generic.text.explanation=Pour réaliser le changement de la pile de votre montre {0} (ou une autre marque) avec ou sans refaire l''étanchéité, nous vous accueillons dans nos locaux situés 322 rue Saint Honoré à Paris 1er arrondissement sur rendez-vous au 07 82 43 47 51.
+quartz.generic.text.explanation=Pour réaliser le changement de la pile de votre montre {0} (ou une autre marque) avec ou sans refaire l''étanchéité, nous vous accueillons dans nos locaux situés 322 rue Saint Honoré à Paris 1er arrondissement sans rendez-vous au 07 82 43 47 51.
 quartz.generic.html.title=Devis pour le changement de pile d''une montre {0} sur Paris
 quartz.generic.html.description=Description du service de changement de la pile d''une montre à quartz {0}, différents modèles  {1}.
 quartz.generic.html.keywords=changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
@@ -1009,6 +1009,22 @@ call.request.success.panel.body=Merci de votre confiance.<br /><br />Nous avons 
 call.request.action.submit=Envoyer
 
 call.request.validation.error.reason.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+
+accept.quotation.validation.error.reason.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+
+accept.quotation.form.mandatory.mark.explanation=* Champ obligatoire
+accept.quotation.baseline=Acceptation de devis
+accept.quotation.text.explanation=En validant ce formulaire, vous indiquez que vous souhaitez un devis formel pour lancer le processus de réparation de votre montre. Vous n''êtes pas engagé à l''issue de cette démarche.
+accept.quotation.form.label.order.id=Numéro de la demande
+accept.quotation.form.placeholder.order.id=
+accept.quotation.form.label.price=Prix
+accept.quotation.form.placeholder.price=
+accept.quotation.form.label.delay=Délai
+accept.quotation.form.placeholder.delay=
+accept.quotation.form.label.address=Votre adresse postale (nécessaire pour la rédaction du devis formel)*
+accept.quotation.form.placeholder.address=
+accept.quotation.action.submit=Envoyer
+
 
 # Service Test page
 service.test.html.title=Dois-je faire réviser ma montre ?

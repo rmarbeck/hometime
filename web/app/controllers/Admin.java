@@ -10,6 +10,7 @@ import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.DataHolder;
 import fr.hometime.utils.MailjetAdapter;
 import fr.hometime.utils.MailjetAdapterv3_1;
+import fr.hometime.utils.MailjetSMS;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.SecurityHelper;
 import fr.hometime.utils.ServiceTestHelper;
@@ -141,6 +142,7 @@ public class Admin extends Controller {
 		public String hypothesis3 = null;
 		
 		public String action = null;
+		public String orderRequestId = null;
 
 	    public List<ValidationError> validate() {
 	    	List<ValidationError> errors = new ArrayList<ValidationError>();
@@ -161,6 +163,7 @@ public class Admin extends Controller {
 	    
 	    public QuotationForm(OrderRequest order, long presetId, boolean inNetworkIfPossible) {
 	    	this();
+	    	this.orderRequestId = ""+order.id;
 	    	this.serviceType = order.orderType.toString();
 	    	this.brand = order.brand.display_name;
 	    	if (!order.model.toLowerCase().contains(order.brand.display_name.toLowerCase())) {
@@ -198,6 +201,11 @@ public class Admin extends Controller {
 	    
 	    public Quotation getQuotation() {
 	    	Quotation quotation = new Quotation();
+	    	if (this.orderRequestId != null && !this.orderRequestId.equals("")) {
+	    		Logger.debug("!!!!!!!!!!!!!!!!!");
+	    		quotation.request = OrderRequest.findById(Long.valueOf(this.orderRequestId));
+	    	}
+	    	Logger.debug("????????????");
 	    	quotation.serviceType = OrderTypes.fromString(this.serviceType);
 	    	quotation.typeOfNetwork = Quotation.TypesOfNetwork.fromString(this.typeOfNetwork);
 	    	quotation.customerEmail = this.customerEmail;
@@ -373,6 +381,7 @@ public class Admin extends Controller {
 		}
 	}
 	
+	
 	@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 	public static Result editSearchable(String className, Long id) {
 		switch(className.toLowerCase()) {
@@ -458,7 +467,7 @@ public class Admin extends Controller {
 				OrderRequest.findById(id).setUnManaged().update();
 				break;
 			}
-			return INDEX;
+			return LIST_ORDERS;
 		}
 		flash("error", "Unknown id");
 		return INDEX;
