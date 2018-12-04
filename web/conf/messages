@@ -837,7 +837,7 @@ order.form.placeholder.model=Nom du modèle - Année
 order.form.label.method=* Réseau
 order.form.help.method=Notre horloger sera plus rapide et moins cher.
 order.form.value.method.brand=Je souhaite que ma montre soit entretenue par son fabricant
-order.form.value.method.outlet=Je souhaite que ma montre soit entretenue par un <abbr class="" title="Nos horlogers sont des professionnels diplomés et très expérimentés" >horloger indépendant</abbr>
+order.form.value.method.outlet=Je souhaite que ma montre soit entretenue par un <abbr class="" title="Nos horlogers sont des professionnels diplomés et très expérimentés" >horloger Hometime</abbr>
 order.form.value.method.both=Je souhaite un devis comparant les deux modes d''entretien
 order.form.label.remark=Remarques
 order.form.placeholder.remark=Vous souhaitez préciser quelque-chose
@@ -4443,7 +4443,18 @@ admin.watches.by.status.page.customer=Client
 
 
 
+admin.quotation.request.main.message.in=Bonjour,<br><br>Veuillez trouver ci-dessous la proposition commerciale Hometime correspondant à votre demande pour une intervention dans le réseau officiel {0}. Nous vous en souhaitons bonne réception.<br>Pouvez-vous nous confirmer la bonne réception de ce mail ? Merci d''avance.<br><br>
+admin.quotation.request.main.message.out=Bonjour,<br><br>Veuillez trouver ci-dessous la proposition commerciale Hometime correspondant à un entretien auprès de l''un de nos horlogers diplômés. Nous vous en souhaitons bonne réception.<br>Pouvez-vous nous confirmer la bonne réception de ce mail ? Merci d''avance.<br><br>
+admin.quotation.request.main.message.out.both=Bonjour,<br><br>Veuillez trouver ci-dessous la proposition commerciale Hometime alternative correspondant à un entretien auprès de l''un de nos horlogers diplômés. Nous vous en souhaitons bonne réception.<br><br>
+admin.quotation.request.sum.up.title=Résumé du devis :
+admin.quotation.request.sum.up.price=Montant de l''entretien : <strong>{0}</strong>
+admin.quotation.request.sum.up.delay=Délais prévisionnels : <strong>{0}</strong>
+admin.quotation.request.sum.up.other=<strong>Retrouvez tous les détails ci-dessous</strong>
+
+admin.quotation.request.first.date=Rendez-vous à l''atelier au 322 rue Saint Honoré (du Lundi au Vendredi, de 10h à 18h30) ou déplacement pour la collecte de la montre,
+
 
 #end
+
 
 

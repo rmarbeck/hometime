@@ -191,7 +191,7 @@
       </div>
       <div class="row">
         @for(brand <- supported_brands) {
-        <div class="col-xs-3 col-sm-2 col-md-1"><a href="@routes.Application.order(brand.seo_name)" title="@Messages("home.order.links.by.brand.title", brand.display_name)"><img class="img-responsive lazyload" data-src="@guess_url(brand.logo_url)" alt="Logo @brand.display_name" title="@Messages("home.order.links.by.brand.title", brand.display_name)"></a></div>
+        <div class="col-xs-3 col-sm-2 col-md-1"><a href="@routes.Application.order(brand.seo_name)" title="@Messages("home.order.links.by.brand.title", brand.display_name)"><img class="img-responsive lazyload" data-src="@guess_url(brand.logo_url)" alt="Réparation ou révision montre @brand.display_name" title="@Messages("home.order.links.by.brand.title", brand.display_name)"></a></div>
         }
       </div>
       <div class="row">

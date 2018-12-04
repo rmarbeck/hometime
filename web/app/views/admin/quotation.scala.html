@@ -43,21 +43,21 @@
 										<p style="margin: 0 0 10px;line-height: 1.3em;">
 										@quotation.typeOfNetwork match {
 										  case Quotation.TypesOfNetwork.IN_ONLY | Quotation.TypesOfNetwork.IN_BOTH => {
-											Bonjour,<br><br>Veuillez trouver ci-dessous la proposition commerciale Hometime correspondant à votre demande pour une intervention dans le réseau officiel @quotation.brand. Nous vous en souhaitons bonne réception.<br>Pouvez-vous nous confirmer la bonne réception de ce mail ? Merci d'avance.<br><br>
+											  @Html(Messages("admin.quotation.request.main.message.in", quotation.brand))
 										  }
 										  case Quotation.TypesOfNetwork.OUT_ONLY => {
-											Bonjour,<br><br>Veuillez trouver ci-dessous la proposition commerciale Hometime correspondant à un entretien auprès d'un horloger partenaire de grande qualité. Nous vous en souhaitons bonne réception.<br>Pouvez-vous nous confirmer la bonne réception de ce mail ? Merci d'avance.<br><br>
+											  @Html(Messages("admin.quotation.request.main.message.out"))
 										  }
 										  case Quotation.TypesOfNetwork.OUT_BOTH => {
-											Bonjour,<br><br>Veuillez trouver ci-dessous la proposition commerciale Hometime alternative correspondant à un entretien auprès d'un horloger partenaire de grande qualité. Nous vous en souhaitons bonne réception.<br><br>
+											  @Html(Messages("admin.quotation.request.main.message.out.both"))
 										  }
 										}
 										</p>
-										<u>Résumé du devis :</u>
+										<u>@Html(Messages("admin.quotation.request.sum.up.title"))</u>
 										<ul class="main">
-											<li>Montant de l'entretien : <strong>@{quotation.price}</strong></li>
-											<li>Délais prévisionnels : <strong>@{quotation.delay}</strong></li>
-											<li><strong>Retrouvez tous les détails ci-dessous</strong></li>
+											<li>@Html(Messages("admin.quotation.request.sum.up.price", quotation.price))</li>
+											<li>@Html(Messages("admin.quotation.request.sum.up.delay", quotation.delay))</li>
+											<li>@Html(Messages("admin.quotation.request.sum.up.other"))</li>
 										</ul>
 										<p align="center">
 										@if(quotation.request!=null) {
@@ -79,7 +79,7 @@
 											<li>Entretien dans le réseau officiel @quotation.brand.</li>
 										  }
 										  case default => {
-											<li>Entretien chez un horloger indépendant.</li>
+											<li>Entretien par l'un des horlogers Hometime.</li>
 										  }
 										}
 										@if(quotation.watchChosen != null) {
@@ -118,14 +118,14 @@
 										}
 										<u>Prestations proposées :</u>
 										<ul class="main">
-											<li>Prise en charge à domicile</li>
+											<li>Prise en charge à l'atelier ou à domicile</li>
 										</ul>
 										<ul class="no-bullet">
                                             <li>
 											     <ul>
     												<li>Premier rendez-vous :
     													<ul>
-    														<li>Déplacement pour la collecte de la montre,</li>
+    														<li>@Html(Messages("admin.quotation.request.first.date"))</li>
     														<li>Photographie de la montre lors de la prise en charge et mise à disposition des photos au client,</li>
     														@if(quotation.watchChosen != null) {
     														<li>Remise en main de la montre de prêt (avec mise à la taille du bracelet) : @quotation.watchChosen,</li>
@@ -138,9 +138,9 @@
     												<li>Deuxième rendez-vous :
     													<ul>
     													@if(quotation.watchChosen != null) {
-    														<li>Retour de la montre entretenue et restitution de la montre de prêt,</li>
+    														<li>Restitution de la montre entretenue et restitution de la montre de prêt,</li>
     														} else {
-    														<li>Retour de la montre entretenue,</li>
+    														<li>Restitution de la montre entretenue,</li>
     														}
     														<li>Dépôt des documents certifiant les opérations menées durant l'entretien et de la garantie@if(quotation.shouldTalkAboutWaterResistance) { (yc étanchéité)}.</li>
     													</ul>
