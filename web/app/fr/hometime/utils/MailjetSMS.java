@@ -43,8 +43,8 @@ public class MailjetSMS {
 	private static String defaultContentType = MAILJET_API_CONTENT_TYPE_PARAM_JSON_VALUE;
 	private static String currentContentType = defaultContentType;
 
-	private static String token = "9a72cbb8c6e04b6e8b68622c57de5889";
-	private static String from = "Hometime.fr";
+	private static String token = null;
+	private static String from = null;
 
 	private static WSClient customClient = null;
 	
