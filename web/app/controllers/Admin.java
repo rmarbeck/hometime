@@ -467,7 +467,7 @@ public class Admin extends Controller {
 				OrderRequest.findById(id).setUnManaged().update();
 				break;
 			}
-			return LIST_ORDERS;
+			return currentOrderRequests();
 		}
 		flash("error", "Unknown id");
 		return INDEX;

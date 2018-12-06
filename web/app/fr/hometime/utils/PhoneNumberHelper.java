@@ -39,6 +39,11 @@ public class PhoneNumberHelper {
 				return Optional.of(internationalNumber);
 			return Optional.empty();
 		}
+		
+		
+		public String getRawNumber() {
+			return this.rawNumber;
+		}
 	}
 	
 	public static FrenchPhoneNumber of(String rawNumber) {

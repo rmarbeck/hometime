@@ -2651,6 +2651,9 @@ admin.index.order.requests.active=Demandes de devis ouvertes
 admin.index.order.requests.action.copy.email.address=Copier l''adresse
 admin.index.order.requests.action.set.replied.title=Marquer comme répondue
 admin.index.order.requests.action.close.title=Marquer comme fermée
+admin.index.order.requests.action.set.managed.by.title=Prendre la main
+admin.index.order.requests.action.set.unmanaged.by.title=Relâcher la main
+admin.index.order.requests.action.send.first.sms.title=Notifier par SMS
 admin.index.order.requests.action.change.feedback.asked.title=Marquer comme mail envoyé
 admin.index.order.requests.active.none=Aucune demande de devis ouvertes
 admin.index.order.requests.head.link.to=##
@@ -4453,6 +4456,8 @@ admin.quotation.request.sum.up.other=<strong>Retrouvez tous les détails ci-dess
 
 admin.quotation.request.first.date=Rendez-vous à l''atelier au 322 rue Saint Honoré (du Lundi au Vendredi, de 10h à 18h30) ou déplacement pour la collecte de la montre,
 
+
+admin.default.sms.after.quotation.sent=Bonjour, notre devis vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751
 
 #end
 

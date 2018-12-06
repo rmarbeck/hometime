@@ -35,6 +35,9 @@
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.Admin.closeOrderRequest(request.id)" title="@Messages(key+".action.close.title")"><span class="glyphicon glyphicon-remove"></span></a>
 	                <a type="button" class="btn btn-success btn-xs" href="@routes.Admin.changeFeedbackAsked(request.id)" title="@Messages(key+".action.change.feedback.asked.title")"><span class="glyphicon glyphicon-envelope"></span></a>
 	                <a type="button" class="btn btn-info btn-xs" href="@routes.Admin.unsetOrderRequestManaged(request.id)" title="@Messages(key+".action.set.unmanaged.by.title")"><span class="glyphicon glyphicon-share"></span></a>
+	                @if(SMSHelper.canSendFirstSMS(request)) {
+	                	<a type="button" id="sms" class="btn btn-warning btn-xs" href="@routes.SMS.sendFirstSMS(request.id)" title="@Messages(key+".action.send.first.sms.title")"><span class="glyphicon glyphicon-earphone"></span></a>
+	                }
 	      			}
 	      			@if(request.isManagedByNobody()) {
 	      			<a type="button" class="btn btn-info btn-xs" href="@routes.Admin.setOrderRequestManaged(request.id)" title="@Messages(key+".action.set.managed.by.title")"><span class="glyphicon glyphicon-lock"></span></a>

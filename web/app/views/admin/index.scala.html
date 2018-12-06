@@ -18,6 +18,16 @@
       // Remove it from the body
       document.body.removeChild(aux);
     }
+    
+    		$(document).ready(function(){
+			$('a[id="sms"]').on('click',function(e){
+			    if (window.confirm('Envoyer le SMS ？')== false) {
+			      e.preventDefault();
+			    }
+  			});
+			
+		})  
+    
 </script> 
 }
 

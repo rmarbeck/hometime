@@ -1,6 +1,8 @@
 package fr.hometime.utils;
 
 import java.util.List;
+
+import models.OrderRequest;
 import models.SMS;
 import fr.hometime.utils.PhoneNumberHelper.FrenchPhoneNumber;
 import play.Logger;
@@ -13,22 +15,43 @@ import play.Logger;
  */
 
 public class SMSHelper {
-	public static boolean canSendSMS(String rawPhoneNumber) {
-		return isItPossibleSendSMS(rawPhoneNumber);
+	public static boolean canSendSubsequentSMS(OrderRequest request) {
+		if (request == null)
+			return false;
+		return isItPossibleSendSMS(request.phoneNumber, false);
 	}
 	
-	private static boolean isItPossibleSendSMS(String rawPhoneNumber) {
+	public static boolean canSendSubsequentSMS(String rawPhoneNumber) {
+		return isItPossibleSendSMS(rawPhoneNumber, false);
+	}
+	
+	public static boolean canSendFirstSMS(OrderRequest request) {
+		if (request == null)
+			return false;
+		return isItPossibleSendSMS(request.phoneNumber, true);
+	}
+	
+	public static boolean canSendFirstSMS(String rawPhoneNumber) {
+		return isItPossibleSendSMS(rawPhoneNumber, true);
+	}
+	
+	private static boolean isItPossibleSendSMS(String rawPhoneNumber, boolean shouldBlockSubsequentSMS) {
 		FrenchPhoneNumber frenchPhoneNumber = PhoneNumberHelper.of(rawPhoneNumber);
 		if (frenchPhoneNumber.isAMobileNumber())
-			return isAuthorizedToSendSMS(frenchPhoneNumber);
+			if (shouldBlockSubsequentSMS) {
+				return isAuthorizedToSendSMS(frenchPhoneNumber);
+			} else {
+				return true;
+			}
 		Logger.info("SMS Sending is not possible as the mobile phone is not recognised as a french mobile number : "+maskPhoneNumber(rawPhoneNumber));
 		return false;
 	}
 	
 	private static boolean isAuthorizedToSendSMS(FrenchPhoneNumber frenchPhoneNumber) {
 		if (getNumberOfSMSAlreadySent(frenchPhoneNumber.getInInternationalFormat().get()) > 0)
-			return true;
-		return false;
+			return false;
+		Logger.info("SMS Sending is not possible as the mobile phone has already received a previous SMS: "+maskPhoneNumber(frenchPhoneNumber.getRawNumber()));
+		return true;
 	}
 	
 	private static int getNumberOfSMSAlreadySent(String phoneNumber) {

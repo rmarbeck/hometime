@@ -1,11 +1,14 @@
 package controllers;
 
+import java.util.function.Function;
+
 import fr.hometime.utils.MailjetSMS;
 import fr.hometime.utils.MailjetSMS.MailjetSMSStatus;
 import fr.hometime.utils.PhoneNumberHelper;
 import fr.hometime.utils.PhoneNumberHelper.FrenchPhoneNumber;
 import fr.hometime.utils.SMSHelper;
 import models.OrderRequest;
+import play.i18n.Messages;
 import play.libs.F.Promise;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -43,11 +46,15 @@ public class SMS extends Controller {
 		return sendSMSAndGOToHome("+33782434751", "Bonjour, comment ça va ? www.hometime.fr/venir-nous-voir");
 	}
 	
+	public static Promise<Result> sendFirstSMS(long orderRequestId) {
+		return sendStandardSMS(orderRequestId, SMSHelper::canSendFirstSMS);
+	}
+	
 	public static Promise<Result> sendSMSAndGOToHome(String phoneNumber, String message) {
 		Promise<models.SMS> sms = sendSMS(phoneNumber, message);
 
 		return sms.map(currentSms -> {
-			if (currentSms.smsCount > 1) {
+			if (currentSms.smsCount > 0) {
 				flash("success", currentSms.status);
 			} else {
 				flash("error", currentSms.status);
@@ -57,16 +64,19 @@ public class SMS extends Controller {
 	}
 	
 	public static Promise<Result> sendStandardSMS(long orderRequestId) {
+		return sendStandardSMS(orderRequestId, SMSHelper::canSendSubsequentSMS);
+	}
+	
+	private static Promise<Result> sendStandardSMS(long orderRequestId, Function<String, Boolean> sender) {
 		OrderRequest orderRequestFound = OrderRequest.findById(orderRequestId);
 		if (orderRequestFound != null && orderRequestFound.phoneNumber != null) {
-			if (SMSHelper.canSendSMS(orderRequestFound.phoneNumber)) {
+			if (sender.apply(orderRequestFound.phoneNumber)) {
 				String phoneNumberInInternationalFormat = PhoneNumberHelper.of(orderRequestFound.phoneNumber).getInInternationalFormat().get();
-				return sendSMSAndGOToHome(phoneNumberInInternationalFormat, "toto");
+				return sendSMSAndGOToHome(phoneNumberInInternationalFormat, Messages.get("admin.default.sms.after.quotation.sent"));
 			}
 		}
 		
 		flash("error", "SMS not allowed");
 		return Promise.pure(Admin.INDEX);
-
 	}
 }

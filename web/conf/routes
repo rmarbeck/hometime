@@ -150,6 +150,7 @@ GET     /admin/order-request-set-infos									controllers.Admin.manageOrderRequ
 GET     /admin/order-request-set-managed/:id							controllers.Admin.setOrderRequestManaged(id: Long)
 GET     /admin/order-request-set-unmanaged/:id							controllers.Admin.unsetOrderRequestManaged(id: Long)
 
+GET		/admin/send-first-sms											controllers.SMS.sendFirstSMS(id: Long)
 GET     /admin/test-sms													controllers.SMS.testSMS()
 
 GET     /admin/buy-request/all    										controllers.BuyRequest.displayBuyRequests(p:Int ?= 0, s ?= "requestDate", o ?= "desc", f ?= "")
