@@ -558,7 +558,7 @@ public class Application extends Controller {
 			OrderRequest orderRequest = orderForm.get().getRequest();
 			orderRequest.save();
 			
-			ActionHelper.tryToSendHtmlEmail("["+orderRequest.id+"] Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());
+			ActionHelper.asyncTryToSendHtmlEmail("["+orderRequest.id+"] Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());
 			
 			flash("success", "OK");
 			
@@ -582,7 +582,7 @@ public class Application extends Controller {
 			
 			request.save();
 			
-			ActionHelper.tryToSendHtmlEmail("["+request.id+"] Nouvelle recherche de montre", notify_buy_request.render(BuyRequest.findById(request.id)).body().toString());
+			ActionHelper.asyncTryToSendHtmlEmail("["+request.id+"] Nouvelle recherche de montre", notify_buy_request.render(BuyRequest.findById(request.id)).body().toString());
 			
 			flash("success", "OK");
 			
@@ -604,7 +604,7 @@ public class Application extends Controller {
 			ContactRequest contactRequest = contactForm.get().getRequest();
 			contactRequest.save();
 
-			ActionHelper.tryToNotifyTeamByEmail("Prise de contact : "+contactRequest.title, contactRequest.toString());
+			ActionHelper.asyncTryToNotifyTeamByEmail("Prise de contact : "+contactRequest.title, contactRequest.toString());
 			
 			flash("success", "OK");
 			
@@ -620,7 +620,7 @@ public class Application extends Controller {
 		if(callForm.hasErrors()) {
 			return badRequest(call.render("", callForm));
 		} else {
-			ActionHelper.tryToNotifyTeamByEmail("Demande de rappel", callForm.toString());
+			ActionHelper.asyncTryToNotifyTeamByEmail("Demande de rappel", callForm.toString());
 			
 			flash("success", "OK");
 			
@@ -636,7 +636,7 @@ public class Application extends Controller {
 		if(acceptForm.hasErrors()) {
 			return badRequest(accept_quotation.render("", acceptForm));
 		} else {
-			ActionHelper.tryToNotifyTeamByEmail("Devis accepté", acceptForm.toString());
+			ActionHelper.asyncTryToNotifyTeamByEmail("Devis accepté", acceptForm.toString());
 			
 			flash("success", "OK");
 			

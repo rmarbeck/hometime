@@ -2,6 +2,7 @@ package fr.hometime.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import models.LiveConfig;
 import play.Logger;
@@ -54,6 +55,20 @@ public class ActionHelper {
 		MailerAPI mail = prepareEmail(title);
     	Logger.info("About to send an HTML mail");
     	mail.sendHtml(htmlMessage);
+	}
+	
+	public static void asyncTryToNotifyTeamByEmail(String title, String message) {
+		CompletableFuture.supplyAsync(() -> {
+			ActionHelper.tryToNotifyTeamByEmail(title, message);
+			return "OK";
+		});
+	}
+	
+	public static void asyncTryToSendHtmlEmail(String title, String htmlMessage) {
+		CompletableFuture.supplyAsync(() -> {
+			ActionHelper.tryToSendHtmlEmail(title, htmlMessage);
+			return "OK";
+		});
 	}
 	
 	public static void tryToNotifyTeamByEmail(String title, String message) {
