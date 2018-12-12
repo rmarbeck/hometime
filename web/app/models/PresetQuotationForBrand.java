@@ -91,9 +91,12 @@ public class PresetQuotationForBrand extends Model {
     	content.append(presetName);
     	content.append(" : ");
     	content.append(priceServiceLowBound);
-    	content.append("€TTC - ");
-    	content.append(priceServiceHighBound);
     	content.append("€TTC");
+    	if (priceServiceHighBound != priceServiceLowBound) {
+    		content.append(" - ");
+    		content.append(priceServiceHighBound);
+    		content.append("€TTC");
+    	}
     	return content.toString();
     }
 }
