@@ -92,7 +92,7 @@ public class PresetQuotationForBrand extends Model {
     	content.append(" : ");
     	content.append(priceServiceLowBound);
     	content.append("€TTC");
-    	if (priceServiceHighBound != priceServiceLowBound) {
+    	if (!priceServiceHighBound.equals(priceServiceLowBound)) {
     		content.append(" - ");
     		content.append(priceServiceHighBound);
     		content.append("€TTC");
