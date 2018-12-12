@@ -14,7 +14,7 @@
       </button>
       <ul class="dropdown-menu" role="menu">
       @for(preset <- presets) {
-        <li><a href="@routes.Admin.prepareQuotationFromOrderWithPreset(request.id, preset.id)?inNetwork=@inNetworkFlag">@if(inNetworkFlag) {@Messages("admin.quotation.prepare.in.network.preset.call.to.action", preset.presetName)} else {@Messages("admin.quotation.prepare.in.network.preset.call.to.action", preset.presetName)} </a></li>
+        <li><a href="@routes.Admin.prepareQuotationFromOrderWithPreset(request.id, preset.id)?inNetwork=@inNetworkFlag">@if(inNetworkFlag) {@Messages("admin.quotation.prepare.in.network.preset.call.to.action", preset.getDetailedNameWithPrices)} else {@Messages("admin.quotation.prepare.in.network.preset.call.to.action", preset.getDetailedNameWithPrices)} </a></li>
       }
       </ul>
     </div>

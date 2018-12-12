@@ -83,6 +83,18 @@ public class PresetQuotationForBrand extends Model {
     	content.append(", Brand is : " + this.brand);
     	content.append("]");
     	return content.toString();
+    	
+    }
+    
+    public String getDetailedNameWithPrices() {
+    	StringBuilder content = new StringBuilder();
+    	content.append(presetName);
+    	content.append(" : ");
+    	content.append(priceServiceLowBound);
+    	content.append("€TTC - ");
+    	content.append(priceServiceHighBound);
+    	content.append("€TTC");
+    	return content.toString();
     }
 }
 
