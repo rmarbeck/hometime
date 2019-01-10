@@ -18,6 +18,10 @@ public class VATHelper {
 		return netPrice * (1 + getVATRate());
 	}
 	
+	public static float getPriceBeforeVAT(float rawPrice) {
+		return rawPrice / (1 + getVATRate());
+	}
+	
 	public static float getVATAmountForNetPrice(float netPrice) {
 		return netPrice * getVATRate();
 	}
