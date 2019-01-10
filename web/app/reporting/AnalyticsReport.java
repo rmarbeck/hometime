@@ -13,6 +13,7 @@ public class AnalyticsReport {
 	private final static Predicate<Long> alwaysTrue = (value) -> true;
 	private final static Predicate<Long> isWatchSelling = (value) -> (value > 1000L && value < 2000L);
 	private final static Predicate<Long> isUsedWatchSelling = (value) -> (value > 1000L && value < 1100L);
+	private final static Predicate<Long> alwaysButUsedWatchSelling = isUsedWatchSelling.negate();
 	private final static Predicate<Long> isNewWatchSelling = (value) -> (value > 1100L && value < 1200L);
 	private final static Predicate<Long> isAccessorySelling = (value) -> (value > 3000L && value < 4000L);
 	private final static Predicate<Long> isLocalServicing = (value) -> (value > 2000L && value < 2100L);
@@ -62,10 +63,14 @@ public class AnalyticsReport {
 		public Float lastAccountingTurnOverSimpleQuartzOnly = 0f;
 		
 		public void add(UniqueAccountingNumber uan, Long type, float marginValue, float turnoverValue) {
-			currentMonthMargin += add(uan, isCurrentMonth, type, alwaysTrue, marginValue);
-			lastMonthMargin += add(uan, isLastMonth, type, alwaysTrue, marginValue);
-			currentAccountingMargin += add(uan, isCurrentAccounting, type, alwaysTrue, marginValue);
-			lastAccountingMargin += add(uan, isLastAccounting, type, alwaysTrue, marginValue);
+			currentMonthMargin += add(uan, isCurrentMonth, type, alwaysButUsedWatchSelling, marginValue);
+			currentMonthMargin += add(uan, isCurrentMonth, type, isUsedWatchSelling, marginValue/1.2f);
+			lastMonthMargin += add(uan, isLastMonth, type, alwaysButUsedWatchSelling, marginValue);
+			lastMonthMargin += add(uan, isLastMonth, type, isUsedWatchSelling, marginValue/1.2f);
+			currentAccountingMargin += add(uan, isCurrentAccounting, type, alwaysButUsedWatchSelling, marginValue);
+			currentAccountingMargin += add(uan, isCurrentAccounting, type, isUsedWatchSelling, marginValue/1.2f);
+			lastAccountingMargin += add(uan, isLastAccounting, type, alwaysButUsedWatchSelling, marginValue);
+			lastAccountingMargin += add(uan, isLastAccounting, type, isUsedWatchSelling, marginValue/1.2f);
 			currentMonthTurnOver += add(uan, isCurrentMonth, type, alwaysTrue, turnoverValue);
 			lastMonthTurnOver += add(uan, isLastMonth, type, alwaysTrue, turnoverValue);
 			currentAccountingTurnOver += add(uan, isCurrentAccounting, type, alwaysTrue, turnoverValue);
@@ -80,10 +85,15 @@ public class AnalyticsReport {
 			currentAccountingTurnOverLocalServicingOnly += add(uan, isCurrentAccounting, type, isLocalServicing, turnoverValue);
 			lastAccountingTurnOverLocalServicingOnly += add(uan, isLastAccounting, type, isLocalServicing, turnoverValue);
 			
+			currentMonthMarginSellingOnly += add(uan, isCurrentMonth, type, isUsedWatchSelling, marginValue/1.2f);
 			currentMonthMarginSellingOnly += add(uan, isCurrentMonth, type, isWatchSelling, marginValue);
+			lastMonthMarginSellingOnly += add(uan, isLastMonth, type, isUsedWatchSelling, marginValue/1.2f);
 			lastMonthMarginSellingOnly += add(uan, isLastMonth, type, isWatchSelling, marginValue);
+			currentAccountingMarginSellingOnly += add(uan, isCurrentAccounting, type, isUsedWatchSelling, marginValue/1.2f);
 			currentAccountingMarginSellingOnly += add(uan, isCurrentAccounting, type, isWatchSelling, marginValue);
+			lastAccountingMarginSellingOnly += add(uan, isLastAccounting, type, isUsedWatchSelling, marginValue/1.2f);
 			lastAccountingMarginSellingOnly += add(uan, isLastAccounting, type, isWatchSelling, marginValue);
+			
 			currentMonthTurnOverSellingOnly += add(uan, isCurrentMonth, type, isWatchSelling, turnoverValue);
 			lastMonthTurnOverSellingOnly += add(uan, isLastMonth, type, isWatchSelling, turnoverValue);
 			currentAccountingTurnOverSellingOnly += add(uan, isCurrentAccounting, type, isWatchSelling, turnoverValue);
