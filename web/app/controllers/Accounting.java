@@ -709,8 +709,17 @@ public class Accounting extends Controller {
 		newCertificate.workDone = customerWatch.serviceInfos;
 		newCertificate.nextWaterproofingRecommendedYear = getYear(customerWatch.nextPartialService);
 		newCertificate.nextServiceRecommendedYear = getYear(customerWatch.nextService);
-		newCertificate.waterproofWarantyDate = customerWatch.endOfWaterWaranty;
-		newCertificate.workingWarantyDate = customerWatch.endOfMainWaranty;
+		if (customerWatch.endOfWaterWaranty == null) {
+			newCertificate.waterproofWarantyDate = Date.from(LocalDate.now().with(java.time.temporal.TemporalAdjusters.lastDayOfMonth()).withYear(LocalDate.now().getYear()+2).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());;
+		} else {
+			newCertificate.waterproofWarantyDate = customerWatch.endOfWaterWaranty;
+		}
+		if (customerWatch.endOfMainWaranty == null) {
+			newCertificate.workingWarantyDate = Date.from(LocalDate.now().with(java.time.temporal.TemporalAdjusters.lastDayOfMonth()).withYear(LocalDate.now().getYear()+1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());;;
+		} else {
+			newCertificate.workingWarantyDate = customerWatch.endOfMainWaranty;	
+		}
+		
 		
 		
 		return Form.form(models.PostServiceCertificate.class).fill(newCertificate);

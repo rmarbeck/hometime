@@ -87,13 +87,13 @@ public class AnalyticsReport {
 			lastAccountingTurnOverLocalServicingOnly += add(uan, isLastAccounting, type, isLocalServicing, turnoverValue);
 			
 			currentMonthMarginSellingOnly += add(uan, isCurrentMonth, type, isUsedWatchSelling, VATHelper.getPriceBeforeVAT(marginValue));
-			currentMonthMarginSellingOnly += add(uan, isCurrentMonth, type, isWatchSelling, marginValue);
+			currentMonthMarginSellingOnly += add(uan, isCurrentMonth, type, isNewWatchSelling, marginValue);
 			lastMonthMarginSellingOnly += add(uan, isLastMonth, type, isUsedWatchSelling, VATHelper.getPriceBeforeVAT(marginValue));
-			lastMonthMarginSellingOnly += add(uan, isLastMonth, type, isWatchSelling, marginValue);
+			lastMonthMarginSellingOnly += add(uan, isLastMonth, type, isNewWatchSelling, marginValue);
 			currentAccountingMarginSellingOnly += add(uan, isCurrentAccounting, type, isUsedWatchSelling, VATHelper.getPriceBeforeVAT(marginValue));
-			currentAccountingMarginSellingOnly += add(uan, isCurrentAccounting, type, isWatchSelling, marginValue);
+			currentAccountingMarginSellingOnly += add(uan, isCurrentAccounting, type, isNewWatchSelling, marginValue);
 			lastAccountingMarginSellingOnly += add(uan, isLastAccounting, type, isUsedWatchSelling, VATHelper.getPriceBeforeVAT(marginValue));
-			lastAccountingMarginSellingOnly += add(uan, isLastAccounting, type, isWatchSelling, marginValue);
+			lastAccountingMarginSellingOnly += add(uan, isLastAccounting, type, isNewWatchSelling, marginValue);
 			
 			currentMonthTurnOverSellingOnly += add(uan, isCurrentMonth, type, isWatchSelling, turnoverValue);
 			lastMonthTurnOverSellingOnly += add(uan, isLastMonth, type, isWatchSelling, turnoverValue);
