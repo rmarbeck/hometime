@@ -5,7 +5,6 @@ import java.util.function.Function;
 import fr.hometime.utils.MailjetSMS;
 import fr.hometime.utils.MailjetSMS.MailjetSMSStatus;
 import fr.hometime.utils.PhoneNumberHelper;
-import fr.hometime.utils.PhoneNumberHelper.FrenchPhoneNumber;
 import fr.hometime.utils.SMSHelper;
 import models.OrderRequest;
 import play.i18n.Messages;
@@ -43,7 +42,7 @@ public class SMS extends Controller {
 	}
 	
 	public static Promise<Result> testSMS() {
-		return sendSMSAndGOToHome("+33782434751", "Bonjour, comment ça va ? www.hometime.fr/venir-nous-voir");
+		return sendSMSAndGOToHome("+33782434751", "Essai en vue de test technique");
 	}
 	
 	public static Promise<Result> sendFirstSMS(long orderRequestId) {

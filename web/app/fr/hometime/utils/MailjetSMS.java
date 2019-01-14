@@ -106,14 +106,17 @@ public class MailjetSMS {
 
 		
 	private static Promise<WSResponse> simplePostCallWithJsonAsOutput(String method, String body) throws Exception {
-		return doPostCallWithJsonAsOutput(buildUrl(method), body);
+		return doPostCallWithJsonAsOutput(customURL(method), body);
 	}
 	
 	private static Promise<WSResponse> doPostCallWithJsonAsOutput(WSRequestHolder holder, String body) throws Exception {
 		prepareCallWithJsonAsOutput();
+		holder.setContentType(currentContentType);
 		Logger.info("about to call webservices ["+holder.getUrl()+"] through a POST call");
 		Logger.info("about to call webservices ["+holder.getHeaders()+"] through a POST call");
-		Promise<WSResponse> response = holder.setContentType(currentContentType).post(body).map(getResponse -> {
+		Logger.debug("about to call webservices ["+body+"] through a POST call");
+		
+		Promise<WSResponse> response = holder.post(body).map(getResponse -> {
 			logCallStatus(getResponse.getStatus());
 			return getResponse;
 		});

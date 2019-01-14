@@ -48,9 +48,10 @@ public class SMSHelper {
 	}
 	
 	private static boolean isAuthorizedToSendSMS(FrenchPhoneNumber frenchPhoneNumber) {
-		if (getNumberOfSMSAlreadySent(frenchPhoneNumber.getInInternationalFormat().get()) > 0)
+		if (getNumberOfSMSAlreadySent(frenchPhoneNumber.getInInternationalFormat().get()) > 0) {
+			Logger.info("SMS Sending is not possible as the mobile phone has already received a previous SMS: "+maskPhoneNumber(frenchPhoneNumber.getRawNumber()));
 			return false;
-		Logger.info("SMS Sending is not possible as the mobile phone has already received a previous SMS: "+maskPhoneNumber(frenchPhoneNumber.getRawNumber()));
+		}
 		return true;
 	}
 	

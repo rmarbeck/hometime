@@ -31,5 +31,13 @@ liveConfig:
          key:                   mailjet_from_name
          valuestring:           Raphaël de Hometime.fr
 
+    - !!models.LiveConfig
+         key:                   mailjet_sms_from_value
+         valuestring:           Hometime.fr
+
+    - !!models.LiveConfig
+         key:                   mailjet_sms_token
+         valuestring:           TOFILL
+
 #Fin
 
