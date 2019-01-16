@@ -140,7 +140,7 @@ home.promise.1.call.to.action.title=Comprendre l''entretien et la révision d''u
 
 home.promise.2.alt=Atelier Hometime - 322 rue Saint Honoré
 home.promise.2.head=A l''atelier
-home.promise.2.body=Nous vous accueillons sur <b>Paris, dans notre atelier du 322 rue Saint Honoré</b> du Lundi au vendredi de 10h à 18h30. Venez avec ou sans rendez-vous pour déposer une montre ou simplement nous rencontrer ! 
+home.promise.2.body=Nous vous accueillons sur <b>Paris, dans notre atelier du 322 rue Saint Honoré</b> du Lundi au vendredi de 10h à 18h30, ou le samedi de 11h à 17h. Venez avec ou sans rendez-vous pour déposer une montre ou simplement nous rencontrer ! 
 home.promise.2.call.to.action=Venir nous voir
 home.promise.2.call.to.action.title=Les services Hometime
 
@@ -570,6 +570,29 @@ order.generic.text.explanation=Pour obtenir un devis pour l''entretien d''une mo
 order.generic.html.title=Devis pour révision ou réparation d''une montre {0}
 order.generic.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
 order.generic.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
+
+
+auto.order.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''horlogers indépendants diplômés, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
+auto.order.generic.baseline=Devis interactif immédiat
+auto.order.generic.text.explanation=Laissez vous guider pour évaluer le tarif de l''entretien d''une montre {0} (ou une autre marque) !
+auto.order.generic.html.title=Devis pour l''entretien d''une montre {0}
+auto.order.generic.html.description=Formulaire de devis interactif immédiat pour révision, réparation ou restauration d''une montre à quartz, automatique ou manuelle {0}, différents modèles  {1}.
+auto.order.generic.html.keywords=devis interactif, devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
+
+auto.order.form.label.brand=Quelle est la marque de votre montre ?
+
+auto.order.movement.type=Type de mouvement
+auto.order.movement.type.value.manual=Montre à <abbr title="Vous avez besoin de remonter votre montre à la couronne environ tous les jours pour qu''elle fonctionne">remontage manuel</abbr>
+auto.order.movement.type.value.auto=Montre à <abbr title="Votre montre se remonte toute seule à votre poignet, elle s''arrête si vous ne la portez pas pendant plusieurs jours">remontage automatique</abbr>
+auto.order.movement.type.value.quartz=Montre fonctionnant <abbr title="Vous devez changer la pile à intervalles réguliers pour que votre montre fonctionne, celle-ci tient l''heure plusieurs semaines sans être porée">à pile</abbr>
+auto.order.movement.type.value.unknown=Je ne sais pas
+
+auto.order.movement.complexity=Type de montre
+auto.order.movement.complexity.value.two.or.three.hands=Simple à deux ou trois aiguilles
+auto.order.movement.complexity.value.gmt=Avec fonction GMT simple
+auto.order.movement.complexity.value.chrono=Avec fonction chrongraphe
+auto.order.movement.complexity.value.other=Avec plusieurs fonctions complexes
+auto.order.movement.complexity.value.unknown=Je ne sais pas
 
 
 appointment.generic.baseline=Venir chez Hometime
@@ -1886,7 +1909,7 @@ Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
 %0D%0A\
 Nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
-Habituellement nous vous recevons dans notre atelier situé dans le 1er arrondissement de Paris du lundi au vendredi, cependant si vous le souhaitez, nous pouvons nous déplacer à votre domicile ou sur votre lieu de travail.%0D%0A\
+Habituellement nous vous recevons dans notre atelier situé dans le 1er arrondissement de Paris du lundi au samedi, cependant si vous le souhaitez, nous pouvons nous déplacer à votre domicile ou sur votre lieu de travail.%0D%0A\
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\
@@ -1901,7 +1924,7 @@ Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
 %0D%0A\
 Nous venons de vous éditer et de vous envoyer les devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
-Habituellement nous vous recevons dans notre atelier situé dans le 1er arrondissement de Paris du lundi au vendredi, cependant si vous le souhaitez, nous pouvons nous déplacer à votre domicile ou sur votre lieu de travail.%0D%0A\
+Habituellement nous vous recevons dans notre atelier situé dans le 1er arrondissement de Paris du lundi au samedi, cependant si vous le souhaitez, nous pouvons nous déplacer à votre domicile ou sur votre lieu de travail.%0D%0A\
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\
@@ -4454,7 +4477,7 @@ admin.quotation.request.sum.up.price=Montant de l''entretien : <strong>{0}</stro
 admin.quotation.request.sum.up.delay=Délais prévisionnels : <strong>{0}</strong>
 admin.quotation.request.sum.up.other=<strong>Retrouvez tous les détails ci-dessous</strong>
 
-admin.quotation.request.first.date=Rendez-vous à l''atelier au 322 rue Saint Honoré (du Lundi au Vendredi, de 10h à 18h30) ou déplacement pour la collecte de la montre,
+admin.quotation.request.first.date=Rendez-vous à l''atelier au 322 rue Saint Honoré (du Lundi au Vendredi, de 10h à 18h30, ou le samedi de 11h à 17h) ou déplacement pour la collecte de la montre,
 
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751

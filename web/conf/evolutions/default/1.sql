@@ -74,6 +74,16 @@ create table analytic_code (
   constraint pk_analytic_code primary key (id))
 ;
 
+create table auto_order (
+  id                        bigint not null,
+  request_date              timestamp,
+  movement_type             integer,
+  movement_complexity       integer,
+  constraint ck_auto_order_movement_type check (movement_type in (0,1,2,3)),
+  constraint ck_auto_order_movement_complexity check (movement_complexity in (0,1,2,3,4)),
+  constraint pk_auto_order primary key (id))
+;
+
 create table brand (
   id                        bigint not null,
   internal_name             varchar(255),
@@ -674,6 +684,8 @@ create sequence accounting_preset_item_table_seq;
 
 create sequence analytic_code_seq;
 
+create sequence auto_order_seq;
+
 create sequence brand_seq;
 
 create sequence buy_request_seq;
@@ -819,6 +831,8 @@ drop table if exists accounting_preset_item_table;
 
 drop table if exists analytic_code;
 
+drop table if exists auto_order;
+
 drop table if exists brand;
 
 drop table if exists buy_request;
@@ -890,6 +904,8 @@ drop sequence if exists accounting_line_analytic_preset_seq;
 drop sequence if exists accounting_preset_item_table_seq;
 
 drop sequence if exists analytic_code_seq;
+
+drop sequence if exists auto_order_seq;
 
 drop sequence if exists brand_seq;
 

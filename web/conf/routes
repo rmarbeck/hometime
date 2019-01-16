@@ -37,6 +37,8 @@ GET     /prices                     controllers.Default.redirect(to = "/les-serv
 # Order
 GET     /demande-de-devis           controllers.Application.order(brand = null)
 GET     /demande-de-devis/montre/reparation/revision/:brand    controllers.Application.order(brand)
+GET     /devis-immediat	           	controllers.Application.orderAuto(brand = null)
+GET     /devis-immediat/montre/entretien/revision/:brand    controllers.Application.orderAuto(brand)
 GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
 GET 	/accepter-le-devis			controllers.Application.acceptQuotation(orderId: Long, price: String, delay: String)
@@ -295,6 +297,8 @@ GET     /admin/display/SimplifiedCustomersBig/All		            	controllers.Simp
 GET     /admin/display/SparePartsOpen/All				            	controllers.SpareParts.pageOfOpenSpareParts(p:Int ?= 0, s ?= "creationDate", o ?= "desc", f ?= "", size:Int ?= 40)
 
 GET		/admin/display/CustomerWatchByStatus/:statusName				controllers.CustomerWatch.displayByStatusName(statusName: String)
+
+GET		/admin/new														controllers.SimplifiedCustomers.createNewCustomerByCustomer()
 
 GET		/admin/display/:model/All										controllers.CrudHelper.displayAll(model: String, d:Int ?=20)
 GET		/admin/display/:model/:id										controllers.CrudHelper.display(model: String, id: Long)

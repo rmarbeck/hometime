@@ -15,6 +15,7 @@ import fr.hometime.utils.ListHelper;
 import fr.hometime.utils.RandomHelper;
 import fr.hometime.utils.SecurityHelper;
 import fr.hometime.utils.ServiceTestHelper;
+import models.AutoOrder;
 import models.Brand;
 import models.BuyRequest;
 import models.ContactRequest;
@@ -139,6 +140,37 @@ public class Application extends Controller {
 	    	return request;
 	    }
 	}
+
+	public static class AutoOrderForm {
+		@Constraints.Required
+		public String brand;
+		@Constraints.Required
+		public String movementType;
+		@Constraints.Required
+		public String movementComplexity;
+		@Constraints.Required
+		public String buildPeriod;
+
+	    public List<ValidationError> validate() {
+	    	List<ValidationError> errors = new ArrayList<ValidationError>();
+	        return errors.isEmpty() ? null : errors;
+	    }
+	    
+	    public AutoOrderForm() {
+	    	super();
+	    }
+	    
+	    public AutoOrder getRequest() {
+	    	AutoOrder request = new AutoOrder();
+	    	request.brand = Brand.findBySeoName(this.brand);
+	    	request.movementType = AutoOrder.MovementTypes.fromString(this.movementType);
+	    	request.movementComplexity = AutoOrder.MovementComplexity.fromString(this.movementComplexity);
+	    	
+	    	
+	    	return request;
+	    }
+	}
+	
 	
 	public static class ServiceTestForm {
 		@Constraints.Required
@@ -462,6 +494,16 @@ public class Application extends Controller {
     	}
     }
     
+
+    public static Result orderAuto(String brandName) {
+    	try {
+    		
+	        return ok(auto_order.render("", fillAutoFormWithQueryParams(brandName), getSupportedBrands(), getDisplayableWatches(), SessionWatcher.isItFirstPageOfSession(session())));
+    	} catch (Exception e) {
+    		return internalServerError();
+    	}
+    }
+    
     public static Result quartz(String brandName) {
     	try {
     		
@@ -620,7 +662,7 @@ public class Application extends Controller {
 		if(callForm.hasErrors()) {
 			return badRequest(call.render("", callForm));
 		} else {
-			ActionHelper.asyncTryToNotifyTeamByEmail("Demande de rappel", callForm.toString());
+			ActionHelper.asyncTryToNotifyTeamByEmail("Demande de rappel", getCallRequestMessage(callForm));
 			
 			flash("success", "OK");
 			
@@ -628,6 +670,17 @@ public class Application extends Controller {
 			
 			return callRequest();
 		}
+	}
+	
+	private static String getCallRequestMessage(Form<CallForm> callForm) {
+		StringBuilder message = new StringBuilder();
+		message.append("\n");
+		message.append("Numéro de téléphone : ");
+		message.append(callForm.get().number);
+		message.append("\n\n");
+		message.append("Motif de la demande : ");
+		message.append(callForm.get().reason);
+		return message.toString();
 	}
 	
 	
@@ -741,6 +794,13 @@ public class Application extends Controller {
     	if (isOrderTypeParamFoundAndValid())
     		orderForm.orderType = form().bindFromRequest().get("type");
     	return Form.form(OrderForm.class).fill(orderForm);
+    }
+    
+    private static Form<AutoOrderForm> fillAutoFormWithQueryParams(String brandName) {
+    	AutoOrderForm orderForm = new AutoOrderForm();
+    	if (isBrandParamValid(brandName))
+    		orderForm.brand = Brand.findBySeoName(brandName).id.toString();
+    	return Form.form(AutoOrderForm.class).fill(orderForm);
     }
     
     private static boolean isWatchParamFoundAndValid() {
