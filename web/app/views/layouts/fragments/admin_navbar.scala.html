@@ -66,6 +66,7 @@
                   </ul>
                 }
                 @li_activable(34, index) {<a href="@routes.CrudHelper.displayAll("SimplifiedCustomers")">@Messages("admin.navbar.link.text.simplified.customers")</a>}
+                @li_activable(36, index) {<a href="@routes.SimplifiedCustomers.createNewCustomerByCustomer()">@Messages("admin.navbar.link.text.simplified.customers.by.customer")</a>}
                 }
                 @if_collaborator() {
                 	
@@ -76,6 +77,8 @@
                 	@li_activable(36, index) {<a href="@routes.SimplifiedCustomers.pageOfSpecialCustomers()">@Messages("admin.navbar.link.text.simplified.customers.big")</a>}
                 	<li class="divider hidden-xs"></li>
                 	@li_activable(39, index) {<a href="@routes.CrudHelper.displayAll("SparePartsOpen")">@Messages("admin.navbar.link.text.spare.parts")</a>}
+                	<li class="divider hidden-xs"></li>
+                	@li_activable(36, index) {<a href="@routes.SimplifiedCustomers.createNewCustomerByCustomer()">@Messages("admin.navbar.link.text.simplified.customers.by.customer")</a>}
                   </ul>
                 }
                 }
@@ -86,6 +89,8 @@
                     @li_activable(31, index) {<a href="@routes.Customer.displayAll()">@Messages("admin.navbar.link.text.customers")</a>}
                 	@li_activable(32, index) {<a href="@routes.CrudHelper.displayAll("SimplifiedCustomers")">@Messages("admin.navbar.link.text.simplified.customers.for.admin")</a>}
                 	@li_activable(32, index) {<a href="@routes.SimplifiedCustomers.pageOfSpecialCustomers()">@Messages("admin.navbar.link.text.simplified.customers.for.admin.big")</a>}
+                	<li class="divider hidden-xs"></li>
+                	@li_activable(36, index) {<a href="@routes.SimplifiedCustomers.createNewCustomerByCustomer()">@Messages("admin.navbar.link.text.simplified.customers.by.customer")</a>}
                   </ul>
                 }
                 @li_activable(34, index) {<a href="@routes.CrudHelper.displayAll("Partners")">@Messages("admin.navbar.link.text.partners")</a>}

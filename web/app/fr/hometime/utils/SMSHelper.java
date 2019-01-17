@@ -43,13 +43,13 @@ public class SMSHelper {
 			} else {
 				return true;
 			}
-		Logger.info("SMS Sending is not possible as the mobile phone is not recognised as a french mobile number : "+maskPhoneNumber(rawPhoneNumber));
+		Logger.debug("SMS Sending is not possible as the mobile phone is not recognised as a french mobile number : "+maskPhoneNumber(rawPhoneNumber));
 		return false;
 	}
 	
 	private static boolean isAuthorizedToSendSMS(FrenchPhoneNumber frenchPhoneNumber) {
 		if (getNumberOfSMSAlreadySent(frenchPhoneNumber.getInInternationalFormat().get()) > 0) {
-			Logger.info("SMS Sending is not possible as the mobile phone has already received a previous SMS: "+maskPhoneNumber(frenchPhoneNumber.getRawNumber()));
+			Logger.debug("SMS Sending is not possible as the mobile phone has already received a previous SMS: "+maskPhoneNumber(frenchPhoneNumber.getRawNumber()));
 			return false;
 		}
 		return true;

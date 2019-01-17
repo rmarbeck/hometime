@@ -298,7 +298,8 @@ GET     /admin/display/SparePartsOpen/All				            	controllers.SpareParts
 
 GET		/admin/display/CustomerWatchByStatus/:statusName				controllers.CustomerWatch.displayByStatusName(statusName: String)
 
-GET		/admin/new														controllers.SimplifiedCustomers.createNewCustomerByCustomer()
+GET		/form/new														controllers.SimplifiedCustomers.createNewCustomerByCustomer()
+POST	/form/new/manage												controllers.SimplifiedCustomers.manageNewCustomerByCustomer()
 
 GET		/admin/display/:model/All										controllers.CrudHelper.displayAll(model: String, d:Int ?=20)
 GET		/admin/display/:model/:id										controllers.CrudHelper.display(model: String, id: Long)

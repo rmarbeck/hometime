@@ -1,0 +1,36 @@
+@(thisInstance: Form[models.Customer], isItNew: Boolean)
+
+@import tags._
+
+@end_scripts = {
+	@admin.fragments.customer_javascript()
+	<script>
+		$(document).ready(function(){
+       		$( '.navbar' ).addClass('hidden');
+       		document.body.style.marginTop='40px';
+       		if( $('.alert').length )
+			{
+				$('form').addClass('hidden');	
+				$('h1').wrap('<a href="/form/new" />');
+			}
+    	});
+	</script>
+}
+
+@actionlink() = @{
+	routes.SimplifiedCustomers.manageNewCustomerByCustomer()
+}
+
+
+@defining(new views.FormDisplay(thisInstance, "SimplifiedCustomer", "admin.simplifiedcustomer.form")) { formDisplay =>
+		@{ 
+		   formDisplay.addFormField("email", true, "input");
+		   formDisplay.addFormFieldForSelect("civility", models.Customer.CustomerCivility.values.toList);
+		   formDisplay.addFormField("firstname", true, "input");
+		   formDisplay.addFormField("name", true, "input");
+		   formDisplay.addFormField("phoneNumber", true, "input");
+		   formDisplay.addFormField("billingAddress", true, "textarea");
+		}
+	
+	@admin.template.form(formDisplay, isItNew, actionlink, end_scripts)
+}

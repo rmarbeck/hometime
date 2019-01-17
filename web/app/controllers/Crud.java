@@ -112,4 +112,8 @@ public class Crud<T extends Model & CrudReady<T, F>, F> {
 				routes.CrudHelper.displayAll(CrudHelper.guessControllerNameByModelInstance(tInstance).get(), 20)
 				);
     }
+    
+    public CrudReady<T, F> getInstance() {
+    	return tInstance;
+    }
 }

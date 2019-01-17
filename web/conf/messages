@@ -1580,6 +1580,7 @@ admin.text.home=Admin
 admin.navbar.link.text.orders=Commandes
 admin.navbar.link.text.customers=Clients
 admin.navbar.link.text.simplified.customers=Clients
+admin.navbar.link.text.simplified.customers.by.customer=Interface pour le client
 admin.navbar.link.text.simplified.customers.big=Clients Pro
 admin.navbar.link.text.simplified.customers.for.admin=Clients (simplifiés)
 admin.navbar.link.text.simplified.customers.for.admin.big=Clients Pro
