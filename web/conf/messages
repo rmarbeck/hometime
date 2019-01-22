@@ -602,6 +602,10 @@ appointment.generic.html.title=Venir chez Hometime
 appointment.generic.html.description=Comment venir dans nos locaux à Paris pour déposer une montre pour une révision complète, un entretien partiel, un polissage, un changement de pile ou tout autre service horloger
 appointment.generic.html.keywords=Locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
 appointment.text.disclaimer=Nous pouvons vous recevoir pour répondre à l''ensemble de vos questions et pour vous proposer tous nos services horlogers.
+appointment.text.part1=Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi de 11h à 17h</b>.
+appointment.text.part2=Une fois sur les lieux, après la porte sur la rue : <b>au fond du couloir, prendre l''escalier à droite, puis 1er étage à droite.</b>
+appointment.text.part3=Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:{0}" rel="nofollow"><span>{1}</span></a> 
+appointment.text.part4=Vous préférez que nous vous contactions par téléphone&nbsp;?
 
 quartz.generic.baseline=Changement de pile de montre
 quartz.generic.text.explanation=Pour réaliser le changement de la pile de votre montre {0} (ou une autre marque) avec ou sans refaire l''étanchéité, nous vous accueillons dans nos locaux situés 322 rue Saint Honoré à Paris 1er arrondissement sans rendez-vous au 07 82 43 47 51.
@@ -610,6 +614,10 @@ quartz.generic.html.description=Description du service de changement de la pile 
 quartz.generic.html.keywords=changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
 quartz.text.disclaimer=Au delà du changement de pile, avec ou sans garantie d''étanchéité, sur les montres à quartz toutes marques, nous proposons des entretiens classiques comme la révision complète, les changements de verres, de poussoirs ou de lunette, ou des restaurations de montres ayant subi de graves dommages (rouille causée par une perte d''étanchéité, chute violente...), nous pouvons proposer des services "à la carte" correspondant à des besoins très spécifiques. N''hésitez par à nous contacter pour réviser, réparer, restaurer ou même personnaliser votre montre !
 quartz.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''horlogers indépendants diplômés, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
+
+quartz.select.choose.brand=Sélectionnez la marque de votre montre pour trouver le tarif correspondant
+
+quartz.text.price.header=Pour les montres <span id="brand-dname" class="band-name">de cette marque</span>, les tarifs de changement de pile sont les suivants :
 
 order.undefined.brand.name=d''une marque supportée par Hometime
 order.undefined.brand.models=Seamaster, Speedmaster, Portugaise, Monaco, Carrera, Oyster, ,Submariner, Daytona, GMT Master, Big Bang, Royal Oak, El Primero, Chronomaster
@@ -1490,6 +1498,11 @@ site.plan.sell.title=Vendez votre montre d''occasion
 site.plan.quartz.title=Tarifs changement de pile et étanchéité
 site.plan.quartz.brand.title=Tarifs changement de pile et étanchéité pour une montre {0}
 site.plan.appointment.title=Venir chez Hometime
+
+site.plan.appointment.title.en=Visiting us - page in english
+site.plan.call.request.title.en=Being called back - page in english
+site.plan.quartz.title.en=Prices for battery replacement - page in english
+site.plan.quartz.brand.title.en=Prices for battery replacement for {0} watches - page in english
 
 
 

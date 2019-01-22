@@ -42,35 +42,8 @@
           </div>
       </div>
      
-      <div class="row content">
-      <hr>
-      	<div class="col-xs-12 col-md-3 col-md-offset-1 text-justify">
-      	            
-      		Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi de 11h à 17h</b>.
-      		<br /><br />
-      		Une fois sur les lieux, après la porte sur la rue : <b>au fond du couloir, prendre l'escalier à droite, puis 1er étage à droite.</b>
-      		<br /><br />
-      		Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:@Messages("global.href.phone.number")" rel="nofollow"><span>@Html(Messages("global.text.phone.number"))</span></a> 
-      		<br /><br />
-      		<br />
-      		Vous préférez que nous vous contactions par téléphone&nbsp;?
-      		<br />
-      		<br />
-      		<div class="text-center">
-			<a class="btn btn-default" href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("order.action.alternative"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
-			</div>
-			<br /><br />
-		</div>
-        <div class="col-xs-12 col-md-7">
-	        <iframe
-			  width="100%"
-			  height="400"
-			  frameborder="0" style="border:0"
-			  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc
-			    &q=322+rue+saint+honoré,Paris" allowfullscreen>
-			</iframe>
-		</div>
-	  </div>
+      @fragments.visiting_us()
+      
       <hr>
       <div class="row disclaimer">
           <div class="col-md-10 col-md-offset-1">

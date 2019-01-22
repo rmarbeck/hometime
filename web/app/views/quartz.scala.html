@@ -89,7 +89,7 @@ $(document).ready(function(){
       <div class="row content">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
         	<select id="brandChosen" name="brandChosen" class="form-control">
-                <option class="blank" value="0">Sélectionnez la marque de votre montre pour trouver le tarif correspondant</option>
+                <option class="blank" value="0">@Messages("quartz.select.choose.brand")</option>
 				@for(current_brand <- models.Brand.findAllByAscName) {
 					@if(current_brand.getQuartzCategory!=0) {<option value="@current_brand.getQuartzCategory" @if(current_brand.equals(brand)) {selected}>@current_brand.display_name</option>}
 				}
@@ -97,7 +97,7 @@ $(document).ready(function(){
         	<br /><br />
         	<div class="offer-box-container hidden">
         	<div class="offer-box-only-selected hidden">
-        		Pour les montres <span id="brand-dname" class="band-name">de cette marque</span>, le tarif de changement de pile sont les suivants :
+        		@Html(Messages("quartz.text.price.header"))
         		<br /><br />
         	</div>
         	<div class="offer-box-only-selected hidden text-center" id="category-1">
@@ -119,33 +119,7 @@ $(document).ready(function(){
         	</div>
         </div>
       </div>
-      <hr />
-      <div class="row content">
-      	<div class="col-xs-6 col-md-3 col-md-offset-1 text-justify">
-      		<b>Nous localiser :</b>
-      		Nous vous recevons dans nos locaux situés 322 rue Saint Honoré dans le 1er arrondissement pour des changements de pile "minutes" et pour tout devis d'entretien plus poussés.
-      		<br /><br />
-      		<br />
-      		Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:@Messages("global.href.phone.number")" rel="nofollow"><span>@Html(Messages("global.text.phone.number"))</span></a> 
-      		<br /><br />
-      		<br />
-      		Vous préférez que nous vous contactions par téléphone&nbsp;?
-      		<br />
-      		<br />
-      		<div class="text-center">
-			<a class="btn btn-default" href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("order.action.alternative"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>		</div>
-			</div>
-        <div class="col-xs-6 col-md-7">
-	        <iframe
-			  width="100%"
-			  height="400"
-			  frameborder="0" style="border:0"
-			  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc
-			    &q=322+rue+saint+honore,Paris" allowfullscreen>
-			</iframe>
-		</div>
-	  </div>
-      <hr />
+      @fragments.visiting_us()
       <div class="row disclaimer">
           <div class="col-md-10 col-md-offset-1">
                     		@fragments.all_watches_footnotes_for_prices_table()

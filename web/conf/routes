@@ -47,6 +47,8 @@ POST	/accepter-le-devis			controllers.Application.manageAcceptQuotation()
 # Order
 GET     /changement-de-pile/etancheite         controllers.Application.quartz(brand = null)
 GET     /changement-de-pile/etancheite/montre/:brand    controllers.Application.quartz(brand)
+GET     /watch-battery-change/water-resistance         	controllers.Application.quartz_en(brand = null)
+GET     /watch-battery-change/water-resistance/watch/:brand    controllers.Application.quartz_en(brand)
 GET     /changement-de-pile         controllers.Default.redirect(to = "/changement-de-pile/etancheite")
 
 # BuyRequest
@@ -59,10 +61,12 @@ GET     /hardCodedToContact         controllers.Default.redirect(to = "/nous-con
 POST    /nous-contacter             controllers.Application.manageContact()
 
 GET     /venir-nous-voir            controllers.Application.appointment()
+GET     /how-to-come-to-visit-hometime    controllers.Application.appointment_en()
 GET     /hardCodedToAppointment     controllers.Default.redirect(to = "/venir-nous-voir")
 
 # CallRequest
 GET     /demande-de-rappel          controllers.Application.callRequest()
+GET     /call-back			        controllers.Application.callRequest_en()
 POST    /demande-de-rappel          controllers.Application.manageCallRequest()
 
 # ServiceTest

@@ -1,0 +1,232 @@
+# Messages in english
+
+
+global.code.lang.head=en
+global.text.project.name=hometime
+global.home.html.title=Watch servicing, repairing, selling and trying in Paris
+global.home.html.description=High end brands watch servicing and repairing in Paris
+global.home.html.author=hometime
+global.text.brand.name=hometime
+global.text.brand.name.title=hometime
+global.text.site.name=hometime
+global.text.copyright=© Watch next SAS 2013-2016
+global.text.brand.baseline=
+
+global.navbar.link.text.home=Home
+global.navbar.link.text.service=Service
+global.navbar.link.text.service.content=Servicing watches FAQ
+global.navbar.link.text.service.service.test=When to service a watch ?
+global.navbar.link.text.services=Our services
+global.navbar.link.text.services.service=Full & partial sevices
+global.navbar.link.text.services.restore=Restoring
+global.navbar.link.text.services.quartz=Battery change and water resistance
+global.navbar.link.text.services.loan=Trying a watch
+global.navbar.link.text.services.at.home=At home services
+global.navbar.link.text.services.other=Additional services
+global.navbar.link.text.customization=Watch customising
+global.navbar.link.text.services.faq=FAQ
+global.navbar.link.text.services.around=Partnerships
+global.navbar.link.text.services.prices=Rates
+global.navbar.link.text.services.feedback=Customers'' opinions <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+global.navbar.link.text.watches=Trying/purchasing watches
+global.navbar.link.text.watch.collection=Watches available for a try
+global.navbar.link.text.buy.request=Finding your next watch
+global.navbar.link.text.who.are.we=Legal notice
+global.navbar.link.text.about=Who&nbsp;are&nbsp;we&nbsp;?
+global.navbar.link.text.water.content=Water in my watch
+global.navbar.link.text.broking=Finding and purchasing a watch
+global.navbar.link.text.sell=Selling a watch
+#   global.navbar.link.text.contact=Avis, remarques ?
+global.navbar.link.text.appointment=Visiting us
+global.navbar.link.text.order=Ask for a price
+
+
+# Home page
+home.html.title=Watch servicing, repairing, selling and trying in Paris
+home.html.description=High end brands watch servicing and repairing in Paris
+home.html.keywords=entretien, entretien montre, révision, réparation, révision montre, réparation montre, montre mécanique, montre automatique, sav, service après vente, rolex, omega, panerai, tag heuer, paris, région parisienne, 75, yvelines, hauts de seine, devis gratuit, essai, à domicile, devis en ligne
+home.caption.1.head=You own a great watch, take care of it&nbsp;!
+home.caption.1.body=Your watch can last forever, but you have to take care of it by getting it serviced by the best watchmakers, Hometime is here for you.
+home.caption.1.call.to.action=Why servicing my watch ?
+
+home.caption.2.head=Try a watch when servicing yours&nbsp;!
+home.caption.2.body=Hometime allows you to wear an iconic watch during the service of your watch. <b>Rolex submariner, Omega Speedmaster, Tag Heuer Monaco</b>...
+home.caption.2.call.to.action=Pick up the one you want !
+
+home.caption.2.alt.head=Make watch servicing easy&nbsp;!
+home.caption.2.alt.body=We are dedicated in findinf the best solution for each watch.
+home.caption.2.alt.call.to.action=Discover our services !
+
+home.caption.3.head=Don''t move, we do&nbsp;!
+home.caption.3.body=We can come at home or at work to make it even easier.
+home.caption.3.call.to.action=Ask for a quotation !
+
+home.caption.4.head=Let''s find your next watch&nbsp;!
+home.caption.4.body=We can find your next watch, from brand new to used vintage watch, always the <b>best prices</b> with <b>a 2 years warranty</b>.
+home.caption.4.call.to.action=Finding a watch&nbsp;!
+
+home.baseline=<i>Don''t loose your time, earn it&nbsp;!</i>
+home.baseline.alt=<i>Don''t loose your time, earn it&nbsp;!</i>
+
+home.promise.1.alt=Watch movement 
+home.promise.1.head=Servicing
+home.promise.1.body=A watch is designed to last <b>forever</b> from one generation to the next. Hometime can tell you everything you need to know about servicing mechanical watches.
+home.promise.1.call.to.action=Servicing mechanical watches
+home.promise.1.call.to.action.title=Understanding mechanical watches servicing
+
+home.promise.2.alt=Hometime Workshop - 322 rue Saint Honoré
+home.promise.2.head=In workshop
+home.promise.2.body=Our workshop is located in <b>Paris, 322 rue Saint Honoré</b>, and open from monday to friday from 10am to 6.30pm, and on saturday from 11am to 5pm. Come visiting us to bring us a watch or just to meet us&nbsp;! 
+home.promise.2.call.to.action=Visiting us
+home.promise.2.call.to.action.title=Hometime services
+
+home.promise.2.alt.alt=Iconic watch - Rolex Submariner
+home.promise.2.alt.head=Try&nbsp;!
+home.promise.2.alt.body=<b>Wear an iconic wath</b> during <b>servicing ou repairing time of yours</b>. Discover the watches available. 
+home.promise.2.alt.call.to.action=Available watches
+home.promise.2.alt.call.to.action.title=Available watches for a try
+
+home.promise.3.alt=At home services
+home.promise.3.head=At home
+home.promise.3.body=To make it even easier, Hometime is able to catch your watch at home or at work.
+home.promise.3.call.to.action=Hometime services
+home.promise.3.call.to.action.title=Watch repairing services
+
+home.promise.3.alt.call.to.action=At home services
+home.promise.3.alt.call.to.action.title=Where and when we can collect your watch
+
+home.text.supports.brands=Hometime can service following brands :
+home.text.supports.brands.notice=Hometime is not affiliated to these brands and is providing its services by its own
+home.order.call.to.action=Ask for a price
+home.order.call.to.action.title=Ask for an online quotation for free
+home.tell.more.call.to.action=More...
+home.tell.more.call.to.action.title=All about our services
+home.feedback.call.to.action=All the opinions
+home.feedback.call.to.action.title=What our customers say
+
+home.title.for.facebook=Hometime
+home.type.for.facebook=website
+home.description.for.facebook=Hometime, entretien et essai prolongé de montres de luxe
+home.order.links.by.brand.title=Asking for a free online quotation for repairing or servicing a {0} watch
+home.order.links.by.brand=Repairing or servicing {0} watch
+
+home.text.what.is.it=Hometime, in a nutshell
+home.what.is.it.1.body=Hometime provides watch servicing for final customers in France. 
+home.what.is.it.2.body=We bring you best in class services through our inhouse seasonned watchmakers and partners to provide you what you need : servicing, selling, purchasing...
+home.what.is.it.3.body=We are designed to provide the best prices and shortest delays possible considering the level of quality each watch owner is expecting 
+home.what.is.it.4.body=Ecology in one of our concerns 
+home.what.is.it.5.body=We can even customize your watches
+
+
+home.text.reasons=Why choosing Hometime&nbsp;?
+home.reason.1.body=No more queuing to have its watch serviced&nbsp;!
+home.reason.4.body=I can bring different brands in the same workshop&nbsp;!
+home.reason.3.body=Partial services are an option, no mandatory full service&nbsp;!
+home.reason.2.body=I can test iconic watches for several days&nbsp;!
+home.reason.5.body=Hometime can manage servicing in brand''s official aftersale workshops&nbsp;!
+home.reason.6.body=We can provide you with all the advices you need to keep your watch in perfect conditions&nbsp;!
+home.reason.7.body=We can even shorten dealys&nbsp;!
+home.reason.8.body=You keep the control, especialy on what we do on vintage watches&nbsp;!
+
+home.text.feedback=Customers opinions
+
+
+
+
+
+appointment.generic.baseline=Coming to visit Hometime
+appointment.text.pre.explanation=<b><a href="{0}">Hometime</a></b> is a watch repairing service for <b>biggest luxury brands</b>, that allows to choose different options from official brands servicing to in house servicing by our own watchmakers. For all the details about us, don't hesitate to visit <a href="{1}"><i>Who are we ?</i></a>
+appointment.generic.text.explanation=All you need to get an appointment or to visit our workshop located in the center of Paris.
+appointment.generic.html.title=Visiting Hometime
+appointment.generic.html.description=How to visit us in our workshop to get your watch repaired, serviced, its battery changed or everything you could need for your high end watch.
+appointment.generic.html.keywords=Hometime workshop in Paris, full watch service, battery change, water resistance, certified watchmaker, repairing watch, paris
+appointment.text.disclaimer=We can answer all your questions to find the solution to any problem you may have on your watch.
+
+appointment.text.part1=We are open from <b>Monday to Friday, from 10 am to 6.30 pm, on Saturday from 11am to 5 pm</b>, our address is <b>322 rue Saint Honoré</b> 75001 Paris. Close to Le Louvre and Le Jardin des Tuileries.
+appointment.text.part2=Once in front of the wooden door, <b>at the end of the corridor you have to take the stairway on the right and then to climb to the second floor</b>
+appointment.text.part3=Don''t hesitate to call us for any question or to schedule a visit&nbsp;: <a href="tel:{0}" rel="nofollow"><span>{1}</span></a> 
+appointment.text.part4=We can also call you if you like&nbsp;:
+
+
+quartz.generic.baseline=Watch battery replacement
+quartz.generic.text.explanation=To have your battery changed for a {0} watch (or any other brand) with or without water resistance renewed, you can visit us at this address : 322 rue Saint Honoré, Paris 1st arrondissement, no appointment needed. You can reach us at +33&nbsp;7&nbsp;82&nbsp;43&nbsp;47&nbsp;51.
+quartz.generic.html.title=Price for battery replacement for a {0} watch in Paris
+quartz.generic.html.description=Description of Hometime {0} quartz watch battery replacement, different models  {1}.
+quartz.generic.html.keywords=watch battery replacement, watch batrery change, certified watchmaker, water resistance, watch repairing, watch, paris, {0}, {1}
+quartz.text.disclaimer=Beyond battery change for quartz watches, we are providing all reparing services for high end watches, full services, glass change. Don''t hesitate to call us to get helped with your watch !
+quartz.text.pre.explanation=<b><a href="{0}">Hometime</a></b> provides repairing services <b>for high end watch brands</b>, inside official after market services to inhouse repairign done in our workshop by our certified watchmakers in the center of Paris. You will find everything you need in our <a href="{1}"><i>website</a>.
+
+quartz.select.choose.brand=Please choose your brand to display the price for battery change
+
+quartz.text.price.header=For <span id="brand-dname" class="band-name">this brand</span> watches, battery change prices are :
+
+order.undefined.brand.name="supported by us brand"
+quartz.undefined.brand.name="supported by us brand"
+
+# Prices page
+prices.html.title=Our prices
+prices.html.description=Prices listing for all the services we are providing
+prices.html.keywords=prices, watches, full services, battery change, water resistance, paris, yvelines, hauts de seine
+prices.baseline=Hometime's services prices
+prices.head=Prices for mechanical watches
+prices.body=For full services or watch repairing, we are providing price ranges as different factors may have an impact on final price.\
+ Don''t hesitate to visit or contact us to get a final committed price for your very specific need.
+prices.quartz.head=Prices for quartz watches
+prices.quartz.body=Prices for quartz watches are usual ones, it may happen in given circumstances that higher rates are proposed.\
+ We are providing free quotation in a couple of days, don''t hesitate to ask.
+ 
+prices.table.head.service=Work
+prices.table.head.details=Details
+prices.table.head.tariff=Price
+prices.table.head.remarks=Remarks
+prices.table.body.service=Full service
+prices.table.body.watch.of.category=Watch category number {0}
+prices.table.body.service.prices=From <strong>{0}</strong> to <strong>{1}</strong>
+prices.table.body.service.details=Prices are usual ones. It depends on your choice to have your watch repaired in official brand''s aftersale service or by our certified inhouse watchmakers, it will be detailed in <a href="{0}">a customised quotation</a>.
+prices.table.body.repair=Repairing
+prices.table.body.repair.prices=Free quotation only.
+prices.table.body.intermediate.service=Partial services
+prices.table.body.intermediate.service.prices=Partial service includes performance testing, polishing and water resistance testing, pricing is usually between <strong>{0}</strong> and <strong>{1}</strong>.
+prices.table.body.soft.service=Seting up or demagnetizing
+prices.table.body.soft.service.prices=Free quotation is needed, but usual prices are between <strong>{0}</strong> and <strong>{1}</strong>.
+prices.table.body.loan=Watch trying during a full service
+prices.table.body.loan.prices=Between <strong>{0}</strong> and <strong>{1}</strong>.Each watch has a dedicated "trying" price.<sup>0</sup>
+prices.table.body.other=Other services
+prices.table.body.other.prices=For other services like authentication, expertises, selling advices don''t hesitate to <a href="{0}">contact us</a>.
+prices.table.body.moving=Travel expenses
+prices.table.body.moving.prices=Free (in Paris and suburbs). <br /> For insured shipping we are invoicing without any charge postal fees.
+prices.table.body.footnote.4=<sup>0</sup> In rare circumstances trying watch fees may be higher if delays are longer that usual. 
+
+prices.table.body.quartz.service=Battery replacement (with or without water resistance warranted for 2 years)
+prices.table.body.quartz.service.details=Prices are usual ones. It depends on your choice to have your watch repaired in official brand''s aftersale service or by our certified inhouse watchmakers, it will be detailed in <a href="{0}">a customised quotation</a>.
+prices.table.body.quartz.repair=Repairing (watch doesn''t work with new battery)
+prices.table.body.quartz.repair.prices=Free quotation only.
+prices.table.body.quartz.intermediate.service=Polishing + battery change + water resistance
+prices.table.body.quartz.intermediate.service.prices=For a partial service including polishing, battery replacement and water resistance, prices are between <strong>{0}</strong> and <strong>{1}</strong>.
+
+prices.table.body.quartz.service.prices=<strong>{0}</strong> for battery change only, <strong>{1}</strong> with water resistance warranted for 2 years
+
+
+
+global.text.call.request.title=Being called back
+global.text.call.us.reasons=Ask any question you may have
+global.text.footer.conditions.cost=normal fee to call a french mobile phone
+global.text.footer.conditions.when=form&nbsp;monday&nbsp;to&nbsp;saturday,&nbsp;from&nbsp;8&nbsp;am&nbsp;to&nbsp;9&nbsp;pm
+
+order.action.alternative=Being called back
+
+# Call request page
+call.request.html.title=Being called back
+call.request.html.description=Contact form, ask a question or any information, we call you back.
+call.request.html.keywords=Contact us, question, information, phone, call back
+call.request.baseline=Ask us to call you back
+call.request.text.explanation=You have a question or any information request, please fill the form, we will call you back as soon as possible. If you prefer to call us, just dial <b>+33&nbsp;7&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (french mobile number).
+
+call.request.form.label.title=* Your phone number
+call.request.form.placeholder.title=06xxxxxxxx
+call.request.form.label.message=* Reason of your call
+call.request.form.placeholder.message=The reason why you need us to contact you
+call.request.form.mandatory.mark.explanation=* Mandatory field
+call.request.success.panel.heading=Requesting a call back
+call.request.success.panel.body=Thank you for your trust.<br /><br />All information are recorded, we will call you back as soon as possible.<br /><br />Hear you soon.
+call.request.action.submit=Submit

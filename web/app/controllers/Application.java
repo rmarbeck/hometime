@@ -6,6 +6,7 @@ import static fr.hometime.utils.SecurityHelper.doesFieldContainSPAM;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 import javax.persistence.Column;
 
@@ -513,6 +514,13 @@ public class Application extends Controller {
     	}
     }
     
+    public static Result quartz_en(String brandName) {
+    	ctx().changeLang("en");
+    	Result result = quartz(brandName);
+    	ctx().clearLang();
+    	return result;
+    }
+    
     public static Result buyRequest() {
     	try {
     		
@@ -538,6 +546,9 @@ public class Application extends Controller {
     	}
     }
     
+    public static Result appointment_en() {
+	    return switchInEnglish(Application::appointment);
+    }
     
     public static Result callRequest() {
     	try {
@@ -545,6 +556,17 @@ public class Application extends Controller {
     	} catch (Exception e) {
     		return internalServerError();
     	}
+    }
+    
+    public static Result callRequest_en() {
+	    return switchInEnglish(Application::callRequest);
+    }
+    
+    private static Result switchInEnglish(Supplier<Result> supplier) {
+    	ctx().changeLang("en");
+   		Result result = supplier.get();
+    	ctx().clearLang();
+	    return result;
     }
         
     public static Result service_test() {
@@ -671,7 +693,7 @@ public class Application extends Controller {
 			return callRequest();
 		}
 	}
-	
+		
 	private static String getCallRequestMessage(Form<CallForm> callForm) {
 		StringBuilder message = new StringBuilder();
 		message.append("\n");

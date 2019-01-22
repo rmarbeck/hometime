@@ -1,144 +1,166 @@
 @(displayable_watches: List[models.Watch], supported_brands: List[Brand])<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-      <loc>http://@{request.host()}/</loc>
+      <loc>https://@{request.host()}/</loc>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.indexAlternate()</loc>
+      <loc>https://@{request.host()}@routes.Application.indexAlternate()</loc>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.offer()</loc>
+      <loc>https://@{request.host()}@routes.Application.offer()</loc>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.more()</loc>
+      <loc>https://@{request.host()}@routes.Application.more()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.prices()</loc>
+      <loc>https://@{request.host()}@routes.Application.prices()</loc>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.service()</loc>
+      <loc>https://@{request.host()}@routes.Application.service()</loc>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.customization()</loc>
+      <loc>https://@{request.host()}@routes.Application.customization()</loc>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.water()</loc>
+      <loc>https://@{request.host()}@routes.Application.water()</loc>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.service_test()</loc>
+      <loc>https://@{request.host()}@routes.Application.service_test()</loc>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.broking()</loc>
+      <loc>https://@{request.host()}@routes.Application.broking()</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.sell()</loc>
+      <loc>https://@{request.host()}@routes.Application.sell()</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
 
     <url>
-      <loc>http://@{request.host()}@routes.Application.buyRequest()</loc>
+      <loc>https://@{request.host()}@routes.Application.buyRequest()</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.watch_collection()</loc>
+      <loc>https://@{request.host()}@routes.Application.watch_collection()</loc>
       <changefreq>daily</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.order(null)</loc>
+      <loc>https://@{request.host()}@routes.Application.order(null)</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
     @for(brand <- supported_brands) {
     <url>
-      <loc>http://@{request.host()}@routes.Application.order(brand.seo_name)</loc>
+      <loc>https://@{request.host()}@routes.Application.order(brand.seo_name)</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
     }
     <url>
-      <loc>http://@{request.host()}@routes.Application.quartz(null)</loc>
+      <loc>https://@{request.host()}@routes.Application.quartz(null)</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
     @for(current_brand <- models.Brand.findAllByAscName) {@if(current_brand.getQuartzCategory!=0) {
     <url>
-      <loc>http://@{request.host()}@routes.Application.quartz(current_brand.internal_name.toLowerCase)</loc>
+      <loc>https://@{request.host()}@routes.Application.quartz(current_brand.internal_name.toLowerCase)</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
     }}
     <url>
-      <loc>http://@{request.host()}@routes.Application.feedback()</loc>
+      <loc>https://@{request.host()}@routes.Application.quartz_en(null)</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+    @for(current_brand <- models.Brand.findAllByAscName) {@if(current_brand.getQuartzCategory!=0) {
+    <url>
+      <loc>https://@{request.host()}@routes.Application.quartz_en(current_brand.internal_name.toLowerCase)</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+    }}
+    <url>
+      <loc>https://@{request.host()}@routes.Application.feedback()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.about()</loc>
+      <loc>https://@{request.host()}@routes.Application.about()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.appointment()</loc>
+      <loc>https://@{request.host()}@routes.Application.appointment()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.legal()</loc>
+      <loc>https://@{request.host()}@routes.Application.appointment_en()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.faq()</loc>
+      <loc>https://@{request.host()}@routes.Application.legal()</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.5</priority>
+    </url>
+    <url>
+      <loc>https://@{request.host()}@routes.Application.faq()</loc>
       <changefreq>daily</changefreq>
       <priority>1</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.around()</loc>
+      <loc>https://@{request.host()}@routes.Application.around()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.privacy()</loc>
+      <loc>https://@{request.host()}@routes.Application.privacy()</loc>
       <changefreq>daily</changefreq>
       <priority>0.4</priority>
     </url>
     @for(watch <- displayable_watches) {
     <url>
-      <loc>http://@{request.host()}@routes.Application.watch_detail(watch.seo_name)</loc>
+      <loc>https://@{request.host()}@routes.Application.watch_detail(watch.seo_name)</loc>
       <changefreq>daily</changefreq>
       <priority>0.6</priority>
     </url>
     }
     <url>
-      <loc>http://@{request.host()}@routes.Application.contact()</loc>
+      <loc>https://@{request.host()}@routes.Application.contact()</loc>
       <changefreq>daily</changefreq>
       <priority>0.3</priority>
     </url>
     <url>
-      <loc>http://@{request.host()}@routes.Application.callRequest()</loc>
+      <loc>https://@{request.host()}@routes.Application.callRequest()</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.3</priority>
+    </url>
+    <url>
+      <loc>https://@{request.host()}@routes.Application.callRequest_en()</loc>
       <changefreq>daily</changefreq>
       <priority>0.3</priority>
     </url>

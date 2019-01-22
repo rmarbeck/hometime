@@ -156,6 +156,30 @@
                         <div class="title"><h2><a href="@routes.Application.indexAlternate()">@Messages("site.plan.home.alt.title")</a></h2></div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.appointment_en()">@Messages("site.plan.appointment.title.en")</a></h2></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.callRequest_en()">@Messages("site.plan.call.request.title.en")</a></h2></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.quartz_en(null)">@Messages("site.plan.quartz.title.en")</a></h2></div>
+                        @for(current_brand <- models.Brand.findAllByAscName) {
+							@if(current_brand.getQuartzCategory!=0) {
+							<div class="row">
+                            <div class="col-xs-12">
+                                <div class="entry"><h3><a href="@routes.Application.quartz_en(current_brand.internal_name.toLowerCase)">@Messages("site.plan.quartz.brand.title.en", current_brand.display_name)</a></h3></div>
+                            </div>
+                        	</div>
+							}
+						}
+                    </div>
+                </div>
             </div>
         </div>
     </div><!-- /.container -->
