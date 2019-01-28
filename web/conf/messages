@@ -554,6 +554,9 @@ prices.table.body.quartz.intermediate.service.prices=Ce forfait inclut le change
 
 prices.table.body.quartz.service.prices=<strong>{0}</strong> pour changement de pile, <strong>{1}</strong> avec étanchéité garantie 2 ans
 
+prices.auto.quotation.header.service.prices=Pour les montres <span id="resultbrand"></span>, le tarif d''entretien est habituellement 
+prices.auto.quotation.body.service.prices=compris entre <strong><span id="lowerprice"></span>€</strong> et <strong><span id="higherprice"></span>€</strong> avec des travaux garantis pendant 1 an (2 ans pour l''étanchéité si applicable)
+
 
 # Order page
 order.html.title=Devis gratuit pour révision ou réparation de montre
@@ -581,6 +584,27 @@ auto.order.generic.html.keywords=devis interactif, devis gratuit,devis en ligne,
 
 auto.order.form.label.brand=Quelle est la marque de votre montre ?
 
+auto.order.form.placeholder.brand=
+auto.order.form.value.brand.default=Sélectionnez la marque de votre montre
+
+auto.order.undefined.brand.name=d''une marque supportée par Hometime
+
+auto.order.text.disclaimer=En quelques étapes, estimez vous même le tarif de révision ou de réparation de votre montre, que celle-ci soit une montre mécanique à remontage manuel ou à remontage automatique, ou bien une montre à quartz. Dans certains cas, nous vous proposerons de nous contacter pour plus de précision dans l''estimation de l''entretien de votre montre.
+
+auto.order.header.contact=<b>Dans ce cas de figure, nous vous invitons à prendre contact avec nous pour évaluer notre capacité à vous aider :</b>
+auto.order.body.contact=Par email à l''adresse suivante : <a href="mailto:contact@hometime.fr">contact@hometime.fr</a> ou bien en nous appelant au <b>07 82 43 47 51</b>
+
+auto.order.action.alternative.separator=Vous préférez que nous vous rappelions ?
+
+auto.order.action.call.request=Etre rappelé
+
+auto.order.action.visit.us=Déposer ma montre 
+auto.order.action.alternative=Etre rappelé
+
+prices.auto.quotation.footer.service.prices=Ces prix sont indicatifs et ne correspondent qu''aux entretiens les plus fréquents, nous établirons un devis définitif après ausculation de votre montre
+prices.auto.quartz.footer.service.prices=Ces prix sont indicatifs et ne correspondent qu''aux entretiens les plus fréquents, nous établirons un devis définitif après ausculation de votre montre
+
+
 auto.order.movement.type=Type de mouvement
 auto.order.movement.type.value.manual=Montre à <abbr title="Vous avez besoin de remonter votre montre à la couronne environ tous les jours pour qu''elle fonctionne">remontage manuel</abbr>
 auto.order.movement.type.value.auto=Montre à <abbr title="Votre montre se remonte toute seule à votre poignet, elle s''arrête si vous ne la portez pas pendant plusieurs jours">remontage automatique</abbr>
@@ -588,12 +612,32 @@ auto.order.movement.type.value.quartz=Montre fonctionnant <abbr title="Vous deve
 auto.order.movement.type.value.unknown=Je ne sais pas
 
 auto.order.movement.complexity=Type de montre
-auto.order.movement.complexity.value.two.or.three.hands=Simple à deux ou trois aiguilles
+auto.order.movement.complexity.value.two.or.three.hands=Simple : deux ou trois aiguilles
 auto.order.movement.complexity.value.gmt=Avec fonction GMT simple
-auto.order.movement.complexity.value.chrono=Avec fonction chrongraphe
+auto.order.movement.complexity.value.chrono=Avec fonction chronographe
 auto.order.movement.complexity.value.other=Avec plusieurs fonctions complexes
 auto.order.movement.complexity.value.unknown=Je ne sais pas
 
+auto.order.working.condition=Etat de la montre
+auto.order.working.condition.value.working=La montre fonctionne (elle peut prendre du retard ou de l''avance) aucune pièce apparente n''est cassée
+auto.order.working.condition.value.not.working=La montre est arrêtée, aucune pièce apparente n''est cassée
+auto.order.working.condition.value.broken=La montre est cassée (son verre ou une autre pièce sont endommagées)
+
+
+auto.order.emergency.level=Niveau d''urgence
+auto.order.emergency.level.value.normal=Normale
+auto.order.emergency.level.value.high=L''entretien est urgent (environ 1 semaine)
+auto.order.emergency.level.value.very.high=L''entretien est très urgent (moins de 48h)
+auto.order.emergency.level.value.low=L''entretien peut prendre du temps (plus d''un mois)
+
+auto.order.action.submit=Demander un devis personnalisé
+
+auto.order.quartz.header.service.prices=<b>Pour les montres <span class="resultbrand"></span>, le tarif d''entretien partiel est le suivant :</b>
+auto.order.quartz.body.service.prices=<strong><span id="battery">{0}</span>€</strong> pour changement de pile, <strong><span id="water">{1}</span>€</strong> avec étanchéité garantie 2 ans
+
+
+auto.order.quotation.header.service.prices=<b>Pour les montres <span class="resultbrand"></span>, le tarif de révision complète est habituellement :</b> 
+auto.order.quotation.body.service.prices=compris entre <strong><span id="lowerprice"></span>€</strong> et <strong><span id="higherprice"></span>€</strong> avec des travaux garantis pendant 1 an (2 ans pour l''étanchéité si applicable)
 
 appointment.generic.baseline=Venir chez Hometime
 appointment.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''horlogers indépendants diplômés, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
@@ -2993,6 +3037,9 @@ admin.invoice.legal=Toute somme non payée dans les trente jours est augmentée 
 admin.invoice.notice.margin.vat="Régime particulier-Biens d''occasion"<br />Article 242 nonies A, 16° de l''annexe II au CGI
 admin.invoice.notice.reserved.1="Vente Export"<br />Exonération de TVA, article 262 I du CGI
 
+
+admin.invoice.selling.legal=Dans le cadre de la réalisation d''une plus value à l''occasion de cette vente, il est rappelé que le vendeur\
+ est tenu de déclarer spontanément la dite plus value via le formulaire 2092 (CERFA n° 10251) afin de s''acquitter des taxes et impôts exigibles.
 
 admin.order.document.text.bill=Bon de commande
 admin.order.document.title.bill={0} - Devis 
