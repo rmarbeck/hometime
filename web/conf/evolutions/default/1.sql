@@ -99,12 +99,6 @@ create table brand (
   description               varchar(10000),
   remarks                   varchar(10000),
   quartz_category           integer,
-  quartz_price              bigint,
-  water_price               bigint,
-  low_service_price         bigint,
-  high_service_price        bigint,
-  high_emergency_factor     bigint,
-  low_emergency_factor      bigint,
   constraint uq_brand_internal_name unique (internal_name),
   constraint pk_brand primary key (id))
 ;

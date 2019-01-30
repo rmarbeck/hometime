@@ -107,9 +107,25 @@ $(document).ready(function(){
     		if (activeEmergency == 'LOW') {
     			factor = brandValue[12];	
     		}
-    		$('#lowerprice').html(brandValue[3]*factor/100);
-	    	$('#higherprice').html(brandValue[4]*factor/100);
+    		$('#lowerprice').html(roundValue(brandValue[3],factor));
+	    	$('#higherprice').html(roundValue(brandValue[4],factor));
+    		if(activeComplexity == 'CHRONO') {
+	    		$('#lowerprice').html(roundValue(brandValue[5],factor));
+	    		$('#higherprice').html(roundValue(brandValue[6],factor));
+    		}
+    		if(activeComplexity == 'GMT') {
+    			$('#lowerprice').html(roundValue(brandValue[7],factor));
+	    		$('#higherprice').html(roundValue(brandValue[8],factor));
+    		}
+    		if(activeComplexity == 'OTHER') {
+    			$('#lowerprice').html(roundValue(brandValue[9],factor));
+	    		$('#higherprice').html(roundValue(brandValue[10],factor));
+    		}
     	}
+    }
+    
+    function roundValue(value, factor) {
+    	return Math.round( value * (factor/100) / 10 ) * 10;
     }
     
     function displayResult() {
