@@ -16,18 +16,22 @@ import models.Price;
 public class PriceHelper {
 	public static String getPricesForAutoOrder(Brand brand) {
 		StringBuilder result = new StringBuilder();
-		appendWithLeadingSeparator(getBatteryChangePrice(brand), result);
-		appendWithLeadingSeparator(getBatteryChangeAndWaterPrice(brand), result);
-		appendWithLeadingSeparator(getLowServicePriceSimplePrice(brand), result);
-		appendWithLeadingSeparator(getHighServicePriceSimplePrice(brand), result);
-		appendWithLeadingSeparator(getLowServicePriceChronoPrice(brand), result);
-		appendWithLeadingSeparator(getHighServicePriceChronoPrice(brand), result);
-		appendWithLeadingSeparator(getLowServicePriceGmtPrice(brand), result);
-		appendWithLeadingSeparator(getHighServicePriceGmtPrice(brand), result);
-		appendWithLeadingSeparator(getLowServicePriceComplexPrice(brand), result);
-		appendWithLeadingSeparator(getHighServicePriceComplexPrice(brand), result);
-		appendWithLeadingSeparator(getHighEmergencyFactorPrice(brand), result);
-		appendWithLeadingSeparator(getLowEmergencyFactorPrice(brand), result);
+		Optional<Price> priceFound = getBrandPrice(brand);
+		
+		if (priceFound.isPresent()) {
+			appendWithLeadingSeparator(getBatteryChangePrice(priceFound), result);
+			appendWithLeadingSeparator(getBatteryChangeAndWaterPrice(priceFound), result);
+			appendWithLeadingSeparator(getLowServicePriceSimplePrice(priceFound), result);
+			appendWithLeadingSeparator(getHighServicePriceSimplePrice(priceFound), result);
+			appendWithLeadingSeparator(getLowServicePriceChronoPrice(priceFound), result);
+			appendWithLeadingSeparator(getHighServicePriceChronoPrice(priceFound), result);
+			appendWithLeadingSeparator(getLowServicePriceGmtPrice(priceFound), result);
+			appendWithLeadingSeparator(getHighServicePriceGmtPrice(priceFound), result);
+			appendWithLeadingSeparator(getLowServicePriceComplexPrice(priceFound), result);
+			appendWithLeadingSeparator(getHighServicePriceComplexPrice(priceFound), result);
+			appendWithLeadingSeparator(getHighEmergencyFactorPrice(priceFound), result);
+			appendWithLeadingSeparator(getLowEmergencyFactorPrice(priceFound), result);
+		}
 		
 		return result.toString();
 	}
@@ -41,56 +45,111 @@ public class PriceHelper {
 		return Brand.findById(id);
 	}
 
-	public static Long getBatteryChangePrice(Brand brand) {
-		return getPriceLevel(brand, Price::getBatteryChange);
+	public static Long getBatteryChangePrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getBatteryChange);
+	}
+
+	public static Long getBatteryChangeAndWaterPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getBatteryChangeAndWater);
 	}
 	
+	public static Long getBatteryChangeAndWaterAndPolishPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getBatteryChangeAndWaterAndPolish);
+	}
+	
+	public static Long getLowServicePriceSimplePrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getLowServicePriceSimple);
+	}
+	
+	public static Long getHighServicePriceSimplePrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getHighServicePriceSimple);
+	}
+	
+	public static Long getLowServicePriceChronoPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getLowServicePriceChrono);
+	}
+	
+	public static Long getHighServicePriceChronoPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getHighServicePriceChrono);
+	}
+	
+	public static Long getLowServicePriceGmtPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getLowServicePriceGmt);
+	}
+	
+	public static Long getHighServicePriceGmtPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getHighServicePriceGmt);
+	}
+	
+	public static Long getLowServicePriceComplexPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getLowServicePriceComplex);
+	}
+	
+	public static Long getHighServicePriceComplexPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getHighServicePriceComplex);
+	}
+
+	public static Long getLowEmergencyFactorPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getLowEmergencyFactor);
+	}
+	
+	public static Long getHighEmergencyFactorPrice(Optional<Price> price) {
+		return getPriceLevel(price, Price::getHighEmergencyFactor);
+	}
+	
+	
+	
+	public static Long getBatteryChangePrice(Brand brand) {
+		return getBatteryChangePrice(getBrandPrice(brand));
+	}
+	
+	
 	public static Long getBatteryChangeAndWaterPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getBatteryChangeAndWater);
+		return getBatteryChangeAndWaterPrice(getBrandPrice(brand));
 	}
 	
 	public static Long getBatteryChangeAndWaterAndPolishPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getBatteryChangeAndWaterAndPolish);
+		return getBatteryChangeAndWaterAndPolishPrice(getBrandPrice(brand));
 	}
 	
 	public static Long getLowServicePriceSimplePrice(Brand brand) {
-		return getPriceLevel(brand, Price::getLowServicePriceSimple);
+		return getLowServicePriceSimplePrice(getBrandPrice(brand));
 	}
 	
 	public static Long getHighServicePriceSimplePrice(Brand brand) {
-		return getPriceLevel(brand, Price::getHighServicePriceSimple);
+		return getHighServicePriceSimplePrice(getBrandPrice(brand));
 	}
 	
 	public static Long getLowServicePriceChronoPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getLowServicePriceChrono);
+		return getLowServicePriceChronoPrice(getBrandPrice(brand));
 	}
 	
 	public static Long getHighServicePriceChronoPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getHighServicePriceChrono);
+		return getHighServicePriceChronoPrice(getBrandPrice(brand));
 	}
 	
 	public static Long getLowServicePriceGmtPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getLowServicePriceGmt);
+		return getLowServicePriceGmtPrice(getBrandPrice(brand));
 	}
 	
 	public static Long getHighServicePriceGmtPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getHighServicePriceGmt);
+		return getHighServicePriceGmtPrice(getBrandPrice(brand));
 	}
 	
 	public static Long getLowServicePriceComplexPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getLowServicePriceComplex);
+		return getLowServicePriceComplexPrice(getBrandPrice(brand));
 	}
 	
 	public static Long getHighServicePriceComplexPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getHighServicePriceComplex);
+		return getHighServicePriceComplexPrice(getBrandPrice(brand));
 	}
 
 	public static Long getLowEmergencyFactorPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getLowEmergencyFactor);
+		return getLowEmergencyFactorPrice(getBrandPrice(brand));
 	}
 	
 	public static Long getHighEmergencyFactorPrice(Brand brand) {
-		return getPriceLevel(brand, Price::getHighEmergencyFactor);
+		return getHighEmergencyFactorPrice(getBrandPrice(brand));
 	}
 	
 	public static Long getRoundedPrice(Brand brand, Function<Brand, Long> getRawPrice) {
@@ -104,7 +163,13 @@ public class PriceHelper {
 	private static Long getPriceLevel(Brand brand, Function<Price, Long> priceGetter) {
 		Optional<Price> priceFound = getBrandPrice(brand);
 		if (priceFound.isPresent())
-			return priceGetter.apply(priceFound.get());
+			return getPriceLevel(priceFound, priceGetter);
+		return -1l;
+	}
+	
+	private static Long getPriceLevel(Optional<Price> price, Function<Price, Long> priceGetter) {
+		if (price.isPresent())
+			return priceGetter.apply(price.get());
 		return -1l;
 	}
 	
