@@ -128,6 +128,11 @@
                 @helper.textarea(order("remark"),
                                        'placeholder -> Messages("order.form.placeholder.remark"), '_label -> Messages("order.form.label.remark"),
                                        'class -> "form-control", 'rows -> "3", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                
+                @helper.textarea(order("privateInfos"),
+                                       'placeholder -> Messages("order.form.placeholder.private.infos"), '_label -> Messages("order.form.label.private.infos"),
+                                       'class -> "form-control", 'rows -> "3", '_class -> "form-group hidden", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+                
                 <div>
                     @Html(Messages("order.form.mandatory.mark.explanation"))
                 </div>

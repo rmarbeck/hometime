@@ -78,6 +78,65 @@ public class AutoOrder extends Model {
 	    }
 	}
 	
+	public enum EmergencyLevel {
+	    NORMAL ("NORMAL"),
+	    HIGH ("HIGH"),
+	    VERY_HIGH ("VERY_HIGH"),
+	    LOW ("LOW");
+	    
+		private String name = "";
+		    
+		EmergencyLevel(String name){
+		    this.name = name;
+		}
+
+		public String toString(){
+		    return name;
+		}
+		
+		public int intValue() {
+			return Integer.valueOf(name);
+		}
+		
+		public static EmergencyLevel fromString(String name) {
+	        for (EmergencyLevel emergency : EmergencyLevel.values()) {
+	            if (emergency.name.equals(name)) {
+	                return emergency;
+	            }
+	        }
+	        throw new IllegalArgumentException("Illegal type name: " + name);
+	    }
+	}
+	
+	public enum WorkingCondition {
+	    WORKING ("WORKING"),
+	    NOT_WORKING ("NOT_WORKING"),
+	    BROKEN ("BROKEN");
+	    
+		private String name = "";
+		    
+		WorkingCondition(String name){
+		    this.name = name;
+		}
+
+		public String toString(){
+		    return name;
+		}
+		
+		public int intValue() {
+			return Integer.valueOf(name);
+		}
+		
+		public static WorkingCondition fromString(String name) {
+	        for (WorkingCondition condition : WorkingCondition.values()) {
+	            if (condition.name.equals(name)) {
+	                return condition;
+	            }
+	        }
+	        throw new IllegalArgumentException("Illegal type name: " + name);
+	    }
+	}
+	
 	@Id
 	public Long id;
 	
@@ -88,6 +147,10 @@ public class AutoOrder extends Model {
 	public MovementTypes movementType;
 	
 	public MovementComplexity movementComplexity;
+	
+	public EmergencyLevel emergencyLevel;
+	
+	public WorkingCondition workingCondition;
 			
 	public AutoOrder() {
 		super();

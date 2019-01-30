@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import play.Logger;
 import play.db.ebean.Model;
 
 /**
@@ -40,6 +39,18 @@ public class Brand extends Model {
 	public String remarks;
 	
 	public int quartz_category = 0;
+	
+	public Long quartz_price = 0l;
+	
+	public Long water_price = 0l;
+	
+	public Long low_service_price = 0l;
+	
+	public Long high_service_price = 0l;
+	
+	public Long high_emergency_factor = 0l;
+	
+	public Long low_emergency_factor = 0l;
 	
 	public Brand() {
 	}

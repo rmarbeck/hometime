@@ -79,8 +79,12 @@ create table auto_order (
   request_date              timestamp,
   movement_type             integer,
   movement_complexity       integer,
+  emergency_level           integer,
+  working_condition         integer,
   constraint ck_auto_order_movement_type check (movement_type in (0,1,2,3)),
   constraint ck_auto_order_movement_complexity check (movement_complexity in (0,1,2,3,4)),
+  constraint ck_auto_order_emergency_level check (emergency_level in (0,1,2,3)),
+  constraint ck_auto_order_working_condition check (working_condition in (0,1,2)),
   constraint pk_auto_order primary key (id))
 ;
 
@@ -95,6 +99,12 @@ create table brand (
   description               varchar(10000),
   remarks                   varchar(10000),
   quartz_category           integer,
+  quartz_price              bigint,
+  water_price               bigint,
+  low_service_price         bigint,
+  high_service_price        bigint,
+  high_emergency_factor     bigint,
+  low_emergency_factor      bigint,
   constraint uq_brand_internal_name unique (internal_name),
   constraint pk_brand primary key (id))
 ;
@@ -512,6 +522,28 @@ create table preset_quotation_for_brand (
   constraint pk_preset_quotation_for_brand primary key (id))
 ;
 
+create table price (
+  id                        bigint not null,
+  name                      varchar(255),
+  active                    boolean,
+  description               varchar(10000),
+  battery_change            bigint,
+  battery_change_and_water  bigint,
+  battery_change_and_water_and_polish bigint,
+  low_service_price_simple  bigint,
+  high_service_price_simple bigint,
+  low_service_price_chrono  bigint,
+  high_service_price_chrono bigint,
+  low_service_price_gmt     bigint,
+  high_service_price_gmt    bigint,
+  low_service_price_complex bigint,
+  high_service_price_complex bigint,
+  high_emergency_factor     bigint,
+  low_emergency_factor      bigint,
+  constraint uq_price_name unique (name),
+  constraint pk_price primary key (id))
+;
+
 create table sms (
   id                        bigint not null,
   phone_number              varchar(255),
@@ -728,6 +760,8 @@ create sequence post_service_certificate_seq;
 
 create sequence preset_quotation_for_brand_seq;
 
+create sequence price_seq;
+
 create sequence sms_seq;
 
 create sequence selling_document_seq;
@@ -875,6 +909,8 @@ drop table if exists post_service_certificate;
 
 drop table if exists preset_quotation_for_brand;
 
+drop table if exists price;
+
 drop table if exists sms;
 
 drop table if exists selling_document;
@@ -948,6 +984,8 @@ drop sequence if exists post_selling_certificate_seq;
 drop sequence if exists post_service_certificate_seq;
 
 drop sequence if exists preset_quotation_for_brand_seq;
+
+drop sequence if exists price_seq;
 
 drop sequence if exists sms_seq;
 

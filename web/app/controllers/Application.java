@@ -6,6 +6,7 @@ import static fr.hometime.utils.SecurityHelper.doesFieldContainSPAM;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import javax.persistence.Column;
@@ -105,6 +106,8 @@ public class Application extends Controller {
 		public String phoneNumber;
 		@Constraints.Required
 		public String city;
+		
+		public String privateInfos;
 
 	    public List<ValidationError> validate() {
 	    	List<ValidationError> errors = new ArrayList<ValidationError>();
@@ -137,6 +140,7 @@ public class Application extends Controller {
 	    	request.nameOfCustomer = this.nameOfCustomer;
 	    	request.phoneNumber = this.phoneNumber;
 	    	request.remark = this.remark;
+	    	request.privateInfos = this.privateInfos;
 	    	
 	    	return request;
 	    }
@@ -145,12 +149,16 @@ public class Application extends Controller {
 	public static class AutoOrderForm {
 		@Constraints.Required
 		public String brand;
-		@Constraints.Required
+		
 		public String movementType;
-		@Constraints.Required
+		
 		public String movementComplexity;
-		@Constraints.Required
-		public String buildPeriod;
+		
+		public String workingCondition;
+		
+		public String emergencyLevel;
+		
+		public String proposal;
 
 	    public List<ValidationError> validate() {
 	    	List<ValidationError> errors = new ArrayList<ValidationError>();
@@ -166,8 +174,9 @@ public class Application extends Controller {
 	    	request.brand = Brand.findBySeoName(this.brand);
 	    	request.movementType = AutoOrder.MovementTypes.fromString(this.movementType);
 	    	request.movementComplexity = AutoOrder.MovementComplexity.fromString(this.movementComplexity);
-	    	
-	    	
+	    	request.workingCondition = AutoOrder.WorkingCondition.fromString(this.workingCondition);
+	    	request.emergencyLevel = AutoOrder.EmergencyLevel.fromString(this.emergencyLevel);
+
 	    	return request;
 	    }
 	}
@@ -303,6 +312,12 @@ public class Application extends Controller {
 	    
 	    public CallForm() {
 	    	super();
+	    }
+	    
+	    public CallForm(String reason) {
+	    	super();
+	    	if (reason != null && reason != "")
+	    		this.reason = reason;
 	    }
 	    
 	    public String toString() {
@@ -515,10 +530,7 @@ public class Application extends Controller {
     }
     
     public static Result quartz_en(String brandName) {
-    	ctx().changeLang("en");
-    	Result result = quartz(brandName);
-    	ctx().clearLang();
-    	return result;
+    	return switchInEnglish(Application::quartz, brandName);
     }
     
     public static Result buyRequest() {
@@ -550,21 +562,28 @@ public class Application extends Controller {
 	    return switchInEnglish(Application::appointment);
     }
     
-    public static Result callRequest() {
+    public static Result callRequest(String reason) {
     	try {
-	        return ok(call.render("", Form.form(CallForm.class).fill(new CallForm())));
+	        return ok(call.render("", Form.form(CallForm.class).fill(new CallForm(reason))));
     	} catch (Exception e) {
     		return internalServerError();
     	}
     }
     
-    public static Result callRequest_en() {
-	    return switchInEnglish(Application::callRequest);
+    public static Result callRequest_en(String reason) {
+	    return switchInEnglish(Application::callRequest, reason);
     }
     
     private static Result switchInEnglish(Supplier<Result> supplier) {
     	ctx().changeLang("en");
    		Result result = supplier.get();
+    	ctx().clearLang();
+	    return result;
+    }
+    
+    private static Result switchInEnglish(Function<String, Result> function, String value) {
+    	ctx().changeLang("en");
+   		Result result = function.apply(value);
     	ctx().clearLang();
 	    return result;
     }
@@ -636,6 +655,15 @@ public class Application extends Controller {
 		}
 	}
 	
+	public static Result manageAutoOrder() {
+		Form<AutoOrderForm> autoOrderForm = Form.form(AutoOrderForm.class).bindFromRequest();
+		
+		String brandId = autoOrderForm.get().brand;
+		
+		return order(Brand.findById(Long.valueOf(brandId)).seo_name);
+
+	}
+	
 	public static Result manageBuyRequest() {
 		Form<BuyRequest> requestForm = Form.form(BuyRequest.class).bindFromRequest();
 		if(requestForm.hasErrors()) {
@@ -690,7 +718,7 @@ public class Application extends Controller {
 			
 			GoogleAnalyticsHelper.pushEvent("contact", "sent", ctx());
 			
-			return callRequest();
+			return callRequest("");
 		}
 	}
 		
@@ -717,7 +745,7 @@ public class Application extends Controller {
 			
 			GoogleAnalyticsHelper.pushEvent("contact", "sent", ctx());
 			
-			return callRequest();
+			return callRequest("");
 		}
 	}
 	
@@ -815,6 +843,8 @@ public class Application extends Controller {
     		orderForm.watchChosen = form().bindFromRequest().get("watch");
     	if (isOrderTypeParamFoundAndValid())
     		orderForm.orderType = form().bindFromRequest().get("type");
+    	if (isPrivateInfosParamFoundAndValid())
+    		orderForm.privateInfos = form().bindFromRequest().get("privateInfos");
     	return Form.form(OrderForm.class).fill(orderForm);
     }
     
@@ -831,6 +861,14 @@ public class Application extends Controller {
     		return isWatchParamValid(valueFound);
     	return false;
     }
+    
+    private static boolean isPrivateInfosParamFoundAndValid() {
+    	String valueFound = form().bindFromRequest().get("privateInfos");
+    	if (valueFound!= null)
+    		return true;
+    	return false;
+    }
+    
     
     private static boolean isOrderTypeParamFoundAndValid() {
     	String valueFound = form().bindFromRequest().get("type");

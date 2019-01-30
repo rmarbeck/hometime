@@ -1,6 +1,7 @@
 @(message: String = "", autoOrder: Form[Application.AutoOrderForm], supported_brands: List[Brand], available_watches: List[models.Watch], is_it_first_page: Boolean)
 @import tags._
 @import helper._
+@import fr.hometime.utils._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
 @in_head = {
     @if(flash.containsKey("success")) {
@@ -10,43 +11,263 @@
 @end_scripts = {
 <script>
 $(document).ready(function(){
-    
-    function resetToStep1() {
-     		$( '.step2' ).addClass('hidden');
-     		$( '.step3' ).addClass('hidden');
-     		$( '.action1' ).addClass('hidden');
-     		$( '.action2' ).addClass('hidden');
+    function resetToStep(stepNumber) {
+		if (stepNumber <= 1)
+ 			$( '.movement-type' ).addClass('hidden');
+ 		if (stepNumber <= 2)
+ 			$( '.movement-complexity' ).addClass('hidden');
+ 		if (stepNumber <= 3)
+     		$( '.condition' ).addClass('hidden');
+	    if (stepNumber <= 4)
+	    	$( '.emergency' ).addClass('hidden');
+	    
+ 		$( '.result' ).addClass('hidden');
+
+
+ 		updateStepInHeader(stepNumber);
     }
     
-    function moveToStep2() {
-    		$( '.step2' ).removeClass('hidden');
-     		$( '.step3' ).addClass('hidden');
+    function displayMovementTypeSelection() {
+    		$( '.movement-type' ).removeClass('hidden');
+     		$( '.movement-complexity' ).addClass('hidden');
+     		$( '.condition' ).addClass('hidden');
+     		$( '.emergency' ).addClass('hidden');
+     		scroller('.movement-type');
+     		
+     		updateStepInHeader(2);
+    }
+    
+    function displayMovementComplexitySelection() {
+     		$( '.movement-complexity' ).removeClass('hidden');
+     		$( '.condition' ).addClass('hidden');
+     		$( '.emergency' ).addClass('hidden');
+     		scroller('.movement-complexity');
+     		
+     		updateStepInHeader(3);
+    }
+    
+    function displayConditionSelection() {
+     		$( '.condition' ).removeClass('hidden');
+     		$( '.emergency' ).addClass('hidden');
+     		scroller('.condition');
+     		
+     		updateStepInHeader(4);
+    }
+    
+    function displayEmergencySelection() {
+     		$( '.emergency' ).removeClass('hidden');
+     		scroller('.emergency');
+     		
+     		updateStepInHeader(5);
     }
     
     function moveToStep3() {
-     		$( '.step3' ).removeClass('hidden');
+    		resetToStep(3);
+    		if (activeType == 'QUARTZ') {
+    			resetToStep(2);
+    			 displayBatteryChange()
+    		} else {
+	     		$( '.step3' ).removeClass('hidden');
+	     		scroller('.step3');
+	     	}
     }
     
-    function displayAction1() {
-     		$( '.action1' ).removeClass('hidden');
+    function moveToStep4() {
+    		resetToStep(4);
+     		$( '.step4' ).removeClass('hidden');
+     		scroller('.step4');
     }
     
-    function displayActionTypeUnknown() {
-     		$( '.action2' ).removeClass('hidden');
+    function moveToStep5() {
+    		resetToStep(5);
+     		$( '.step5' ).removeClass('hidden');
+     		scroller('.step5');
     }
     
-	resetToStep1();
-    $('#brand').change(function() {
-		moveToStep2();
-	});
+    function displayBatteryChange() {
+    	brandValue = $('#'+activeBrand).attr("data_quot").split(',');
+    	$('.resultbrand').html(activeBrandName);
+    	if (activeType == 'QUARTZ') {
+	    	$('#battery').html(brandValue[1]);
+	    	$('#water').html(brandValue[2]);
+    	}
+    }
+    
+    function displayChoices() {
+    	brandValue = $('#'+activeBrand).attr("data_quot").split(',');
+    	$('.resultbrand').html(activeBrandName);
+    	if (activeType == 'QUARTZ') {
+	    	$('#lowerprice').html(brandValue[1]);
+	    	$('#higherprice').html(brandValue[2]);
+    	} else {
+    		factor = 100;
+    		if (activeEmergency == 'HIGH') {
+    			factor = brandValue[11];	
+    		}
+    		if (activeEmergency == 'LOW') {
+    			factor = brandValue[12];	
+    		}
+    		$('#lowerprice').html(brandValue[3]*factor/100);
+	    	$('#higherprice').html(brandValue[4]*factor/100);
+    	}
+    }
+    
+    function displayResult() {
+    		updateStepInHeader(5);
+     		$( '.result' ).addClass('hidden');
+    		$( '.quotation' ).removeClass('hidden');
+     		displayChoices();
+     		$('#privateInfos').val($('#quotation-price').text().trim());
+     		scroller('.quotation');
+    }
+    
+    function displayQuartz() {
+    		updateStepInHeader(5);
+     		$( '.result' ).addClass('hidden');
+    		$( '.quartz' ).removeClass('hidden');
+     		displayBatteryChange();
+     		scroller('.quartz');
+    }
+    
+    function displayActionContact() {
+    		updateStepInHeader(5);
+     		$( '.result' ).addClass('hidden');
+    		$( '.contact' ).removeClass('hidden');
+    		scroller('.contact');
+    }
+    
+    function unknownSelectedForMovementType() {
+    		resetToStep(2);
+     		displayActionContact();
+    }
+    
+    function mecaValueSelectedForMovementType() {
+    		$( '.result' ).addClass('hidden');
+   			displayMovementComplexitySelection();
+    }
+    
+    function quartzValueSelectedForMovementType() {
+    		$( '.result' ).addClass('hidden');
+    		$( '.movement-complexity' ).addClass('hidden');
+   			displayConditionSelection();
+    }
+    
+    function unknownSelectedForMovementComplexity() {
+     		resetToStep(3);
+     		displayActionContact();
+    }
+    
+    function knownValueSelectedForMovementComplexity() {
+    		$( '.result' ).addClass('hidden');
+     		displayConditionSelection();
+    }
+    
+    function knownValueSelectedForWorkingCondition() {
+    		if (activeCondition == 'BROKEN') {
+    			$( '.emergency' ).addClass('hidden');
+    			displayActionContact();
+    		} else if (activeType == 'QUARTZ') {
+    			$( '.result' ).addClass('hidden');
+    			$( '.emergency' ).addClass('hidden');
+     			displayQuartz();
+     		} else {
+     			$( '.result' ).addClass('hidden');
+     			displayEmergencySelection();
+     		}
+    }
+    
+	function scroller(classToScrollTo) {
+    	$('html, body').animate({scrollTop: $(classToScrollTo).offset().top -100 }, 'slow');
+    }
+    
+    function updateStepInHeader(step) {
+     		$('#step-value').html(step);
+    }
+    
+
+    var activeBrand;
+    var activeBrandName;
+    var activeType;
+    var activeComplexity;
+    var activeCondition;
+    var activeEmergency;
+    
+    function manageBrandSelection() {
+    	if ($('#brand').find('option:selected').val() != "") {
+     		$('input[name="movementType"]').removeAttr("checked");
+     		$('input[name="movementComplexity"]').removeAttr("checked");
+     		$('input[name="workingCondition"]').removeAttr("checked");
+     		$('input[name="emergencyLevel"]').removeAttr("checked");
+     		activeBrand = $('#brand').find('option:selected').val();
+     		activeBrandName = $('#brand').find('option:selected').text();
+     		if (activeBrandName == 'Autre marque') {
+     			resetToStep(1);
+	     		displayActionContact();
+	     	} else {
+	     		$( '.result' ).addClass('hidden');
+	     	   	displayMovementTypeSelection();
+	     	}
+     	} else {
+     		$( '.result' ).addClass('hidden');
+    		resetToStep(1); 	
+     	}	
+    }
+        	
+	$('h1').append(" - étape <span id='step-value'>1</span> sur <span id='step-out-of'>5</span>");
+    
+    resetToStep(1);
+    manageBrandSelection();
 	
-	$('#brandChosen').change(function() {
-			resetDisplayCategory()
-     		$( '#brand-dname' ).text($(this).find('option:selected').text());
-         	if ($(this).find('option:selected').val() != "0") {
-         		activeCategory($(this).find('option:selected').val());
-         	}
+	$('#brand').change(function() {
+     	manageBrandSelection();																																															
  	});
+    
+    $('input[name="movementType"]').change(function() {
+		selected_value = $('input[name="movementType"]:checked').val();
+		$('input[name="movementComplexity"]').removeAttr("checked");
+		$('input[name="workingCondition"]').removeAttr("checked");
+     	$('input[name="emergencyLevel"]').removeAttr("checked");
+		if (selected_value == "UNKNOWN") {
+			unknownSelectedForMovementType();
+        } else if ( selected_value == "QUARTZ" ) {
+        	$( '.result' ).addClass('hidden');
+        	activeType = selected_value;
+        	quartzValueSelectedForMovementType()
+        } else {
+        	$( '.result' ).addClass('hidden');;
+        	activeType = selected_value;
+        	mecaValueSelectedForMovementType()
+        }
+    });
+    
+    $('input[name="movementComplexity"]').change(function(){
+    		selected_value = $('input[name="movementComplexity"]:checked').val();
+    		$('input[name="workingCondition"]').removeAttr("checked");
+     		$('input[name="emergencyLevel"]').removeAttr("checked");
+    		if (selected_value == "UNKNOWN") {
+    			unknownSelectedForMovementComplexity();
+            } else {
+            	activeComplexity = selected_value;
+            	knownValueSelectedForMovementComplexity()
+            }
+    });
+    
+    $('input[name="workingCondition"]').change(function(){
+    		selected_value = $('input[name="workingCondition"]:checked').val();
+    		$('input[name="emergencyLevel"]').removeAttr("checked");
+    		activeCondition = selected_value;
+           	knownValueSelectedForWorkingCondition()
+    });
+    
+    $('input[name="emergencyLevel"]').change(function(){
+    		selected_value = $('input[name="emergencyLevel"]:checked').val();
+    		activeEmergency = selected_value;
+    		if (selected_value == 'VERY_HIGH') {
+    			displayActionContact();
+    		} else {
+    			displayResult();
+    		}
+    });
          
 })
 </script>
@@ -107,7 +328,7 @@ $(document).ready(function(){
             <hr>
           </div>
       </div>
-      @helper.form(action = routes.Application.manageOrder(), 'class -> "form-horizontal", 'role -> "form") {
+      @helper.form(action = routes.Application.manageAutoOrder(), 'class -> "form-horizontal", 'role -> "form") {
 	  <div class="row content step1">
         <div class="col-xs-12 col-sm-9 col-sm-offset-1">
 	        @helper.select(autoOrder("brand"),
@@ -116,11 +337,14 @@ $(document).ready(function(){
                 'placeholder -> Messages("auto.order.form.placeholder.brand"), '_label -> Messages("auto.order.form.label.brand"),
                 'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
         </div>
+        @for(s <- supported_brands) {
+      	<div id="@s.id" data_quot='@s.display_name@PriceHelper.getPricesForAutoOrder(s)'></div>
+      	}
       </div>
-      
-      <hr/>
-      <div class="row content step2">
+
+      <div class="row content movement-type">
         <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+            <hr/>
       		@tags.myInputRadioGroup(autoOrder("movementType"),
             	for (s <- AutoOrder.MovementTypes.values) yield s.toString -> Option(Messages(keySimplified.toString.trim.replaceAll("VARIABLE", "movement.type.value")+"."+s.toString.toLowerCase.replace('_','.'))).filter(!_.contains(".")).getOrElse(s.toString),
                 '_label -> Messages(keySimplified.toString.trim.replaceAll("VARIABLE", "movement.type")),	'_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
@@ -128,7 +352,7 @@ $(document).ready(function(){
 	  	</div>
 	  </div>
 	  
-	  <div class="row content step3">
+	  <div class="row content movement-complexity">
         <div class="col-xs-12 col-sm-9 col-sm-offset-1">
                 @tags.myInputRadioGroup(autoOrder("movementComplexity"),
                                 for (s <- AutoOrder.MovementComplexity.values) yield s.toString -> Option(Messages(keySimplified.toString.trim.replaceAll("VARIABLE", "movement.complexity.value")+"."+s.toString.toLowerCase.replace('_','.'))).filter(!_.contains(".")).getOrElse(s.toString),
@@ -136,13 +360,38 @@ $(document).ready(function(){
       
       	</div>
 	  </div>
-	  <hr/>
-      <div class="row content action1">
+	  
+      <div class="row content condition">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+        	<hr/>
+      		@tags.myInputRadioGroup(autoOrder("workingCondition"),
+            	for (s <- AutoOrder.WorkingCondition.values) yield s.toString -> Option(Messages(keySimplified.toString.trim.replaceAll("VARIABLE", "working.condition.value")+"."+s.toString.toLowerCase.replace('_','.'))).filter(!_.contains(".")).getOrElse(s.toString),
+                '_label -> Messages(keySimplified.toString.trim.replaceAll("VARIABLE", "working.condition")),	'_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+	  	</div>
+	  </div>
+	  
+      <div class="row content emergency">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+        	<hr/>
+      		@tags.myInputRadioGroup(autoOrder("emergencyLevel"),
+            	for (s <- AutoOrder.EmergencyLevel.values) yield s.toString -> Option(Messages(keySimplified.toString.trim.replaceAll("VARIABLE", "emergency.level.value")+"."+s.toString.toLowerCase.replace('_','.'))).filter(!_.contains(".")).getOrElse(s.toString),
+                '_label -> Messages(keySimplified.toString.trim.replaceAll("VARIABLE", "emergency.level")),	'_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+	  	</div>
+	  </div>
+	  
+      <div class="row hidden">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+        	<hr/>
+      		@tags.simple_textarea(autoOrder("privateInfos"), "privateInfos", '_showConstraints -> false)
+
+	  	</div>
+	  </div>
+      <div class="row result content action1">
+      	<div class="col-xs-12 col-sm-9 col-sm-offset-1">
                   <hr/>
 		
-                
-                
-                
                 <div>
                     @Html(Messages("auto.order.form.mandatory.mark.explanation"))
                 </div>
@@ -157,16 +406,102 @@ $(document).ready(function(){
                     <a class="btn btn-default" href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("auto.order.action.alternative"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
                   </div>
                 </div>
-            }
         </div>
       </div>
+      <div class="row result result_unknown hidden">
+      	<div class="col-xs-12 col-sm-9 col-sm-offset-1">
+                  <hr/>
+		
+                <div>
+                    Envoyez nous des photos de votre montre
+                </div>
+        </div>
+      </div>
+      
+       <div class="row result quotation hidden">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        	<div class="offer-box-container ">
+	        	<div class="offer-box-only-selected ">
+	        		@Html(Messages("auto.order.quotation.header.service.prices"))
+	        		<br /><br />
+	        	</div>
+	        	<div class="offer-box-only-selected  text-center" id="category-1">
+	        		<span id="quotation-price">@Html(Messages("auto.order.quotation.body.service.prices"))</span>
+	        		<br /><br />
+	        	</div>
+	        	<div class="offer-box-only-selected form-group">
+                  <div class="text-center order-action">
+                    <button type="submit" class="btn btn-primary">@Html(Messages("auto.order.action.submit"))</button>
+                  </div>
+                  <div class="text-center order-separator">
+                    @Html(Messages("auto.order.action.alternative.separator"))
+                  </div>
+                  <div class="text-center">
+                    <a class="btn btn-default" href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("auto.order.action.alternative"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
+                  </div>
+            	</div>
+	        	@Html(Messages("prices.auto.quotation.footer.service.prices"))
+        	</div>
+        </div>
+      </div>
+	  }
+      
+      <div class="row result quartz hidden">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        	<div class="offer-box-container ">
+	        	<div class="offer-box-only-selected ">
+	        		@Html(Messages("auto.order.quartz.header.service.prices"))
+	        		<br /><br />
+	        	</div>
+	        	<div class="offer-box-only-selected  text-center" id="category-1">
+	        		@Html(Messages("auto.order.quartz.body.service.prices"))
+	        		<br /><br />
+	        	</div>
+	        	<div class="offer-box-only-selected form-group">
+                  <div class="text-center order-action">
+                    <a class="btn btn-success" href="@routes.Application.appointment()" title="@Messages("auto.order.action.visit.us")">@Html(Messages("auto.order.action.visit.us"))</a>
+                  </div>
+                  <div class="text-center order-separator">
+                    @Html(Messages("auto.order.action.alternative.separator"))
+                  </div>
+                  <div class="text-center">
+                    <a class="btn btn-default" href="@routes.Application.callRequest()" title="@Messages("global.text.call.request.title")">@Html(Messages("auto.order.action.alternative"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
+                  </div>
+            	</div>
+            	@Html(Messages("prices.auto.quartz.footer.service.prices"))
+        	</div>
+        </div>
+      </div>
+      
+      <div class="row result contact hidden">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        	<div class="offer-box-container ">
+	        	<div class="offer-box-only-selected ">
+	        		@Html(Messages("auto.order.header.contact"))
+	        		<br /><br />
+	        	</div>
+	        	<div class="offer-box-only-selected  text-center" id="category-1">
+	        		@Html(Messages("auto.order.body.contact"))
+	        		<br /><br />
+	        	</div>
+              <div class="text-center order-separator">
+                @Html(Messages("auto.order.action.alternative.separator"))
+              </div>
+              <div class="text-center">
+                <a class="btn btn-default" id="contact-call-requet-link" href='@routes.Application.callRequest("")' title="@Messages("global.text.call.request.title")">@Html(Messages("auto.order.action.call.request"))&nbsp;<span class="glyphicon glyphicon-earphone"></span></a>
+              </div>
+        	</div>
+        </div>
+      </div>
+      
+      
       }
       <div class="row disclaimer">
           <div class="col-sm-10 col-sm-offset-1">
-            
+            <hr/>
             <div class="disclaimer-body">@Html(Messages("auto.order.text.disclaimer"))</div>
           </div>
       </div>
     </div><!-- /.container -->
-}    
+}
 }

@@ -71,6 +71,10 @@ public class Global extends GlobalSettings {
 					Ebean.save(analytics.get("anayticCodes"));
 					Ebean.save(analytics.get("preset"));
 					Ebean.save(analytics.get("presetItems"));
+					
+					
+					Map<String,List<Object>> prices = (Map<String,List<Object>>)Yaml.load("prices-default.yml");
+					Ebean.save(prices.get("prices"));
 				}
 			}
 		}

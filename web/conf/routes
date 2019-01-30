@@ -41,6 +41,7 @@ GET     /devis-immediat	           	controllers.Application.orderAuto(brand = nu
 GET     /devis-immediat/montre/entretien/revision/:brand    controllers.Application.orderAuto(brand)
 GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
+POST    /devis-immediat         	controllers.Application.manageAutoOrder()
 GET 	/accepter-le-devis			controllers.Application.acceptQuotation(orderId: Long, price: String, delay: String)
 POST	/accepter-le-devis			controllers.Application.manageAcceptQuotation()
 
@@ -65,8 +66,8 @@ GET     /how-to-come-to-visit-hometime    controllers.Application.appointment_en
 GET     /hardCodedToAppointment     controllers.Default.redirect(to = "/venir-nous-voir")
 
 # CallRequest
-GET     /demande-de-rappel          controllers.Application.callRequest()
-GET     /call-back			        controllers.Application.callRequest_en()
+GET     /demande-de-rappel          controllers.Application.callRequest(reason: String ?= "")
+GET     /call-back			        controllers.Application.callRequest_en(reason: String ?= "")
 POST    /demande-de-rappel          controllers.Application.manageCallRequest()
 
 # ServiceTest

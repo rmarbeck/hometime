@@ -1,0 +1,56 @@
+﻿prices:
+    - !!models.Price
+         name:                  Marque rolex
+         battery_change:        10
+         active:                true
+
+    - !!models.Price
+         name:                  Categorie 1
+         battery_change:                        35
+         battery_change_and_water:              89
+         battery_change_and_water_and_polish:   199
+         low_service_price_simple:              360
+         high_service_price_simple:             390
+         low_service_price_chrono:              390
+         high_service_price_chrono:             450
+         low_service_price_gmt:                 480
+         high_service_price_gmt:                590
+         low_service_price_complex:             590
+         high_service_price_complex:            690
+         high_emergency_factor:                 120
+         low_emergency_factor:                  90
+         active:                                true
+
+    - !!models.Price
+         name:                  Categorie 2
+         battery_change:                        25
+         battery_change_and_water:              69
+         battery_change_and_water_and_polish:   149
+         low_service_price_simple:              300
+         high_service_price_simple:             350
+         low_service_price_chrono:              360
+         high_service_price_chrono:             425
+         low_service_price_gmt:                 450
+         high_service_price_gmt:                500
+         low_service_price_complex:             500
+         high_service_price_complex:            600
+         high_emergency_factor:                 120
+         low_emergency_factor:                  90
+         active:                                true
+
+    - !!models.Price
+         name:                  Categorie 3
+         battery_change:                        20
+         battery_change_and_water:              49
+         battery_change_and_water_and_polish:   119
+         low_service_price_simple:              180
+         high_service_price_simple:             200
+         low_service_price_chrono:              180
+         high_service_price_chrono:             220
+         low_service_price_gmt:                 210
+         high_service_price_gmt:                250
+         low_service_price_complex:             300
+         high_service_price_complex:            400
+         high_emergency_factor:                 120
+         low_emergency_factor:                  90
+         active:                                true
