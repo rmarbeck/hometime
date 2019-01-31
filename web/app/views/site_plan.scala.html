@@ -94,6 +94,18 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.orderAuto(null)">@Messages("site.plan.auto.order.title")</a></h2></div>
+                        @for(brand <- supported_brands) {
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="entry"><h3><a href="@routes.Application.orderAuto(brand.seo_name)">@Messages("site.plan.auto.order.brand.title", brand.display_name)</a></h3></div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
                         <div class="title"><h2><a href="@routes.Application.quartz(null)">@Messages("site.plan.quartz.title")</a></h2></div>
                         @for(current_brand <- models.Brand.findAllByAscName) {
 							@if(current_brand.getQuartzCategory!=0) {

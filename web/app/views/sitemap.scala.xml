@@ -71,9 +71,19 @@
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
+    <url>
+      <loc>https://@{request.host()}@routes.Application.orderAuto(null)</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
     @for(brand <- supported_brands) {
     <url>
       <loc>https://@{request.host()}@routes.Application.order(brand.seo_name)</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+    <url>
+      <loc>https://@{request.host()}@routes.Application.orderAuto(brand.seo_name)</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>

@@ -37,11 +37,11 @@ GET     /prices                     controllers.Default.redirect(to = "/les-serv
 # Order
 GET     /demande-de-devis           controllers.Application.order(brand = null)
 GET     /demande-de-devis/montre/reparation/revision/:brand    controllers.Application.order(brand)
-GET     /devis-immediat	           	controllers.Application.orderAuto(brand = null)
-GET     /devis-immediat/montre/entretien/revision/:brand    controllers.Application.orderAuto(brand)
+GET     /devis-interactif-immediat	           							controllers.Application.orderAuto(brand = null)
+GET     /devis-interactif-immediat/montre/entretien/revision/:brand    	controllers.Application.orderAuto(brand)
 GET     /order                      controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis           controllers.Application.manageOrder()
-POST    /devis-immediat         	controllers.Application.manageAutoOrder()
+POST    /devis-interactif-immediat							         	controllers.Application.manageAutoOrder()
 GET 	/accepter-le-devis			controllers.Application.acceptQuotation(orderId: Long, price: String, delay: String)
 POST	/accepter-le-devis			controllers.Application.manageAcceptQuotation()
 

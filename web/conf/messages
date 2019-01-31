@@ -38,6 +38,8 @@ global.navbar.link.text.sell=Vendre sa montre
 global.navbar.link.text.appointment=Venir nous voir
 #   global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Demander un devis
+global.navbar.link.text.order.detailed=Demander un devis personnalisé
+global.navbar.link.text.auto.order=Devis interactif
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
 global.text.this.is.an.experiment.long=Le service <strong>hometime</strong> est actuellement dans une phase expérimentale.<br />En l''utilisant vous contribuez à encourager l''équipe à l''améliorer.
 global.text.this.is.an.experiment.long.call.to.action=En savoir plus...
@@ -161,7 +163,8 @@ home.promise.3.alt.call.to.action.title=Nos horaires et la zone d''intervention 
 
 home.text.supports.brands=Hometime entretient les marques suivantes :
 home.text.supports.brands.notice=Hometime est indépendant et non affilié avec les marques entretenues
-home.order.call.to.action=Demander un devis
+home.order.call.to.action=Devis personnalisé
+home.order.detailed.call.to.action=Demander un devis personnalisé
 home.order.call.to.action.title=Demander un devis en ligne gratuit
 home.tell.more.call.to.action=En savoir plus...
 home.tell.more.call.to.action.title=Tout savoir sur nos services
@@ -173,6 +176,12 @@ home.type.for.facebook=website
 home.description.for.facebook=Hometime, entretien et essai prolongé de montres de luxe
 home.order.links.by.brand.title=Demander un devis gratuit pour une réparation ou une révision d''une montre {0}
 home.order.links.by.brand=Réparation ou révision {0}
+
+home.auto.order.call.to.action=Devis interactif
+home.auto.order.call.to.action.title=Obtenez le tarif de l''entretien en quelques clics
+home.auto.order.links.by.brand.title=Obtenez le tarif de l''entretien d''une montre {0}
+home.auto.order.links.by.brand=Devis interactif révision {0}
+
 
 home.text.what.is.it=Hometime, qu''est-ce que c''est&nbsp;?
 home.what.is.it.1.body=Hometime propose tous les services horlogers partout en France avec des solutions adaptées à chacun. 
@@ -1611,6 +1620,8 @@ site.plan.more.title=Les prestations complémentaires
 site.plan.prices.title=Les tarifs
 site.plan.order.title=Demande de devis gratuit
 site.plan.order.brand.title=Demande de devis de révision ou de réparation pour une montre {0}
+site.plan.auto.order.title=Devis interactif gratuit
+site.plan.auto.order.brand.title=Devis interactif pour la révision d''une montre {0}
 site.plan.service.title=Tout savoir sur l''entretien
 site.plan.water.title=Problème d''étanchéité, buée sur le verre
 site.plan.service.test.title=Quand faire réviser ma montre ?

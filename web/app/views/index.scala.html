@@ -195,9 +195,9 @@
         }
       </div>
       <div class="row">
-        <div class="col-xs-12 text-center order-action">
+        <div class="col-xs-6 text-right order-action">
             <!-- Split button -->
-            <div class="btn-group text-left">
+            <div class="btn-group text-right">
               <a class="btn btn-primary" href="@routes.Application.order(null)" title="@Messages("home.order.call.to.action.title")" role="button">@Messages("home.order.call.to.action")</a>
               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
@@ -206,6 +206,21 @@
               <ul class="dropdown-menu" role="menu">
               @for(brand <- supported_brands) {
                 <li><a href="@routes.Application.order(brand.seo_name)" title="@Messages("home.order.links.by.brand.title", brand.display_name)">@Messages("home.order.links.by.brand", brand.display_name)</a></li>
+              }
+              </ul>
+            </div>
+        </div>
+        <div class="col-xs-6 text-left order-action">
+            <!-- Split button -->
+            <div class="btn-group text-left">
+              <a class="btn btn-success" href="@routes.Application.orderAuto(null)" title="@Messages("home.auto.order.call.to.action.title")" role="button">@Messages("home.auto.order.call.to.action")</a>
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-right" role="menu">
+              @for(brand <- supported_brands) {
+                <li><a href="@routes.Application.orderAuto(brand.seo_name)" title="@Messages("home.auto.order.links.by.brand.title", brand.display_name)">@Messages("home.auto.order.links.by.brand", brand.display_name)</a></li>
               }
               </ul>
             </div>
