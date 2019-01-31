@@ -68,6 +68,7 @@ $(document).ready(function(){
 	    	$('#battery').html(brandValue[1]);
 	    	$('#water').html(brandValue[2]);
     	}
+    	ga('send', 'event', 'auto-order', 'battery-change-displayed', "brandValue[0]");
     }
     
     function displayChoices() {
@@ -100,7 +101,7 @@ $(document).ready(function(){
     		}
     	}
     	
-    	ga('send', 'event', 'auto-order', 'displayed', "brandValue[0]");
+    	ga('send', 'event', 'auto-order', 'quotation-displayed', "brandValue[0]");
     }
     
     function roundValue(value, factor) {
