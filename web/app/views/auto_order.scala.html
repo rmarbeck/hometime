@@ -60,30 +60,7 @@ $(document).ready(function(){
      		
      		updateStepInHeader(5);
     }
-    
-    function moveToStep3() {
-    		resetToStep(3);
-    		if (activeType == 'QUARTZ') {
-    			resetToStep(2);
-    			 displayBatteryChange()
-    		} else {
-	     		$( '.step3' ).removeClass('hidden');
-	     		scroller('.step3');
-	     	}
-    }
-    
-    function moveToStep4() {
-    		resetToStep(4);
-     		$( '.step4' ).removeClass('hidden');
-     		scroller('.step4');
-    }
-    
-    function moveToStep5() {
-    		resetToStep(5);
-     		$( '.step5' ).removeClass('hidden');
-     		scroller('.step5');
-    }
-    
+
     function displayBatteryChange() {
     	brandValue = $('#'+activeBrand).attr("data_quot").split(',');
     	$('.resultbrand').html(activeBrandName);
@@ -122,6 +99,8 @@ $(document).ready(function(){
 	    		$('#higherprice').html(roundValue(brandValue[10],factor));
     		}
     	}
+    	
+    	ga('send', 'event', 'auto-order', 'displayed', "brandValue[0]");
     }
     
     function roundValue(value, factor) {
