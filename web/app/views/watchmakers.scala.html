@@ -1,0 +1,28 @@
+@(message: String = "")
+@import tags._
+
+@defining("watchmakers") { key =>
+
+@layouts.main(key) {
+    @layouts.fragments.navbar(80)
+    
+    <div class="container @key-title">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="page-baseline"><h1>@Html(Messages(key+".main.title"))</h1></div>
+          </div>
+		</div>
+	</div>        
+        
+	<div class="container @key">
+    
+    @featurette(key, "3", "left", null, null, null)
+    
+    @featurette(key, "2", "left", key+"/lou.jpg", null, null)
+    
+    @featurette(key, "1", "right", key+"/simon.jpg", routes.Application.appointment().url, routes.Application.order(null).url, false, false)
+      
+    </div><!-- /.container -->
+}
+}

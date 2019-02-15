@@ -480,6 +480,10 @@ public class Application extends Controller {
     public static Result offer() {
         return ok(offer.render(""));
     }
+    
+    public static Result watchmakers() {
+        return ok(watchmakers.render(""));
+    }
 
     public static Result more() {
         return ok(more.render(""));

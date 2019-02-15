@@ -26,6 +26,10 @@ GET     /montre-disponible-a-l-essai/:watch_seo_name      controllers.Applicatio
 GET     /les-services/l-offre       controllers.Application.offer()
 GET     /offer                      controllers.Default.redirect(to = "/les-services/l-offre")
 
+# Offer
+GET     /nos-horlogers			     controllers.Application.watchmakers()
+GET     /watchmakers                 controllers.Default.redirect(to = "/nos-horlogers")
+
 # More offer
 GET     /les-services/les-autres-prestations     controllers.Application.more()
 GET     /more                       controllers.Default.redirect(to = "/les-services/les-autres-prestations")

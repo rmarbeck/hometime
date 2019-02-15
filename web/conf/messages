@@ -40,6 +40,8 @@ global.navbar.link.text.appointment=Venir nous voir
 global.navbar.link.text.order=Demander un devis
 global.navbar.link.text.order.detailed=Demander un devis personnalisé
 global.navbar.link.text.auto.order=Devis interactif
+
+global.navbar.link.text.watchmakers.content=Nos horlogers
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
 global.text.this.is.an.experiment.long=Le service <strong>hometime</strong> est actuellement dans une phase expérimentale.<br />En l''utilisant vous contribuez à encourager l''équipe à l''améliorer.
 global.text.this.is.an.experiment.long.call.to.action=En savoir plus...
@@ -110,7 +112,7 @@ global.text.coming=Venir chez Hometime
 # Home page
 home.html.title=Révision, réparation et essai de montres à domicile sur Paris
 home.html.description=Révision et réparation de montres de marque avec intervention à domicile sur Paris et sa région, avec possibilité d''essai prolongé d''une montre de légende.
-home.html.keywords=entretien, entretien montre, révision, réparation, révision montre, réparation montre, montre mécanique, montre automatique, sav, service après vente, rolex, omega, panerai, tag heuer, paris, région parisienne, 75, yvelines, hauts de seine, devis gratuit, essai, à domicile, devis en ligne
+home.html.keywords=entretien, entretien montre, révision, réparation, révision montre, réparation montre, montre mécanique, montre automatique, sav, service après vente, rolex, omega, panerai, tag heuer, paris, région parisienne, 75, yvelines, hauts de seine, devis gratuit, essai, à domicile, devis en ligne, horloger, horlogerie
 home.caption.1.head=Vous avez une belle montre, entretenez&nbsp;la&nbsp;!
 home.caption.1.body=Votre montre est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
 home.caption.1.call.to.action=Pourquoi entrenir ma montre ?
@@ -280,6 +282,37 @@ service.3.to.action=Outil de calcul personnalisé
 service.4.to.action=En savoir plus...
 service.5.default.to.action=En savoir plus...
 service.5.primary.to.action=Entretenir ma montre !
+
+
+
+# Watchmakers page
+watchmakers.html.title=Les horlogers Hometime
+watchmakers.html.description=Connaitre les horlogers travaillant chez watch next, leur expérience, leur parcours, leurs spécialités
+watchmakers.html.keywords=horlogers, expérience, diplomes,spécialités 
+
+watchmakers.content.1.head=Simon <span class="text-muted">- chef d''atelier</span>
+watchmakers.content.1.body=<div class="sub-title">Qui est-il ?</div>Simon a 39 ans, il exerce depuis 20 ans, il vit en région parisienne. \
+ <div class="sub-title">Son parcours :</div>Après avoir travaillé pour les plus grandes maisons en SAV : Audemars Piguet, Jaeger LeCoultre... Simon a ouvert son propre atelier pendant 2 ans à Saint Germain en Laye. Après quelques expériences chez des horlogers prestigieux dans Paris, il a rejoint l''équipe en 2017. \
+ <div class="sub-title">Son rôle chez Hometime :</div>Simon est associé chez Hometime. Il est le chef de l''atelier et à ce titre organise le travail, réalise les devis et se charge des réparations les plus compliquées.\
+ <div class="sub-title">Il aime :</div>Tout ce qui est difficile... son surnom, <b>l''horloger de l''extrême</b>.
+
+
+watchmakers.content.2.head=Lou
+watchmakers.content.2.body=<div class="sub-title">Qui est-elle ?</div>Lou a 24 ans, elle exerce depuis 6 mois, elle vit à Paris et vient de Bretagne. \
+ <div class="sub-title">Son parcours :</div>Lou a étudié l''horlogerie au Lycée Jean Jaurès à Rennes. Elle y a obtenu en 2018 un diplôme des métiers d''Art, après 4 ans d''apprentissage théorique et pratique. Lors de sa formation Lou a effectué des stages chez Jaeger LeCoultre, Seiko ou encore chez des horlogers indépendants.\
+ <div class="sub-title">Son rôle chez Hometime :</div>Lou travaille chez Hometime depuis Septembre 2018, elle répare les montres équipées de mouvements ETA, Valjoux et se forme aux mouvements plus complexes sous la conduite de Simon.\
+ <div class="sub-title">Elle aime :</div>Se lever le matin pour venir travailler et apprendre de ses brillants patrons ;-)
+
+watchmakers.content.3.head=Notre équipe d''horlogers
+watchmakers.content.3.body= <br />Hometime dispose de sa propre équipe d''horlogers dédiés. Ils travaillent sur place et peuvent faire un premier diagnostic lors du dépôt de la montre avant d''ausculter plus attentivement la montre lorsque cela est nécessaire. \
+ <br /><br />Spécialisés dans le Service Après Vente, ils ont les connaissances leur permettant de travailler sur des mouvements récents ou des mouvements plus anciens, avec ou sans complication.\
+ <br /><br />De la réparation d''une montre de grande marque à complications ayant subi de gros dégâts à un simple changement de pile de montre plus ou moins basiques, ils sont toujours opérationnels.
+ 
+watchmakers.1.default.to.action=Venir nous voir
+watchmakers.1.primary.to.action=Demander un devis
+
+
+watchmakers.main.title=Les horlogers Hometime
 
 # Water page
 water.html.title=Problème d''étanchéité d''une montre
@@ -650,7 +683,7 @@ auto.order.quotation.body.service.prices=compris entre <strong><span id="lowerpr
 
 appointment.generic.baseline=Venir chez Hometime
 appointment.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''horlogers indépendants diplômés, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
-appointment.generic.text.explanation=Toutes les informations pour prendre rendez-vous et nous rencontrer dans nos locaux situés dans le 1er arrondissement de Paris.
+appointment.generic.text.explanation=Toutes les informations pour prendre rendez-vous et nous rencontrer dans nos locaux situés dans le 1er arrondissement de Paris. Nos horlogers pourront vous donner un premier avis avant une aucultation plus détaillée de votre montre.
 appointment.generic.html.title=Venir chez Hometime
 appointment.generic.html.description=Comment venir dans nos locaux à Paris pour déposer une montre pour une révision complète, un entretien partiel, un polissage, un changement de pile ou tout autre service horloger
 appointment.generic.html.keywords=Locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
@@ -1643,6 +1676,8 @@ site.plan.sell.title=Vendez votre montre d''occasion
 site.plan.quartz.title=Tarifs changement de pile et étanchéité
 site.plan.quartz.brand.title=Tarifs changement de pile et étanchéité pour une montre {0}
 site.plan.appointment.title=Venir chez Hometime
+
+site.plan.watchmakers.title=Nos horlogers
 
 site.plan.appointment.title.en=Visiting us - page in english
 site.plan.call.request.title.en=Being called back - page in english
