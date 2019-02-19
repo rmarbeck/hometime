@@ -258,6 +258,13 @@ create table feedback (
   constraint pk_feedback primary key (id))
 ;
 
+create table incoming_call (
+  id                        bigint not null,
+  phone_number              varchar(255),
+  call_date                 timestamp,
+  constraint pk_incoming_call primary key (id))
+;
+
 create table invoice (
   id                        bigint not null,
   description               varchar(10000),
@@ -726,6 +733,8 @@ create sequence external_document_seq;
 
 create sequence feedback_seq;
 
+create sequence incoming_call_seq;
+
 create sequence invoice_seq;
 
 create sequence live_config_seq;
@@ -875,6 +884,8 @@ drop table if exists external_document;
 
 drop table if exists feedback;
 
+drop table if exists incoming_call;
+
 drop table if exists invoice;
 
 drop table if exists live_config;
@@ -950,6 +961,8 @@ drop sequence if exists customer_watch_seq;
 drop sequence if exists external_document_seq;
 
 drop sequence if exists feedback_seq;
+
+drop sequence if exists incoming_call_seq;
 
 drop sequence if exists invoice_seq;
 
