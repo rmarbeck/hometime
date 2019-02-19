@@ -261,6 +261,7 @@ create table feedback (
 create table incoming_call (
   id                        bigint not null,
   phone_number              varchar(255),
+  missed                    boolean,
   call_date                 timestamp,
   constraint pk_incoming_call primary key (id))
 ;

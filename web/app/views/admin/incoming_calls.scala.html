@@ -13,12 +13,17 @@
 	<div class="container">
 		@for(call <- calls) {
 			<div class="row display">
-				<div class="col-xs-6">
+				<div class="col-xs-4">
 					<span>
 					@call.phone_number
 					</span>
 				</div>
-				<div class="col-xs-6">
+				<div class="col-xs-4">
+					<span>
+					@call.missed
+					</span>
+				</div>
+				<div class="col-xs-4">
 					<span>
 					@call.call_date
 					</span>

@@ -792,8 +792,8 @@ public class Application extends Controller {
     	}
     }
     
-    public static Result newIncomingCall(String phoneNumber) {
-    	IncomingCall call = new IncomingCall(phoneNumber);
+    public static Result newIncomingCall(String phoneNumber, boolean missed) {
+    	IncomingCall call = new IncomingCall(phoneNumber, missed);
     	call.save();
     	return ok();
     }

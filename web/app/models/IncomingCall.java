@@ -22,11 +22,19 @@ public class IncomingCall extends Model {
 
 	public String phone_number;
 	
+	public boolean missed;
+	
 	public Date call_date;
 
 	
 	public IncomingCall(String phone_number) {
+		this(phone_number, false);
+	}
+	
+	
+	public IncomingCall(String phone_number, boolean missed) {
 		this.phone_number = phone_number;
+		this.missed = missed;
 		this.call_date = new Date();
 	}
     
