@@ -18,6 +18,7 @@ import models.Brand;
 import models.BuyRequest;
 import models.CustomerWatch;
 import models.ExternalDocument;
+import models.IncomingCall;
 import models.MailTemplate;
 import models.OrderRequest;
 import models.OrderRequest.OrderTypes;
@@ -51,6 +52,7 @@ import views.html.admin.service_test;
 import views.html.admin.service_tests;
 import views.html.admin.stats;
 import views.html.admin.test;
+import views.html.admin.incoming_calls;
 import views.html.mails.notify_order;
 
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.COLLABORATOR, models.User.Role.PARTNER, models.User.Role.CUSTOMER})
@@ -560,6 +562,11 @@ public class Admin extends Controller {
 			}
 		}
 	}
+	
+	@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.COLLABORATOR})
+    public static Promise<Result> displayIncomingCalls() {
+    	return Promise.pure((Result) ok(incoming_calls.render("", IncomingCall.findAll())));
+    }
 	
 	private static void editInfosOfOrderRequestAndMark(Long id, String privateInfos) {
 		editInfosOfOrderRequest(id, privateInfos, Optional.of(true));

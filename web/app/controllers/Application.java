@@ -22,6 +22,7 @@ import models.Brand;
 import models.BuyRequest;
 import models.ContactRequest;
 import models.Feedback;
+import models.IncomingCall;
 import models.OrderRequest;
 import models.Picture;
 import models.ServiceTest;
@@ -789,6 +790,12 @@ public class Application extends Controller {
     	} catch (Exception e) {
     		return badRequest(views.html.error.notfound.render(request().uri(), null));
     	}
+    }
+    
+    public static Result newIncomingCall(String phoneNumber) {
+    	IncomingCall call = new IncomingCall(phoneNumber);
+    	call.save();
+    	return ok();
     }
 
     public static Result sitemap() {

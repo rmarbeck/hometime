@@ -1,0 +1,29 @@
+@(message: String = "", calls: List[models.IncomingCall])
+@import tags._
+
+@import fr.hometime.utils._
+
+@end_scripts = {
+<script>
+
+</script> 
+}
+
+@layouts.admin("Admin", end_scripts) {
+	<div class="container">
+		@for(call <- calls) {
+			<div class="row display">
+				<div class="col-xs-6">
+					<span>
+					@call.phone_number
+					</span>
+				</div>
+				<div class="col-xs-6">
+					<span>
+					@call.call_date
+					</span>
+				</div>
+			</div>
+		}
+	</div>
+}
