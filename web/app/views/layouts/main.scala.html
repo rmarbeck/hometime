@@ -18,7 +18,8 @@
     <script src="@remote_assets("javascripts/main.js")"></script>
     <script src="@remote_assets("javascripts/holder.js")"></script>
     <script src="@remote_assets("javascripts/lazysizes.min.js")" async></script>
-    @end_scripts_bottom
+    @layouts.fragments.whatshelp_script()
+    @end_scripts_bottom    
 }
 
 @layouts.root(head, footer, end_scripts) {
