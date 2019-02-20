@@ -14,6 +14,7 @@ import javax.persistence.Column;
 import fr.hometime.utils.ActionHelper;
 import fr.hometime.utils.GoogleAnalyticsHelper;
 import fr.hometime.utils.ListHelper;
+import fr.hometime.utils.LiveConfigHelper;
 import fr.hometime.utils.RandomHelper;
 import fr.hometime.utils.SecurityHelper;
 import fr.hometime.utils.ServiceTestHelper;
@@ -792,10 +793,13 @@ public class Application extends Controller {
     	}
     }
     
-    public static Result newIncomingCall(String phoneNumber, boolean missed) {
-    	IncomingCall call = new IncomingCall(phoneNumber, missed);
-    	call.save();
-    	return ok();
+    public static Result newIncomingCall(String secret, String phoneNumber, boolean missed) {
+    	if (LiveConfigHelper.isNotifyingAuthorized(secret)) {
+	    	IncomingCall call = new IncomingCall(phoneNumber, missed);
+	    	call.save();
+	    	return ok();
+    	}
+    	return unauthorized();
     }
 
     public static Result sitemap() {

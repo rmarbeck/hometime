@@ -136,7 +136,7 @@ GET     /paiement/:ak               					controllers.PaymentRequestsFreeOfLogin.
 
 
 # Offer
-GET     /notify			     							controllers.Application.newIncomingCall(phonenumber: String, missed: Boolean ?= false)
+GET     /notify			     							controllers.Application.newIncomingCall(secret: String, phonenumber: String, missed: Boolean ?= false)
 
 # ADMIN
 GET     /login                      									controllers.Application.login(origin: String ?= "")
