@@ -105,8 +105,8 @@ global.href.phone.number=0782434751
 global.text.footer.conditions.cost=coût&nbsp;d''un&nbsp;appel vers&nbsp;un&nbsp;mobile&nbsp;en&nbsp;france
 global.text.footer.conditions.when=du&nbsp;lundi&nbsp;au&nbsp;samedi de&nbsp;8h&nbsp;à&nbsp;21h
 global.text.customization=Personnalisation de montres
-global.text.store.closed=Congés Hometime jusqu''au 29 août 2018 !
-global.text.store.closed.consequences=Nous serons un peu moins réactifs
+global.text.store.closed=Nous sommes fermés aujourd''hui
+global.text.store.closed.consequences=Pour cause de manifestations, nous serons fermés ce samedi
 global.text.coming=Venir chez Hometime
 
 # Home page
