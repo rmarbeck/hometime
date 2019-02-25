@@ -39,7 +39,7 @@
                     <li class="hidden-xs"><a href="@routes.Application.around()">@Html(Messages("global.navbar.link.text.services.around"))</a></li>
                   </ul>
                 }
-                @li_activable(20, index, args = 'class -> "dropdown") {
+                @li_activable(20, index, args = 'class -> "dropdown hidden-sm") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("global.navbar.link.text.watches")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="@routes.Application.watch_collection()">@Html(Messages("global.navbar.link.text.watch.collection"))</a></li>
@@ -78,7 +78,7 @@
 	               </ul>
 	            </div>
 			  	<a href="@routes.Application.order(null)" class="hidden-lg"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;@Html(Messages("global.navbar.link.text.order.detailed"))</a>
-			  	<a href="@routes.Application.orderAuto(null)" class="hidden-lg"><span class="glyphicon glyphicon-ok"></span>&nbsp;@Html(Messages("global.navbar.link.text.auto.order"))</a>
+			  	<a href="@routes.Application.orderAuto(null)" class="visible-xs"><span class="glyphicon glyphicon-ok"></span>&nbsp;@Html(Messages("global.navbar.link.text.auto.order"))</a>
 			  	}
               </ul>
               <ul class="nav navbar-nav navbar-right">

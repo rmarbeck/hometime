@@ -38,7 +38,7 @@ global.navbar.link.text.sell=Vendre sa montre
 global.navbar.link.text.appointment=Venir nous voir
 #   global.navbar.link.text.contact=Avis, remarques ?
 global.navbar.link.text.order=Demander un devis
-global.navbar.link.text.order.detailed=Demander un devis personnalisé
+global.navbar.link.text.order.detailed=Demander un devis
 global.navbar.link.text.auto.order=Devis interactif
 
 global.navbar.link.text.watchmakers.content=Nos horlogers
