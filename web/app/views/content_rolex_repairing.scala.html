@@ -1,0 +1,76 @@
+@(message: String = "")
+@import tags._
+
+@end_scripts = {
+       <script type="text/javascript">
+
+            google.load("feeds", "1");
+            
+            function Truncate(str, maxLength, suffix)
+            {
+                if(str.length > maxLength)
+                {
+                    str = str.substring(0, maxLength + 1); 
+                    str = str.substring(0, Math.min(str.length, str.lastIndexOf(" ")));
+                    str = str + suffix;
+                }
+                return str;
+            }
+        
+            function initialize() {
+              var feed = new google.feeds.Feed("https://www.watchnext.fr/blog/category/rolex/feed/");
+              var rssoutput="";
+              feed.setNumEntries(8);
+              feed.load(function(result) {
+                if (!result.error) {
+                  var container = document.getElementById("feeddiv2");
+                  for (var i = 0; i < result.feed.entries.length; i++) {
+                    var entry = result.feed.entries[i];
+                    rssoutput+=" &nbsp;&gt;&nbsp; <a href='" + entry.link + "' target='_blank' title='" + entry.title + "'>" + Truncate(entry.title, 90, "...") + "</a>"
+                    rssoutput+="<br />"
+                    container.innerHTML=rssoutput
+                  }
+                }
+              });
+            }
+            google.setOnLoadCallback(initialize);
+
+        </script>
+}
+
+@defining("content.rolex.repairing") { key =>
+
+
+
+@layouts.main(key, end_scripts) {
+    @layouts.fragments.navbar(80)
+    
+    <div class="container content @key-title">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="page-baseline"><h1>@Html(Messages(key+".main.title"))</h1></div>
+          </div>
+		</div>
+	</div>        
+        
+	<div class="container content @key">
+    
+    @featurette(key, "3", "left", null, null, null)
+    
+    @featurette(key, "2", "left", "https://watchnext.fr/blog/wp-content/uploads/2018/01/Rolex-5513-restauration-complete-montre-Rolex-water-900x1200-begin-1.jpg", "https://watchnext.fr/blog/2018/01/restauration-complete-dune-montre-rolex-ref-5513/", null, false, true)
+    
+    @featurette(key, "1", "right", key+"/simon.jpg", routes.Application.appointment().url, routes.Application.order("rolex").url, false, false)
+    
+    @featurette(key, "4", "left", null, routes.Application.order("rolex").url, null, false, true)
+      
+    <div class="col-sm-12 ">
+      <div class="featurette-heading"><h2>Pour aller plus loin :</h2></div>
+      <div id="feeddiv2" class="featurette-body"></div>
+   </div>
+
+    
+      
+    </div><!-- /.container -->
+}
+}

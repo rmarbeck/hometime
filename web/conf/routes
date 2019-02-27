@@ -30,6 +30,9 @@ GET     /offer                      controllers.Default.redirect(to = "/les-serv
 GET     /nos-horlogers			     controllers.Application.watchmakers()
 GET     /watchmakers                 controllers.Default.redirect(to = "/nos-horlogers")
 
+# Rolex repairing
+GET     /reparation/montre/rolex     controllers.Application.content_rolex()
+
 # More offer
 GET     /les-services/les-autres-prestations     controllers.Application.more()
 GET     /more                       controllers.Default.redirect(to = "/les-services/les-autres-prestations")

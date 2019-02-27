@@ -283,6 +283,55 @@ service.4.to.action=En savoir plus...
 service.5.default.to.action=En savoir plus...
 service.5.primary.to.action=Entretenir ma montre !
 
+#Rolex Repairing page
+content.rolex.repairing.html.title=Réparation des montres Rolex
+content.rolex.repairing.html.description=Hometime répare les montres Rolex récentes ou vintage, pour les petits soucis ou les grosses restauration
+content.rolex.repairing.html.keywords=réparation, montre, rolex, entretien, vintage, restauration, submariner, daytona, datejust
+
+content.rolex.repairing.content.1.head=Problème de remontage automatique <span class="text-muted">- axe de masse défectueux</span>
+content.rolex.repairing.content.1.body=<div class="sub-title">Les symptômes :</div>La plupart des mouvements automatiques (pas les dernières générations) présente avec le temps une prise de jeu au niveau de l''axe de masse automatique. \
+ <br \><br \>Cela se traduit notamment par un bruit anormal lorsque l''on remue la montre. Il s''agit alors de la masse de remontage automatique qui frotte contre le fond de boite ou le mouvement. Par ailleurs, si la réserve de marche de votre montre semble baisser, cela peut aussi provenir d''un problème d''axe de masse. \
+ <div class="sub-title">Que doit faire l''horloger ?</div>Le remplacement de l''axe de masse peut se faire dans le cadre d''un entretien partiel. Cependant, dans la très grande majorité des cas, la fatigue de l''axe et les frottements que cela génère entrainent l''encrassement du mouvement, justifiant une révision complète de la montre. \
+ <br \><br \>Cet entretien est un acte simple et sans danger. \
+ <div class="sub-title">Comment prévenir ce problème ?</div>Dans la mesure du possible, il est conseillé d''eviter de faire subit des vibrations à une Rolex automatique de façon prolongée (scooter, golf, tennis, bricolage...). Quoiqu'il en soit, l''usure de l''axe de masse est inévitable à long terme.
+
+
+content.rolex.repairing.content.2.head=Cas d''une montre Rolex rouillée
+content.rolex.repairing.content.2.body=<div class="sub-title">Pourquoi la montre est rouillée</div>L''étanchéité des montres en général, des Rolex en particulier, ne peut être garantie indéfiniment. Les joints s''usent et perdent leurs propriétés avec le temps. Par ailleurs, si la couronne n''est pas refermée après le réglage de la montre, l''eau a plus de chances de rentrer dans le montre. \
+ <br \><br \>Si un horloger intervient immédiatement pour sécher la montre (et la plupart du temps la réviser), le cadran et le mouvement n''ont pas le temps de rouiller. En revanche, dès que l''eau passe plusieurs jours dans la montre les dégâts peuvent être importants et certaines pièces rouiller. \
+ <div class="sub-title">L''auscultation :</div>Lors de la prise en charge de la montre, si l''eau est encore présente dans le boitier, la première étape consiste à sécher la montre. \
+ <br \><br \>Lorsque la montre est sèche, l''horloger détermine l''étendue des dégâts et détermine si les pièces endommagées sont à remplacer ou si elles peuvent être restaurées. Dans de rares cas, il peut arriver que le mouvement ne puisse pas être sauvé. \
+ <div class="sub-title">Cas extrêmes :</div>En fonction du type d''eau (piscine, eau de mer), les aiguilles mais surtout le cadran peuvent être détériorés de façon définitive. Dans ce cas extrême, il peut être conseillé de repeindre le cadran, tout en ayant conscience que cela dénaturera toujours la montre. \
+ <div class="sub-title">Bon à savoir :</div>Dès l''apparition de buée sur le verre, n''hésitez pas à aller voir un horloger pour sécher la montre. En un mot, ne perdez pas de temps !
+
+content.rolex.repairing.2.to.action=En savoir plus...
+
+content.rolex.repairing.content.3.head=La réparation des montres Rolex
+content.rolex.repairing.content.3.body= <br />Les montres Rolex représentent une grosse partie des réparations réalisées par Hometime : environ 1 montre sur 3 est une Rolex : Submariner, Daytona, Datejust ou d''autres modèles plus spécifiques. \
+ <br /><br />Outre les révisions complètes, à faire tous les 10 ans environ, les réparations les plus fréquentes sont : \
+ <ul><li>Changement de verre, </li> \
+ <li>Réparation du système de remontage automatique,</li> \
+ <li>Séchage après entrée d''eau dans la montre,</li> \
+ <li>Changement d''axe de balancier,</li> \
+ <li>Ou simple réglage de la marche.</li> \
+ </ul> \
+ <br />Plus la montre est ancienne, plus la réparation comporte des risques dans la mesure où les pièces deviennent très difficiles à obtenir. Les calibres 41XX, 3XXX, 2XXX des années 80 ou plus récentes sont suffisamment jeunes pour ne pas poser trop de problèmes. Les mouvements plus anciens, par exemple 1530 ou 1570 sont plus délicats, certaines pièces étant aujourd''hui introuvables.
+ 
+content.rolex.repairing.content.4.head=Remplacement de verre
+content.rolex.repairing.content.4.body=<div class="sub-title">Deux types de verre :</div>En fonction de l''âge de votre Rolex, celle-ci est équipée d''un <b>verre en plexiglass</b> ou d''un <b>verre en saphir</b>. \
+ <div class="sub-title">Cas des verres en plexiglass :</div>Les verres en plexiglass Rolex sont assez épais, lorsque ceux-ci sont rayés de façon superficielle il est possible de les polir sans devoir les changer. \
+ <br \><br \>Si le verre est rayé profondément, fêlé ou bien cassé, il convient de le changer. Pour les montres très anciennes avec des formes de verres particulières (verres bombés, verre "cheminée"...), il peut être difficile de trouver un verre identique au verre d''origine. \
+ <br \><br \>L''étanchéité des montres équipées de verres en plexiglasse ne peut plus être garantie. Le SAV Rolex ne garantit plus l''étanchéité de ces montres depuis de nombreuses années. \
+ <div class="sub-title">Cas des verres en saphir :</div>Un verre en saphir peut se rayer ou se casser. Dans ces deux cas, il est nécessaire de remplacer le verre dans la mesure où il n''est pas possible de réparer le saphir. A l''occasion du remplacement d''un verre en saphir (et de son joint), l''étanchéité de la montre est refaite et garantie. \
+ <div class="sub-title">Puis-je changer mon verre plexiglass par un verre saphir ?</div>Cela n''est pas possible, dans un sens ou dans l''autre. Les boitiers sont conçus différemment et il n''est pas possible de passer d''un type de verre à un autre.
+
+content.rolex.repairing.4.to.action=Demander un devis
+
+content.rolex.repairing.1.default.to.action=Venir nous voir
+content.rolex.repairing.1.primary.to.action=Demander un devis
+
+
+content.rolex.repairing.main.title=Réparation des montres Rolex
 
 
 # Watchmakers page

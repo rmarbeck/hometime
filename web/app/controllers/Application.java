@@ -486,6 +486,11 @@ public class Application extends Controller {
     public static Result watchmakers() {
         return ok(watchmakers.render(""));
     }
+    
+    
+    public static Result content_rolex() {
+        return ok(content_rolex_repairing.render(""));
+    }
 
     public static Result more() {
         return ok(more.render(""));
