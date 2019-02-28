@@ -13,6 +13,7 @@ import play.Logger;
 import play.libs.F.Promise;
 import play.libs.Yaml;
 import play.mvc.Action;
+import play.mvc.Http;
 import play.mvc.Http.Request;
 import play.mvc.Http.RequestHeader;
 import play.mvc.Result;
@@ -107,6 +108,13 @@ public class Global extends GlobalSettings {
         Logger.debug("Before each request... {}", request.toString());
         if (isUserAgentBlocked(request))
         	throw new RuntimeException("User agent blocked");
+        if ("GET".equals(request.method()) && !request.uri().contains("https") && request.host().contains("hometime")) {
+            return new Action.Simple() {
+                public Promise<Result> call(Http.Context ctx) throws Throwable {
+                    return Promise.pure(movedPermanently("https://"+request.host() + request.path()));
+                }
+            };
+        }
         return super.onRequest(request, actionMethod);
     }
 
