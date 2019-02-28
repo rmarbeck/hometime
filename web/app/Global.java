@@ -27,6 +27,8 @@ import play.filters.gzip.GzipFilter;
 
 @SuppressWarnings("unchecked")
 public class Global extends GlobalSettings {
+	public static final String X_FORWARDED_PROTO = "X-Forwarded-Proto";
+	
 	public <T extends EssentialFilter> Class<T>[] filters() {
         return new Class[]{GzipFilter.class};
     }
@@ -109,14 +111,14 @@ public class Global extends GlobalSettings {
         Logger.error("Before each request... {} secured ? {}", request.toString(), request.secure());
         if (isUserAgentBlocked(request))
         	throw new RuntimeException("User agent blocked");
-
-        /*if (!request.secure() && "GET".equals(request.method()) && request.host().contains("hometime")) {
+        
+        if (shouldForceHttps(request)) {
             return new Action.Simple() {
                 public Promise<Result> call(Http.Context ctx) throws Throwable {
                     return Promise.pure(movedPermanently("https://"+request.host() + request.path()));
                 }
             };
-        }*/
+        }
         return super.onRequest(request, actionMethod);
     }
 
@@ -157,5 +159,26 @@ public class Global extends GlobalSettings {
     	if (userAgent != null && userAgent.toLowerCase().matches("(.*)libwww-perl(.*)"))
     		return true;
     	return false;
+    }
+    
+    private static boolean shouldForceHttps(Request request) {
+    	if (isItHttps(request))
+    		return false;
+    	if ("GET".equals(request.method()) && request.host().contains("hometime"))
+    		return true;
+    	return false;
+    }
+    
+    private static boolean isItHttps(Request request) {
+    	// Direct connection with https
+    	if (request.secure())
+    		return true;
+    	// Forwarded from HTTPS frontend
+        if (request.getHeader(X_FORWARDED_PROTO) != null) {
+            if (request.getHeader(X_FORWARDED_PROTO).indexOf("https") == 0) {
+            	return true;
+            }
+        }
+        return false;
     }
 }
