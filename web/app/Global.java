@@ -108,7 +108,7 @@ public class Global extends GlobalSettings {
 
     @SuppressWarnings("rawtypes")
 	public Action onRequest(Request request, Method actionMethod) {
-        Logger.error("Before each request... {} secured ? {}", request.toString(), request.secure());
+        Logger.info("Before each request... {} secured ? {}", request.toString(), request.secure());
         if (isUserAgentBlocked(request))
         	throw new RuntimeException("User agent blocked");
         

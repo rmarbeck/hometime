@@ -6,6 +6,8 @@
     @layouts.fragments.head_min("home")
         @layouts.fragments.bootstrap_css()
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/home.min.css")">
+        <link rel="canonical" href="https://www.hometime.fr/" />
+
         @layouts.fragments.facebook_meta(Messages("home.title.for.facebook"), Messages("home.type.for.facebook"), routes.Assets.at("images/logo_for_facebook.jpg").absoluteURL(), Messages("home.description.for.facebook"))
         <meta property="forsearch:image" content="@routes.Assets.at("images/revision-reparation-montre-paris-small.png").absoluteURL()" />
         <meta property="forsearch:image" content="@routes.Assets.at("images/revision-reparation-montre-paris-small.jpg").absoluteURL()" />
