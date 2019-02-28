@@ -106,17 +106,17 @@ public class Global extends GlobalSettings {
 
     @SuppressWarnings("rawtypes")
 	public Action onRequest(Request request, Method actionMethod) {
-        Logger.debug("Before each request... {}", request.toString());
+        Logger.error("Before each request... {} secured ? {}", request.toString(), request.secure());
         if (isUserAgentBlocked(request))
         	throw new RuntimeException("User agent blocked");
 
-        if (!request.secure() && "GET".equals(request.method()) && request.host().contains("hometime")) {
+        /*if (!request.secure() && "GET".equals(request.method()) && request.host().contains("hometime")) {
             return new Action.Simple() {
                 public Promise<Result> call(Http.Context ctx) throws Throwable {
                     return Promise.pure(movedPermanently("https://"+request.host() + request.path()));
                 }
             };
-        }
+        }*/
         return super.onRequest(request, actionMethod);
     }
 
