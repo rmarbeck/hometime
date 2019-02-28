@@ -8,7 +8,7 @@
 @if(imgUrl != null) {
   <div class="visible-xs col-xs-2"></div>
   <div class="col-sm-3 col-xs-8 @if(positionOfImage.equals("right")) {col-sm-push-9}">
-      <img class="featurette-image img-responsive" src="@guess_url(imgUrl)" alt="@Messages(topic+"."+key+".alt")">
+      <img class="featurette-image img-responsive" src="@guess_url(imgUrl)" alt="@Messages(topic+"."+key+".alt")" title="@Messages(topic+"."+key+".title")">
   </div>
   <div class="visible-xs col-xs-2"></div>
   <div class="clearfix visible-xs"></div>

@@ -284,7 +284,7 @@ service.5.default.to.action=En savoir plus...
 service.5.primary.to.action=Entretenir ma montre !
 
 #Rolex Repairing page
-content.rolex.repairing.html.title=Réparation des montres Rolex
+content.rolex.repairing.html.title=Hometime vous parle de la réparation des montres Rolex
 content.rolex.repairing.html.description=Hometime répare les montres Rolex récentes ou vintage, pour les petits soucis ou les grosses restauration
 content.rolex.repairing.html.keywords=réparation, montre, rolex, entretien, vintage, restauration, submariner, daytona, datejust
 
@@ -306,7 +306,7 @@ content.rolex.repairing.content.2.body=<div class="sub-title">Pourquoi la montre
 
 content.rolex.repairing.2.to.action=En savoir plus...
 
-content.rolex.repairing.content.3.head=La réparation des montres Rolex
+content.rolex.repairing.content.3.head=La réparation des montres Rolex en général
 content.rolex.repairing.content.3.body= <br />Les montres Rolex représentent une grosse partie des réparations réalisées par Hometime, environ 1 montre sur 3 est une Rolex : Submariner, Daytona, Datejust ou d''autres modèles plus spécifiques. \
  <br /><br />Outre les révisions complètes, à faire tous les 10 ans environ, les réparations les plus fréquentes sont : \
  <ul><li>Le changement de verre, </li> \
@@ -336,8 +336,10 @@ content.rolex.repairing.1.primary.to.action=Demander un devis
 
 content.rolex.repairing.main.title=Réparation des montres Rolex
 
-content.rolex.repairing.1.alt=Masse automatique Rolex
-content.rolex.repairing.2.alt=Mouvement de montre Rolex rouillé
+content.rolex.repairing.1.title=Masse automatique Rolex
+content.rolex.repairing.2.tile=Mouvement de montre Rolex rouillé
+content.rolex.repairing.1.alt=Photo d''une masse automatique d''une montre Rolex
+content.rolex.repairing.2.alt=Photo d''un mouvement de montre Rolex rouillé
 
 # Watchmakers page
 watchmakers.html.title=Les horlogers Hometime
@@ -1732,6 +1734,7 @@ site.plan.quartz.brand.title=Tarifs changement de pile et étanchéité pour une
 site.plan.appointment.title=Venir chez Hometime
 
 site.plan.watchmakers.title=Nos horlogers
+site.plan.content.repairing.rolex.title=Réparation des montres Rolex
 
 site.plan.appointment.title.en=Visiting us - page in english
 site.plan.call.request.title.en=Being called back - page in english
