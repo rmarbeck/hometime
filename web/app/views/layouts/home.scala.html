@@ -21,10 +21,10 @@
     @layouts.fragments.end_scripts()
     @layouts.fragments.google_plus_one_script()
     @layouts.fragments.twitter_share_script()
-    <script src="@remote_assets("javascripts/home.js")"></script>
-    <script src="@remote_assets("javascripts/holder.js")"></script>
-    <script src="@remote_assets("javascripts/lazysizes.min.js")" async></script>
-    @layouts.fragments.whatshelp_script()
+    <script async src="@remote_assets("javascripts/home.js")"></script>
+    <script async src="@remote_assets("javascripts/holder.js")"></script>
+    <script async src="@remote_assets("javascripts/lazysizes.min.js")" async></script>
+    <script async  src="@remote_assets("javascripts/whatshelp.js")" async></script>
 }
 
 @layouts.root(head, footer, end_scripts) {
