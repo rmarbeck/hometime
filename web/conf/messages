@@ -744,7 +744,7 @@ appointment.generic.html.title=Venir chez Hometime
 appointment.generic.html.description=Comment venir dans nos locaux à Paris pour déposer une montre pour une révision complète, un entretien partiel, un polissage, un changement de pile ou tout autre service horloger
 appointment.generic.html.keywords=Locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
 appointment.text.disclaimer=Nous pouvons vous recevoir pour répondre à l''ensemble de vos questions et pour vous proposer tous nos services horlogers.
-appointment.text.part1=Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi de 11h à 17h</b>.
+appointment.text.part1=Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi de 11h à 17h (ACTUELLEMENT NOUS SOMMES FERMES LES SAMEDI DU FAIT DES MANIFESTATIONS)</b>.
 appointment.text.part2=Une fois sur les lieux, après la porte sur la rue : <b>au fond du couloir, prendre l''escalier à droite, puis 1er étage à droite.</b>
 appointment.text.part3=Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:{0}" rel="nofollow"><span>{1}</span></a> 
 appointment.text.part4=Vous préférez que nous vous contactions par téléphone&nbsp;?
