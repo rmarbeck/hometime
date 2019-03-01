@@ -50,6 +50,13 @@ public class UniqueAccountingNumber {
 		
 		return new UniqueAccountingNumber(isItForAnOrder);
 	}
+	
+	public static Optional<UniqueAccountingNumber> fromStringIfValidOnly(String uan, boolean isItForAnOrder) {
+		if (isValid(uan))
+			return Optional.of(fromString(uan,isItForAnOrder));
+		
+		return Optional.empty();
+	}
 
 	private static UniqueAccountingNumber getNext(UniqueAccountingNumber previous, boolean isItForAnOrder) {
 		UniqueAccountingNumber brandNewOne = createNew(isItForAnOrder);

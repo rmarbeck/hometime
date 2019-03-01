@@ -21,11 +21,14 @@ public class AnalyticsDetailedReport {
 	public Float cost = 0f;
 	public boolean checked = false;
 	public boolean doubleChecked = false;
+	private boolean isValid = false;
 	
 	private AnalyticsDetailedReport(AccountingLineAnalytic analyticLine) {
 		AccountingDocument currentDocument = analyticLine.accountingLine.document;
 		Long lAnalyticCode = analyticLine.analyticCode.analyticCode;
 		String sInvoiceUAN = InvoiceLineReport.guessUAN(currentDocument).orElse("");
+		if (!sInvoiceUAN.equals(""))
+			isValid = true;
 		UniqueAccountingNumber invoiceUAN = UniqueAccountingNumber.fromString(sInvoiceUAN, false);
 		
 		this.year = invoiceUAN.extractYearFromUAN()+"";
@@ -71,11 +74,13 @@ public class AnalyticsDetailedReport {
 	}
 
 	private static void addNewLine(AnalyticsDetailedReport newLine, HashMap<String, AnalyticsDetailedReport> reportBuilder) {
-		String key = evaluateKey(newLine);
-		if (reportBuilder.containsKey(key)) {
-			reportBuilder.get(key).addPriceAndCost(newLine.price, newLine.cost);
-		} else {
-			reportBuilder.put(key, newLine);
+		if (newLine.isValid) {
+			String key = evaluateKey(newLine);
+			if (reportBuilder.containsKey(key)) {
+				reportBuilder.get(key).addPriceAndCost(newLine.price, newLine.cost);
+			} else {
+				reportBuilder.put(key, newLine);
+			}
 		}
 	}
 	
