@@ -41,6 +41,9 @@ global.navbar.link.text.order=Demander un devis
 global.navbar.link.text.order.detailed=Demander un devis
 global.navbar.link.text.auto.order=Devis interactif
 
+global.navbar.link.text.rolex.repairing.content=Réparations Rolex
+global.navbar.link.text.omega.repairing.content=Réparations Omega
+
 global.navbar.link.text.watchmakers.content=Nos horlogers
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
 global.text.this.is.an.experiment.long=Le service <strong>hometime</strong> est actuellement dans une phase expérimentale.<br />En l''utilisant vous contribuez à encourager l''équipe à l''améliorer.
@@ -340,6 +343,110 @@ content.rolex.repairing.1.title=Masse automatique Rolex
 content.rolex.repairing.2.title=Mouvement de montre Rolex rouillé
 content.rolex.repairing.1.alt=Photo d''une masse automatique d''une montre Rolex
 content.rolex.repairing.2.alt=Photo d''un mouvement de montre Rolex rouillé
+
+
+#Omega Repairing page
+content.omega.repairing.html.title=Hometime vous parle de la réparation des montres Omega
+content.omega.repairing.html.description=Hometime répare les montres Omega de toutes les époques et avec tous les types
+content.omega.repairing.html.keywords=réparation, montre, omega, entretien, vintage, restauration, seamaster, speedmaster, moonwatch, speed pro, planet ocean, 300m, coaxial
+
+content.omega.repairing.content.1.head=Verre cassé ou rayé
+content.omega.repairing.content.1.body=<div class="sub-title">Les différents cas de verres rayés :</div>En fonction du modèle ou de l''âge de la montre, celle-ci peut être équipée d''un verre saphir ou bien d''un verre en plexiglass.<br \><br \>Les verres en plexiglass peuvent être polis s''ils sont légèrement rayés, dans le cas des verres en saphir, ils sont la plupart du temps traités par un antireflet qui peut être retiré s''il est rayé de façon superficielle. \
+ <div class="sub-title">Si le verre est cassé :</div>Un verre en plexiglass peut se casser relativement facilement sans que cela soit dû à un choc violent. Si cela est le cas, le remplacement du verre n''est pas très onéreux et peut se faire dans le cadre d''un entretien partiel. \
+ <br \><br \>Un verre saphir ne peut se casser qu''en subissant un choc violent. Ce choc crée souvent des dégâts au niveau du mouvement. Cela justifie le plus souvent une révision complète en plus du changement du verre. \
+ <div class="sub-title">Changement de verre et étanchéité</div>La grande majorité des modèles de montre Omega est étanche. Le changement de verre implique de refaire l''étanchéité de la montre.
+
+
+content.omega.repairing.content.2.head=Lunette tournante bloquée
+content.omega.repairing.content.2.body=<div class="sub-title">Pourquoi la lunette peut-elle se bloquer ?</div>La lunette tournante des modèles de plongée (différents modèles seamaster) s''encrasse avec le temps ce qui a tendance à durcir le maniement de la lunette. Cela peut aller jusqu''à son blocage total. Il peut aussi arriver qu''un choc sur la lunette ou éventuellement sur le boitier crée une déformation bloquant la lunette. \
+ <div class="sub-title">Ce que fait l''horloger :</div>Si la lunette est juste encrassée, son nettoyage est très simple et se fait dans le cadre d''un entretien partiel ou complet. \
+ <br \><br \>Si la lunette ou le boitier sont déformés, il peut être nécessaire de changer la lunette voire de restaurer le boitier. \
+ <div class="sub-title">Comment réduire le risque :</div>Manipuler régulièrement la lunette en lui faisant faire un tour complet peut permettre d''éviter son encrassement. \
+ <div class="sub-title">Et si ma lunette est rayée :</div>Les lunettes sont conçues en deux parties, la partie tournante extérieure et la partie interne (celle sur laquelle sont inscrites les différentes indications) : l''insert de lunette. C''est cet insert qui peut se rayer avec le temps. En fonction des cas, Omega oblige à commander une lunette complète ou uniquement l''insert. Cela impacte directement le coût de la remise à neuf de la lunette.
+
+content.omega.repairing.2.to.action=En savoir plus...
+
+content.omega.repairing.content.3.head=La réparation des montres Omega chez Hometime
+content.omega.repairing.content.3.body= <br />Les montres Omega font partie des montres que nous réparons le plus chez Hometime après les montres Rolex. Les modèles que nous voyons le plus souvent sont des Speedmaster Professional (et quelques reduced à mouvement automatique) et des seamaster. Les autres modèles sont un peu plus rares mais quelques De Ville ou Constellation nous arrivent de temps en temps. \
+ <br /><br />Le plus gros des réparations touche des montres ayant plus de 15 ans, voire des montres vintage réellement très anciennes. \
+ <br /><br />Pour les montres les plus récentes équipées des échappements coaxiaux, nous pouvons être amenés à conseiller un entretien auprès du SAV de la marque afin de "mettre à jour" le calibre avec les dernières évolutions de cet échappement très particulier.
+ 
+content.omega.repairing.3.default.to.action=Demander un devis
+content.omega.repairing.3.primary.to.action=Devis interactif
+ 
+content.omega.repairing.content.4.head=Couronne ou poussoirs cassés
+content.omega.repairing.content.4.body=<div class="sub-title">La couronne de remontoir :</div>Le problème n''est pas spécifique aux montres Omega mais il s''agit d''une réparation relativement fréquente sur les modèles non équipés de couronnes vissées et notamment sur les modèles vintage. Si la couronne est détachée de la montre, il peut être parfois nécessaire de changer l''ensemble couronne/tige de couronne alors que dans les cas les moins graves il est possible de repostionner la couronne sur sa tige. \
+ <br \><br \>Dans le cas des couronnes vissées, le tube de couronne peut lui aussi être défaillant et être remplacé. \
+ <div class="sub-title">Les poussoirs des Speedmaster :</div>Comme sur de nombreux chronographes, les poussoirs des Speedmaster sont assez exposés aux chocs et peuvent se briser. Il peuvent aussi se dévisser mais cela est beaucoup plus rare. Dans ces cas là, il est forcément nécessaire de remplacer les poussoirs et cela peut s''effectuer dans le cadre d''un entretien partiel. \
+ <br \><br \>En fonction des conditions d''utilisation de la montre, les poussoirs peuvent aussi simplement s''encrasser et se bloquer. Un nettoyage suffit alors pour permettre à la montre de refonctionner normalement.
+
+content.omega.repairing.4.to.action=En savoir plus...
+
+content.omega.repairing.1.default.to.action=Venir nous voir
+content.omega.repairing.1.primary.to.action=Demander un devis
+
+
+content.omega.repairing.main.title=Réparation des montres Omega
+
+content.omega.repairing.1.title=Verre cassé sur une Omega Speedmaster mark IV
+content.omega.repairing.2.title=Lunette tournante d''une Omega
+content.omega.repairing.1.alt=Photo du verre cassé sur une Omega Speedmaster mark IV
+content.omega.repairing.2.alt=Photo de la manipulation de la lunette tournante d''une Omega Seamaster
+
+
+#Paris Repairing page
+content.paris.repairing.html.title=Réparation des montres dans Paris, Hometime votre meilleure adresse
+content.paris.repairing.html.description=Hometime répare les montres de luxe dans son atelier situé à Paris dans le 1er arrondissement
+content.paris.repairing.html.keywords=réparation, montre, paris, entretien, vintage, réparation, révision, restauration, jaeger le coultre, audemars piguet, iwc, cartier, rado, panerai
+
+content.paris.repairing.content.1.head=Verre cassé ou rayé
+content.paris.repairing.content.1.body=<div class="sub-title">Les différents cas de verres rayés :</div>En fonction du modèle ou de l''âge de la montre, celle-ci peut être équipée d''un verre saphir ou bien d''un verre en plexiglass.<br \><br \>Les verres en plexiglass peuvent être polis s''ils sont légèrement rayés, dans le cas des verres en saphir, ils sont la plupart du temps traités par un antireflet qui peut être retiré s''il est rayé de façon superficielle. \
+ <div class="sub-title">Si le verre est cassé :</div>Un verre en plexiglass peut se casser relativement facilement sans que cela soit dû à un choc violent. Si cela est le cas, le remplacement du verre n''est pas très onéreux et peut se faire dans le cadre d''un entretien partiel. \
+ <br \><br \>Un verre saphir ne peut se casser qu''en subissant un choc violent. Ce choc crée souvent des dégâts au niveau du mouvement. Cela justifie le plus souvent une révision complète en plus du changement du verre. \
+ <div class="sub-title">Changement de verre et étanchéité</div>La grande majorité des modèles de montre paris est étanche. Le changement de verre implique de refaire l''étanchéité de la montre.
+
+
+content.paris.repairing.content.2.head=Comment se passe l''entretien chez Hometime
+content.paris.repairing.content.2.body=<div class="sub-title">La collecte de la montre :</div>Lors du dépôt de la montre dans nos locaux (ou dans le cas d''un envoi par colis sécurisé), nous éditons une fiche de collecte qui décrit l''état de la montre sur plusieurs critères. Cette fiche de collecte est remise au client, elle fait office de preuve de dépôt. Nous prenons la montre en photo la montre au moment de la rédaction de la fiche de collecte. <br /><br />Dès la collecte, nous essayons de faire une première évaluation du coût de l''entretien. \
+ <div class="sub-title">L''auscultation par l''horloger :</div>Avant l''établissement du devis définitif, notre chef d''atelier ausculte la montre attentivement pour évaluer les travaux à engager. Ce travail est effectué la plupart du temps sous 48h maximum. Dans le cas où le changement de certaines pièces est à prévoir, le devis peut nécessiter quelques jours pour être établi, sinon il est envoyé dès l''auscultation terminée. \
+ <br \><br \>Les auscultations les plus complexes concernent les montres ayant pris l''eau. \
+ <div class="sub-title">Le déroulement de l''entretien :</div>Pour les entretiens nécessitant la révision complète de la montre, celle-ci est démontée intégralement. Chacune des pièces du mouvement est démontée et déposée dans un compartiment spécifique pour y être nettoyée. Avant la phase de remontage et d''huilage les pièces sont contrôlées visuellement pour y déceler d''éventuels défauts. \
+ <br \><br \>Avant et après l''étape clef du ré-aiguillage, l''horloger teste la marche et l''ampitude du mouvement. \
+ <div class="sub-title">Tests de bon fonctionnement :</div>Même si l''horloger teste partiellement la montre à la fin de l''entretien, c''est le responsable qualité qui déroule une procédure de test dépendant du type de montres (automatique ou mécanique, simple ou à complication...) une fois l''entretien terminé. <br /><br />Plusieurs critères sont évalués durant la phase de tests. En fonction de la complexité de la montre, plusieurs jours peuvent être nécessaires pour que la montre passe l''ensemble des cas de test (passage de date, fonctionnement avec ou sans chronographe).
+
+
+content.paris.repairing.2.default.to.action=Demander un devis
+content.paris.repairing.2.primary.to.action=Devis interactif
+
+content.paris.repairing.content.3.head=La réparation des montres chez Hometime
+content.paris.repairing.content.3.body= <br />Hometime dispose de son atelier dans le 1er arrondissement de Paris depuis Juin 2018. Nos horlogers sont sur place pour réaliser l''ensemble des entretiens courants ou plus complexes pour les marques de montres les plus prestigieuses. \
+ <br /><br />Entre les restaurations complexes des montres anciennes ou ayant beaucoup souffert (prises d''eau, chutes par exemple), les révisions ou encore les changements de pile, nous nous occupons de plus de 500 montres par an. \
+ <br /><br />Au delà d''un niveau de qualité le plus élevé possible, nous mettons un point d''honneur à réduire les délais le plus possible.
+ 
+content.paris.repairing.3.default.to.action=Venir nous voir
+content.paris.repairing.3.primary.to.action=Nos horlogers
+ 
+content.paris.repairing.content.4.head=Couronne ou poussoirs cassés
+content.paris.repairing.content.4.body=<div class="sub-title">La couronne de remontoir :</div>Le problème n''est pas spécifique aux montres paris mais il s''agit d''une réparation relativement fréquente sur les modèles non équipés de couronnes vissées et notamment sur les modèles vintage. Si la couronne est détachée de la montre, il peut être parfois nécessaire de changer l''ensemble couronne/tige de couronne alors que dans les cas les moins graves il est possible de repostionner la couronne sur sa tige. \
+ <br \><br \>Dans le cas des couronnes vissées, le tube de couronne peut lui aussi être défaillant et être remplacé. \
+ <div class="sub-title">Les poussoirs des Speedmaster :</div>Comme sur de nombreux chronographes, les poussoirs des Speedmaster sont assez exposés aux chocs et peuvent se briser. Il peuvent aussi se dévisser mais cela est beaucoup plus rare. Dans ces cas là, il est forcément nécessaire de remplacer les poussoirs et cela peut s''effectuer dans le cadre d''un entretien partiel. \
+ <br \><br \>En fonction des conditions d''utilisation de la montre, les poussoirs peuvent aussi simplement s''encrasser et se bloquer. Un nettoyage suffit alors pour permettre à la montre de refonctionner normalement.
+
+content.paris.repairing.4.to.action=En savoir plus...
+
+content.paris.repairing.1.default.to.action=Venir nous voir
+content.paris.repairing.1.primary.to.action=Demander un devis
+
+
+content.paris.repairing.main.title=Réparation des montres à Paris
+
+content.paris.repairing.1.title=Verre cassé sur une paris Speedmaster mark IV
+content.paris.repairing.2.title=Lunette tournante d''une paris
+content.paris.repairing.1.alt=Photo du verre cassé sur une paris Speedmaster mark IV
+content.paris.repairing.2.alt=Photo de la manipulation de la lunette tournante d''une Omega Seamaster
+
+
+
 
 # Watchmakers page
 watchmakers.html.title=Les horlogers Hometime
@@ -1735,6 +1842,8 @@ site.plan.appointment.title=Venir chez Hometime
 
 site.plan.watchmakers.title=Nos horlogers
 site.plan.content.repairing.rolex.title=Réparation des montres Rolex
+site.plan.content.repairing.omega.title=Réparation des montres Omega
+site.plan.content.repairing.paris.title=Réparation des montres à Paris
 
 site.plan.appointment.title.en=Visiting us - page in english
 site.plan.call.request.title.en=Being called back - page in english

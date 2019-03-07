@@ -491,6 +491,14 @@ public class Application extends Controller {
     public static Result content_rolex() {
         return ok(content_rolex_repairing.render(""));
     }
+    
+    public static Result content_omega() {
+        return ok(content_omega_repairing.render(""));
+    }
+    
+    public static Result content_paris() {
+        return ok(content_paris_repairing.render(""));
+    }
 
     public static Result more() {
         return ok(more.render(""));

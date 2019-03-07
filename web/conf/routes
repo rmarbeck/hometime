@@ -33,6 +33,13 @@ GET     /watchmakers                 controllers.Default.redirect(to = "/nos-hor
 # Rolex repairing
 GET     /reparation/montre/rolex     controllers.Application.content_rolex()
 
+# Omega repairing
+GET     /reparation/montre/omega     controllers.Application.content_omega()
+
+
+# Paris repairing
+GET     /reparation/montre/paris     controllers.Application.content_paris()
+
 # More offer
 GET     /les-services/les-autres-prestations     controllers.Application.more()
 GET     /more                       controllers.Default.redirect(to = "/les-services/les-autres-prestations")

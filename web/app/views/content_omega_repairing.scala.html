@@ -2,13 +2,12 @@
 @import tags._
 
 @end_scripts = {
-	   <script async src="@remote_assets("javascripts/blogfeeds.js")"></script>
+	   <script async src="@remote_assets("javascripts/blogfeeds-omega.js")"></script>
 }
 
-@defining("rolex") { brand =>
+@defining("omega") { brand =>
 
 @defining("content."+brand+".repairing") { key =>
-
 
 
 @layouts.main(key, end_scripts) {
@@ -27,11 +26,11 @@
     
     @featurette(key, "3", "left", null, routes.Application.order(brand).url, routes.Application.orderAuto(brand).url, false, false)
     
-    @featurette(key, "2", "left", "repairing/"+brand+"/water.jpg", "https://watchnext.fr/blog/2018/01/restauration-complete-dune-montre-rolex-ref-5513/", null, false, true)
+    @featurette(key, "2", "left", "repairing/"+brand+"/bezel.jpg", "https://watchnext.fr/blog/2018/01/restauration-complete-dune-montre-rolex-ref-5513/", null, false, true)
     
-    @featurette(key, "1", "right", "repairing/"+brand+"/movement.jpg", routes.Application.appointment().url, routes.Application.order(brand).url, false, false)
+    @featurette(key, "1", "right", "repairing/"+brand+"/glass.jpg", routes.Application.appointment().url, routes.Application.order(brand).url, false, false)
     
-    @featurette(key, "4", "left", null, routes.Application.order(brand).url, null, false, true)
+    @featurette(key, "4", "left", null, "https://watchnext.fr/blog/2018/10/eviter-la-casse-du-remontoir/", null, false, true)
       
     <div class="col-sm-12 ">
       <div class="featurette-heading"><h2>Pour aller plus loin :</h2></div>
