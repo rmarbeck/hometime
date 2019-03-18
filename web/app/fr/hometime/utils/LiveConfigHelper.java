@@ -23,4 +23,10 @@ public class LiveConfigHelper {
 				return true;
 		return false;
 	}
+	
+	public static boolean isStoreClosed() {
+		if (LiveConfig.isKeyDefined(STORE_CLOSED))
+			return LiveConfig.getBoolean(STORE_CLOSED);
+		return false;
+	}
 }

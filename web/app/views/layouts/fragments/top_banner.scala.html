@@ -1,2 +1,9 @@
 @(isTop: Boolean=true)
-    @layouts.fragments.top_banner_standard(isTop)
+
+@import fr.hometime.utils._
+
+	@if(LiveConfigHelper.isStoreClosed()) {
+		@layouts.fragments.top_banner_store_closed(isTop)
+	} else {
+    	@layouts.fragments.top_banner_standard(isTop)
+    }

@@ -39,5 +39,18 @@ liveConfig:
          key:                   mailjet_sms_token
          valuestring:           TOFILL
 
+    - !!models.LiveConfig
+         key:                   store_closed
+         valueboolean:           true
+
+    - !!models.LiveConfig
+         key:                   store_closed_title_forced
+         valuestring:           <b>Titre</b>
+
+    - !!models.LiveConfig
+         key:                   store_closed_message_forced
+         valuestring:           Messa<i>ge</i>
+
+
 #Fin
 
