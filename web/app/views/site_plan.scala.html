@@ -102,6 +102,11 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
+                        <div class="title"><h2><a href="@routes.Application.quotation_choice()">@Messages("site.plan.quotation.choices.title")</a></h2></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
                         <div class="title"><h2><a href="@routes.Application.order(null)">@Messages("site.plan.order.title")</a></h2></div>
                         @for(brand <- supported_brands) {
                         <div class="row">

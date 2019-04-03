@@ -16,6 +16,11 @@
       <priority>1.0</priority>
     </url>
     <url>
+      <loc>https://@{request.host()}@routes.Application.quotation_choice()</loc>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+    <url>
       <loc>https://@{request.host()}@routes.Application.more()</loc>
       <changefreq>daily</changefreq>
       <priority>0.5</priority>

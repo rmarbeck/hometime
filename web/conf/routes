@@ -48,6 +48,9 @@ GET     /more                       controllers.Default.redirect(to = "/les-serv
 GET     /les-services/les-prix      controllers.Application.prices()
 GET     /prices                     controllers.Default.redirect(to = "/les-services/les-prix")
 
+# Prices
+GET     /estimation/prix/devis/reparation/revision/montre      controllers.Application.quotation_choice()
+
 # Order
 GET     /demande-de-devis           controllers.Application.order(brand = null)
 GET     /demande-de-devis/montre/reparation/revision/:brand    controllers.Application.order(brand)
@@ -393,6 +396,9 @@ GET     /private/accept/:id	                      						controllers.CustomerAdmi
 GET     /private/refuse/:id	                      						controllers.CustomerAdmin.prepareRefuseQuotation(id: Long)
 GET     /private/get-watch-back/:id	                      				controllers.CustomerAdmin.acceptWatchBack(id: Long)
 
+
+# Paris repairing
+GET     /bootstrap4/test     											controllers.Application.test_new
 
 
 # Sitemap

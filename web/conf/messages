@@ -9,7 +9,7 @@ global.home.html.author=hometime
 global.text.brand.name=hometime
 global.text.brand.name.title=hometime
 global.text.site.name=hometime
-global.text.copyright=© Watch next SAS 2013-2016
+global.text.copyright=© Watch next SAS 2013-2019
 global.text.brand.baseline=
 global.navbar.link.text.home=Home
 global.navbar.link.text.service=Entretien
@@ -341,8 +341,11 @@ content.rolex.repairing.main.title=Réparation des montres Rolex
 
 content.rolex.repairing.1.title=Masse automatique Rolex
 content.rolex.repairing.2.title=Mouvement de montre Rolex rouillé
+content.rolex.repairing.4.title=Verre cassé sur une Rolex
 content.rolex.repairing.1.alt=Photo d''une masse automatique d''une montre Rolex
 content.rolex.repairing.2.alt=Photo d''un mouvement de montre Rolex rouillé
+content.rolex.repairing.4.alt=Photo d''un verre cassé sur une Rolex
+
 
 
 #Omega Repairing page
@@ -1784,6 +1787,35 @@ around.body.3=L''offre de montres d''occasion ne se limite pas aux boutiques par
  <br /><br />Rendez-vous des passionnés français, acheteurs ou vendeurs se retrouvent sur une place de marché entièrement gratuite.\
  <br /><br /><a href="http://www.goodmontres.com/" title="Good Montres : Sites d''annonces de montres entre particuliers" target="_blank">Good Montres, c''est par ici</a>.
 
+# Quotation choices
+quotation.choices.baseline=Obtenir un devis d''entretien de votre montre
+quotation.choices.explanation=Hometime vous propose plusieurs façons d''évaluer le prix de la réparation de votre montre. Vous pouvez déterminer vous même en moins d''une minute le tarif d''un entretien ou bien demander l''envoi d''un devis personnalisé à l''un de nos horlogers. <br/><br/>Enfin, pour un devis formel et définitif, vous pouvez passer nous voir dans notre atelier à Paris.
+quotation.choices.quick=Devis interactif <small>(en&nbsp;1&nbsp;minute)</small>
+quotation.choices.request=Devis horloger <small>(en&nbsp;quelques&nbsp;heures)</small>
+quotation.choices.local=Devis formel <small>(sur&nbsp;place)</small>
+
+quotation.choices.quick.claim=En 5 étapes, évaluez le coût de l''entretien de votre montre.
+quotation.choices.request.claim=Nos horlogers analysent votre besoin et vous répondent.
+quotation.choices.local.claim=Sur place, nous établissons un devis ferme montre en main.
+
+quotation.choices.quick.key.1=Devis immédiat
+quotation.choices.quick.key.2=Prix et délais approximatifs
+quotation.choices.quick.key.3=24h/24
+
+quotation.choices.request.key.1=Devis détaillé
+quotation.choices.request.key.2=Un horloger vous répond
+quotation.choices.request.key.3=Sous 48h maximum
+
+quotation.choices.local.key.1=Nous auscultons votre montre
+quotation.choices.local.key.2=Le devis est gratuit
+quotation.choices.local.key.3=Il nous engage
+
+quotation.choices.quick.call.to.action=Devis interactif
+quotation.choices.request.call.to.action=Devis horloger
+quotation.choices.local.call.to.action=Venir nous voir
+
+quotation.choices.disclaimer=Nous essayons de toujours fournir un maximum d''informations à nos clients avant de voir la montre. Cependant, dans certains cas cela n''est pas possible et seule l''auscultation de la montre permet de déterminer précisément le tarif de l''entretien. Nos devis permettent de répondre aux demandes de prix sur les entretiens les plus fréquents que sont les changemenents de pile avec ou sans étanchéité, les révisions complètes ou les réparations plus complexes.
+
 # Payment pages
 payment.header=watchNext
 payment.start.html.title=Accès au paiement
@@ -1839,6 +1871,8 @@ site.plan.sell.title=Vendez votre montre d''occasion
 site.plan.quartz.title=Tarifs changement de pile et étanchéité
 site.plan.quartz.brand.title=Tarifs changement de pile et étanchéité pour une montre {0}
 site.plan.appointment.title=Venir chez Hometime
+
+site.plan.quotation.choices.title=Choix du type de devis
 
 site.plan.watchmakers.title=Nos horlogers
 site.plan.content.repairing.rolex.title=Réparation des montres Rolex

@@ -1,0 +1,82 @@
+@(message: String = "")
+@import tags._
+@layouts.main("quotation_choices") {
+    @layouts.fragments.navbar(50)
+      
+    <div class="container container-quotation-choices">
+        @baseline("quotation.choices.baseline")
+        
+        <div class="row explanation">
+          <div class="col-sm-10 col-sm-offset-1">
+            <div class="explanation-body">@Html(Messages("quotation.choices.explanation"))</div>
+            <hr>
+          </div>
+        </div>
+        
+        <div class="row text-center">
+        	<div id="offers">
+        		&nbsp;
+        	</div>
+        	<div class="col-lg-4 col-xs-6">
+		        <div class="panel panel-default">
+				  <div class="panel-heading">
+				  	<h2 class="panel-title">@Html(Messages("quotation.choices.quick"))</h2>
+				  </div>
+				  <div class="panel-body">
+				    <div><b>@Html(Messages("quotation.choices.quick.claim"))</b></div>
+				    <br/>
+				    <ul class="list-unstyled">
+				    	<li>@Html(Messages("quotation.choices.quick.key.1"))</li>
+				    	<li>@Html(Messages("quotation.choices.quick.key.2"))</li>
+				    	<li>@Html(Messages("quotation.choices.quick.key.3"))</li>
+				    </ul>
+				    <button type="button" onclick="window.location = '@routes.Application.orderAuto(null)';return false;" class="btn btn-primary navbar-btn">@Html(Messages("quotation.choices.quick.call.to.action"))</button>
+				  </div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-xs-6">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h2 class="panel-title">@Html(Messages("quotation.choices.request"))</h2>
+				  </div>
+				  <div class="panel-body">
+				  	<div><b>@Html(Messages("quotation.choices.request.claim"))</b></div>
+				    <br/>
+				    <ul class="list-unstyled">
+				    	<li>@Html(Messages("quotation.choices.request.key.1"))</li>
+				    	<li>@Html(Messages("quotation.choices.request.key.2"))</li>
+				    	<li>@Html(Messages("quotation.choices.request.key.3"))</li>
+				    </ul>
+				    <button type="button" onclick="window.location = '@routes.Application.order(null)';return false;" class="btn btn-primary navbar-btn">@Html(Messages("quotation.choices.request.call.to.action"))</button>
+				  </div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-xs-12">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h2 class="panel-title">@Html(Messages("quotation.choices.local"))</h2>
+				  </div>
+				  <div class="panel-body">
+				  	<div><b>@Html(Messages("quotation.choices.local.claim"))</b></div>
+				    <br/>
+				    <ul class="list-unstyled">
+				    	<li>@Html(Messages("quotation.choices.local.key.1"))</li>
+				    	<li>@Html(Messages("quotation.choices.local.key.2"))</li>
+				    	<li>@Html(Messages("quotation.choices.local.key.3"))</li>
+				    </ul>
+				    <button type="button" onclick="window.location = '@routes.Application.appointment()?utm_source=Hometime&utm_medium=Bouton%20venir%20nous%20voir&utm_campaign=Bouton_Hometime_venir_nous_voir';return false;" class="btn btn-success navbar-btn">@Html(Messages("quotation.choices.local.call.to.action"))</button>
+				  </div>
+				</div>
+			</div>
+		
+		</div>
+		
+		<div class="row disclaimer">
+          <div class="col-sm-10 col-sm-offset-1">
+            
+            <div class="disclaimer-body">@Html(Messages("quotation.choices.disclaimer"))</div>
+          </div>
+      </div>
+        
+    </div><!-- /.container -->
+}
