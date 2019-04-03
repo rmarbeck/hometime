@@ -1788,6 +1788,11 @@ around.body.3=L''offre de montres d''occasion ne se limite pas aux boutiques par
  <br /><br /><a href="http://www.goodmontres.com/" title="Good Montres : Sites d''annonces de montres entre particuliers" target="_blank">Good Montres, c''est par ici</a>.
 
 # Quotation choices
+
+quotation_choices.html.title=Evaluation du tarif d''entretien d''une montre
+quotation_choices.html.description=Les différentes méthodes pour déterminer le prix de la réparation d''une montre chez Hometime
+quotation_choices.html.keywords=Prix, tarif, réparation, montre, paris
+
 quotation.choices.baseline=Obtenir un devis d''entretien de votre montre
 quotation.choices.explanation=Hometime vous propose plusieurs façons d''évaluer le prix de la réparation de votre montre. Vous pouvez déterminer vous même en moins d''une minute le tarif d''un entretien ou bien demander l''envoi d''un devis personnalisé à l''un de nos horlogers. <br/><br/>Enfin, pour un devis formel et définitif, vous pouvez passer nous voir dans notre atelier à Paris.
 quotation.choices.quick=Devis interactif <small>(en&nbsp;1&nbsp;minute)</small>
