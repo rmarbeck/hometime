@@ -1,0 +1,23 @@
+@(head: Html, footer: Html, end_scripts: Html = Html(""))(content: Html)
+@import tags._
+<!doctype html>
+<html lang="@Messages("global.code.lang.head")">
+    <head>
+    	<!-- Required meta tags -->
+	    <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	
+    	@layouts.fragments.bootstrap_4_head()
+        @head
+    </head>
+    <body>
+      
+      
+      	@content
+
+
+		@layouts.fragments.bootstrap_4_foot()
+      	@end_scripts
+
+    </body>
+</html>
