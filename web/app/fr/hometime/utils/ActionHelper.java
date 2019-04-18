@@ -57,6 +57,18 @@ public class ActionHelper {
     	mail.sendHtml(htmlMessage);
 	}
 	
+	public static void sendHtmlEmailEnhanced(String title, String htmlMessage) {
+		if (isConfigurationSaysEmailIsSupposerToBeSent()) {
+			Logger.info("About to send an HTML mail Enhanced");
+			try {
+				MailjetAdapterv3_1.sendSimpleEmail(title, getListOfRecipientsFromConfiguration(), getFromAddressFromConfiguration(), getFromAddressFromConfiguration(), htmlMessage, "empty");
+			} catch (MailAdapterException e) {
+				Logger.error("Error when trying to send an HTML mail Enhanced");
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public static void asyncTryToNotifyTeamByEmail(String title, String message) {
 		CompletableFuture.supplyAsync(() -> {
 			ActionHelper.tryToNotifyTeamByEmail(title, message);
@@ -82,7 +94,7 @@ public class ActionHelper {
 	
 	public static void tryToSendHtmlEmail(String title, String htmlMessage) {
 		try {
-			sendHtmlEmail(title, htmlMessage);
+			sendHtmlEmailEnhanced(title, htmlMessage);
 		} catch (Throwable t) {
 			Logger.error("Unable to send email {}", t.getMessage());
 			t.printStackTrace();
@@ -115,26 +127,43 @@ public class ActionHelper {
 	
 	private static MailerAPI prepareEmail(String title) {
 		// Looking if liveConfig exists and says to send e-mail
-		if ((LiveConfig.isKeyDefined(NTBE_ACTIVE) && LiveConfig.getBoolean(NTBE_ACTIVE))
-				|| (!LiveConfig.isKeyDefined(NTBE_ACTIVE) && Play.application().configuration().getBoolean("notifyTeam")) ) {
+		if (isConfigurationSaysEmailIsSupposerToBeSent()) {
 			MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 	    	mail.setSubject(title);
-	    	String from = LiveConfig.getString(NBTE_FROM);
-	    	if (from == null)
-	    		from = TEAM_FROM_ADDRESS;
-	    	mail.setFrom(TEAM_FROM_ADDRESS);
-	    	Long numberOfRecepients = LiveConfig.getLong(NBTE_TO_HOW_MANY);
-	    	if (numberOfRecepients == null) {
-	    		mail.setRecipient(TEAM_ADDRESS_1);
-	    	} else {
-	    		List<String> recipients = new ArrayList<String>();
-	    		for (int i = 1; i <= numberOfRecepients ; i++) {
-	    			recipients.add(LiveConfig.getString(NBTE_TO+"_"+i));
-	    		}
-	    		mail.setRecipient(recipients.toArray(new String[]{"empty"}));
-	    	}
+
+	    	mail.setFrom(getFromAddressFromConfiguration());
+	    	
+	    	List<String> recipients = getListOfRecipientsFromConfiguration();
+	    	mail.setRecipient(recipients.toArray(new String[]{"empty"}));
+	    	
 	    	return mail;
 		}
 		return null;
+	}
+	
+	private static boolean isConfigurationSaysEmailIsSupposerToBeSent() {
+		if ((LiveConfig.isKeyDefined(NTBE_ACTIVE) && LiveConfig.getBoolean(NTBE_ACTIVE))
+				|| (!LiveConfig.isKeyDefined(NTBE_ACTIVE) && Play.application().configuration().getBoolean("notifyTeam")) )
+			return true;
+		return false;
+	}
+	
+	private static String getFromAddressFromConfiguration() {
+		if (LiveConfig.getString(NBTE_FROM) != null)
+			return LiveConfig.getString(NBTE_FROM);
+		return TEAM_FROM_ADDRESS;
+	}
+	
+	private static List<String> getListOfRecipientsFromConfiguration() {
+		List<String> recipients = new ArrayList<String>();
+		Long numberOfRecepients = LiveConfig.getLong(NBTE_TO_HOW_MANY);
+    	if (numberOfRecepients == null) {
+    		recipients.add(TEAM_ADDRESS_1);
+    	} else {
+    		for (int i = 1; i <= numberOfRecepients ; i++) {
+    			recipients.add(LiveConfig.getString(NBTE_TO+"_"+i));
+    		}
+    	}
+    	return recipients;
 	}
 }

@@ -996,4 +996,8 @@ public class Application extends Controller {
     public static Result test_new() {
     	return ok(test_new.render("toto"));
     }
+    
+    public static Result test_canvas() {
+    	return ok(test_canvas.render("toto"));
+    }
 }

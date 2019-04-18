@@ -397,8 +397,9 @@ GET     /private/refuse/:id	                      						controllers.CustomerAdmi
 GET     /private/get-watch-back/:id	                      				controllers.CustomerAdmin.acceptWatchBack(id: Long)
 
 
-# Paris repairing
+# Testing
 GET     /bootstrap4/test     											controllers.Application.test_new
+GET     /canvas/test     												controllers.Application.test_canvas
 
 
 # Sitemap

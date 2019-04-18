@@ -1,16 +1,21 @@
 package fr.hometime.utils;
 
 import java.util.Optional;
+import java.util.List;;
 import java.util.function.Supplier;
 
 import com.mailjet.client.MailjetClient;
 import com.mailjet.client.MailjetRequest;
 import com.mailjet.client.MailjetResponse;
+import com.mailjet.client.resource.Email;
 import com.mailjet.client.resource.Campaigndraft;
 import com.mailjet.client.resource.CampaigndraftDetailcontent;
 import com.mailjet.client.resource.Contact;
 import com.mailjet.client.resource.Contactslist;
 import com.mailjet.client.resource.ContactslistManageContact;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import akka.japi.Function;
 import models.LiveConfig;
@@ -171,6 +176,34 @@ public class MailjetAdapterv3_1 {
 	
 	private static boolean isResponseOk(MailjetResponse response) {
 		return response.getStatus() >= 200 || response.getStatus() <= 204;
+	}
+	
+	public static Optional<MailjetResponse> sendSimpleEmail(String title, List<String> emails, String fromName, String fromEmail, String html, String text) throws MailAdapterException {
+		emails.forEach((email) -> Logger.info("About to send an HTML mail Enhanced ["+email+"]"));
+		
+		return getResponseFromRequest(() -> new MailjetRequest(Email.resource)
+										.property(Email.FROMEMAIL, fromEmail)
+										.property(Email.FROMNAME, fromName)
+										.property(Email.SUBJECT, title)
+										.property(Email.HTMLPART, html)
+										.property(Email.TEXTPART, text)
+										.property(Email.RECIPIENTS, new JSONArray()
+								                .put(new JSONObject()
+								                        .put("Email", emails)))
+				, getClient()::post);
+	}
+	
+	public static Optional<MailjetResponse> sendSimpleEmail(String title, String email, String html, String text) throws MailAdapterException {
+		return getResponseFromRequest(() -> new MailjetRequest(Email.resource)
+										.property(Email.FROMEMAIL, fromEmail)
+										.property(Email.FROMNAME, fromName)
+										.property(Email.SUBJECT, title)
+										.property(Email.HTMLPART, html)
+										.property(Email.TEXTPART, text)
+										.property(Email.RECIPIENTS, new JSONArray()
+								                .put(new JSONObject()
+								                        .put("Email", email)))
+				, getClient()::post);
 	}
 	
 	public static Optional<Integer> createACampaignWithHtmlContent(String subject, String title, String email, String html, String text) throws MailAdapterException {
