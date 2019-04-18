@@ -1,7 +1,7 @@
 package fr.hometime.utils;
 
 import java.util.Optional;
-import java.util.List;;
+import java.util.List;
 import java.util.function.Supplier;
 
 import com.mailjet.client.MailjetClient;
