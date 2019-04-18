@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import com.mailjet.client.MailjetClient;
+import com.mailjet.client.ClientOptions;
 import com.mailjet.client.MailjetRequest;
 import com.mailjet.client.MailjetResponse;
 import com.mailjet.client.resource.Email;
+import com.mailjet.client.resource.Emailv31;
 import com.mailjet.client.resource.Campaigndraft;
 import com.mailjet.client.resource.CampaigndraftDetailcontent;
 import com.mailjet.client.resource.Contact;
@@ -53,7 +55,21 @@ public class MailjetAdapterv3_1 {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		MailjetClient client = new MailjetClient(apiKey, apiSecretKey); 
+		MailjetClient client = new MailjetClient(apiKey, apiSecretKey);
+
+		client.setDebug(MailjetClient.VERBOSE_DEBUG);
+		return client;
+	}
+	
+	private static MailjetClient getClient31() {
+		if (shouldAPIBeInitialized())
+			try {
+				initializeApi();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		MailjetClient client = new MailjetClient(apiKey, apiSecretKey, new ClientOptions("v3.1"));
+
 		client.setDebug(MailjetClient.VERBOSE_DEBUG);
 		return client;
 	}
@@ -147,6 +163,8 @@ public class MailjetAdapterv3_1 {
 	public static Optional<MailjetResponse> getResponseFromRequest(Supplier<MailjetRequest> requestSupplier, Function<MailjetRequest, MailjetResponse> action) throws MailAdapterException {
 		Optional<MailjetResponse> response;
 		try {
+			Logger.info("-----------> "+requestSupplier.get().getBodyJSON());
+			Logger.info("-----------> "+requestSupplier.get().queryString());
 			response = Optional.of(action.apply(requestSupplier.get()));
 			if (response.isPresent() && isResponseOk(response.get()))
 				return response;
@@ -181,16 +199,9 @@ public class MailjetAdapterv3_1 {
 	public static Optional<MailjetResponse> sendSimpleEmail(String title, List<String> emails, String fromName, String fromEmail, String html, String text) throws MailAdapterException {
 		emails.forEach((email) -> Logger.info("About to send an HTML mail Enhanced ["+email+"]"));
 		
-		return getResponseFromRequest(() -> new MailjetRequest(Email.resource)
-										.property(Email.FROMEMAIL, fromEmail)
-										.property(Email.FROMNAME, fromName)
-										.property(Email.SUBJECT, title)
-										.property(Email.HTMLPART, html)
-										.property(Email.TEXTPART, text)
-										.property(Email.RECIPIENTS, new JSONArray()
-								                .put(new JSONObject()
-								                        .put("Email", emails)))
-				, getClient()::post);
+		return getResponseFromRequest(() -> new MailjetRequest(Emailv31.resource)
+										.property(Emailv31.MESSAGES,  (new JSONArray()).put(generateMessage(title, emails, fromName, fromEmail, html, text)))
+				, getClient31()::post);
 	}
 	
 	public static Optional<MailjetResponse> sendSimpleEmail(String title, String email, String html, String text) throws MailAdapterException {
@@ -204,6 +215,22 @@ public class MailjetAdapterv3_1 {
 								                .put(new JSONObject()
 								                        .put("Email", email)))
 				, getClient()::post);
+	}
+	
+	private static JSONObject generateMessage(String title, List<String> emails, String fromName, String fromEmail, String html, String text) {
+		JSONObject message = new JSONObject();
+		message.put(Emailv31.Message.FROM, new JSONObject()
+		  .put(Emailv31.Message.EMAIL, fromEmail)
+		  .put(Emailv31.Message.NAME, fromName)
+		)
+		.put(Emailv31.Message.SUBJECT, title)
+		.put(Emailv31.Message.TEXTPART, text)
+		.put(Emailv31.Message.HTMLPART, html);
+		emails.forEach((email) -> message.put(Emailv31.Message.TO, new JSONArray()
+						.put(new JSONObject()
+						.put(Emailv31.Message.EMAIL, email))));
+		
+		return message;
 	}
 	
 	public static Optional<Integer> createACampaignWithHtmlContent(String subject, String title, String email, String html, String text) throws MailAdapterException {

@@ -30,7 +30,7 @@ public class ActionHelper {
 	private static String FLASH_ORIGIN = "flashscope_origin";
 	
 	private static String TEAM_ADDRESS_1 = "contact@hometime.fr";
-	private static String TEAM_FROM_ADDRESS = "rmarbeck@free.fr";
+	private static String TEAM_FROM_ADDRESS = "contact@hometime.fr";
 
 
 	/**
@@ -43,6 +43,10 @@ public class ActionHelper {
 		MailerAPI mail = prepareEmail(title);
     	Logger.info("About to send a mail");
     	mail.send(message);
+	}
+	
+	public static void notifyTeamByEmailEnhanced(String title, String message) {
+		sendHtmlEmailEnhanced(title, message);
 	}
 	
 	/**
@@ -85,7 +89,7 @@ public class ActionHelper {
 	
 	public static void tryToNotifyTeamByEmail(String title, String message) {
 		try {
-			notifyTeamByEmail(title, message);
+			notifyTeamByEmailEnhanced(title, message);
 		} catch (Throwable t) {
 			Logger.error("Unable to send email {}", t.getMessage());
 			t.printStackTrace();
