@@ -26,6 +26,7 @@ public class ActionHelper {
 	public static String NBTE_TO_HOW_MANY = "notify_team_by_email_to_how_many";
 	public static String NBTE_TO = "notify_team_by_email_to";
 	public static String NBTE_FROM = "notify_team_by_email_from";
+	public static String NBTE_FROM_NAME = "notify_team_by_email_from_name";
 	
 	private static String FLASH_ORIGIN = "flashscope_origin";
 	
@@ -62,10 +63,14 @@ public class ActionHelper {
 	}
 	
 	public static void sendHtmlEmailEnhanced(String title, String htmlMessage) {
+		sendHtmlEmailEnhanced(title, htmlMessage, getListOfRecipientsFromConfiguration(), getFromNameFromConfiguration(), getFromAddressFromConfiguration(), "empty");
+	}
+	
+	public static void sendHtmlEmailEnhanced(String title, String htmlMessage, List<String> emails, String fromAddress, String fromName, String textMessage) {
 		if (isConfigurationSaysEmailIsSupposerToBeSent()) {
 			Logger.info("About to send an HTML mail Enhanced");
 			try {
-				MailjetAdapterv3_1.sendSimpleEmail(title, getListOfRecipientsFromConfiguration(), getFromAddressFromConfiguration(), getFromAddressFromConfiguration(), htmlMessage, "empty");
+				MailjetAdapterv3_1.sendSimpleEmail(title, emails, fromName, fromAddress, htmlMessage, textMessage);
 			} catch (MailAdapterException e) {
 				Logger.error("Error when trying to send an HTML mail Enhanced");
 				e.printStackTrace();
@@ -156,6 +161,12 @@ public class ActionHelper {
 		if (LiveConfig.getString(NBTE_FROM) != null)
 			return LiveConfig.getString(NBTE_FROM);
 		return TEAM_FROM_ADDRESS;
+	}
+	
+	private static String getFromNameFromConfiguration() {
+		if (LiveConfig.getString(NBTE_FROM_NAME) != null)
+			return LiveConfig.getString(NBTE_FROM_NAME);
+		return getFromAddressFromConfiguration();
 	}
 	
 	private static List<String> getListOfRecipientsFromConfiguration() {

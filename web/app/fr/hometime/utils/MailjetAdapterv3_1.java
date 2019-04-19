@@ -49,30 +49,35 @@ public class MailjetAdapterv3_1 {
 	private static String startOfURLForCheckingCampaigns = "https://app.mailjet.com/campaigns/summary2/";
 	
 	private static MailjetClient getClient() {
-		if (shouldAPIBeInitialized())
-			try {
-				initializeApi();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		MailjetClient client = new MailjetClient(apiKey, apiSecretKey);
-
+		return getConfiguredClient(false);
+	}
+	
+	private static MailjetClient getClient31() {
+		return getConfiguredClient(true);
+	}
+	
+	private static MailjetClient getConfiguredClient(boolean shouldBe31) {
+		prepareClient();
+		MailjetClient client = provideClient(shouldBe31);
 		client.setDebug(MailjetClient.VERBOSE_DEBUG);
 		return client;
 	}
 	
-	private static MailjetClient getClient31() {
+	private static void prepareClient() {
 		if (shouldAPIBeInitialized())
 			try {
 				initializeApi();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		MailjetClient client = new MailjetClient(apiKey, apiSecretKey, new ClientOptions("v3.1"));
-
-		client.setDebug(MailjetClient.VERBOSE_DEBUG);
-		return client;
 	}
+	
+	private static MailjetClient provideClient(boolean shouldBe31) {
+		if (shouldBe31)
+			return new MailjetClient(apiKey, apiSecretKey, new ClientOptions("v3.1"));
+		return new MailjetClient(apiKey, apiSecretKey);
+	}
+	
 	
 	private static boolean shouldAPIBeInitialized() {
 		return (apiKey == null);
@@ -94,6 +99,36 @@ public class MailjetAdapterv3_1 {
 				&& LiveConfig.isKeyDefined(LIVE_CONFIG_MAILJET_SECRET_KEY)
 				&& LiveConfig.isKeyDefined(LIVE_CONFIG_MAILJET_FROM_EMAIL)
 				&& LiveConfig.isKeyDefined(LIVE_CONFIG_MAILJET_FROM_NAME));
+	}
+	
+	/*
+	 * Send Simple Email
+	 * ----------------------------------------------
+	 * 
+	 */
+	
+	public static Optional<MailjetResponse> sendSimpleEmail(String title, List<String> emails, String fromName, String fromEmail, String html, String text) throws MailAdapterException {
+		emails.forEach((email) -> Logger.debug("About to send an HTML mail Enhanced ["+email+"]"));
+		
+		return getResponseFromRequest(() -> new MailjetRequest(Emailv31.resource)
+										.property(Emailv31.MESSAGES,  (new JSONArray()).put(generateMessage(title, emails, fromName, fromEmail, html, text)))
+				, getClient31()::post);
+	}
+	
+	private static JSONObject generateMessage(String title, List<String> emails, String fromName, String fromEmail, String html, String text) {
+		JSONObject message = new JSONObject();
+		message.put(Emailv31.Message.FROM, new JSONObject()
+		  .put(Emailv31.Message.EMAIL, fromEmail)
+		  .put(Emailv31.Message.NAME, fromName))
+		.put(Emailv31.Message.SUBJECT, title)
+		.put(Emailv31.Message.TEXTPART, text)
+		.put(Emailv31.Message.HTMLPART, html);
+		
+		emails.forEach((email) -> message.put(Emailv31.Message.TO, new JSONArray()
+						.put(new JSONObject()
+						.put(Emailv31.Message.EMAIL, email))));
+		
+		return message;
 	}
 	
 	
@@ -163,8 +198,8 @@ public class MailjetAdapterv3_1 {
 	public static Optional<MailjetResponse> getResponseFromRequest(Supplier<MailjetRequest> requestSupplier, Function<MailjetRequest, MailjetResponse> action) throws MailAdapterException {
 		Optional<MailjetResponse> response;
 		try {
-			Logger.info("-----------> "+requestSupplier.get().getBodyJSON());
-			Logger.info("-----------> "+requestSupplier.get().queryString());
+			Logger.debug("-----------> "+requestSupplier.get().getBodyJSON());
+			Logger.debug("-----------> "+requestSupplier.get().queryString());
 			response = Optional.of(action.apply(requestSupplier.get()));
 			if (response.isPresent() && isResponseOk(response.get()))
 				return response;
@@ -196,42 +231,7 @@ public class MailjetAdapterv3_1 {
 		return response.getStatus() >= 200 || response.getStatus() <= 204;
 	}
 	
-	public static Optional<MailjetResponse> sendSimpleEmail(String title, List<String> emails, String fromName, String fromEmail, String html, String text) throws MailAdapterException {
-		emails.forEach((email) -> Logger.info("About to send an HTML mail Enhanced ["+email+"]"));
-		
-		return getResponseFromRequest(() -> new MailjetRequest(Emailv31.resource)
-										.property(Emailv31.MESSAGES,  (new JSONArray()).put(generateMessage(title, emails, fromName, fromEmail, html, text)))
-				, getClient31()::post);
-	}
 	
-	public static Optional<MailjetResponse> sendSimpleEmail(String title, String email, String html, String text) throws MailAdapterException {
-		return getResponseFromRequest(() -> new MailjetRequest(Email.resource)
-										.property(Email.FROMEMAIL, fromEmail)
-										.property(Email.FROMNAME, fromName)
-										.property(Email.SUBJECT, title)
-										.property(Email.HTMLPART, html)
-										.property(Email.TEXTPART, text)
-										.property(Email.RECIPIENTS, new JSONArray()
-								                .put(new JSONObject()
-								                        .put("Email", email)))
-				, getClient()::post);
-	}
-	
-	private static JSONObject generateMessage(String title, List<String> emails, String fromName, String fromEmail, String html, String text) {
-		JSONObject message = new JSONObject();
-		message.put(Emailv31.Message.FROM, new JSONObject()
-		  .put(Emailv31.Message.EMAIL, fromEmail)
-		  .put(Emailv31.Message.NAME, fromName)
-		)
-		.put(Emailv31.Message.SUBJECT, title)
-		.put(Emailv31.Message.TEXTPART, text)
-		.put(Emailv31.Message.HTMLPART, html);
-		emails.forEach((email) -> message.put(Emailv31.Message.TO, new JSONArray()
-						.put(new JSONObject()
-						.put(Emailv31.Message.EMAIL, email))));
-		
-		return message;
-	}
 	
 	public static Optional<Integer> createACampaignWithHtmlContent(String subject, String title, String email, String html, String text) throws MailAdapterException {
 		Optional<Integer> contactsListId = getOrCreatePopulatedContactsListForOneSingleEmail(email);
