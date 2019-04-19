@@ -63,7 +63,7 @@ public class ActionHelper {
 	}
 	
 	public static void sendHtmlEmailEnhanced(String title, String htmlMessage) {
-		sendHtmlEmailEnhanced(title, htmlMessage, getListOfRecipientsFromConfiguration(), getFromNameFromConfiguration(), getFromAddressFromConfiguration(), "empty");
+		sendHtmlEmailEnhanced(title, htmlMessage, getListOfRecipientsFromConfiguration(), getFromAddressFromConfiguration(), getFromNameFromConfiguration(), "empty");
 	}
 	
 	public static void sendHtmlEmailEnhanced(String title, String htmlMessage, List<String> emails, String fromAddress, String fromName, String textMessage) {
