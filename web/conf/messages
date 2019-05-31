@@ -2031,6 +2031,7 @@ admin.navbar.link.text.reporting.with.vat.sales=Rapport de vente avec TVA
 admin.navbar.link.text.reporting.invoice.lines=Rapport de Chiffre d''affaires
 admin.navbar.link.text.reporting.stock=Rapport de Stock
 admin.navbar.link.text.reporting.legal.register=Registre
+admin.navbar.link.text.reporting.legal.register.helper=Aide pour registre
 admin.navbar.link.text.reporting.payments=Rapport méthodes de paiement
 admin.navbar.link.text.reporting.financial=Rapport financier
 admin.navbar.link.text.reporting.financial.detailed=Rapport financier détaillé

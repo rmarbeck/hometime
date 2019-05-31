@@ -11,6 +11,7 @@ public class LegalRegisterReport {
 	public Long num;
 	public Date dateOfStockEntry;
 	public String description;
+	public String descriptionForHelper;
 	public String seller;
 	public Float purchasePrice;
 	public boolean registryWarning;
@@ -22,6 +23,7 @@ public class LegalRegisterReport {
 		this();
 		this.num = index;
 		this.description = generateDescription(watchToSell);
+		this.descriptionForHelper = generateDescriptionForHelper(watchToSell);
 		this.purchasePrice = (float) watchToSell.purchasingPrice;
 		this.dateOfStockEntry = watchToSell.purchaseDate;
 		this.seller = watchToSell.seller;
@@ -43,6 +45,18 @@ public class LegalRegisterReport {
 		description.append("ref : "+watchToSell.reference);
 		description.append("\n");
 		description.append("n° : "+watchToSell.serial);
+		return description.toString();
+	}
+	
+	private static String generateDescriptionForHelper(WatchToSell watchToSell) {
+		StringBuilder description = new StringBuilder();
+		description.append("Montre ");
+		description.append(watchToSell.brand.toString());
+		description.append(" ");
+		description.append(watchToSell.model);
+		description.append("\n");
+		description.append("ref. "+watchToSell.reference);
+		description.append(" n° "+watchToSell.serial);
 		return description.toString();
 	}
 	

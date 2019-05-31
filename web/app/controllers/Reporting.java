@@ -20,6 +20,7 @@ import views.html.admin.reports.with_vat;
 import views.html.admin.reports.export_sales;
 import views.html.admin.reports.stock;
 import views.html.admin.reports.legal_register;
+import views.html.admin.reports.legal_register_helper;
 import views.html.admin.reports.invoice_lines;
 import views.html.admin.reports.address_tab;
 import views.html.admin.reports.address_tab_table;
@@ -70,6 +71,10 @@ public class Reporting extends Controller {
 	
 	public static Result legalRegister(Long starting) {
 		return ok(legal_register.render(LegalRegisterReport.generateReport(starting)));
+    }
+	
+	public static Result legalRegisterHelper(Long starting) {
+		return ok(legal_register_helper.render(LegalRegisterReport.generateReport(starting)));
     }
 	
 	public static Result addresses() {
