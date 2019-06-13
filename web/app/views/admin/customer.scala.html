@@ -201,6 +201,7 @@
                    	<a type="button" class="btn btn-default btn-xs" href="@routes.Accounting.viewOrderDocument(orderDocument.id)"><span class="glyphicon glyphicon-user"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editOrderDocument(orderDocument.id)"><span class="glyphicon glyphicon-edit"></span></a>
 	                <a type="button" class="btn btn-success btn-xs" href="@routes.Accounting.addInvoiceByOrderId(orderDocument.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
+	                <a type="button" class="btn btn-info btn-xs" href="@routes.Accounting.duplicateOrderByOrderId(orderDocument.id)"><span class="glyphicon glyphicon-refresh"></span></a>
                   </td>
                   <td class="hidden-xs">
                     @display_date(orderDocument.document.creationDate, "dd/MM")

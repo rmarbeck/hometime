@@ -2603,6 +2603,7 @@ admin.customer.watch.action.stored.by.us.secured.3=&nbsp;Sécurisé (réservé)
 admin.customer.watch.action.new.orders=Créer un devis
 
 admin.customer.watch.action.quotation.sent=&nbsp;Marquer devis envoyé
+admin.customer.watch.action.quotation.accepted=&nbsp;Marquer devis accepté
 
 admin.customer.watch.action.print.servicing=&nbsp;Fiche de service
 admin.customer.watch.action.print.testing=&nbsp;Fiche de test

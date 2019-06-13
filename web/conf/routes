@@ -240,6 +240,8 @@ GET     /admin/customer-watch/set-back-to-customer/:id 					controllers.Customer
 GET     /admin/customer-watch/set-stored-by-partner/:id 				controllers.CustomerWatch.setStoredByPartner(id: Long)
 GET     /admin/customer-watch/set-stored-by-us/:id 						controllers.CustomerWatch.setStoredByUs(id: Long)
 GET     /admin/customer-watch/set-stored-by-us-outside/:id 				controllers.CustomerWatch.setStoredByUsOutside(id: Long)
+GET     /admin/customer-watch/set-quotation-accepted-by-customer/:id 	controllers.CustomerWatch.setQuotationAccepted(id: Long)
+
 GET     /admin/customer-watch/accept/:id			 					controllers.CustomerWatch.acceptWatchFromCustomer(id: Long)
 POST    /admin/manage-customer-watch 									controllers.CustomerWatch.manage()
 
@@ -297,6 +299,7 @@ GET     /admin/order-document/create          							controllers.Accounting.addO
 GET     /admin/order-document/create/by/watch-to-sell/:id				controllers.Accounting.addOrderDocumentByWatchToSellId(id: Long)
 GET     /admin/order-document/create/by/customer/:id					controllers.Accounting.addOrderDocumentFromCustomer(id: Long)
 GET     /admin/order-document/edit/:id         							controllers.Accounting.editOrderDocument(id: Long)
+GET     /admin/order-document/duplicate/:id         					controllers.Accounting.duplicateOrderByOrderId(id: Long)
 POST    /admin/manage-order-document            						controllers.Accounting.manageOrderDocument()
 GET     /admin/order-documents            								controllers.Accounting.displayAllOrderDocument(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")
 GET     /admin/order-document/:id         								controllers.Accounting.viewOrderDocument(id: Long)

@@ -21,6 +21,7 @@ import models.Customer;
 import models.CustomerWatch;
 import models.Invoice;
 import models.Invoice.InvoiceType;
+import models.Order;
 import models.OrderDocument;
 import models.PostSellingCertificate;
 import models.PostServiceCertificate;
@@ -80,6 +81,10 @@ public class Accounting extends Controller {
 	
 	public static Result addInvoiceByOrderId(Long id) {
 		return ok(newInvoiceFormByOrderId(id));		
+	}
+	
+	public static Result duplicateOrderByOrderId(Long id) {
+		return ok(newOrderFormByOrderId(id));		
 	}
 	
 	public static Result addInvoiceFromCustomer(Long id) {
@@ -219,6 +224,7 @@ public class Accounting extends Controller {
 
 		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
 	}
+
 	
 	private static Html newInvoiceFormByCustomerId(long id) {
 		models.Customer customer = Customer.findById(id);
@@ -377,6 +383,10 @@ public class Accounting extends Controller {
 		return LIST_ORDER_DOCUMENTS;
 	}
 	
+	private static Html orderForm(Form<models.OrderDocument> invoiceForm, boolean isItANewOrder) {
+		return order_document_form.render(invoiceForm, isItANewOrder, models.Customer.findByNameAsc());
+	}
+	
 	/*********************************************************************************************************************/
 	
 	private static Html orderDocumentForm(Form<models.OrderDocument> orderDocumentForm, boolean isItANewOrderDocument) {
@@ -408,6 +418,24 @@ public class Accounting extends Controller {
 		newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.document.delivery.line.selling.a.watch"), Long.valueOf(1), Float.valueOf(0));
 		return orderDocumentForm(Form.form(models.OrderDocument.class).fill(newOrder), true);
 	}
+	
+	
+	private static Html newOrderFormByOrderId(long id) {
+		models.OrderDocument orderToInspireFrom = OrderDocument.findById(id);
+		if (orderToInspireFrom == null)
+			return emptyNewOrderDocumentForm();
+		models.OrderDocument newOrder= new OrderDocument();
+		newOrder.changeUniqueAccountingNumber(UniqueAccountingNumber.getNextForOrders().toString());
+		newOrder.document.customer = orderToInspireFrom.document.customer;
+		newOrder.type = orderToInspireFrom.type;
+		newOrder.description = orderToInspireFrom.description;
+		if (orderToInspireFrom.document.retrieveLines() != null)
+			for(AccountingLine line : orderToInspireFrom.document.retrieveLines())
+				newOrder.addLine(line.type, line.description, line.unit, line.unitPrice, line.preset, line.oneTimeCost);
+
+		return orderForm(Form.form(models.OrderDocument.class).fill(newOrder), true);
+	}
+	
 	
 	private static Html newOrderDocumentFormByCustomerId(long id) {
 		models.Customer customer = Customer.findById(id);
