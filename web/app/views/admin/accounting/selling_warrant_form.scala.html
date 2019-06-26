@@ -1,0 +1,14 @@
+@(thisInstance: Form[models.SellingWarrant], isItNew: Boolean)
+
+@import tags._
+
+@end_scripts = {
+}
+
+@defining(new views.FormDisplay(thisInstance, "SellingWarrant", "admin.sellingwarrant.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.WatchToSell.getIdsBySellingCustomersAsc, models.WatchToSell.getWatchesBySellingCustomersAsc);
+		   formDisplay.addFormField("documentDate", true, "input", 'type -> "date");
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
+}

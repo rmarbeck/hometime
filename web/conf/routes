@@ -327,6 +327,9 @@ GET     /admin/display/SparePartsOpen/All				            	controllers.SpareParts
 
 GET		/admin/display/CustomerWatchByStatus/:statusName				controllers.CustomerWatch.displayByStatusName(statusName: String)
 
+
+GET		/admin/display/OverloadedSellingWarrants/:id					controllers.SellingWarrants.displayWarrant(id: Long)
+
 GET		/form/new														controllers.SimplifiedCustomers.createNewCustomerByCustomer()
 POST	/form/new/manage												controllers.SimplifiedCustomers.manageNewCustomerByCustomer()
 

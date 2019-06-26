@@ -2003,6 +2003,8 @@ admin.navbar.link.text.accounting.add.order.document=Nouveau bon de commande
 admin.navbar.link.text.accounting.order.documents=Bons de commande
 admin.navbar.link.text.accounting.add.selling.document=Nouveau papier de vente
 admin.navbar.link.text.accounting.selling.documents=Papiers de vente
+admin.navbar.link.text.accounting.selling.warrants=Mandats de vente
+admin.navbar.link.text.accounting.add.selling.warrants=Nouveau mandat de vente
 admin.navbar.link.text.accounting=Factu
 admin.navbar.link.text.watches.to.sell=Montres en stock
 admin.navbar.link.text.accounting.external.documents=Factures externes
@@ -2365,6 +2367,8 @@ admin.customer.form.placeholder.alternative.email=toto@titi.com
 admin.customer.form.label.alternative.email=Email secondaire
 admin.customer.form.placeholder.phone.number=06xxxxxxxx
 admin.customer.form.label.phone.number=Numéro de téléphone principal
+admin.customer.form.placeholder.id.infos=n°, dates
+admin.customer.form.label.id.infos=Papiers d''identité
 admin.customer.form.placeholder.alternative.phone.number=06xxxxxxxx
 admin.customer.form.label.alternative.phone.number=Numéro de téléphone secondaire
 admin.customer.form.placeholder.civility=Monsieur/Madame
@@ -3608,9 +3612,9 @@ admin.watchtosell.form.brand.internal.name.value.name.ulyssenardin=Ulysse Nardin
 admin.watchtosell.form.brand.internal.name.value.name.jacquetdroz=Jacquet Droz
 
 admin.watchtosell.form.ownerstatus.value.name.owned.by.us=En stock
-admin.watchtosell.form.ownerstatus.value.name.owned.by.customer=Dépôt vente client
+admin.watchtosell.form.ownerstatus.value.name.owned.by.customer=Dépôt vente client (réel)
 admin.watchtosell.form.ownerstatus.value.name.owned.by.partner=Dépôt vente partenaire
-admin.watchtosell.form.ownerstatus.value.name.reserved.1=Non implémenté
+admin.watchtosell.form.ownerstatus.value.name.owned.and.stored.by.customer=Dépôt vente client (virtuel)
 admin.watchtosell.form.ownerstatus.value.name.reserved.2=Non implémenté
 admin.watchtosell.form.status.value.name.to.sell=A vendre
 admin.watchtosell.form.status.value.name.reserved.for.a.customer=Réservée pour un client
@@ -4882,6 +4886,64 @@ admin.quotation.request.sum.up.delay=Délais prévisionnels : <strong>{0}</stron
 admin.quotation.request.sum.up.other=<strong>Retrouvez tous les détails ci-dessous</strong>
 
 admin.quotation.request.first.date=Rendez-vous à l''atelier au 322 rue Saint Honoré (du Lundi au Vendredi, de 10h à 18h30, ou le samedi de 11h à 17h) ou déplacement pour la collecte de la montre,
+
+
+admin.selling.warrant.title=Mandat de dépôt vente - {0} {1}
+
+admin.selling.warrant.text=Mandat de dépôt vente
+admin.selling.warrant.watch.description=Description de la montre
+admin.selling.warrant.watch.brand.and.model=Marque - Modèle : <b>{0} - {1}</b>
+admin.selling.warrant.reference.and.serial=Référence - Numéro de série : {0} - {1}
+admin.selling.warrant.accessories=Accessoires présents :
+admin.selling.warrant.has.papers=Avec ses papiers d''origine
+admin.selling.warrant.has.box=Avec sa boite d''origine
+admin.selling.warrant.has.no.papers=Sans les papiers d''origine
+admin.selling.warrant.has.no.box=Sans la boite d''origine
+admin.selling.warrant.additionnal.infos=Remarques : {0}
+
+admin.selling.warrant.conditions=Conditions du dépôt vente
+admin.selling.warrant.type.virtual=Mode de dépôt vente : <b>VIRTUEL</b> (la montre reste chez le client)
+admin.selling.warrant.type.real=Mode de dépôt vente : <b>REEL</b> (la montre est conservée par Watch Next)
+admin.selling.warrant.price=Prix client* : <b>{0} €</b>
+admin.selling.warrant.price.nb=* le prix client est la somme nette de frais que souhaite tirer de la vente le client
+
+admin.selling.warrant.customer=Informations client
+admin.selling.warrant.customer.contact=Coordonnées du client (email/téléphone) : {0} / {1}
+admin.selling.warrant.customer.id.infos=Pièce d''identité :
+
+admin.selling.warrant.footer=Ce mandat n''est pas exclusif, cependant le client s''engage à :<br>\
+- informer immédiatement watch next en cas de retrait de la montre de la vente, ou de toute modification de l''état de la montre ou de ses accessoires,<br>\
+- cas du dépôt virtuel : rendre disponible la montre sous trois (3) jours ouvrés pour collecte,<br>\
+- informer watch next de toute modification des coordonnées téléphoniques ou email.<br><br>\
+Lors de la transaction, le client accepte que le paiement de la montre soit réalisé par virement bancaire, dont \
+la preuve de réalisation sera remise lors de la collecte de la montre dans le cas d''un dépôt virtuel.<br><br>\
+Dans le cadre de la réalisation d''une plus value à l''occasion de cette vente, il est rappelé que le vendeur\
+ est tenu de déclarer spontanément la dite plus value via le formulaire 2092 (CERFA n° 10251) afin de s''acquitter des taxes et impôts exigibles.
+
+admin.selling.warrant.signature=Date et signature du client
+
+admin.sellingwarrant.form.title=Ajout d''un nouveau mandat
+admin.sellingwarrant.form.title.html=Ajout d''un nouveau mandat  
+admin.sellingwarrant.action.cancel=Annuler
+admin.sellingwarrant.action.save=Enregistrer
+admin.sellingwarrant.action.show=Prévisualiser
+admin.sellingwarrant.action.edit=Modifier
+admin.sellingwarrant.action.delete=Supprimer
+admin.sellingwarrant.form.title=Ajout d''un nouveau mandat
+admin.sellingwarrant.form.title=Ajout d''un nouveau mandat
+admin.sellingwarrant.form.watch.id.label.name=Montre
+admin.sellingwarrant.form.watch.id.default.name=Sélectionner la montre
+admin.sellingwarrant.form.documentdate.label.name=Date du mandat
+
+admin.sellingwarrant.page.title=Mandats de vente
+admin.sellingwarrant.page.title.html=Mandats de vente
+admin.sellingwarrant.page.documentdate=Date du document
+admin.sellingwarrant.page.owner=Client
+admin.sellingwarrant.page.brand=Marque
+admin.sellingwarrant.page.model=Modèle
+
+admin.sellingwarrant.form=Mandat de dépôt vente
+admin.sellingwarrant.page=Mandat de dépôt vente
 
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751

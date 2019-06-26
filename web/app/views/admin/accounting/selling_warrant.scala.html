@@ -1,0 +1,111 @@
+@(thisInstance: models.SellingWarrant)
+@import tags._
+@import views.AccountingSheet
+@import java.lang.String; var title=""
+@import models.Customer; var customer=new models.Customer()
+@import models.WatchToSell; var watch=new models.WatchToSell()
+@import models.AccountingDocument; var document=new models.AccountingDocument()
+@import java.lang.Integer; var year=new java.lang.Integer(java.time.Year.now().getValue())
+
+@{
+	watch = models.WatchToSell.findById(thisInstance.watch.id);
+	title=Messages("admin.selling.warrant.title", watch.getBrand, watch.getModel);
+	
+	if(watch.customerThatSellsTheWatch.email != null) {
+		customer = models.Customer.findByEmail(watch.customerThatSellsTheWatch.email);
+		if(customer != null && customer.civility!=null) {
+			title=title+" - "+Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.'));
+		}
+		if(customer != null) {
+			title=title+" "+customer.firstname+" "+customer.name;
+			document = new models.AccountingDocument(customer);
+			document.setDocumentCreationDate(thisInstance.documentDate);
+		}
+	}
+	
+	
+	 
+}
+
+@layouts.admin_accounting(title, document) {
+  <div class="certificate selling-warrant">
+     
+     <div class="row">
+        <div class="type col-xs-12">
+	        <h2>@Html(Messages("admin.selling.warrant.text"))</h2>
+        </div>
+     </div>
+     
+     <div class="row">
+     	<div class="watch-description col-xs-12">
+	        <h3>@Html(Messages("admin.selling.warrant.watch.description"))</h3>
+	        <ul>
+	        	<li>@Html(Messages("admin.selling.warrant.watch.brand.and.model", watch.getBrandName, watch.getModel))</li>
+	        	<li>@Html(Messages("admin.selling.warrant.reference.and.serial", watch.getReference, watch.readSerial))</li>
+	        	<li>@Html(Messages("admin.selling.warrant.accessories"))</li>
+	        	<ul>
+	        	@if(watch.hasPapers) {
+	        		<li>@Html(Messages("admin.selling.warrant.has.papers"))</li>
+	        	} else  {
+	        		<li>@Html(Messages("admin.selling.warrant.has.no.papers"))</li>
+	        	}
+	        	@if(watch.hasBox) {
+	        		<li>@Html(Messages("admin.selling.warrant.has.box"))</li>
+	        	} else  {
+	        		<li>@Html(Messages("admin.selling.warrant.has.no.box"))</li>
+	        	}
+	        	</ul>
+	        	@if_not_null_nor_empty(watch.additionnalInfos) {<li>@Html(Messages("admin.selling.warrant.additionnal.infos",watch.additionnalInfos))</li>}</p>
+	        </ul>
+        </div>
+	 </div>
+
+     
+     <div class="row">
+     	<div class="warrant-description col-xs-12">
+	        <h3>@Html(Messages("admin.selling.warrant.customer"))</h3>
+	        <ul>
+	        	<li>@Html(Messages("admin.selling.warrant.customer.contact", watch.customerThatSellsTheWatch.email, display_phonenumber(watch.customerThatSellsTheWatch.phoneNumber, false)))</li>
+	        	<li>@Html(Messages("admin.selling.warrant.customer.id.infos"))</li>
+	        	<div class="warrant-id-infos">@watch.customerThatSellsTheWatch.idInfos</div>
+	        </ul>
+        </div>
+	 </div>
+	 
+	 <div class="row">
+     	<div class="warrant-description col-xs-12">
+	        <h3>@Html(Messages("admin.selling.warrant.conditions"))</h3>
+	        <ul>
+	        	@if(watch.isVirtualWarrant) {
+	        		<li>@Html(Messages("admin.selling.warrant.type.virtual"))</li>
+	        	} else {
+	        		<li>@Html(Messages("admin.selling.warrant.type.real"))</li>
+	        	}
+	        	
+	        	<li>@Html(Messages("admin.selling.warrant.price", watch.purchasingPrice))</li>
+	        </ul>
+        </div>
+	 </div>
+	  
+	 
+	 <div class="row">
+        <div class="warrant-price-nb col-xs-12">
+	        @Html(Messages("admin.selling.warrant.price.nb"))
+        </div>
+     </div>
+
+	<hr />
+     
+     <div class="row">
+     	<div class="warrant-legal col-xs-12">
+	        @Html(Messages("admin.selling.warrant.footer"))
+        </div>
+     </div>
+     
+     <div class="row">
+     	<div class="signing col-xs-12">
+	        <h3>@Html(Messages("admin.selling.warrant.signature"))</h3>
+        </div>
+     </div>
+  </div>
+}

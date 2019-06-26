@@ -1,0 +1,24 @@
+@(currentPage: com.avaje.ebean.Page[models.SellingWarrant], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('a[class~="btn-default"]').each(function(){
+				var oldUrl = $(this).attr("href");
+				var newUrl = oldUrl.replace("SellingWarrants", "OverloadedSellingWarrants");
+				$(this).attr("href", newUrl);
+			});
+		})
+	</script>
+}
+
+@defining(new views.PageDisplay(currentPage, "creation_date", "admin.sellingwarrant.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("documentDate", "documentDate", "getDocumentDate", false, "date short");  
+		pageDisplay.addTableField("watch.customerThatSellsTheWatch.name", "owner", "getCustomerFullName", false);
+	    pageDisplay.addTableField("watch.brand", "brand", "getBrand", false);
+	    pageDisplay.addTableField("watch.model", "model", "getModel", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "SellingWarrants", null, currentSortBy, currentOrder, currentFilter, currentSize, false, false, end_scripts)
+}

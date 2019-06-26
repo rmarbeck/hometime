@@ -1,6 +1,6 @@
-@(phoneNumber: String)
+@(phoneNumber: String, clickable: Boolean = true)
 @if(phoneNumber != null) {
-	<a href="tel:@phoneNumber">@phoneNumber.replaceFirst("(\\d*)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5")</a>
+	@if(clickable) {<a href="tel:@phoneNumber">}@phoneNumber.replaceFirst("(\\d*)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5")@if(clickable) {</a>}
 } else {
 	-
 }

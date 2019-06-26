@@ -38,7 +38,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	    OWNED_BY_US ("OWNED_BY_US"),
 	    OWNED_BY_CUSTOMER ("OWNED_BY_CUSTOMER"),
 	    OWNED_BY_PARTNER ("OWNED_BY_PARTNER"),
-	    RESERVED_1 ("RESERVED_1"),
+	    OWNED_AND_STORED_BY_CUSTOMER ("OWNED_AND_STORED_BY_CUSTOMER"),
 	    RESERVED_2 ("RESERVED_2");
 	    
 		private String name = "";
@@ -130,6 +130,9 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	public String strap;
 	
 	public String seller;
+	
+	@ManyToOne
+	public Customer customerThatSellsTheWatch;
 	
 	@Column(length = 10000)
 	public String additionnalInfos;
@@ -228,6 +231,10 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
         return find.where().orderBy("customerThatBoughtTheWatch.name ASC, brand.display_name ASC").findList();
     }
     
+    public static List<WatchToSell> findAllBySellingCustomerAndBrandAsc() {
+        return find.where().isNotNull("customerThatSellsTheWatch").orderBy("customerThatSellsTheWatch.name ASC, brand.display_name ASC").findList();
+    }
+    
     public static List<String> getSerialsBySerialAsc() {
     	List<WatchToSell> watches = findAllBySerialAsc();
     	List<String> serials = new ArrayList<String>();
@@ -263,12 +270,47 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     	return result.toString();
     }
     
+    private static String displayWatchByCustomerThatSellsTheWatch(WatchToSell watch) {
+    	StringBuilder result = new StringBuilder();
+    	if (watch.customerThatSellsTheWatch != null) {
+    		result.append(watch.customerThatSellsTheWatch.getFullNameInversed());
+    	} else {
+    		result.append("unknown");
+    	}
+    	result.append(" -> ");
+    	result.append(watch.brand.display_name);
+    	result.append(" ");
+    	result.append(watch.model);
+    	
+    	return result.toString();
+    }
+    
     public static List<String> getWatchesByCustomersAsc() {
     	List<WatchToSell> watches = findAllByCustomerAndBrandAsc();
     	List<String> watchesByCustomers = new ArrayList<String>();
     	if (watches != null) {
     		for (WatchToSell watch : watches)
     			watchesByCustomers.add(displayWatchByCustomer(watch));
+    	}
+    	return watchesByCustomers;
+    }
+    
+    public static List<String> getIdsBySellingCustomersAsc() {
+    	List<WatchToSell> watches = findAllBySellingCustomerAndBrandAsc();
+    	List<String> watchesByCustomers = new ArrayList<String>();
+    	if (watches != null) {
+    		for (WatchToSell watch : watches)
+    			watchesByCustomers.add(watch.id.toString());
+    	}
+    	return watchesByCustomers;
+    }
+    
+    public static List<String> getWatchesBySellingCustomersAsc() {
+    	List<WatchToSell> watches = findAllBySellingCustomerAndBrandAsc();
+    	List<String> watchesByCustomers = new ArrayList<String>();
+    	if (watches != null) {
+    		for (WatchToSell watch : watches)
+    			watchesByCustomers.add(displayWatchByCustomerThatSellsTheWatch(watch));
     	}
     	return watchesByCustomers;
     }
@@ -350,6 +392,8 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 			this.brand = Brand.findByInternalName(this.brand.internal_name);
 		if (this.customerThatBoughtTheWatch != null)
 			this.customerThatBoughtTheWatch = Customer.findByEmail(this.customerThatBoughtTheWatch.email);
+		if (this.customerThatSellsTheWatch != null)
+			this.customerThatSellsTheWatch = Customer.findByEmail(this.customerThatSellsTheWatch.email);
 		if (this.purchaseInvoice != null)
 			this.purchaseInvoice = ExternalDocument.findByName(this.purchaseInvoice.name);
 	}
@@ -441,6 +485,10 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 	@Override
 	public String getDisplayName() {
 		return brand.display_name+" "+model;
+	}
+	
+	public boolean isVirtualWarrant() {
+		 return ownerStatus.equals(WatchToSellOwnerStatus.OWNED_AND_STORED_BY_CUSTOMER);
 	}
 	
 }

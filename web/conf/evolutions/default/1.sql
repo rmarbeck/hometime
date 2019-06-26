@@ -154,6 +154,7 @@ create table customer (
   return_address            varchar(10000),
   shared_infos              varchar(10000),
   private_infos             varchar(10000),
+  id_infos                  varchar(10000),
   customer_status           varchar(40),
   customer_civility         varchar(40),
   value                     bigint,
@@ -569,6 +570,15 @@ create table selling_document (
   constraint pk_selling_document primary key (id))
 ;
 
+create table selling_warrant (
+  id                        bigint not null,
+  creation_date             timestamp,
+  document_date             timestamp,
+  watch_id                  bigint,
+  document_data             blob,
+  constraint pk_selling_warrant primary key (id))
+;
+
 create table service_test (
   id                        bigint not null,
   request_date              timestamp,
@@ -685,6 +695,7 @@ create table watch_to_sell (
   movement                  varchar(255),
   strap                     varchar(255),
   seller                    varchar(255),
+  customer_that_sells_the_watch_id bigint,
   additionnal_infos         varchar(10000),
   private_infos             varchar(10000),
   year                      varchar(255),
@@ -692,7 +703,7 @@ create table watch_to_sell (
   has_papers                boolean,
   is_new                    boolean,
   customer_that_bought_the_watch_id bigint,
-  owner_status              varchar(17),
+  owner_status              varchar(28),
   status                    varchar(23),
   purchase_invoice_available boolean,
   selling_price             bigint,
@@ -701,7 +712,7 @@ create table watch_to_sell (
   should_be_in_registry     boolean,
   is_in_registry            boolean,
   reporting_infos           varchar(255),
-  constraint ck_watch_to_sell_owner_status check (owner_status in ('OWNED_BY_US','OWNED_BY_CUSTOMER','OWNED_BY_PARTNER','RESERVED_1','RESERVED_2')),
+  constraint ck_watch_to_sell_owner_status check (owner_status in ('OWNED_BY_US','OWNED_BY_CUSTOMER','OWNED_BY_PARTNER','OWNED_AND_STORED_BY_CUSTOMER','RESERVED_2')),
   constraint ck_watch_to_sell_status check (status in ('TO_SELL','RESERVED_FOR_A_CUSTOMER','SOLD','SELLING_CANCELED','RESERVED_1','RESERVED_2')),
   constraint pk_watch_to_sell primary key (id))
 ;
@@ -769,6 +780,8 @@ create sequence price_seq;
 create sequence sms_seq;
 
 create sequence selling_document_seq;
+
+create sequence selling_warrant_seq;
 
 create sequence service_test_seq;
 
@@ -838,18 +851,22 @@ alter table preset_quotation_for_brand add constraint fk_preset_quotation_for_br
 create index ix_preset_quotation_for_brand_27 on preset_quotation_for_brand (brand_id);
 alter table selling_document add constraint fk_selling_document_document_28 foreign key (document_id) references accounting_document (id) on delete restrict on update restrict;
 create index ix_selling_document_document_28 on selling_document (document_id);
-alter table spare_part add constraint fk_spare_part_watch_29 foreign key (watch_id) references customer_watch (id) on delete restrict on update restrict;
-create index ix_spare_part_watch_29 on spare_part (watch_id);
-alter table user_table add constraint fk_user_table_partner_30 foreign key (partner_id) references partner (id) on delete restrict on update restrict;
-create index ix_user_table_partner_30 on user_table (partner_id);
-alter table user_table add constraint fk_user_table_customer_31 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
-create index ix_user_table_customer_31 on user_table (customer_id);
-alter table watch_to_sell add constraint fk_watch_to_sell_brand_32 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
-create index ix_watch_to_sell_brand_32 on watch_to_sell (brand_id);
-alter table watch_to_sell add constraint fk_watch_to_sell_customerThat_33 foreign key (customer_that_bought_the_watch_id) references customer (id) on delete restrict on update restrict;
-create index ix_watch_to_sell_customerThat_33 on watch_to_sell (customer_that_bought_the_watch_id);
-alter table watch_to_sell add constraint fk_watch_to_sell_purchaseInvo_34 foreign key (purchase_invoice_id) references external_document (id) on delete restrict on update restrict;
-create index ix_watch_to_sell_purchaseInvo_34 on watch_to_sell (purchase_invoice_id);
+alter table selling_warrant add constraint fk_selling_warrant_watch_29 foreign key (watch_id) references watch_to_sell (id) on delete restrict on update restrict;
+create index ix_selling_warrant_watch_29 on selling_warrant (watch_id);
+alter table spare_part add constraint fk_spare_part_watch_30 foreign key (watch_id) references customer_watch (id) on delete restrict on update restrict;
+create index ix_spare_part_watch_30 on spare_part (watch_id);
+alter table user_table add constraint fk_user_table_partner_31 foreign key (partner_id) references partner (id) on delete restrict on update restrict;
+create index ix_user_table_partner_31 on user_table (partner_id);
+alter table user_table add constraint fk_user_table_customer_32 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_user_table_customer_32 on user_table (customer_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_brand_33 foreign key (brand_id) references brand (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_brand_33 on watch_to_sell (brand_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_customerThat_34 foreign key (customer_that_sells_the_watch_id) references customer (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_customerThat_34 on watch_to_sell (customer_that_sells_the_watch_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_customerThat_35 foreign key (customer_that_bought_the_watch_id) references customer (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_customerThat_35 on watch_to_sell (customer_that_bought_the_watch_id);
+alter table watch_to_sell add constraint fk_watch_to_sell_purchaseInvo_36 foreign key (purchase_invoice_id) references external_document (id) on delete restrict on update restrict;
+create index ix_watch_to_sell_purchaseInvo_36 on watch_to_sell (purchase_invoice_id);
 
 
 
@@ -920,6 +937,8 @@ drop table if exists price;
 drop table if exists sms;
 
 drop table if exists selling_document;
+
+drop table if exists selling_warrant;
 
 drop table if exists service_test;
 
@@ -998,6 +1017,8 @@ drop sequence if exists price_seq;
 drop sequence if exists sms_seq;
 
 drop sequence if exists selling_document_seq;
+
+drop sequence if exists selling_warrant_seq;
 
 drop sequence if exists service_test_seq;
 
