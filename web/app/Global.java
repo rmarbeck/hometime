@@ -3,6 +3,7 @@ import static play.mvc.Results.internalServerError;
 import static play.mvc.Results.notFound;
 
 import java.lang.reflect.Method;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import models.Watch;
 import play.Application;
 import play.GlobalSettings;
 import play.Logger;
+import play.libs.F;
 import play.libs.F.Promise;
 import play.libs.Yaml;
 import play.mvc.Action;
@@ -22,6 +24,7 @@ import play.mvc.Result;
 import com.avaje.ebean.Ebean;
 import com.typesafe.config.ConfigFactory;
 
+import fr.hometime.utils.DateHelper;
 import play.api.mvc.EssentialFilter;
 import play.filters.gzip.GzipFilter;
 
@@ -108,6 +111,7 @@ public class Global extends GlobalSettings {
 
     @SuppressWarnings("rawtypes")
 	public Action onRequest(Request request, Method actionMethod) {
+    	Instant startOfRequest = DateHelper.startTimer();
         Logger.info("Before each request... {} secured ? {}", request.toString(), request.secure());
         if (isUserAgentBlocked(request))
         	throw new RuntimeException("User agent blocked");
@@ -119,7 +123,22 @@ public class Global extends GlobalSettings {
                 }
             };
         }
-        return super.onRequest(request, actionMethod);
+
+        Action result = super.onRequest(request, actionMethod);
+
+        return wrappedActionWithTimer(result, request, startOfRequest);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private Action wrappedActionWithTimer(Action action, Request request, Instant startOfRequest) {
+    	return new Action.Simple() {
+    		public Promise<Result> call(Http.Context ctx) throws Throwable {
+                return 	delegate.call(ctx).map(result -> {
+                	Logger.info("---------> Request {} duration : {} ms  <---------", request.toString(), DateHelper.getTimeFromInMillis(startOfRequest));
+                	return result;
+                });
+            }
+        };
     }
 
     @Override
