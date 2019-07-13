@@ -147,7 +147,7 @@ home.promise.1.call.to.action.title=Comprendre l''entretien et la révision d''u
 
 home.promise.2.alt=Atelier Hometime - 322 rue Saint Honoré
 home.promise.2.head=A l''atelier
-home.promise.2.body=Nous vous accueillons sur <b>Paris, dans notre atelier du 322 rue Saint Honoré</b> du Lundi au vendredi de 10h à 18h30, ou le samedi de 11h à 17h. Venez avec ou sans rendez-vous pour déposer une montre ou simplement nous rencontrer ! 
+home.promise.2.body=Nous vous accueillons sur <b>Paris, dans notre atelier du 322 rue Saint Honoré</b> du Lundi au vendredi de 10h à 18h30, ou le samedi sur rendez-vous. Venez avec ou sans rendez-vous pour déposer une montre ou simplement nous rencontrer ! 
 home.promise.2.call.to.action=Venir nous voir
 home.promise.2.call.to.action.title=Les services Hometime
 
@@ -851,7 +851,7 @@ appointment.generic.html.title=Venir chez Hometime
 appointment.generic.html.description=Comment venir dans nos locaux à Paris pour déposer une montre pour une révision complète, un entretien partiel, un polissage, un changement de pile ou tout autre service horloger
 appointment.generic.html.keywords=Locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
 appointment.text.disclaimer=Nous pouvons vous recevoir pour répondre à l''ensemble de vos questions et pour vous proposer tous nos services horlogers.
-appointment.text.part1=Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi de 11h à 17h (ACTUELLEMENT NOUS SOMMES FERMES LES SAMEDI DU FAIT DES MANIFESTATIONS)</b>.
+appointment.text.part1=Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi sur rendez-vous</b>.
 appointment.text.part2=Une fois sur les lieux, après la porte sur la rue : <b>au fond du couloir, prendre l''escalier à droite, puis 1er étage à droite.</b>
 appointment.text.part3=Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:{0}" rel="nofollow"><span>{1}</span></a> 
 appointment.text.part4=Vous préférez que nous vous contactions par téléphone&nbsp;?
@@ -2269,7 +2269,7 @@ Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
 %0D%0A\
 Nous venons de vous éditer et de vous envoyer le devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
-Habituellement nous vous recevons dans notre atelier situé dans le 1er arrondissement de Paris du lundi au samedi, cependant si vous le souhaitez, nous pouvons nous déplacer à votre domicile ou sur votre lieu de travail.%0D%0A\
+Habituellement nous vous recevons dans notre atelier situé dans le 1er arrondissement de Paris du lundi au vendredi, cependant si vous le souhaitez, nous pouvons nous déplacer à votre domicile ou sur votre lieu de travail.%0D%0A\
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\
@@ -2284,7 +2284,7 @@ Tout d''abord veuillez nous excuser pour le délai de notre réponse.%0D%0A\
 %0D%0A\
 Nous venons de vous éditer et de vous envoyer les devis pour l''entretien de votre montre.%0D%0A\
 %0D%0A\
-Habituellement nous vous recevons dans notre atelier situé dans le 1er arrondissement de Paris du lundi au samedi, cependant si vous le souhaitez, nous pouvons nous déplacer à votre domicile ou sur votre lieu de travail.%0D%0A\
+Habituellement nous vous recevons dans notre atelier situé dans le 1er arrondissement de Paris du lundi au vendredi, cependant si vous le souhaitez, nous pouvons nous déplacer à votre domicile ou sur votre lieu de travail.%0D%0A\
 %0D%0A\
 N''hésitez pas si vous avez la moindre question !%0D%0A\
 %0D%0A\
@@ -2960,7 +2960,7 @@ admin.buy.request.proposal.payment.conditions.body=Les prix proposés par Hometi
 admin.buy.request.proposal.outsidezone.head=Livraison et service après vente :
 admin.buy.request.proposal.outsidezone.body=Pour les livraisons en dehors de la région parisienne, nous retenons la plupart du temps avec nos clients l''envoi de la montre en "valeur déclarée". Il s''agit d''un mode de transport entièrement sécurisé proposé par la Poste, garantissant le bien envoyé contre tout risque de vol ou de dégradation.<br /><br />Dans le cadre de la garantie de bon fonctionnement, nous prenons en charge les transports aller et retour de votre montre.
 admin.buy.request.proposal.insidezone.head=Livraison et service après vente :
-admin.buy.request.proposal.insidezone.body=Sur Paris et sa région, nous livrons les montres à votre domicile ou au bureau du Lundi au Samedi.<br /><br />Dans le cadre de la garantie de bon fonctionnement, nous intervenons également à domicile pour collecter et vous restituer votre montre.
+admin.buy.request.proposal.insidezone.body=Sur Paris et sa région, nous livrons les montres à votre domicile ou au bureau du Lundi au Vendredi.<br /><br />Dans le cadre de la garantie de bon fonctionnement, nous intervenons également à domicile pour collecter et vous restituer votre montre.
 admin.buy.request.proposal.other.services.head=Prestations complémentaires :
 admin.buy.request.proposal.other.services.body=En complément du courtage en montres de luxe, Hometime vous propose ses services d''entretien de montres de luxe (révision, réparation, restauration) avec prise en charge à domicile.<br /><br />Nous proposons par ailleurs une vaste gamme de services horlogers. Tous les détails sur <a href="{0}">notre site</a>.
 admin.buy.request.proposal.end.part=Nous sommes à votre disposition pour toute précision.<br /><br />Dans l''attente de votre réponse, merci de votre confiance.<br /><br />Cette proposition commerciale s''entend dans le cadre des <a href="{0}">Conditions&nbsp;Générales&nbsp;de&nbsp;Ventes&nbsp;Hometime</a>.
@@ -4840,7 +4840,7 @@ admin.quotation.request.sum.up.price=Montant de l''entretien : <strong>{0}</stro
 admin.quotation.request.sum.up.delay=Délais prévisionnels : <strong>{0}</strong>
 admin.quotation.request.sum.up.other=<strong>Retrouvez tous les détails ci-dessous</strong>
 
-admin.quotation.request.first.date=Rendez-vous à l''atelier au 322 rue Saint Honoré (du Lundi au Vendredi, de 10h à 18h30, ou le samedi de 11h à 17h) ou déplacement pour la collecte de la montre,
+admin.quotation.request.first.date=Rendez-vous à l''atelier au 322 rue Saint Honoré (du Lundi au Vendredi, de 10h à 18h30, ou le samedi sur rendez-vous) ou déplacement pour la collecte de la montre,
 
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751
