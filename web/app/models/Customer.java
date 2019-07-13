@@ -134,6 +134,9 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 	@Column(length = 10000)
 	public String privateInfos;
 	
+	@Column(length = 10000)
+	public String idInfos;
+	
 	@Constraints.Required
 	@Column(name="customer_status", length = 40)
 	@Enumerated(EnumType.STRING)
@@ -159,6 +162,9 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
 
 	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
 	public List<CustomerWatch> watches;
+	
+	@OneToMany(mappedBy="customerThatSellsTheWatch", cascade = CascadeType.ALL)
+	public List<WatchToSell> watchesToSell;
 	
 	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
 	public List<User> users;

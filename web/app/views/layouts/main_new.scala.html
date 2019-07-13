@@ -1,0 +1,18 @@
+@(key: String, end_scripts_bottom: Html = Html(""), in_head_content: Html = Html(""))(content: Html)
+
+@import tags._
+
+@head = {
+        @in_head_content
+}
+
+@footer = {
+}
+
+@end_scripts = {
+    @end_scripts_bottom    
+}
+
+@layouts.root_new(head, footer, end_scripts) {
+    @content
+}

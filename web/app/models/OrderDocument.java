@@ -113,6 +113,10 @@ public class OrderDocument extends Model {
 		super.update();
 	}
 	
+	public void changeUniqueAccountingNumber(String uan) {
+		this.uniqueAccountingNumber = uan;
+	}
+	
 	public String getUniqueAccountingNumber() {
 		return uniqueAccountingNumber;
 	}

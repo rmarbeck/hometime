@@ -156,10 +156,11 @@ public class Invoice extends Model {
     	return find.fetch("document.customer").where().eq("document.customer.id", customer.id)
     			.orderBy("unique_accounting_number DESC").findList().get(0);
     }
-
+    
     public static Page<Invoice> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-        	find.where().or(Expr.ilike("uniqueAccountingNumber", "%" + filter + "%"), Expr.ilike("document.customer.name", "%" + filter + "%"))
+        	find.where().disjunction().ilike("uniqueAccountingNumber", "%" + filter + "%").ilike("document.customer.name", "%" + filter + "%").ilike("description", "%" + filter + "%")
+        		.endJunction()
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);

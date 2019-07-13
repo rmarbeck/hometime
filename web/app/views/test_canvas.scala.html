@@ -1,0 +1,1199 @@
+@(message: String = "")
+@import tags._
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/assets/canvas/css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="/assets/canvas/style.css" type="text/css" />
+	<link rel="stylesheet" href="/assets/canvas/css/swiper.css" type="text/css" />
+	<link rel="stylesheet" href="/assets/canvas/css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="/assets/canvas/css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="/assets/canvas/css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="/assets/canvas/css/magnific-popup.css" type="text/css" />
+
+	<link rel="stylesheet" href="/assets/canvas/css/responsive.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>@Messages("home.html.title")</title>
+	<meta name="description" content="@Messages("home.html.description")">
+	<meta name="keywords" content="@Messages("home.html.keywords")">
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
+
+			<div id="header-wrap">
+
+				<div class="container clearfix">
+
+					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+					<!-- Logo
+					============================================= -->
+					<div id="logo">
+						<a href="index.html" class="standard-logo" data-dark-logo="/assets/canvas/images/url-avec-logo-1500-white-high.png"><img src="/assets/canvas/images/url-avec-logo-1500-black-high.png" alt="Hometime Logo"></a>
+						<a href="index.html" class="retina-logo" data-dark-logo="/assets/canvas/images/url-avec-logo-1500-white-high.png"><img src="/assets/canvas/images/url-avec-logo-1500-black-high.png" alt="Hometime Logo"></a>
+					</div><!-- #logo end -->
+
+					<!-- Primary Navigation
+					============================================= -->
+					<nav id="primary-menu" class="dark">
+
+						<ul>
+							<li class="current"><a href="index.html"><div>Les Services</div></a>
+								<ul>
+									<li><a href="index-corporate.html"><div>Home - Corporate</div></a>
+										<ul>
+											<li><a href="index-corporate.html"><div>Corporate - Layout 1</div></a></li>
+											<li><a href="index-corporate-2.html"><div>Corporate - Layout 2</div></a></li>
+											<li><a href="index-corporate-3.html"><div>Corporate - Layout 3</div></a></li>
+											<li><a href="index-corporate-4.html"><div>Corporate - Layout 4</div></a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#"><div>Essai/achat des montres</div></a>
+								<ul>
+									<li><a href="#"><div><i class="icon-stack"></i>Sliders</div></a>
+										<ul>
+											<li><a href="slider-revolution.html"><div>Revolution Slider</div></a>
+												<ul>
+													<li><a href="rs-demos.html"><div>Premium Templates</div></a></li>
+													<li><a href="slider-revolution.html"><div>Full Screen</div></a></li>
+													<li><a href="slider-revolution-fullwidth.html"><div>Full Width</div></a></li>
+													<li><a href="slider-revolution-kenburns.html"><div>Kenburns Effect</div></a></li>
+													<li><a href="slider-revolution-html5-videos.html"><div>HTML5 Video</div></a></li>
+												</ul>
+											</li>
+											<li><a href="slider-canvas.html"><div>Canvas Slider</div></a>
+												<ul>
+													<li><a href="slider-canvas.html"><div>Full Width</div></a></li>
+													<li><a href="slider-canvas-fade.html"><div>Fade Transition</div></a></li>
+													<li><a href="slider-canvas-autoplay.html"><div>Autoplay Feature</div></a></li>
+													<li><a href="slider-canvas-video-event.html"><div>Custom Video Event</div></a></li>
+													<li><a href="slider-canvas-pagination.html"><div>Pagination Navigation</div></a></li>
+													<li><a href="slider-canvas-3.html"><div>3 Columns</div></a></li>
+													<li><a href="slider-canvas-4.html"><div>4 Columns</div></a></li>
+													<li><a href="slider-canvas-5.html"><div>5 Columns</div></a></li>
+												</ul>
+											</li>
+											<li><a href="slider-flex.html"><div>Flex Slider</div></a>
+												<ul>
+													<li><a href="slider-flex.html"><div>Default Layout</div></a></li>
+													<li><a href="slider-flex-thumbs.html"><div>with Thumbs</div></a></li>
+												</ul>
+											</li>
+											<li><a href="slider-owl.html"><div>Owl Slider</div></a>
+												<ul>
+													<li><a href="slider-owl-full.html"><div>Full Width</div></a></li>
+													<li><a href="slider-owl.html"><div>Boxed Width</div></a></li>
+													<li><a href="slider-owl-videos.html"><div>Video Slider</div></a></li>
+												</ul>
+											</li>
+											<li><a href="static-parallax.html"><div>Static Media</div></a>
+												<ul>
+													<li><a href="static-parallax.html"><div>Static - Parallax</div></a></li>
+													<li><a href="static-image.html"><div>Static - Image</div></a></li>
+													<li><a href="static-thumbs-grid.html"><div>Static - Thumb Gallery</div></a></li>
+													<li><a href="static-html5-video.html"><div>Static - HTML5 Video</div></a></li>
+													<li><a href="static-embed-video.html"><div>Static - Embedded Video</div></a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="mega-menu"><a href="#"><div>Entretien</div></a>
+								<div class="mega-menu-content style-2 clearfix">
+									<ul class="mega-menu-column col-lg-3">
+										<li class="mega-menu-title"><a href="#"><div>Introduction</div></a>
+											<ul>
+												<li><a href="about.html"><div>About Us</div></a></li>
+												<li><a href="about-2.html"><div>About Us - Layout 2</div></a></li>
+												<li><a href="about-me.html"><div>About Me</div></a></li>
+												<li><a href="team.html"><div>Team Members</div></a></li>
+												<li><a href="jobs.html"><div>Careers</div></a></li>
+												<li><a href="side-navigation.html"><div>Side Navigation</div></a></li>
+												<li><a href="page-submenu.html"><div>Page Submenu</div></a></li>
+												<li><a href="sitemap.html"><div>Sitemap</div></a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+
+						<!-- Top Search
+						============================================= -->
+						<div id="top-search">
+							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+							<form action="search.html" method="get">
+								<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+							</form>
+						</div><!-- #top-search end -->
+
+					</nav><!-- #primary-menu end -->
+
+				</div>
+
+			</div>
+
+		</header><!-- #header end -->
+
+		<section id="slider" class="slider-element slider-parallax swiper_wrapper clearfix">
+			<div class="slider-parallax-inner">
+
+				<div class="swiper-container swiper-parent">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide dark" style="background-image: url('/assets/canvas/images/bg3.jpg');">
+							<div class="container clearfix">
+								<div class="slider-caption slider-caption-center">
+									<h2 data-animate="fadeInUp">
+									<span class="text-rotater nocolor" data-separator="|" data-rotate="flipInX" data-speed="3500">Hometime :<br/>
+										<span class="t-rotate">Entretien|Achat&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;Vente&nbsp;&nbsp;|&nbsp;Conseils&nbsp;&nbsp;|Expertise</span>
+									</span>
+									</h2>
+									<a data-animate="fadeInUp" href="#" class="button button-3d button-rounded button-reveal button-small button-teal tright topmargin-sm "><i class="icon-angle-right"></i><span>Demander un devis</span></a>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide dark">
+							<div class="container clearfix">
+								<div class="slider-caption slider-caption-center">
+									<h2 data-animate="fadeInUp">Vous avez une belle montre, entretenez la !</h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Votre montre est faite pour durer, mais pour cela il est nécessaire de l'entretenir régulièrement. Hometime s'occupe de tout.</p>
+								</div>
+							</div>
+							<div class="video-wrap">
+								<video id="slide-video" poster="/assets/canvas/images/bg.png" preload="auto" loop autoplay muted>
+									<source src='/assets/canvas/images/bg.webm' type='video/webm' />
+									
+								</video>
+								<div class="video-overlay" style="background-color: rgba(0,0,0,0.70);"></div>
+							</div>
+						</div>
+						<div class="swiper-slide" style="background-image: url('/assets/canvas/images/bg2.jpg'); background-position: center middle;">
+							<div class="container clearfix">
+								<div class="slider-caption slider-caption-right">
+									<h2 data-animate="fadeInUp">Trouvez votre prochaine montre !</h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Hometime vous propose de trouver votre prochaine montre. Neuve ou d'occasion nous recherchons pour vous les plus belles pièces, au meilleur prix en garanties 2 ans.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+					<div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
+				</div>
+
+
+			</div>
+		</section>
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap">
+			
+				<div class="promo promo-light promo-full bottommargin-lg header-stick notopborder">
+					<div class="container clearfix">
+						<h3>Une question, un conseil : <span>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</span></h3>
+						<span>coût d'un appel vers un mobile en france, du lundi au samedi de 8h à 21h</span>
+						<a href="#" class="button button-3d button-dark button-reveal button-large button-rounded button-green tright"><i class="icon-angle-right"></i><span>Venir nous voir</span></a>
+					</div>
+				</div>
+
+				<div class="container clearfix">
+					<div class="row clearfix">
+
+						<div class="col-xl-5">
+							<div class="heading-block topmargin">
+								<h1>Ne perdez plus votre temps,<br>gagnez‑le !</h1>
+							</div>
+							<p class="lead">Hometime propose tous les services horlogers allant de l'entretien à la vente de montres au plus proche de vos attentes.</p>
+						</div>
+
+						<div class="col-xl-7">
+
+							<div style="position: relative; margin-bottom: -60px;" class="ohidden" data-height-xl="426" data-height-lg="567" data-height-md="470" data-height-md="287" data-height-xs="183">
+								<img src="/assets/canvas/images/exploded.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="100" alt="Chrome">
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="section nobottommargin">
+					<div class="container clear-bottommargin clearfix">
+
+						<div class="row topmargin-sm clearfix">
+
+							<div class="col-lg-4 bottommargin">
+								<i class="i-plain color i-large icon-line-watch inline-block" style="margin-bottom: 15px;"></i>
+								<div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+									<span class="before-heading">Votre montre est précieuse.</span>
+									<h4>Entretenez la</h4>
+								</div>
+								<p>Une montre est conçue pour durer longtemps et se transmettre de génération en génération. Hometime vous dit tout ce que vous devez savoir sur l'entretien d'une montre mécanique.</p>
+							</div>
+
+							<div class="col-lg-4 bottommargin">
+								<i class="i-plain color i-large icon-broadcast-tower inline-block" style="margin-bottom: 15px;"></i>
+								<div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+									<span class="before-heading">En plein coeur de Paris.</span>
+									<h4>A l'atelier</h4>
+								</div>
+								<p>Nous vous accueillons sur Paris, dans notre atelier du 322 rue Saint Honoré du Lundi au vendredi de 10h à 18h30, ou le samedi de 11h à 17h. Venez avec ou sans rendez-vous pour déposer une montre ou simplement nous rencontrer !</p>
+							</div>
+
+							<div class="col-lg-4 bottommargin">
+								<i class="i-plain color i-large icon-home1 inline-block" style="margin-bottom: 15px;"></i>
+								<div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+									<span class="before-heading">Ou chez vous.</span>
+									<h4>A domicile</h4>
+								</div>
+								<p>Pour vous apporter le meilleur, Hometime vous propose tous ses services à domicile. Vous n'avez pas à vous adapter à des contraintes d'horaires ou de distance, nous nous adaptons aux vôtres.</p>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="container clearfix">
+
+					<div class="heading-block topmargin-lg center">
+						<h2>Horloger, mais bien plus que ça !</h2>
+						<span class="divcenter">Hometime est le partenaire dont vous avez besoin pour vous accompagner pour tous les besoins autour de vos montres</span>
+					</div>
+
+					<div class="row bottommargin-sm">
+
+						<div class="col-lg-4 col-md-6 bottommargin">
+
+							<div class="feature-box fbox-right topmargin" data-animate="fadeIn">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-home" style="background-color:#3b916d"></i></a>
+								</div>
+								<h3>Partout en France</h3>
+								<p>Hometime propose tous les services horlogers partout en France avec des solutions adaptées à chacun.</p>
+							</div>
+
+							<div class="feature-box fbox-right topmargin" data-animate="fadeIn" data-delay="200">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-thumbs-up21" style="background-color:#3b916d"></i></a>
+								</div>
+								<h3>Pour tous vos besoins</h3>
+								<p>Nous disposons de nos horlogers et par ailleurs nous sélectionnons les meilleurs acteurs du marché pour vous apporter tous nos services : entretien, essai, achat, vente.</p>
+							</div>
+
+							<div class="feature-box fbox-right topmargin" data-animate="fadeIn" data-delay="400">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-euro-sign" style="background-color:#3b916d"></i></a>
+								</div>
+								<h3>Au prix le plus juste</h3>
+								<p>Nous faisons des choix nous permettant d'offrir les tarifs les plus justes et les délais les plus courts possible.</p>
+							</div>
+
+						</div>
+
+						<div class="col-lg-4 d-md-none d-lg-block bottommargin center">
+							<img src="/assets/images/home/m116610lv-0002.webp" alt="Rolex Hulk">
+						</div>
+
+						<div class="col-lg-4 col-md-6 bottommargin">
+
+							<div class="feature-box topmargin" data-animate="fadeIn">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-leaf" style="background-color:#3b916d"></i></a>
+								</div>
+								<h3>En respectant l'environnement</h3>
+								<p>Nous adoptons une démarche de protection de l'environnement en n'utilisant que des moyens de transport verts.</p>
+							</div>
+
+							<div class="feature-box topmargin" data-animate="fadeIn" data-delay="200">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-check" style="background-color:#3b916d"></i></a>
+								</div>
+								<h3>Endless Possibilities</h3>
+								<p>Complete control on each &amp; every element that provides endless customization.</p>
+							</div>
+
+							<div class="feature-box topmargin" data-animate="fadeIn" data-delay="400">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-bulb" style="background-color:#3b916d"></i></a>
+								</div>
+								<h3>Light &amp; Dark Color Schemes</h3>
+								<p>Change your Website's Primary Scheme instantly by simply adding the dark class.</p>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="row clearfix align-items-stretch">
+
+					<div class="col-lg-6 center col-padding" style="background: url('/assets/canvas/images/services/main-bg.jpg') center center no-repeat; background-size: cover;">
+					</div>
+
+					<div class="col-lg-6 center col-padding" style="background-color: #F5F5F5;">
+						<div class="heading-block nobottomborder">
+							<span class="before-heading color">Comprendre Hometime en 30 secondes.</span>
+							<h3>Clip vidéo Hometime</h3>
+						</div>
+
+						<div class="center bottommargin">
+			  				<iframe style="border:none;" class="embed-responsive-item" src="//www.youtube.com/embed/6XruLNvzZCM?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;modestbranding=1" allowfullscreen=""></iframe>
+							
+						</div>
+						<!--<p class="lead nobottommargin">Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive.</p>-->
+					</div>
+
+				</div>
+
+				<div class="row clearfix align-items-stretch bottommargin-lg">
+
+					<div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #515875;">
+						<i class="i-plain i-xlarge divcenter icon-calendar-1"></i>
+						<div class="counter counter-lined"><span data-from="0" data-to="5" data-refresh-interval="1" data-speed="600"></span>&nbsp;ans</div>
+						<h5>Depuis 2014</h5>
+					</div>
+
+					<div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #576F9E;">
+						<i class="i-plain i-xlarge divcenter icon-users1"></i>						
+						<div class="counter counter-lined"><span data-from="1" data-to="1475" data-refresh-interval="100" data-speed="2000"></span></div>
+						<h5>Clients</h5>
+					</div>
+
+					<div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #6697B9;">
+						<i class="i-plain i-xlarge divcenter icon-line-watch"></i>
+						<div class="counter counter-lined"><span data-from="1" data-to="3000" data-refresh-interval="250" data-speed="2500"></span></div>
+						<h5>Montres entretenues</h5>
+					</div>
+
+					<div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #88C3D8;">
+						<i class="i-plain i-xlarge divcenter icon-dollar-sign"></i>
+						<div class="counter counter-lined"><span data-from="60" data-to="500" data-refresh-interval="30" data-speed="2700"></span></div>
+						<h5>Montres vendues</h5>
+					</div>
+
+				</div>
+
+				<div class="container clearfix">
+
+					<div class="col_one_third">
+						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn">
+							<div class="fbox-icon">
+								<a href="#"><i class="icon-line-monitor"></i></a>
+							</div>
+							<h3>Responsive Layout</h3>
+							<p>Powerful Layout with Responsive functionality that can be adapted to any screen size.</p>
+						</div>
+					</div>
+
+					<div class="col_one_third">
+						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="200">
+							<div class="fbox-icon">
+								<a href="#"><i class="icon-line-eye"></i></a>
+							</div>
+							<h3>Retina Ready Graphics</h3>
+							<p>Looks beautiful &amp; ultra-sharp on Retina Displays with Retina Icons, Fonts &amp; Images.</p>
+						</div>
+					</div>
+
+					<div class="col_one_third col_last">
+						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="400">
+							<div class="fbox-icon">
+								<a href="#"><i class="icon-line-star"></i></a>
+							</div>
+							<h3>Powerful Performance</h3>
+							<p>Optimized code that are completely customizable and deliver unmatched fast performance.</p>
+						</div>
+					</div>
+
+					<div class="clear"></div>
+
+					<div class="col_one_third">
+						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="600">
+							<div class="fbox-icon">
+								<a href="#"><i class="icon-line-play"></i></a>
+							</div>
+							<h3>HTML5 Video</h3>
+							<p>Canvas provides support for Native HTML5 Videos that can be added to a Full Width Background.</p>
+						</div>
+					</div>
+
+					<div class="col_one_third">
+						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="800">
+							<div class="fbox-icon">
+								<a href="#"><i class="icon-params"></i></a>
+							</div>
+							<h3>Parallax Support</h3>
+							<p>Display your Content attractively using Parallax Sections that have unlimited customizable areas.</p>
+						</div>
+					</div>
+
+					<div class="col_one_third col_last">
+						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="1000">
+							<div class="fbox-icon">
+								<a href="#"><i class="icon-line-circle-check"></i></a>
+							</div>
+							<h3>Endless Possibilities</h3>
+							<p>Complete control on each &amp; every element that provides endless customization possibilities.</p>
+						</div>
+					</div>
+
+					<div class="clear"></div>
+
+					<div class="col_one_third bottommargin-sm">
+						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="600">
+							<div class="fbox-icon">
+								<a href="#"><i class="icon-bulb"></i></a>
+							</div>
+							<h3>Light &amp; Dark Color Schemes</h3>
+							<p>Change your Website's Primary Scheme instantly by simply adding the dark class to the body.</p>
+						</div>
+					</div>
+
+					<div class="col_one_third bottommargin-sm">
+						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="800">
+							<div class="fbox-icon">
+								<a href="#"><i class="icon-heart2"></i></a>
+							</div>
+							<h3>Boxed &amp; Wide Layouts</h3>
+							<p>Stretch your Website to the Full Width or make it boxed to surprise your visitors.</p>
+						</div>
+					</div>
+
+					<div class="col_one_third bottommargin-sm col_last">
+						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="1000">
+							<div class="fbox-icon">
+								<a href="#"><i class="icon-note"></i></a>
+							</div>
+							<h3>Extensive Documentation</h3>
+							<p>We have covered each &amp; everything in our Documentation including Videos &amp; Screenshots.</p>
+						</div>
+					</div>
+
+					<div class="clear"></div>
+
+				</div>
+
+				<div class="section topmargin nobottommargin nobottomborder">
+					<div class="container clearfix">
+						<div class="heading-block center nomargin">
+							<h3>Our Latest Works</h3>
+						</div>
+					</div>
+				</div>
+
+				<div id="portfolio" class="portfolio portfolio-nomargin grid-container portfolio-notitle portfolio-full grid-container clearfix">
+
+					<article class="portfolio-item pf-media pf-icons">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="/assets/images/home/grid-1.jpg" alt="Open Imagination">
+							</a>
+							<div class="portfolio-overlay">
+								<a href="images/portfolio/full/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+								<a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+							</div>
+						</div>
+						<div class="portfolio-desc">
+							<h3><a href="portfolio-single.html">Open Imagination</a></h3>
+							<span><a href="#">Media</a>, <a href="#">Icons</a></span>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-illustrations">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="/assets/images/home/grid-2.jpg" alt="Open Imagination">
+							</a>
+							<div class="portfolio-overlay">
+								<a href="images/portfolio/full/2.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+								<a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+							</div>
+						</div>
+						<div class="portfolio-desc">
+							<h3><a href="portfolio-single.html">Locked Steel Gate</a></h3>
+							<span><a href="#">Illustrations</a></span>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-graphics pf-uielements">
+						<div class="portfolio-image">
+							<a href="#">
+								<img src="/assets/images/home/grid-3.jpg" alt="Open Imagination">
+							</a>
+							<div class="portfolio-overlay">
+								<a href="http://vimeo.com/89396394" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
+								<a href="portfolio-single-video.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+							</div>
+						</div>
+						<div class="portfolio-desc">
+							<h3><a href="portfolio-single-video.html">Mac Sunglasses</a></h3>
+							<span><a href="#">Graphics</a>, <a href="#">UI Elements</a></span>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-icons pf-illustrations">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="/assets/images/home/grid-4.jpg" alt="Open Imagination">
+							</a>
+							<div class="portfolio-overlay" data-lightbox="gallery">
+								<a href="images/portfolio/full/4.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
+								<a href="images/portfolio/full/4-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
+								<a href="portfolio-single-gallery.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+							</div>
+						</div>
+						<div class="portfolio-desc">
+							<h3><a href="portfolio-single-gallery.html">Morning Dew</a></h3>
+							<span><a href="#">Icons</a>, <a href="#">Illustrations</a></span>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-uielements pf-media">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="/assets/images/home/grid-5.jpg" alt="Open Imagination">
+							</a>
+							<div class="portfolio-overlay">
+								<a href="images/portfolio/full/5.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+								<a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+							</div>
+						</div>
+						<div class="portfolio-desc">
+							<h3><a href="portfolio-single.html">Console Activity</a></h3>
+							<span><a href="#">UI Elements</a>, <a href="#">Media</a></span>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-graphics pf-illustrations">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="/assets/images/home/grid-6.jpg" alt="Open Imagination">
+							</a>
+							<div class="portfolio-overlay" data-lightbox="gallery">
+								<a href="images/portfolio/full/6.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
+								<a href="images/portfolio/full/6-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
+								<a href="images/portfolio/full/6-2.jpg" class="hidden" data-lightbox="gallery-item"></a>
+								<a href="images/portfolio/full/6-3.jpg" class="hidden" data-lightbox="gallery-item"></a>
+								<a href="portfolio-single-gallery.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+							</div>
+						</div>
+						<div class="portfolio-desc">
+							<h3><a href="portfolio-single-gallery.html">Shake It!</a></h3>
+							<span><a href="#">Illustrations</a>, <a href="#">Graphics</a></span>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-uielements pf-icons">
+						<div class="portfolio-image">
+							<a href="portfolio-single-video.html">
+								<img src="/assets/canvas/images/portfolio/4/7.jpg" alt="Backpack Contents">
+							</a>
+							<div class="portfolio-overlay">
+								<a href="http://www.youtube.com/watch?v=kuceVNBTJio" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
+								<a href="portfolio-single-video.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+							</div>
+						</div>
+						<div class="portfolio-desc">
+							<h3><a href="portfolio-single-video.html">Backpack Contents</a></h3>
+							<span><a href="#">UI Elements</a>, <a href="#">Icons</a></span>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-graphics">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="/assets/canvas/images/portfolio/4/8.jpg" alt="Sunset Bulb Glow">
+							</a>
+							<div class="portfolio-overlay">
+								<a href="images/portfolio/full/8.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+								<a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+							</div>
+						</div>
+						<div class="portfolio-desc">
+							<h3><a href="portfolio-single.html">Sunset Bulb Glow</a></h3>
+							<span><a href="#">Graphics</a></span>
+						</div>
+					</article>
+
+				</div>
+
+
+				<div class="clear"></div>
+
+				<a href="portfolio.html" class="button button-full button-dark center tright bottommargin-lg">
+					<div class="container clearfix">
+						More than 100+ predefined Portfolio Grid Layouts. <strong>See More</strong> <i class="icon-caret-right" style="top:4px;"></i>
+					</div>
+				</a>
+
+				<div class="container clearfix">
+
+					<div class="col_one_third bottommargin-sm center">
+						<img data-animate="fadeInLeft" src="/assets/canvas/images/services/iphone6.png" alt="Iphone">
+					</div>
+
+					<div class="col_two_third bottommargin-sm col_last">
+
+						<div class="heading-block topmargin-sm">
+							<h3>Optimized for Mobile &amp; Touch Enabled Devices.</h3>
+						</div>
+
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
+
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam.</p>
+
+						<a href="#" class="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Learn more</a>
+
+					</div>
+
+				</div>
+
+				<div class="section parallax dark nobottommargin" style="background-image: url('images/services/home-testi-bg.jpg'); padding: 100px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+					<div class="heading-block center">
+						<h3>What Clients Say?</h3>
+					</div>
+
+					<div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
+						<div class="flexslider">
+							<div class="slider-wrap">
+								<div class="slide">
+									<div class="testi-image">
+										<a href="#"><img src="/assets/canvas/images/testimonials/3.jpg" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p>Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?</p>
+										<div class="testi-meta">
+											Steve Jobs
+											<span>Apple Inc.</span>
+										</div>
+									</div>
+								</div>
+								<div class="slide">
+									<div class="testi-image">
+										<a href="#"><img src="/assets/canvas/images/testimonials/2.jpg" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
+										<div class="testi-meta">
+											Collis Ta'eed
+											<span>Envato Inc.</span>
+										</div>
+									</div>
+								</div>
+								<div class="slide">
+									<div class="testi-image">
+										<a href="#"><img src="/assets/canvas/images/testimonials/1.jpg" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum!</p>
+										<div class="testi-meta">
+											John Doe
+											<span>XYZ Inc.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="section notopmargin notopborder">
+					<div class="container clearfix">
+						<div class="heading-block center nomargin">
+							<h3>Latest from the Blog</h3>
+						</div>
+					</div>
+				</div>
+
+				<div class="container clear-bottommargin clearfix">
+					<div class="row">
+
+						<div class="col-lg-3 col-md-6 bottommargin">
+							<div class="ipost clearfix">
+								<div class="entry-image">
+									<a href="#"><img class="image_fade" src="/assets/canvas/images/magazine/thumb/1.jpg" alt="Image"></a>
+								</div>
+								<div class="entry-title">
+									<h3><a href="blog-single.html">Bloomberg smart cities; change-makers economic security</a></h3>
+								</div>
+								<ul class="entry-meta clearfix">
+									<li><i class="icon-calendar3"></i> 13th Jun 2014</li>
+									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 53</a></li>
+								</ul>
+								<div class="entry-content">
+									<p>Prevention effect, advocate dialogue rural development lifting people up community civil society. Catalyst, grantees leverage.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6 bottommargin">
+							<div class="ipost clearfix">
+								<div class="entry-image">
+									<a href="#"><img class="image_fade" src="/assets/canvas/images/magazine/thumb/2.jpg" alt="Image"></a>
+								</div>
+								<div class="entry-title">
+									<h3><a href="blog-single.html">Medicine new approaches communities, outcomes partnership</a></h3>
+								</div>
+								<ul class="entry-meta clearfix">
+									<li><i class="icon-calendar3"></i> 24th Feb 2014</li>
+									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 17</a></li>
+								</ul>
+								<div class="entry-content">
+									<p>Cross-agency coordination clean water rural, promising development turmoil inclusive education transformative community.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6 bottommargin">
+							<div class="ipost clearfix">
+								<div class="entry-image">
+									<a href="#"><img class="image_fade" src="/assets/canvas/images/magazine/thumb/3.jpg" alt="Image"></a>
+								</div>
+								<div class="entry-title">
+									<h3><a href="blog-single.html">Significant altruism planned giving insurmountable challenges liberal</a></h3>
+								</div>
+								<ul class="entry-meta clearfix">
+									<li><i class="icon-calendar3"></i> 30th Dec 2014</li>
+									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+								</ul>
+								<div class="entry-content">
+									<p>Micro-finance; vaccines peaceful contribution citizens of change generosity. Measures design thinking accelerate progress medical initiative.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6 bottommargin">
+							<div class="ipost clearfix">
+								<div class="entry-image">
+									<a href="#"><img class="image_fade" src="/assets/canvas/images/magazine/thumb/4.jpg" alt="Image"></a>
+								</div>
+								<div class="entry-title">
+									<h3><a href="blog-single.html">Compassion conflict resolution, progressive; tackle</a></h3>
+								</div>
+								<ul class="entry-meta clearfix">
+									<li><i class="icon-calendar3"></i> 15th Jan 2014</li>
+									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 54</a></li>
+								</ul>
+								<div class="entry-content">
+									<p>Community health workers best practices, effectiveness meaningful work The Elders fairness. Our ambitions local solutions globalization.</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="container clearfix">
+
+						<div class="heading-block topmargin-sm center">
+							<h3>Meet Our Team</h3>
+						</div>
+
+						<div class="row">
+
+							<div class="col-lg-3 col-md-6 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="/assets/canvas/images/team/3.jpg" alt="John Doe">
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>John Doe</h4><span>CEO</span></div>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+											<i class="icon-facebook"></i>
+											<i class="icon-facebook"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+											<i class="icon-twitter"></i>
+											<i class="icon-twitter"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+											<i class="icon-gplus"></i>
+											<i class="icon-gplus"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-lg-3 col-md-6 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="/assets/canvas/images/team/2.jpg" alt="Josh Clark">
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>Josh Clark</h4><span>Co-Founder</span></div>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+											<i class="icon-facebook"></i>
+											<i class="icon-facebook"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+											<i class="icon-twitter"></i>
+											<i class="icon-twitter"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+											<i class="icon-gplus"></i>
+											<i class="icon-gplus"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-lg-3 col-md-6 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="/assets/canvas/images/team/8.jpg" alt="Mary Jane">
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>Mary Jane</h4><span>Sales</span></div>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+											<i class="icon-facebook"></i>
+											<i class="icon-facebook"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+											<i class="icon-twitter"></i>
+											<i class="icon-twitter"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+											<i class="icon-gplus"></i>
+											<i class="icon-gplus"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-lg-3 col-md-6 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="/assets/canvas/images/team/4.jpg" alt="Nix Maxwell">
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>Nix Maxwell</h4><span>Support</span></div>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+											<i class="icon-facebook"></i>
+											<i class="icon-facebook"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+											<i class="icon-twitter"></i>
+											<i class="icon-twitter"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+											<i class="icon-gplus"></i>
+											<i class="icon-gplus"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="container clearfix">
+
+					<div id="oc-clients" class="owl-carousel image-carousel carousel-widget" data-margin="60" data-loop="true" data-nav="false" data-autoplay="5000" data-pagi="false" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="5" data-items-xl="6">
+
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/1.png" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/2.png" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/3.png" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/4.png" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/5.png" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/6.png" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/7.png" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/8.png" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/9.png" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="/assets/canvas/images/clients/10.png" alt="Clients"></a></div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="dark">
+
+			<div class="container">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap clearfix">
+
+					<div class="col_two_third">
+
+						<div class="col_one_third">
+
+							<div class="widget clearfix">
+
+								<img src="/assets/canvas/images/footer-widget-logo.png" alt="" class="footer-logo">
+
+								<p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
+
+								<div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
+									<address>
+										<strong>Headquarters:</strong><br>
+										795 Folsom Ave, Suite 600<br>
+										San Francisco, CA 94107<br>
+									</address>
+									<abbr title="Phone Number"><strong>Phone:</strong></abbr> (91) 8547 632521<br>
+									<abbr title="Fax"><strong>Fax:</strong></abbr> (91) 11 4752 1433<br>
+									<abbr title="Email Address"><strong>Email:</strong></abbr> info@@canvas.com
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="col_one_third">
+
+							<div class="widget widget_links clearfix">
+
+								<h4>Blogroll</h4>
+
+								<ul>
+									<li><a href="http://codex.wordpress.org/">Documentation</a></li>
+									<li><a href="http://wordpress.org/support/forum/requests-and-feedback">Feedback</a></li>
+									<li><a href="http://wordpress.org/extend/plugins/">Plugins</a></li>
+									<li><a href="http://wordpress.org/support/">Support Forums</a></li>
+									<li><a href="http://wordpress.org/extend/themes/">Themes</a></li>
+									<li><a href="http://wordpress.org/news/">WordPress Blog</a></li>
+									<li><a href="http://planet.wordpress.org/">WordPress Planet</a></li>
+								</ul>
+
+							</div>
+
+						</div>
+
+						<div class="col_one_third col_last">
+
+							<div class="widget clearfix">
+								<h4>Recent Posts</h4>
+
+								<div id="post-list-footer">
+									<div class="spost clearfix">
+										<div class="entry-c">
+											<div class="entry-title">
+												<h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
+											</div>
+											<ul class="entry-meta">
+												<li>10th July 2014</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="spost clearfix">
+										<div class="entry-c">
+											<div class="entry-title">
+												<h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
+											</div>
+											<ul class="entry-meta">
+												<li>10th July 2014</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="spost clearfix">
+										<div class="entry-c">
+											<div class="entry-title">
+												<h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
+											</div>
+											<ul class="entry-meta">
+												<li>10th July 2014</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col_one_third col_last">
+
+						<div class="widget clearfix" style="margin-bottom: -20px;">
+
+							<div class="row">
+
+								<div class="col-lg-6 bottommargin-sm">
+									<div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
+									<h5 class="nobottommargin">Total Downloads</h5>
+								</div>
+
+								<div class="col-lg-6 bottommargin-sm">
+									<div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
+									<h5 class="nobottommargin">Clients</h5>
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="widget subscribe-widget clearfix">
+							<h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+							<div class="widget-subscribe-form-result"></div>
+							<form id="widget-subscribe-form" action="include/subscribe.php" method="post" class="nobottommargin">
+								<div class="input-group divcenter">
+									<div class="input-group-prepend">
+										<div class="input-group-text"><i class="icon-email2"></i></div>
+									</div>
+									<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+									<div class="input-group-append">
+										<button class="btn btn-success" type="submit">Subscribe</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<div class="widget clearfix" style="margin-bottom: -20px;">
+
+							<div class="row">
+
+								<div class="col-lg-6 clearfix bottommargin-sm">
+									<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+										<i class="icon-facebook"></i>
+										<i class="icon-facebook"></i>
+									</a>
+									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+								</div>
+								<div class="col-lg-6 clearfix">
+									<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
+										<i class="icon-rss"></i>
+										<i class="icon-rss"></i>
+									</a>
+									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div><!-- .footer-widgets-wrap end -->
+
+			</div>
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+
+				<div class="container clearfix">
+
+					<div class="col_half">
+						Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br>
+						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+					</div>
+
+					<div class="col_half col_last tright">
+						<div class="fright clearfix">
+							<a href="#" class="social-icon si-small si-borderless si-facebook">
+								<i class="icon-facebook"></i>
+								<i class="icon-facebook"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-twitter">
+								<i class="icon-twitter"></i>
+								<i class="icon-twitter"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-gplus">
+								<i class="icon-gplus"></i>
+								<i class="icon-gplus"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-pinterest">
+								<i class="icon-pinterest"></i>
+								<i class="icon-pinterest"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-vimeo">
+								<i class="icon-vimeo"></i>
+								<i class="icon-vimeo"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-github">
+								<i class="icon-github"></i>
+								<i class="icon-github"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-yahoo">
+								<i class="icon-yahoo"></i>
+								<i class="icon-yahoo"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-linkedin">
+								<i class="icon-linkedin"></i>
+								<i class="icon-linkedin"></i>
+							</a>
+						</div>
+
+						<div class="clear"></div>
+
+						<i class="icon-envelope2"></i> info@@canvas.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-11-6541-6369 <span class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
+					</div>
+
+				</div>
+
+			</div><!-- #copyrights end -->
+
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- External JavaScripts
+	============================================= -->
+	<script src="/assets/canvas/js/jquery.js"></script>
+	<script src="/assets/canvas/js/plugins.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="/assets/canvas/js/functions.js"></script>
+
+</body>
+</html>

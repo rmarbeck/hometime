@@ -48,6 +48,9 @@ GET     /more                       controllers.Default.redirect(to = "/les-serv
 GET     /les-services/les-prix      controllers.Application.prices()
 GET     /prices                     controllers.Default.redirect(to = "/les-services/les-prix")
 
+# Prices
+GET     /estimation/prix/devis/reparation/revision/montre      controllers.Application.quotation_choice()
+
 # Order
 GET     /demande-de-devis           controllers.Application.order(brand = null)
 GET     /demande-de-devis/montre/reparation/revision/:brand    controllers.Application.order(brand)
@@ -237,6 +240,8 @@ GET     /admin/customer-watch/set-back-to-customer/:id 					controllers.Customer
 GET     /admin/customer-watch/set-stored-by-partner/:id 				controllers.CustomerWatch.setStoredByPartner(id: Long)
 GET     /admin/customer-watch/set-stored-by-us/:id 						controllers.CustomerWatch.setStoredByUs(id: Long)
 GET     /admin/customer-watch/set-stored-by-us-outside/:id 				controllers.CustomerWatch.setStoredByUsOutside(id: Long)
+GET     /admin/customer-watch/set-quotation-accepted-by-customer/:id 	controllers.CustomerWatch.setQuotationAccepted(id: Long)
+
 GET     /admin/customer-watch/accept/:id			 					controllers.CustomerWatch.acceptWatchFromCustomer(id: Long)
 POST    /admin/manage-customer-watch 									controllers.CustomerWatch.manage()
 
@@ -294,6 +299,7 @@ GET     /admin/order-document/create          							controllers.Accounting.addO
 GET     /admin/order-document/create/by/watch-to-sell/:id				controllers.Accounting.addOrderDocumentByWatchToSellId(id: Long)
 GET     /admin/order-document/create/by/customer/:id					controllers.Accounting.addOrderDocumentFromCustomer(id: Long)
 GET     /admin/order-document/edit/:id         							controllers.Accounting.editOrderDocument(id: Long)
+GET     /admin/order-document/duplicate/:id         					controllers.Accounting.duplicateOrderByOrderId(id: Long)
 POST    /admin/manage-order-document            						controllers.Accounting.manageOrderDocument()
 GET     /admin/order-documents            								controllers.Accounting.displayAllOrderDocument(p:Int ?= 0, s ?= "uniqueAccountingNumber", o ?= "desc", f ?= "")
 GET     /admin/order-document/:id         								controllers.Accounting.viewOrderDocument(id: Long)
@@ -321,6 +327,9 @@ GET     /admin/display/SparePartsOpen/All				            	controllers.SpareParts
 
 GET		/admin/display/CustomerWatchByStatus/:statusName				controllers.CustomerWatch.displayByStatusName(statusName: String)
 
+
+GET		/admin/display/OverloadedSellingWarrants/:id					controllers.SellingWarrants.displayWarrant(id: Long)
+
 GET		/form/new														controllers.SimplifiedCustomers.createNewCustomerByCustomer()
 POST	/form/new/manage												controllers.SimplifiedCustomers.manageNewCustomerByCustomer()
 
@@ -346,6 +355,7 @@ GET     /admin/addresses-table	            							controllers.Reporting.addresse
 GET     /admin/addressbook		            							controllers.Reporting.addressBook()
 GET     /admin/stock			            							controllers.Reporting.stock()
 GET     /admin/legal-register	            							controllers.Reporting.legalRegister(starting:Long ?=1)
+GET     /admin/legal-register-helper	            					controllers.Reporting.legalRegisterHelper(starting:Long ?=1)
 GET     /admin/payments			            							controllers.Reporting.payments()
 GET     /admin/financial		            							controllers.Reporting.financialReport()
 GET     /admin/detailed-financial		            					controllers.Reporting.financialDetailedReport()
@@ -393,6 +403,10 @@ GET     /private/accept/:id	                      						controllers.CustomerAdmi
 GET     /private/refuse/:id	                      						controllers.CustomerAdmin.prepareRefuseQuotation(id: Long)
 GET     /private/get-watch-back/:id	                      				controllers.CustomerAdmin.acceptWatchBack(id: Long)
 
+
+# Testing
+GET     /bootstrap4/test     											controllers.Application.test_new
+GET     /canvas/test     												controllers.Application.test_canvas
 
 
 # Sitemap

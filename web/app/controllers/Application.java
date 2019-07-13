@@ -507,6 +507,10 @@ public class Application extends Controller {
     public static Result prices() {
         return ok(prices.render(""));
     }
+    
+    public static Result quotation_choice() {
+        return ok(quotation_choice.render(""));
+    }
 
     public static Result water() {
         return ok(water.render(""));
@@ -987,5 +991,13 @@ public class Application extends Controller {
     
     private static Feedback getOneEmphasizableFeedbackRandomly() {
     	return new ListHelper<Feedback>(Feedback.findEmphasizable()).getAnElementRandomly();
+    }
+    
+    public static Result test_new() {
+    	return ok(test_new.render("toto"));
+    }
+    
+    public static Result test_canvas() {
+    	return ok(test_canvas.render("toto"));
     }
 }

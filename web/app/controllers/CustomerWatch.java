@@ -114,6 +114,10 @@ public class CustomerWatch extends Controller {
 		return updateWatch(watchId, (watch) -> {watch.finalCustomerQuotationSent = true;});
 	}
 	
+	public static Result setQuotationAccepted(Long watchId) {
+		return doAction(CustomerWatchActions.CustomerWatchActionList.MARK_SERVICE_PRICE_ACCEPTED_AND_START_SERVICE.name(), watchId);
+	}
+	
 	public static Result setBackToCustomer(Long watchId) {
 		return updateStatus(watchId, CustomerWatchStatus.BACK_TO_CUSTOMER);
 	}

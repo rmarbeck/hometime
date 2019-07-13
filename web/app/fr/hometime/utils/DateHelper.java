@@ -1,6 +1,7 @@
 package fr.hometime.utils;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -87,5 +88,13 @@ public class DateHelper {
 		if (date != null)
 			return new SimpleDateFormat("dd/MM/yyyy", new Locale("fr", "FR")).format(date).toString();
 		return "?";
+	}
+	
+	public static Instant startTimer() {
+		return Instant.now();
+	}
+	
+	public static long getTimeFromInMillis(Instant previousInstant) {
+		return Duration.between(previousInstant, Instant.now()).toMillis();
 	}
 }
