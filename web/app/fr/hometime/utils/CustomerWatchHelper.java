@@ -398,8 +398,11 @@ public class CustomerWatchHelper {
 	public static void updateWatchEnsuringOnlyEditableDataByWatchmasterAreChanged(models.CustomerWatch watch, Session session) {
 		models.CustomerWatch currentWatchInDB = CustomerWatch.findById(watch.id);
 		watch.emergencyLevel = currentWatchInDB.emergencyLevel;
-		if (watch.servicePrice != 0)
+		if (watch.servicePrice != 0) {
 			watch.finalCustomerServicePrice = watch.servicePrice;
+		} else {
+			watch.finalCustomerServicePrice = currentWatchInDB.finalCustomerServicePrice;
+		}
 		watch.finalCustomerServiceStatus = watch.serviceStatus;
 		watch.finalCustomerToInfos = watch.partnerFromInfos;
 		
