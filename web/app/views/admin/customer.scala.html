@@ -1,7 +1,35 @@
 @(customer: models.Customer, orders: List[models.Order], watches: List[models.CustomerWatch], orderDocuments: List[models.OrderDocument], invoices: List[models.Invoice])
 @import tags._
 
-@layouts.admin() {
+@end_scripts = {
+<script>
+	function copyToClipboard(value) {
+      var aux = document.createElement("input");
+
+      aux.setAttribute("value", value);
+      // Append it to the body
+      document.body.appendChild(aux);
+      // Highlight its content
+      aux.select();
+      // Copy the highlighted text
+      document.execCommand("copy");
+      // Remove it from the body
+      document.body.removeChild(aux);
+    }
+    
+    		$(document).ready(function(){
+			$('a[id="sms"]').on('click',function(e){
+			    if (window.confirm('Envoyer le SMS ？')== false) {
+			      e.preventDefault();
+			    }
+  			});
+			
+		})  
+    
+</script> 
+}
+
+@layouts.admin("Admin", end_scripts) {
   <div class="container">
      <div class="row">
         <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.customer.name", Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.')), customer.firstname, customer.name))</h3></div>
@@ -25,7 +53,7 @@
               <tbody>
               	@two_cells_table_line(Html(Messages("admin.customer.label.creation.date")), display_date(customer.creationDate, "dd/MM/yyyy"))
               	
-              	@two_cells_table_line(Html(Messages("admin.customer.label.email")), Html(customer.email))
+              	@two_cells_table_line(Html(Messages("admin.customer.label.email")), display_copyable_email_admin_only(customer.email))
               	
               	@if_not_null_nor_empty(customer.alternativeEmail) {
               		@two_cells_table_line(Html(Messages("admin.customer.label.alternative.email")), Html(customer.alternativeEmail))
