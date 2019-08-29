@@ -143,7 +143,7 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
     }
     
     public static List<SparePart> findAllOpenByCustomerWatch(CustomerWatch watch) {
-    	return find.where().conjunction().eq("watch.id", watch.id).eq("closed", "false").orderBy("creationDate DESC").findList();
+    	return find.where().conjunction().eq("watch.id", watch.id).eq("closed", false).orderBy("creationDate DESC").findList();
     }
     
     public static boolean hasOpenSparePartsByCustomerWatch(CustomerWatch watch) {
