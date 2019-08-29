@@ -127,7 +127,7 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
     }
     
     public static List<SparePart> findAllToCheckByCreationDateDesc() {
-        return find.where().conjunction().eq("got", true).eq("checkedOK", false).eq("checkedKO", false).orderBy("creationDate DESC").findList();
+        return find.where().conjunction().eq("closed", false).eq("got", true).eq("checkedOK", false).eq("checkedKO", false).orderBy("creationDate DESC").findList();
     }
     
     public static List<SparePart> findAllToCloseByCreationDateDesc() {
