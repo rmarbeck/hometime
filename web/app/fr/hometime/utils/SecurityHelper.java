@@ -125,6 +125,10 @@ public class SecurityHelper {
     				return true;
     	return false;
     }
+    
+    public static boolean isAdmin(Session session) {
+    	return isLoggedInUserAuthorized(session, isAdmin);
+    }
 
     public static Predicate<User> isAdmin = (user) -> (user!= null && user.role == Role.ADMIN);
     
@@ -143,6 +147,8 @@ public class SecurityHelper {
     public static Predicate<User> isCustomer = (user) -> (user!= null && user.role == Role.CUSTOMER );
     
     public static Predicate<User> isWatchmaker = (user) -> (user!= null && user.role == Role.MASTER_WATCHMAKER );
+    
+    public static Predicate<User> isAdminOrWatchmaker = (user) -> (user!= null && ( user.role == Role.MASTER_WATCHMAKER || user.role == Role.ADMIN) );
     
     public static Predicate<User> isAdminOrWatchmakerOrCollaborator = (user) -> (user!= null && ( user.role == Role.ADMIN || user.role == Role.COLLABORATOR || user.role == Role.MASTER_WATCHMAKER) );
     

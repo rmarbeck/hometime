@@ -156,4 +156,58 @@
         </div>
      </div>
 
+	@if(SparePart.hasOpenSparePartsByCustomerWatch(instance)) {
+	@for(i <- 1 to 2) {
+      <div class="page-break"></div>
+      <div class="row">
+     	<div class="type col-xs-10">
+	        <h2>@sheet_get_model(instance).toString - @sheet_get_references(instance).toString - @customer.firstname @customer.name</h2>
+        </div>
+        <div class="text-right col-xs-2">
+	        <h2>#@instance.id</h2>
+        </div>
+     </div>
+     <div class="row">
+     	<h2 class="text-center">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.spare.parts."+i))</h2>
+        <div class="col-xs-12">
+	        <div class="table-responsive">
+	            <table class="table table-bordered">
+	              <colgroup>
+	                <col class="col-xs-3">
+	                <col class="col-xs-3">
+	                <col class="col-xs-3">
+	                <col class="col-xs-3">
+	              </colgroup>
+	              <thead>
+	                <tr>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.spare.description"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.spare.reference"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.spare.unit.needed"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.spare.price.expected"))</th>
+						<th class="header">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.spare.to.order"))</th>
+					</tr>
+				  </thead>
+				  <tbody>
+				  	@for(part <- SparePart.findAllOpenByCustomerWatch(instance)) {
+				  	<tr class="simplified_customer_watch_row">
+				  		<td>@part.description</td>
+				  		<td>@part.partReference @part.otherInfos</td>
+				  		<td>@part.unitNeeded</td>
+				  		<td>@display_price(part.expectedInPrice.toFloat)</td>
+				  		<td>@display_boolean(part.toOrder)</td>
+				  	</tr>
+				  	<tr class="simplified_customer_watch_row">
+				  		<td colspan="3"></t<>
+				  		<td colspan="2"><input type="checkbox" class="big-size"> < - @Html(Messages("admin.simplified.customer.watch.servicing.sheet.checked.ok"))</td>
+				  	</tr>
+				  	}
+	              </tbody>
+	            </table>
+	       </div>
+        </div>
+     </div>
+     }
+    }
+
 }
+	

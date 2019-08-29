@@ -1,8 +1,8 @@
-@(formDisplay: views.FormDisplay, isItNew: Boolean, end_scripts_bottom: Html = Html(""))
+@(formDisplay: views.FormDisplay, isItNew: Boolean, end_scripts_bottom: Html = Html(""), before_form: Html = Html(""), after_form: Html = Html(""))
 @import tags._
 
 @actionlink() = @{
 	routes.CrudHelper.manage(formDisplay.getControllerName)
 }
 
-@admin.template.form(formDisplay, isItNew, actionlink, end_scripts_bottom)
+@admin.template.form(formDisplay, isItNew, actionlink, end_scripts_bottom, before_form, after_form)

@@ -2674,6 +2674,8 @@ admin.customer.watch.work.in.progress.form.reference.placeholder.name=
 admin.customer.watch.work.in.progress.form.serial.placeholder.name=
 admin.customer.watch.work.in.progress.form.serviceprice.placeholder.name=
 
+admin.customer.watch.work.in.progress.form.finalcustomerserviceprice.label.name=Prix accepté par le client
+
 admin.customer.watch.label.service.due.date=Deadline
 admin.customer.watch.label.first.entry.in.partner.workshop.date=Date d''entrée dans l''atelier
 admin.customer.watch.label.expected.service.end.date=Date de sortie prévue
@@ -4148,6 +4150,9 @@ admin.customer.watch.waiting.for.quotation.form.partnerfrominfos.label.name=Rema
 admin.customer.watch.waiting.for.quotation.form.partnerfrominfos.placeholder.name=... 
 admin.customer.watch.waiting.for.quotation.form.expectedserviceenddate.label.name=Date prévisionnelle
 
+customer.watch.waiting.for.quotation.spare.parts=Pièces détachées nécessaires
+customer.watch.waiting.for.quotation.spare.parts.action.new=&nbsp;Ajouter une pièce détachée
+
 admin.customer.watch.partner.waiting.quotation.page.service.price.status=Statut
 service.pricing.to.be.validated=En attente d''accord
 service.pricing.to.re.do=Refusé : à modifier
@@ -4221,6 +4226,7 @@ admin.customer.watch.work.in.progress.form.id.label.name=ID
 admin.customer.watch.work.in.progress.form.brand.label.name=Marque
 admin.customer.watch.work.in.progress.form.model.label.name=Modèle
 admin.customer.watch.work.in.progress.form.reference.label.name=Référence
+admin.customer.watch.work.in.progress.form.reference.placeholder.name=
 admin.customer.watch.work.in.progress.form.serial.label.name=Numéro de série
 admin.customer.watch.work.in.progress.form.partnertoinfos.label.name=Informations
 admin.customer.watch.work.in.progress.form.partnertoinfos.placeholder.name=...
@@ -4229,9 +4235,37 @@ admin.customer.watch.work.in.progress.form.servicestatus.label.name=Avancement
 admin.customer.watch.work.in.progress.form.expectedserviceenddate.label.name=Date prévisionnelle
 admin.customer.watch.work.in.progress.form.partnerfrominfos.label.name=Remarques
 admin.customer.watch.work.in.progress.form.finalcustomerservicepriceacceptedinfos.label.name=Infos acceptation de devis
+admin.customer.watch.work.in.progress.form.finalcustomerservicepriceacceptedinfos.placeholder.name=
 admin.customer.watch.work.in.progress.form.b2bid.label.name=ID client
 admin.customer.watch.work.in.progress.form.b2bid.placeholder.name=
 admin.customer.watch.work.in.progress.form.partnerfrominfos.placeholder.name=
+
+
+admin.customer.watch.quotation.validation.form=Validation devis
+admin.customer.watch.quotation.validation.form.title=Validation devis
+admin.customer.watch.quotation.validation.action.cancel=Annuler
+admin.customer.watch.quotation.validation.action.edit=Modifier
+admin.customer.watch.quotation.validation.form.id.label.name=ID
+admin.customer.watch.quotation.validation.form.brand.label.name=Marque
+admin.customer.watch.quotation.validation.form.model.label.name=Modèle
+admin.customer.watch.quotation.validation.form.reference.label.name=Référence
+admin.customer.watch.quotation.validation.form.reference.placeholder.name=
+admin.customer.watch.quotation.validation.form.serial.label.name=Numéro de série
+admin.customer.watch.quotation.validation.form.partnertoinfos.label.name=Informations
+admin.customer.watch.quotation.validation.form.partnertoinfos.placeholder.name=...
+admin.customer.watch.quotation.validation.form.serviceprice.label.name=Montant devis
+admin.customer.watch.quotation.validation.form.servicestatus.label.name=Avancement
+admin.customer.watch.quotation.validation.form.expectedserviceenddate.label.name=Date prévisionnelle
+admin.customer.watch.quotation.validation.form.partnerfrominfos.label.name=Remarques
+admin.customer.watch.quotation.validation.form.finalcustomerservicepriceacceptedinfos.label.name=Infos acceptation de devis
+admin.customer.watch.quotation.validation.form.finalcustomerservicepriceacceptedinfos.placeholder.name=
+admin.customer.watch.quotation.validation.form.b2bid.label.name=ID client
+admin.customer.watch.quotation.validation.form.b2bid.placeholder.name=
+admin.customer.watch.quotation.validation.form.partnerfrominfos.placeholder.name=
+admin.customer.watch.quotation.validation.form.finalcustomerserviceprice.label.name=Prix accepté
+
+admin.customer.watch.quotation.validation.form.finalcustomerservicepriceaccepted.label.name=Devis accepté par le client
+admin.customer.watch.quotation.validation.form.servicepriceaccepted.label.name=Devis horloger accepté
 
 admin.customer.partner.form=Gestion des clients
 admin.customer.partner.form.title=Gestion des clients
@@ -4308,6 +4342,16 @@ admin.simplified.customer.watch.servicing.sheet.text.head=ID : #{0,number,####}
 admin.simplified.customer.watch.servicing.sheet.pictures=Prise de photos (oui/non) :
 admin.simplified.customer.watch.servicing.sheet.document.date=Collectée le {0, date,d MMMM yyyy}
 admin.simplified.customer.watch.servicing.sheet.testing.date=Test démarré le
+
+admin.simplified.customer.watch.servicing.sheet.spare.description=Pièce
+admin.simplified.customer.watch.servicing.sheet.spare.reference=Référence
+admin.simplified.customer.watch.servicing.sheet.spare.unit.needed=Nombre
+admin.simplified.customer.watch.servicing.sheet.spare.price.expected=Prix attendu
+admin.simplified.customer.watch.servicing.sheet.spare.to.order=A commander
+
+admin.simplified.customer.watch.servicing.sheet.checked.ok=Contrôle
+admin.simplified.customer.watch.servicing.sheet.spare.parts.1=Pièces détachées (fiche horloger)
+admin.simplified.customer.watch.servicing.sheet.spare.parts.2=Pièces détachées (fiche suivi)
 
 admin.simplified.customer.watch.collecting.id=Numéro de collecte :
 
@@ -4662,8 +4706,10 @@ admin.sparepart.form=Pièce détachée
 admin.sparepart.form.title=Pièce détachée
 admin.sparepart.form.watch.id.label.name=Montre concernée
 admin.sparepart.form.watch.id.default.name=Sélectionner la montre
-admin.sparepart.form.description.label.name=Description
+admin.sparepart.form.description.label.name=Description de la pièce
 admin.sparepart.form.description.placeholder.name=
+admin.sparepart.form.partreference.label.name=Référence de la pièce
+admin.sparepart.form.partreference.placeholder.name=
 admin.sparepart.form.unitneeded.label.name=Nombre de pièces nécessaire
 admin.sparepart.form.otherinfos.label.name=Autres infos
 admin.sparepart.form.otherinfos.placeholder.name=
@@ -4672,17 +4718,34 @@ admin.sparepart.form.expectedavailability.label.name=Date prévisionnelle
 admin.sparepart.form.expectedinprice.label.name=Prix prévisionnel (HT)
 admin.sparepart.form.realinprice.label.name=Prix réel (HT)
 admin.sparepart.form.outprice.label.name=Prix de revente (HT)
+admin.sparepart.form.toorder.label.name=Doit être commandée
+admin.sparepart.form.ordered.label.name=Commandée
 admin.sparepart.form.found.label.name=Trouvée
 admin.sparepart.form.got.label.name=Obtenue
 admin.sparepart.form.closed.label.name=Fermée
+admin.sparepart.form.confirmed.label.name=Accord client
+admin.sparepart.form.checkedok.label.name=Vérification OK
+admin.sparepart.form.checkedko.label.name=Vérification KO
+admin.sparepart.form.provider.label.name=Fournisseur
+admin.sparepart.form.provider.placeholder.name=
+admin.sparepart.form.paid.label.name=Payée au fournisseur
+admin.sparepart.form.orderdate.label.name=Date de commande
+admin.sparepart.form.receptiondate.label.name=Date de réception
+
+
 admin.sparepart.action.cancel=&nbsp;Annuler
 admin.sparepart.action.save=&nbsp;Enregistrer
 admin.sparepart.action.edit=&nbsp;Modifier
 admin.sparepart.action.delete=_jstohide_
 admin.sparepart.action.show=_jstohide_
 
+
+
+admin.sparepart.form.instock.label.name=En stock
+
 admin.sparepart.page=Pièces détachées
 admin.sparepart.page.title=Pièces détachées
+admin.sparepart.page.id=ID
 admin.sparepart.page.watch=Montre
 admin.sparepart.page.description=Description
 admin.sparepart.page.otherinfos=Infos
@@ -4702,6 +4765,61 @@ admin.sparepart.outprice.display.label=Prix de revente (HT)
 admin.sparepart.found.display.label=Trouvée ?
 admin.sparepart.got.display.label=Obtenue ?
 admin.sparepart.closed.display.label=Fermée ?
+
+admin.spare.part.header.description=Pièce
+admin.spare.part.header.part.reference=Ref
+admin.spare.part.header.unit.needed=Nb
+admin.spare.part.header.expected.in.price=Prix
+admin.spare.part.header.in.stock=En stock
+admin.spare.part.header.status=Statut
+
+
+
+admin.spare.part.value.status.spare.closed=Fermée
+admin.spare.part.value.status.spare.ok=Contrôle OK
+admin.spare.part.value.status.spare.ko=Contrôle KO
+admin.spare.part.value.status.spare.to.check=A contrôler
+admin.spare.part.value.status.spare.ordered=Commandée, en attente
+admin.spare.part.value.status.spare.to.order=A commander
+admin.spare.part.value.status.spare.confirmed=Validée par le client
+admin.spare.part.value.status.spare.open=Créée
+
+admin.spare.part.nothing.to.display=Aucune pièce nécessaire
+
+admin.spare.parts.to.order.title=Pièces détachées à commander
+admin.spare.parts.to.order.nothing.to.display=Aucune pièce à commander
+admin.spare.parts.to.order.header.id=ID
+admin.spare.parts.to.order.header.watch=Montre
+admin.spare.parts.to.order.header.description=Desc.
+admin.spare.parts.to.order.header.part.reference=Ref
+
+
+admin.spare.parts.to.receive.title=Pièces détachées à recevoir
+admin.spare.parts.to.receive.nothing.to.display=Aucune pièce à recevoir
+admin.spare.parts.to.receive.header.id=ID
+admin.spare.parts.to.receive.header.watch=Montre
+admin.spare.parts.to.receive.header.description=Desc.
+admin.spare.parts.to.receive.header.part.reference=Ref
+
+
+
+
+admin.spare.parts.to.check.title=Pièces détachées à contrôler
+admin.spare.parts.to.check.nothing.to.display=Aucune pièce à contrôler
+admin.spare.parts.to.check.header.id=ID
+admin.spare.parts.to.check.header.watch=Montre
+admin.spare.parts.to.check.header.description=Desc.
+admin.spare.parts.to.check.header.part.reference=Ref
+
+
+admin.spare.parts.to.close.title=Pièces détachées à clore
+admin.spare.parts.to.close.nothing.to.display=Aucune pièce à clore
+admin.spare.parts.to.close.header.id=ID
+admin.spare.parts.to.close.header.watch=Montre
+admin.spare.parts.to.close.header.description=Desc.
+admin.spare.parts.to.close.header.part.reference=Ref
+ 
+
 
 admin.analytic.code.page=Codes Analytiques
 admin.analytic.code.page.title=Codes Analytiques

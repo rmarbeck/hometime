@@ -14,6 +14,7 @@ import play.mvc.With;
 import play.twirl.api.Html;
 import views.html.admin.customer_watch;
 import views.html.admin.customer_watch_form;
+import views.html.admin.customer_watch_quotation_validation_form;
 import views.html.admin.customer_watches;
 import views.html.admin.reports.customer_watch_by_status;
 
@@ -119,6 +120,7 @@ public class CustomerWatch extends Controller {
 	}
 	
 	public static Result setBackToCustomer(Long watchId) {
+		SpareParts.markAllRelatedToCustomerWatchClosed(watchId);
 		return updateStatus(watchId, CustomerWatchStatus.BACK_TO_CUSTOMER);
 	}
 	
@@ -165,6 +167,30 @@ public class CustomerWatch extends Controller {
 			} else {
 				watch.update();
 			}
+		}
+		return LIST_CUSTOMER_WATCHES;
+	}
+	
+	public static Result prepareQuotationValidation(Long watchId) {
+		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
+		if (existingWatch != null) {
+			existingWatch.servicePriceAccepted = true;
+			existingWatch.finalCustomerServicePriceAccepted = true;
+			existingWatch.finalCustomerServicePriceAcceptedDate = new Date();
+			return ok(customer_watch_quotation_validation_form.render(Form.form(models.CustomerWatch.class).fill(existingWatch), false));
+		}
+		flash("error", "Unknown watch id");
+		return badRequest();
+	}
+	
+	public static Result manageQuotationValidation() {
+		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
+		String action = Form.form().bindFromRequest().get("action");
+		if (watchForm.hasErrors()) {
+			return badRequest(customerWatchForm(watchForm, false));
+		} else {
+			models.CustomerWatch watch = watchForm.get();
+			watch.update();
 		}
 		return LIST_CUSTOMER_WATCHES;
 	}

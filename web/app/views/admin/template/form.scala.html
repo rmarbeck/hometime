@@ -1,4 +1,4 @@
-@(formDisplay: views.FormDisplay, isItNew: Boolean, actionlink: play.api.mvc.Call, end_scripts_bottom: Html = Html(""))
+@(formDisplay: views.FormDisplay, isItNew: Boolean, actionlink: play.api.mvc.Call, end_scripts_bottom: Html = Html(""), before_form: Html = Html(""), after_form: Html = Html(""))
 
 @import tags._
 
@@ -20,6 +20,8 @@
 }
 
 @layouts.admin_main(formDisplay.getLabelKey, end_scripts_bottom) {
+
+	@before_form
 
   <div class="container form">
   
@@ -46,6 +48,9 @@
               case "select" => {
                 @simple_admin_select_enhanced(currentField.getField, currentField.getPossibleKeys.zip(currentField.getPossibleValues), currentField.getKey, currentField.options.toSeq:_*)
               }
+              case "separator" => {
+                <hr />
+              }
             }
       	</td>
       }
@@ -53,5 +58,7 @@
     }
     
   </div>
+  
+  @after_form
 
 }

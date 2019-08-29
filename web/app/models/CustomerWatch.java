@@ -370,6 +370,10 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     }
     
     private static String displayWatchByCustomer(CustomerWatch watch) {
+    	return displayWatchByCustomer(watch, true);
+    }
+    
+    private static String displayWatchByCustomer(CustomerWatch watch, boolean withId) {
     	StringBuilder result = new StringBuilder();
     	if (watch.customer != null) {
     		result.append(watch.customer.getFullNameInversed());
@@ -380,6 +384,8 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     	result.append(watch.brand);
     	result.append(" ");
     	result.append(watch.model);
+    	if (withId)
+    		result.append(" [#"+watch.id+"]");
     	
     	return result.toString();
     }
@@ -764,8 +770,8 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public String getFullId() {
 		if (b2bId != null && ! "".equals(b2bId))
-			return id+" ("+b2bId+")";
-		return id.toString();
+			return "#"+id+" ("+b2bId+")";
+		return "#"+id.toString();
 	}
 	
 	@Override

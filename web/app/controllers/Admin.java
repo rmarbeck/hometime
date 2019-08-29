@@ -204,10 +204,8 @@ public class Admin extends Controller {
 	    public Quotation getQuotation() {
 	    	Quotation quotation = new Quotation();
 	    	if (this.orderRequestId != null && !this.orderRequestId.equals("")) {
-	    		Logger.debug("!!!!!!!!!!!!!!!!!");
 	    		quotation.request = OrderRequest.findById(Long.valueOf(this.orderRequestId));
 	    	}
-	    	Logger.debug("????????????");
 	    	quotation.serviceType = OrderTypes.fromString(this.serviceType);
 	    	quotation.typeOfNetwork = Quotation.TypesOfNetwork.fromString(this.typeOfNetwork);
 	    	quotation.customerEmail = this.customerEmail;

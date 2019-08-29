@@ -1,0 +1,64 @@
+@(spareparts: List[models.SparePart], key: String = "admin.spare.part")
+@import tags._
+
+@import fr.hometime.utils._
+
+		<div class="row">
+	        <div class="title col-md-6"><h3>@Html(Messages(key+".title"))</h3></div>
+     	</div>
+
+	@if(spareparts == null || spareparts.size == 0) {
+      <div class="row">
+        <div class="well">
+            <em>@Html(Messages(key+".nothing.to.display"))</em>
+        </div>
+      </div>
+      } else {
+      <div class="row">
+       	<div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>@Html(Messages(key+".header.id"))</th>
+                  <th>@Html(Messages(key+".header.watch"))</th>
+                  <th>@Html(Messages(key+".header.description"))</th>
+                  <th>@Html(Messages(key+".header.part.reference"))</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for((part, index) <- spareparts.zipWithIndex) {
+                <tr>
+                  <td>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.edit("SpareParts", part.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
+	                @if(part.isToBeChecked) {
+	                <a type="button" class="btn btn-success btn-xs" href="@routes.SpareParts.markCheckedOK(part.id)"><span class="glyphicon glyphicon-ok"></span></a>
+	                <a type="button" class="btn btn-danger btn-xs" href="@routes.SpareParts.markCheckedKO(part.id)"><span class="glyphicon glyphicon-remove"></span></a>
+	                } else {
+	                	@if(part.isToBeOrdered) {
+	                <a type="button" class="btn btn-warning btn-xs" href="@routes.SpareParts.prepareOrdering(part.id)"><span class="glyphicon glyphicon-arrow-down"></span></a>	
+	                	} else {
+	                <a type="button" class="btn btn-warning btn-xs" href="@routes.SpareParts.moveToNextStep(part.id)"><span class="glyphicon glyphicon-arrow-down"></span></a>
+	                	}
+	                }
+                  </td>
+                  <td>
+                    @part.getWatchId
+                  </td>
+                  <td>
+                    @part.getWatchDescription
+                  </td>
+                  <td>
+                    @part.description
+                  </td>
+                  <td>
+                    @part.partReference
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+		</div>
+	  </div>
+	}

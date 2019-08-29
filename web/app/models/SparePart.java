@@ -40,6 +40,12 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
 	@Column(name="expected_availability_date")
 	public Date expectedAvailability;
 	
+	@Column(name="order_date")
+	public Date orderDate;
+	
+	@Column(name="reception_date")
+	public Date receptionDate;
+	
 	public Date lastStatusUpdate;
 	
 	@Column(length = 10000)
@@ -47,6 +53,10 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
 	
 	@Column(length = 10000)
 	public String otherInfos;
+	
+	public String partReference;
+	
+	public String provider;
 	
 	public Integer unitNeeded = 1;
 	
@@ -58,7 +68,21 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
 	
 	public boolean found = false;
 	
+	public boolean paid = false;
+	
+	public boolean confirmed = false;
+	
+	public boolean inStock = false;
+	
+	public boolean toOrder = false;
+	
+	public boolean ordered = false;
+	
 	public boolean got = false;
+	
+	public boolean checkedOK = false;
+	
+	public boolean checkedKO = false;
 	
 	public boolean closed = false;
 	
@@ -93,10 +117,47 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
     public static List<SparePart> findAllByCreationDateDesc() {
         return find.where().orderBy("creationDate DESC").findList();
     }
+    
+    public static List<SparePart> findAllToOrderByCreationDateDesc() {
+        return find.where().conjunction().eq("toOrder", true).eq("ordered", false).orderBy("creationDate DESC").findList();
+    }
+    
+    public static List<SparePart> findAllToReceiveByCreationDateDesc() {
+        return find.where().conjunction().eq("ordered", true).eq("got", false).orderBy("creationDate DESC").findList();
+    }
+    
+    public static List<SparePart> findAllToCheckByCreationDateDesc() {
+        return find.where().conjunction().eq("got", true).eq("checkedOK", false).eq("checkedKO", false).orderBy("creationDate DESC").findList();
+    }
+    
+    public static List<SparePart> findAllToCloseByCreationDateDesc() {
+        return find.where().conjunction().eq("checkedOK", true).eq("closed", false).orderBy("creationDate DESC").findList();
+    }
         
     public static SparePart findById(Long id) {
         return find.byId(id.toString());
     }
+    
+    public static List<SparePart> findAllByCustomerWatch(CustomerWatch watch) {
+    	return find.where().eq("watch.id", watch.id).orderBy("creationDate DESC").findList();
+    }
+    
+    public static List<SparePart> findAllOpenByCustomerWatch(CustomerWatch watch) {
+    	return find.where().conjunction().eq("watch.id", watch.id).eq("closed", "false").orderBy("creationDate DESC").findList();
+    }
+    
+    public static boolean hasOpenSparePartsByCustomerWatch(CustomerWatch watch) {
+    	return findAllOpenByCustomerWatch(watch).size() != 0;
+    }
+    
+    public static List<SparePart> findAllByCustomerWatchToOrder(CustomerWatch watch) {
+    	return find.where().conjunction().eq("watch.id", watch.id).eq("toOrder", true).orderBy("creationDate DESC").findList();
+    }
+    
+    public static List<SparePart> findAllByCustomerWatchToUse(CustomerWatch watch) {
+    	return find.where().conjunction().eq("watch.id", watch.id).eq("confirmed", true).orderBy("creationDate DESC").findList();
+    }
+    
     
     public static Page<SparePart> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
@@ -143,11 +204,45 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
 		return "?";
 	}
 	
+	public String getWatchId() {
+		if (watch != null)
+			return "#"+watch.id.toString();
+		return "?";
+	}
+	
+	public boolean isToBeChecked() {
+		return got && !checkedKO && !checkedOK;
+	}
+	
+	public boolean isToBeOrdered() {
+		return toOrder && !ordered;
+	}
+	
+	
 	public String getOpenStatus() {
 		if (closed)
 			return "spare_closed";
 		if (found)
 			return "spare_open_found";
+		return "spare_open";
+	}
+	
+	public String getDetailedStatus() {
+		if (closed)
+			return "spare_closed";
+		if (checkedOK)
+			return "spare_OK";
+		if (checkedKO)
+			return "spare_KO";
+		if (got)
+			return "spare_to_check";
+		if (ordered)
+			return "spare_ordered";
+		if (toOrder)
+			return "spare_to_order";
+		if (confirmed)
+			return "spare_confirmed";
+
 		return "spare_open";
 	}
 }

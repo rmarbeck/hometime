@@ -1,0 +1,60 @@
+@(thisInstance: Form[models.SparePart], isItNew: Boolean)
+
+@import tags._
+
+@actionlink() = @{
+	routes.CrudHelper.manage("spare-parts-ordering")
+}
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('button[value="delete"]').hide();
+			$('button[value="show"]').hide();
+		})
+	</script>
+}
+
+@before_form = {}
+
+
+@after_form = {
+
+}
+
+@defining(new views.FormDisplay(thisInstance, "SparePart", "admin.sparepart.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.CustomerWatch.getIdsByCustomersAsc, models.CustomerWatch.getWatchesByCustomersAsc, 'readonly -> "readonly");
+		   formDisplay.addFormField("description", true, "textarea", 'readonly -> "readonly");
+		   formDisplay.addFormField("unitNeeded", true, "input", 'type -> "number", 'min -> "1", 'step -> "1", 'readonly -> "readonly");
+		   formDisplay.addFormField("otherInfos", true, "textarea", 'readonly -> "readonly");
+		   formDisplay.addFormField("partReference", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("expectedInPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1", 'readonly -> "readonly");
+		   formDisplay.addFormField("outPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1", 'readonly -> "readonly");
+		   formDisplay.addFormField("inStock", true, "checkbox", 'onclick -> "return false");
+		   
+		   formDisplay.addFormField(" ", true, "separator");
+		   		   
+		   formDisplay.addFormField("emergencyLevel", true, "input", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "10", 'readonly -> "readonly");
+		   formDisplay.addFormField("expectedAvailability", true, "input", 'type -> "date", 'readonly -> "readonly");
+		   
+		   formDisplay.addFormField("confirmed", true, "checkbox", 'onclick -> "return false");
+		   formDisplay.addFormField("toOrder", true, "checkbox", 'onclick -> "return false");
+		   
+		   formDisplay.addFormField(" ", true, "separator");
+		   formDisplay.addFormField("ordered", true, "checkbox");
+
+		   formDisplay.addFormField("provider", true, "input");		   
+		   formDisplay.addFormField("realInPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+
+		   formDisplay.addFormField("found", true, "checkbox", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("got", true, "checkbox", 'type -> "hidden", '_class -> "hidden");
+		   
+		   formDisplay.addFormField("checkedOK", true, "checkbox", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("checkedKO", true, "checkbox", 'type -> "hidden", '_class -> "hidden");
+		   
+		   formDisplay.addFormField("closed", true, "checkbox", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("paid", true, "checkbox", 'type -> "hidden", '_class -> "hidden");
+		}
+	
+	@admin.template.form(formDisplay, false, actionlink, end_scripts, before_form, after_form)
+}

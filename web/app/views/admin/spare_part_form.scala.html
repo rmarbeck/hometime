@@ -7,14 +7,53 @@
 		   formDisplay.addFormField("description", true, "textarea");
 		   formDisplay.addFormField("unitNeeded", true, "input", 'type -> "number", 'min -> "1", 'step -> "1");
 		   formDisplay.addFormField("otherInfos", true, "textarea");
+		   formDisplay.addFormField("partReference", true, "input");
+		   formDisplay.addFormField("expectedInPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   formDisplay.addFormField("outPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   formDisplay.addFormField("inStock", true, "checkbox");
+		   
+		   formDisplay.addFormField(" ", true, "separator");
+		   		   
 		   formDisplay.addFormField("emergencyLevel", true, "input", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "10");
 		   formDisplay.addFormField("expectedAvailability", true, "input", 'type -> "date");
-		   formDisplay.addFormField("expectedInPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
-		   formDisplay.addFormField("realInPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
-		   formDisplay.addFormField("outPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1");
+		   
+		   if (fr.hometime.utils.SecurityHelper.isAdmin(session)) {
+		   formDisplay.addFormField("confirmed", true, "checkbox");
+		   formDisplay.addFormField("toOrder", true, "checkbox");
+		   formDisplay.addFormField("ordered", true, "checkbox");
+		   } else {
+		   formDisplay.addFormField("confirmed", true, "checkbox", 'onclick -> "return false");
+		   formDisplay.addFormField("toOrder", true, "checkbox", 'onclick -> "return false");
+		   formDisplay.addFormField("ordered", true, "checkbox", 'disabled -> "disabled");
+		   }
+		   
+		   formDisplay.addFormField("orderDate", true, "input", 'type -> "date", 'readonly -> "readonly");
+		   
+		   
+		   formDisplay.addFormField(" ", true, "separator");
+
+		   formDisplay.addFormField("provider", true, "input", 'readonly -> "readonly");		   
+		   formDisplay.addFormField("realInPrice", true, "input", 'type -> "number", 'min -> "0", 'step -> "1", 'readonly -> "readonly");
+		   if (fr.hometime.utils.SecurityHelper.isAdmin(session)) {
 		   formDisplay.addFormField("found", true, "checkbox");
 		   formDisplay.addFormField("got", true, "checkbox");
+		   formDisplay.addFormField("receptionDate", true, "input", 'type -> "date", 'readonly -> "readonly");
+		   
+		   formDisplay.addFormField("checkedOK", true, "checkbox");
+		   formDisplay.addFormField("checkedKO", true, "checkbox");
+		   
 		   formDisplay.addFormField("closed", true, "checkbox");
+		   formDisplay.addFormField("paid", true, "checkbox");
+		   } else {
+		   formDisplay.addFormField("found", true, "checkbox", 'disabled -> "disabled");
+		   formDisplay.addFormField("got", true, "checkbox", 'disabled -> "disabled");
+		   
+		   formDisplay.addFormField("checkedOK", true, "checkbox", 'disabled -> "disabled");
+		   formDisplay.addFormField("checkedKO", true, "checkbox", 'disabled -> "disabled");
+		   
+		   formDisplay.addFormField("closed", true, "checkbox", 'disabled -> "disabled");
+		   formDisplay.addFormField("paid", true, "checkbox", 'disabled -> "disabled");
+		   }
 		}
 	
 	@admin.template.form_with_default_links(formDisplay, isItNew)

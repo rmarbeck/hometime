@@ -1,0 +1,25 @@
+@(message: String = "", toOrder: List[models.SparePart], toReceive: List[models.SparePart], toCheck: List[models.SparePart], toClose: List[models.SparePart])
+@import tags._
+
+@import fr.hometime.utils._
+
+@end_scripts = { 
+}
+
+@layouts.admin("Admin", end_scripts) {
+	<div class="container">
+	@if_admin_or_watchmaker_or_collaborator() {
+		@if_admin_or_collaborator() {
+			@fragments.sparepartsmanageablelist(toOrder, "admin.spare.parts.to.order")
+			@fragments.sparepartsmanageablelist(toReceive, "admin.spare.parts.to.receive")
+		}
+
+		
+		@if_admin_or_watchmaker() {
+			@fragments.sparepartsmanageablelist(toCheck, "admin.spare.parts.to.check")
+		}
+		@fragments.sparepartsmanageablelist(toClose, "admin.spare.parts.to.close")
+    
+    }
+    </div>
+}

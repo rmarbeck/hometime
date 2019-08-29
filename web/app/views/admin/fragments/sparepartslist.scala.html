@@ -1,0 +1,69 @@
+@(spareparts: List[models.SparePart], key: String = "admin.spare.part")
+@import tags._
+
+@import fr.hometime.utils._
+
+	@if(spareparts == null || spareparts.size == 0) {
+      <div class="row">
+        <div class="well">
+            <em>@Html(Messages(key+".nothing.to.display"))</em>
+        </div>
+      </div>
+      } else {
+      <div class="row">
+       	<div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>@Html(Messages(key+".header.description"))</th>
+                  <th>@Html(Messages(key+".header.part.reference"))</th>
+                  <th>@Html(Messages(key+".header.unit.needed"))</th>
+                  <th>@Html(Messages(key+".header.expected.in.price"))</th> 
+                  <th>@Html(Messages(key+".header.in.stock"))</th>
+                  <th>@Html(Messages(key+".header.status"))</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for((part, index) <- spareparts.zipWithIndex) {
+                <tr class="@part.getDetailedStatus">
+                  <td>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.edit("SpareParts", part.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
+	                @if(part.isToBeChecked) {
+	                <a type="button" class="btn btn-success btn-xs" href="@routes.SpareParts.markCheckedOK(part.id)"><span class="glyphicon glyphicon-ok"></span></a>
+	                <a type="button" class="btn btn-danger btn-xs" href="@routes.SpareParts.markCheckedKO(part.id)"><span class="glyphicon glyphicon-remove"></span></a>
+	                }
+	                @if_admin() {
+	                <a type="button" class="btn btn-warning btn-xs" href="#" onclick='doAction("@routes.SpareParts.markToOrder(part.id)");'><span class="glyphicon glyphicon-shopping-cart"></span></a>
+	                <a type="button" class="btn btn-success btn-xs" href="#" onclick='doAction("@routes.SpareParts.markConfirmed(part.id)");'><span class="glyphicon glyphicon-ok"></span></a>
+	                <a type="button" class="btn btn-danger btn-xs" href="#" onclick='doAction("@routes.SpareParts.markClosed(part.id)");'><span class="glyphicon glyphicon-trash"></span></a>
+	                }
+                  </td>
+                  <td>
+                    @part.description
+                  </td>
+                  <td>
+                    @part.partReference
+                  </td>
+                  <td>
+                    @part.unitNeeded
+                  </td>
+                  <td>
+                    @display_price(part.expectedInPrice.toFloat)
+                  </td>
+                  <td>
+                  	@display_boolean(part.inStock)
+                  </td>
+                  <td>
+                   	@Html(Messages(key+".value.status."+part.getDetailedStatus.toString.toLowerCase.replace('_','.')))
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+		</div>
+	  </div>
+	}
+
+	

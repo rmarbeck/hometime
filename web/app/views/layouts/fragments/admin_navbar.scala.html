@@ -62,7 +62,7 @@
                     @li_activable(21, index) {<a href="@routes.Watchmaker.displayWorkInProgressWatches()">@Messages("admin.navbar.link.text.display.watches.for.watchmaker.work.in.progress")</a>}
                     @li_activable(22, index) {<a href="@routes.Watchmaker.displayWaitingQuotationWatches()">@Messages("admin.navbar.link.text.display.watches.for.watchmaker.waiting.for.quotation")</a>}
                     <li class="divider hidden-xs"></li>
-                	@li_activable(39, index) {<a href="@routes.CrudHelper.displayAll("SparePartsOpen")">@Messages("admin.navbar.link.text.spare.parts")</a>}
+                	@li_activable(39, index) {<a href="@routes.SpareParts.displayOverview()">@Messages("admin.navbar.link.text.spare.parts")</a>}
                   </ul>
                 }
                 @li_activable(34, index) {<a href="@routes.CrudHelper.displayAll("SimplifiedCustomers")">@Messages("admin.navbar.link.text.simplified.customers")</a>}
@@ -76,7 +76,7 @@
                     @li_activable(34, index) {<a href="@routes.CrudHelper.displayAll("SimplifiedCustomers")">@Messages("admin.navbar.link.text.simplified.customers")</a>}
                 	@li_activable(36, index) {<a href="@routes.SimplifiedCustomers.pageOfSpecialCustomers()">@Messages("admin.navbar.link.text.simplified.customers.big")</a>}
                 	<li class="divider hidden-xs"></li>
-                	@li_activable(39, index) {<a href="@routes.CrudHelper.displayAll("SparePartsOpen")">@Messages("admin.navbar.link.text.spare.parts")</a>}
+                	@li_activable(39, index) {<a href="@routes.SpareParts.displayOverview()">@Messages("admin.navbar.link.text.spare.parts")</a>}
                 	<li class="divider hidden-xs"></li>
                 	@li_activable(36, index) {<a href="@routes.SimplifiedCustomers.createNewCustomerByCustomer()">@Messages("admin.navbar.link.text.simplified.customers.by.customer")</a>}
                   </ul>
@@ -103,7 +103,7 @@
                 	<li class="divider hidden-xs"></li>
                 	@li_activable(38, index) {<a href="@routes.CrudHelper.displayAll("SpareParts")">@Messages("admin.navbar.link.text.spare.parts")</a>}
                 	<li class="divider hidden-xs"></li>
-                	@li_activable(39, index) {<a href="@routes.CrudHelper.displayAll("SparePartsOpen")">@Messages("admin.navbar.link.text.spare.parts")</a>}
+                	@li_activable(39, index) {<a href="@routes.SpareParts.displayOverview()">@Messages("admin.navbar.link.text.spare.parts")</a>}
                   </ul>
                 }
                 @li_activable(60, index, args = 'class -> "dropdown") {

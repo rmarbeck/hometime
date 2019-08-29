@@ -230,6 +230,10 @@ GET     /admin/display/customer-watch-watchmaker-waiting-quotation/:id	controlle
 GET     /admin/display/customer-watch-watchmaker/:id					controllers.Watchmaker.displayWatchAlias(id: Long)
 
 
+GET     /admin/edit/customer-watch-quotation-validation/:id				controllers.CustomerWatch.prepareQuotationValidation(id: Long)
+POST    /admin/manage/customer-watch-quotation-validation				controllers.CustomerWatch.manageQuotationValidation()
+
+
 GET     /admin/customer-watch/create/from-customer/:id 					controllers.CustomerWatch.addFromCustomer(id: Long)
 GET     /admin/customer-watch/create/from-order/:id 					controllers.CustomerWatch.addFromOrder(id: Long)
 GET     /admin/customer-watch/create				 					controllers.CustomerWatch.add()
@@ -333,6 +337,9 @@ GET		/admin/display/OverloadedSellingWarrants/:id					controllers.SellingWarrant
 GET		/form/new														controllers.SimplifiedCustomers.createNewCustomerByCustomer()
 POST	/form/new/manage												controllers.SimplifiedCustomers.manageNewCustomerByCustomer()
 
+GET     /admin/edit/spare-parts/for/ordering/:id						controllers.SpareParts.prepareOrdering(id: Long)
+POST    /admin/manage/spare-parts-ordering								controllers.SpareParts.manageOrdering()
+
 GET		/admin/display/:model/All										controllers.CrudHelper.displayAll(model: String, d:Int ?=20)
 GET		/admin/display/:model/:id										controllers.CrudHelper.display(model: String, id: Long)
 GET		/admin/display/:model/page/										controllers.CrudHelper.page(model: String, p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "", d:Int ?=10)
@@ -342,6 +349,18 @@ POST	/admin/manage/:model											controllers.CrudHelper.manage(model: String)
 
 GET     /admin/post-service-certificate/create/by/watch/:id				controllers.Accounting.addPServiceCByWatchId(id: Long)
 GET     /admin/post-selling-certificate/create/by/watch/:id				controllers.Accounting.addPSellingCByWatchId(id: Long)
+
+GET     /admin/spare-parts/create/by/watch/:id							controllers.SpareParts.createForCustomerWatch(id: Long)
+GET     /admin/spare-parts/create/to-order/by/watch/:id					controllers.SpareParts.createForCustomerWatchOrderNow(id: Long)
+
+
+GET     /admin/spare-parts/overview										controllers.SpareParts.displayOverview()
+GET     /admin/spare-parts/move-to-next-step							controllers.SpareParts.moveToNextStep(id: Long)
+GET     /admin/spare-parts/check/ok										controllers.SpareParts.markCheckedOK(id: Long)
+GET     /admin/spare-parts/check/ko										controllers.SpareParts.markCheckedKO(id: Long)
+GET     /admin/spare-parts/mark/to/order								controllers.SpareParts.markToOrder(id: Long)
+GET     /admin/spare-parts/mark/confirmed								controllers.SpareParts.markConfirmed(id: Long)
+GET     /admin/spare-parts/mark/closed									controllers.SpareParts.markClosed(id: Long)
 
 GET		/admin/follow/external/document/url/:id							controllers.Admin.goToExternalDocumentUrl(id: Long)
 
