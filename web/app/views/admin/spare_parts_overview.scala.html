@@ -9,10 +9,8 @@
 @layouts.admin("Admin", end_scripts) {
 	<div class="container">
 	@if_admin_or_watchmaker_or_collaborator() {
-		@if_admin_or_collaborator() {
-			@fragments.sparepartsmanageablelist(toOrder, "admin.spare.parts.to.order")
-			@fragments.sparepartsmanageablelist(toReceive, "admin.spare.parts.to.receive")
-		}
+		@fragments.sparepartsmanageablelist(toOrder, "admin.spare.parts.to.order")
+		@fragments.sparepartsmanageablelist(toReceive, "admin.spare.parts.to.receive")
 
 		
 		@if_admin_or_watchmaker() {

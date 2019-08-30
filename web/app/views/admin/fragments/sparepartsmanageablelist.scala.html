@@ -33,14 +33,18 @@
                   <td>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.edit("SpareParts", part.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
 	                @if(part.isToBeChecked) {
+	                @if_admin_or_watchmaker() {
 	                <a type="button" class="btn btn-success btn-xs" href="@routes.SpareParts.markCheckedOK(part.id)"><span class="glyphicon glyphicon-ok"></span></a>
 	                <a type="button" class="btn btn-danger btn-xs" href="@routes.SpareParts.markCheckedKO(part.id)"><span class="glyphicon glyphicon-remove"></span></a>
+	                }
 	                } else {
+	                @if_admin_or_collaborator() {
 	                	@if(part.isToBeOrdered) {
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.SpareParts.prepareOrdering(part.id)"><span class="glyphicon glyphicon-arrow-down"></span></a>	
 	                	} else {
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.SpareParts.moveToNextStep(part.id)"><span class="glyphicon glyphicon-arrow-down"></span></a>
 	                	}
+	                }
 	                }
                   </td>
                   <td>
