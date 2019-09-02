@@ -31,6 +31,7 @@
               @for((part, index) <- spareparts.zipWithIndex) {
                 <tr>
                   <td>
+                    <a type="button" class="btn btn-default btn-xs" href="@routes.SimplifiedCustomerWatches.displayServicingSheet(part.watch.id)"><span class="glyphicon glyphicon-print"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.edit("SpareParts", part.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
 	                @if(part.isToBeChecked) {
 	                @if_admin_or_watchmaker() {
