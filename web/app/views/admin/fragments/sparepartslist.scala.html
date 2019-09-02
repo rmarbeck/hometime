@@ -20,7 +20,8 @@
                   <th>@Html(Messages(key+".header.description"))</th>
                   <th>@Html(Messages(key+".header.part.reference"))</th>
                   <th>@Html(Messages(key+".header.unit.needed"))</th>
-                  <th>@Html(Messages(key+".header.expected.in.price"))</th> 
+                  <th>@Html(Messages(key+".header.expected.in.price"))</th>
+                  <th>@Html(Messages(key+".header.out.price"))</th>  
                   <th>@Html(Messages(key+".header.in.stock"))</th>
                   <th>@Html(Messages(key+".header.status"))</th>
                 </tr>
@@ -51,6 +52,9 @@
                   </td>
                   <td>
                     @display_price(part.expectedInPrice.toFloat)
+                  </td>
+                  <td>
+                    @display_price(part.outPrice.toFloat)
                   </td>
                   <td>
                   	@display_boolean(part.inStock)

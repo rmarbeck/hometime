@@ -4769,7 +4769,8 @@ admin.sparepart.closed.display.label=Fermée ?
 admin.spare.part.header.description=Pièce
 admin.spare.part.header.part.reference=Ref
 admin.spare.part.header.unit.needed=Nb
-admin.spare.part.header.expected.in.price=Prix
+admin.spare.part.header.expected.in.price=Prix achat
+admin.spare.part.header.out.price=Prix vente
 admin.spare.part.header.in.stock=En stock
 admin.spare.part.header.status=Statut
 
