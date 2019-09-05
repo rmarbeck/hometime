@@ -10,6 +10,7 @@ import java.util.function.Consumer;
 
 import fr.hometime.utils.SecurityHelper;
 import models.SparePart;
+import play.Logger;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -78,13 +79,14 @@ public class SpareParts extends Controller {
 				} else {
 					sparePart.update();
 				}
-				return displayWorkflowNextStep(sparePart.watch);
+				return displayWorkflowNextStep(sparePart.watch.id);
 			}
 		}
 	}
 	
 	
-    public static Result displayWorkflowNextStep(models.CustomerWatch currentWatch) {
+    public static Result displayWorkflowNextStep(long watchId) {
+    	models.CustomerWatch currentWatch = models.CustomerWatch.findById(watchId);
     	if (SecurityHelper.isLoggedInUserAuthorized(session(), SecurityHelper.isWatchmaker)) {
     		if (currentWatch.servicePriceAccepted)
     			return Watchmaker.prepareWorkInProgress(currentWatch.id); 
