@@ -2,6 +2,26 @@
 
 @import tags._
 
+@actionlink() = @{
+	routes.CrudHelper.manage("spare-parts-workflow")
+}
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('button[value="delete"]').hide();
+			$('button[value="show"]').hide();
+		})
+	</script>
+}
+
+@before_form = {}
+
+
+@after_form = {
+
+}
+
 @defining(new views.FormDisplay(thisInstance, "SparePart", "admin.sparepart.form")) { formDisplay =>
 		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.CustomerWatch.getIdsByCustomersAsc, models.CustomerWatch.getWatchesByCustomersAsc);
 		   formDisplay.addFormField("description", true, "textarea");
@@ -56,5 +76,6 @@
 		   }
 		}
 	
-	@admin.template.form_with_default_links(formDisplay, isItNew)
+	
+	@admin.template.form(formDisplay, isItNew, actionlink, end_scripts, before_form, after_form)
 }

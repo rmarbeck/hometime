@@ -190,10 +190,12 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	@Column(name="service_due_date")
 	public Date serviceDueDate;
 	
+	@Constraints.Required
 	public Long serviceStatus = 0L;
 	
 	public Long emergencyLevel = 0L;
 	
+	@Constraints.Required
 	public Long servicePrice = 0L;
 	
 	public boolean servicePriceAccepted = false;
@@ -204,6 +206,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public boolean servicePaid = false;
 	
+	@Constraints.Required
 	public Long finalCustomerServicePrice = 0L;
 	
 	public boolean finalCustomerQuotationSent = false;
@@ -217,6 +220,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public Long finalCustomerEmergencyLevel = 0L;
 	
+	@Constraints.Required
 	public Long finalCustomerServiceStatus = 0L;
 	
 	@Column(name="back_to_customer_date")

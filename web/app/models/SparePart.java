@@ -12,6 +12,7 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 
@@ -58,12 +59,16 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
 	
 	public String provider;
 	
+	@Constraints.Required
 	public Integer unitNeeded = 1;
 	
+	@Constraints.Required
 	public Long expectedInPrice = 0L;
 	
+	@Constraints.Required
 	public Long realInPrice = 0L;
 	
+	@Constraints.Required
 	public Long outPrice = 0L;
 	
 	public boolean found = false;

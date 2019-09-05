@@ -1,10 +1,14 @@
 package controllers;
 
+import static play.mvc.Results.badRequest;
+import static play.mvc.Results.redirect;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import fr.hometime.utils.SecurityHelper;
 import models.SparePart;
 import play.data.Form;
 import play.mvc.Controller;
@@ -49,6 +53,47 @@ public class SpareParts extends Controller {
 		}
 		return displayOverview();
 	}
+	
+	public static Result manageWorkflow() {
+		final Form<models.SparePart> sparePartForm = Form.form(models.SparePart.class).bindFromRequest();
+		String action = Form.form().bindFromRequest().get("action");
+		
+		if ("delete".equals(action)) {
+			models.SparePart sparePart = sparePartForm.get();
+			sparePart.delete();
+			return redirect(
+					routes.CrudHelper.displayAll("SpareParts", 20)
+					);
+		} else {
+			if (sparePartForm.hasErrors()) {
+				if ("save".equals(action))
+					return badRequest(views.html.admin.spare_part_form.render(sparePartForm, true));
+				return badRequest(views.html.admin.spare_part_form.render(sparePartForm, false));
+			} else {
+				models.SparePart sparePart = sparePartForm.get();
+				if ("save".equals(action)) {
+					sparePart.save();
+				} else if ("show".equals(action)) {
+					return crud.display(sparePart.id);
+				} else {
+					sparePart.update();
+				}
+				return displayWorkflowNextStep(sparePart.watch);
+			}
+		}
+	}
+	
+	
+    public static Result displayWorkflowNextStep(models.CustomerWatch currentWatch) {
+    	if (SecurityHelper.isLoggedInUserAuthorized(session(), SecurityHelper.isWatchmaker)) {
+    		if (currentWatch.servicePriceAccepted)
+    			return Watchmaker.prepareWorkInProgress(currentWatch.id); 
+    		return Watchmaker.prepareQuotation(currentWatch.id);
+    	}
+    	return redirect(
+				routes.CrudHelper.displayAll("SpareParts", 20)
+				);
+    }
     
 	public static Result createForCustomerWatch(long id) {
 		return crud.create(Form.form(SparePart.class).fill(createForCustomerWatch(id, false)));
