@@ -43,7 +43,9 @@
 	                	@if(part.isToBeOrdered) {
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.SpareParts.prepareOrdering(part.id)"><span class="glyphicon glyphicon-arrow-down"></span></a>	
 	                	} else {
+	                		@if(!part.isNotAcceptedYet) {
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.SpareParts.moveToNextStep(part.id)"><span class="glyphicon glyphicon-arrow-down"></span></a>
+	                		}
 	                	}
 	                }
 	                }

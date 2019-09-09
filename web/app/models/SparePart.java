@@ -227,6 +227,10 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
 		return toOrder && !ordered;
 	}
 	
+	public boolean isNotAcceptedYet() {
+		return !toOrder && !closed;
+	}
+	
 	
 	public String getOpenStatus() {
 		if (closed)

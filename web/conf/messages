@@ -4787,7 +4787,7 @@ admin.spare.part.value.status.spare.open=Créée
 
 admin.spare.part.nothing.to.display=Aucune pièce nécessaire
 
-admin.spare.parts.created.title=Pièces détachées atttente info
+admin.spare.parts.created.title=Pièces détachées attente info
 admin.spare.parts.created.nothing.to.display=Aucune pièce en attente d''info
 admin.spare.parts.created.header.id=ID
 admin.spare.parts.created.header.watch=Montre
