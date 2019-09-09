@@ -125,6 +125,8 @@ public class SpareParts extends Controller {
 				markClosed(id);
 			} else if (instance.ordered) {
 				markReceived(id);
+			} else if (instance.toOrder) {
+				markToOrder(id);
 			} else {
 				markOrdered(id, instance.expectedInPrice);
 			}
