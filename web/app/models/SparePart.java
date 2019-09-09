@@ -122,6 +122,10 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
     public static List<SparePart> findAllByCreationDateDesc() {
         return find.where().orderBy("creationDate DESC").findList();
     }
+
+    public static List<SparePart> findAllJustCreatedByCreationDateDesc() {
+        return find.where().conjunction().eq("toOrder", false).eq("closed", false).orderBy("creationDate DESC").findList();
+    }
     
     public static List<SparePart> findAllToOrderByCreationDateDesc() {
         return find.where().conjunction().eq("toOrder", true).eq("ordered", false).orderBy("creationDate DESC").findList();

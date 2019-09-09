@@ -28,7 +28,7 @@ public class SpareParts extends Controller {
     }
     
     public static Result displayOverview() {
-    	return ok(views.html.admin.spare_parts_overview.render("", models.SparePart.findAllToOrderByCreationDateDesc(), models.SparePart.findAllToReceiveByCreationDateDesc(), models.SparePart.findAllToCheckByCreationDateDesc(), models.SparePart.findAllToCloseByCreationDateDesc()));
+    	return ok(views.html.admin.spare_parts_overview.render("", models.SparePart.findAllJustCreatedByCreationDateDesc(), models.SparePart.findAllToOrderByCreationDateDesc(), models.SparePart.findAllToReceiveByCreationDateDesc(), models.SparePart.findAllToCheckByCreationDateDesc(), models.SparePart.findAllToCloseByCreationDateDesc()));
     }
     
     public static Result prepareOrdering(long id) {

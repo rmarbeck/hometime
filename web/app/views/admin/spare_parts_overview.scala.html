@@ -1,4 +1,4 @@
-@(message: String = "", toOrder: List[models.SparePart], toReceive: List[models.SparePart], toCheck: List[models.SparePart], toClose: List[models.SparePart])
+@(message: String = "", created: List[models.SparePart], toOrder: List[models.SparePart], toReceive: List[models.SparePart], toCheck: List[models.SparePart], toClose: List[models.SparePart])
 @import tags._
 
 @import fr.hometime.utils._
@@ -9,6 +9,7 @@
 @layouts.admin("Admin", end_scripts) {
 	<div class="container">
 	@if_admin_or_watchmaker_or_collaborator() {
+		@fragments.sparepartsmanageablelist(created, "admin.spare.parts.created")
 		@fragments.sparepartsmanageablelist(toOrder, "admin.spare.parts.to.order")
 		@fragments.sparepartsmanageablelist(toReceive, "admin.spare.parts.to.receive")
 
