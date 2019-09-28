@@ -12,6 +12,7 @@ import models.CustomerWatch;
 public class CurrentOrdersReport {
 	public String sStatus;
 	public Float price = 0f;
+	public int count = 1;
 	
 	private CurrentOrdersReport(CustomerWatch currentWatch) {
 		sStatus = CustomerWatchHelper.getStatusName(currentWatch);
@@ -20,6 +21,10 @@ public class CurrentOrdersReport {
 	
 	private void addPrice(Float price) {
 		this.price+=price;
+	}
+	
+	private void addOne() {
+		this.count++;
 	}
 		
 	public static List<CurrentOrdersReport> generateReport() {
@@ -38,6 +43,7 @@ public class CurrentOrdersReport {
 		String key = evaluateKey(newLine);
 		if (reportBuilder.containsKey(key)) {
 			reportBuilder.get(key).addPrice(newLine.price);
+			reportBuilder.get(key).addOne();
 		} else {
 			reportBuilder.put(key, newLine);
 		}
