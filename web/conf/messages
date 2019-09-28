@@ -4992,6 +4992,7 @@ admin.current.orders.line.page=Commandes en cours
 admin.current.orders.line.page.title=Commandes en cours
 admin.current.orders.line.page.sStatus=Statut
 admin.current.orders.line.page.price=Prix
+admin.current.orders.line.page.count=Nb
 admin.current.orders.line.page.link=Filtre
 
 admin.watches.by.status.page.title=Montres filtrées par statut
