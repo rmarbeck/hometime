@@ -4564,7 +4564,7 @@ admin.customer.login.page.title=Accès sécurisé client
 admin.customer.login.page.placeholder.email=Email
 admin.customer.login.page.placeholder.password=Mot de passe
 admin.customer.login.page.action.sign.in=OK
-admin.customer.login.page.help=Besoin d''aide ? Appelez nous au <b>07 82 43 47 51</b> ou <b>06 52 39 16 31</b>
+admin.customer.login.page.help=Besoin d''aide ? Appelez nous au <b>07 82 43 47 51</b> ou <b>06 52 39 16 31</b><br/>322 rue Saint Honoré, 75001 Paris
 
 admin.customer.index.watches.waiting.for.quotation.active.none=Aucune montre en attente de devis
 admin.customer.index.watches.waiting.for.quotation.active=Montres en attente de devis
