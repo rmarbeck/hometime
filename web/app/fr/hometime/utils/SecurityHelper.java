@@ -4,7 +4,11 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -25,6 +29,10 @@ import play.mvc.Http.Session;
  */
 
 public class SecurityHelper {
+	private static final Duration CACHE_VALIDITY_TIME = Duration.ofMillis(1000);
+	public static Map<String, Optional<User>> userCache = null;
+	public static Map<String, Instant> userCacheValidity = null;
+	
 	public static String toMD5(String toEncode) {
 		return encode(toEncode, "MD5");
 	}
@@ -113,7 +121,7 @@ public class SecurityHelper {
     
     public static Optional<User> getLoggedInUser(String token) {
     	if (token != null)
-    		return Optional.ofNullable(User.findByEmail(token));
+    		return getUserFromCache(token);
         return Optional.empty();
     }
     
@@ -188,5 +196,20 @@ public class SecurityHelper {
 		if (loggedInUser != null)
 			return Optional.of(loggedInUser);
 		return Optional.empty();
+	}
+	
+	private static Optional<User> getUserFromCache(String email) {
+		if (userCache == null) {
+			userCache = new HashMap<String, Optional<User>>();
+			userCacheValidity = new HashMap<String, Instant>();
+		}
+		if (userCacheValidity.containsKey(email) && userCacheValidity.get(email).isAfter(Instant.now()))
+			return userCache.get(email);
+		
+		userCache.put(email, tryToGetUserByUsername(email));
+		userCacheValidity.put(email, Instant.now().plus(CACHE_VALIDITY_TIME));
+		
+		return userCache.get(email);
+		
 	}
 }

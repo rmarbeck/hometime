@@ -62,15 +62,19 @@
                 </tr>
               </thead>
               <tbody>
-              @for((invoice, index) <- currentPage.getList.zipWithIndex) {
+              @for((invoice, index) <- currentPage.getList.zipWithIndex; alreadyPayed = invoice.hasBeenPayed) {
+              
                 <tr>
                   <td>
 	                <a type="button" class="btn btn-default btn-xs" href="@routes.Accounting.viewInvoice(invoice.id)"><span class="glyphicon glyphicon-user"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editInvoice(invoice.id)"><span class="glyphicon glyphicon-edit"></span></a>
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.PaymentRequests.createFromInvoice(invoice.id)"><span class="glyphicon glyphicon-credit-card"></span></a>
-	                @if(!invoice.hasBeenPayed) {<a type="button" class="btn btn-primary btn-xs" href="@routes.Payments.createFromInvoice(invoice.id)"><span class="glyphicon glyphicon-euro"></span></a>}
-	                @if(AccountingAnalyticsHelper.isAnalysed(invoice)) {<a type="button" class="btn btn-success btn-xs" href="@routes.Accounting.viewInvoiceForAnalytics(invoice.id)"><span class="glyphicon glyphicon-folder-close"></span></a>}
-	                @if(!AccountingAnalyticsHelper.isAnalysed(invoice)) {<a type="button" class="btn btn-warning btn-xs" href="@routes.Accounting.viewInvoiceForAnalytics(invoice.id)"><span class="glyphicon glyphicon-folder-open"></span></a>}
+	                @if(!alreadyPayed) {<a type="button" class="btn btn-primary btn-xs" href="@routes.Payments.createFromInvoice(invoice.id)"><span class="glyphicon glyphicon-euro"></span></a>}
+	                @if(AccountingAnalyticsHelper.isAnalysed(invoice)) {
+	                <a type="button" class="btn btn-success btn-xs" href="@routes.Accounting.viewInvoiceForAnalytics(invoice.id)"><span class="glyphicon glyphicon-folder-close"></span></a>
+	                } else {
+	                <a type="button" class="btn btn-warning btn-xs" href="@routes.Accounting.viewInvoiceForAnalytics(invoice.id)"><span class="glyphicon glyphicon-folder-open"></span></a>
+	                }
                   </td>
                   <td class="hidden-xs">
                     @display_date(invoice.document.creationDate, "dd/MM")
@@ -85,7 +89,7 @@
                     @invoice.document.customer.getFullNameWithCivility
                   </td>
                   <td>
-                    @invoice.hasBeenPayed
+                    @alreadyPayed
                   </td>
                 </tr>
               }

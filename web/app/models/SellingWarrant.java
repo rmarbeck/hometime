@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import play.Logger;
 import play.db.ebean.Model;
@@ -29,6 +30,7 @@ public class SellingWarrant extends Model implements CrudReady<SellingWarrant, S
 
 	private static SellingWarrant singleton = null;
 	
+	@Transient
 	private Template1<SellingWarrant,Html> showTemplate = null;
 
 	@Id

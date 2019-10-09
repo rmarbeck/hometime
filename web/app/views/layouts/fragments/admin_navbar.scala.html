@@ -11,26 +11,21 @@
                 <span class="icon-bar"></span>
               </button>
               
-              @if_customer() {
-    			<a class="navbar-brand" href="@routes.CustomerAdmin.index()">@Messages("admin.customer.text.home")</a>
-    		  }
-    		  @if_admin_or_collaborator_or_partner() {
+    		  @if_admin_or_watchmaker_or_collaborator() {
     		  	<a class="navbar-brand" href="@routes.Admin.index()">@Messages("admin.text.home")</a>
     		  }
-    		  @if_watchmaker() {
-    		  	<a class="navbar-brand" href="@routes.Admin.index()">@Messages("admin.text.home")</a>
+	    	  @if_customer() {
+	    		<a class="navbar-brand" href="@routes.CustomerAdmin.index()">@Messages("admin.customer.text.home")</a>
     		  }
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-              	@if_customer() {
-              		@li_activable(1, index) {<a href="@routes.CustomerAdmin.index()"><span class="glyphicon glyphicon-home"></span></a>}
-              	}
-              	@if_admin_or_collaborator_or_partner() {
+              	
+              	@if_admin_or_watchmaker_or_collaborator() {
     		  		@li_activable(1, index) {<a href="@routes.Admin.index()"><span class="glyphicon glyphicon-home"></span></a>}
     		  	}
-    		  	@if_watchmaker() {
-    		  		@li_activable(1, index) {<a href="@routes.Admin.index()"><span class="glyphicon glyphicon-home"></span></a>}
+	    		@if_customer() {
+              		@li_activable(1, index) {<a href="@routes.CustomerAdmin.index()"><span class="glyphicon glyphicon-home"></span></a>}
     		  	}
                 
                 @if_admin_or_collaborator() {
@@ -197,10 +192,7 @@
                 @if_customer() {
     				@li_activable(100, index) {<a href="@routes.Application.customerLogout()">@Messages("admin.customer.navbar.link.text.logout")</a>}
     		  	}
-    		  	@if_admin_or_collaborator_or_partner() {
-    		  		@li_activable(100, index) {<a href="@routes.Application.logout()">@Messages("admin.navbar.link.text.logout")</a>}
-    		  	}
-    		  	@if_watchmaker() {
+    		  	@if_admin_or_watchmaker_or_collaborator() {
     		  		@li_activable(100, index) {<a href="@routes.Application.logout()">@Messages("admin.navbar.link.text.logout")</a>}
     		  	}
               </ul>

@@ -163,6 +163,7 @@ public class Invoice extends Model {
         		.endJunction()
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
+                .setFetchAhead(false)
                 .getPage(page);
     }
     
