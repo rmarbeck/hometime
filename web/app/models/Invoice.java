@@ -16,6 +16,7 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import com.avaje.ebean.Expr;
+import com.avaje.ebean.FetchConfig;
 import com.avaje.ebean.Page;
 
 import controllers.Payments;
@@ -122,7 +123,7 @@ public class Invoice extends Model {
     }
     
     public static List<Invoice> findAllByDescendingDate() {
-        return find.orderBy("document.creationDate DESC").findList();
+        return find.fetch("document.customer").orderBy("document.creationDate DESC").findList();
     }
     
     public static List<Long> findAllByDescendingDateIds() {
