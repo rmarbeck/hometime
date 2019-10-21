@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 import controllers.CrudHelper;
+import fr.hometime.utils.FormHelper;
+import fr.hometime.utils.FormHelper.*;
 import play.data.Form;
 import play.data.Form.Field;
 import scala.Symbol;
@@ -133,6 +135,12 @@ public class FormDisplay {
 		if (formFields == null)
 			formFields = new ArrayList<FormDisplay.FormField>();
 		formFields.add(new FormField(form, fieldName, null, hideSmall, possibleKeys, possibleValues, tuple));
+	}
+	
+	public void addFormFieldForSelect(String fieldName, boolean hideSmall, FormHelper.KeysAndValues possibleKeysAndValues, Tuple2<Symbol, String>... tuple) {
+		if (formFields == null)
+			formFields = new ArrayList<FormDisplay.FormField>();
+		formFields.add(new FormField(form, fieldName, null, hideSmall, possibleKeysAndValues.getKeys(), possibleKeysAndValues.getValues(), tuple));
 	}
 	
 	public void addFormFieldForSelect(String fieldName, boolean hideSmall, List<?> possibleValues, Tuple2<Symbol, String>... tuple) {

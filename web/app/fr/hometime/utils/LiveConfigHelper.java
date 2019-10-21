@@ -5,6 +5,9 @@ import play.Play;
 
 import static fr.hometime.utils.LiveConfigConstants.*;
 
+import java.util.Date;
+import java.util.Optional;
+
 /**
  * Helper for Live Config operations.
  * 
@@ -25,8 +28,44 @@ public class LiveConfigHelper {
 	}
 	
 	public static boolean isStoreClosed() {
-		if (LiveConfig.isKeyDefined(STORE_CLOSED))
-			return LiveConfig.getBoolean(STORE_CLOSED);
-		return false;
+		return tryToGetBoolean(STORE_CLOSED).orElse(false);
 	}
+	
+    
+    /**
+     * Get Date value
+     */
+    public static Optional<Date> tryToGetDate(String key) {
+    	return tryToGetConfig(key).map(config -> Optional.of(config.valuedate)).orElse(Optional.empty());
+    }
+    
+    /**
+     * Get String value
+     */
+    public static Optional<String> tryToGetString(String key) {
+    	return tryToGetConfig(key).map(config -> Optional.of(config.valuestring)).orElse(Optional.empty());
+    }
+    
+    /**
+     * Get boolean value
+     */
+    public static Optional<Boolean> tryToGetBoolean(String key) {
+    	return tryToGetConfig(key).map(config -> Optional.of(Boolean.valueOf(config.valueboolean))).orElse(Optional.empty());
+    }
+    
+    /**
+     * Get Long value
+     */
+    public static Optional<Long> tryToGetLong(String key) {
+    	return tryToGetConfig(key).map(config -> Optional.of(config.valuelong)).orElse(Optional.empty());
+    }
+    
+    private static Optional<LiveConfig> tryToGetConfig(String key) {
+    	if (key != null) {
+    		LiveConfig config = LiveConfig.find.byId(key);
+    		if (config != null)
+    			return Optional.of(config);
+    	}
+    	return Optional.empty();
+    }
 }

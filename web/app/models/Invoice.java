@@ -20,6 +20,8 @@ import com.avaje.ebean.Page;
 
 import controllers.Payments;
 import fr.hometime.utils.DateHelper;
+import fr.hometime.utils.FormHelper;
+import fr.hometime.utils.FormHelper.KeysAndValues;
 
 /**
  * Definition of an invoice
@@ -137,6 +139,13 @@ public class Invoice extends Model {
     		orderIdAndCustomerName.add(invoice.uniqueAccountingNumber + " - " + invoice.document.customer.getFullName());
  
     	return orderIdAndCustomerName;
+    }
+    
+    public static FormHelper.KeysAndValues findAllByDescendingDateIdsAndOrderIdAndCustomerName() {
+    	FormHelper.KeysAndValues result = new FormHelper().new KeysAndValues();
+    	for (Invoice invoice : findAllByDescendingDate())
+    		result.add(invoice.id.toString(), invoice.uniqueAccountingNumber + " - " + invoice.document.customer.getFullName());
+    	return result;
     }
     
     public static Invoice findById(Long id) {

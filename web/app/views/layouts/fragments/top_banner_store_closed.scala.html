@@ -2,8 +2,8 @@
 @import fr.hometime.utils._
 
     <div class="@if(isTop) {warning-store-closed-top hidden-xs} else {warning-store-closed}">
-        <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp; @if(LiveConfig.isKeyDefined(LiveConfigConstants.STORE_CLOSED_TITLE_FORCED)) {@Html(LiveConfig.getString(LiveConfigConstants.STORE_CLOSED_TITLE_FORCED))} else {@Html(Messages("global.text.store.closed"))}
+        <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp; @Html(LiveConfigHelper.tryToGetString(LiveConfigConstants.STORE_CLOSED_TITLE_FORCED).orElse(Messages("global.text.store.closed")))
         <div class="conditions">
-            <p>@if(LiveConfig.isKeyDefined(LiveConfigConstants.STORE_CLOSED_MESSAGE_FORCED)) {@Html(LiveConfig.getString(LiveConfigConstants.STORE_CLOSED_MESSAGE_FORCED))} else {@Html(Messages("global.text.store.closed.consequences"))}</p>
+            <p>@Html(LiveConfigHelper.tryToGetString(LiveConfigConstants.STORE_CLOSED_MESSAGE_FORCED).orElse(Messages("global.text.store.closed.consequences")))</p>
         </div>
     </div>

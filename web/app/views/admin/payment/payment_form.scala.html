@@ -47,7 +47,7 @@
 }
 
 @defining(new views.FormDisplay(thisInstance, "Payment", "admin.payment.form")) { formDisplay =>
-		@{ formDisplay.addFormFieldForSelect("invoice.id", false, models.Invoice.findAllByDescendingDateIds, models.Invoice.findAllByDescendingDateOrderIdAndCustomerName);
+		@{ formDisplay.addFormFieldForSelect("invoice.id", false, models.Invoice.findAllByDescendingDateIdsAndOrderIdAndCustomerName);
 		   formDisplay.addFormFieldForSelect("paymentMethod", models.Payment.PaymentMethod.values.toList);
 		   formDisplay.addFormField("amountInEuros", true, "input", 'type -> "number", 'min -> "0", 'step -> "0.01");
 		   formDisplay.addFormField("paymentDate", true, "input", 'type -> "date");

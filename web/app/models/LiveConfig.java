@@ -117,16 +117,7 @@ public class LiveConfig extends Model {
     	}
     	return false;
     }
-    
-    /**
-     * Get Date value
-     */
-    public static Date getDate(String key) {
-    	if (key != null && find.byId(key) != null) {
-    		return find.byId(key).valuedate;
-    	}
-    	return null;
-    }
+
 
     /**
      * Return a page of LiveConfigs

@@ -27,6 +27,8 @@ import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
 import fr.hometime.utils.CustomerWatchHelper;
+import fr.hometime.utils.FormHelper;
+import fr.hometime.utils.FormHelper.KeysAndValues;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import fr.hometime.utils.PhoneHelper;
 import fr.hometime.utils.Searcher;
@@ -262,6 +264,13 @@ public class Customer extends Model implements CrudReady<Customer, Customer>, Se
     	for (Customer c : findByNameAsc())
     		fullnames.add(c.getFullNameInversed());
     	return fullnames;
+    }
+    
+    public static FormHelper.KeysAndValues getEmailsAndFullnamesByNameAsc() {
+    	FormHelper.KeysAndValues result = new FormHelper().new KeysAndValues();
+    	for (Customer c : findByNameAsc())
+    		result.add(c.email, c.getFullNameInversed());
+    	return result;
     }
     
     public static Customer getOrCreateCustomerFromOrderRequest(OrderRequest request) {

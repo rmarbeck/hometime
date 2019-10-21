@@ -23,7 +23,7 @@
 }
 
 @defining(new views.FormDisplay(thisInstance, "PaymentRequest", "admin.paymentrequest.form")) { formDisplay =>
-		@{ formDisplay.addFormFieldForSelect("customer.email", false, models.Customer.getEmailsByNameAsc, models.Customer.getFullnamesByNameAsc);
+		@{ formDisplay.addFormFieldForSelect("customer.email", false, models.Customer.getEmailsAndFullnamesByNameAsc);
 		   formDisplay.addFormField("orderNumber", true, "input");
 		   formDisplay.addFormField("accessKey", true, "input");
 		   formDisplay.addFormField("priceInEuros", true, "input", 'type -> "number", 'min -> "0", 'step -> "0.01");
