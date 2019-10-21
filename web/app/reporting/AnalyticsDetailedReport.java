@@ -58,11 +58,11 @@ public class AnalyticsDetailedReport {
 	}
 		
 	public static List<AnalyticsDetailedReport> generateReport() {
-		return generateReport(() -> AccountingLineAnalytic.findAll());
+		return generateReport(() -> AccountingLineAnalytic.findAllForReporting());
 	}
 	
 	public static List<AnalyticsDetailedReport> generateReportEnhanced(Long nbOfMonths) {
-		return generateReport(() -> AccountingLineAnalytic.findAll());
+		return generateReport(() -> AccountingLineAnalytic.findAllForReporting());
 	}
 	
 	private static List<AnalyticsDetailedReport> generateReport(Supplier<List<AccountingLineAnalytic>> supplier) {

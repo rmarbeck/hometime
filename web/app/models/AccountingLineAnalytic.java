@@ -82,6 +82,10 @@ public class AccountingLineAnalytic extends Model implements CrudReady<Accountin
         return find.all();
     }
     
+    public static List<AccountingLineAnalytic> findAllForReporting() {
+        return find.fetch("accountingLine.document").fetch("analyticCode").findList();
+    }
+    
     public static AccountingLineAnalytic findById(Long id) {
         return find.byId(id.toString());
     }

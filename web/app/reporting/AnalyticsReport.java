@@ -138,7 +138,7 @@ public class AnalyticsReport {
 		
 	public static AnalyticsReport generateReport() {
 		AnalyticsReport report = new AnalyticsReport();
-		List<AccountingLineAnalytic> lines = AccountingLineAnalytic.findAll();
+		List<AccountingLineAnalytic> lines = AccountingLineAnalytic.findAllForReporting();
 		for(AccountingLineAnalytic line : lines)
 			report.loadAnalyticLine(line);
 		return report;
