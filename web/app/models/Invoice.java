@@ -169,7 +169,7 @@ public class Invoice extends Model {
     
     public static Page<Invoice> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
-        	find.where().disjunction().ilike("uniqueAccountingNumber", "%" + filter + "%").ilike("document.customer.name", "%" + filter + "%").ilike("description", "%" + filter + "%")
+        	find.fetch("document.customer").fetch("document.lines").where().disjunction().ilike("uniqueAccountingNumber", "%" + filter + "%").ilike("document.customer.name", "%" + filter + "%").ilike("description", "%" + filter + "%")
         		.endJunction()
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
