@@ -20,6 +20,7 @@
                     <li><a href="#service">@Messages("offer.menu.text.service")</a></li>
                     <li><a href="#restore">@Messages("offer.menu.text.restore")</a></li>
                     <li><a href="#quartz">@Messages("offer.menu.text.quartz")</a></li>
+                    <li><a href="#auth">@Messages("offer.menu.text.auth")</a></li>
                     <li><a href="#loan">@Messages("offer.menu.text.loan")</a></li>
                     <li><a href="#home">@Messages("offer.menu.text.home")</a></li>
                     <li><a href="#other">@Messages("offer.menu.text.other")</a></li>
@@ -67,6 +68,19 @@
                 </div>
               </div>
 
+              <div id="auth" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="offer-box">
+                    <div class="title"><blockquote><h2>@Html(Messages("offer.auth.head"))</h2></blockquote></div>
+                    <div class="body">@Html(Messages("offer.auth.body"))</div>
+                    <div class="row action">
+                      <div class="col-xs-6 text-right"><a class="btn btn-default more-action" href="@routes.Application.contact()" role="button">@Messages("offer.auth.call.to.action.contact")</a></div>
+                      <div class="col-xs-6 text-left"><a class="btn btn-primary order-action" href="@routes.Application.callRequest()" role="button">@Messages("offer.auth.call.to.action.call.request")&nbsp;<span class="glyphicon glyphicon-earphone"></span></a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
               <div id="loan" class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="offer-box">

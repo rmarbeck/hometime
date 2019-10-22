@@ -499,6 +499,10 @@ public class Application extends Controller {
     public static Result content_paris() {
         return ok(content_paris_repairing.render(""));
     }
+    
+    public static Result content_authentication() {
+        return ok(content_authentication.render(""));
+    }
 
     public static Result more() {
         return ok(more.render(""));

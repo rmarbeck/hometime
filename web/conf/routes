@@ -40,6 +40,9 @@ GET     /reparation/montre/omega     controllers.Application.content_omega()
 # Paris repairing
 GET     /reparation/montre/paris     controllers.Application.content_paris()
 
+# Paris repairing
+GET     /authentification/certification/montre/paris     controllers.Application.content_authentication()
+
 # More offer
 GET     /les-services/les-autres-prestations     controllers.Application.more()
 GET     /more                       controllers.Default.redirect(to = "/les-services/les-autres-prestations")

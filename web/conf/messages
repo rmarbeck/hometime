@@ -41,8 +41,11 @@ global.navbar.link.text.order=Demander un devis
 global.navbar.link.text.order.detailed=Demander un devis
 global.navbar.link.text.auto.order=Devis interactif
 
+global.navbar.link.text.content.paris=Réparation des montres sur Paris
+
 global.navbar.link.text.rolex.repairing.content=Réparations Rolex
 global.navbar.link.text.omega.repairing.content=Réparations Omega
+global.navbar.link.text.authentication.content=Authentification des montres
 
 global.navbar.link.text.watchmakers.content=Nos horlogers
 global.text.this.is.an.experiment=est une expérimentation, aidez nous !
@@ -410,7 +413,7 @@ content.paris.repairing.content.1.body=<div class="sub-title">Les différents ca
 
 
 content.paris.repairing.content.2.head=Comment se passe l''entretien chez Hometime
-content.paris.repairing.content.2.body=<div class="sub-title">La collecte de la montre :</div>Lors du dépôt de la montre dans nos locaux (ou dans le cas d''un envoi par colis sécurisé), nous éditons une fiche de collecte qui décrit l''état de la montre sur plusieurs critères. Cette fiche de collecte est remise au client, elle fait office de preuve de dépôt. Nous prenons la montre en photo la montre au moment de la rédaction de la fiche de collecte. <br /><br />Dès la collecte, nous essayons de faire une première évaluation du coût de l''entretien. \
+content.paris.repairing.content.2.body=<div class="sub-title">La collecte de la montre :</div>Lors du dépôt de la montre dans nos locaux (ou dans le cas d''un envoi par colis sécurisé), nous éditons une fiche de collecte qui décrit l''état de la montre sur plusieurs critères. Cette fiche de collecte est remise au client, elle fait office de preuve de dépôt. Nous prenons la montre en photo au moment de la rédaction de la fiche de collecte. <br /><br />Dès la collecte, nous essayons de faire une première évaluation du coût de l''entretien. \
  <div class="sub-title">L''auscultation par l''horloger :</div>Avant l''établissement du devis définitif, notre chef d''atelier ausculte la montre attentivement pour évaluer les travaux à engager. Ce travail est effectué la plupart du temps sous 48h maximum. Dans le cas où le changement de certaines pièces est à prévoir, le devis peut nécessiter quelques jours pour être établi, sinon il est envoyé dès l''auscultation terminée. \
  <br \><br \>Les auscultations les plus complexes concernent les montres ayant pris l''eau. \
  <div class="sub-title">Le déroulement de l''entretien :</div>Pour les entretiens nécessitant la révision complète de la montre, celle-ci est démontée intégralement. Chacune des pièces du mouvement est démontée et déposée dans un compartiment spécifique pour y être nettoyée. Avant la phase de remontage et d''huilage les pièces sont contrôlées visuellement pour y déceler d''éventuels défauts. \
@@ -449,6 +452,39 @@ content.paris.repairing.1.alt=Photo du verre cassé sur une paris Speedmaster ma
 content.paris.repairing.2.alt=Photo de la manipulation de la lunette tournante d''une Omega Seamaster
 
 
+#Authentication page
+content.auth.html.title=Hometime vous parle de l''authentification des montres des Luxe
+content.auth.html.description=Hometime authentifie et certifie les montres de marque récentes ou vintage
+content.auth.html.keywords=authentification, certification, réparation, montre, auth, entretien, vintage, restauration, submariner, daytona, datejust
+
+content.auth.main.title=Authentification des montres de Luxe
+
+content.auth.content.1.head=Les enjeux de l''authentification
+content.auth.content.1.body=<div class="sub-title">Les fausses montres :</div>Depuis 2018, la qualité des fausses montres, et principalement des Rolex, a franchi un cap. Il devient presque <b>impossible de déterminer si une montre est authentique sans l''ouvrir</b> et sans disposer d''une expertise poussée.\
+ <br \><br \>Nous voyons de fausses montres depuis longtemps et pouvons la plupart du temps détecter les fausses sur photos. Cependant, aujourd''hui nous ne pouvons plus assurer l''authenticité uniquement sur photo. Certaines copies nécessitent une inspection attentive et exhaustive pour en certifier la provenance. \
+ <div class="sub-title">Qui peut authentifier les montres ?</div><b>De moins en moins de professionnels acceptent aujourd''hui de certifier l''authenticité</b> des montres (même en boutiques officielles).\
+ <br \><br \>Cela est principalement dû au fait qu''il peut s''agir d''un exercice difficile voire impossible sans l''inspection par un horloger expert ainsi qu''à la responsabilité prise par ce dernier (potentiellement coûteuse à assumer).\
+ <div class="sub-title">Authentification et garantie d''originalité :</div>Authentifier une montre consiste à certifier qu''elle provient ou non de la marque.\
+ <br \><br \>Cependant, dans le cas des montres vintage notamment, il peut être demandé à l''expert de certifier que toutes les pièces sont conformes à ce qu''elles devraient être et qu''elles n''ont pas été remplacées au cours de la vie de la montre par des pièces de la marque mais de rechange (pièces de service).\
+ Cette certification demande un niveau bien plus élevé d''expertise et un temps d''analyse significativement plus long.\
+ <div class="sub-title">Le mythe "boite et papiers" :</div><b>Beaucoup pensent que disposer de la boite et des papiers valide l''authenticité d''une montre</b>, alors que l''inverse doit inviter à la prudence.\
+ <br \><br \><b>Cela est faux</b>.\
+ <br \><br \>Les faussaires copient aussi la boite et les papiers. Même si la qualité et certains détails secrets ne sont pas au rendez-vous, ils peuvent tromper un non inité.\
+ A l''inverse, dans certains cas, notamment pour les montres anciennes, ne pas disposer des papiers est tout à fait commun.\
+ <br \><br \>Enfin, la côte des montres étant très sensible à la présence des papiers, il arrive que des vraies montres disposent de faux papiers ! 
+
+
+content.auth.content.2.head=Nos services d''authentification
+content.auth.content.2.body=<div class="sub-title">Non authenticité : </div>Lorque nous déterminons qu''une montre est une copie, nous proposons la rédaction gratuite d''un certificat permettant de le formaliser.\
+ <br \><br \>Un tel certificat peut permettre de déposer plainte ou du moins de faire pression sur un vendeur honnête.\
+ <div class="sub-title">Authenticité garantie :</div>Lorsque nos tests permettent d''assurer que la montre est bien authentique, la formalisation de ce résultat peut faire l''objet d''un certificat dont le tarif est indexé sur la valeur de la montre.\
+ <br \><br \>En fonction du besoin, nous pouvons aussi informer gratuitement le client que la montre est authentique. \
+ <div class="sub-title">Cas litigieux :</div>Dans certains cas, la montre est authentique mais certaines pièces ou accessoires ne sont pas conformes. De la même façon, nous pouvons alors établir un certificat détaillant les points litigieux.
+
+content.auth.content.3.head=La marche à suivre
+content.auth.content.3.body=Si vous avez une montre à faire authentifier, n''hésitez pas à venir nous voir avec ou sans rendez-vous. Nous pourrons vous faire un premier retour très rapidement.
+
+content.auth.3.to.action=Venir nous voir
 
 
 # Watchmakers page
@@ -626,6 +662,7 @@ offer.menu.text.service=Révision & réparations
 offer.menu.text.restore=Service de restauration
 offer.menu.text.quartz=Changement de pile
 offer.menu.text.loan=Essai de montre de luxe
+offer.menu.text.auth=Authentification de montres
 offer.menu.text.home=Déplacement à domicile
 offer.menu.text.other=Achat/vente
 offer.menu.text.more=Les autres prestations
@@ -668,6 +705,23 @@ offer.quartz.body=Nous proposons un service de changement de vos piles de montre
  <br /><br />Notre service de changement de pile est aussi bien sûr disponible pour nos clients en province par le bias de nos services de transport sécurisés.
 
 offer.quartz.call.to.action.order=Voir les tarifs de changement de pile
+
+
+offer.auth.head=Authentification de montres
+offer.auth.body=L''authentification des montres de marques de luxe devient un véritable enjeu. De plus en plus de fausses montres très bien faites circulent (principalement des Rolex), alors que de moins en moins de professionnels acceptent de vérifier l''authenticité.\
+ <div class="sub-title">Méthode :</div>\
+ Afin de certifier l''authenticité nous vérifions systématiquement :\
+ <ul><li>l''aspect extérieur de la montre (boitier, bracelet, cadran, aiguilles...),</li>\
+ <li>son mouvement,</li>\
+ <li>éventuellement si fournis, les accesoires (boite, papiers).</li></ul>\
+ <div class="sub-title">Différents cas de figure :</div>\
+ <ul><li><b>La montre n''est pas authentique : </b>nous rédigeons gratuitement un certificat de non authenticité,</li>\
+ <li><b>La montre est 100% authentique et d''origine : </b>en fonction du besoin nous pouvons vous confirmer oralement l''authenticité ou formaliser l''authenticité par le biais d''un certificat,</li>\
+ <li><b>La montre est authentique, mais certains éléments ne sont pas cohérents : </b>nous pouvons rédiger un certificat en ce sens.</li></ul>
+
+offer.auth.call.to.action.contact=Nous contacter
+offer.auth.call.to.action.call.request=Etre rappelé
+
 
 offer.loan.head=Essai de montres de luxe
 offer.loan.body=Parce que vous n''avez qu''une seule montre, ou que vous souhaitez porter une nouvelle montre, Hometime vous propose <b>d''essayer l''une de ses montres mythiques pendant toute la durée de l''intervention</b> (<a href="#service">révision ou réparation</a>) sur votre montre.\
@@ -1883,6 +1937,7 @@ site.plan.watchmakers.title=Nos horlogers
 site.plan.content.repairing.rolex.title=Réparation des montres Rolex
 site.plan.content.repairing.omega.title=Réparation des montres Omega
 site.plan.content.repairing.paris.title=Réparation des montres à Paris
+site.plan.content.authentication.title=Authentification des montres de luxe
 
 site.plan.appointment.title.en=Visiting us - page in english
 site.plan.call.request.title.en=Being called back - page in english
