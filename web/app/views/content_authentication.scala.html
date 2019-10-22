@@ -1,0 +1,32 @@
+@(message: String = "")
+@import tags._
+
+@end_scripts = {
+}
+
+@defining("content.auth") { key =>
+
+@layouts.main(key, end_scripts) {
+    @layouts.fragments.navbar(80)
+    
+    <div class="container content @key-title">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="page-baseline"><h1>@Html(Messages(key+".main.title"))</h1></div>
+          </div>
+		</div>
+	</div>        
+        
+	<div class="container content @key">
+    
+    @featurette(key, "1", "left", null, null, null, false, false)
+    
+    @featurette(key, "2", "left", "authentication/analyse.jpg", null, null, false, true)
+    
+    @featurette(key, "3", "left", null, routes.Application.appointment().url, null, false, true)
+    
+      
+    </div><!-- /.container -->
+}
+}
