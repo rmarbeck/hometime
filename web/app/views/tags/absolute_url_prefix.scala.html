@@ -1,0 +1,6 @@
+@**
+ * Generate an url with absolute path.
+ *
+ *@
+@(secured: Boolean)
+@if(secured) {https} else {http}://@(play.Play.application.configuration.getString("production.host"))
