@@ -2555,6 +2555,15 @@ admin.customer.watch.form.placeholder.quotation=
 admin.customer.watch.form.placeholder.final.customer.from.infos=
 admin.customer.watch.form.placeholder.final.customer.to.infos=
 
+admin.customer.watch.form.label.authentication.needed=Authentification demandée
+admin.customer.watch.form.label.is.authentic=Est authentique
+admin.customer.watch.form.label.authentication.infos=Infos authenticité
+admin.customer.watch.form.placeholder.authentication.infos=
+admin.customer.watch.form.label.authentication.private.infos=Infos authenticité (privées)
+admin.customer.watch.form.placeholder.authentication.private.infos=
+admin.customer.watch.form.label.authentication.watch.details=Détails spécifiques
+admin.customer.watch.form.placeholder.authentication.watch.details=
+
 admin.customer.watch.form.label.tester.email=Testeur
 admin.customer.watch.form.placeholder.tester.email=
 
@@ -5126,6 +5135,72 @@ admin.sellingwarrant.page.model=Modèle
 
 admin.sellingwarrant.form=Mandat de dépôt vente
 admin.sellingwarrant.page=Mandat de dépôt vente
+
+admin.authentication.title.true=Certificat d''authenticité
+admin.authentication.text.true=Certificat d''authenticité
+admin.authentication.title.false=Certificat de non authenticité
+admin.authentication.text.false=Certificat de non authenticité
+
+admin.authentication.lead.message=Par la présente, la société Watch next SAS certifie les informations ci-dessous.
+admin.authentication.authentic.watch.description=Description de la montre
+admin.authentication.authentic.watch.brand.and.model=Marque et modèle : <b>{0} - {1}</b>
+admin.authentication.authentic.reference.and.serial=Référence et numéros de série : {0} - {1}
+admin.authentication.authentic.accessories=Bracelet : {0}
+admin.authentication.authentic.details=Informations complémentaires : {0}
+
+
+admin.authentication.authentic.certificate=Authenticité
+admin.authentication.authentic.default.content=Après auscultation de la montre décrite ci-dessus, la société Watch Next SAS certifie, en s''appuyant sur son \
+expertise et sur celle de ses partenaires, qu''il s''agit d''une pièce {0} authentique. \
+<br /><br />Ce diagnostic s''appuie notamment sur la vérification des pièces principales de la montre avec une attention particulière sur le mouvement et les pièces fréquemment copiées. \
+<br /><br />Pour faire valoir ce que de droit.
+
+admin.authentication.authentic.footer=Ce diagnostic d''authenticité engage la responsabilité de la société Watch Next SAS dans la limite de son engagement de moyen "simple". Sauf mention contraire, ce diagnostic d''authenticité couvre \
+la montre (son mouvement, son cadran, ses aiguilles), son bracelet (si applicable) et ne couvre pas les éventuels accessoires fournis avec la montre. \
+<br />Watch Next SAS maintient une liste des éléments lui ayant permis d''établir le présent diagnostic. Ces éléments sont maintenus secrets et n''apparaissent pas dans ce certificat. \
+<br />Cette garantie n''apporte aucun élément quant au caractère légal de son acquisition (montre volée par exemple). 
+
+admin.authentication.not.authentic.watch.description=Description de la montre
+admin.authentication.not.authentic.watch.brand.and.model=Marque revendiquée et modèle : <b>{0} - {1}</b>
+admin.authentication.not.authentic.reference.and.serial=Référence et numéros de série : {0} - {1}
+admin.authentication.not.authentic.accessories=Bracelet : {0}
+admin.authentication.not.authentic.details=Informations complémentaires : {0}
+
+admin.authentication.not.authentic.certificate=Non authenticité
+admin.authentication.not.authentic.default.content=Après auscultation de la montre décrite ci-dessus, la société Watch Next SAS estime, en s''appuyant sur son \
+expertise et sur celle de ses partenaires, qu''il ne s''agit pas d''une pièce {0} authentique. \
+<br /><br />Ce diagnostic de non authenticité s''appuie notamment sur la différence de certaines pièces avec celles \
+présentes sur les modèles de la marque, principalement au niveau du mouvement. \
+<br /><br />Pour faire valoir ce que de droit.
+
+
+admin.authentication.not.authentic.footer=Ce diagnostic d''authenticité engage la responsabilité de la société Watch Next SAS dans la limite de son engagement de moyen "simple". \
+<br />Watch Next SAS maintient une liste des éléments lui ayant permis d''établir le présent diagnostic. Ces éléments sont maintenus secrets et n''apparaissent pas dans ce certificat. \
+<br />Aucune rétribution financière n''a été demandée par la société Watch Next SAS pour l''établissement de ce document. 
+
+admin.authentication.stamp=Cachet Watch Next
+
+admin.authentication.page=Certificats d''authenticité
+admin.authentication.page.title=Certificats d''authenticité
+admin.authentication.page.documentdate=Date
+admin.authentication.page.owner=Client
+admin.authentication.page.brand=Marque
+admin.authentication.page.model=Modèle
+
+
+
+admin.authentication.form=Nouveau certificat d''authenticité
+admin.authentication.form.title=Nouveau certificat d''authenticité
+admin.authentication.form.watch.id.label.name=Montre
+admin.authentication.form.watch.id.default.name=Sélectionner la montre
+admin.authentication.form.documentdate.label.name=Date du certificat
+admin.authentication.action.cancel=Annuler
+admin.authentication.action.save=Enregistrer
+admin.authentication.action.show=Prévisualiser
+admin.authentication.action.edit=Modifier
+admin.authentication.action.delete=Supprimer
+
+
 
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751

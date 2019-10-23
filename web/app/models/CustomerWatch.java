@@ -24,9 +24,11 @@ import com.avaje.ebean.Page;
 import controllers.CrudReady;
 import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.DateHelper;
+import fr.hometime.utils.FormHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.SecurityHelper;
+import fr.hometime.utils.FormHelper.KeysAndValues;
 
 /**
  * Definition of a Watch belonging to a customer
@@ -267,6 +269,18 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
     @ManyToOne
 	public Customer customer;
+    
+    public boolean authenticationNeeded = false;
+    
+    public boolean isAuthentic = false;
+    
+    public String authenticationWatchDetails;
+    
+    @Column(length = 10000)
+    public String authenticationInformations;
+    
+    @Column(length = 10000)
+    public String authenticationPrivateInformations;
 
 	@Constraints.Required
 	@Column(name="customer_watch_status", length = 40)
@@ -420,6 +434,12 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
         			.orderBy("lastStatusUpdate desc").findList();
     }
     
+    public static List<CustomerWatch> findByAuthenticationAskedDateAsc() {
+    	return find.where().eq("authenticationNeeded", true)
+        			.orderBy("creationDate desc").findList();
+    }
+    
+    
     public static List<CustomerWatch> findForLoggedInCustomerWaitingToBeCollected(Session session) {
     	return CustomerWatchHelper.findForLoggedInCustomerWaitingToBeCollected(session);
     }
@@ -552,6 +572,14 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     
     public static CustomerWatch findBySerial(String serial) {
     	return find.where().eq("serial", serial).findUnique();
+    }
+    
+   
+    public static FormHelper.KeysAndValues getIdsAndWatchesByAuthenticationAskedDateAsc() {
+    	FormHelper.KeysAndValues result = new FormHelper().new KeysAndValues();
+    	for (CustomerWatch w : findByAuthenticationAskedDateAsc())
+    		result.add(w.id.toString(), w.getDisplayName());
+    	return result;
     }
 
     public static Page<CustomerWatch> page(int page, int pageSize, String sortBy, String order, String filter) {

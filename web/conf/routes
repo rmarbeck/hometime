@@ -150,6 +150,8 @@ GET   	/paiement/success              					controllers.PaymentRequestsFreeOfLogi
 POST    /paiement/backoffice           					controllers.PaymentRequestsFreeOfLogin.manageBackOfficeAnswer()
 GET     /paiement/:ak               					controllers.PaymentRequestsFreeOfLogin.displayForm(ak: String)
 
+# Check authentication
+GET		/verification/certificat						controllers.Application.checkAuthentication(id1: Long, id2: Long, id3: Long)
 
 # Offer
 GET     /notify			     							controllers.Application.newIncomingCall(secret: String, phonenumber: String, missed: Boolean ?= false)
@@ -336,6 +338,8 @@ GET		/admin/display/CustomerWatchByStatus/:statusName				controllers.CustomerWat
 
 
 GET		/admin/display/OverloadedSellingWarrants/:id					controllers.SellingWarrants.displayWarrant(id: Long)
+
+GET		/admin/display/OverloadedAuthentications/:id					controllers.Authentications.displayAuthentication(id: Long)
 
 GET		/form/new														controllers.SimplifiedCustomers.createNewCustomerByCustomer()
 POST	/form/new/manage												controllers.SimplifiedCustomers.manageNewCustomerByCustomer()

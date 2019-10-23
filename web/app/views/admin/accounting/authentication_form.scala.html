@@ -1,0 +1,14 @@
+@(thisInstance: Form[models.Authentication], isItNew: Boolean)
+
+@import tags._
+
+@end_scripts = {
+}
+
+@defining(new views.FormDisplay(thisInstance, "Authentication", "admin.authentication.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.CustomerWatch.getIdsAndWatchesByAuthenticationAskedDateAsc);
+		   formDisplay.addFormField("documentDate", true, "input", 'type -> "date");
+		}
+	
+	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
+}

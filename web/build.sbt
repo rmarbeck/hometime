@@ -11,6 +11,8 @@ libraryDependencies ++= Seq(
   "postgresql" % "postgresql" % "9.1-901-1.jdbc4",
   "commons-io" % "commons-io" % "2.4",
   "com.mailjet" % "mailjet-client" % "4.1.1",
+  "com.google.zxing" % "core" % "3.4.0",
+  "com.google.zxing" % "javase" % "3.4.0",
   javaJdbc,
   javaEbean,
   filters,

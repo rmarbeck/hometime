@@ -18,6 +18,7 @@ import fr.hometime.utils.LiveConfigHelper;
 import fr.hometime.utils.RandomHelper;
 import fr.hometime.utils.SecurityHelper;
 import fr.hometime.utils.ServiceTestHelper;
+import models.Authentication;
 import models.AutoOrder;
 import models.Brand;
 import models.BuyRequest;
@@ -829,6 +830,15 @@ public class Application extends Controller {
     
     public static Result siteplan() {
     	return ok(site_plan.render(getDisplayableWatches(), getSupportedBrands()));
+    }
+    
+    public static Result checkAuthentication(Long id1, Long id2, Long id3) {
+    	Authentication authentication = Authentication.findById(id1);
+    	if (authentication != null) {
+    		if (authentication.watch.id == id2 && authentication.watch.customer.id == id3)
+    			return ok(check_auth_result.render(authentication));
+    	}
+    	return internalServerError();
     }
     
     public static Result acceptQuotation(Long orderId, String price, String delay) {

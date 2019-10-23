@@ -126,6 +126,20 @@
 				@simple_admin_input(watch("backToCustomerDate"), "admin.customer.watch.form.VARIABLE.back.to.customer.date", 'type -> "date", 'readonly -> "readonly")
 				
 				<hr />
+				
+				@simple_admin_checkbox(watch("authenticationNeeded"), "admin.customer.watch.form.VARIABLE.authentication.needed")
+				
+				@simple_admin_checkbox(watch("isAuthentic"), "admin.customer.watch.form.VARIABLE.is.authentic")
+				
+				@simple_admin_textarea(watch("authenticationInformations"), "admin.customer.watch.form.VARIABLE.authentication.infos")
+				
+				@simple_admin_textarea(watch("authenticationPrivateInformations"), "admin.customer.watch.form.VARIABLE.authentication.private.infos")
+				
+				@simple_admin_input(watch("authenticationWatchDetails"), "admin.customer.watch.form.VARIABLE.authentication.watch.details")
+				
+				
+				
+				<hr />
 
 	            @simple_admin_input(watch("endOfMainWaranty"), "admin.customer.watch.form.VARIABLE.end.of.main.waranty", 'type -> "date")
 	            

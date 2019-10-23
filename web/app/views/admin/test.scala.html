@@ -1,9 +1,14 @@
 @(message: String)
+@import fr.hometime.utils._
+
 <html>
   <head>
   	<title>Test</title>
   </head>
   <body>
     @message
+    
+    <img src="data:image/png;base64,@QRCodeHelper.generateQRCodeImage("https://www.hometime.fr/venir-nous-voir", 200, 200)">
+
   </body>
 </html>

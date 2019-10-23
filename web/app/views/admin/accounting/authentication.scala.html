@@ -1,0 +1,114 @@
+@(thisInstance: models.Authentication)
+@import tags._
+@import fr.hometime.utils._
+@import views.AccountingSheet
+@import java.lang.String; var title=""
+@import models.Customer; var customer=new models.Customer()
+@import models.CustomerWatch; var watch=new models.CustomerWatch()
+@import models.AccountingDocument; var document=new models.AccountingDocument()
+@import java.lang.Integer; var year=new java.lang.Integer(java.time.Year.now().getValue())
+@import java.lang.Boolean; var isAuthentic=false
+
+@{
+	watch = models.CustomerWatch.findById(thisInstance.watch.id);
+	isAuthentic=watch.isAuthentic;
+	title=Messages("admin.authentication.title."+isAuthentic, watch.getBrand, watch.getModel);
+	
+	if(watch.customer.email != null) {
+		customer = models.Customer.findByEmail(watch.customer.email);
+		if(customer != null && customer.civility!=null) {
+			title=title+" - "+Messages("admin.customer.text.civility."+customer.civility.toString.toLowerCase.replace('_','.'));
+		}
+		if(customer != null) {
+			title=title+" "+customer.firstname+" "+customer.name;
+			document = new models.AccountingDocument(customer);
+			document.setDocumentCreationDate(thisInstance.documentDate);
+		}
+	}
+	
+	
+	 
+}
+
+@layouts.admin_accounting(title, document) {
+  <div class="certificate authentication">
+     
+     <div class="row">
+        <div class="type col-xs-12">
+	        <h2>@Html(Messages("admin.authentication.text."+isAuthentic))</h2>
+        </div>
+     </div>
+     
+     <div class="row">
+     	<div class="lead-message col-xs-12">
+     		@Html(Messages("admin.authentication.lead.message"))
+        </div>
+	 </div>
+	 
+	 @if(isAuthentic) {
+	 <div class="row">
+     	<div class="watch-description col-xs-12">
+	        <h3>@Html(Messages("admin.authentication.authentic.watch.description"))</h3>
+	        <ul>
+	        	<li>@Html(Messages("admin.authentication.authentic.watch.brand.and.model", watch.getBrand, watch.getModel))</li>
+	        	<li>@Html(Messages("admin.authentication.authentic.reference.and.serial", watch.getReference, watch.readSerial))</li>
+	        	@if_not_null_nor_empty(watch.braceletOrStrapConditionsOnCollect)(Html("<li>"+Messages("admin.authentication.authentic.accessories", watch.braceletOrStrapConditionsOnCollect)+"</li>"))
+	        	@if_not_null_nor_empty(watch.authenticationWatchDetails)(Html("<li>"+Messages("admin.authentication.authentic.details", watch.authenticationWatchDetails)+"</li>"))
+	        	
+	        </ul>
+        </div>
+	 </div>
+	 <div class="row">
+     	<div class="authentication-content col-xs-12">
+	        <h3>@Html(Messages("admin.authentication.authentic.certificate"))</h3>
+	        @if_not_null_nor_empty_else(watch.authenticationInformations)(Html("<div class=\"auth-infos\">"+watch.authenticationInformations+"</div>"))(Html(Messages("admin.authentication.authentic.default.content", watch.getBrand)))
+        </div>
+	 </div>
+	 <br /><br /><br />
+	 <hr />
+     
+     <div class="row">
+     	<div class="warrant-legal col-xs-12">
+	        @Html(Messages("admin.authentication.authentic.footer"))
+        </div>
+     </div>
+	 } else {
+	 <div class="row">
+     	<div class="watch-description col-xs-12">
+	        <h3>@Html(Messages("admin.authentication.not.authentic.watch.description"))</h3>
+	        <ul>
+	        	<li>@Html(Messages("admin.authentication.not.authentic.watch.brand.and.model", watch.getBrand, watch.getModel))</li>
+	        	<li>@Html(Messages("admin.authentication.not.authentic.reference.and.serial", watch.getReference, watch.readSerial))</li>
+	        	@if_not_null_nor_empty(watch.braceletOrStrapConditionsOnCollect)(Html("<li>"+Messages("admin.authentication.not.authentic.accessories", watch.braceletOrStrapConditionsOnCollect)+"</li>"))
+	        	@if_not_null_nor_empty(watch.authenticationWatchDetails)(Html("<li>"+Messages("admin.authentication.not.authentic.details", watch.authenticationWatchDetails)+"</li>"))
+	        </ul>
+        </div>
+	 </div>
+	 <div class="row">
+     	<div class="authentication-content col-xs-12">
+	        <h3>@Html(Messages("admin.authentication.not.authentic.certificate"))</h3>
+	        @if_not_null_nor_empty_else(watch.authenticationInformations)(Html("<div class=\"auth-infos\">"+watch.authenticationInformations+"</div>"))(Html(Messages("admin.authentication.not.authentic.default.content", watch.getBrand)))
+        </div>
+	 </div>
+	 <br /><br /><br />
+	 <hr />
+     
+     <div class="row">
+     	<div class="warrant-legal col-xs-12">
+	        @Html(Messages("admin.authentication.not.authentic.footer"))
+        </div>
+     </div>
+	 }
+	 
+	 <div class="row">
+	 	<div class="qrcode col-xs-6">
+	 	
+	        <img src="data:image/png;base64,@QRCodeHelper.generateQRCodeImage(absolute_url_prefix(true).toString+routes.Application.checkAuthentication(thisInstance.id, watch.id, watch.customer.id).url, 150, 150)">
+        </div>
+     	<div class="signing col-xs-6">
+	        <h3>@Html(Messages("admin.authentication.stamp"))</h3>
+        </div>
+     </div>
+     
+  </div>
+}
