@@ -102,8 +102,9 @@
 	 
 	 <div class="row">
 	 	<div class="qrcode col-xs-6">
-	 	
-	        <img src="data:image/png;base64,@QRCodeHelper.generateQRCodeImage(absolute_url_prefix(true).toString+routes.Application.checkAuthentication(thisInstance.id, watch.id, watch.customer.id).url, 150, 150)">
+	 		@if(thisInstance.id != null) {
+	 			<img src="data:image/png;base64,@QRCodeHelper.generateQRCodeImage(absolute_url_prefix(true).toString+routes.Application.checkAuthentication(thisInstance.id, watch.retrieveId, customer.retrieveId).url, 150, 150)">
+	 		}
         </div>
      	<div class="signing col-xs-6">
 	        <h3>@Html(Messages("admin.authentication.stamp"))</h3>
