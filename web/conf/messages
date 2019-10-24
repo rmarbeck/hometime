@@ -5208,7 +5208,7 @@ admin.authentication.action.delete=Supprimer
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751
 
-
+check.certificate.html.title=Vérification de certificat
 check.certificate.header=Vérification de certificat
 check.certificate.main.title=Détail du certificat
 check.certificate.result=Résultat de l''auscultation :
@@ -5216,9 +5216,9 @@ check.certificate.result.false=Montre non authentique, il s''agit d''une contref
 check.certificate.result.true=Montre authentique
 check.certificate.explanation=Cette page certifie que les informations présentées ci-dessus sont issues d''une auscultation de la pièce en question par les équipes de Watch Next et que le résultat de l''authentification est celui présenté sur cette page. Une version imprimée de cette page n''a aucune valeur.
 
-check.certificate.watch=Montre auscultée : {0} - {1}
-check.certificate.ref=Numéros d''identification : {0} - {1}
-check.certificate.date=Date du certificat : {0, date,d MMMM yyyy}
+check.certificate.watch=Montre : <b>{0} - {1}</b>
+check.certificate.ref=Numéros : <b>{0} - {1}</b>
+check.certificate.date=Date du certificat : <b>{0, date,d MMMM yyyy}</b>
 
 
 
