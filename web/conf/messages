@@ -5150,6 +5150,7 @@ admin.authentication.authentic.reference.and.serial=Référence et numéros de s
 admin.authentication.authentic.accessories=Bracelet : {0}
 admin.authentication.authentic.details=Informations complémentaires : {0}
 
+admin.authentication.scan.it=Scannez pour vérifier
 
 admin.authentication.authentic.certificate=Authenticité
 admin.authentication.authentic.default.content=Après auscultation de la montre décrite ci-dessus, la société Watch Next SAS certifie, en s''appuyant sur son \

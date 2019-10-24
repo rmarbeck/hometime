@@ -838,7 +838,7 @@ public class Application extends Controller {
     		if (authentication.watch.retrieveId() == id2 && authentication.watch.customer.retrieveId() == id3)
     			return ok(check_auth_result.render(authentication));
     	}
-    	return internalServerError();
+    	return ok("Certificat inconnu");
     }
     
     public static Result acceptQuotation(Long orderId, String price, String delay) {
