@@ -272,7 +272,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     
     public boolean authenticationNeeded = false;
     
-    public boolean isAuthentic = false;
+    public boolean isAuthentic = true;
     
     public String authenticationWatchDetails;
     
