@@ -578,7 +578,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     public static FormHelper.KeysAndValues getIdsAndWatchesByAuthenticationAskedDateAsc() {
     	FormHelper.KeysAndValues result = new FormHelper().new KeysAndValues();
     	for (CustomerWatch w : findByAuthenticationAskedDateAsc())
-    		result.add(w.id.toString(), w.getDisplayName());
+    		result.add(w.id.toString(), w.getCustomerFullName()+" - "+w.getDisplayName());
     	return result;
     }
 

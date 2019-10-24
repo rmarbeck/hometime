@@ -833,9 +833,9 @@ public class Application extends Controller {
     }
     
     public static Result checkAuthentication(Long id1, Long id2, Long id3) {
-    	Authentication authentication = Authentication.findById(id1);
+    	Authentication authentication = Authentication.findEagerById(id1);
     	if (authentication != null) {
-    		if (authentication.watch.id == id2 && authentication.watch.customer.id == id3)
+    		if (authentication.watch.retrieveId() == id2 && authentication.watch.customer.retrieveId() == id3)
     			return ok(check_auth_result.render(authentication));
     	}
     	return internalServerError();

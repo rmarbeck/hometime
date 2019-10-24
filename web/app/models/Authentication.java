@@ -15,6 +15,7 @@ import play.Logger;
 import play.db.ebean.Model;
 import play.twirl.api.Html;
 import play.twirl.api.Template1;
+import views.html.admin.accounting.authentication;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
@@ -77,6 +78,10 @@ public class Authentication extends Model implements CrudReady<Authentication, A
         return find.byId(id.toString());
     }
     
+    public static Authentication findEagerById(Long id) {
+        return find.fetch("watch").fetch("watch.customer").where().eq("id", id).findUnique();
+    }
+    
     public static List<Authentication> findByCustomer(models.Customer customer) {
     	return find.where().eq("watch.customer.id", customer.id)
         			.orderBy("creationDate desc").findList();
@@ -95,6 +100,8 @@ public class Authentication extends Model implements CrudReady<Authentication, A
 		this.creationDate = new Date();
 		checkBeforeSaving();
 		super.save();
+		// As we need an ID to have the documentData generated
+		this.update();
 	}
 
 	@Override
@@ -122,7 +129,7 @@ public class Authentication extends Model implements CrudReady<Authentication, A
 		if (singleton.showTemplate != null)
 			documentData = singleton.showTemplate.render(this).body().getBytes(StandardCharsets.UTF_8);
 	}
-	
+		
 	public String getCustomerFullName() {
 		return watch.customer.getFullName();
 	}
