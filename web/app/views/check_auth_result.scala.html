@@ -1,6 +1,56 @@
 @(thisInstance: models.Authentication)
 @import tags._
 
-OK
+@head = {
+		@layouts.fragments.head_min("authentication")
+        @layouts.fragments.bootstrap_css()
+        <link rel="stylesheet" media="screen" href="@remote_assets("stylesheets/main.min.css")">
+        <link rel="stylesheet" media="screen" href="@remote_assets("stylesheets/check_certificate.min.css")">
+}
 
-@thisInstance.watch.brand
+@footer = {
+	@layouts.fragments.simple_footer()
+}
+
+@end_scripts = {
+    
+}
+
+@layouts.root(head, footer, end_scripts) {
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>@Html(Messages("check.certificate.header"))</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<h3>@Html(Messages("check.certificate.main.title"))</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="certificate-details">
+					<li>@Html(Messages("check.certificate.watch", thisInstance.watch.getBrand, thisInstance.watch.getModel))</li>
+					<li>@Html(Messages("check.certificate.ref", thisInstance.watch.getReference, thisInstance.watch.readSerial))</li>
+					<li>@Html(Messages("check.certificate.date", thisInstance.documentDate))</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-center result-title">
+				@Html(Messages("check.certificate.result"))
+			</div>
+			<div class="col-xs-12 text-center result-title-@thisInstance.watch.isAuthentic">
+				@Html(Messages("check.certificate.result."+thisInstance.watch.isAuthentic))
+			</div>
+			
+			<div class="col-xs-12 text-left">
+				<div class="explanation">@Html(Messages("check.certificate.explanation"))</div>
+			</div>
+		</div>
+	</div>
+}
+
+
+

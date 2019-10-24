@@ -835,7 +835,7 @@ public class Application extends Controller {
     public static Result checkAuthentication(Long id1, Long id2, Long id3) {
     	Authentication authentication = Authentication.findEagerById(id1);
     	if (authentication != null) {
-    		if (authentication.watch.retrieveId() == id2 && authentication.watch.customer.retrieveId() == id3)
+    		if (authentication.watch.retrieveId().equals(id2) && authentication.watch.customer.retrieveId().equals(id3))
     			return ok(check_auth_result.render(authentication));
     	}
     	return ok("Certificat inconnu");
