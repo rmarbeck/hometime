@@ -2,8 +2,10 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -192,6 +194,21 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	@Column(name="service_due_date")
 	public Date serviceDueDate;
 	
+	@Column(name="service_due_date_must_have")
+	public Date serviceDueDateMustHave;
+	
+	public boolean customerHasConstraint = false;
+	
+	public boolean customerHasCalledForDelay = false;
+	
+	@Column(name="last_customer_date")
+	public Date lastCustomerCallDate;
+	
+	@Column(name="last_due_date_communicated")
+	public Date lastDueDateCommunicated;
+	
+	public String lastCustomerCallInformation;
+	
 	@Constraints.Required
 	public Long serviceStatus = 0L;
 	
@@ -359,6 +376,17 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     
     public static List<CustomerWatch> findAllUnderOurResponsabilityOrderedByID() {
         return find.fetch("customer").where().ne("status", "BACK_TO_CUSTOMER").orderBy("id desc").findList();
+    }
+    
+    public static List<CustomerWatch> findAllUnderOurResponsabilityOrderedByPriority() {
+        return CustomerWatchHelper.sortByPriorityWatches(findAllUnderOurResponsabilityOrderedByID());
+    }
+    
+
+    public Date getFirstKnownDate() {
+    	Date result = DateHelper.getFirstDate(serviceDueDateMustHave, lastDueDateCommunicated);
+
+    	return DateHelper.getFirstDate(result, serviceDueDate);
     }
     
     

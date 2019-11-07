@@ -71,7 +71,24 @@
 				
 				@simple_admin_checkbox(watch("newServicePriceNeeded"), "admin.customer.watch.form.VARIABLE.new.service.price.needed")
 				
+				<hr />
+				
 				@simple_admin_input(watch("serviceDueDate"), "admin.customer.watch.form.VARIABLE.service.due.date", 'type -> "date")
+				
+				@simple_admin_checkbox(watch("customerHasConstraint"), "admin.customer.watch.form.VARIABLE.customer.has.constraint")
+				
+				@simple_admin_input(watch("serviceDueDateMustHave"), "admin.customer.watch.form.VARIABLE.service.due.date.must.have", 'type -> "date")
+				
+				@simple_admin_checkbox(watch("customerHasCalledForDelay"), "admin.customer.watch.form.VARIABLE.customer.has.called.for.delay")
+				
+				@simple_admin_input(watch("lastCustomerCallDate"), "admin.customer.watch.form.VARIABLE.last.customer.call.date", 'type -> "date")
+				
+				@simple_admin_input(watch("lastDueDateCommunicated"), "admin.customer.watch.form.VARIABLE.last.due.communicated.date", 'type -> "date")
+				
+				@simple_admin_textarea(watch("lastCustomerCallInformation"), "admin.customer.watch.form.VARIABLE.last.delay.information.given")
+				
+				
+				<hr />
 				
 				@simple_admin_input(watch("serviceStatus"), "admin.customer.watch.form.VARIABLE.service.status", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "1")
 				

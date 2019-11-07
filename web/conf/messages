@@ -2557,6 +2557,14 @@ admin.customer.watch.form.placeholder.quotation=
 admin.customer.watch.form.placeholder.final.customer.from.infos=
 admin.customer.watch.form.placeholder.final.customer.to.infos=
 
+admin.customer.watch.form.label.customer.has.constraint=Contrainte forte
+admin.customer.watch.form.label.service.due.date.must.have=Date butoir
+admin.customer.watch.form.label.customer.has.called.for.delay=Relance client sur délai
+admin.customer.watch.form.label.last.customer.call.date=Date d''appel du client
+admin.customer.watch.form.label.last.due.communicated.date=Date indiquée
+admin.customer.watch.form.label.last.delay.information.given=Informations données
+admin.customer.watch.form.placeholder.last.delay.information.given=...
+
 admin.customer.watch.form.label.authentication.needed=Authentification demandée
 admin.customer.watch.form.label.is.authentic=Est authentique
 admin.customer.watch.form.label.authentication.infos=Infos authenticité
@@ -2616,7 +2624,7 @@ admin.customer.watch.form.label.partner.to.infos=Infos vers le partenaire
 admin.customer.watch.form.placeholder.partner.to.infos=
 admin.customer.watch.form.label.partner.from.infos=Remarques du partenaire
 admin.customer.watch.form.placeholder.partner.from.infos=
-admin.customer.watch.form.label.service.due.date=Date butoire
+admin.customer.watch.form.label.service.due.date=Délai devis
 admin.customer.watch.form.label.service.status=Avancement entretien
 admin.customer.watch.form.placeholder.service.status=0->100
 admin.customer.watch.form.label.emergency.level=Niveau d''urgence
@@ -2733,6 +2741,13 @@ admin.customer.watch.watches.value.status.stored.by.watch.next.secured.3=Sécuri
 admin.customer.watch.label.service.price=Prix partenaire
 admin.customer.watch.label.service.accepted=Accepté
 
+admin.customer.watch.label.customer.has.constraint=Contrainte de délai client
+admin.customer.watch.label.service.due.date.must.have=Date butoir
+admin.customer.watch.label.customer.has.called.for.delay=A appelé pour relancer
+admin.customer.watch.label.last.customer.call.date=Dernier appel
+admin.customer.watch.label.last.due.communicated.date=Date communiquée
+admin.customer.watch.label.last.delay.information.given=Informations communiquées
+
 
 admin.customer.watch.work.in.progress.form.brand.placeholder.name=
 admin.customer.watch.work.in.progress.form.model.placeholder.name=
@@ -2742,7 +2757,7 @@ admin.customer.watch.work.in.progress.form.serviceprice.placeholder.name=
 
 admin.customer.watch.work.in.progress.form.finalcustomerserviceprice.label.name=Prix accepté par le client
 
-admin.customer.watch.label.service.due.date=Deadline
+admin.customer.watch.label.service.due.date=Délai dans le devis
 admin.customer.watch.label.first.entry.in.partner.workshop.date=Date d''entrée dans l''atelier
 admin.customer.watch.label.expected.service.end.date=Date de sortie prévue
 admin.customer.watch.label.partner.to.infos=Infos vers le partenaire
@@ -4267,7 +4282,7 @@ admin.customer.watch.partner.work.in.progress.page=Montres en cours d''entretien
 admin.customer.watch.partner.work.in.progress.page.title=Montres en cours d''entretien
 admin.customer.watch.partner.work.in.progress.page.id=ID
 admin.customer.watch.partner.work.in.progress.page.acceptance.date=Date
-admin.customer.watch.partner.work.in.progress.page.due.date=Date butoire 
+admin.customer.watch.partner.work.in.progress.page.due.date=Date butoir 
 admin.customer.watch.partner.work.in.progress.page.brand=Marque
 admin.customer.watch.partner.work.in.progress.page.model=Modèle
 admin.customer.watch.partner.work.in.progress.page.infos=Informations
@@ -4277,7 +4292,7 @@ admin.customer.watch.watchmaker.work.in.progress.page=Montres en cours d''entret
 admin.customer.watch.watchmaker.work.in.progress.page.title=Montres en cours d''entretien
 admin.customer.watch.watchmaker.work.in.progress.page.id=ID
 admin.customer.watch.watchmaker.work.in.progress.page.acceptance.date=Date
-admin.customer.watch.watchmaker.work.in.progress.page.due.date=Date butoire 
+admin.customer.watch.watchmaker.work.in.progress.page.due.date=Date butoir 
 admin.customer.watch.watchmaker.work.in.progress.page.brand=Marque
 admin.customer.watch.watchmaker.work.in.progress.page.model=Modèle
 admin.customer.watch.watchmaker.work.in.progress.page.infos=Informations
@@ -4329,6 +4344,9 @@ admin.customer.watch.quotation.validation.form.b2bid.label.name=ID client
 admin.customer.watch.quotation.validation.form.b2bid.placeholder.name=
 admin.customer.watch.quotation.validation.form.partnerfrominfos.placeholder.name=
 admin.customer.watch.quotation.validation.form.finalcustomerserviceprice.label.name=Prix accepté
+admin.customer.watch.quotation.validation.form.serviceduedate.label.name=Date de fin annoncée
+admin.customer.watch.quotation.validation.form.customerhasconstraint.label.name=Contrainte forte du client
+admin.customer.watch.quotation.validation.form.serviceduedatemusthave.label.name=Date butoir
 
 admin.customer.watch.quotation.validation.form.finalcustomerservicepriceaccepted.label.name=Devis accepté par le client
 admin.customer.watch.quotation.validation.form.servicepriceaccepted.label.name=Devis horloger accepté
@@ -4605,6 +4623,10 @@ admin.customer.watch.form.value.type.reserved.1=Réservé
 admin.customer.watch.form.value.type.reserved.2=Réservé
 admin.customer.watch.form.value.type.reserved.3=Réservé
 admin.customer.watch.form.value.type.other=Autre type (non renseigné)
+
+
+
+
 
 admin.simplified.customer.watch.watches.header.brand=Marque
 admin.simplified.customer.watch.watches.header.id=ID

@@ -80,7 +80,23 @@
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.other.infos")), Html(watch.otherInfos))
               	
+              	<tr><td>-</td><td>-</td></tr>
+              	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.due.date")), display_date_and_countdown(watch.serviceDueDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.customer.has.constraint")), Html(watch.customerHasConstraint.toString))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.service.due.date.must.have")), display_date_and_countdown(watch.serviceDueDateMustHave, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.customer.has.called.for.delay")), Html(watch.customerHasCalledForDelay.toString))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.last.customer.call.date")), display_date_and_countdown(watch.lastCustomerCallDate, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.last.due.communicated.date")), display_date_and_countdown(watch.lastDueDateCommunicated, "dd/MM/yyyy"))
+              	
+              	@two_cells_table_line(Html(Messages("admin.customer.watch.label.last.delay.information.given")), Html(watch.lastCustomerCallInformation))
+              	
+              	<tr><td>-</td><td>-</td></tr>
               	
               	@two_cells_table_line(Html(Messages("admin.customer.watch.label.first.entry.in.partner.workshop.date")), display_date_and_countdown(watch.firstEntryInPartnerWorkshopDate, "dd/MM/yyyy"))
               	

@@ -1,6 +1,7 @@
 package fr.hometime.utils;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -458,5 +459,10 @@ public class CustomerWatchHelper {
     		return foundWatch.get();
     	return null;
     }
+    
+    public static List<CustomerWatch> sortByPriorityWatches(List<CustomerWatch> unSortedWatches) {
+    	return unSortedWatches.stream().sorted(Comparator.comparing(CustomerWatch::getFirstKnownDate, Comparator.nullsLast(Comparator.naturalOrder()))).collect(Collectors.toList());
+    }
+    
     
 }

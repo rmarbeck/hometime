@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 
 import fr.hometime.utils.CustomerWatchActions;
 import fr.hometime.utils.CustomerWatchHelper;
+import fr.hometime.utils.DateHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import models.CustomerWatch.CustomerWatchStatus;
 import play.data.Form;
@@ -21,6 +22,8 @@ import views.html.admin.reports.customer_watch_by_status;
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
 public class CustomerWatch extends Controller {
+	
+	private static final int NB_OF_DAYS_FOR_SERVICE_DEFAULT = 21;
 	
 	public static Result LIST_CUSTOMER_WATCHES = redirect(
 			routes.CustomerWatch.displayAll(0, "creationDate", "desc", "", "")
@@ -177,6 +180,7 @@ public class CustomerWatch extends Controller {
 			existingWatch.servicePriceAccepted = true;
 			existingWatch.finalCustomerServicePriceAccepted = true;
 			existingWatch.finalCustomerServicePriceAcceptedDate = new Date();
+			existingWatch.serviceDueDate = DateHelper.todayPlusNDays(NB_OF_DAYS_FOR_SERVICE_DEFAULT);
 			return ok(customer_watch_quotation_validation_form.render(Form.form(models.CustomerWatch.class).fill(existingWatch), false));
 		}
 		flash("error", "Unknown watch id");

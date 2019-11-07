@@ -5,12 +5,15 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAmount;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Optional;
 
 import play.Logger;
 
@@ -96,5 +99,21 @@ public class DateHelper {
 	
 	public static long getTimeFromInMillis(Instant previousInstant) {
 		return Duration.between(previousInstant, Instant.now()).toMillis();
+	}
+	
+	public static Date todayPlusNDays(int nbDays) {
+		return Date.from(Instant.now().plus(Period.ofDays(nbDays)));
+	}
+	
+	public static Optional<Date> firstDate(Date date1, Date date2) {
+		if (date1 == null)
+			return Optional.ofNullable(date2);
+		if (date2 == null || date1.before(date2))
+			return Optional.of(date1);
+		return Optional.of(date2);
+	}
+	
+	public static Date getFirstDate(Date date1, Date date2) {
+		return firstDate(date1, date2).orElse(null);
 	}
 }

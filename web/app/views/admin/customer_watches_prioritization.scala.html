@@ -1,0 +1,46 @@
+@(message: String = "", watches: List[models.CustomerWatch])
+@import tags._
+
+@import fr.hometime.utils._
+
+@end_scripts = {
+
+}
+
+@layouts.admin("Admin", end_scripts) {
+	<div class="container">
+	@if_admin_or_watchmaker_or_collaborator() {
+    @if(watches != null && watches.size >0) {
+    	<h3>
+    		@Html(Messages("admin.index.watches.active"))
+    	</h3>
+    	<table class="table table-condensed table-striped table-bordered">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages("admin.index.watches.head.id"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.name"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.model"))</th>
+	          <th>@Html(Messages("admin.index.watches.head.status"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for(watch <- watches; statusClass = watch.getWatchStatusClass) {
+	      	<tr class="@watch.getQuotationClass @statusClass">
+	      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
+	      		<td>@display_clickable_customer_admin_only(watch.customer)</td>
+	      		<td>@watch.brand</td>
+	      		<td>@watch.model</td>
+	      		<td>@display_date_and_countdown(watch.getFirstKnownDate)</td>
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
+    } else {
+    	<h3>
+    		@Html(Messages("admin.index.watches.active.none"))
+    	</h3>
+    }
+    }
+    </div>
+}

@@ -45,6 +45,12 @@
 		   formDisplay.addFormField("finalCustomerServicePriceAccepted", true, "checkbox");
 		   formDisplay.addFormField("servicePriceAccepted", true, "checkbox");
 		   
+		   formDisplay.addFormField("serviceDueDate", true, "input", 'type -> "date");
+		   
+		   formDisplay.addFormField("customerHasConstraint", true, "checkbox");
+		   formDisplay.addFormField("serviceDueDateMustHave", true, "input", 'type -> "date");
+		   
+		   
 		   formDisplay.addFormField("status", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("servicePriceAccepted", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("servicePaid", true, "input", 'type -> "hidden", '_class -> "hidden");
@@ -52,6 +58,9 @@
 		   formDisplay.addFormField("finalCustomerQuotationSent", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("finalCustomerServicePriceAccepted", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("finalCustomerServicePaid", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   
+		   
+		   formDisplay.addFormField("customerHasCalledForDelay", true, "input", 'type -> "hidden", '_class -> "hidden");
 		}
 	
 	@admin.template.form(formDisplay, false, actionlink, end_scripts, before_form, after_form)
