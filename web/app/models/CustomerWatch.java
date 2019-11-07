@@ -198,7 +198,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	public Date serviceDueDateMustHave;
 	
 	public boolean customerHasConstraint = false;
-	
+
 	public boolean customerHasCalledForDelay = false;
 	
 	@Column(name="last_customer_date")
@@ -915,6 +915,14 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public CustomerWatchType getTypeOfWatch() {
 		return type;
+	}
+	
+	public boolean isCustomerHasCalledForDelay() {
+		return customerHasCalledForDelay;
+	}
+
+	public boolean isCustomerHasConstraint() {
+		return customerHasConstraint;
 	}
 	
 }

@@ -31,7 +31,7 @@
 	      		<td>@display_clickable_customer_admin_only(watch.customer)</td>
 	      		<td>@watch.brand</td>
 	      		<td>@watch.model</td>
-	      		<td>@display_date_and_countdown(watch.getFirstKnownDate)</td>
+	      		<td>@if(watch.isCustomerHasConstraint) {<span class="glyphicon glyphicon-warning-sign"></span>} @if(watch.isCustomerHasCalledForDelay) {<span class="glyphicon glyphicon-earphone"></span>} @display_date_and_countdown(watch.getFirstKnownDate)</td>
 	      	</tr>
 	      	}
 		  </tbody>

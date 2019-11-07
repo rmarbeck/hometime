@@ -16,6 +16,7 @@ import play.twirl.api.Html;
 import views.html.admin.customer_watch;
 import views.html.admin.customer_watch_form;
 import views.html.admin.customer_watch_quotation_validation_form;
+import views.html.admin.customer_watch_phonecall_form;
 import views.html.admin.customer_watches;
 import views.html.admin.reports.customer_watch_by_status;
 
@@ -189,7 +190,30 @@ public class CustomerWatch extends Controller {
 	
 	public static Result manageQuotationValidation() {
 		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
-		String action = Form.form().bindFromRequest().get("action");
+		if (watchForm.hasErrors()) {
+			return badRequest(customerWatchForm(watchForm, false));
+		} else {
+			models.CustomerWatch watch = watchForm.get();
+			watch.update();
+		}
+		return LIST_CUSTOMER_WATCHES;
+	}
+	
+	public static Result preparePhoneCall(Long watchId) {
+		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
+		if (existingWatch != null) {
+			existingWatch.customerHasCalledForDelay = true;
+			existingWatch.lastCustomerCallDate = new Date();
+			existingWatch.lastDueDateCommunicated = DateHelper.todayPlusNDays(3);
+			existingWatch.lastCustomerCallInformation = existingWatch.lastCustomerCallDate+" -> \n"+"\n"+existingWatch.lastCustomerCallInformation;
+			return ok(customer_watch_phonecall_form.render(Form.form(models.CustomerWatch.class).fill(existingWatch), false));
+		}
+		flash("error", "Unknown watch id");
+		return badRequest();
+	}
+	
+	public static Result managePhoneCall() {
+		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
 		if (watchForm.hasErrors()) {
 			return badRequest(customerWatchForm(watchForm, false));
 		} else {

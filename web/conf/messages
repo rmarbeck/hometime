@@ -2682,6 +2682,7 @@ admin.customer.watch.action.new.orders=Créer un devis
 
 admin.customer.watch.action.quotation.sent=&nbsp;Marquer devis envoyé
 admin.customer.watch.action.quotation.accepted=&nbsp;Marquer accepté
+admin.customer.watch.action.phonecall=&nbsp;Appel
 
 admin.customer.watch.action.print.servicing=&nbsp;Fiche de service
 admin.customer.watch.action.print.testing=&nbsp;Fiche de test
@@ -3176,6 +3177,7 @@ admin.index.order.requests.head.managed.by=Géré par
 
 admin.index.order.requests.number.waiting=Et {0} marqués en attente de retour client
 admin.index.watches=Gérer les actions sur les montres en cours
+admin.index.prioritized.watches=Priorités
 
 admin.index.buy.requests.active=Demandes de recherche ouvertes
 admin.index.buy.requests.action.copy.email.address=Copier l''adresse
@@ -4350,6 +4352,37 @@ admin.customer.watch.quotation.validation.form.serviceduedatemusthave.label.name
 
 admin.customer.watch.quotation.validation.form.finalcustomerservicepriceaccepted.label.name=Devis accepté par le client
 admin.customer.watch.quotation.validation.form.servicepriceaccepted.label.name=Devis horloger accepté
+
+
+admin.customer.watch.phonecall.form=Appel client
+admin.customer.watch.phonecall.form.title=Appel client
+admin.customer.watch.phonecall.action.cancel=Annuler
+admin.customer.watch.phonecall.action.edit=Modifier
+admin.customer.watch.phonecall.form.id.label.name=ID
+admin.customer.watch.phonecall.form.b2bid.label.name=ID Client
+admin.customer.watch.phonecall.form.b2bid.placeholder.name=
+admin.customer.watch.phonecall.form.brand.label.name=Marque
+admin.customer.watch.phonecall.form.model.label.name=Modèle
+admin.customer.watch.phonecall.form.reference.label.name=Référence
+admin.customer.watch.phonecall.form.reference.placeholder.name=
+admin.customer.watch.phonecall.form.serial.label.name=Numéro de série
+admin.customer.watch.phonecall.form.partnertoinfos.label.name=Informations
+admin.customer.watch.phonecall.form.partnertoinfos.placeholder.name=...
+admin.customer.watch.phonecall.form.partnerfrominfos.label.name=Informations interne
+admin.customer.watch.phonecall.form.partnerfrominfos.placeholder.name=
+admin.customer.watch.phonecall.form.serviceprice.label.name=Montant devis
+admin.customer.watch.phonecall.form.finalcustomerservicepriceacceptedinfos.label.name=Infos acceptation de devis
+admin.customer.watch.phonecall.form.finalcustomerservicepriceacceptedinfos.placeholder.name=
+admin.customer.watch.phonecall.form.finalcustomerserviceprice.label.name=Prix accepté
+admin.customer.watch.phonecall.form.serviceduedate.label.name=Date de fin annoncée
+admin.customer.watch.phonecall.form.customerhascalledfordelay.label.name=A appelé pour relancer
+admin.customer.watch.phonecall.form.lastcustomercalldate.label.name=Dernier appel client
+admin.customer.watch.phonecall.form.lastduedatecommunicated.label.name=Date communiquée au client
+admin.customer.watch.phonecall.form.lastcustomercallinformation.label.name=Informations données au client
+admin.customer.watch.phonecall.form.customerhasconstraint.label.name=Contrainte forte du client
+admin.customer.watch.phonecall.form.serviceduedatemusthave.label.name=Date butoir
+
+
 
 admin.customer.partner.form=Gestion des clients
 admin.customer.partner.form.title=Gestion des clients

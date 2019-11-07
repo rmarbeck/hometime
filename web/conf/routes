@@ -240,6 +240,9 @@ GET     /admin/display/customer-watch-watchmaker/:id					controllers.Watchmaker.
 GET     /admin/edit/customer-watch-quotation-validation/:id				controllers.CustomerWatch.prepareQuotationValidation(id: Long)
 POST    /admin/manage/customer-watch-quotation-validation				controllers.CustomerWatch.manageQuotationValidation()
 
+GET     /admin/edit/customer-watch-phonecall/:id						controllers.CustomerWatch.preparePhoneCall(id: Long)
+POST    /admin/manage/customer-watch-phonecall							controllers.CustomerWatch.managePhoneCall()
+
 
 GET     /admin/customer-watch/create/from-customer/:id 					controllers.CustomerWatch.addFromCustomer(id: Long)
 GET     /admin/customer-watch/create/from-order/:id 					controllers.CustomerWatch.addFromOrder(id: Long)
