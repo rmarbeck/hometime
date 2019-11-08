@@ -36,6 +36,23 @@
 		   formDisplay.addFormFieldForSelect("type", models.CustomerWatch.CustomerWatchType.values.toList)
 		   formDisplay.addFormField("servicePrice", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("finalCustomerFinalServicePrice", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   
+		   
+		   formDisplay.addFormField("customerHasConstraint", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("customerHasCalledForDelay", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("servicePriceAccepted", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("serviceDefinitivelyRefused", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("newServicePriceNeeded", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("servicePaid", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("finalCustomerQuotationSent", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("finalCustomerServicePriceAccepted", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("finalCustomerServicePaid", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("serviceNeeded", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("serviceOnHold", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("serviceInvoiced", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("authenticationNeeded", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("isAuthentic", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   
 		}
 	
 	@admin.template.form_with_default_links(formDisplay, isItNew, end_scripts)
