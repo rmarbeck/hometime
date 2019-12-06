@@ -14,7 +14,7 @@
 }
 
 @{
-	title=Messages("admin.simplified.customer.watch.title.testing", instance.brand);
+	title=Messages("admin.simplified.customer.watch.title.testing.sheet", instance.brand);
 	if(instance.customer.id != null) {
 		customer = models.Customer.findById(instance.customer.id);
 		if(customer != null && customer.civility!=null) {

@@ -4524,6 +4524,9 @@ admin.simplified.customer.watch.text.stamp=Cachet Watch Next
 admin.simplified.customer.watch.text.signature=Date et signature du client
 admin.simplified.customer.watch.text.disclaimer=Le présent document fait office de preuve de dépôt de la montre décrite ci-dessus auprès de la société watch next qui s''engage à réaliser les opérations convenues avec le client et à disposer d''une assurance couvrant tous les risques pouvant altérer l''intégrité du bien confié.
 
+admin.simplified.customer.watch.title.servicing.sheet=Suivi réparation - {0}
+admin.simplified.customer.watch.title.testing.sheet=Suivi tests - {0}
+
 admin.simplified.customer.watch.servicing.sheet.head.check=Contrôle
 admin.simplified.customer.watch.servicing.sheet.head.check.result=Remarques
 admin.simplified.customer.watch.servicing.sheet.working.conditions=Etat de fonctionnement
