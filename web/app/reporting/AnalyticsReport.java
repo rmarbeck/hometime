@@ -10,6 +10,7 @@ import fr.hometime.utils.UniqueAccountingNumber;
 import fr.hometime.utils.VATHelper;
 import models.AccountingDocument;
 import models.AccountingLineAnalytic;
+import play.Logger;
 
 public class AnalyticsReport {
 	private final static Predicate<Long> alwaysTrue = (value) -> true;
@@ -128,9 +129,11 @@ public class AnalyticsReport {
 	}
 	
 	private void loadAnalyticLine(AccountingLineAnalytic currentLine) {
-		AccountingDocument currentDocument = currentLine.accountingLine.document;
+		//AccountingDocument currentDocument = currentLine.accountingLine.document;
 		Long analyticCode = currentLine.analyticCode.analyticCode;
-		String invoiceUAN = InvoiceLineReport.guessUAN(currentDocument).orElse("");
+		//Long analyticCode = 10L;
+		//String invoiceUAN = InvoiceLineReport.guessUAN(currentDocument).orElse("");
+		String invoiceUAN = currentLine.uan	;
 		
 		this.figures.add(UniqueAccountingNumber.fromStringIfValidOnly(invoiceUAN, false), analyticCode, currentLine.price-currentLine.cost, currentLine.price);
 	}
