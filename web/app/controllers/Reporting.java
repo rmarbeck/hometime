@@ -37,6 +37,10 @@ public class Reporting extends Controller {
 		return ok(financial_report.render(AnalyticsReport.generateReport()));
     }
 	
+	public static Result financialReportUnhanced() {
+		return ok(financial_report.render(AnalyticsReport.generateReportUnhanced()));
+    }
+	
 	public static Result financialDetailedReport() {
 		return ok(financial_detailed_report.render(AnalyticsDetailedReport.generateReport()));
     }

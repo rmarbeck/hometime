@@ -129,15 +129,27 @@ public class AnalyticsReport {
 	}
 	
 	private void loadAnalyticLine(AccountingLineAnalytic currentLine) {
-		//AccountingDocument currentDocument = currentLine.accountingLine.document;
+		AccountingDocument currentDocument = currentLine.accountingLine.document;
 		Long analyticCode = currentLine.analyticCode.analyticCode;
-		//Long analyticCode = 10L;
-		//String invoiceUAN = InvoiceLineReport.guessUAN(currentDocument).orElse("");
+		String invoiceUAN = InvoiceLineReport.guessUAN(currentDocument).orElse("");
+		
+		this.figures.add(UniqueAccountingNumber.fromStringIfValidOnly(invoiceUAN, false), analyticCode, currentLine.price-currentLine.cost, currentLine.price);
+	}
+	
+	private void loadAnalyticLineUnhanced(AccountingLineAnalytic currentLine) {
+		Long analyticCode = currentLine.analyticCode.analyticCode;
 		String invoiceUAN = currentLine.uan	;
 		
 		this.figures.add(UniqueAccountingNumber.fromStringIfValidOnly(invoiceUAN, false), analyticCode, currentLine.price-currentLine.cost, currentLine.price);
 	}
 
+	public static AnalyticsReport generateReportUnhanced() {
+		AnalyticsReport report = new AnalyticsReport();
+		List<AccountingLineAnalytic> lines = AccountingLineAnalytic.findAllForReportingUnhanced();
+		for(AccountingLineAnalytic line : lines)
+			report.loadAnalyticLineUnhanced(line);
+		return report;
+	}
 		
 	public static AnalyticsReport generateReport() {
 		AnalyticsReport report = new AnalyticsReport();
