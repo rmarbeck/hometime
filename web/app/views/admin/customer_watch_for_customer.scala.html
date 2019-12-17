@@ -11,11 +11,11 @@
 	</div>
 	<div class="row for-editing-action">
         <div class="text-center col-xs-12">
-        	@if(CustomerWatchHelper.isWaitingQuotationAcceptation(template.id)) {
+        	@if(CustomerWatchHelper.isWaitingQuotationAcceptation(template)) {
         	<a type="button" class="btn btn-success" href="@routes.CustomerAdmin.prepareAcceptQuotation(template.id)"><span class="glyphicon glyphicon-ok"></span>@Html(Messages("admin.customer.watch.customer.action.accept.quotation"))</a>
         	<a type="button" class="btn btn-danger" href="@routes.CustomerAdmin.prepareRefuseQuotation(template.id)"><span class="glyphicon glyphicon-remove"></span>@Html(Messages("admin.customer.watch.customer.action.refuse.quotation"))</a>
         	} else {
-        		@if(CustomerWatchHelper.isWorkDone(template.id)) {
+        		@if(CustomerWatchHelper.isWorkDone(template)) {
         		<a type="button" class="btn btn-success" href="@routes.CustomerAdmin.acceptWatchBack(template.id)"><span class="glyphicon glyphicon-log-in"></span>@Html(Messages("admin.customer.watch.customer.action.accept.watch.back"))</a>
         		} else {
         		<a type="button" class="btn btn-primary" href="@routes.CustomerAdmin.prepareWatchEdition(template.id)"><span class="glyphicon glyphicon-edit"></span>@Html(Messages("admin.customer.watch.customer.action.edit.watch"))</a>
@@ -38,20 +38,20 @@
 			modelDisplay.addField("finalCustomerFromInfos", "getFinalCustomerFromInfos", false, "" , "from_customer_info");
 			modelDisplay.addField("finalCustomerServicePriceAcceptedInfos", "getFinalCustomerServicePriceAcceptedInfos", false, "" , "from_customer_service_price_accepted_info");
 			
-			if(CustomerWatchHelper.isWorking(template.id)) {
+			if(CustomerWatchHelper.isWorking(template)) {
 				modelDisplay.addField("finalCustomerServicePriceAcceptedDate", "getFinalCustomerServicePriceAcceptedDateAsShortDate");
 			}
 			
-			if(!CustomerWatchHelper.isToBeAccepted(template.id)) {
+			if(!CustomerWatchHelper.isToBeAccepted(template)) {
 				modelDisplay.addField("collectingDate", "getCollectingDateAsShortDate");
-				if(!CustomerWatchHelper.isWaitingQuotation(template.id)) {
+				if(!CustomerWatchHelper.isWaitingQuotation(template)) {
 					modelDisplay.addField("finalCustomerServicePrice", "getFinalCustomerServicePrice", false, "", "customer_service_price");
 					modelDisplay.addField("finalCustomerServicePriceAccepted", "getFinalCustomerServicePriceAcceptedAsMessageKey", false, "", "customer_service_price_accepted");
 				}
 			}
 			modelDisplay.addField("customerStatus", "getStatusForCustomer", false, "", "customer_status");
 			modelDisplay.addField("customerNextStep", "getNextStepForCustomer");
-			if(!CustomerWatchHelper.isToBeAccepted(template.id)) {
+			if(!CustomerWatchHelper.isToBeAccepted(template)) {
 				modelDisplay.addField("finalCustomerToInfos", "getFinalCustomerToInfos", false, "" , "to_customer_info");
 			}
 		}

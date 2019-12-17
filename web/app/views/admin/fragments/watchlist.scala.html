@@ -31,7 +31,7 @@
                     <a type="button" class="btn btn-default btn-xs" href="@routes.CustomerWatch.display(watch.id)"><span class="glyphicon glyphicon-eye-open"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CustomerWatch.edit(watch.id)"><span class="glyphicon glyphicon-edit"></span></a>
                    	<a type="button" class="btn btn-warning btn-xs" href="@routes.Order.addFromCustomerWatch(watch.id)"><span class="glyphicon glyphicon-arrow-up"></span></a>
-                   	@if(CustomerWatchHelper.isToBeAccepted(watch.id)) {
+                   	@if(CustomerWatchHelper.isToBeAccepted(watch)) {
                    		<a type="button" class="btn btn-success btn-xs" href="@routes.CustomerWatch.acceptWatchFromCustomer(watch.id)" title="Accepter la montre"><span class="glyphicon glyphicon-arrow-down"></span></a>
                    	}
                    	<a type="button" class="btn btn-danger btn-xs" href="@routes.CustomerWatch.duplicate(watch.id)"><span class="glyphicon glyphicon-tags"></span></a>

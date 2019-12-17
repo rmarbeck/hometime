@@ -156,7 +156,7 @@ public class CustomerWatchActions {
 	}
 	
 	private static boolean canMarkServicePriceDefinitivelyRefused(CustomerWatch watch)  {
-		return CustomerWatchHelper.isWaitingQuotationAcceptation(watch.id);
+		return CustomerWatchHelper.isWaitingQuotationAcceptation(watch);
 	}
 	
 	private static void markServicePriceDefinitivelyRefused(CustomerWatch watch, Session session)  {
@@ -192,7 +192,7 @@ public class CustomerWatchActions {
 	}
 	
 	private static boolean canMarkTestingFinished(CustomerWatch watch)  {
-		return CustomerWatchHelper.isWorking(watch.id) && watch.status == CustomerWatchStatus.STORED_BY_WATCH_NEXT;
+		return CustomerWatchHelper.isWorking(watch) && watch.status == CustomerWatchStatus.STORED_BY_WATCH_NEXT;
 	}
 	
 	private static void markTestingFinished(CustomerWatch watch, Session session)  {
@@ -201,7 +201,7 @@ public class CustomerWatchActions {
 	}
 	
 	private static boolean canMarkBackToCustomerAndPaid(CustomerWatch watch)  {
-		return CustomerWatchHelper.isWorkDone(watch.id);
+		return CustomerWatchHelper.isWorkDone(watch);
 	}
 	
 	private static void markBackToCustomerAndPaid(CustomerWatch watch, Session session)  {
@@ -212,7 +212,7 @@ public class CustomerWatchActions {
 	}
 	
 	private static boolean canMarkBackToCustomerAndWaitingPayment(CustomerWatch watch)  {
-		return CustomerWatchHelper.isWorkDone(watch.id);
+		return CustomerWatchHelper.isWorkDone(watch);
 	}
 	
 	private static void markBackToCustomerAndWaitingPayment(CustomerWatch watch, Session session)  {
@@ -223,7 +223,7 @@ public class CustomerWatchActions {
 	}
 	
 	private static boolean canMarkBackToCustomerAndCanceled(CustomerWatch watch)  {
-		return !CustomerWatchHelper.isWorking(watch.id) && !CustomerWatchHelper.isWorkDone(watch.id);
+		return !CustomerWatchHelper.isWorking(watch) && !CustomerWatchHelper.isWorkDone(watch);
 	}
 	
 	private static void markBackToCustomerAndCanceled(CustomerWatch watch, Session session)  {

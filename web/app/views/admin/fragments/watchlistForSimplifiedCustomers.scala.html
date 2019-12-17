@@ -28,7 +28,7 @@
               @for((watch, index) <- watches.zipWithIndex) {
                 <tr>
                   <td>
-                  	@if(CustomerWatchHelper.isToBeAccepted(watch.id)) {
+                  	@if(CustomerWatchHelper.isToBeAccepted(watch)) {
                    		<a type="button" class="btn btn-success btn-xs" href="@routes.SimplifiedCustomerWatches.acceptWatch(watch.id)" title="Accepter la montre"><span class="glyphicon glyphicon-arrow-down"></span></a>
                    	} else {
                     <a type="button" class="btn btn-default btn-xs" href="@routes.SimplifiedCustomerWatches.displayCollectingForm(watch.id)"><span class="glyphicon glyphicon-eye-open"></span></a>

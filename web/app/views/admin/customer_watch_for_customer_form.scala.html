@@ -10,7 +10,7 @@
 @end_scripts = {
 	<script>
 		$(document).ready(function(){
-		@if(!CustomerWatchHelper.isEditableByCustomer(thisInstance.get.id)) {
+		@if(!CustomerWatchHelper.isEditableByCustomer(thisInstance.get)) {
 			$('button[value="delete"]').hide();
 		}
 			$('button[value="show"]').hide();
@@ -29,7 +29,7 @@
 
 @defining(new views.FormDisplay(thisInstance, "customer.watch.customer.create", "admin.customer.watch.customer.create.form")) { formDisplay =>
 		@{ 
-		   if(isItNew || (!isItNew && CustomerWatchHelper.isEditableByCustomer(thisInstance.get.id))) {
+		   if(isItNew || (!isItNew && CustomerWatchHelper.isEditableByCustomer(thisInstance.get))) {
 		   formDisplay.addFormField("b2bId", true, "input");
 		   formDisplay.addFormField("brand", true, "input");
 		   formDisplay.addFormField("model", true, "input");
@@ -48,7 +48,7 @@
 		   formDisplay.addFormField("finalCustomerEmergencyLevel", true, "input", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "50", 'readonly -> "readonly");
 		   }
 		   
-		   if(CustomerWatchHelper.isWaitingQuotationAcceptation(thisInstance.get.id)) {
+		   if(CustomerWatchHelper.isWaitingQuotationAcceptation(thisInstance.get)) {
 		   formDisplay.addFormField("finalCustomerToInfos", true, "textarea", 'readonly -> "readonly");
 		   formDisplay.addFormField("finalCustomerServicePrice", true, "input", 'readonly -> "readonly");
 		   formDisplay.addFormField("finalCustomerServicePriceAcceptedInfos", true, "textarea");
