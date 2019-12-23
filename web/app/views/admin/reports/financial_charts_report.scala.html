@@ -1,0 +1,131 @@
+@(report: reporting.AnalyticsChartsReport)
+@import tags._
+
+
+@end_scripts = {
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+	<script>
+	    var ctx = document.getElementById('myChart');
+		var myChart = new Chart(ctx, {
+		    type: 'bar',
+		    data: {
+		        labels: ["Octobre","Novembre","Décembre","Janvier","Février","Mars","Avril","Mail","Juin","Juillet","Août","Septembre"],
+		        datasets: [{
+		            label: 'Montant en euros (€)',
+		            data: [@report.getSortedLastAccountMargin().values.toArray.mkString(",")],
+		            borderWidth: 1
+		        }, {
+		            label: 'Montant en euros (€)',
+		            data: [@report.getSortedCurrentAccountMargin.values.toArray.mkString(",")],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+		                'rgba(153, 102, 255, 0.2)',
+		                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+		                'rgba(153, 102, 255, 1)',
+		                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero: true
+		                }
+		            }]
+		        }
+		    }
+		});
+		
+		var ctx = document.getElementById('myChart2');
+		var myChart2 = new Chart(ctx, {
+		    type: 'bar',
+		    data: {
+		        labels: ["Octobre","Novembre","Décembre","Janvier","Février","Mars","Avril","Mail","Juin","Juillet","Août","Septembre"],
+		        datasets: [{
+		            label: 'Montant en euros entretien (€)',
+		            data: [@report.getSortedLastAccountMarginLocalServicingOnly().values.toArray.mkString(",")],
+		            borderWidth: 1
+		        }, {
+		            label: 'Montant en euros (€)',
+		            data: [@report.getSortedCurrentAccountMarginLocalServicingOnly.values.toArray.mkString(",")],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+		                'rgba(153, 102, 255, 0.2)',
+		                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+		                'rgba(153, 102, 255, 1)',
+		                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero: true
+		                }
+		            }]
+		        }
+		    }
+		});
+	</script>
+}
+
+
+
+
+@display_price_formated(price: Float) = {
+@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price)
+}
+
+@display_price_formated_with_evolution(price: Float, old: Float) = {
+@if(old != 0) {
+@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price) @display_evolution((price - old)/old*100)
+} else {
+@display_price_formated(price)
+}
+}
+
+@display_evolution(value: Float) = {
+(@if(value > 0) {+} @value.toInt%)
+}
+
+@layouts.admin("Reporting", end_scripts) {
+
+  <div class="container">
+     <div class="row">
+     	<div class="col-xs-8 col-xs-offset-2">
+	    	<canvas id="myChart" width="200" height="200"></canvas>
+	    </div>
+	 </div>
+	 <br />
+	 <div class="row">
+     	<div class="col-xs-8 col-xs-offset-2">
+	    	<canvas id="myChart2" width="200" height="200"></canvas>
+	    </div>
+	 </div>
+  </div>
+   
+    <br />
+    <br />
+}

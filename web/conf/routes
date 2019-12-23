@@ -391,6 +391,7 @@ GET     /admin/legal-register-helper	            					controllers.Reporting.lega
 GET     /admin/payments			            							controllers.Reporting.payments()
 GET     /admin/financial		            							controllers.Reporting.financialReport()
 GET     /admin/financialUnhanced            							controllers.Reporting.financialReportUnhanced()
+GET     /admin/financialCharts            								controllers.Reporting.financialChartsReport()
 GET     /admin/detailed-financial		            					controllers.Reporting.financialDetailedReport()
 GET     /admin/current-orders			            					controllers.Reporting.currentOrdersReport()
 

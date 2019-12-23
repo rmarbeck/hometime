@@ -1,6 +1,7 @@
 @(report: reporting.AnalyticsReport)
 @import tags._
 
+
 @display_price_formated(price: Float) = {
 @java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price)
 }
