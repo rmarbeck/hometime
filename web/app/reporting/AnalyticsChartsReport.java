@@ -19,6 +19,7 @@ import play.Logger;
 public class AnalyticsChartsReport {
 	private final static Predicate<Long> alwaysTrue = (value) -> true;
 	private final static Predicate<Long> isWatchSelling = (value) -> (value > 1000L && value < 2000L);
+	private final static Predicate<Long> allButWatchSelling = isWatchSelling.negate();
 	private final static Predicate<Long> isUsedWatchSelling = (value) -> (value > 1000L && value < 1100L);
 	private final static Predicate<Long> alwaysButUsedWatchSelling = isUsedWatchSelling.negate();
 	private final static Predicate<Long> isNewWatchSelling = (value) -> (value > 1100L && value < 1200L);
@@ -43,6 +44,9 @@ public class AnalyticsChartsReport {
 		
 		public Map<YearMonth, Float> currentAccountMarginSimpleQuartzOnly = new HashMap<YearMonth, Float>();
 		public Map<YearMonth, Float> lastAccountMarginSimpleQuartzOnly = new HashMap<YearMonth, Float>();
+		
+		public Map<YearMonth, Float> currentAccountMarginAllButSelling = new HashMap<YearMonth, Float>();
+		public Map<YearMonth, Float> lastAccountMarginAllButSelling = new HashMap<YearMonth, Float>();
 		
 
 		
@@ -71,6 +75,9 @@ public class AnalyticsChartsReport {
 				
 				addToMap(currentAccountMarginSimpleQuartzOnly, uan, isCurrentAccounting, type, isQuartzSimpleService, marginValue);
 				addToMap(lastAccountMarginSimpleQuartzOnly, uan, isLastAccounting, type, isQuartzSimpleService, marginValue);
+				
+				addToMap(currentAccountMarginAllButSelling, uan, isCurrentAccounting, type, allButWatchSelling, marginValue);
+				addToMap(lastAccountMarginAllButSelling, uan, isLastAccounting, type, allButWatchSelling, marginValue);
 			}
 			
 		}
@@ -123,7 +130,14 @@ public class AnalyticsChartsReport {
 	
 	public Map<YearMonth, Float> getSortedLastAccountMarginSimpleQuartzOnly() {
 		return getSortedMap(figures.lastAccountMarginSimpleQuartzOnly);
-
+	}
+	
+	public Map<YearMonth, Float> getSortedCurrentAccountMarginAllButSelling() {
+		return getSortedMap(figures.currentAccountMarginAllButSelling);
+	}
+	
+	public Map<YearMonth, Float> getSortedLastAccountMarginAllButSelling() {
+		return getSortedMap(figures.lastAccountMarginAllButSelling);
 	}
 	
 	

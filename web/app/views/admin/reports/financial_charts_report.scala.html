@@ -71,6 +71,7 @@
 		@verticalTwoDatasets("servicing", report.getSortedLastAccountMarginLocalServicingOnly().values.toArray.mkString(","), report.getSortedCurrentAccountMarginLocalServicingOnly().values.toArray.mkString(","), "", "Montant en euros (€)", "Entretiens")
 		@verticalTwoDatasets("selling", report.getSortedLastAccountMarginSellingOnly().values.toArray.mkString(","), report.getSortedCurrentAccountMarginSellingOnly().values.toArray.mkString(","), "", "Montant en euros (€)", "Ventes")
 		@verticalTwoDatasets("simpleQuartz", report.getSortedLastAccountMarginSimpleQuartzOnly().values.toArray.mkString(","), report.getSortedCurrentAccountMarginSimpleQuartzOnly().values.toArray.mkString(","), "", "Montant en euros (€)", "Changement de pile")
+		@verticalTwoDatasets("allButSelling", report.getSortedLastAccountMarginAllButSelling().values.toArray.mkString(","), report.getSortedCurrentAccountMarginAllButSelling().values.toArray.mkString(","), "", "Montant en euros (€)", "Tout sauf la vente")
 	</script>
 }
 
@@ -109,6 +110,11 @@
 	    </div>
 	    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
 	    	<canvas id="simpleQuartz" width="200" height="200"></canvas>
+	    </div>
+	 </div>
+	 <div class="row">
+     	<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+	    	<canvas id="allButSelling" width="200" height="200"></canvas>
 	    </div>
 	 </div>
   </div>
