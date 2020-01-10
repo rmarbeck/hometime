@@ -109,23 +109,25 @@ public class AnalyticsReport {
 				lastAccountingMargin += add(uan, isLastAccounting, type, isUsedWatchSelling, VATHelper.getPriceBeforeVAT(marginValue));
 				lastYearSameMonthAccountingMargin += add(uan, isLastYearSameMonthAccounting, type, alwaysButUsedWatchSelling, marginValue);
 				lastYearSameMonthAccountingMargin += add(uan, isLastYearSameMonthAccounting, type, isUsedWatchSelling, VATHelper.getPriceBeforeVAT(marginValue));
-				currentMonthTurnOver += add(uan, isCurrentMonth, type, alwaysTrue, turnoverValue);
-				lastMonthTurnOver += add(uan, isLastMonth, type, alwaysTrue, turnoverValue);
-				lastYearSameMonthTurnOver += add(uan, isLastYearSameMonth, type, alwaysTrue, turnoverValue);
-				currentAccountingTurnOver += add(uan, isCurrentAccounting, type, alwaysTrue, turnoverValue);
-				lastAccountingTurnOver += add(uan, isLastAccounting, type, alwaysTrue, turnoverValue);
-				lastYearSameMonthAccountingTurnOver += add(uan, isLastYearSameMonthAccounting, type, alwaysTrue, turnoverValue);
 				
+				currentMonthTurnOver += addWithTurnoverCoputation(uan, isCurrentMonth, type, alwaysTrue, marginValue, turnoverValue);
+				lastMonthTurnOver += addWithTurnoverCoputation(uan, isLastMonth, type, alwaysTrue, marginValue, turnoverValue);
+				lastYearSameMonthTurnOver += addWithTurnoverCoputation(uan, isLastYearSameMonth, type, alwaysTrue, marginValue, turnoverValue);
+				currentAccountingTurnOver += addWithTurnoverCoputation(uan, isCurrentAccounting, type, alwaysTrue, marginValue, turnoverValue); 
+				lastAccountingTurnOver += addWithTurnoverCoputation(uan, isLastAccounting, type, alwaysTrue, marginValue, turnoverValue);
+				lastYearSameMonthAccountingTurnOver += addWithTurnoverCoputation(uan, isLastYearSameMonthAccounting, type, alwaysTrue, marginValue, turnoverValue);
+								
 				currentMonthMarginLocalServicingOnly += add(uan, isCurrentMonth, type, isLocalServicing, marginValue);
 				lastMonthMarginLocalServicingOnly += add(uan, isLastMonth, type, isLocalServicing, marginValue);
 				lastYearSameMonthMarginLocalServicingOnly += add(uan, isLastYearSameMonth, type, isLocalServicing, marginValue);
 				currentAccountingMarginLocalServicingOnly += add(uan, isCurrentAccounting, type, isLocalServicing, marginValue);
 				lastAccountingMarginLocalServicingOnly += add(uan, isLastAccounting, type, isLocalServicing, marginValue);
 				lastYearSameMonthAccountingMarginLocalServicingOnly += add(uan, isLastYearSameMonthAccounting, type, isLocalServicing, marginValue);
-				currentMonthTurnOverLocalServicingOnly += add(uan, isCurrentMonth, type, isLocalServicing, turnoverValue);
-				lastMonthTurnOverLocalServicingOnly += add(uan, isLastMonth, type, isLocalServicing, turnoverValue);
-				currentAccountingTurnOverLocalServicingOnly += add(uan, isCurrentAccounting, type, isLocalServicing, turnoverValue);
-				lastAccountingTurnOverLocalServicingOnly += add(uan, isLastAccounting, type, isLocalServicing, turnoverValue);
+				
+				currentMonthTurnOverLocalServicingOnly += addWithTurnoverCoputation(uan, isCurrentMonth, type, isLocalServicing, marginValue, turnoverValue);
+				lastMonthTurnOverLocalServicingOnly += addWithTurnoverCoputation(uan, isLastMonth, type, isLocalServicing, marginValue, turnoverValue);
+				currentAccountingTurnOverLocalServicingOnly += addWithTurnoverCoputation(uan, isCurrentAccounting, type, isLocalServicing, marginValue, turnoverValue);
+				lastAccountingTurnOverLocalServicingOnly += addWithTurnoverCoputation(uan, isLastAccounting, type, isLocalServicing, marginValue, turnoverValue);
 				
 				currentMonthMarginSellingOnly += add(uan, isCurrentMonth, type, isUsedWatchSelling, VATHelper.getPriceBeforeVAT(marginValue));
 				currentMonthMarginSellingOnly += add(uan, isCurrentMonth, type, isNewWatchSelling, marginValue);
@@ -140,25 +142,36 @@ public class AnalyticsReport {
 				lastYearSameMonthAccountingMarginSellingOnly += add(uan, isLastYearSameMonthAccounting, type, isUsedWatchSelling, VATHelper.getPriceBeforeVAT(marginValue));
 				lastYearSameMonthAccountingMarginSellingOnly += add(uan, isLastYearSameMonthAccounting, type, isNewWatchSelling, marginValue);
 				
-				currentMonthTurnOverSellingOnly += add(uan, isCurrentMonth, type, isWatchSelling, turnoverValue);
-				lastMonthTurnOverSellingOnly += add(uan, isLastMonth, type, isWatchSelling, turnoverValue);
-				currentAccountingTurnOverSellingOnly += add(uan, isCurrentAccounting, type, isWatchSelling, turnoverValue);
-				lastAccountingTurnOverSellingOnly += add(uan, isLastAccounting, type, isWatchSelling, turnoverValue);
+				currentMonthTurnOverSellingOnly += addWithTurnoverCoputation(uan, isCurrentMonth, type, isWatchSelling, marginValue, turnoverValue);
+				lastMonthTurnOverSellingOnly += addWithTurnoverCoputation(uan, isLastMonth, type, isWatchSelling, marginValue, turnoverValue);
+				currentAccountingTurnOverSellingOnly += addWithTurnoverCoputation(uan, isCurrentAccounting, type, isWatchSelling, marginValue, turnoverValue);
+				lastAccountingTurnOverSellingOnly += addWithTurnoverCoputation(uan, isLastAccounting, type, isWatchSelling, marginValue, turnoverValue);
 				
 				currentMonthMarginSimpleQuartzOnly += add(uan, isCurrentMonth, type, isQuartzSimpleService, marginValue);
 				lastMonthMarginSimpleQuartzOnly += add(uan, isLastMonth, type, isQuartzSimpleService, marginValue);
 				currentAccountingMarginSimpleQuartzOnly += add(uan, isCurrentAccounting, type, isQuartzSimpleService, marginValue);
 				lastAccountingMarginSimpleQuartzOnly += add(uan, isLastAccounting, type, isQuartzSimpleService, marginValue);
-				currentMonthTurnOverSimpleQuartzOnly += add(uan, isCurrentMonth, type, isQuartzSimpleService, turnoverValue);
-				lastMonthTurnOverSimpleQuartzOnly += add(uan, isLastMonth, type, isQuartzSimpleService, turnoverValue);
-				currentAccountingTurnOverSimpleQuartzOnly += add(uan, isCurrentAccounting, type, isQuartzSimpleService, turnoverValue);
-				lastAccountingTurnOverSimpleQuartzOnly += add(uan, isLastAccounting, type, isQuartzSimpleService, turnoverValue);
+				
+				currentMonthTurnOverSimpleQuartzOnly += addWithTurnoverCoputation(uan, isCurrentMonth, type, isQuartzSimpleService, marginValue, turnoverValue);
+				lastMonthTurnOverSimpleQuartzOnly += addWithTurnoverCoputation(uan, isLastMonth, type, isQuartzSimpleService, marginValue, turnoverValue);
+				currentAccountingTurnOverSimpleQuartzOnly += addWithTurnoverCoputation(uan, isCurrentAccounting, type, isQuartzSimpleService, marginValue, turnoverValue);
+				lastAccountingTurnOverSimpleQuartzOnly += addWithTurnoverCoputation(uan, isLastAccounting, type, isQuartzSimpleService, marginValue, turnoverValue);
 			}
 			
 		}
 		
 		private float add(UniqueAccountingNumber uan, Predicate<UniqueAccountingNumber> shouldBeAddedByDate, Long type, Predicate<Long> shouldBeAddedByType, float value) {
 			return (shouldBeAddedByDate.test(uan) && shouldBeAddedByType.test(type))?value:0f;
+		}
+		
+		private float addWithTurnoverCoputation(UniqueAccountingNumber uan, Predicate<UniqueAccountingNumber> shouldBeAddedByDate, Long type, Predicate<Long> shouldBeAddedByType, float marginValue, float turnoverValue) {
+			return add(uan, shouldBeAddedByDate, type, shouldBeAddedByType, computeTurnoverValue(type, marginValue, turnoverValue));
+		}
+		
+		private float computeTurnoverValue(Long type, float marginValue, float turnoverValue) {
+			if (alwaysButUsedWatchSelling.test(type))
+				return turnoverValue;
+			return VATHelper.getTurnoverFromMarginModelSelling(turnoverValue, marginValue);
 		}
 	}
 	
