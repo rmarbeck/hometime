@@ -1,8 +1,9 @@
 // Comment to get more information during initialization
 logLevel := Level.Warn
 
-// The Typesafe repository
-resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+resolvers += "Secured Central Repository" at "https://repo1.maven.org/maven2"
+
+externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
 
 // Use the Play sbt plugin for Play projects
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.3.4")
