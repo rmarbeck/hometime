@@ -1,7 +1,13 @@
 // Comment to get more information during initialization
 logLevel := Level.Warn
 
-resolvers += "Secured Central Repository" at "https://repo1.maven.org/maven2"
+//resolvers += "Secured Central Repository" at "https://repo1.maven.org/maven2"
+resolvers ++= Seq(
+  "Typesafe repository" at "https://repo.typesafe.com/typesafe/releases/",
+  "Typesafe Simple Repository" at "http://repo.typesafe.com/typesafe/simple/maven-releases/",
+  "Secured Central Repository" at "https://repo1.maven.org/maven2"
+)
+
 
 externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
 
