@@ -3866,7 +3866,7 @@ admin.post.service.certificate.watch.serial.unknown=N/A
 admin.post.service.certificate.watch.reference.unknown=&nbsp;
 admin.post.service.certificate.watch.movement.unknown=&nbsp;
 admin.post.service.certificate.watch.model.unknown=&nbsp;
-admin.post.service.certificate.stamp=Cachet :
+admin.post.service.certificate.stamp=
 
 
 admin.postsellingcertificate.page=Certificats d''authenticité et de garantie
@@ -3907,7 +3907,7 @@ admin.post.selling.certificate.tip.pushing.crown=Penser à bien repousser la cou
 admin.post.selling.certificate.tip.closing.crown=Penser à bien refermer le protège couronne après chaque manipulation.
 admin.post.selling.certificate.tip.read.manual=Penser à consulter le manuel d''utilisation de votre montre pour éviter toute fausse manipulation.
 
-admin.post.selling.certificate.stamp=Cachet Watch next :
+admin.post.selling.certificate.stamp=
 
 admin.postsellingcertificate.form=Certificat d''authenticité et de garantie
 admin.postsellingcertificate.form.title=Certificat d''authenticité et de garantie
@@ -4497,7 +4497,7 @@ admin.simplified.customer.watch.watch.servicing.testing.check.operating=Contrôl
 admin.simplified.customer.watch.watch.servicing.testing.check.date=Si Date : Contrôle date rapide sur l'ensemble du dato et passage à minuit sur 2 dates - <i>OK ou KO</i>
 admin.simplified.customer.watch.watch.servicing.testing.check.other=En fonction de la montre : Test fonctionnement lunette, boucle, correcteurs
 
-admin.simplified.customer.watch.watch.servicing.testing.stamp=Cachet Watch Next
+admin.simplified.customer.watch.watch.servicing.testing.stamp=
 admin.simplified.customer.watch.watch.servicing.testing.signature=Date et signature du testeur
 
 admin.simplified.customer.watch.servicing.sheet.quotation.status=Devis
@@ -4521,7 +4521,7 @@ admin.simplified.customer.watch.bracelet.conditions=Bracelet et boucle
 admin.simplified.customer.watch.watering.conditions=Marques d''oxydation ou présence de buée
 admin.simplified.customer.watch.glass.conditions=Verre
 admin.simplified.customer.watch.other.conditions=Autre
-admin.simplified.customer.watch.text.stamp=Cachet Watch Next
+admin.simplified.customer.watch.text.stamp=
 admin.simplified.customer.watch.text.signature=Date et signature du client
 admin.simplified.customer.watch.text.disclaimer=Le présent document fait office de preuve de dépôt de la montre décrite ci-dessus auprès de la société watch next qui s''engage à réaliser les opérations convenues avec le client et à disposer d''une assurance couvrant tous les risques pouvant altérer l''intégrité du bien confié.
 
