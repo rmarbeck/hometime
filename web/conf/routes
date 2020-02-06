@@ -361,6 +361,7 @@ GET		/admin/edit/:model/:id											controllers.CrudHelper.edit(model: String,
 POST	/admin/manage/:model											controllers.CrudHelper.manage(model: String)
 
 GET     /admin/post-service-certificate/create/by/watch/:id				controllers.Accounting.addPServiceCByWatchId(id: Long)
+GET     /admin/post-service-certificate/create/by/watch/for/quartz/:id	controllers.Accounting.addPServiceCByWatchIdQuartzFull(id: Long)
 GET     /admin/post-selling-certificate/create/by/watch/:id				controllers.Accounting.addPSellingCByWatchId(id: Long)
 
 GET     /admin/spare-parts/create/by/watch/:id							controllers.SpareParts.createForCustomerWatch(id: Long)
