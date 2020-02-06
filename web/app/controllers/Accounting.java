@@ -738,6 +738,21 @@ public class Accounting extends Controller {
 		return PostServiceCertificates.crud.create(pscf);
 	}
 	
+	public static Result addPServiceCByWatchIdQuartzSimple(Long id) {
+		Form<PostServiceCertificate> pscf = newPServiceCByWatchId(id);
+		
+		PostServiceCertificate psc = pscf.get();
+		
+		psc.workDone = Messages.get("admin.post.service.certificate.simple.quartz.work.done");
+		psc.quartzTestResult = Messages.get("admin.post.service.certificate.full.quartz.test.ok");
+		psc.workingWarantyDate = psc.waterproofWarantyDate;
+		psc.workingWaranted = true;
+		psc.waterproofWaranted = false;
+		psc.displayWindingTip = false;
+		
+		return PostServiceCertificates.crud.create(pscf);
+	}
+	
 	private static Form<PostServiceCertificate> newPServiceCByWatchId(long id) {
 		models.CustomerWatch customerWatch = CustomerWatch.findById(id);
 		models.PostServiceCertificate newCertificate = new PostServiceCertificate();

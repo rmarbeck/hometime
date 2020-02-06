@@ -2672,6 +2672,7 @@ admin.customer.watch.action.cancel=&nbsp;Annuler
 admin.customer.watch.action.new.certificates=Certificats
 admin.customer.watch.action.create.certificate=Créer certificat
 admin.customer.watch.action.create.certificate.quartz.full=Quartz : pile + étanchéité
+admin.customer.watch.action.create.certificate.quartz.simple=Quartz : pile
 admin.customer.watch.action.back.to.customer=&nbsp;Rendu au client
 admin.customer.watch.create.call.to.action=Promouvoir le prospect en client
 admin.customer.watch.action.stored.by.partner=&nbsp;Chez partenaire
@@ -3871,6 +3872,7 @@ admin.post.service.certificate.watch.model.unknown=&nbsp;
 admin.post.service.certificate.stamp=
 
 admin.post.service.certificate.full.quartz.work.done=Changement de pile avec étanchéité
+admin.post.service.certificate.simple.quartz.work.done=Changement de pile
 admin.post.service.certificate.full.quartz.test.ok=OK
 admin.post.service.certificate.full.waterproof.test.ok=OK
 
