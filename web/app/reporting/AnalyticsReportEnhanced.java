@@ -1,18 +1,28 @@
 package reporting;
 
 import java.time.YearMonth;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Collector.Characteristics;
+import java.util.stream.IntStream;
 
 import fr.hometime.utils.UniqueAccountingNumber;
 import fr.hometime.utils.VATHelper;
-import models.AccountingDocument;
 import models.AccountingLineAnalytic;
-import play.Logger;
 
-public class AnalyticsReport {
+public class AnalyticsReportEnhanced {
 	private final static Predicate<Long> alwaysTrue = (value) -> true;
 	private final static Predicate<Long> isWatchSelling = (value) -> (value > 1000L && value < 2000L);
 	private final static Predicate<Long> isUsedWatchSelling = (value) -> (value > 1000L && value < 1100L);
@@ -24,14 +34,50 @@ public class AnalyticsReport {
 	private final static Predicate<Long> isValueAddedServiceProviding = (value) -> (value > 6000L && value < 7000L);
 	private final static Predicate<Long> isQuartzSimpleService = (value) -> (value >= 2054L && value <= 2057L);
 	
+	public class OvertimeFiguresCollector implements Collector<AccountingLineAnalytic, OvertimeFigures, OvertimeFigures> {
+
+		@Override
+		public Supplier<OvertimeFigures> supplier() {
+			return OvertimeFigures::new;
+		}
+
+		@Override
+		public BiConsumer<OvertimeFigures, AccountingLineAnalytic> accumulator() {
+			return (figures, data) ->  {
+				Long analyticCode = data.analyticCode.analyticCode;
+				String invoiceUAN = data.uan;
+				
+				figures.add(UniqueAccountingNumber.fromStringIfValidOnly(invoiceUAN, false), analyticCode, data.price-data.cost, data.price);
+			};
+		}
+
+		@Override
+		public BinaryOperator<OvertimeFigures> combiner() {
+			return (figures1, figures2) -> figures1.mergeWith(figures2);
+		}
+
+		@Override
+		public Function<OvertimeFigures, OvertimeFigures> finisher() {
+			return Function.identity();
+		}
+
+		@Override
+		public Set<Characteristics> characteristics() {
+			return Collections.unmodifiableSet(EnumSet.of(Characteristics.IDENTITY_FINISH, Characteristics.UNORDERED));
+		}
+		
+	}
+	
 	public class OvertimeFigures {
-		private final Predicate<UniqueAccountingNumber> isCurrentMonth = (value) -> (value.getYearAndMonthFromUAN().equals(YearMonth.now()));
-		private final Predicate<UniqueAccountingNumber> isLastMonth = (value) -> (value.getYearAndMonthFromUAN().equals(YearMonth.now().minusMonths(1)));
-		private final Predicate<UniqueAccountingNumber> isLastYearSameMonth = (value) -> (value.getYearAndMonthFromUAN().equals(YearMonth.now().minusMonths(12)));
+		private final YearMonth now = YearMonth.now();
+		
+		private final Predicate<UniqueAccountingNumber> isCurrentMonth = (value) -> (value.getYearAndMonthFromUAN().equals(now));
+		private final Predicate<UniqueAccountingNumber> isLastMonth = (value) -> (value.getYearAndMonthFromUAN().equals(now.minusMonths(1)));
+		private final Predicate<UniqueAccountingNumber> isLastYearSameMonth = (value) -> (value.getYearAndMonthFromUAN().equals(now.minusMonths(12)));
 		
 		private final Predicate<UniqueAccountingNumber> isCurrentAccounting = UniqueAccountingNumber::isInCurrentFinancialYear;
 		private final Predicate<UniqueAccountingNumber> isLastAccounting = UniqueAccountingNumber::isInPreviousFinancialYear;
-		private final Predicate<UniqueAccountingNumber> isLastYearSameMonthAccounting = (value) -> (value.isInPreviousFinancialYear() && value.getYearAndMonthFromUAN().isBefore(YearMonth.now().minusMonths(11)));
+		private final Predicate<UniqueAccountingNumber> isLastYearSameMonthAccounting = (value) -> (value.isInPreviousFinancialYear() && value.getYearAndMonthFromUAN().isBefore(now.minusMonths(11)));
 		
 		public Float currentMonthMargin = 0f;
 		public Float lastMonthMargin = 0f;
@@ -93,6 +139,55 @@ public class AnalyticsReport {
 		
 		public Float currentAccountingTurnOverSimpleQuartzOnly = 0f;
 		public Float lastAccountingTurnOverSimpleQuartzOnly = 0f;
+		
+		public OvertimeFigures() {
+		}
+		
+		public OvertimeFigures mergeWith(OvertimeFigures toMergeWith) {
+			OvertimeFigures merged = new OvertimeFigures();
+			this.currentMonthMargin = this.currentMonthMargin + toMergeWith.currentMonthMargin;
+			this.lastMonthMargin = this.lastMonthMargin + toMergeWith.lastMonthMargin;
+			this.lastYearSameMonthMargin = this.lastYearSameMonthMargin + toMergeWith.lastYearSameMonthMargin;
+			this.currentAccountingMargin = this.currentAccountingMargin + toMergeWith.currentAccountingMargin;
+			this.lastAccountingMargin = this.lastAccountingMargin + toMergeWith.lastAccountingMargin;
+			this.lastYearSameMonthAccountingMargin = this.lastYearSameMonthAccountingMargin + toMergeWith.lastYearSameMonthAccountingMargin;
+			this.currentMonthTurnOver = this.currentMonthTurnOver + toMergeWith.currentMonthTurnOver;
+			this.lastMonthTurnOver = this.lastMonthTurnOver + toMergeWith.lastMonthTurnOver;
+			this.lastYearSameMonthTurnOver = this.lastYearSameMonthTurnOver + toMergeWith.lastYearSameMonthTurnOver;
+			this.currentAccountingTurnOver = this.currentAccountingTurnOver + toMergeWith.currentAccountingTurnOver;
+			this.lastAccountingTurnOver = this.lastAccountingTurnOver + toMergeWith.lastAccountingTurnOver;
+			this.lastYearSameMonthAccountingTurnOver = this.lastYearSameMonthAccountingTurnOver + toMergeWith.lastYearSameMonthAccountingTurnOver;
+			this.currentMonthMarginLocalServicingOnly = this.currentMonthMarginLocalServicingOnly + toMergeWith.currentMonthMarginLocalServicingOnly;
+			this.lastMonthMarginLocalServicingOnly = this.lastMonthMarginLocalServicingOnly + toMergeWith.lastMonthMarginLocalServicingOnly;
+			this.lastYearSameMonthMarginLocalServicingOnly = this.lastYearSameMonthMarginLocalServicingOnly + toMergeWith.lastYearSameMonthMarginLocalServicingOnly;
+			this.currentAccountingMarginLocalServicingOnly = this.currentAccountingMarginLocalServicingOnly + toMergeWith.currentAccountingMarginLocalServicingOnly;
+			this.lastAccountingMarginLocalServicingOnly = this.lastAccountingMarginLocalServicingOnly + toMergeWith.lastAccountingMarginLocalServicingOnly;
+			this.lastYearSameMonthAccountingMarginLocalServicingOnly = this.lastYearSameMonthAccountingMarginLocalServicingOnly + toMergeWith.lastYearSameMonthAccountingMarginLocalServicingOnly;
+			this.currentMonthTurnOverLocalServicingOnly = this.currentMonthTurnOverLocalServicingOnly + toMergeWith.currentMonthTurnOverLocalServicingOnly;
+			this.lastMonthTurnOverLocalServicingOnly = this.lastMonthTurnOverLocalServicingOnly + toMergeWith.lastMonthTurnOverLocalServicingOnly;
+			this.currentAccountingTurnOverLocalServicingOnly = this.currentAccountingTurnOverLocalServicingOnly + toMergeWith.currentAccountingTurnOverLocalServicingOnly;
+			this.lastAccountingTurnOverLocalServicingOnly = this.lastAccountingTurnOverLocalServicingOnly + toMergeWith.lastAccountingTurnOverLocalServicingOnly;
+			this.currentMonthMarginSellingOnly = this.currentMonthMarginSellingOnly + toMergeWith.currentMonthMarginSellingOnly;
+			this.lastMonthMarginSellingOnly = this.lastMonthMarginSellingOnly + toMergeWith.lastMonthMarginSellingOnly;
+			this.lastYearSameMonthMarginSellingOnly = this.lastYearSameMonthMarginSellingOnly + toMergeWith.lastYearSameMonthMarginSellingOnly;
+			this.currentAccountingMarginSellingOnly = this.currentAccountingMarginSellingOnly + toMergeWith.currentAccountingMarginSellingOnly;
+			this.lastAccountingMarginSellingOnly = this.lastAccountingMarginSellingOnly + toMergeWith.lastAccountingMarginSellingOnly;
+			this.lastYearSameMonthAccountingMarginSellingOnly = this.lastYearSameMonthAccountingMarginSellingOnly + toMergeWith.lastYearSameMonthAccountingMarginSellingOnly;
+			this.currentMonthTurnOverSellingOnly = this.currentMonthTurnOverSellingOnly + toMergeWith.currentMonthTurnOverSellingOnly;
+			this.lastMonthTurnOverSellingOnly = this.lastMonthTurnOverSellingOnly + toMergeWith.lastMonthTurnOverSellingOnly;
+			this.currentAccountingTurnOverSellingOnly = this.currentAccountingTurnOverSellingOnly + toMergeWith.currentAccountingTurnOverSellingOnly;
+			this.lastAccountingTurnOverSellingOnly = this.lastAccountingTurnOverSellingOnly + toMergeWith.lastAccountingTurnOverSellingOnly;
+			this.currentMonthMarginSimpleQuartzOnly = this.currentMonthMarginSimpleQuartzOnly + toMergeWith.currentMonthMarginSimpleQuartzOnly;
+			this.lastMonthMarginSimpleQuartzOnly = this.lastMonthMarginSimpleQuartzOnly + toMergeWith.lastMonthMarginSimpleQuartzOnly;
+			this.currentAccountingMarginSimpleQuartzOnly = this.currentAccountingMarginSimpleQuartzOnly + toMergeWith.currentAccountingMarginSimpleQuartzOnly;
+			this.lastAccountingMarginSimpleQuartzOnly = this.lastAccountingMarginSimpleQuartzOnly + toMergeWith.lastAccountingMarginSimpleQuartzOnly;
+			this.currentMonthTurnOverSimpleQuartzOnly = this.currentMonthTurnOverSimpleQuartzOnly + toMergeWith.currentMonthTurnOverSimpleQuartzOnly;
+			this.lastMonthTurnOverSimpleQuartzOnly = this.lastMonthTurnOverSimpleQuartzOnly + toMergeWith.lastMonthTurnOverSimpleQuartzOnly;
+			this.currentAccountingTurnOverSimpleQuartzOnly = this.currentAccountingTurnOverSimpleQuartzOnly + toMergeWith.currentAccountingTurnOverSimpleQuartzOnly;
+			this.lastAccountingTurnOverSimpleQuartzOnly = this.lastAccountingTurnOverSimpleQuartzOnly + toMergeWith.lastAccountingTurnOverSimpleQuartzOnly;
+			
+			return this;
+		}
 		
 		public void add(Optional<UniqueAccountingNumber> ouan, Long type, float marginValue, float turnoverValue) {
 			if (ouan.isPresent()) {
@@ -178,40 +273,15 @@ public class AnalyticsReport {
 	public Date date;
 	public OvertimeFigures figures;
 	
-	private AnalyticsReport() {
+	private AnalyticsReportEnhanced() {
 		figures = new OvertimeFigures();
 	}
-	
-	private void loadAnalyticLine(AccountingLineAnalytic currentLine) {
-		AccountingDocument currentDocument = currentLine.accountingLine.document;
-		Long analyticCode = currentLine.analyticCode.analyticCode;
-		String invoiceUAN = InvoiceLineReport.guessUAN(currentDocument).orElse("");
-		
-		this.figures.add(UniqueAccountingNumber.fromStringIfValidOnly(invoiceUAN, false), analyticCode, currentLine.price-currentLine.cost, currentLine.price);
-	}
-	
-	private void loadAnalyticLineEnhanced(AccountingLineAnalytic currentLine) {
-		Long analyticCode = currentLine.analyticCode.analyticCode;
-		String invoiceUAN = currentLine.uan	;
-		
-		this.figures.add(UniqueAccountingNumber.fromStringIfValidOnly(invoiceUAN, false), analyticCode, currentLine.price-currentLine.cost, currentLine.price);
-	}
 
-	public static AnalyticsReport generateReportEnhanced() {
-		AnalyticsReport report = new AnalyticsReport();
+	public static AnalyticsReportEnhanced generateReportEnhanced() {
+		AnalyticsReportEnhanced report = new AnalyticsReportEnhanced();
 		List<AccountingLineAnalytic> lines = AccountingLineAnalytic.findAllForReportingEnhanced();
-		for(AccountingLineAnalytic line : lines)
-			report.loadAnalyticLineEnhanced(line);
+		report.figures = lines.parallelStream().collect(report.new OvertimeFiguresCollector());
 		return report;
 	}
-		
-	public static AnalyticsReport generateReport() {
-		AnalyticsReport report = new AnalyticsReport();
-		List<AccountingLineAnalytic> lines = AccountingLineAnalytic.findAllForReporting();
-		for(AccountingLineAnalytic line : lines)
-			report.loadAnalyticLine(line);
-		return report;
-	}
-	
 	
 }

@@ -169,7 +169,7 @@ public class AnalyticsChartsReport {
 
 	public static AnalyticsChartsReport generateReportUnhanced() {
 		AnalyticsChartsReport report = new AnalyticsChartsReport();
-		List<AccountingLineAnalytic> lines = AccountingLineAnalytic.findAllForReportingUnhanced();
+		List<AccountingLineAnalytic> lines = AccountingLineAnalytic.findAllForReportingEnhanced();
 		for(AccountingLineAnalytic line : lines)
 			report.loadAnalyticLineUnhanced(line);
 		return report;

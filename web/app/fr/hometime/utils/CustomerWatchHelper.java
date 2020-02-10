@@ -13,6 +13,7 @@ import play.mvc.Http.Session;
 import models.CustomerWatch;
 import models.Customer;
 import models.Partner;
+import models.SparePart;
 import models.User;
 import models.CustomerWatch.CustomerWatchStatus;
 
@@ -476,6 +477,12 @@ public class CustomerWatchHelper {
     
     public static List<CustomerWatch> sortByPriorityWatches(List<CustomerWatch> unSortedWatches) {
     	return unSortedWatches.stream().sorted(Comparator.comparing(CustomerWatch::getFirstKnownDate, Comparator.nullsLast(Comparator.naturalOrder()))).collect(Collectors.toList());
+    }
+    
+    public static String getSparePartsToOrderAsString(models.CustomerWatch watch) {
+    	if (watch != null)
+    		return SparePart.findAllOpenByCustomerWatch(watch).stream().map(sparepart -> sparepart.description + " - " + sparepart.outPrice + "€ (" + sparepart.expectedInPrice +"€)").collect(Collectors.joining("\n  -> ", "\n  -> ", ""));
+    	return "";
     }
     
     

@@ -11,6 +11,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 import play.mvc.With;
 import reporting.AnalyticsReport;
+import reporting.AnalyticsReportEnhanced;
 import reporting.AnalyticsChartsReport;
 import reporting.CurrentOrdersReport;
 import reporting.AnalyticsDetailedReport;
@@ -35,12 +36,8 @@ import views.html.admin.reports.current_orders_report;
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
 public class Reporting extends Controller {
-	public static Result financialReport() {
-		return ok(financial_report.render(AnalyticsReport.generateReport()));
-    }
-	
-	public static Result financialReportUnhanced() {
-		return ok(financial_report.render(AnalyticsReport.generateReportUnhanced()));
+	public static Result financialReportEnhanced() {
+		return ok(financial_report.render(AnalyticsReportEnhanced.generateReportEnhanced()));
     }
 	
 	public static Result financialChartsReport() {

@@ -2093,7 +2093,8 @@ admin.navbar.link.text.reporting.legal.register=Registre
 admin.navbar.link.text.reporting.legal.register.helper=Aide pour registre
 admin.navbar.link.text.reporting.payments=Rapport méthodes de paiement
 admin.navbar.link.text.reporting.financial.charts=Rapport financier (graphiques)
-admin.navbar.link.text.reporting.financial.unhanced=Rapport financier accéléré
+admin.navbar.link.text.reporting.financial.enhanced=Rapport financier accéléré
+
 admin.navbar.link.text.reporting.financial.detailed=Rapport financier détaillé
 admin.navbar.link.text.reporting.current.orders=Rapport "Commandes en cours"
 
@@ -3349,7 +3350,7 @@ admin.order.description.empty=Entretien d''une montre {0} {1}
 admin.order.waranty.line.empty=Etanchéité garantie pendant 2 ans
 admin.order.document.description.empty=Entretien d''une montre {0}
 
-admin.order.delivery.line=Remise en mains propres à domicile
+admin.order.delivery.line=Remise en mains propres à domicile || Envoi et retour par colis sécurisé
 
 
 

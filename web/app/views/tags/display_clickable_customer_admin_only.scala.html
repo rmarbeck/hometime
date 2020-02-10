@@ -1,1 +1,1 @@
-@(customer: models.Customer)@if_admin() {<a href="@routes.Customer.display(customer.id)">}@customer.firstname @customer.name@if_admin() {</a>}
+@(customer: models.Customer)@if_admin() {<a onclick="copyToClipboard('@customer.email')" type="button" class="btn btn-primary btn-xs" href="#""><span class="glyphicon glyphicon-download"></span></a> <a href="@routes.Customer.display(customer.id)">}@customer.firstname @customer.name@if_admin() {</a>}
