@@ -12,9 +12,11 @@ import play.mvc.Security;
 import play.mvc.With;
 import reporting.AnalyticsReport;
 import reporting.AnalyticsReportEnhanced;
+import reporting.AnalyticsReportEnhanced2;
 import reporting.AnalyticsChartsReport;
 import reporting.CurrentOrdersReport;
 import reporting.AnalyticsDetailedReport;
+import reporting.AnalyticsReportEnhanced2;
 import reporting.InvoiceLineReport;
 import reporting.WatchSalesReport;
 import views.html.admin.reports.margin_vat;
@@ -29,6 +31,7 @@ import views.html.admin.reports.address_tab_table;
 import views.html.admin.reports.address_tab_alpha;
 import views.html.admin.reports.payments;
 import views.html.admin.reports.financial_report;
+import views.html.admin.reports.financial_report2;
 import views.html.admin.reports.financial_charts_report;
 import views.html.admin.reports.financial_detailed_report;
 import views.html.admin.reports.current_orders_report;
@@ -38,6 +41,10 @@ import views.html.admin.reports.current_orders_report;
 public class Reporting extends Controller {
 	public static Result financialReportEnhanced() {
 		return ok(financial_report.render(AnalyticsReportEnhanced.generateReportEnhanced()));
+    }
+	
+	public static Result financialReportEnhanced2() {
+		return ok(financial_report2.render(AnalyticsReportEnhanced2.generateReportEnhanced()));
     }
 	
 	public static Result financialChartsReport() {
