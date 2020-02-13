@@ -35,6 +35,7 @@
                    		<a type="button" class="btn btn-success btn-xs" href="@routes.CustomerWatch.acceptWatchFromCustomer(watch.id)" title="Accepter la montre"><span class="glyphicon glyphicon-arrow-down"></span></a>
                    	}
                    	<a type="button" class="btn btn-danger btn-xs" href="@routes.CustomerWatch.duplicate(watch.id)"><span class="glyphicon glyphicon-tags"></span></a>
+                   	<a type="button" class="btn btn-danger btn-xs" href="@routes.CustomerWatch.duplicateBackToSAV(watch.id)"><span class="glyphicon glyphicon-import"></span></a>
                   </td>
                   <td>
                     @display_date(watch.lastStatusUpdate, "dd/MM HH:mm")

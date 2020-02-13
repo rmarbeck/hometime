@@ -36,6 +36,8 @@ public class AnalyticsReportEnhanced2 {
 	public final static String FILTER_LOCAL_SERVICING = "localServicing";
 	public final static String FILTER_SELLING_ONLY = "sellingOnly";
 	public final static String FILTER_SIMPLE_QUARTZ_ONLY = "simpleQuartzOnly";
+	public final static String FILTER_SELLING_NEW_ONLY = "sellingNewOnly";
+	public final static String FILTER_SELLING_USED_ONLY = "sellingUsedOnly";
 	
 	public final static String FIGURE_MARGIN = "margin";
 	public final static String FIGURE_TURNOVER = "turnover";
@@ -240,6 +242,14 @@ public class AnalyticsReportEnhanced2 {
 			containers.add(new OvertimeFiguresDescriptor(FILTER_SIMPLE_QUARTZ_ONLY, isQuartzSimpleService)
 							.addPeriods(getAllPeriods())
 							.addType(margin).addType(turnover));
+			
+			containers.add(new OvertimeFiguresDescriptor(FILTER_SELLING_NEW_ONLY, isNewWatchSelling)
+					.addPeriods(getAllPeriods())
+					.addType(margin).addType(turnover));
+			
+			containers.add(new OvertimeFiguresDescriptor(FILTER_SELLING_USED_ONLY, isUsedWatchSelling)
+					.addPeriods(getAllPeriods())
+					.addType(margin).addType(turnover));
 
 		}
 		

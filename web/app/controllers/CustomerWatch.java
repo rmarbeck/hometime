@@ -115,6 +115,28 @@ public class CustomerWatch extends Controller {
 		return badRequest(emptyNewWatchForm());
 	}
 	
+	public static Result duplicateBackToSAV(Long watchId) {
+		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
+		if (existingWatch != null) {
+			models.CustomerWatch newWatch = new models.CustomerWatch();
+			newWatch.additionnalModelInfos = "duplicate for SAV";
+			newWatch.customer = existingWatch.customer;
+			newWatch.brand = existingWatch.brand;
+			newWatch.model = existingWatch.model;
+			newWatch.reference = existingWatch.reference;
+			newWatch.serial = existingWatch.serial;
+			newWatch.serial2 = existingWatch.serial2;
+			newWatch.movement = existingWatch.movement;
+			newWatch.status = models.CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT;
+			newWatch.type = existingWatch.type;
+			newWatch.quotation = existingWatch.quotation;
+
+			return ok(customerWatchForm(Form.form(models.CustomerWatch.class).fill(newWatch), true));
+		}
+		flash("error", "Unknown watch id");
+		return badRequest(emptyNewWatchForm());
+	}
+	
 	public static Result setQuotationSent(Long watchId) {
 		return updateWatch(watchId, (watch) -> {watch.finalCustomerQuotationSent = true;});
 	}
