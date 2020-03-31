@@ -683,6 +683,20 @@ public class Application extends Controller {
 		}
 	}
 	
+	public static Result manageOrderFromFriendlyLocation() {
+		Form<OrderForm> orderForm = Form.form(OrderForm.class).bindFromRequest();
+		if(orderForm.hasErrors()) {
+			logFormErrors(orderForm);
+			return badRequest();
+		} else {
+			OrderRequest orderRequest = orderForm.get().getRequest();
+			orderRequest.save();
+			
+			ActionHelper.asyncTryToSendHtmlEmail("["+orderRequest.id+"] Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());		
+			return ok();
+		}
+	}
+	
 	public static Result manageAutoOrder() {
 		Form<AutoOrderForm> autoOrderForm = Form.form(AutoOrderForm.class).bindFromRequest();
 		

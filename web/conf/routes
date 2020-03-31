@@ -65,6 +65,8 @@ POST    /devis-interactif-immediat							         	controllers.Application.manag
 GET 	/accepter-le-devis			controllers.Application.acceptQuotation(orderId: Long, price: String, delay: String)
 POST	/accepter-le-devis			controllers.Application.manageAcceptQuotation()
 
+POST    /new-order-from-outside     controllers.Application.manageOrderFromFriendlyLocation()
+
 # Order
 GET     /changement-de-pile/etancheite         controllers.Application.quartz(brand = null)
 GET     /changement-de-pile/etancheite/montre/:brand    controllers.Application.quartz(brand)
