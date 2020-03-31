@@ -2,7 +2,6 @@ package controllers;
 
 import java.util.Optional;
 
-import fr.hometime.payment.systempay.DataDictionnary;
 import fr.hometime.payment.systempay.PaymentConfirmation;
 import fr.hometime.payment.systempay.SingleImmediatePF;
 import fr.hometime.utils.ActionHelper;
@@ -43,7 +42,7 @@ public class PaymentRequestsFreeOfLogin extends Controller {
 		String calculatedSignature = confirmation.getSignature();
 		
 		if (receivedSignature.equals(calculatedSignature)) {
-			Optional<PaymentRequest> foundRequest = PaymentRequestHelper.getLastFromOrderId(confirmation.getOrderId());
+			Optional<PaymentRequest> foundRequest = PaymentRequestHelper.getBestFitFromOrderId(confirmation.getOrderId(), confirmation.getEffectiveAmount());
 			if (foundRequest.isPresent()) {
 				foundRequest.get().updateAfterConfirmationResult(confirmation);
 				sendEmailNotification(foundRequest.get());
