@@ -133,7 +133,7 @@ public class Application extends Controller {
 	    public OrderRequest getRequest() {
 	    	OrderRequest request = new OrderRequest();
 	    	request.brand = Brand.findById(Long.valueOf(this.brand));
-	    	if (!"".equals(this.watchChosen))
+	    	if (this.watchChosen!= null && !"".equals(this.watchChosen))
 	    		request.watchChosen =  Watch.findById(Long.valueOf(this.watchChosen));
 	    	request.orderType = OrderRequest.OrderTypes.fromString(this.orderType);
 	    	request.method = OrderRequest.MethodTypes.fromString(this.method);
