@@ -28,6 +28,10 @@ pipelineStages := Seq(digest, gzip)
 
 LessKeys.compress in Assets := true
 
+resolvers += "Secured Central Repository" at "https://repo1.maven.org/maven2"
+
+externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
+
 WebKeys.webTarget := target.value / "scala-web"
 
 artifactPath in PlayKeys.playPackageAssets := WebKeys.webTarget.value / (artifactPath in PlayKeys.playPackageAssets).value.getName

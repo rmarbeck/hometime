@@ -18,6 +18,7 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
+import fr.hometime.utils.Ordering;
 
 /**
  * Definition of a payment
@@ -125,13 +126,11 @@ public class Payment extends Model implements CrudReady<Payment, Payment> {
     }
     
     public static Page<Payment> page(int page, int pageSize, String sortBy, String order, String filter) {
-    	if (sortBy == null || sortBy.equals("")) {
-    		sortBy = "paymentDate";
-    		order = "DESC";
-    	}
+    	Ordering ordering = Ordering.of(sortBy, order, "paymentDate", "DESC");
+
         return 
             find.where().or(Expr.ilike("description", "%" + filter + "%"), Expr.ilike("invoice.uniqueAccountingNumber", "%" + filter + "%"))
-                .orderBy(sortBy + " " + order)
+                .orderBy(ordering.asSql())
                 .findPagingList(pageSize)
                 .getPage(page);
     }

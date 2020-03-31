@@ -13,6 +13,7 @@ import play.mvc.Http.Session;
 import models.CustomerWatch;
 import models.Customer;
 import models.Partner;
+import models.SparePart;
 import models.User;
 import models.CustomerWatch.CustomerWatchStatus;
 
@@ -222,7 +223,7 @@ public class CustomerWatchHelper {
     	if (watch.serviceNeeded && serviceStatusAt100(watch))
     		return CustomerWatchDetailedStatus.TESTING;
     	
-    	if (watch.customer.isAPro()) {
+    	if (isCustomerAProCached(watch.customer)) {
     		if (!watch.serviceNeeded && serviceStatusAt100(watch) && holdByUs(watch))
     			return CustomerWatchDetailedStatus.FINISHED_STORED_BY_US_TO_DELIVER;
     		
@@ -249,6 +250,14 @@ public class CustomerWatchHelper {
     	} else {
     		return CustomerWatchDetailedStatus.UNCONSISTENT;
     	}
+    }
+    
+    private static boolean isCustomerAProCached(Customer customer) {
+    	return ((Boolean) CachingHelper.getDataFromCache(customer.id.toString(), CustomerWatchHelper::isCustomerAPro, "customer_id_").get()).booleanValue();
+    }
+    
+    private static Optional<Boolean> isCustomerAPro(String customerId) {
+    	return Optional.of(Customer.findById(Long.valueOf(customerId)).isAPro());
     }
     
     private static boolean serviceStatusAt100(CustomerWatch watch) {
@@ -321,32 +330,38 @@ public class CustomerWatchHelper {
     
    private static boolean is(Long watchId, CustomerWatchDetailedStatusForCustomer toTest) {
 	   if (watchId != null)
-		   return evaluateStatusForCustomer(CustomerWatch.findById(watchId)).equals(toTest);
+		   return is(CustomerWatch.findById(watchId), toTest);
+	   return false;
+   }
+   
+   private static boolean is(CustomerWatch watch, CustomerWatchDetailedStatusForCustomer toTest) {
+	   if (watch != null)
+		   return evaluateStatusForCustomer(watch).equals(toTest);
 	   return false;
    }
     
-   public static boolean isEditableByCustomer(Long watchId) {
-	   return is(watchId, CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED);
+   public static boolean isEditableByCustomer(CustomerWatch watch) {
+	   return is(watch, CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED);
    }
    
-   public static boolean isWaitingQuotationAcceptation(Long watchId) {
-	   return is(watchId, CustomerWatchDetailedStatusForCustomer.WAITING_FOR_QUOTATION_ACCEPTATION);
+   public static boolean isWaitingQuotationAcceptation(CustomerWatch watch) {
+	   return is(watch, CustomerWatchDetailedStatusForCustomer.WAITING_FOR_QUOTATION_ACCEPTATION);
    }
    
-   public static boolean isWorkDone(Long watchId) {
-	   return is(watchId, CustomerWatchDetailedStatusForCustomer.FINISHED_STORED_BY_US);
+   public static boolean isWorkDone(CustomerWatch watch) {
+	   return is(watch, CustomerWatchDetailedStatusForCustomer.FINISHED_STORED_BY_US);
    }
    
-   public static boolean isWaitingQuotation(Long watchId) {
-	   return is(watchId, CustomerWatchDetailedStatusForCustomer.TO_QUOTE);
+   public static boolean isWaitingQuotation(CustomerWatch watch) {
+	   return is(watch, CustomerWatchDetailedStatusForCustomer.TO_QUOTE);
    }
    
-   public static boolean isToBeAccepted(Long watchId) {
-	   return is(watchId, CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED);
+   public static boolean isToBeAccepted(CustomerWatch watch) {
+	   return is(watch, CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED);
    }
 
-   public static boolean isWorking(Long watchId) {
-	   return is(watchId, CustomerWatchDetailedStatusForCustomer.WORKING);
+   public static boolean isWorking(CustomerWatch watch) {
+	   return is(watch, CustomerWatchDetailedStatusForCustomer.WORKING);
    }
    
    
@@ -462,6 +477,12 @@ public class CustomerWatchHelper {
     
     public static List<CustomerWatch> sortByPriorityWatches(List<CustomerWatch> unSortedWatches) {
     	return unSortedWatches.stream().sorted(Comparator.comparing(CustomerWatch::getFirstKnownDate, Comparator.nullsLast(Comparator.naturalOrder()))).collect(Collectors.toList());
+    }
+    
+    public static String getSparePartsToOrderAsString(models.CustomerWatch watch) {
+    	if (watch != null)
+    		return SparePart.findAllOpenByCustomerWatch(watch).stream().map(sparepart -> sparepart.description + " - " + sparepart.outPrice + "€ (" + sparepart.expectedInPrice +"€)").collect(Collectors.joining("\n  -> ", "\n  -> ", ""));
+    	return "";
     }
     
     

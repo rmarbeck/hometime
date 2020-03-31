@@ -3,7 +3,7 @@
 @import tags._
 
 @defining(new views.FormDisplay(thisInstance, "PostSellingCertificate", "admin.postsellingcertificate.form")) { formDisplay =>
-		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.WatchToSell.getIdsByCustomersAsc, models.WatchToSell.getWatchesByCustomersAsc);
+		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.WatchToSell.getIdsAndWatchesByACustomerAsc);
 		   formDisplay.addFormField("documentDate", true, "input", 'type -> "date");
 		   formDisplay.addFormField("testResult", true, "input");
 		   formDisplay.addFormField("waterproofWaranted", true, "checkbox")

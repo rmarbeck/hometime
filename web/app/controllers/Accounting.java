@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 import fr.hometime.utils.AccountingAnalyticsHelper;
+import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.UniqueAccountingNumber;
 import fr.hometime.utils.UsefullHelper;
 import fr.hometime.utils.VATHelper;
@@ -596,6 +597,8 @@ public class Accounting extends Controller {
 	
 	private static void populateOrderFormGeneric(models.OrderDocument newOrder, models.CustomerWatch watch, boolean waterResistance) {
 		newOrder.addLine(LineType.FREE_INCLUDED, Messages.get("admin.order.delivery.line"), Long.valueOf(1), Float.valueOf(0));
+		if (watch.partnerFromInfos != null)
+			newOrder.addLine(LineType.FREE_SPECIAL, watch.partnerFromInfos + CustomerWatchHelper.getSparePartsToOrderAsString(watch), Long.valueOf(1), Float.valueOf(0));	
 	}
 	
 	private static Html newOrderGeneric(long id, boolean waterResistance, TriConsumer<models.OrderDocument, models.CustomerWatch, Boolean> populater) {
@@ -720,6 +723,37 @@ public class Accounting extends Controller {
 	
 	public static Result addPServiceCByWatchId(Long id) {
 		return PostServiceCertificates.crud.create(newPServiceCByWatchId(id));
+	}
+	
+	public static Result addPServiceCByWatchIdQuartzFull(Long id) {
+		Form<PostServiceCertificate> pscf = newPServiceCByWatchId(id);
+		
+		PostServiceCertificate psc = pscf.get();
+		
+		psc.workDone = Messages.get("admin.post.service.certificate.full.quartz.work.done");
+		psc.quartzTestResult = Messages.get("admin.post.service.certificate.full.quartz.test.ok");
+		psc.waterproofingTestResult = Messages.get("admin.post.service.certificate.full.waterproof.test.ok");
+		psc.workingWarantyDate = psc.waterproofWarantyDate;
+		psc.workingWaranted = true;
+		psc.waterproofWaranted = true;
+		psc.displayWindingTip = false;
+		
+		return PostServiceCertificates.crud.create(pscf);
+	}
+	
+	public static Result addPServiceCByWatchIdQuartzSimple(Long id) {
+		Form<PostServiceCertificate> pscf = newPServiceCByWatchId(id);
+		
+		PostServiceCertificate psc = pscf.get();
+		
+		psc.workDone = Messages.get("admin.post.service.certificate.simple.quartz.work.done");
+		psc.quartzTestResult = Messages.get("admin.post.service.certificate.full.quartz.test.ok");
+		psc.workingWarantyDate = psc.waterproofWarantyDate;
+		psc.workingWaranted = true;
+		psc.waterproofWaranted = false;
+		psc.displayWindingTip = false;
+		
+		return PostServiceCertificates.crud.create(pscf);
 	}
 	
 	private static Form<PostServiceCertificate> newPServiceCByWatchId(long id) {

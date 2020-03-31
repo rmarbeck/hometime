@@ -1,0 +1,49 @@
+@(report: reporting.AnalyticsReportEnhanced2)
+@import tags._
+@import reporting.AnalyticsReportEnhanced2._
+@import scala.collection.immutable._
+
+
+@display_price_formated(price: Float) = {
+@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price)
+}
+
+@display(periodN: String, filter: String, figure: String) = {
+<div>&nbsp;&nbsp;@getKey(periodN, filter, figure) : @display_price_formated(report.figures.getValue(periodN, filter, figure))</div>
+}
+
+@display_with_evolution(periodN: String, periodNMinus1: String, filter: String, figure: String) = {
+<div>&nbsp;&nbsp;@getKey(periodN, filter, figure) : @display_price_formated_with_evolution(report.figures.getValue(periodN, filter, figure), report.figures.getValue(periodNMinus1, filter, figure))</div>
+}
+
+@display_price_formated_with_evolution(price: Float, old: Float) = {
+@if(old != 0) {
+@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price) @display_evolution((price - old)/old*100)
+} else {
+@display_price_formated(price)
+}
+}
+
+@display_evolution(value: Float) = {
+(@if(value > 0) {+} @value.toInt%)
+}
+
+@layouts.admin() {
+
+	@List(FILTER_ALL, FILTER_LOCAL_SERVICING, FILTER_SELLING_ONLY, FILTER_SELLING_NEW_ONLY, FILTER_SELLING_USED_ONLY, FILTER_SIMPLE_QUARTZ_ONLY).map { filter =>
+		@List(FIGURE_MARGIN, FIGURE_TURNOVER).map { figure =>
+			@display_with_evolution(PERIOD_CURRENT_MONTH, PERIOD_LAST_YEAR_SAME_MONTH, filter, figure)
+			@display(PERIOD_LAST_MONTH, filter, figure)
+			@display(PERIOD_LAST_YEAR_SAME_MONTH, filter, figure)
+			@display_with_evolution(PERIOD_CURRENT_ACCOUNTING, PERIOD_LAST_YEAR_SAME_MONTH_ACCOUNTING, filter, figure)
+			@display(PERIOD_LAST_ACCOUNTING, filter, figure)
+			@display(PERIOD_LAST_YEAR_SAME_MONTH_ACCOUNTING, filter, figure)
+			<br />
+		}
+		
+		<br />
+    	<hr />
+    	<br />
+	}
+
+}

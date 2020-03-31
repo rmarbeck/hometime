@@ -6,12 +6,17 @@ import java.util.stream.Collectors;
 import models.MailTemplateType;
 
 public class ModelsHelper {
+	
     public static List<Long> getIdsByDisplayNameAsc() {
     	return MailTemplateType.findByDisplayNameAsc().stream().map(template -> template.id).collect(Collectors.toList());
     }
     
     public static List<String> getDisplayNamesByDisplayNameAsc() {
     	return MailTemplateType.findByDisplayNameAsc().stream().map(template -> template.displayName).collect(Collectors.toList());
+    }
+    
+    public static Ordering setDefaultOrderBy(String sortBy, String order, String defaultSortBy, String defaultOrder) {
+    	return Ordering.of(sortBy, order, defaultSortBy, defaultOrder);
     }
 
 }

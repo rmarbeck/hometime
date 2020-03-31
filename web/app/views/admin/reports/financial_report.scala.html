@@ -1,40 +1,61 @@
-@(report: reporting.AnalyticsReport)
+@(report: reporting.AnalyticsReportEnhanced)
 @import tags._
+
 
 @display_price_formated(price: Float) = {
 @java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price)
 }
 
+@display_price_formated_with_evolution(price: Float, old: Float) = {
+@if(old != 0) {
+@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price) @display_evolution((price - old)/old*100)
+} else {
+@display_price_formated(price)
+}
+}
+
+@display_evolution(value: Float) = {
+(@if(value > 0) {+} @value.toInt%)
+}
+
 @layouts.admin() {
 
-    <div>Current month Margin : @display_price_formated(report.figures.currentMonthMargin)</div>
+    <div>Current month Margin : @display_price_formated_with_evolution(report.figures.currentMonthMargin, report.figures.lastYearSameMonthMargin)</div>
     
     <div>Last month Margin : @display_price_formated(report.figures.lastMonthMargin)</div>
     
-    <div>Current accounting Margin : @display_price_formated(report.figures.currentAccountingMargin)</div>
+    <div><i>Last Year month Margin : @display_price_formated(report.figures.lastYearSameMonthMargin)</i></div>
+    
+    <div>Current accounting Margin : @display_price_formated_with_evolution(report.figures.currentAccountingMargin, report.figures.lastYearSameMonthAccountingMargin)</div>
     
     <div>Last accounting Margin : @display_price_formated(report.figures.lastAccountingMargin)</div>
     
+    <div><i>Last Year same Month accounting Margin : @display_price_formated(report.figures.lastYearSameMonthAccountingMargin)</i></div>
+    
     <br />
     
-    <div>Current month Turnover : @display_price_formated(report.figures.currentMonthTurnOver)</div>
+    <div>Current month Turnover : @display_price_formated_with_evolution(report.figures.currentMonthTurnOver, report.figures.lastYearSameMonthTurnOver)</div>
     
     <div>Last month Turnover : @display_price_formated(report.figures.lastMonthTurnOver)</div>
     
-    <div>Current accounting Turnover : @display_price_formated(report.figures.currentAccountingTurnOver)</div>
+    <div><i>Last Year month Turnover : @display_price_formated(report.figures.lastYearSameMonthTurnOver)</i></div>
+    
+    <div>Current accounting Turnover : @display_price_formated_with_evolution(report.figures.currentAccountingTurnOver, report.figures.lastYearSameMonthAccountingTurnOver)</div>
     
     <div>Last accounting Turnover : @display_price_formated(report.figures.lastAccountingTurnOver)</div>
+    
+    <div><i>Last Year same Month accounting Turnover : @display_price_formated(report.figures.lastYearSameMonthAccountingTurnOver)</i></div>
     
     
     <br />
     <hr />
     <br />
     
-    <div>Current month Margin Local Servicing : @display_price_formated(report.figures.currentMonthMarginLocalServicingOnly)</div>
+    <div>Current month Margin Local Servicing : @display_price_formated_with_evolution(report.figures.currentMonthMarginLocalServicingOnly, report.figures.lastYearSameMonthMarginLocalServicingOnly)</div>
     
     <div>Last month Margin Local Servicing : @display_price_formated(report.figures.lastMonthMarginLocalServicingOnly)</div>
     
-    <div>Current accounting Margin Local Servicing : @display_price_formated(report.figures.currentAccountingMarginLocalServicingOnly)</div>
+    <div>Current accounting Margin Local Servicing : @display_price_formated_with_evolution(report.figures.currentAccountingMarginLocalServicingOnly, report.figures.lastYearSameMonthAccountingMarginLocalServicingOnly)</div>
     
     <div>Last accounting Margin Local Servicing : @display_price_formated(report.figures.lastAccountingMarginLocalServicingOnly)</div>
     
@@ -52,11 +73,11 @@
     <hr />
     <br />
     
-    <div>Current month Margin Selling Only : @display_price_formated(report.figures.currentMonthMarginSellingOnly)</div>
+    <div>Current month Margin Selling Only : @display_price_formated_with_evolution(report.figures.currentMonthMarginSellingOnly, report.figures.lastYearSameMonthMarginSellingOnly)</div>
     
     <div>Last month Margin Selling Only : @display_price_formated(report.figures.lastMonthMarginSellingOnly)</div>
     
-    <div>Current accounting Margin Selling Only : @display_price_formated(report.figures.currentAccountingMarginSellingOnly)</div>
+    <div>Current accounting Margin Selling Only : @display_price_formated_with_evolution(report.figures.currentAccountingMarginSellingOnly, report.figures.lastYearSameMonthAccountingMarginSellingOnly)</div>
     
     <div>Last accounting Margin Selling Only : @display_price_formated(report.figures.lastAccountingMarginSellingOnly)</div>
     

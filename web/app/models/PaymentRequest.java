@@ -256,6 +256,7 @@ public class PaymentRequest extends Model implements CrudReady<PaymentRequest, P
             find.where().or(Expr.ilike("description", "%" + filter + "%"), Expr.ilike("access_key", "%" + filter + "%"))
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
+                .setFetchAhead(false)
                 .getPage(page);
     }
 

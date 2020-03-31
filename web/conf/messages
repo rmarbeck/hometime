@@ -9,7 +9,7 @@ global.home.html.author=hometime
 global.text.brand.name=hometime
 global.text.brand.name.title=hometime
 global.text.site.name=hometime
-global.text.copyright=© Watch next SAS 2013-2019
+global.text.copyright=© Watch next SAS 2013-2020
 global.text.brand.baseline=
 global.navbar.link.text.home=Home
 global.navbar.link.text.service=Entretien
@@ -2092,8 +2092,9 @@ admin.navbar.link.text.reporting.stock=Rapport de Stock
 admin.navbar.link.text.reporting.legal.register=Registre
 admin.navbar.link.text.reporting.legal.register.helper=Aide pour registre
 admin.navbar.link.text.reporting.payments=Rapport méthodes de paiement
-admin.navbar.link.text.reporting.financial=Rapport financier
-admin.navbar.link.text.reporting.financial.unhanced=Rapport financier accéléré
+admin.navbar.link.text.reporting.financial.charts=Rapport financier (graphiques)
+admin.navbar.link.text.reporting.financial.enhanced=Rapport financier accéléré
+
 admin.navbar.link.text.reporting.financial.detailed=Rapport financier détaillé
 admin.navbar.link.text.reporting.current.orders=Rapport "Commandes en cours"
 
@@ -2669,7 +2670,10 @@ admin.customer.watch.action.save=&nbsp;Créer
 admin.customer.watch.action.edit=&nbsp;Modifier
 admin.customer.watch.action.delete=&nbsp;Supprimer
 admin.customer.watch.action.cancel=&nbsp;Annuler
-admin.customer.watch.action.create.certificate=&nbsp;Créer certificat
+admin.customer.watch.action.new.certificates=Certificats
+admin.customer.watch.action.create.certificate=Créer certificat
+admin.customer.watch.action.create.certificate.quartz.full=Quartz : pile + étanchéité
+admin.customer.watch.action.create.certificate.quartz.simple=Quartz : pile
 admin.customer.watch.action.back.to.customer=&nbsp;Rendu au client
 admin.customer.watch.create.call.to.action=Promouvoir le prospect en client
 admin.customer.watch.action.stored.by.partner=&nbsp;Chez partenaire
@@ -3346,7 +3350,7 @@ admin.order.description.empty=Entretien d''une montre {0} {1}
 admin.order.waranty.line.empty=Etanchéité garantie pendant 2 ans
 admin.order.document.description.empty=Entretien d''une montre {0}
 
-admin.order.delivery.line=Remise en mains propres à domicile
+admin.order.delivery.line=Remise en mains propres à domicile || Envoi et retour par colis sécurisé
 
 
 
@@ -3866,7 +3870,13 @@ admin.post.service.certificate.watch.serial.unknown=N/A
 admin.post.service.certificate.watch.reference.unknown=&nbsp;
 admin.post.service.certificate.watch.movement.unknown=&nbsp;
 admin.post.service.certificate.watch.model.unknown=&nbsp;
-admin.post.service.certificate.stamp=Cachet :
+admin.post.service.certificate.stamp=
+
+admin.post.service.certificate.full.quartz.work.done=Changement de pile avec étanchéité
+admin.post.service.certificate.simple.quartz.work.done=Changement de pile
+admin.post.service.certificate.full.quartz.test.ok=OK
+admin.post.service.certificate.full.waterproof.test.ok=OK
+
 
 
 admin.postsellingcertificate.page=Certificats d''authenticité et de garantie
@@ -3907,7 +3917,7 @@ admin.post.selling.certificate.tip.pushing.crown=Penser à bien repousser la cou
 admin.post.selling.certificate.tip.closing.crown=Penser à bien refermer le protège couronne après chaque manipulation.
 admin.post.selling.certificate.tip.read.manual=Penser à consulter le manuel d''utilisation de votre montre pour éviter toute fausse manipulation.
 
-admin.post.selling.certificate.stamp=Cachet Watch next :
+admin.post.selling.certificate.stamp=
 
 admin.postsellingcertificate.form=Certificat d''authenticité et de garantie
 admin.postsellingcertificate.form.title=Certificat d''authenticité et de garantie
@@ -4497,7 +4507,7 @@ admin.simplified.customer.watch.watch.servicing.testing.check.operating=Contrôl
 admin.simplified.customer.watch.watch.servicing.testing.check.date=Si Date : Contrôle date rapide sur l'ensemble du dato et passage à minuit sur 2 dates - <i>OK ou KO</i>
 admin.simplified.customer.watch.watch.servicing.testing.check.other=En fonction de la montre : Test fonctionnement lunette, boucle, correcteurs
 
-admin.simplified.customer.watch.watch.servicing.testing.stamp=Cachet Watch Next
+admin.simplified.customer.watch.watch.servicing.testing.stamp=
 admin.simplified.customer.watch.watch.servicing.testing.signature=Date et signature du testeur
 
 admin.simplified.customer.watch.servicing.sheet.quotation.status=Devis
@@ -4521,7 +4531,7 @@ admin.simplified.customer.watch.bracelet.conditions=Bracelet et boucle
 admin.simplified.customer.watch.watering.conditions=Marques d''oxydation ou présence de buée
 admin.simplified.customer.watch.glass.conditions=Verre
 admin.simplified.customer.watch.other.conditions=Autre
-admin.simplified.customer.watch.text.stamp=Cachet Watch Next
+admin.simplified.customer.watch.text.stamp=
 admin.simplified.customer.watch.text.signature=Date et signature du client
 admin.simplified.customer.watch.text.disclaimer=Le présent document fait office de preuve de dépôt de la montre décrite ci-dessus auprès de la société watch next qui s''engage à réaliser les opérations convenues avec le client et à disposer d''une assurance couvrant tous les risques pouvant altérer l''intégrité du bien confié.
 
@@ -5282,6 +5292,4 @@ check.certificate.date=Date du certificat : <b>{0, date,d MMMM yyyy}</b>
 
 
 #end
-
-
 

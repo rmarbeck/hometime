@@ -1,0 +1,124 @@
+@(report: reporting.AnalyticsChartsReport)
+@import tags._
+
+@import scala.collection.immutable._
+
+@verticalTwoDatasets(chartId: String, array1: String, array2: String, labels: String, label: String, title: String) = {
+		var ctx = document.getElementById('@chartId');
+		var myChart = new Chart(ctx, {
+		    type: 'bar',
+		    data: {
+		        labels: ["Octobre","Novembre","Décembre","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre"],
+		        datasets: [{
+		            label: '@label',
+		            data: [@array1],
+		            borderWidth: 1
+		        }, {
+		        	label: '@label',
+		            data: [@array2],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+		                'rgba(153, 102, 255, 0.2)',
+		                'rgba(255, 159, 64, 0.2)',
+		                'rgba(255, 99, 132, 0.5)',
+		                'rgba(54, 162, 235, 0.5)',
+		                'rgba(255, 206, 86, 0.5)',
+		                'rgba(75, 192, 192, 0.5)',
+		                'rgba(153, 102, 255, 0.5)',
+		                'rgba(255, 159, 64, 0.5)'
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+		                'rgba(153, 102, 255, 1)',
+		                'rgba(255, 159, 64, 1)',
+		                'rgba(255, 99, 132, 1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+		                'rgba(153, 102, 255, 1)',
+		                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero: true
+		                }
+		            }]
+		        },
+		        title: {
+						display: true,
+						text: '@title'
+					}
+		    }
+		});
+}
+
+
+@end_scripts = {
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+	<script>
+		@verticalTwoDatasets("margin", report.getSortedLastAccountMargin().values.toArray.mkString(","), report.getSortedCurrentAccountMargin().values.toArray.mkString(","), "", "Montant en euros (€)", "Marge brute")
+		@verticalTwoDatasets("servicing", report.getSortedLastAccountMarginLocalServicingOnly().values.toArray.mkString(","), report.getSortedCurrentAccountMarginLocalServicingOnly().values.toArray.mkString(","), "", "Montant en euros (€)", "Entretiens")
+		@verticalTwoDatasets("selling", report.getSortedLastAccountMarginSellingOnly().values.toArray.mkString(","), report.getSortedCurrentAccountMarginSellingOnly().values.toArray.mkString(","), "", "Montant en euros (€)", "Ventes")
+		@verticalTwoDatasets("simpleQuartz", report.getSortedLastAccountMarginSimpleQuartzOnly().values.toArray.mkString(","), report.getSortedCurrentAccountMarginSimpleQuartzOnly().values.toArray.mkString(","), "", "Montant en euros (€)", "Changement de pile")
+		@verticalTwoDatasets("allButSelling", report.getSortedLastAccountMarginAllButSelling().values.toArray.mkString(","), report.getSortedCurrentAccountMarginAllButSelling().values.toArray.mkString(","), "", "Montant en euros (€)", "Tout sauf la vente")
+	</script>
+}
+
+
+@display_price_formated(price: Float) = {
+@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price)
+}
+
+@display_price_formated_with_evolution(price: Float, old: Float) = {
+@if(old != 0) {
+@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price) @display_evolution((price - old)/old*100)
+} else {
+@display_price_formated(price)
+}
+}
+
+@display_evolution(value: Float) = {
+(@if(value > 0) {+} @value.toInt%)
+}
+
+@layouts.admin("Reporting", end_scripts) {
+
+  <div class="container">
+     <div class="row">
+     	<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
+	    	<canvas id="margin" width="200" height="200"></canvas>
+	    </div>
+	    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
+	    	<canvas id="servicing" width="200" height="200"></canvas>
+	    </div>
+	 </div>
+	 <br />
+	 <div class="row">
+     	<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
+	    	<canvas id="selling" width="200" height="200"></canvas>
+	    </div>
+	    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
+	    	<canvas id="simpleQuartz" width="200" height="200"></canvas>
+	    </div>
+	 </div>
+	 <div class="row">
+     	<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+	    	<canvas id="allButSelling" width="200" height="200"></canvas>
+	    </div>
+	 </div>
+  </div>
+   
+    <br />
+    <br />
+}

@@ -20,6 +20,7 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
+import fr.hometime.utils.Ordering;
 
 /**
  * Definition of a certificate after selling a watch
@@ -83,9 +84,11 @@ public class SellingWarrant extends Model implements CrudReady<SellingWarrant, S
     }
 
     public static Page<SellingWarrant> page(int page, int pageSize, String sortBy, String order, String filter) {
+    	Ordering ordering = Ordering.of(sortBy, order, "documentDate", "DESC");
+    	
         return 
             find.fetch("watch").where().or(Expr.ilike("watch.customerThatSellsTheWatch.name", "%" + filter + "%"), Expr.ilike("watch.brand.display_name", "%" + filter + "%"))
-                .orderBy(sortBy + " " + order)
+                .orderBy(ordering.asSql())
                 .findPagingList(pageSize)
                 .getPage(page);
     }

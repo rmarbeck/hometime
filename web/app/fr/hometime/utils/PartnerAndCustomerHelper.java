@@ -68,7 +68,7 @@ public class PartnerAndCustomerHelper {
 	
 	
 	public static Partner findInternalPartner() {
-		return models.Partner.findByInternalName("simon");
+		return (Partner) CachingHelper.getDataFromCache("simon", (key) -> Optional.of(models.Partner.findByInternalName(key)), "partner_").get();
 	}
 	
 	public static boolean isItInternalPartner(Partner partner) {

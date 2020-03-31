@@ -3,7 +3,7 @@
 @import tags._
 
 @defining(new views.FormDisplay(thisInstance, "PostServiceCertificate", "admin.postservicecertificate.form")) { formDisplay =>
-		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.CustomerWatch.getIdsByCustomersAsc, models.CustomerWatch.getWatchesByCustomersAsc);
+		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.CustomerWatch.getIdsAndWatchesByACustomerAsc);
 		   formDisplay.addFormField("documentDate", true, "input", 'type -> "date");
 		   formDisplay.addFormField("workDone", true, "textarea");
 		   formDisplay.addFormField("privateInfos", true, "textarea");

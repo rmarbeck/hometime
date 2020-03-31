@@ -25,4 +25,8 @@ public class VATHelper {
 	public static float getVATAmountForNetPrice(float netPrice) {
 		return netPrice * getVATRate();
 	}
+	
+	public static float getTurnoverFromMarginModelSelling(float sellingPrice, float margin) {
+		return sellingPrice - getVATAmountForNetPrice(getPriceBeforeVAT(margin));
+	}
 }

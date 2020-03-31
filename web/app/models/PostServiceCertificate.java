@@ -15,6 +15,7 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
+import fr.hometime.utils.Ordering;
 
 /**
  * Definition of a certificate after a service
@@ -106,9 +107,11 @@ public class PostServiceCertificate extends Model implements CrudReady<PostServi
     }
 
     public static Page<PostServiceCertificate> page(int page, int pageSize, String sortBy, String order, String filter) {
+    	Ordering ordering = Ordering.of(sortBy, order, "documentDate", "DESC");
+    	
         return 
             find.fetch("watch").where().or(Expr.ilike("owner.name", "%" + filter + "%"), Expr.ilike("watch.brand", "%" + filter + "%"))
-                .orderBy(sortBy + " " + order)
+                .orderBy(ordering.asSql())
                 .findPagingList(pageSize)
                 .getPage(page);
     }

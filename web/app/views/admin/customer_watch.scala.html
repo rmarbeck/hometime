@@ -125,7 +125,19 @@
         <div class="col-xs-12 text-center">
 	        <a type="button" class="btn btn-default" href="@routes.SimplifiedCustomerWatches.displayServicingSheet(watch.id)"><span class="glyphicon glyphicon-print"></span>@Html(Messages("admin.customer.watch.action.print.servicing"))</a>
 	        <a type="button" class="btn btn-default" href="@routes.SimplifiedCustomerWatches.displayTestingSheet(watch.id)"><span class="glyphicon glyphicon glyphicon-search"></span>@Html(Messages("admin.customer.watch.action.print.testing"))</a>
-        	<a type="button" class="btn btn-primary" href="@routes.Accounting.addPServiceCByWatchId(watch.id)"><span class="glyphicon glyphicon-certificate"></span>@Html(Messages("admin.customer.watch.action.create.certificate"))</a>
+	        <!-- Split button -->
+		    <div class="btn-group text-left dropup">
+		      <span class="btn btn-primary">@Html(Messages("admin.customer.watch.action.new.certificates"))</span>
+		      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+		        <span class="caret"></span>
+		        <span class="sr-only">Toggle Dropdown</span>
+		      </button>
+		      <ul class="dropdown-menu" role="menu">
+		        <li><a href="@routes.Accounting.addPServiceCByWatchId(watch.id)">@Html(Messages("admin.customer.watch.action.create.certificate"))</a></li>
+		        <li><a href="@routes.Accounting.addPServiceCByWatchIdQuartzFull(watch.id)">@Html(Messages("admin.customer.watch.action.create.certificate.quartz.full"))</a></li>
+		        <li><a href="@routes.Accounting.addPServiceCByWatchIdQuartzSimple(watch.id)">@Html(Messages("admin.customer.watch.action.create.certificate.quartz.simple"))</a></li>
+		      </ul>
+		    </div>
         	<!-- Split button -->
 		    <div class="btn-group text-left dropup">
 		      <span class="btn btn-warning">@Html(Messages("admin.customer.watch.action.new.orders"))</span>

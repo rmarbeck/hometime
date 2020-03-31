@@ -23,7 +23,9 @@ import com.avaje.ebean.Page;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import controllers.CrudReady;
+import fr.hometime.utils.FormHelper;
 import fr.hometime.utils.Searcher;
+import fr.hometime.utils.FormHelper.KeysAndValues;
 
 /**
  * Definition of a Watch to be sold
@@ -228,7 +230,7 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     }
     
     public static List<WatchToSell> findAllByCustomerAndBrandAsc() {
-        return find.where().orderBy("customerThatBoughtTheWatch.name ASC, brand.display_name ASC").findList();
+        return find.fetch("customerThatBoughtTheWatch").fetch("brand").where().orderBy("customerThatBoughtTheWatch.name ASC, brand.display_name ASC").findList();
     }
     
     public static List<WatchToSell> findAllBySellingCustomerAndBrandAsc() {
@@ -313,6 +315,13 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
     			watchesByCustomers.add(displayWatchByCustomerThatSellsTheWatch(watch));
     	}
     	return watchesByCustomers;
+    }
+    
+    public static FormHelper.KeysAndValues getIdsAndWatchesByACustomerAsc() {
+    	FormHelper.KeysAndValues result = new FormHelper().new KeysAndValues();
+    	for (WatchToSell w : findAllByCustomerAndBrandAsc())
+    		result.add(w.id.toString(), displayWatchByCustomer(w));
+    	return result;
     }
     
     public static List<WatchToSell> findByCustomer(models.Customer customer) {

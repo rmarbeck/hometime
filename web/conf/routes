@@ -251,6 +251,8 @@ GET     /admin/customer-watch/create/from-order/:id 					controllers.CustomerWat
 GET     /admin/customer-watch/create				 					controllers.CustomerWatch.add()
 GET     /admin/customer-watch/edit/:id 									controllers.CustomerWatch.edit(id: Long)
 GET     /admin/customer-watch/duplicate/:id 							controllers.CustomerWatch.duplicate(id: Long)
+GET     /admin/customer-watch/duplicate-for-sav/:id 					controllers.CustomerWatch.duplicateBackToSAV(id: Long)
+
 GET     /admin/customer-watch/set-quotation-sent/:id 					controllers.CustomerWatch.setQuotationSent(id: Long)
 GET     /admin/customer-watch/set-back-to-customer/:id 					controllers.CustomerWatch.setBackToCustomer(id: Long)
 GET     /admin/customer-watch/set-stored-by-partner/:id 				controllers.CustomerWatch.setStoredByPartner(id: Long)
@@ -363,6 +365,9 @@ GET		/admin/edit/:model/:id											controllers.CrudHelper.edit(model: String,
 POST	/admin/manage/:model											controllers.CrudHelper.manage(model: String)
 
 GET     /admin/post-service-certificate/create/by/watch/:id				controllers.Accounting.addPServiceCByWatchId(id: Long)
+GET     /admin/post-service-certificate/create/by/watch/for/quartz/:id	controllers.Accounting.addPServiceCByWatchIdQuartzFull(id: Long)
+GET     /admin/post-service-certificate/create/by/watch/for/quartz/simple/:id	controllers.Accounting.addPServiceCByWatchIdQuartzSimple(id: Long)
+
 GET     /admin/post-selling-certificate/create/by/watch/:id				controllers.Accounting.addPSellingCByWatchId(id: Long)
 
 GET     /admin/spare-parts/create/by/watch/:id							controllers.SpareParts.createForCustomerWatch(id: Long)
@@ -391,8 +396,9 @@ GET     /admin/stock			            							controllers.Reporting.stock()
 GET     /admin/legal-register	            							controllers.Reporting.legalRegister(starting:Long ?=1)
 GET     /admin/legal-register-helper	            					controllers.Reporting.legalRegisterHelper(starting:Long ?=1)
 GET     /admin/payments			            							controllers.Reporting.payments()
-GET     /admin/financial		            							controllers.Reporting.financialReport()
-GET     /admin/financialUnhanced            							controllers.Reporting.financialReportUnhanced()
+GET     /admin/financialEnhancedOld            							controllers.Reporting.financialReportEnhanced()
+GET     /admin/financialEnhanced            							controllers.Reporting.financialReportEnhanced2()
+GET     /admin/financialCharts            								controllers.Reporting.financialChartsReport()
 GET     /admin/detailed-financial		            					controllers.Reporting.financialDetailedReport()
 GET     /admin/current-orders			            					controllers.Reporting.currentOrdersReport()
 

@@ -401,7 +401,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     }
     
     public static List<CustomerWatch> findAllByCustomerAndBrandAsc() {
-        return find.where().orderBy("customer.name ASC, brand ASC").findList();
+        return find.fetch("customer").where().orderBy("customer.name ASC, brand ASC").findList();
     }
 
     
@@ -602,7 +602,13 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     	return find.where().eq("serial", serial).findUnique();
     }
     
-   
+    public static FormHelper.KeysAndValues getIdsAndWatchesByACustomerAsc() {
+    	FormHelper.KeysAndValues result = new FormHelper().new KeysAndValues();
+    	for (CustomerWatch w : findAllByCustomerAndBrandAsc())
+    		result.add(w.id.toString(), displayWatchByCustomer(w));
+    	return result;
+    }
+    
     public static FormHelper.KeysAndValues getIdsAndWatchesByAuthenticationAskedDateAsc() {
     	FormHelper.KeysAndValues result = new FormHelper().new KeysAndValues();
     	for (CustomerWatch w : findByAuthenticationAskedDateAsc())
