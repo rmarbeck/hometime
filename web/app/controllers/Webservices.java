@@ -10,12 +10,12 @@ import models.Feedback;
 
 public class Webservices extends Controller {
 	public static Result getBrands() {
-		Logger.debug("Validating secretKey, value received is : [{}]", request().getHeader("secretKey"));
+		Logger.error("Validating secretKey, value received is : [{}]", request().getHeader("secretKey"));
 		return ok(Json.toJson(Brand.findAll()));
 	}
 	
 	public static Result getFeedbacks() {
-		Logger.debug("Validating secretKey, value received is : [{}]", request().getHeader("secretKey"));
+		Logger.error("Validating secretKey, value received is : [{}]", request().getHeader("secretKey"));
 		return ok(Json.toJson(Feedback.findAll()));
 	}
 }
