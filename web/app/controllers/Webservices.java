@@ -7,6 +7,7 @@ import play.libs.Json;
 
 import models.Brand;
 import models.Feedback;
+import models.Price;
 
 public class Webservices extends Controller {
 	public static Result getBrands() {
@@ -17,5 +18,10 @@ public class Webservices extends Controller {
 	public static Result getFeedbacks() {
 		Logger.error("Validating secretKey, value received is : [{}]", request().getHeader("secretKey"));
 		return ok(Json.toJson(Feedback.findAll()));
+	}
+	
+	public static Result getPrices() {
+		Logger.error("Validating secretKey, value received is : [{}]", request().getHeader("secretKey"));
+		return ok(Json.toJson(Price.findAll()));
 	}
 }
