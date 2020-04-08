@@ -26,6 +26,7 @@ public class Feedback extends Model {
 	    FACEBOOK ("FACEBOOK"),
 	    LINKED_IN ("LINKED_IN"),
 	    INTERNAL ("INTERNAL"),
+	    GOOGLE ("GOOGLE"),
 	    OTHER ("OTHER");
 	    
 		private String name = "";

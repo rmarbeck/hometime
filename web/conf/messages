@@ -1632,6 +1632,7 @@ feedback.type.of.feedback=Avis posté sur {0}
 feedback.value.type.facebook=Facebook
 feedback.value.type.linked.in=LinkedIn
 feedback.value.type.internal=sur le site Hometime
+feedback.value.type.google=Google
 feedback.value.type.other=par le client
 feedback.head={0} - {1}
 feedback.alt=photo de {0}
@@ -2783,6 +2784,7 @@ admin.feedback.label.may.be.emphasized=Peut être mis en avant ?
 admin.feedback.value.type.of.feedback.facebook=Facebook
 admin.feedback.value.type.of.feedback.linked.in=LinkedIn
 admin.feedback.value.type.of.feedback.internal=Sur le site
+admin.feedback.value.type.of.feedback.google=Google
 admin.feedback.value.type.of.feedback.other=Autre
 
 admin.feedback.action.edit=&nbsp;Modifier

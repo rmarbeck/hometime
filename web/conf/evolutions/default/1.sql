@@ -275,7 +275,7 @@ create table feedback (
   feeedback_type            varchar(40),
   should_display            boolean,
   may_be_emphasized         boolean,
-  constraint ck_feedback_feeedback_type check (feeedback_type in ('FACEBOOK','LINKED_IN','INTERNAL','OTHER')),
+  constraint ck_feedback_feeedback_type check (feeedback_type in ('FACEBOOK','LINKED_IN','INTERNAL','GOOGLE','OTHER')),
   constraint pk_feedback primary key (id))
 ;
 

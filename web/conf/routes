@@ -448,7 +448,7 @@ GET     /private/get-watch-back/:id	                      				controllers.Custom
 # Webservices From Friendly Location
 GET     /ws/brands/get/all												controllers.Webservices.getBrands()
 GET     /ws/feedbacks/get/all											controllers.Webservices.getFeedbacks()
-GET     /ws/prices/get/all												controllers.Webservices.getFeedbacks()
+GET     /ws/prices/get/all												controllers.Webservices.getPrices()
 
 # Testing
 GET     /bootstrap4/test     											controllers.Application.test_new
