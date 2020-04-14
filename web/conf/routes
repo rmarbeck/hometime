@@ -30,6 +30,12 @@ GET     /offer                      controllers.Default.redirect(to = "/les-serv
 GET     /nos-horlogers			     controllers.Application.watchmakers()
 GET     /watchmakers                 controllers.Default.redirect(to = "/nos-horlogers")
 
+
+# Offer
+GET     /actualites				     controllers.Application.news()
+GET     /news		                 controllers.Default.redirect(to = "/actualites")
+GET     /actu-covid19		         controllers.Default.redirect(to = "/actualites")
+
 # Rolex repairing
 GET     /reparation/montre/rolex     controllers.Application.content_rolex()
 

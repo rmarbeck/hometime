@@ -49,7 +49,7 @@ liveConfig:
 
     - !!models.LiveConfig
          key:                   store_closed_message_forced
-         valuestring:           Messa<i>ge</i>
+         valuestring:           <a href="/news">Messa<i>ge</i></a>
 
 
 #Fin

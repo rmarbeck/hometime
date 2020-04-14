@@ -487,6 +487,38 @@ content.auth.content.3.body=Si vous avez une montre à faire authentifier, n''h�
 content.auth.3.to.action=Venir nous voir
 
 
+# News page
+news.html.title=Les actualités Hometime
+news.html.description=Actus et news Hometime
+news.html.keywords=actu, news, covid-19, fonctionnement
+
+news.main.title=Notre organisation pendant la crise sanitaire
+news.content.1.head=Notre organisation actuelle
+news.content.1.body=<br />Depuis le début de la crise sanitaire, nous travaillons en adaptant notre fonctionnement.<br /><br />\
+1. <b>L''atelier est fermé au public sans exception</b>. Nous ne prenons plus de nouvelles montres pendant la crise.<br />\
+2. Seul notre chef d''atelier est présent dans nos locaux, il travaille à l''entretien des montres.<br />\
+<ul><li><b>Il peut avancer sur la plupart des entretiens</b>, sauf ceux nécessitant la fourniture de pièces ou l''intervention de main d''oeuvre externe (joaillier, cadranier par exemple). Dans ces derniers cas, nous devrons attendre un retour à la normale.</li>\
+<li>Les <b>montres sont testées</b> à l''issue de l''entretien pendant plusieurs jours, et ce <b>normalement</b>.</li>\
+<li>Une fois le bon fonctionnement établi, les montres sont stockées de façon sûre en attendant la réouverture.</li></ul>\
+3. La vente de montres peut se continuer, elle est cependant fortement impactée par la fermeture des manufactures et des détaillants, ainsi que par la perturbation des services de transport. Vous pouvez formuler vos demandes, nous évaluerons si une solution peut être envisagée.\
+4. Nous vous préviendrons pour prendre rendez-vous pour la restitution de votre montre. 
+
+news.content.2.head=Vous avez une montre chez nous ?
+news.content.2.body=<br /><b>Celle-ci est en sécurité.</b><br/>Elle vous sera restituée à l''issue du confinement une fois les travaux terminés. Dans le cas de nos clients nous ayant fait parvenir leur montre par colis sécurisé, nous devrons évaluer la situation avant le renvoi de leur montre de sorte que celui-ci soit parfaitement maitrisé.
+
+news.content.3.head=Vous avez commandé une montre ?
+news.content.3.body=<br />En fonction de la date de commande, du fait que la montre soit en stock ou à commander et de la capacité à recevoir et envoyer la montre, nous faisons le maximum pour assurer une livraison la plus rapide possible.\
+<br /><br />Dans tous les cas, nous vous contacterons avant de planifier toute livraison. Quoiqu''il en soit, nous assurons la sécurité de votre montre jusqu''au moment de sa livraison finale. 
+
+news.content.4.head=Pourquoi ne fonctionnons-nous pas par voie postale ?
+news.content.4.body=<br />La solution par voie postale que nous utilisons depuis notre création et qui est la seule solution sûre pour l''envoi de montres en France, impose aujourd''hui des contraintes qui ne sont pas compatibles avec le confinement, que ce soit pour nos clients et pour nous : obligation de se rendre au bureau de Poste local (potentiellement fermé).<br />\
+<br />Dans de rares cas, il peut être envisagé d''utiliser des transporteurs livrant à domicile (comme Fedex avec lequel nous travaillons pour nos envois à l''étranger habtiuellement), cependant cette solution est plus risquée, plus coûteuse et les délais sont actuellement très aléatoires.<br /><br />\
+Ainsi, bien qu''une montre soit un objet important, il est fortement conseillé de s''en passer dans l''attente d'un retour à la normale.\
+<br /><br /><br />\
+<div class="text-center"><h2><b>Bon courage à tous dans cette période difficile !</b><h2></div>
+
+
+
 # Watchmakers page
 watchmakers.html.title=Les horlogers Hometime
 watchmakers.html.description=Connaitre les horlogers travaillant chez watch next, leur expérience, leur parcours, leurs spécialités
