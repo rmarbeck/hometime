@@ -669,10 +669,7 @@ public class Application extends Controller {
 			logFormErrors(orderForm);
 			return badRequest(order.render("", orderForm, getSupportedBrands(), getDisplayableWatches(), SessionWatcher.isItFirstPageOfSession(session())));
 		} else {
-			OrderRequest orderRequest = orderForm.get().getRequest();
-			orderRequest.save();
-			
-			ActionHelper.asyncTryToSendHtmlEmail("["+orderRequest.id+"] Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());
+			OrderRequest orderRequest = manageOrderForm(orderForm);
 			
 			flash("success", "OK");
 			
@@ -692,12 +689,17 @@ public class Application extends Controller {
 			logFormErrors(orderForm);
 			return badRequest();
 		} else {
-			OrderRequest orderRequest = orderForm.get().getRequest();
-			orderRequest.save();
-			
-			ActionHelper.asyncTryToSendHtmlEmail("["+orderRequest.id+"] Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());		
+			manageOrderForm(orderForm);
 			return ok();
 		}
+	}
+	
+	private static OrderRequest manageOrderForm(Form<OrderForm> orderForm) {
+		OrderRequest orderRequest = orderForm.get().getRequest();
+		orderRequest.save();
+		
+		ActionHelper.asyncTryToSendHtmlEmail("["+orderRequest.id+"] Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());
+		return orderRequest;
 	}
 	
 	public static Result manageAutoOrder() {
@@ -738,10 +740,7 @@ public class Application extends Controller {
 		if(contactForm.hasErrors()) {
 			return badRequest(contact.render("", contactForm));
 		} else {
-			ContactRequest contactRequest = contactForm.get().getRequest();
-			contactRequest.save();
-
-			ActionHelper.asyncTryToNotifyTeamByEmail("Prise de contact : "+contactRequest.title, contactRequest.toString());
+			manageContactForm(contactForm);
 			
 			flash("success", "OK");
 			
@@ -751,6 +750,24 @@ public class Application extends Controller {
 		}
 	}
 	
+	public static Result manageContactFromFriendlyLocation() {
+		Form<ContactForm> contactForm = Form.form(ContactForm.class).bindFromRequest();
+		if(contactForm.hasErrors()) {
+			return badRequest();
+		} else {
+			manageContactForm(contactForm);
+			return ok();
+		}
+	}
+	
+	private static ContactRequest manageContactForm(Form<ContactForm> contactForm) {
+		ContactRequest contactRequest = contactForm.get().getRequest();
+		contactRequest.save();
+
+		ActionHelper.asyncTryToNotifyTeamByEmail("Prise de contact : "+contactRequest.title, contactRequest.toString());
+		return contactRequest;
+	}
+		
 	
 	public static Result manageCallRequest() {
 		Form<CallForm> callForm = Form.form(CallForm.class).bindFromRequest();
@@ -764,6 +781,17 @@ public class Application extends Controller {
 			GoogleAnalyticsHelper.pushEvent("contact", "sent", ctx());
 			
 			return callRequest("");
+		}
+	}
+	
+	public static Result manageCallRequestFromFriendlyLocation() {
+		Form<CallForm> callForm = Form.form(CallForm.class).bindFromRequest();
+		if(callForm.hasErrors()) {
+			return badRequest();
+		} else {
+			ActionHelper.asyncTryToNotifyTeamByEmail("Demande de rappel", getCallRequestMessage(callForm));
+		
+			return ok();
 		}
 	}
 		
