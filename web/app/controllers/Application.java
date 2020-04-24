@@ -684,13 +684,23 @@ public class Application extends Controller {
 	}
 	
 	public static Result manageOrderFromFriendlyLocation() {
-		Form<OrderForm> orderForm = Form.form(OrderForm.class).bindFromRequest();
-		if(orderForm.hasErrors()) {
-			logFormErrors(orderForm);
-			return badRequest();
+		return doIfComesFromFriendlyLocation(() -> {
+			Form<OrderForm> orderForm = Form.form(OrderForm.class).bindFromRequest();
+			if(orderForm.hasErrors()) {
+				logFormErrors(orderForm);
+				return badRequest();
+			} else {
+				manageOrderForm(orderForm);
+				return ok();
+			}
+		});
+	}
+	
+	private static Result doIfComesFromFriendlyLocation(Supplier<Result> toDo) {
+		if (Webservices.isAuthorized()) {
+			return toDo.get();
 		} else {
-			manageOrderForm(orderForm);
-			return ok();
+			return unauthorized();
 		}
 	}
 	
@@ -728,15 +738,16 @@ public class Application extends Controller {
 	}
 	
 	public static Result manageBuyRequestFromFriendlyLocation() {
-		Form<BuyRequest> requestForm = Form.form(BuyRequest.class).bindFromRequest();
-		Logger.error("Validating secretKey, value received is : [{}]", request().getHeader("secretKey"));
-		if(requestForm.hasErrors()) {
-			logFormErrors(requestForm);
-			return badRequest();
-		} else {
-			manageBuyRequestForm(requestForm);
-			return ok();
-		}
+		return doIfComesFromFriendlyLocation(() -> {
+			Form<BuyRequest> requestForm = Form.form(BuyRequest.class).bindFromRequest();
+			if(requestForm.hasErrors()) {
+				logFormErrors(requestForm);
+				return badRequest();
+			} else {
+				manageBuyRequestForm(requestForm);
+				return ok();
+			}
+		});
 	}
 	
 	private static BuyRequest manageBuyRequestForm(Form<BuyRequest> requestForm) {
@@ -767,13 +778,15 @@ public class Application extends Controller {
 	}
 	
 	public static Result manageContactFromFriendlyLocation() {
-		Form<ContactForm> contactForm = Form.form(ContactForm.class).bindFromRequest();
-		if(contactForm.hasErrors()) {
-			return badRequest();
-		} else {
-			manageContactForm(contactForm);
-			return ok();
-		}
+		return doIfComesFromFriendlyLocation(() -> {
+			Form<ContactForm> contactForm = Form.form(ContactForm.class).bindFromRequest();
+			if(contactForm.hasErrors()) {
+				return badRequest();
+			} else {
+				manageContactForm(contactForm);
+				return ok();
+			}
+		});
 	}
 	
 	private static ContactRequest manageContactForm(Form<ContactForm> contactForm) {
@@ -801,14 +814,16 @@ public class Application extends Controller {
 	}
 	
 	public static Result manageCallRequestFromFriendlyLocation() {
-		Form<CallForm> callForm = Form.form(CallForm.class).bindFromRequest();
-		if(callForm.hasErrors()) {
-			return badRequest();
-		} else {
-			ActionHelper.asyncTryToNotifyTeamByEmail("Demande de rappel", getCallRequestMessage(callForm));
-		
-			return ok();
-		}
+		return doIfComesFromFriendlyLocation(() -> {
+			Form<CallForm> callForm = Form.form(CallForm.class).bindFromRequest();
+			if(callForm.hasErrors()) {
+				return badRequest();
+			} else {
+				ActionHelper.asyncTryToNotifyTeamByEmail("Demande de rappel", getCallRequestMessage(callForm));
+			
+				return ok();
+			}
+		});
 	}
 		
 	private static String getCallRequestMessage(Form<CallForm> callForm) {
