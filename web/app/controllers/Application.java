@@ -717,13 +717,7 @@ public class Application extends Controller {
 			logFormErrors(requestForm);
 			return badRequest(buy_request.render("", requestForm, getAllBrands(), SessionWatcher.isItFirstPageOfSession(session())));
 		} else {
-			BuyRequest request = requestForm.get();
-			
-			request.save();
-			
-			ActionHelper.asyncTryToSendHtmlEmail("["+request.id+"] Nouvelle recherche de montre", notify_buy_request.render(BuyRequest.findById(request.id)).body().toString());
-			
-			flash("success", "OK");
+			manageBuyRequestForm(requestForm);
 			
 			GoogleAnalyticsHelper.pushEvent("buy_request", "sent", ctx());
 			
@@ -731,6 +725,28 @@ public class Application extends Controller {
 					routes.Application.buyRequest()
 					);
 		}
+	}
+	
+	public static Result manageBuyRequestFromFriendlyLocation() {
+		Form<BuyRequest> requestForm = Form.form(BuyRequest.class).bindFromRequest();
+		Logger.error("Validating secretKey, value received is : [{}]", request().getHeader("secretKey"));
+		if(requestForm.hasErrors()) {
+			logFormErrors(requestForm);
+			return badRequest();
+		} else {
+			manageBuyRequestForm(requestForm);
+			return ok();
+		}
+	}
+	
+	private static BuyRequest manageBuyRequestForm(Form<BuyRequest> requestForm) {
+		BuyRequest request = requestForm.get();
+		
+		request.save();
+		
+		ActionHelper.asyncTryToSendHtmlEmail("["+request.id+"] Nouvelle recherche de montre", notify_buy_request.render(BuyRequest.findById(request.id)).body().toString());
+		
+		return request;
 	}
 	
 	
