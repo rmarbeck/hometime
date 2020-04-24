@@ -31,7 +31,7 @@ public class Webservices extends Controller {
 	}
 	
 	private static Result sendIfAuthorized(JsonNode result) {
-		if (isAuthorized())
+		if (!isAuthorized())
 			return unauthorized();
 		return ok(result);
 	}
