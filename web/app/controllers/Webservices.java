@@ -5,6 +5,8 @@ import play.mvc.Result;
 import play.Logger;
 import play.libs.Json;
 import fr.hometime.utils.LiveConfigHelper;
+import fr.hometime.utils.StringHelper;
+
 import static fr.hometime.utils.LiveConfigConstants.*;
 
 import java.util.Optional;
@@ -45,7 +47,7 @@ public class Webservices extends Controller {
 			checkResult = waitedValue.get().equals(receivedValue);
 		
 		if (checkResult == false)
-			Logger.error("Validating secretKey, value received is : [{}], should be [{}] => {}", receivedValue, waitedValue.orElse("unset"), checkResult);
+			Logger.error("Validating secretKey, value received is : [{}], should be [{}] => {}", receivedValue, StringHelper.maskPartially(waitedValue.orElse("unset")), checkResult);
 		return checkResult;
 	}
 }

@@ -11,6 +11,9 @@ import java.util.function.Supplier;
 
 import javax.persistence.Column;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import fr.hometime.utils.ActionHelper;
 import fr.hometime.utils.GoogleAnalyticsHelper;
 import fr.hometime.utils.ListHelper;
@@ -37,6 +40,7 @@ import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.i18n.Messages;
+import play.libs.Json;
 import play.libs.ws.*;
 import play.mvc.*;
 import play.twirl.api.Html;
@@ -825,6 +829,7 @@ public class Application extends Controller {
 			}
 		});
 	}
+	
 		
 	private static String getCallRequestMessage(Form<CallForm> callForm) {
 		StringBuilder message = new StringBuilder();
@@ -859,19 +864,48 @@ public class Application extends Controller {
 		if(serviceTestForm.hasErrors()) {
 			return badRequest(service_test.render("", serviceTestForm));
 		} else {
-			ServiceTest serviceTest = serviceTestForm.get().getRequest();
-			boolean isCustomisedTestAsked = false; 
-			if (serviceTest.email != null && !"".equals(serviceTest.email)) {
-				isCustomisedTestAsked = true;
-				serviceTest.save();
-				ActionHelper.tryToNotifyTeamByEmail("Evaluation personnalisée", serviceTest.toString());
-			}
+			ServiceTest serviceTest = manageServiceTestForm(serviceTestForm);
 			
 			GoogleAnalyticsHelper.pushEvent("serviceTest", "sent", ctx());
 			
-			return ok(service_test_result.render("", ServiceTestHelper.whenDoServiceIsRecommended(serviceTest), isCustomisedTestAsked, serviceTest.email));
+			return ok(service_test_result.render("", ServiceTestHelper.whenDoServiceIsRecommended(serviceTest), isCustomizationAsked(serviceTest), serviceTest.email));
 		}
 	}
+	
+	public static Result manageServiceTestRequestFromFriendlyLocation() {
+		Form<ServiceTestForm> serviceTestForm = Form.form(ServiceTestForm.class).bindFromRequest();
+		if(serviceTestForm.hasErrors()) {
+			return badRequest();
+		} else {
+			ServiceTest serviceTest = manageServiceTestForm(serviceTestForm);
+			
+			ObjectNode resultAsJson = Json.newObject();
+			resultAsJson.put("ServiceTestResult", ServiceTestHelper.whenDoServiceIsRecommended(serviceTest).toString());
+			resultAsJson.put("IsCustomizationAsked", isCustomizationAsked(serviceTest)?"0":"1");
+			resultAsJson.put("CustomerEmail", serviceTest.email);
+			
+			return ok(resultAsJson);
+		}
+	}
+	
+	private static boolean isCustomizationAsked(ServiceTest serviceTest) {
+		return serviceTest.email != null && !"".equals(serviceTest.email);
+	}
+	
+	private static ServiceTest manageServiceTestForm(Form<ServiceTestForm> serviceTestForm) {
+		ServiceTest serviceTest = serviceTestForm.get().getRequest();
+		boolean isCustomisedTestAsked = isCustomizationAsked(serviceTest); 
+		if (isCustomisedTestAsked) {
+			serviceTest.save();
+			ActionHelper.tryToNotifyTeamByEmail("Evaluation personnalisée", serviceTest.toString());
+		}
+		return serviceTest;
+	}
+	
+	
+	
+	
+	
     
     public static Result watch_detail_byId(Long id) {
     	try {
