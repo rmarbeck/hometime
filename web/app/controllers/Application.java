@@ -873,19 +873,21 @@ public class Application extends Controller {
 	}
 	
 	public static Result manageServiceTestRequestFromFriendlyLocation() {
-		Form<ServiceTestForm> serviceTestForm = Form.form(ServiceTestForm.class).bindFromRequest();
-		if(serviceTestForm.hasErrors()) {
-			return badRequest();
-		} else {
-			ServiceTest serviceTest = manageServiceTestForm(serviceTestForm);
-			
-			ObjectNode resultAsJson = Json.newObject();
-			resultAsJson.put("ServiceTestResult", ServiceTestHelper.whenDoServiceIsRecommended(serviceTest).toString());
-			resultAsJson.put("IsCustomizationAsked", isCustomizationAsked(serviceTest)?"0":"1");
-			resultAsJson.put("CustomerEmail", serviceTest.email);
-			
-			return ok(resultAsJson);
-		}
+		return doIfComesFromFriendlyLocation(() -> {
+			Form<ServiceTestForm> serviceTestForm = Form.form(ServiceTestForm.class).bindFromRequest();
+			if(serviceTestForm.hasErrors()) {
+				return badRequest();
+			} else {
+				ServiceTest serviceTest = manageServiceTestForm(serviceTestForm);
+				
+				ObjectNode resultAsJson = Json.newObject();
+				resultAsJson.put("ServiceTestResult", ServiceTestHelper.whenDoServiceIsRecommended(serviceTest).toString());
+				resultAsJson.put("IsCustomizationAsked", isCustomizationAsked(serviceTest)?"1":"0");
+				resultAsJson.put("CustomerEmail", serviceTest.email);
+				
+				return ok(resultAsJson);
+			}
+		});
 	}
 	
 	private static boolean isCustomizationAsked(ServiceTest serviceTest) {
