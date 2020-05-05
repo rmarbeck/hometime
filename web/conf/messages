@@ -1323,6 +1323,7 @@ order.movement.alt=Réparation mouvement de montre
 order.validation.error.model.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
 order.validation.error.remark.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
 
+
 #BuyRequest
 buy.request.html.title=Recherche d''une montre neuve ou d''occasion
 buy.request.html.description=Formulaire de recherche d''une montre neuve ou d''occasion. Nous vous conseillons et cherchons pour vous des montres et les garantissons pendant 2 ans.

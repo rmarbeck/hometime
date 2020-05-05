@@ -848,7 +848,7 @@ public class Application extends Controller {
 		if(acceptForm.hasErrors()) {
 			return badRequest(accept_quotation.render("", acceptForm));
 		} else {
-			ActionHelper.asyncTryToNotifyTeamByEmail("Devis accepté", acceptForm.toString());
+			manageAcceptQuotationForm(acceptForm);
 			
 			flash("success", "OK");
 			
@@ -857,6 +857,24 @@ public class Application extends Controller {
 			return callRequest("");
 		}
 	}
+	
+	public static Result manageAcceptQuotationRequestFromFriendlyLocation() {
+		return doIfComesFromFriendlyLocation(() -> {
+		Form<AcceptForm> acceptForm = Form.form(AcceptForm.class).bindFromRequest();
+			if(acceptForm.hasErrors()) {
+				return badRequest();
+			} else {
+				manageAcceptQuotationForm(acceptForm);
+			
+				return ok();
+			}
+		});
+	}
+	
+	private static void manageAcceptQuotationForm(Form<AcceptForm> acceptForm) {
+		ActionHelper.asyncTryToNotifyTeamByEmail("Devis accepté", acceptForm.toString());
+	}
+		
 	
 	
 	public static Result manageServiceTest() {

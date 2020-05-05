@@ -76,6 +76,7 @@ POST    /new-contact-request-from-outside     	controllers.Application.manageCon
 POST    /new-call-back-request-from-outside		controllers.Application.manageCallRequestFromFriendlyLocation()
 POST    /new-buy-request-from-outside		    controllers.Application.manageBuyRequestFromFriendlyLocation()
 POST    /new-service-test-from-outside		    controllers.Application.manageServiceTestRequestFromFriendlyLocation()
+POST    /new-accept-quotation-from-outside		controllers.Application.manageAcceptQuotationRequestFromFriendlyLocation()
 
 
 
