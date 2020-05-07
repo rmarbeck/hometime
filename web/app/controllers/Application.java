@@ -971,6 +971,26 @@ public class Application extends Controller {
     	return ok("Certificat inconnu");
     }
     
+    public static Result checkAuthenticationFromFriendlyLocation(Long id1, Long id2, Long id3) {
+    	return doIfComesFromFriendlyLocation(() -> {
+	    	Authentication authentication = Authentication.findEagerById(id1);
+	    	if (authentication != null) {
+	    		if (authentication.watch.retrieveId().equals(id2) && authentication.watch.customer.retrieveId().equals(id3)) {
+	    			ObjectNode resultAsJson = Json.newObject();
+	    			resultAsJson.put("result", authentication.watch.isAuthentic);
+					resultAsJson.put("brand", authentication.watch.brand);
+					resultAsJson.put("model", authentication.watch.model);
+					resultAsJson.put("reference", authentication.watch.reference);
+					resultAsJson.put("serial", authentication.watch.serial);
+					resultAsJson.put("date", authentication.documentDate.getTime());
+					
+					return ok(resultAsJson);
+	    		}
+	    	}
+	    	return notFound("Certificat inconnu");
+    	});
+    }
+    
     public static Result acceptQuotation(Long orderId, String price, String delay) {
     	try {
 	        return ok(accept_quotation.render("", Form.form(AcceptForm.class).fill(new AcceptForm(orderId, price, delay))));
