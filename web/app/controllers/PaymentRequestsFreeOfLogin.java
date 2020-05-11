@@ -30,7 +30,11 @@ public class PaymentRequestsFreeOfLogin extends Controller {
 			Optional<PaymentRequest> request  = PaymentRequestHelper.getValidRequestFromAccessKey(accessKey);
 			if (request.isPresent()) {
 				ObjectNode resultAsJson = Json.newObject();
-    			resultAsJson.put("PaymentRequest", Json.toJson(request.get()));
+    			ObjectNode paymentRequestAsJson = Json.newObject();
+    			paymentRequestAsJson.put("priceInEuros", request.get().priceInEuros);
+    			paymentRequestAsJson.put("orderNumber", request.get().orderNumber);
+    			paymentRequestAsJson.put("description", request.get().description);
+    			resultAsJson.put("PaymentRequest", paymentRequestAsJson);
     			resultAsJson.put("PaymentForm", Json.toJson(SingleImmediatePF.of(request.get())));
     			return ok(resultAsJson);
 			}
