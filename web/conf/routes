@@ -78,6 +78,7 @@ POST    /new-buy-request-from-outside		    controllers.Application.manageBuyRequ
 POST    /new-service-test-from-outside		    controllers.Application.manageServiceTestRequestFromFriendlyLocation()
 POST    /new-accept-quotation-from-outside		controllers.Application.manageAcceptQuotationRequestFromFriendlyLocation()
 GET     /check-authentication					controllers.Application.checkAuthenticationFromFriendlyLocation(id1: Long, id2: Long, id3: Long)
+GET     /prepare-payment-from-outside			controllers.PaymentRequestsFreeOfLogin.displayFormFromFriendlyLocation(ak: String)
 
 
 

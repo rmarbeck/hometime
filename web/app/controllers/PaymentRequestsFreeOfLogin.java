@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.Optional;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import fr.hometime.payment.systempay.DataDictionnary;
 import fr.hometime.payment.systempay.PaymentConfirmation;
 import fr.hometime.payment.systempay.SingleImmediatePF;
@@ -11,6 +13,7 @@ import models.PaymentRequest;
 import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -21,6 +24,21 @@ public class PaymentRequestsFreeOfLogin extends Controller {
 			return ok(views.html.payment.display_form.render(request.get(), SingleImmediatePF.of(request.get())));
 		return badRequest(views.html.payment.error.render());
     }
+	
+	public static Result displayFormFromFriendlyLocation(String accessKey) {
+		if (Webservices.isAuthorized()) {
+			Optional<PaymentRequest> request  = PaymentRequestHelper.getValidRequestFromAccessKey(accessKey);
+			if (request.isPresent()) {
+				ObjectNode resultAsJson = Json.newObject();
+    			resultAsJson.put("PaymentRequest", Json.toJson(request.get()));
+    			resultAsJson.put("PaymentForm", Json.toJson(SingleImmediatePF.of(request.get())));
+    			return ok(resultAsJson);
+			}
+			return badRequest();
+		} else {
+			return unauthorized();
+		}
+	}
 	
 	public static Result error() {
 		return ok(views.html.payment.error.render());
