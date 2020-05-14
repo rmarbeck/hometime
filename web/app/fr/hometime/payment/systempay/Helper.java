@@ -121,7 +121,7 @@ public class Helper {
 		for (String vadsParamName : vadsFields) {
 			String vadsParamValue = form.getParameterValueAsString(vadsParamName);
 			if (vadsParamValue != null) {
-				Logger.error(vadsParamName+"="+vadsParamValue);
+				Logger.debug(vadsParamName+"="+vadsParamValue);
 				sb.append(vadsParamValue);
 			}
 			sb.append(sep);
