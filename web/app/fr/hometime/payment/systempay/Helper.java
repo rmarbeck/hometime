@@ -121,11 +121,12 @@ public class Helper {
 		for (String vadsParamName : vadsFields) {
 			String vadsParamValue = form.getParameterValueAsString(vadsParamName);
 			if (vadsParamValue != null) {
+				Logger.error(vadsParamName+"="+vadsParamValue);
 				sb.append(vadsParamValue);
 			}
 			sb.append(sep);
 		}
-		Logger.error("!!!!!!!!! : " + getFromConfiguration(PAYMENT_KEY_CONFIGURATION_KEY));
+		Logger.info("payment : " + getFromConfiguration(PAYMENT_KEY_CONFIGURATION_KEY));
 		sb.append( getFromConfiguration(PAYMENT_KEY_CONFIGURATION_KEY) );
 		String c_sign = Sha.encode(sb.toString());
 		return c_sign;
