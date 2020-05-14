@@ -2275,9 +2275,9 @@ mails.order.watch.chosen.none=aucune
 mails.order.remarks=Remarques : <b>{0}</b>
 mails.order.remarks.none=aucune
 
-mails.call.back.request.title.what=Demande de rappel
-mails.call.back.request.phone.number=Numéro de téléphone : {0}
-mails.call.back.request.reason=Motif : {0}
+mails.call.back.title.what=Demande de rappel
+mails.call.back.phone.number=Numéro de téléphone : {0}
+mails.call.back.reason=Motif : {0}
 
 mails.contact.title.what=Prise de contact
 mails.contact.title=Titre : {0}

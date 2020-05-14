@@ -3,7 +3,7 @@
 
 @layouts.mail("Nouvelle demande de rappel") {
 	<div>
-		<h2>@Html(Messages("mails.call.back.request.title.what"))</h2>
+		<h2>@Html(Messages("mails.call.back.title.what"))</h2>
 		<ul>
 			<li>@Html(Messages("mails.call.back.phone.number", display_phonenumber(form.get.number, false)))</li>
 			<li>@Html(Messages("mails.call.back.reason", form.get.reason))</li>
