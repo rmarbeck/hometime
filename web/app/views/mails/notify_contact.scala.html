@@ -1,0 +1,13 @@
+@(form: Form[controllers.Application.ContactForm])
+@import tags._
+
+@layouts.mail("Nouvelle prise de contact") {
+	<div>
+		<h2>@Html(Messages("mails.contact.title.what"))</h2>
+		<ul>
+			<li>@Html(Messages("mails.contact.title", form.get.title))</li>
+			<li>@Html(Messages("mails.contact.message", form.get.message))</li>
+			<li>@Html(Messages("mails.contact.customer", form.get.name, form.get.email))</li>
+		</ul>
+	</div>
+}

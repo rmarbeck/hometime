@@ -51,6 +51,8 @@ import views.html.admin.customer_login;
 import views.html.admin.quick_login;
 import views.html.mails.notify_order;
 import views.html.mails.notify_buy_request;
+import views.html.mails.notify_call_back;
+import views.html.mails.notify_contact;
 
 @With(SessionWatcher.class)
 public class Application extends Controller {
@@ -797,7 +799,7 @@ public class Application extends Controller {
 		ContactRequest contactRequest = contactForm.get().getRequest();
 		contactRequest.save();
 
-		ActionHelper.asyncTryToNotifyTeamByEmail("Prise de contact : "+contactRequest.title, contactRequest.toString());
+		ActionHelper.asyncTryToNotifyTeamByEmail("Prise de contact : "+contactRequest.title, notify_contact.render(contactForm).body().toString());
 		return contactRequest;
 	}
 		
@@ -823,7 +825,7 @@ public class Application extends Controller {
 			if(callForm.hasErrors()) {
 				return badRequest();
 			} else {
-				ActionHelper.asyncTryToNotifyTeamByEmail("Demande de rappel", getCallRequestMessage(callForm));
+				ActionHelper.asyncTryToNotifyTeamByEmail("Demande de rappel", notify_call_back.render(callForm).body().toString());
 			
 				return ok();
 			}
