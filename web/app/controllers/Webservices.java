@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import models.Brand;
 import models.Feedback;
 import models.Price;
+import models.NewsAdapter;
 
 public class Webservices extends Controller {
 	public static String SECRET_KEY_FOR_WS_HEADER = "SECRET_KEY";
@@ -30,6 +31,10 @@ public class Webservices extends Controller {
 	
 	public static Result getPrices() {
 		return sendIfAuthorized(Json.toJson(Price.findAll()));
+	}
+	
+	public static Result getNews() {
+		return sendIfAuthorized(Json.toJson(NewsAdapter.findAll()));
 	}
 	
 	private static Result sendIfAuthorized(JsonNode result) {

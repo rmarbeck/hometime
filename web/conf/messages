@@ -5321,6 +5321,64 @@ admin.authentication.action.delete=Supprimer
 
 
 
+admin.news.page=Gestion des actualités
+admin.news.page.title=Les actualités
+admin.news.page.title.header=Titre
+admin.news.page.body=Corps
+
+admin.news.form=Gestion d''une actualité
+admin.news.form.title=Gestion d''une actualité
+admin.news.form.type.default.name=Sélectionner un type
+admin.news.form.type.label.name=Type
+admin.news.form.title.label.name=Titre
+admin.news.form.title.placeholder.name=
+admin.news.form.readmoreurl.label.name=URL Read More
+admin.news.form.readmoreurl.placeholder.name=https://
+admin.news.form.body.label.name=Corps
+admin.news.form.body.placeholder.name=
+admin.news.form.categories0.id.label.name=Catégorie
+admin.news.form.categories0.id.default.name=Sélectionner une catégorie
+admin.news.form.categories1.id.label.name=Catégorie
+admin.news.form.categories1.id.default.name=Sélectionner une catégorie
+admin.news.form.categories2.id.label.name=Catégorie
+admin.news.form.categories2.id.default.name=Sélectionner une catégorie
+admin.news.form.categories3.id.label.name=Catégorie
+admin.news.form.categories3.id.default.name=Sélectionner une catégorie
+admin.news.form.previewurl.label.name=Url image
+admin.news.form.previewurl.placeholder.name=https://
+admin.news.form.previewalt.label.name=Alt image
+admin.news.form.previewalt.placeholder.name=
+admin.news.form.privateinfos.label.name=Infos privées
+admin.news.form.privateinfos.placeholder.name=
+admin.news.form.date.label.name=Date de l''actu
+admin.news.form.active.label.name=Active
+
+admin.news.form.type.value.name.one.picture=Une seule image
+admin.news.form.type.value.name.video=Vidéo
+admin.news.form.type.value.name.diaporama=Diaporama
+admin.news.form.type.value.name.reserved.1=Réservé
+admin.news.form.type.value.name.reserved.2=Réservé
+
+admin.news.action.save=Enregistrer
+admin.news.action.edit=Enregistrer
+admin.news.action.cancel=Annuler
+ 
+admin.news.category.page=Gestion des catégories d''actualités
+admin.news.category.page.title=Catégories d''actualités
+admin.news.category.page.name=Intitulé
+admin.news.category.page.description=Description
+
+admin.news.category.form=Gestion des catégories d''actualités
+admin.news.category.form.title=Gestion des catégories d''actualités
+admin.news.category.form.name.label.name=Intitulé
+admin.news.category.form.name.placeholder.name=
+admin.news.category.form.description.label.name=Description
+admin.news.category.form.description.placeholder.name=
+ 
+admin.news.category.action.save=Enregistrer
+admin.news.category.action.edit=Enregistrer
+admin.news.category.action.cancel=Annuler
+
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751
 

@@ -159,6 +159,8 @@ public class CrudHelper extends Controller {
 		StringBuilder controllerName = new StringBuilder();
 		if (modelName.equals("WatchToSell")) {
 			return Optional.of(new String("WatchesToSell"));
+		} else if (modelName.equals("News")) {
+			return Optional.of(new String("News"));
 		} else if (modelName.equals("Customer")) {
 			return Optional.of(new String("SimplifiedCustomers"));
 		} else if (modelName.equals("CustomerWatch")) {

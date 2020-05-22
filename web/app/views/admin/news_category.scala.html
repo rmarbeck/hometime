@@ -1,0 +1,23 @@
+@(instance: models.NewsCategory)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("NewsCategories", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("NewsCategories")
+}
+
+@end_body = {
+
+}
+
+@defining(new views.ModelDisplay(instance, "admin.news.category")) { modelDisplay =>
+		@{ 	modelDisplay.addField("name");
+			modelDisplay.addField("description");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+
+}

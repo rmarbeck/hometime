@@ -1,0 +1,132 @@
+@(thisInstance: Form[models.News], isItNew: Boolean)
+
+@import tags._
+
+@actionlink() = @{
+	routes.CrudHelper.manage("News")
+}
+
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('button[value="delete"]').hide();
+			$('button[value="show"]').hide();
+			
+			function addCategory() {
+				if(categoryPosition < 9) {
+		        	copyElement("categories", categoryPosition, ++categoryPosition);
+		         }
+			}
+			
+			function addUrl() {
+				if(urlPosition < 9) {
+		        	copyElement("previewUrl", urlPosition, ++urlPosition);
+		        	copyElement("previewAlt", altPosition, ++altPosition);
+		         }
+			}
+			
+			function copyElement(selector, copiedPosition, copyPosition) {
+					insertElement(selector, copiedPosition, copyPosition);
+					$('#'+selector+'_'+ copyPosition+'_id').find("[id*="+selector+"_]").each(function() {
+						$(this).attr("id", $(this).attr("id").replace(copiedPosition,copyPosition));
+						$(this).attr("name", $(this).attr("name").replace(copiedPosition,copyPosition));
+		            });
+		            $('#'+selector+'_'+ copyPosition+'_id').find("[for*="+selector+"_]").each(function() {
+		            	$(this).attr("for", $(this).attr("for").replace(copiedPosition,copyPosition));
+		            });
+			}
+			
+			function insertElement(selector, copiedPosition, copyPosition) {
+				selectorInsert = selector;
+				if (selector === "previewUrl") {
+					selectorInsert = "previewAlt";
+				} else if (selector === "previewAlt") {
+					selectorInsert = "previewUrl";
+				} 
+
+				$("div."+selector+"-select").last().clone().attr('id', selector+'_'+ copyPosition+'_id').insertAfter($("div."+selectorInsert+"-select").last())
+			}
+		
+			var categoryIndex = 0;
+			$("div.categories-select").each(function() {
+				$(this).attr("id", "categories_".concat(categoryIndex++).concat("_id"));
+		    });
+		    var previewUrlIndex = 0;
+		    $("div.previewUrl-select").each(function() {
+				$(this).attr("id", "previewUrl_".concat(previewUrlIndex++).concat("_id"));
+		    });
+		    var previewAltIndex = 0;
+		    $("div.previewAlt-select").each(function() {
+				$(this).attr("id", "previewAlt_".concat(previewAltIndex++).concat("_id"));
+		    });
+			var categoryPosition = $("[id*='categories_']:last").attr("id").substr(11,1);
+			$("div.categories-select").last().after('<input type="button" value="&nbsp;+&nbsp;" id="add-category"/>').after('<input type="button" value="&nbsp;-&nbsp;" id="remove-category"/>');
+			var urlPosition = $("[id*='previewUrl_']:last").attr("id").substr(11,1);
+			var altPosition = $("[id*='previewAlt_']:last").attr("id").substr(11,1);
+			$("div.previewAlt-select").last().after('<input type="button" value="&nbsp;+&nbsp;" id="add-previewurl"/>').after('<input type="button" value="&nbsp;-&nbsp;" id="remove-previewurl"/>');
+	        $('#add-category').click(function(event) {
+	        	event.preventDefault();
+	        	addCategory()
+	         });
+	         
+	         $('#remove-category').click(function(event) {
+	        	event.preventDefault();
+	        	if(categoryPosition != 0) {
+					$('#categories_'+categoryPosition+'_id').remove();
+					--categoryPosition;
+				}
+	         });
+	         $('#add-previewurl').click(function(event) {
+	        	event.preventDefault();
+	        	addUrl()
+	         });
+	         
+	         $('#remove-previewurl').click(function(event) {
+	        	event.preventDefault();
+	        	if(urlPosition != 0) {
+					$('#previewUrl_'+urlPosition+'_id').remove();
+					$('#previewAlt_'+altPosition+'_id').remove();
+					--urlPosition;
+					--altPosition;
+				}
+	         });
+		
+		})
+	</script>
+}
+
+@before_form = {}
+
+
+@after_form = {
+
+}
+
+@defining(new views.FormDisplay(thisInstance, "News", "admin.news.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("type", "admin.news.form.type.VARIABLE", models.News.NewsType.values.toList);
+		   formDisplay.addFormField("title", true, "input");
+		   formDisplay.addFormField("readMoreUrl", true, "input");
+		   formDisplay.addFormField("body", true, "textarea");
+		   if(thisInstance.field("categories").indexes().size() > 0) {
+			   for(index <- thisInstance.field("categories").indexes()) {
+			   	formDisplay.addFormFieldForSelect("categories["+index+"].id", false, models.NewsCategory.getAllByNameAsc.map(category => category.id), models.NewsCategory.getAllByNameAsc.map(category => category.name), '_class -> "form-group categories-select");
+			   }
+		   } else {
+		   	formDisplay.addFormFieldForSelect("categories[0].id", false, models.NewsCategory.getAllByNameAsc.map(category => category.id), models.NewsCategory.getAllByNameAsc.map(category => category.name), '_class -> "form-group categories-select");
+		   }
+		   if(thisInstance.field("previewUrl").indexes().size() > 0) {
+			   for(index <- thisInstance.field("categories").indexes()) {
+			   	formDisplay.addFormField("previewUrl["+index+"].value", "admin.news.form.previewurl.VARIABLE.name", true, "input", '_class -> "form-group previewUrl-select");
+			   	formDisplay.addFormField("previewAlt["+index+"].value", "admin.news.form.previewalt.VARIABLE.name", true, "input", '_class -> "form-group previewAlt-select");
+			   }
+		   } else {
+		   		formDisplay.addFormField("previewUrl[0].value", "admin.news.form.previewurl.VARIABLE.name", true, "input", '_class -> "form-group previewUrl-select");
+			   	formDisplay.addFormField("previewAlt[0].value", "admin.news.form.previewalt.VARIABLE.name", true, "input", '_class -> "form-group previewAlt-select");
+		   }
+		   formDisplay.addFormField("privateInfos", true, "textarea");
+		   formDisplay.addFormField("date", true, "input", 'type -> "date");
+		   formDisplay.addFormField("active", true, "checkbox");
+		}
+	@admin.template.form(formDisplay, isItNew, actionlink, end_scripts, before_form, after_form)
+}

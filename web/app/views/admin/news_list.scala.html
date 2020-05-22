@@ -1,0 +1,11 @@
+@(currentPage: com.avaje.ebean.Page[models.News], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "description", "admin.news.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("title", "title.header", "getTitle", false);
+		pageDisplay.addTableField("body", "body", "getBody", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "News", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}
