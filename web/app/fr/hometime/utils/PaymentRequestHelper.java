@@ -55,9 +55,9 @@ public class PaymentRequestHelper {
 	}
 	
 	private static int comparator(float value1, float value2, int orderAmountX100) {
-		if ((value1 * 100 - orderAmountX100) < (value2 * 100 - orderAmountX100))
+		if (Math.abs(value1 * 100 - orderAmountX100) < Math.abs(value2 * 100 - orderAmountX100))
 			return -1;
-		if ((value1 * 100 - orderAmountX100) > (value2 * 100 - orderAmountX100))
+		if (Math.abs(value1 * 100 - orderAmountX100) > Math.abs(value2 * 100 - orderAmountX100))
 			return 1;
 		return 0;
 	}
