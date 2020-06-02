@@ -102,7 +102,8 @@
               @for((currentLine, index) <- pageDisplay.getPage.getList.zipWithIndex) {
                 <tr @if(pageDisplay.hasClass) {class="@pageDisplay.getClassByIndex(index)"}>
                   <td>
-	                @if(displaylink != null) {<a type="button" class="btn btn-default btn-xs" href="@displaylink(pageDisplay.getIdByIndex(index))"><span class="glyphicon glyphicon-user"></span></a>}
+	                @if(displaylink != null) {<a type="button" class="btn btn-default btn-xs" href="@displaylink(pageDisplay.getIdByIndex(index))"><span class="glyphicon glyphicon-user"></span></a>
+	                <a type="button" class="btn btn-success btn-xs" href="@pdf(displaylink(pageDisplay.getIdByIndex(index)).toString)"><span class="glyphicon glyphicon-file"></span></a>}
 	                @if(editlink != null) {<a type="button" class="btn btn-primary btn-xs" href="@editlink(pageDisplay.getIdByIndex(index))"><span class="glyphicon glyphicon-edit"></span></a>}
 	                @if(optionallink != null) {<a type="button" class="btn btn-info btn-xs" @if(optionnalLinkOpensNewPage) {target="_blank"} href="@optionallink(pageDisplay.getIdByIndex(index))"><span class="glyphicon @if(optionnalLinkOpensNewPage) {glyphicon-new-window} else {glyphicon-flash}"></span></a>}
                   </td>

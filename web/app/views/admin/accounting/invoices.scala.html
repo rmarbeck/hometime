@@ -67,6 +67,7 @@
                 <tr>
                   <td>
 	                <a type="button" class="btn btn-default btn-xs" href="@routes.Accounting.viewInvoice(invoice.id)"><span class="glyphicon glyphicon-user"></span></a>
+	                <a type="button" class="btn btn-success btn-xs" href="@pdf(routes.Accounting.viewInvoice(invoice.id).url)"><span class="glyphicon glyphicon-file"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editInvoice(invoice.id)"><span class="glyphicon glyphicon-edit"></span></a>
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.PaymentRequests.createFromInvoice(invoice.id)"><span class="glyphicon glyphicon-credit-card"></span></a>
 	                @if(!alreadyPayed) {<a type="button" class="btn btn-primary btn-xs" href="@routes.Payments.createFromInvoice(invoice.id)"><span class="glyphicon glyphicon-euro"></span></a>}

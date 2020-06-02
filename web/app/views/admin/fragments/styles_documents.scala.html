@@ -1,3 +1,4 @@
+@(hidePageValue: Boolean=false)
 <style type="text/css">
 	body {
 		-webkit-print-color-adjust: exact;
@@ -326,6 +327,7 @@
 		margin-top: 40px;
 	}
 	
+	@if(!hidePageValue) {
 	
 	@@page  
 	{ 
@@ -334,7 +336,7 @@
 	    /* this affects the margin in the printer settings */ 
 	    margin: 19mm 16mm 19mm 16mm;  
 	}
-	
+	}
 	@@media print {
 		body {
 			font-size: 5.5mm;
