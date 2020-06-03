@@ -179,6 +179,9 @@ POST    /login                      									controllers.Application.authenticat
 GET     /quick-login                   									controllers.Application.quickAdminLogin(origin: String ?= "")
 POST    /quick-login                   									controllers.Application.quickAdminAuthenticate()
 GET     /logout                     									controllers.Application.logout()
+
+GET     /pdf/*path	                    								controllers.PDF.testPDF(path: String)
+
 GET     /admin/		                    								controllers.Admin.index()
 
 GET     /admin/requests                    								controllers.Admin.currentOrderRequests()

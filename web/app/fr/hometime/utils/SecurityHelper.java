@@ -32,6 +32,9 @@ public class SecurityHelper {
 	private static final Duration CACHE_VALIDITY_TIME = Duration.ofMillis(1000);
 	public static Map<String, Optional<User>> userCache = null;
 	public static Map<String, Instant> userCacheValidity = null;
+	private static final String SESSION_USER_EMAIL_KEY = "token";
+	private static final String REQUEST_HEADER_USER_EMAIL_KEY = "token";
+	public static final String REQUEST_HEADER_TRUSTED_KEY = "trustedkey";
 	
 	public static String toMD5(String toEncode) {
 		return encode(toEncode, "MD5");
@@ -85,7 +88,7 @@ public class SecurityHelper {
     }
     
     public static String retrieveUsername(Context ctx, Predicate<User> isRoleEnough) {
-    	String currentUserToken = ctx.session().get("token");
+    	String currentUserToken = getUserAfterStandardLoginOrThroughTrustedSessionToken(ctx);
     	if (currentUserToken != null) {
     		Optional<User> oLoggedInUser = tryToGetUserByEmail(currentUserToken);
     		if (oLoggedInUser.isPresent()) {
@@ -99,12 +102,28 @@ public class SecurityHelper {
         return null;
     }
     
+    private static String getUserAfterStandardLoginOrThroughTrustedSessionToken(Context ctx) {
+    	String currentUserTokenAfterStandardLogin = ctx.session().get(SESSION_USER_EMAIL_KEY);
+    	if (currentUserTokenAfterStandardLogin != null)
+    		return currentUserTokenAfterStandardLogin;
+    	if (isTrustedRequestAuthorized(ctx))
+    		ctx.session().put(SESSION_USER_EMAIL_KEY, ctx.request().getHeader(REQUEST_HEADER_USER_EMAIL_KEY));
+    	return ctx.session().get(SESSION_USER_EMAIL_KEY);
+    }
+    
+    private static boolean isTrustedRequestAuthorized(Context ctx) {
+    	Optional<String> oSecret = LiveConfigHelper.tryToGetString(LiveConfigConstants.SECRET_KEY_FOR_PDF);
+    	if (oSecret.isPresent())
+    		return oSecret.get().equals(ctx.request().getHeader(REQUEST_HEADER_TRUSTED_KEY));
+    	return false;
+    }
+    
     public static String retrieveUsername(Context ctx) {
         return retrieveUsername(ctx, (user) -> true);
     }
     
     public static boolean isLoggedInUserAuthorized(Session session, Predicate<User> isRoleEnough) {
-    	return isLoggedInUserAuthorized(session.get("token"), isRoleEnough);
+    	return isLoggedInUserAuthorized(session.get(SESSION_USER_EMAIL_KEY), isRoleEnough);
     }
     
     public static boolean isLoggedInUserAuthorized(String token, Predicate<User> isRoleEnough) {
@@ -116,7 +135,7 @@ public class SecurityHelper {
     }
     
     public static Optional<User> getLoggedInUser(Session session) {
-    	return getLoggedInUser(session.get("token"));
+    	return getLoggedInUser(session.get(SESSION_USER_EMAIL_KEY));
     }
     
     public static Optional<User> getLoggedInUser(String token) {

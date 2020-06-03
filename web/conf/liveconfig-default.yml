@@ -51,6 +51,9 @@ liveConfig:
          key:                   store_closed_message_forced
          valuestring:           <a href="/news">Messa<i>ge</i></a>
 
+    - !!models.LiveConfig
+         key:                   secret_key_for_pdf
+         valuestring:           test
 
 #Fin
 
