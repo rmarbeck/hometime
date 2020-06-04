@@ -15,7 +15,7 @@ import play.mvc.With;
 @With(NoCacheAction.class)
 public class PDF extends Controller {
 	public static Promise<Result> testPDF(String path) {
-		WSRequestHolder holder = WS.url("https://pdf.hometime.fr/"+path);
+		WSRequestHolder holder = WS.url("https://fathomless-fjord-51125.herokuapp.com/"+path);
 		WSRequestHolder complexHolder = holder.setHeader(SecurityHelper.REQUEST_HEADER_TRUSTED_KEY, LiveConfig.getString(LiveConfigConstants.SECRET_KEY_FOR_PDF))
 		        .setTimeout(10000);
 		Promise<WSResponse> responsePromise = complexHolder.get();
