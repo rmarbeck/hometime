@@ -106,20 +106,15 @@ public class SecurityHelper {
     	String currentUserTokenAfterStandardLogin = ctx.session().get(SESSION_USER_EMAIL_KEY);
     	if (currentUserTokenAfterStandardLogin != null)
     		return currentUserTokenAfterStandardLogin;
-    	if (isTrustedRequestAuthorized(ctx)) {
-    		Logger.error("Switching to shared secret login, value of secret is {}, email is {}", ctx.request().getHeader(REQUEST_HEADER_TRUSTED_KEY) , ctx.request().getHeader(REQUEST_HEADER_USER_EMAIL_KEY));
+    	if (isTrustedRequestAuthorized(ctx))
     		ctx.session().put(SESSION_USER_EMAIL_KEY, ctx.request().getHeader(REQUEST_HEADER_USER_EMAIL_KEY));
-    	}
-    	Logger.error("Logging in failed.");
     	return ctx.session().get(SESSION_USER_EMAIL_KEY);
     }
     
     private static boolean isTrustedRequestAuthorized(Context ctx) {
     	Optional<String> oSecret = LiveConfigHelper.tryToGetString(LiveConfigConstants.SECRET_KEY_FOR_PDF);
-    	if (oSecret.isPresent()) {
-    		Logger.error("Shared secret is there {}.", oSecret.get());
+    	if (oSecret.isPresent())
     		return oSecret.get().equals(ctx.request().getHeader(REQUEST_HEADER_TRUSTED_KEY));
-    	}
     	return false;
     }
     
