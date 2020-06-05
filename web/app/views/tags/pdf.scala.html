@@ -1,6 +1,6 @@
 @**
- * Generate an url with absolute path.
+ * Generate an url with pdf path.
  *
  *@
  @(relative_path: String)
-http://@(play.Play.application.configuration.getString("production.pdf.host"))@relative_path
+/pdf@relative_path
