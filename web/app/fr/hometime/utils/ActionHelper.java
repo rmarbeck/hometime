@@ -67,14 +67,9 @@ public class ActionHelper {
 	}
 	
 	public static void sendHtmlEmailEnhanced(String title, String htmlMessage, List<String> emails, String fromAddress, String fromName, String textMessage) {
-		if (isConfigurationSaysEmailIsSupposerToBeSent()) {
+		if (isConfigurationSaysEmailIsSupposedToBeSent()) {
 			Logger.info("About to send an HTML mail Enhanced");
-			try {
-				MailjetAdapterv3_1.sendSimpleEmail(title, emails, fromName, fromAddress, htmlMessage, textMessage);
-			} catch (MailAdapterException e) {
-				Logger.error("Error when trying to send an HTML mail Enhanced");
-				e.printStackTrace();
-			}
+			EmailProviderFactory.of().sendHtmlEmail(title, htmlMessage, emails, fromAddress, fromName, textMessage);
 		}
 	}
 	
@@ -136,7 +131,7 @@ public class ActionHelper {
 	
 	private static MailerAPI prepareEmail(String title) {
 		// Looking if liveConfig exists and says to send e-mail
-		if (isConfigurationSaysEmailIsSupposerToBeSent()) {
+		if (isConfigurationSaysEmailIsSupposedToBeSent()) {
 			MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 	    	mail.setSubject(title);
 
@@ -150,7 +145,7 @@ public class ActionHelper {
 		return null;
 	}
 	
-	private static boolean isConfigurationSaysEmailIsSupposerToBeSent() {
+	private static boolean isConfigurationSaysEmailIsSupposedToBeSent() {
 		if ((LiveConfig.isKeyDefined(NTBE_ACTIVE) && LiveConfig.getBoolean(NTBE_ACTIVE))
 				|| (!LiveConfig.isKeyDefined(NTBE_ACTIVE) && Play.application().configuration().getBoolean("notifyTeam")) )
 			return true;

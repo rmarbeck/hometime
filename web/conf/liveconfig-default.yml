@@ -5,7 +5,7 @@ liveConfig:
 
     - !!models.LiveConfig
          key:                   notify_team_by_email_active
-         valueboolean:         true
+         valueboolean:          true
 
     - !!models.LiveConfig
          key:                   notify_team_by_email_to_1
@@ -21,6 +21,14 @@ liveConfig:
 
     - !!models.LiveConfig
          key:                   mailjet_secret_key
+         valuestring:           6034d97e2f61ef55aba22a48f67c4607
+
+    - !!models.LiveConfig
+         key:                   sendinblue_api_key
+         valuestring:           aa98fac1ba34a8ae1c25eff67b4fe100
+
+    - !!models.LiveConfig
+         key:                   sendinblue_partner_key
          valuestring:           6034d97e2f61ef55aba22a48f67c4607
 
     - !!models.LiveConfig

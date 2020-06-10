@@ -13,6 +13,7 @@ libraryDependencies ++= Seq(
   "com.mailjet" % "mailjet-client" % "4.1.1",
   "com.google.zxing" % "core" % "3.4.0",
   "com.google.zxing" % "javase" % "3.4.0",
+  "com.sendinblue" % "sib-api-v3-sdk" % "4.0.0",
   javaJdbc,
   javaEbean,
   filters,
