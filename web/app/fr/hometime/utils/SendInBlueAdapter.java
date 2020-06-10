@@ -77,11 +77,9 @@ public class SendInBlueAdapter {
 		
 		ApiClient defaultClient = Configuration.getDefaultApiClient();
         ApiKeyAuth apiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication(API_KEY);
-        //apiKeyAuth.setApiKey(apiKey);
-        apiKeyAuth.setApiKey("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");
+        apiKeyAuth.setApiKey(apiKey);
         ApiKeyAuth partnerKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication(PARTNER_KEY);
-        //partnerKeyAuth.setApiKey(partnerKey);
-        partnerKeyAuth.setApiKey("9GUYB8NnpWP2SX46");
+        partnerKeyAuth.setApiKey(partnerKey);
 	}
 	
 	private static boolean isEverythingConfigured() {
