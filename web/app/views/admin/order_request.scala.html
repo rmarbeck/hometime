@@ -159,7 +159,7 @@
                     <button id="authorize-button" style="display: none;">Authorize</button>
     				<button id="signout-button" style="display: none;">Sign Out</button>
                   </td>
-                  <td><table><tr><td>@display_copyable_email_admin_only(request.email)</td></tr><tr><td><ul><li>Nombre de messages envoyés : <span id="mailssent">0</span></li><li>Nombre de messages reçus : <span id="mailsreceived">0</span></li><li><a class="btn btn-warning" href="@routes.Admin.displayPrepareMail(request.id)" role="button"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Envoyer mail</a> </li></ul></td></tr></table></td>
+                  <td><table><tr><td>@display_copyable_email(request.email)</td></tr><tr><td><ul><li>Nombre de messages envoyés : <span id="mailssent">0</span></li><li>Nombre de messages reçus : <span id="mailsreceived">0</span></li><li><a class="btn btn-warning" href="@routes.Admin.displayPrepareMail(request.id)" role="button"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Envoyer mail</a> </li></ul></td></tr></table></td>
                 </tr>
                 <tr>
                   <td>

@@ -1,0 +1,2 @@
+@(email: String, title_if_null: String = "admin.action.copy.email.address")
+<a onclick="copyToClipboard('@email')" type="button" class="btn btn-primary btn-xs" href="#" title="@Messages(title_if_null)"><span class="glyphicon glyphicon-download"></span></a>@if_admin(){ @email}
