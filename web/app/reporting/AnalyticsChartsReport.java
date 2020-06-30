@@ -84,15 +84,22 @@ public class AnalyticsChartsReport {
 		
 		private Map<YearMonth, Float> addToMap(Map<YearMonth, Float> currentMap, UniqueAccountingNumber uan, Predicate<UniqueAccountingNumber> shouldBeAddedByDate, Long type, Predicate<Long> shouldBeAddedByType, float value) {
 			if (shouldBeAddedByDate.test(uan) && shouldBeAddedByType.test(type)) {
-				if (currentMap.containsKey(uan.getYearAndMonthFromUAN())) {
-					currentMap.put(uan.getYearAndMonthFromUAN(), currentMap.get(uan.getYearAndMonthFromUAN())+value);
-				} else {
-					currentMap.put(uan.getYearAndMonthFromUAN(), value);
-				}
+				addValue(currentMap, uan, value);
+			} else {
+				addValue(currentMap, uan, 0f);
 			}
 			return currentMap;
 		}
+		
+		private void addValue(Map<YearMonth, Float> map, UniqueAccountingNumber uan, float value) {
+			if (map.containsKey(uan.getYearAndMonthFromUAN())) {
+				map.put(uan.getYearAndMonthFromUAN(), map.get(uan.getYearAndMonthFromUAN())+value);
+			} else {
+				map.put(uan.getYearAndMonthFromUAN(), value);
+			}
+		}
 	}
+	
 	
 	public Date date;
 	public OvertimeFigures figures;
