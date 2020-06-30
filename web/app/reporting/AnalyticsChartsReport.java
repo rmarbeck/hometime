@@ -86,7 +86,8 @@ public class AnalyticsChartsReport {
 			if (shouldBeAddedByDate.test(uan) && shouldBeAddedByType.test(type)) {
 				addValue(currentMap, uan, value);
 			} else {
-				addValue(currentMap, uan, 0f);
+				if (shouldBeAddedByDate.test(uan))
+					addValue(currentMap, uan, 0f);
 			}
 			return currentMap;
 		}
