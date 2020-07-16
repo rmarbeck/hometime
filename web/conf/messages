@@ -3377,6 +3377,8 @@ admin.order.document.conditions.generic=100% à la fin des travaux (si acceptés
 admin.order.document.methods.generic=Chèque à l''ordre de "watch next", virement bancaire, CB en ligne
 admin.order.document.delay.generic=de 3 semaines environ
 
+admin.invoice.document.conditions.generic=100% à la fin des travaux lors de la livraison
+admin.invoice.document.methods.generic=Chèque à l''ordre de "watch next", virement bancaire, CB
 
 admin.order.waranty.line.servicing.a.watch.with.water.resistance=Fonctionnement garanti pendant 1 an et étanchéité pendant 2 ans
 admin.order.waranty.line.servicing.a.watch.without.water.resistance=Fonctionnement garanti pendant 1 an

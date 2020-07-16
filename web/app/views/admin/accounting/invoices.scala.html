@@ -2,6 +2,34 @@
 @import tags._
 @import fr.hometime.utils._
 
+@end_scripts = {
+<script>
+	function copyToClipboard(value) {
+      var aux = document.createElement("input");
+
+      aux.setAttribute("value", value);
+      // Append it to the body
+      document.body.appendChild(aux);
+      // Highlight its content
+      aux.select();
+      // Copy the highlighted text
+      document.execCommand("copy");
+      // Remove it from the body
+      document.body.removeChild(aux);
+    }
+    
+    		$(document).ready(function(){
+			$('a[id="sms"]').on('click',function(e){
+			    if (window.confirm('Envoyer le SMS ？')== false) {
+			      e.preventDefault();
+			    }
+  			});
+			
+		})  
+    
+</script> 
+}
+
 @****************************************
 * Helper generating navigation links    *
 ****************************************@
@@ -38,7 +66,7 @@
     </th>
 }
 
-@layouts.admin() {
+@layouts.admin("Factures", end_scripts) {
   <div class="container">
 
     @admin.fragments.page_header(link(0, "document.creationDate").toString, "numéro ou client", currentFilter, routes.Accounting.addInvoice().url)
@@ -87,7 +115,7 @@
                     @invoice.description
                   </td>
                   <td>
-                    @invoice.document.customer.getFullNameWithCivility
+                    @display_clickable_customer_admin_only(invoice.document.customer)
                   </td>
                   <td>
                     @alreadyPayed

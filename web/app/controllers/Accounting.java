@@ -207,6 +207,7 @@ public class Accounting extends Controller {
 			newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.waranty.line.quick.servicing.a.watch.without.water.resistance"), Long.valueOf(1), Float.valueOf(0));
 		}
 		newInvoice.addLine(LineType.FREE_INCLUDED, Messages.get("admin.invoice.delivery.line.quick.servicing.a.watch"), Long.valueOf(1), Float.valueOf(0));
+		populateInvoiceGeneric(newInvoice);
 		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
 	}
 	
@@ -223,6 +224,8 @@ public class Accounting extends Controller {
 			for(AccountingLine line : orderToInspireFrom.document.retrieveLines())
 				newInvoice.addLine(line.type, line.description, line.unit, line.unitPrice, line.preset, line.oneTimeCost);
 
+		newInvoice.paymentConditions = orderToInspireFrom.paymentConditions; 
+		newInvoice.supportedPaymentMethods = orderToInspireFrom.supportedPaymentMethods;
 		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
 	}
 
@@ -234,8 +237,16 @@ public class Accounting extends Controller {
 		models.Invoice newInvoice = new Invoice();
 		newInvoice.changeUniqueAccountingNumber(UniqueAccountingNumber.getNextForInvoices().toString());
 		newInvoice.document.customer = customer;
+		populateInvoiceGeneric(newInvoice);
 		return invoiceForm(Form.form(models.Invoice.class).fill(newInvoice), true);
 	}
+	
+	private static void populateInvoiceGeneric(models.Invoice invoiceToPopulate) {
+		invoiceToPopulate.paymentConditions= Messages.get("admin.invoice.document.conditions.generic");
+		invoiceToPopulate.supportedPaymentMethods= Messages.get("admin.invoice.document.methods.generic");
+	}
+	
+	
 	
 	private static String getMainLineForInvoice(WatchToSell watchToSell) {
 		return Messages.get("admin.invoice.main.line.selling.a.watch",
