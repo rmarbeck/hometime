@@ -1,22 +1,22 @@
-@(spareparts: List[models.SparePart], key: String = "admin.spare.part")
+@(spareparts: List[models.SparePart], key: String = "admin.spare.part", darkMode: Boolean = false)
 @import tags._
 
 @import fr.hometime.utils._
 
 	@if(spareparts == null || spareparts.size == 0) {
       <div class="row">
-        <div class="well">
-            <em>@Html(Messages(key+".nothing.to.display"))</em>
+        <div class="@if(!darkMode) {well}">
+            @Html(Messages(key+".nothing.to.display"))
         </div>
       </div>
       } else {
       <div class="row">
        	<div class="table-responsive">
-            <table class="table table-bordered table-striped">
+            <table class="table @if(!darkMode) {table-bordered table-striped}">
 
               <thead>
                 <tr>
-                  <th>#</th>
+                  @if(!darkMode) {<th>#</th>}
                   <th>@Html(Messages(key+".header.description"))</th>
                   <th>@Html(Messages(key+".header.part.reference"))</th>
                   <th>@Html(Messages(key+".header.unit.needed"))</th>
@@ -28,8 +28,8 @@
               </thead>
               <tbody>
               @for((part, index) <- spareparts.zipWithIndex) {
-                <tr class="@part.getDetailedStatus">
-                  <td>
+                <tr class="@if(!darkMode) {@part.getDetailedStatus}">
+                  @if(!darkMode) {<td>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.edit("SpareParts", part.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
 	                @if(part.isToBeChecked) {
 	                <a type="button" class="btn btn-success btn-xs" href="@routes.SpareParts.markCheckedOK(part.id)"><span class="glyphicon glyphicon-ok"></span></a>
@@ -41,6 +41,7 @@
 	                <a type="button" class="btn btn-danger btn-xs" href="#" onclick='doAction("@routes.SpareParts.markClosed(part.id)");'><span class="glyphicon glyphicon-trash"></span></a>
 	                }
                   </td>
+                  }
                   <td>
                     @part.description
                   </td>
