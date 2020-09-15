@@ -1,0 +1,122 @@
+@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch])
+@import tags._
+
+@import fr.hometime.utils._
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="30" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hometime- Dashboard</title>
+    
+    @layouts.fragments.bootstrap_css()
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/admin.min.css")">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/cover.min.css")">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Hometime / Dashboard</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">Ecran 2</a></li>
+                  <li><a href="#">Ecran 3</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          
+          <div class="row">
+          	<div class="col-lg-6">
+	            <h1 class="cover-heading">Nouvelles demandes</h1>
+	            @fragments.orderlist(unrepliedOrderRequests, false, "admin.index.order.requests", true)
+	        </div>
+	        <div class="col-lg-6">
+	            <h1 class="cover-heading">Montres en cours</h1>
+	        </div>
+	     </div>
+	     <div class="row">
+	        <div class="col-lg-6">
+	            <h1 class="cover-heading">Urgences</h1>
+	            @if(watches != null && watches.size >0) {
+		    	<h3>
+		    		@Html(Messages("admin.index.watches.active"))
+		    	</h3>
+		    	<table class="table table-condensed">
+		          <thead>
+			        <tr>
+			          <th>@Html(Messages("admin.index.watches.head.id"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.name"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.model"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.status"))</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	@for(watch <- watches; statusClass = watch.getWatchStatusClass) {
+			      	<tr class="@watch.getQuotationClass @statusClass">
+			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
+			      		<td>@watch.customer</td>
+			      		<td>@watch.brand</td>
+			      		<td>@watch.model</td>
+			      		<td>@if(watch.isCustomerHasConstraint) {<span class="glyphicon glyphicon-warning-sign"></span>} @if(watch.isCustomerHasCalledForDelay) {<span class="glyphicon glyphicon-earphone"></span>} @display_date_and_countdown(watch.getFirstKnownDate)</td>
+			      	</tr>
+			      	}
+				  </tbody>
+				</table>
+		    } else {
+		    	<h3>
+		    		@Html(Messages("admin.index.watches.active.none"))
+		    	</h3>
+		    }
+	        </div>
+	        <div class="col-lg-6">
+	            <h1 class="cover-heading">Cover your page.</h1>
+	            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+	            <p class="lead">
+	              <a href="#" class="btn btn-lg btn-default">Learn more</a>
+	            </p>
+	        </div>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>-</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="@remote_assets("javascripts/admin.js")"></script>
+  </body>
+</html>

@@ -39,6 +39,7 @@ import play.mvc.Result;
 import play.mvc.With;
 import views.html.admin.cgv;
 import views.html.admin.index;
+import views.html.admin.dashboard;
 import views.html.admin.order_request;
 import views.html.admin.order_request_infos_form;
 import views.html.admin.order_requests;
@@ -280,6 +281,10 @@ public class Admin extends Controller {
 
 	public static Result index() {
 		return ok(index.render("", null/*Customer.findWithOpenTopic()*/, OrderRequest.findAllUnManaged(), BuyRequest.findAllUnReplied(5), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
+    }
+	
+	public static Result dash() {
+		return ok(dashboard.render("", null/*Customer.findWithOpenTopic()*/, OrderRequest.findAllUnManaged(), BuyRequest.findAllUnReplied(5), CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
     }
 	
 	public static Result currentOrderRequests() {

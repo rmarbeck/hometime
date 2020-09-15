@@ -1,4 +1,4 @@
-@(unrepliedOrderRequests: List[models.OrderRequest], displayLink: Boolean, key: String = "admin.customer.watch")
+@(unrepliedOrderRequests: List[models.OrderRequest], displayLink: Boolean, key: String = "admin.customer.watch", darkMode: Boolean = false)
 @import tags._
 @import fr.hometime.utils._
 
@@ -6,7 +6,7 @@
     	<h3>
     		@Html(Messages(key+".active"))
     	</h3>
-    	<table class="table table-condensed table-striped table-bordered">
+    	<table class="table table-condensed @if(!darkMode) {table-striped table-bordered}">
           <thead>
 	        <tr>
 	          <th>@Html(Messages(key+".head.link.to"))</th>
@@ -14,7 +14,9 @@
 	          <th>@Html(Messages(key+".head.email"))</th>
 	          <th>@Html(Messages(key+".head.details"))</th>
 	          <th>@Html(Messages(key+".head.managed.by"))</th>
+	          @if(!darkMode) {
 	          <th>@Html(Messages(key+".head.actions"))</th>
+	          }
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -29,6 +31,7 @@
 	      		<td>@display_copyable_email_admin_only(request.email, key+".action.copy.email.address")</td>
 	      		<td>@(request.brand), @takeif(request.model, 30), @(request.city)</td>
 	      		<td>@(request.getNameIfManaged)</td>
+	      		@if(!darkMode) {
 	      		<td>
 		      		@if(request.isManagedByCurrentLogin(session)) {
 	      			<a type="button" class="btn btn-primary btn-xs" href="@routes.Admin.setRepliedOrderRequest(request.id)" title="@Messages(key+".action.set.replied.title")"><span class="glyphicon glyphicon-new-window"></span></a>
@@ -43,6 +46,7 @@
 	      			<a type="button" class="btn btn-info btn-xs" href="@routes.Admin.setOrderRequestManaged(request.id)" title="@Messages(key+".action.set.managed.by.title")"><span class="glyphicon glyphicon-lock"></span></a>
 	      			}
                 </td>
+                }
 	      	</tr>
 	      	}
 	      	@if(displayLink) {
