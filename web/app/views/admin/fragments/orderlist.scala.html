@@ -11,7 +11,7 @@
 	        <tr>
 	          <th>@Html(Messages(key+".head.link.to"))</th>
 	          <th>@Html(Messages(key+".head.request.date"))</th>
-	          <th>@Html(Messages(key+".head.email"))</th>
+	          @if(!darkMode) {<th>@Html(Messages(key+".head.email"))</th>}
 	          <th>@Html(Messages(key+".head.details"))</th>
 	          <th>@Html(Messages(key+".head.managed.by"))</th>
 	          @if(!darkMode) {
@@ -20,6 +20,7 @@
 	        </tr>
 	      </thead>
 	      <tbody>
+	      	@for(i <- 1 to 1) {
 	      	@for(request <- unrepliedOrderRequests) {
 	      	<tr class="feedback_asked_@request.feedbackAsked">
 	      		@if(request.isManagedByCurrentLogin(session)) {
@@ -28,7 +29,7 @@
 	      		<td>#@request.id</td>
 	      		}
 	      		<td>@display_date(request.requestDate, "dd/MM/yyyy HH:mm")</td>
-	      		<td>@display_copyable_email_admin_only(request.email, key+".action.copy.email.address")</td>
+	      		@if(!darkMode) {<td>@display_copyable_email_admin_only(request.email, key+".action.copy.email.address")</td>}
 	      		<td>@(request.brand), @takeif(request.model, 30), @(request.city)</td>
 	      		<td>@(request.getNameIfManaged)</td>
 	      		@if(!darkMode) {
@@ -48,6 +49,7 @@
                 </td>
                 }
 	      	</tr>
+	      	}
 	      	}
 	      	@if(displayLink) {
 	      	<tr>

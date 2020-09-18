@@ -308,6 +308,25 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	@Enumerated(EnumType.STRING)
 	public CustomerWatchType type = CustomerWatchType.OTHER;
 	
+	@ManyToOne
+	public User managedBy = null;
+	
+	public Date serviceBeginning;
+	
+	public Date lastManagerChange;
+	
+	public Date expectedServiceEnding;
+	
+	public boolean sparepartToFind = false;
+	
+	public boolean sparepartFound = false;
+	
+	public boolean needHelp = false;
+	
+	public boolean noSolution = false;
+	
+	public String serviceInfoFromWatchmaker = null;
+	
 	public CustomerWatch() {
 		this.creationDate = new Date();
 		this.lastStatusUpdate = creationDate;

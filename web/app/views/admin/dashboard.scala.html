@@ -38,6 +38,7 @@
           <div class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand">Hometime / Dashboard</h3>
+              
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="#">Home</a></li>
@@ -45,9 +46,11 @@
                   <li><a href="#">Ecran 3</a></li>
                 </ul>
               </nav>
-              <span style="text-align:center;padding:1em 0;"> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&size=small&timezone=Europe%2FParis" width="100%" height="90" frameborder="0" seamless></iframe> </span>
+              <span style="text-align:center;padding:1em 0; position: relative; top: -81px;"> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&size=small&timezone=Europe%2FParis" width="100%" height="90" frameborder="0" seamless></iframe> </span>
             </div>
           </div>
+          
+          <div class="cover-content">
           
           <div class="row">
           	<div class="col-lg-6">
@@ -79,9 +82,9 @@
 			      	@for(watch <- watches; statusClass = watch.getWatchStatusClass) {
 			      	<tr class="">
 			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
-			      		<td>@watch.customer.firstname @watch.customer.name</td>
+			      		<td>@takeif(watch.customer.firstname+" "+watch.customer.name)</td>
 			      		<td>@watch.brand</td>
-			      		<td>@watch.model</td>
+			      		<td>@takeif(watch.model)</td>
 			      		<td>@if(watch.isCustomerHasConstraint) {<span class="glyphicon glyphicon-warning-sign"></span>} @if(watch.isCustomerHasCalledForDelay) {<span class="glyphicon glyphicon-earphone"></span>} @display_date_and_countdown(watch.getFirstKnownDate)</td>
 			      	</tr>
 			      	}
@@ -105,6 +108,8 @@
             </div>
           </div>
 
+        </div>
+        
         </div>
 
       </div>

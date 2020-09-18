@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.avaje.ebean.Expr;
@@ -81,6 +83,9 @@ public class User extends Model implements CrudReady<User, User> {
 	
 	@ManyToOne
 	public Customer customer;
+	
+	@OneToMany(mappedBy="managedBy", cascade = CascadeType.ALL)
+	public List<CustomerWatch> watchesManaged = null;
 	
 	public static User of() {
     	if (singleton == null)
