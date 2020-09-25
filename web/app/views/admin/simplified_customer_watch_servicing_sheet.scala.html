@@ -26,9 +26,8 @@
 	
 }
 
-@layouts.admin_to_print_a5(title, instance.collectingDate, instance.customer) {
-     
-     <div class="row servicing">
+@first_line() = {
+	<div class="row servicing">
      	<div class="type col-xs-10 servicing">
 	        <h2>#@instance.id - @takeif(sheet_get_model(instance).toString) - @takeif(sheet_get_references(instance).toString) - @takeif(customer.firstname+" "+customer.name)</h2>
         </div>
@@ -36,6 +35,11 @@
 	        <h2>#@instance.id</h2>
         </div>
      </div>
+}
+
+@layouts.admin_to_print_a5(title, instance.collectingDate, instance.customer) {
+     
+     @first_line()
      
      <div class="row">
      	<div class="type col-xs-6">
@@ -159,14 +163,7 @@
 	@if(SparePart.hasOpenSparePartsByCustomerWatch(instance)) {
 	@for(i <- 1 to 2) {
       <div class="page-break"></div>
-      <div class="row">
-     	<div class="type col-xs-10">
-	        <h2>@sheet_get_model(instance).toString - @sheet_get_references(instance).toString - @customer.firstname @customer.name</h2>
-        </div>
-        <div class="text-right col-xs-2">
-	        <h2>#@instance.id</h2>
-        </div>
-     </div>
+      @first_line()
      <div class="row">
      	<h2 class="text-center">@Html(Messages("admin.simplified.customer.watch.servicing.sheet.spare.parts."+i))</h2>
         <div class="col-xs-12">
