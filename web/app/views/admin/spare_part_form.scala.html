@@ -24,6 +24,8 @@
 
 @defining(new views.FormDisplay(thisInstance, "SparePart", "admin.sparepart.form")) { formDisplay =>
 		@{ formDisplay.addFormFieldForSelect("watch.id", false, models.CustomerWatch.getIdsByCustomersAsc, models.CustomerWatch.getWatchesByCustomersAsc);
+		   formDisplay.addFormField("watch.reference", true, "input", 'readonly -> "readonly");
+		   formDisplay.addFormField("watch.serial", true, "input", 'readonly -> "readonly");
 		   formDisplay.addFormField("description", true, "textarea");
 		   formDisplay.addFormField("unitNeeded", true, "input", 'type -> "number", 'min -> "1", 'step -> "1");
 		   formDisplay.addFormField("otherInfos", true, "textarea");
