@@ -29,9 +29,9 @@
 
 @layouts.admin_to_print_a5(title, instance.collectingDate, instance.customer) {
  
-	<div class="row">
+	<div class="row testing">
      	<div class="type col-xs-8">
-	        <h2>@sheet_get_model(instance).toString - @sheet_get_references(instance).toString</h2>
+	        <h2>#@instance.id - @sheet_get_model(instance).toString - @sheet_get_references(instance).toString</h2>
         </div>
         <div class="text-right col-xs-4">
 	        <h2>@Html(Messages("admin.simplified.customer.watch.servicing.sheet.text.head", instance.id))</h2>
