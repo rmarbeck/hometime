@@ -3,6 +3,11 @@
 
 @import fr.hometime.utils._
 
+@import java.util.List; var quotation=CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatus(CustomerWatchHelper.CustomerWatchDetailedStatus.TO_QUOTE); var tosend=CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatus(CustomerWatchHelper.CustomerWatchDetailedStatus.QUOTATION_TO_SEND_TO_CUSTOMER); var testing=CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatus(CustomerWatchHelper.CustomerWatchDetailedStatus.TESTING)
+
+@figure(data: List[models.CustomerWatch], text: String) = {
+@if(data != null && data.size() > 0) { - <b>@data.size() @text</b>}
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +42,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Hometime / Dashboard</h3>
+              <h3 class="masthead-brand">Hometime / Dashboard@figure(quotation, "devis")@figure(tosend, "à envoyer")@figure(testing, "en test")</h3>
               
               <nav>
                 <ul class="nav masthead-nav">
