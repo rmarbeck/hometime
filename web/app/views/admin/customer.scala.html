@@ -136,7 +136,7 @@
 	                <a type="button" class="btn btn-warning btn-xs" href="@routes.CustomerWatch.addFromOrder(order.id)"><span class="glyphicon glyphicon-arrow-down"></span></a>
                   </td>
                   <td>
-                    @display_date(order.creationDate, "dd/MM HH:mm")
+                    @display_date(order.creationDate, "dd/MM/yyyy HH:mm")
                   </td>
                   <td>
                     @order.brand
@@ -191,7 +191,7 @@
      @fragments.watchlist(models.CustomerWatch.findByCustomerOtherLocation(customer))
      
       <div class="row">
-        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches.back.to.customer"))</h3></div>
+        <div class="title col-md-6"><h3>@Html(Messages("admin.customer.head.watches.all"))</h3></div>
      </div>
      
      @fragments.watchlist(watches)
@@ -227,6 +227,7 @@
                 <tr>
                   <td>
                    	<a type="button" class="btn btn-default btn-xs" href="@routes.Accounting.viewOrderDocument(orderDocument.id)"><span class="glyphicon glyphicon-user"></span></a>
+                   	<a type="button" class="btn btn-success btn-xs" href="@pdf(routes.Accounting.viewOrderDocument(orderDocument.id).toString.trim)"><span class="glyphicon glyphicon-file"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editOrderDocument(orderDocument.id)"><span class="glyphicon glyphicon-edit"></span></a>
 	                <a type="button" class="btn btn-success btn-xs" href="@routes.Accounting.addInvoiceByOrderId(orderDocument.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
 	                <a type="button" class="btn btn-info btn-xs" href="@routes.Accounting.duplicateOrderByOrderId(orderDocument.id)"><span class="glyphicon glyphicon-refresh"></span></a>
@@ -279,6 +280,7 @@
                 <tr>
                   <td>
                    	<a type="button" class="btn btn-default btn-xs" href="@routes.Accounting.viewInvoice(invoice.id)"><span class="glyphicon glyphicon-user"></span></a>
+                   	<a type="button" class="btn btn-success btn-xs" href="@pdf(routes.Accounting.viewInvoice(invoice.id).toString.trim)"><span class="glyphicon glyphicon-file"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Accounting.editInvoice(invoice.id)"><span class="glyphicon glyphicon-edit"></span></a>
                   </td>
                   <td class="hidden-xs">

@@ -2697,6 +2697,7 @@ admin.customer.head.watches.back.to.customer=Montres chez le client
 admin.customer.head.watches.stored.by.registered.partner=Montres chez un partenaire
 admin.customer.head.watches.stored.by.us=Montres chez nous
 admin.customer.head.watches.other=Autres montres
+admin.customer.head.watches.all=Toutes ses montres
 
 admin.customer.order.documents.no.order.document.to.display=Aucun bon de commande pour ce client
 admin.customer.head.order.documents=Ses bons de commande
