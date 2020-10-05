@@ -393,6 +393,10 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
         return find.where().ne("status", "BACK_TO_CUSTOMER").findList();
     }
     
+    public static List<CustomerWatch> findAllByWatchmaker() {
+    	return find.fetch("customer").where().eq("service_price_accepted", true).eq("serviceNeeded", true).ne("status", "BACK_TO_CUSTOMER").isNotNull("managedBy").ne("service_status", 100).orderBy("id desc").findList();
+    }
+    
     public static List<CustomerWatch> findAllUnderOurResponsabilityOrderedByID() {
         return find.fetch("customer").where().ne("status", "BACK_TO_CUSTOMER").orderBy("id desc").findList();
     }

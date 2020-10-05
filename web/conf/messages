@@ -2666,6 +2666,9 @@ admin.customer.watch.form.placeholder.pictures.url=http://www.dropbox.com/link
 admin.customer.watch.form.label.partner=Partenaire
 admin.customer.watch.form.value.partner.default=Sélectionner le partenaire
 
+admin.customer.watch.form.label.watchmaker=Horloger responsable
+admin.customer.watch.form.value.watchmaker.default=Choisir l''horloger responsable
+
 admin.customer.watch.form.label.b2b.id=Identifiant chez le client
 admin.customer.watch.form.placeholder.b2b.id=
 admin.customer.watch.form.label.partner.to.infos=Infos vers le partenaire
@@ -3258,6 +3261,7 @@ admin.index.watches.head.id=ID
 admin.index.watches.head.name=Client
 admin.index.watches.head.brand=Marque
 admin.index.watches.head.model=Modèle
+admin.index.watches.head.watchmaker=Horloger
 admin.index.watches.head.last.communication.date=Date de changement de statut
 admin.index.watches.head.status=Statut
 admin.index.watches.head.actions=Actions

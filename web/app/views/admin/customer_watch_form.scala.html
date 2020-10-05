@@ -1,4 +1,4 @@
-@(watch: Form[models.CustomerWatch], isANewWatch: Boolean, customers: List[models.Customer], partners: List[models.Partner])
+@(watch: Form[models.CustomerWatch], isANewWatch: Boolean, customers: List[models.Customer], partners: List[models.Partner], watchmakers: List[models.User])
 @import tags._
 @import helper._
 @implicitField = @{ FieldConstructor(myBootstrapFieldConstructor.f) }
@@ -65,6 +65,12 @@
                          for (s <- partners) yield s.id.toString -> (s.name),
                          '_default -> Messages("admin.customer.watch.form.value.partner.default"),
                          'placeholder -> Messages("admin.customer.watch.form.placeholder.partner"), '_label -> Messages("admin.customer.watch.form.label.partner"),
+                         'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
+
+               	@helper.select(watch("managedBy.id"),
+                         for (s <- watchmakers) yield s.id.toString -> (s.firstname),
+                         '_default -> Messages("admin.customer.watch.form.value.watchmaker.default"),
+                         'placeholder -> Messages("admin.customer.watch.form.placeholder.watchmaker"), '_label -> Messages("admin.customer.watch.form.label.watchmaker"),
                          'class -> "form-control", '_class -> "form-group", '_label_class -> "col-sm-3 control-label", '_body_class -> "col-sm-9", '_showConstraints -> false)
 
 				@simple_admin_textarea(watch("partnerToInfos"), "admin.customer.watch.form.VARIABLE.partner.to.infos")

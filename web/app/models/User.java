@@ -128,6 +128,10 @@ public class User extends Model implements CrudReady<User, User> {
         return find.where().contains("email", "_quick").findList();
     }
     
+    public static List<User> findAllWatchmakers() {
+    	return find.where().eq("role", Role.COLLABORATOR).not(Expr.contains("email", "_quick")).findList();
+    }
+    
     public static String authenticate(String email, String password) {
     	if (isPasswordMatching(email, password))
     		return email;
