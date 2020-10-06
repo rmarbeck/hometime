@@ -93,6 +93,9 @@
 	      		<td colspan="5"><a href="@routes.Admin.currentWatches()">@Html(Messages("admin.index.watches"))</a></td>
 	      	</tr>
 	      	<tr>
+	      		<td colspan="5"><a href="@routes.Admin.currentToTestWatches()">@Html(Messages("admin.index.watches.to.test"))</a></td>
+	      	</tr>
+	      	<tr>
 	      		<td colspan="5"><a href="@routes.Admin.prioritizedWatches()">@Html(Messages("admin.index.prioritized.watches"))</a></td>
 	      	</tr>
 	      	@for(watch <- watches; statusClass = watch.getWatchStatusClass) {

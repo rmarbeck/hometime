@@ -295,6 +295,10 @@ public class Admin extends Controller {
 		return ok(customer_watches_listing.render("", CustomerWatch.findAllUnderOurResponsabilityOrderedByID()));
     }
 	
+	public static Result currentToTestWatches() {
+		return ok(customer_watches_listing.render("", CustomerWatch.findAllToTestOrderedByID()));
+    }
+	
 	public static Result prioritizedWatches() {
 		return ok(customer_watches_prioritization.render("", CustomerWatch.findAllUnderOurResponsabilityOrderedByPriority()));
     }

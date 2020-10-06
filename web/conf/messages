@@ -3233,6 +3233,7 @@ admin.index.order.requests.head.managed.by=Géré par
 
 admin.index.order.requests.number.waiting=Et {0} marqués en attente de retour client
 admin.index.watches=Gérer les actions sur les montres en cours
+admin.index.watches.to.test=Gérer les actions sur les montres à tester
 admin.index.prioritized.watches=Priorités
 
 admin.index.buy.requests.active=Demandes de recherche ouvertes
