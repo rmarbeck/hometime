@@ -1,0 +1,37 @@
+@(thisInstance: Form[models.AppointmentRequest], isItNew: Boolean)
+
+@import tags._
+@import fr.hometime.utils._
+
+@actionlink() = @{
+	routes.CrudHelper.manage("AppointmentRequests")
+}
+
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('button[value="show"]').hide();
+		})
+	</script>
+}
+
+@before_form = {}
+
+
+@after_form = {
+
+}
+
+@defining(new views.FormDisplay(thisInstance, "appointment.request", "admin.appointment.request.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("appointmentAsString", true, AppointmentOptionHelper.getAvailableAppointmentOptions().map(_.id), AppointmentOptionHelper.getAvailableAppointmentOptions().map(_.datetimeWithAvailability));
+		   formDisplay.addFormFieldForSelect("reason", models.AppointmentRequest.Reason.values.toList);
+		   formDisplay.addFormField("customerDetails", true, "input");
+		   formDisplay.addFormField("customerPhoneNumber", true, "input");
+		   formDisplay.addFormField("customerRemark", true, "textarea");
+		   formDisplay.addFormField("privateRemark", true, "textarea");
+		}
+	
+	
+	@admin.template.form(formDisplay, isItNew, actionlink, end_scripts, before_form, after_form)
+}

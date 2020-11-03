@@ -1,0 +1,15 @@
+@(currentPage: com.avaje.ebean.Page[models.AppointmentRequest], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@defining(new views.PageDisplay(currentPage, "uniqueKey", "admin.appointment.request.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("id", "id", "getId", false);
+		pageDisplay.addTableField("uniqueKey", "uniqueKey", "getUniqueKey", false);
+		pageDisplay.addTableField("status", "status", "getStatus", false);
+		pageDisplay.addTableField("appointmentAsString", "appointmentAsString", "getAppointmentAsString", false);
+		pageDisplay.addTableField("customerDetails", "customerDetails", "getCustomerDetails", false);
+		pageDisplay.addTableField("customerPhoneNumber", "customerPhoneNumber", "getCustomerPhoneNumber", false);
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "AppointmentRequests", null, currentSortBy, currentOrder, currentFilter, currentSize)
+}

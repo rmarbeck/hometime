@@ -116,4 +116,16 @@ public class DateHelper {
 	public static Date getFirstDate(Date date1, Date date2) {
 		return firstDate(date1, date2).orElse(null);
 	}
+	
+	public static LocalDateTime convertToLocalDate(Date dateToConvert) {
+	    return dateToConvert.toInstant()
+	      .atZone(ZoneId.systemDefault())
+	      .toLocalDateTime();
+	}
+	
+	public static Date convertToDate(LocalDateTime dateToConvert) {
+	    return java.util.Date
+	      .from(dateToConvert.atZone(ZoneId.systemDefault())
+	      .toInstant());
+	}
 }

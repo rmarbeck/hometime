@@ -77,10 +77,11 @@ POST    /new-call-back-request-from-outside		controllers.Application.manageCallR
 POST    /new-buy-request-from-outside		    controllers.Application.manageBuyRequestFromFriendlyLocation()
 POST    /new-service-test-from-outside		    controllers.Application.manageServiceTestRequestFromFriendlyLocation()
 POST    /new-accept-quotation-from-outside		controllers.Application.manageAcceptQuotationRequestFromFriendlyLocation()
+
+POST    /new-appointment-from-outside 			controllers.Application.manageAppointmentRequestFromFriendlyLocation()
+
 GET     /check-authentication					controllers.Application.checkAuthenticationFromFriendlyLocation(id1: Long, id2: Long, id3: Long)
 GET     /prepare-payment-from-outside			controllers.PaymentRequestsFreeOfLogin.displayFormFromFriendlyLocation(ak: String)
-
-
 
 # Order
 GET     /changement-de-pile/etancheite         controllers.Application.quartz(brand = null)
@@ -169,6 +170,11 @@ GET     /paiement/:ak               					controllers.PaymentRequestsFreeOfLogin.
 
 # Check authentication
 GET		/verification/certificat						controllers.Application.checkAuthentication(id1: Long, id2: Long, id3: Long)
+
+# Appointment
+GET	    /a/v/:uniqueKey               					controllers.Application.validateAppointment(uniqueKey: String)
+GET	    /a/c/:uniqueKey               					controllers.Application.cancelAppointment(uniqueKey: String)
+
 
 # Offer
 GET     /notify			     							controllers.Application.newIncomingCall(secret: String, phonenumber: String, missed: Boolean ?= false)

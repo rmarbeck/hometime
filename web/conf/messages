@@ -2113,6 +2113,8 @@ admin.navbar.link.text.payment=Paiement
 admin.navbar.link.text.watches=Montres
 admin.navbar.link.text.mail.templates=Templates de mails
 
+admin.navbar.link.text.appointment.requests=Rendez-vous
+
 admin.navbar.link.text.analytics=Compta
 admin.navbar.link.text.analytics.codes=(param) Codes Analytiques
 admin.navbar.link.text.analytics.presets=(param) Méta-Codes
@@ -3778,6 +3780,43 @@ admin.watchtosell.page.brand=Marque
 admin.watchtosell.page.additionnalmodelinfos=Infos sur le modèle
 admin.watchtosell.page.status=Statut
 
+
+
+admin.appointment.request.form=Nouveau rendez-vous
+admin.appointment.request.form.title=Nouvelle prise de rendez-vous
+admin.appointment.request.form.uniquekey.label.name=Clef
+admin.appointment.request.form.uniquekey.placeholder.name=
+admin.appointment.request.form.appointmentasstring.label.name=Créneau
+admin.appointment.request.form.appointmentasstring.default.name=Choisir un créneau
+admin.appointment.request.form.customerdetails.label.name=Nom et prénom du client
+admin.appointment.request.form.customerdetails.placeholder.name=
+admin.appointment.request.form.customerphonenumber.label.name=Numéro de téléphone
+admin.appointment.request.form.customerphonenumber.placeholder.name=
+admin.appointment.request.form.customerremark.label.name=Remarque client
+admin.appointment.request.form.customerremark.placeholder.name=
+admin.appointment.request.form.privateremark.label.name=Remarque interne
+admin.appointment.request.form.privateremark.placeholder.name=
+admin.appointment.request.form.reason.label.name=Motif
+admin.appointment.request.form.reason.default.name=Choisir le motif
+
+admin.appointment.request.action.cancel=Annuler
+admin.appointment.request.action.save=Enregistrer
+admin.appointment.request.action.edit=Modifier
+admin.appointment.request.action.delete=Supprimer
+
+
+admin.appointment.request.page=Gestion des demandes de rendez-vous
+admin.appointment.request.page.title=Gestion des demandes de rendez-vous
+admin.appointment.request.page.id=#
+admin.appointment.request.page.uniquekey=Clef unique
+admin.appointment.request.page.status=Statut
+admin.appointment.request.page.appointmentasstring=Créneau
+admin.appointment.request.page.customerdetails=Client
+admin.appointment.request.page.customerphonenumber=Numéro
+
+admin.appointment.request.phonenumber.invalid=Numéro de téléphone incorrect
+
+
 admin.externaldocument.form=Facture externe
 admin.externaldocument.form.title=Facture externe
 admin.externaldocument.form.name.label.name=Nom
@@ -5393,6 +5432,12 @@ admin.news.category.action.cancel=Annuler
 
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751
+
+
+sms.appointment.to.validate=Validez votre rendez-vous en cliquant ici : {0}
+sms.appointment.just.validated=Votre rendez-vous est confirmé pour {0}
+sms.appointment.just.canceled=Votre rendez-vous est bien annulé
+
 
 check.certificate.html.title=Vérification de certificat
 check.certificate.header=Vérification de certificat

@@ -5,6 +5,7 @@ import static fr.hometime.utils.SecurityHelper.doesFieldContainSPAM;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -15,12 +16,15 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import fr.hometime.utils.ActionHelper;
+import fr.hometime.utils.AppointmentRequestHelper;
 import fr.hometime.utils.GoogleAnalyticsHelper;
 import fr.hometime.utils.ListHelper;
 import fr.hometime.utils.LiveConfigHelper;
+import fr.hometime.utils.PhoneNumberHelper;
 import fr.hometime.utils.RandomHelper;
 import fr.hometime.utils.SecurityHelper;
 import fr.hometime.utils.ServiceTestHelper;
+import models.AppointmentRequest;
 import models.Authentication;
 import models.AutoOrder;
 import models.Brand;
@@ -34,6 +38,7 @@ import models.ServiceTest;
 import models.UsefullLink;
 import models.User;
 import models.Watch;
+import models.AppointmentRequestData.Reason;
 import play.Logger;
 import play.data.Form;
 import play.data.format.Formats;
@@ -89,6 +94,54 @@ public class Application extends Controller {
 	        	return "Invalid user or password";
 	        }
 	        return null;
+	    }
+	}
+	
+	public static class AppointmentKeyForm {
+		@Constraints.Required
+	    public String uniqueKey;
+	}
+	
+	public static class AppointmentRequestForm {
+		@Constraints.Required
+		public String datetimeAsString;
+		
+		@Constraints.Required
+		public String reason;
+		
+		@Constraints.Required
+		public String customerName;
+		
+		@Constraints.Required
+		public String phoneNumber;
+
+		@Constraints.MaxLength(10000)
+		public String optionnalMessage;
+		
+		@Constraints.MaxLength(10000)
+		public String privateRemark;
+
+	    public List<ValidationError> validate() {
+	    	List<ValidationError> errors = new ArrayList<ValidationError>();
+	        if (!PhoneNumberHelper.isItAFrenchMobilePhoneNumber(phoneNumber)) {
+	       		errors.add(new ValidationError("phoneNumber", Messages.get("admin.appointment.request.phonenumber.invalid")));
+	        }
+	        return errors.isEmpty() ? null : errors;
+	    }
+	    
+	    public AppointmentRequestForm() {
+	    	super();
+	    }
+	    
+	    public AppointmentRequest getRequest() {
+	    	AppointmentRequest newRequest = new AppointmentRequest();
+	    	newRequest.appointmentAsString = datetimeAsString;
+	    	newRequest.reason = models.AppointmentRequest.Reason.fromString(reason);
+	    	newRequest.customerDetails = customerName;
+	    	newRequest.customerPhoneNumber = phoneNumber;
+	    	newRequest.customerRemark = optionnalMessage;
+	    	newRequest.privateRemark = privateRemark;
+	    	return newRequest;
 	    }
 	}
 	
@@ -381,8 +434,7 @@ public class Application extends Controller {
 	    	content.append("]");
 	    	return content.toString();
 	    }
-	}
-	
+	}	
 
     public static Result index() {
         return ok(index.render("", getSupportedBrands(), "", getOneEmphasizableFeedbackRandomly()));
@@ -876,6 +928,100 @@ public class Application extends Controller {
 	private static void manageAcceptQuotationForm(Form<AcceptForm> acceptForm) {
 		ActionHelper.asyncTryToNotifyTeamByEmail("Devis accepté", acceptForm.toString());
 	}
+	
+	
+	public static Result manageAppointmentRequestFromFriendlyLocation() {
+		return doIfComesFromFriendlyLocation(() -> {
+		Form<AppointmentRequestForm> appointmentForm = Form.form(AppointmentRequestForm.class).bindFromRequest();
+			if(appointmentForm.hasErrors()) {
+				return badRequest();
+			} else {
+				AppointmentRequest newRequest = appointmentForm.get().getRequest();
+				newRequest.save();
+				SMS.sendSMS(newRequest.customerPhoneNumber, Messages.get("sms.appointment.to.validate", newRequest.appointmentAsString));
+				return ok(getAppointmentAsJsonNode(newRequest));
+			}
+		});
+	}
+	
+	public static Result validateAppointment(String uniqueKey) {
+		return manageAppointment(uniqueKey, Application::validateAppointmentAndSendSMS);
+	}
+	
+	public static Result cancelAppointment(String uniqueKey) {
+		return manageAppointment(uniqueKey, Application::cancelAppointmentAndSendSMS);
+	}
+	
+	public static Result validateAppointmentFromFriendlyLocation() {
+		return doIfComesFromFriendlyLocation(() -> {
+			Form<AppointmentKeyForm> appointmentForm = Form.form(AppointmentKeyForm.class).bindFromRequest();
+				if(appointmentForm.hasErrors()) {
+					return badRequest();
+				} else {
+					return manageAppointment(appointmentForm.get().uniqueKey, Application::validateAppointmentAndSendSMS);
+				}
+			});
+	}
+	
+	public static Result cancelAppointmentFromFriendlyLocation() {
+		return doIfComesFromFriendlyLocation(() -> {
+			Form<AppointmentKeyForm> appointmentForm = Form.form(AppointmentKeyForm.class).bindFromRequest();
+				if(appointmentForm.hasErrors()) {
+					return badRequest();
+				} else {
+					return manageAppointment(appointmentForm.get().uniqueKey, Application::cancelAppointmentAndSendSMS);
+				}
+			});
+	}
+	
+	private static Optional<ObjectNode> validateAppointmentAndSendSMS(String uniqueKey) {
+		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.validate(uniqueKey);
+		if (appointment.isPresent() && appointment.get().isValid()) {
+			SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.validated", appointment.get().appointmentAsString));
+			return Optional.of(getAppointmentAsJsonNode(appointment.get()));
+		}
+		return Optional.empty();
+	}
+	
+	private static Optional<ObjectNode> cancelAppointmentAndSendSMS(String uniqueKey) {
+		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.cancel(uniqueKey);
+		if (appointment.isPresent() && appointment.get().isCanceled()) {
+			SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.canceled"));
+			return Optional.of(getAppointmentAsJsonNode(appointment.get()));
+		}
+		return Optional.empty();
+	}
+	
+	private static Result manageAppointment(String uniqueKey, Function<String, Optional<ObjectNode>> toDo) {
+		Optional<ObjectNode> result = toDo.apply(uniqueKey);
+		if (result.isPresent())
+			return ok(result.get());
+		return badRequest();
+	}
+	
+	private static ObjectNode getAppointmentAsJsonNode(AppointmentRequest appointment) {
+		ObjectNode resultAsJson = Json.newObject();
+		resultAsJson.put("appointment", appointment.appointmentAsString);
+		resultAsJson.put("customerDetails", appointment.customerDetails);
+		resultAsJson.put("customerPhoneNumber", appointment.customerPhoneNumber);
+		resultAsJson.put("uniqueKey", appointment.uniqueKey);
+		return resultAsJson;
+	}
+	
+	/*
+	
+	private static void manageAppointmentForm(AppointmentRequestForm appointmentForm) {
+		
+	}
+
+	private static boolean validateAppointmentForm(String appointmentKey) {
+		
+	}
+
+	private static boolean cancelAppointmentForm(String appointmentKey) {
+	
+	}
+	*/
 		
 	
 	
