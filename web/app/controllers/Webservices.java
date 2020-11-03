@@ -4,6 +4,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.Logger;
 import play.libs.Json;
+import fr.hometime.utils.AppointmentOptionHelper;
 import fr.hometime.utils.LiveConfigHelper;
 import fr.hometime.utils.StringHelper;
 
@@ -35,6 +36,14 @@ public class Webservices extends Controller {
 	
 	public static Result getNews() {
 		return sendIfAuthorized(Json.toJson(NewsAdapter.findAll()));
+	}
+	
+	public static Result getAppointmentOptions() {
+		return sendIfAuthorized(Json.toJson(AppointmentOptionHelper.getAvailableAppointmentOptions()));
+	}
+	
+	public static Result getAppointmentOptionsFree() {
+		return ok(Json.toJson(AppointmentOptionHelper.getAvailableAppointmentOptions()));
 	}
 	
 	private static Result sendIfAuthorized(JsonNode result) {
