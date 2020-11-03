@@ -261,5 +261,13 @@ public class AppointmentRequest extends Model implements CrudReady<AppointmentRe
         }
         return errors.isEmpty() ? null : errors;
     }
+    
+	public String getNiceDisplayableDatetime() {
+		try {
+			return LocalDateTime.parse(appointmentAsString, AppointmentOption.DATE_FORMATTER).format(AppointmentOption.DATE_FORMATTER_TO_DISPLAY);
+		} catch(RuntimeException re) {
+			return appointmentAsString;
+		}
+	}
 }
 

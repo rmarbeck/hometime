@@ -976,21 +976,35 @@ public class Application extends Controller {
 	}
 	
 	private static Optional<ObjectNode> validateAppointmentAndSendSMS(String uniqueKey) {
+		boolean alreadyValid = isItValid(uniqueKey);
 		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.validate(uniqueKey);
 		if (appointment.isPresent() && appointment.get().isValid()) {
-			SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.validated", appointment.get().appointmentAsString));
+			if (!alreadyValid)
+				SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.validated", appointment.get().getNiceDisplayableDatetime()));
 			return Optional.of(getAppointmentAsJsonNode(appointment.get()));
 		}
 		return Optional.empty();
 	}
 	
+	private static boolean isItValid(String uniqueKey) {
+		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.findByKey(uniqueKey);
+		return appointment.isPresent() && appointment.get().isValid();
+	}
+	
 	private static Optional<ObjectNode> cancelAppointmentAndSendSMS(String uniqueKey) {
+		boolean alreadyCanceled = isItCanceled(uniqueKey);
 		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.cancel(uniqueKey);
 		if (appointment.isPresent() && appointment.get().isCanceled()) {
+			if (!alreadyCanceled)
 			SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.canceled"));
 			return Optional.of(getAppointmentAsJsonNode(appointment.get()));
 		}
 		return Optional.empty();
+	}
+	
+	private static boolean isItCanceled(String uniqueKey) {
+		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.findByKey(uniqueKey);
+		return appointment.isPresent() && appointment.get().isCanceled();
 	}
 	
 	private static Result manageAppointment(String uniqueKey, Function<String, Optional<ObjectNode>> toDo) {
