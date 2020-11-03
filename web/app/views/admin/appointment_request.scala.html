@@ -1,0 +1,24 @@
+@(instance: models.AppointmentRequest)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("AppointmentRequests", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("AppointmentRequests")
+}
+
+@end_body = {
+
+}
+
+@defining(new views.ModelDisplay(instance, "admin.appointment.request")) { modelDisplay =>
+		@{ 	modelDisplay.addField("id");
+			modelDisplay.addField("uniqueKey");
+			modelDisplay.addField("appointment");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+
+}

@@ -74,6 +74,25 @@ create table analytic_code (
   constraint pk_analytic_code primary key (id))
 ;
 
+create table appointment_request (
+  id                        bigint not null,
+  unique_key                varchar(255),
+  creation_date             timestamp,
+  last_action_date          timestamp,
+  end_of_option_date        timestamp,
+  appointment_as_date       timestamp,
+  appointment_as_string     varchar(255),
+  customer_details          varchar(255),
+  customer_phone_number     varchar(255),
+  customer_remark           varchar(10000),
+  private_remark            varchar(10000),
+  appointment_status        varchar(18),
+  appointment_reason        varchar(7),
+  constraint ck_appointment_request_appointment_status check (appointment_status in ('WAITING_VALIDATION','VALIDATED','CANCELED','EXPIRED','NO_MORE_AVAILABLE','IN_ERROR')),
+  constraint ck_appointment_request_appointment_reason check (appointment_reason in ('DEPOSIT','PICKUP')),
+  constraint pk_appointment_request primary key (id))
+;
+
 create table authentication (
   id                        bigint not null,
   creation_date             timestamp,
@@ -809,6 +828,8 @@ create sequence accounting_preset_item_table_seq;
 
 create sequence analytic_code_seq;
 
+create sequence appointment_request_seq;
+
 create sequence authentication_seq;
 
 create sequence auto_order_seq;
@@ -988,6 +1009,8 @@ drop table if exists accounting_preset_item_table;
 
 drop table if exists analytic_code;
 
+drop table if exists appointment_request;
+
 drop table if exists authentication;
 
 drop table if exists auto_order;
@@ -1079,6 +1102,8 @@ drop sequence if exists accounting_line_analytic_preset_seq;
 drop sequence if exists accounting_preset_item_table_seq;
 
 drop sequence if exists analytic_code_seq;
+
+drop sequence if exists appointment_request_seq;
 
 drop sequence if exists authentication_seq;
 
