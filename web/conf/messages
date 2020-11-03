@@ -5434,7 +5434,7 @@ admin.news.category.action.cancel=Annuler
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751
 
 
-sms.appointment.to.validate=Validez votre rendez-vous en cliquant ici : {0}
+sms.appointment.to.validate=Validez votre rendez-vous en cliquant ici : {0}{1}
 sms.appointment.just.validated=Votre rendez-vous est confirmé pour {0}
 sms.appointment.just.canceled=Votre rendez-vous est bien annulé
 

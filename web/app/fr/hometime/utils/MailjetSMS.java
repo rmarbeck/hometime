@@ -99,7 +99,7 @@ public class MailjetSMS {
 	private static String getBody(String sender, String phoneNumber, String message) {
 		HashMap<String, String> values = new HashMap<String, String>();
 		values.put(MAILJET_SMS_FROM_KEY, sender);
-		values.put(MAILJET_SMS_TO_KEY, phoneNumber);
+		values.put(MAILJET_SMS_TO_KEY, PhoneNumberHelper.getFrenchPhoneNumberInInternationalFormat(phoneNumber));
 		values.put(MAILJET_SMS_TEXT_KEY, message);
 		return getBodyPayLoad(values);
 	}

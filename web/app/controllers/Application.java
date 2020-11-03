@@ -60,6 +60,8 @@ import views.html.mails.notify_contact;
 
 @With(SessionWatcher.class)
 public class Application extends Controller {
+	private static String FRONT_END_URL = "https://www.hometime.fr";
+	private static String APPOINTMENT_VALIDATION_URL = "/a/v/";
 
 	public static class LoginForm {
 		@Constraints.Email
@@ -937,7 +939,7 @@ public class Application extends Controller {
 			} else {
 				AppointmentRequest newRequest = appointmentForm.get().getRequest();
 				newRequest.save();
-				SMS.sendSMS(newRequest.customerPhoneNumber, Messages.get("sms.appointment.to.validate", newRequest.appointmentAsString));
+				SMS.sendSMS(newRequest.customerPhoneNumber, Messages.get("sms.appointment.to.validate", FRONT_END_URL+APPOINTMENT_VALIDATION_URL, newRequest.uniqueKey));
 				return ok(getAppointmentAsJsonNode(newRequest));
 			}
 		});
