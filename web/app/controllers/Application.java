@@ -38,7 +38,6 @@ import models.ServiceTest;
 import models.UsefullLink;
 import models.User;
 import models.Watch;
-import models.AppointmentRequestData.Reason;
 import play.Logger;
 import play.data.Form;
 import play.data.format.Formats;
