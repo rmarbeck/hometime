@@ -18,8 +18,8 @@
 	      	@for(request <- appointments) {
 	      	<tr class="">
 	      		<td>@request.getNiceDisplayableDatetime</td>
-	      		<td>@request.getCustomerDetails</td>
-	      		<td>@request.getStatus</td>
+	      		<td>@request.customerDetails</td>
+	      		<td>@request.status</td>
 	      	</tr>
 	      	}
 		  </tbody>

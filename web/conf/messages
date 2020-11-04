@@ -3233,6 +3233,8 @@ admin.index.order.requests.head.details=Détails
 admin.index.order.requests.head.actions=Actions
 admin.index.order.requests.head.managed.by=Géré par
 
+admin.index.appointment.requests.active=Rendez-vous ouverts
+admin.index.appointment.requests.active.none=Aucun rendez-vous
 admin.index.appointment.requests.appointment=Créneau
 admin.index.appointment.requests.customer=Client
 admin.index.appointment.requests.status=Statut
