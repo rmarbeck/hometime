@@ -21,6 +21,8 @@ public class AppointmentOption {
 	
 	public boolean available;
 	
+	public String datetimeAsStringNiceToDisplay;
+	
 	public AppointmentOption() {
 		this(LocalDateTime.now(), true);
 	}
@@ -53,6 +55,10 @@ public class AppointmentOption {
 	
 	public String getDatetimeAsString() {
 		return formatDatetime(datetime);
+	}
+	
+	public String getDatetimeAsStringNiceToDisplay() {
+		return datetime.format(DATE_FORMATTER_TO_DISPLAY);
 	}
 	
 	public String datetimeWithAvailability() {

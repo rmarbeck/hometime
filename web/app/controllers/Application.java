@@ -1020,6 +1020,9 @@ public class Application extends Controller {
 		resultAsJson.put("customerDetails", appointment.customerDetails);
 		resultAsJson.put("customerPhoneNumber", appointment.customerPhoneNumber);
 		resultAsJson.put("uniqueKey", appointment.uniqueKey);
+		resultAsJson.put("status", appointment.status.name());
+		resultAsJson.put("reason", appointment.reason.name());
+		resultAsJson.put("appointmentNiceToDisplay", appointment.getNiceDisplayableDatetime());
 		return resultAsJson;
 	}
 	
