@@ -1,0 +1,19 @@
+@(currentPage: com.avaje.ebean.Page[models.QuickServiceWatch], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@optionallink(id:Long) = {
+    @routes.QuickServiceWatches.saveWatchAndCustomer(id)
+}
+
+
+@defining(new views.PageDisplay(currentPage, "brand", "admin.quick.service.watch.page")) { pageDisplay =>
+	@{  pageDisplay.addTableField("brand", "brand", "getBrand", false);
+		pageDisplay.addTableField("model", "model", "getModel", false);
+		pageDisplay.addTableField("customerName", "customerName", "getCustomerName", false);
+		pageDisplay.addTableField("toDo", "toDo", "getToDo", false);
+		pageDisplay.addTableField("customerPhoneNumber", "customerPhoneNumber", "getCustomerPhoneNumber", false, "msisdn");
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "QuickServiceWatches", optionallink, currentSortBy, currentOrder, currentFilter, currentSize, true, false)
+}

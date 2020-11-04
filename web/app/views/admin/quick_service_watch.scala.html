@@ -1,0 +1,36 @@
+@(instance: models.QuickServiceWatch)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("QuickServiceWatches", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("QuickServiceWatches")
+}
+
+@end_body = {
+
+}
+
+@defining(new views.ModelDisplay(instance, "admin.quick.service.watch")) { modelDisplay =>
+		@{ 	modelDisplay.addField("brand");
+			modelDisplay.addField("model");
+			modelDisplay.addField("reference");
+			modelDisplay.addField("serial");
+			modelDisplay.addField("remarks");
+			modelDisplay.addField("toDo");
+			
+			modelDisplay.addField("customerFirstName");
+			modelDisplay.addField("customerName");
+			
+			modelDisplay.addField("customerPhoneNumber");
+			modelDisplay.addField("customerEmail");
+			modelDisplay.addField("customerAddress");
+			modelDisplay.addField("customerInfo");
+			modelDisplay.addField("privateInfos");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+
+}

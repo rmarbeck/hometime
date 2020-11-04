@@ -27,6 +27,10 @@
 		    @display_date(views.Helper.parseDateInMillis(to_render)), "dd/MM/yyyy HH:mm")
 		  }
 		  
+		  case "msisdn" => {
+		    @display_phonenumber(to_render, false)
+		  }
+		  
 		  case "i18n" => {
 		    @Messages(to_render.toLowerCase.replace("_","."))
 		  }

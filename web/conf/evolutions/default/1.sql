@@ -629,6 +629,25 @@ create table price (
   constraint pk_price primary key (id))
 ;
 
+create table quick_service_watch (
+  id                        bigint not null,
+  customer_phone_number     varchar(255),
+  customer_name             varchar(255),
+  customer_first_name       varchar(255),
+  customer_email            varchar(255),
+  customer_address          varchar(255),
+  customer_info             varchar(255),
+  brand                     varchar(255),
+  model                     varchar(255),
+  reference                 varchar(255),
+  serial                    varchar(255),
+  to_do                     varchar(255),
+  remarks                   varchar(255),
+  private_infos             varchar(255),
+  creation_date             timestamp,
+  constraint pk_quick_service_watch primary key (id))
+;
+
 create table sms (
   id                        bigint not null,
   phone_number              varchar(255),
@@ -888,6 +907,8 @@ create sequence preset_quotation_for_brand_seq;
 
 create sequence price_seq;
 
+create sequence quick_service_watch_seq;
+
 create sequence sms_seq;
 
 create sequence selling_document_seq;
@@ -1071,6 +1092,8 @@ drop table if exists preset_quotation_for_brand;
 
 drop table if exists price;
 
+drop table if exists quick_service_watch;
+
 drop table if exists sms;
 
 drop table if exists selling_document;
@@ -1162,6 +1185,8 @@ drop sequence if exists post_service_certificate_seq;
 drop sequence if exists preset_quotation_for_brand_seq;
 
 drop sequence if exists price_seq;
+
+drop sequence if exists quick_service_watch_seq;
 
 drop sequence if exists sms_seq;
 

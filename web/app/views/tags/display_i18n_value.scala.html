@@ -1,0 +1,2 @@
+@(value: String, prefix: String)
+@Option(Messages(prefix+"."+value.toString.toLowerCase.replace('_','.'))).filter(!_.contains(".")).getOrElse(value)

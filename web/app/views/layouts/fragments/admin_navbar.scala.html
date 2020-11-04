@@ -68,6 +68,9 @@
                 @li_activable(30, index, args = 'class -> "dropdown") {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.customers")) <b class="caret"></b></a>
                   <ul class="dropdown-menu">
+                  	@li_activable(31, index) {<a href="@routes.CrudHelper.displayAll("QuickServiceWatches")">@Messages("admin.navbar.link.text.quick.service.watches")</a>}
+                	@li_activable(32, index) {<a href="@routes.CrudHelper.create("QuickServiceWatches")">@Messages("admin.navbar.link.text.quick.service.new.watch")</a>}
+                	<li class="divider hidden-xs"></li>
                     @li_activable(34, index) {<a href="@routes.CrudHelper.displayAll("SimplifiedCustomers")">@Messages("admin.navbar.link.text.simplified.customers")</a>}
                 	@li_activable(36, index) {<a href="@routes.SimplifiedCustomers.pageOfSpecialCustomers()">@Messages("admin.navbar.link.text.simplified.customers.big")</a>}
                 	<li class="divider hidden-xs"></li>
@@ -83,7 +86,10 @@
                   <ul class="dropdown-menu">
                     @li_activable(31, index) {<a href="@routes.Customer.displayAll()">@Messages("admin.navbar.link.text.customers")</a>}
                 	@li_activable(32, index) {<a href="@routes.CrudHelper.displayAll("SimplifiedCustomers")">@Messages("admin.navbar.link.text.simplified.customers.for.admin")</a>}
-                	@li_activable(32, index) {<a href="@routes.SimplifiedCustomers.pageOfSpecialCustomers()">@Messages("admin.navbar.link.text.simplified.customers.for.admin.big")</a>}
+                	@li_activable(33, index) {<a href="@routes.SimplifiedCustomers.pageOfSpecialCustomers()">@Messages("admin.navbar.link.text.simplified.customers.for.admin.big")</a>}
+                	<li class="divider hidden-xs"></li>
+                	@li_activable(34, index) {<a href="@routes.CrudHelper.displayAll("QuickServiceWatches")">@Messages("admin.navbar.link.text.quick.service.watches")</a>}
+                	@li_activable(35, index) {<a href="@routes.CrudHelper.create("QuickServiceWatches")">@Messages("admin.navbar.link.text.quick.service.new.watch")</a>}
                 	<li class="divider hidden-xs"></li>
                 	@li_activable(36, index) {<a href="@routes.SimplifiedCustomers.createNewCustomerByCustomer()">@Messages("admin.navbar.link.text.simplified.customers.by.customer")</a>}
                   </ul>

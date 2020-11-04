@@ -2113,6 +2113,9 @@ admin.navbar.link.text.payment=Paiement
 admin.navbar.link.text.watches=Montres
 admin.navbar.link.text.mail.templates=Templates de mails
 
+admin.navbar.link.text.quick.service.watches=Montres rapides
+admin.navbar.link.text.quick.service.new.watch=Nouvelle montre rapide
+
 admin.navbar.link.text.appointment.requests=Rendez-vous
 
 admin.navbar.link.text.analytics=Compta
@@ -5436,6 +5439,12 @@ admin.news.category.action.save=Enregistrer
 admin.news.category.action.edit=Enregistrer
 admin.news.category.action.cancel=Annuler
 
+admin.appointment.status.value.validated=Confirmé
+admin.appointment.status.value.waiting.validation=En attente de validation
+admin.appointment.status.value.canceled=Annulé
+admin.appointment.status.value.expired=Expirée
+admin.appointment.status.value.no.more.available=Plus disponible
+admin.appointment.status.value.in.erreur=Erreur
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751
 
@@ -5457,6 +5466,64 @@ check.certificate.watch=Montre : <b>{0} - {1}</b>
 check.certificate.ref=Numéros : <b>{0} - {1}</b>
 check.certificate.date=Date du certificat : <b>{0, date,d MMMM yyyy}</b>
 
+admin.quick.service.watch.form=Montre pour un service rapide
+admin.quick.service.watch.form.title=Montre pour un service rapide
+admin.quick.service.watch.form.brand.label.name=Marque *
+admin.quick.service.watch.form.brand.placeholder.name=
+admin.quick.service.watch.form.customerphonenumber.label.name=Numéro de téléphone *
+admin.quick.service.watch.form.customerphonenumber.placeholder.name=06....
+admin.quick.service.watch.form.customerfirstname.label.name=Prénom du client **
+admin.quick.service.watch.form.customerfirstname.placeholder.name=
+admin.quick.service.watch.form.customername.label.name=Nom du client **
+admin.quick.service.watch.form.customername.placeholder.name=
+admin.quick.service.watch.form.todo.label.name=A faire
+admin.quick.service.watch.form.todo.placeholder.name=
+admin.quick.service.watch.form.customeremail.label.name=Email **
+admin.quick.service.watch.form.customeremail.placeholder.name=
+admin.quick.service.watch.form.model.label.name=Modèle **
+admin.quick.service.watch.form.model.placeholder.name=
+admin.quick.service.watch.form.reference.label.name=Référence
+admin.quick.service.watch.form.reference.placeholder.name=
+admin.quick.service.watch.form.serial.label.name=Numéro de série
+admin.quick.service.watch.form.serial.placeholder.name=
+admin.quick.service.watch.form.remarks.label.name=Remarques
+admin.quick.service.watch.form.remarks.placeholder.name=
+admin.quick.service.watch.form.customeraddress.label.name=Adresse client **
+admin.quick.service.watch.form.customeraddress.placeholder.name=
+admin.quick.service.watch.form.customerinfo.label.name=Informations client
+admin.quick.service.watch.form.customerinfo.placeholder.name=
+admin.quick.service.watch.form.privateinfos.label.name=Informations internes
+admin.quick.service.watch.form.privateinfos.placeholder.name=
+
+admin.quick.service.watch.action.save=Enregistrer
+admin.quick.service.watch.action.cancel=Annuler
+admin.quick.service.watch.action.delete=Supprimer
+admin.quick.service.watch.action.edit=Modifier
+ 
+admin.quick.service.watch.page=Montres avec un service rapide
+admin.quick.service.watch.page.title=Montres avec un service rapide
+admin.quick.service.watch.page.brand=Marque
+admin.quick.service.watch.page.model=Modèle
+admin.quick.service.watch.page.customerfirstname=Prénom
+admin.quick.service.watch.page.customername=Nom
+admin.quick.service.watch.page.todo=A faire
+admin.quick.service.watch.page.customerphonenumber=Numéro de téléphone
+
+admin.quick.service.watch=Montre en entretien rapide
+admin.quick.service.watch.title=Montre en entretien rapide
+admin.quickservicewatch.brand.display.label=Marque
+admin.quickservicewatch.model.display.label=Modèle
+admin.quickservicewatch.customerfirstname.display.label=Prénom du client
+admin.quickservicewatch.customername.display.label=Nom
+admin.quickservicewatch.todo.display.label=A faire
+admin.quickservicewatch.customerphonenumber.display.label=Numéro de téléphone
+admin.quickservicewatch.reference.display.label=Référence
+admin.quickservicewatch.serial.display.label=Numéro de série
+admin.quickservicewatch.remarks.display.label=Remarques
+admin.quickservicewatch.customeremail.display.label=Email
+admin.quickservicewatch.customeraddress.display.label=Adresse
+admin.quickservicewatch.customerinfo.display.label=Informations sur le client
+admin.quickservicewatch.privateinfos.display.label=Informations internes 
 
 
 #end

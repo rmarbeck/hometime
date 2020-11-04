@@ -290,6 +290,9 @@ GET     /admin/customer-watch/set-quotation-accepted-by-customer/:id 	controller
 GET     /admin/customer-watch/accept/:id			 					controllers.CustomerWatch.acceptWatchFromCustomer(id: Long)
 POST    /admin/manage-customer-watch 									controllers.CustomerWatch.manage()
 
+
+GET		/admin/save-quick-service-watch/:id								controllers.QuickServiceWatches.saveWatchAndCustomer(id: Long)
+
 GET     /admin/customer-watch/doaction/:action/:id		    			controllers.CustomerWatch.doAction(action: String, id: Long)
 
 GET     /admin/watch/display/:id										controllers.Watch.display(id: Long)

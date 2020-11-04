@@ -19,7 +19,7 @@
 	      	<tr class="">
 	      		<td>@request.getNiceDisplayableDatetime</td>
 	      		<td>@request.customerDetails</td>
-	      		<td>@request.status</td>
+	      		<td>@display_i18n_value(request.status.name, "admin.appointment.status.value")</td>
 	      	</tr>
 	      	}
 		  </tbody>

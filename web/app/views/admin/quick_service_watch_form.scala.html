@@ -1,0 +1,47 @@
+@(thisInstance: Form[models.QuickServiceWatch], isItNew: Boolean)
+
+@import tags._
+@import fr.hometime.utils._
+
+@actionlink() = @{
+	routes.CrudHelper.manage("QuickServiceWatches")
+}
+
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('button[value="show"]').hide();
+		})
+	</script>
+}
+
+@before_form = {}
+
+
+@after_form = {
+
+}
+
+@defining(new views.FormDisplay(thisInstance, "quick.service.watch", "admin.quick.service.watch.form")) { formDisplay =>
+		@{ formDisplay.addFormField("brand", true, "input");
+		   formDisplay.addFormField("customerPhoneNumber", true, "input");
+		   formDisplay.addFormField("customerFirstName", true, "input");
+		   formDisplay.addFormField("customerName", true, "input");
+		   
+		   formDisplay.addFormField("toDo", true, "textarea");
+		   
+		   formDisplay.addFormField("customerEmail", true, "input");
+		   
+		   formDisplay.addFormField("model", true, "input");
+		   formDisplay.addFormField("reference", true, "input");
+		   formDisplay.addFormField("serial", true, "input");
+		   formDisplay.addFormField("remarks", true, "textarea");
+		   
+		   formDisplay.addFormField("customerAddress", true, "textarea");
+		   formDisplay.addFormField("customerInfo", true, "textarea");
+		   formDisplay.addFormField("privateInfos", true, "textarea");
+		}
+
+	@admin.template.form(formDisplay, isItNew, actionlink, end_scripts, before_form, after_form)
+}
