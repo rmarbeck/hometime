@@ -979,11 +979,27 @@ public class Application extends Controller {
 		boolean alreadyValid = isItValid(uniqueKey);
 		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.validate(uniqueKey);
 		if (appointment.isPresent() && appointment.get().isValid()) {
-			if (!alreadyValid)
+			if (!alreadyValid) {
 				SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.validated", appointment.get().getNiceDisplayableDatetime()));
+				ActionHelper.asyncTryToNotifyTeamByEmail("Rendez-vous confirmé", getAppointementValidationMessage(appointment.get()));
+			}
 			return Optional.of(getAppointmentAsJsonNode(appointment.get()));
 		}
 		return Optional.empty();
+	}
+	
+	private static String getAppointementValidationMessage(AppointmentRequest appointment) {
+		StringBuilder message = new StringBuilder();
+		message.append("\n");
+		message.append("Créneau : ");
+		message.append(appointment.getNiceDisplayableDatetime());
+		message.append("\n\n");
+		message.append("Client : ");
+		message.append(appointment.customerDetails);
+		message.append("\n\n");
+		message.append("Motif de la demande : ");
+		message.append(appointment.reason);
+		return message.toString();
 	}
 	
 	private static boolean isItValid(String uniqueKey) {
@@ -995,8 +1011,10 @@ public class Application extends Controller {
 		boolean alreadyCanceled = isItCanceled(uniqueKey);
 		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.cancel(uniqueKey);
 		if (appointment.isPresent() && appointment.get().isCanceled()) {
-			if (!alreadyCanceled)
-			SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.canceled"));
+			if (!alreadyCanceled) {
+				SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.canceled"));
+				ActionHelper.asyncTryToNotifyTeamByEmail("Rendez-vous annulé", getAppointementValidationMessage(appointment.get()));
+			}
 			return Optional.of(getAppointmentAsJsonNode(appointment.get()));
 		}
 		return Optional.empty();
