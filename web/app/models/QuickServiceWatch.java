@@ -5,12 +5,16 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
 
 import controllers.CrudReady;
+import models.Customer.CustomerCivility;
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 /**
@@ -30,7 +34,39 @@ public class QuickServiceWatch extends Model implements CrudReady<QuickServiceWa
 	@Id
 	public Long id;
 	
+	
+	public enum CustomerCivility {
+	    MONSIEUR ("MONSIEUR"),
+	    MADAME ("MADAME"),
+	    MISTER ("MISTER"),
+	    MISS ("MISS"),
+	    EMPTY ("EMPTY");
+	    
+		private String name = "";
+		    
+		CustomerCivility(String name){
+		    this.name = name;
+		}
+
+		public String toString(){
+		    return name;
+		}
+		
+		public static CustomerCivility fromString(String name) {
+	        for (CustomerCivility civility : CustomerCivility.values()) {
+	            if (civility.name.equals(name)) {
+	                return civility;
+	            }
+	        }
+	        throw new IllegalArgumentException("Illegal type name: " + name);
+	    }
+	}
+	
 	public String customerPhoneNumber;
+	@Column(name="customer_civility", length = 40)
+	@Enumerated(EnumType.STRING)
+	public CustomerCivility civility = CustomerCivility.MONSIEUR;
+	
 	public String customerName;
 	public String customerFirstName;
 	public String customerEmail;

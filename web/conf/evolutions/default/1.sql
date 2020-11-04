@@ -632,6 +632,7 @@ create table price (
 create table quick_service_watch (
   id                        bigint not null,
   customer_phone_number     varchar(255),
+  customer_civility         varchar(40),
   customer_name             varchar(255),
   customer_first_name       varchar(255),
   customer_email            varchar(255),
@@ -645,6 +646,7 @@ create table quick_service_watch (
   remarks                   varchar(255),
   private_infos             varchar(255),
   creation_date             timestamp,
+  constraint ck_quick_service_watch_customer_civility check (customer_civility in ('MONSIEUR','MADAME','MISTER','MISS','EMPTY')),
   constraint pk_quick_service_watch primary key (id))
 ;
 

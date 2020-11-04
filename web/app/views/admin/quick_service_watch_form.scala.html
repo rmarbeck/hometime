@@ -26,6 +26,7 @@
 @defining(new views.FormDisplay(thisInstance, "quick.service.watch", "admin.quick.service.watch.form")) { formDisplay =>
 		@{ formDisplay.addFormField("brand", true, "input");
 		   formDisplay.addFormField("customerPhoneNumber", true, "input");
+		   formDisplay.addFormFieldForSelect("civility", models.QuickServiceWatch.CustomerCivility.values.toList);
 		   formDisplay.addFormField("customerFirstName", true, "input");
 		   formDisplay.addFormField("customerName", true, "input");
 		   

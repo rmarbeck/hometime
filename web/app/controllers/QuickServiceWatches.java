@@ -2,12 +2,11 @@ package controllers;
 
 import java.util.Date;
 
+import models.Customer.CustomerCivility;
 import models.CustomerWatch.CustomerWatchStatus;
 import models.QuickServiceWatch;
-import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.MASTER_WATCHMAKER, models.User.Role.COLLABORATOR})
 public class QuickServiceWatches extends Controller {
@@ -71,6 +70,7 @@ public class QuickServiceWatches extends Controller {
 		if (currentCustomer == null) {
 			models.Customer newCustomer = new models.Customer();
 			newCustomer.email = qsWatch.customerEmail;
+			newCustomer.civility = CustomerCivility.fromString(qsWatch.civility.name());
 			newCustomer.firstname = qsWatch.customerFirstName;
 			newCustomer.name = qsWatch.customerName;
 			newCustomer.billingAddress = qsWatch.customerAddress;
@@ -78,6 +78,12 @@ public class QuickServiceWatches extends Controller {
 			newCustomer.sharedInfos = qsWatch.customerInfo;
 			newCustomer.save();
 			currentCustomer = newCustomer;
+		} else {
+			currentCustomer.privateInfos = currentCustomer.privateInfos+"\n\nfrom QuickServiceWatch :\n"
+											+ qsWatch.customerAddress + "\n"
+											+ qsWatch.customerPhoneNumber + "\n"
+											+ qsWatch.customerInfo + "\n";
+			currentCustomer.update();
 		}
 		return currentCustomer;
 	}

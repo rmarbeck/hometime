@@ -5494,6 +5494,8 @@ admin.quick.service.watch.form.customerinfo.label.name=Informations client
 admin.quick.service.watch.form.customerinfo.placeholder.name=
 admin.quick.service.watch.form.privateinfos.label.name=Informations internes
 admin.quick.service.watch.form.privateinfos.placeholder.name=
+admin.quick.service.watch.form.civility.label.name=Civilité
+admin.quick.service.watch.form.civility.default.name=Choisir la civilité
 
 admin.quick.service.watch.action.save=Enregistrer
 admin.quick.service.watch.action.cancel=Annuler
