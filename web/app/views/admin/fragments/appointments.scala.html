@@ -1,0 +1,34 @@
+@(appointments: List[models.AppointmentRequest], displayLink: Boolean, key: String = "admin.customer.watch", darkMode: Boolean = false)
+@import tags._
+@import fr.hometime.utils._
+
+    @if(appointments != null && appointments.size >0) {
+    	<h3>
+    		@Html(Messages(key+".active"))
+    	</h3>
+    	<table class="table table-condensed @if(!darkMode) {table-striped table-bordered}">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages(key+".appointment"))</th>
+	          <th>@Html(Messages(key+".customer"))</th>
+	          <th>@Html(Messages(key+".status"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	@for(request <- appointments) {
+	      	<tr class="">
+	      		<td>@request.getNiceDisplayableDatetime</td>
+	      		<td>@request.getCustomerDetails</td>
+	      		<td>@request.getStatus</td>
+	      	</tr>
+	      	}
+		  </tbody>
+		</table>
+    } else {
+    	<h3>
+    		@Html(Messages(key+".active.none"))
+    	</h3>
+    }
+    <br />
+    
+    

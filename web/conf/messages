@@ -3233,6 +3233,10 @@ admin.index.order.requests.head.details=Détails
 admin.index.order.requests.head.actions=Actions
 admin.index.order.requests.head.managed.by=Géré par
 
+admin.index.appointment.requests.appointment=Créneau
+admin.index.appointment.requests.customer=Client
+admin.index.appointment.requests.status=Statut
+
 admin.index.order.requests.number.waiting=Et {0} marqués en attente de retour client
 admin.index.watches=Gérer les actions sur les montres en cours
 admin.index.watches.to.test=Gérer les actions sur les montres à tester

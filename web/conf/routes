@@ -479,7 +479,6 @@ GET     /ws/prices/get/all												controllers.Webservices.getPrices()
 GET     /ws/news/get/all												controllers.Webservices.getNews()
 
 GET     /ws/appointment/options/get/all									controllers.Webservices.getAppointmentOptions()
-GET     /ws/appointment/options/get/free								controllers.Webservices.getAppointmentOptionsFree()
 
 # Testing
 GET     /bootstrap4/test     											controllers.Application.test_new
