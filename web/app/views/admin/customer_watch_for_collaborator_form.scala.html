@@ -34,7 +34,7 @@
 		   formDisplay.addFormField("finalCustomerServicePriceAcceptedInfos", true, "textarea", 'readonly -> "readonly");
 		   formDisplay.addFormField("servicePrice", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("finalCustomerServicePrice", true, "input", 'type -> "hidden", '_class -> "hidden");
-		   formDisplay.addFormField("serviceStatus", true, "input", 'type -> "number", 'min -> "0", 'max -> "100", 'step -> "1");
+		   formDisplay.addFormField("serviceStatus", true, "input", 'type -> "number", 'min -> "0", 'max -> "99", 'step -> "1");
 		   formDisplay.addFormField("expectedServiceEnding", true, "input", 'type -> "date");
 		   formDisplay.addFormField("serviceInfoFromWatchmaker", true, "textarea");
 		   formDisplay.addFormField("sparepartToFind", true, "checkbox");
@@ -43,6 +43,7 @@
 		   formDisplay.addFormField("noSolution", true, "checkbox");
 
 		   formDisplay.addFormField("expectedServiceEndDate", true, "input", 'type -> "hidden", '_class -> "hidden");
+		   formDisplay.addFormField("lastManagerChange", true, "input", 'type -> "hidden", '_class -> "hidden");
 		   
 		   formDisplay.addFormField("partnerFromInfos", true, "textarea", 'type -> "hidden", '_class -> "hidden");
 		   formDisplay.addFormField("status", true, "input", 'type -> "hidden", '_class -> "hidden");
