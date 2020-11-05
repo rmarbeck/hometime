@@ -1,0 +1,29 @@
+@(currentPage: com.avaje.ebean.Page[models.CustomerWatch], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer, currentStatus: String)
+@import tags._
+
+@optionallink(id:Long) = {
+    
+}
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('a.btn-success').hide();
+		})
+	</script>
+}
+
+
+@defining(new views.PageDisplay(currentPage, "Modèle ou marque", "admin.customer.watch.collaborator.page")) { pageDisplay =>
+	@{	pageDisplay.addTableField("id", "id", "getId", false, "asId");
+	    pageDisplay.addTableField("lastManagerChange", "lastManagerChange", "getLastManagerChange", false, "date countdown");
+	    pageDisplay.addTableField("serviceDueDate", "due.date", "getServiceDueDate", false, "date countdown");
+	    pageDisplay.addTableField("expectedServiceEnding", "expected.date", "getExpectedServiceEnding", false, "date countdown");
+	    pageDisplay.addTableField("brand", "brand", "getBrand", false);
+	    pageDisplay.addTableField("model", "model", "getModel", false);
+	    pageDisplay.addTableField("serviceStatus", "serviceStatus", "getServiceStatus", false, "percent");
+	    pageDisplay.addTableField("blockingStats", "blockingStats", "getBlockingSatus", false);  
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "customer-watch-collaborator", null, currentSortBy, currentOrder, currentFilter, currentSize, false, false, end_scripts)
+}

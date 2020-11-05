@@ -37,7 +37,13 @@
     </th>
 }
 
-@layouts.admin() {
+@end_scripts = {
+<script>
+	@fragments.script_copy_to_clipboard()
+</script>
+}
+
+@layouts.admin("", end_scripts) {
   <div class="container">
 
     @admin.fragments.page_header(link(0, "creationDate").toString, "email or name", currentFilter, routes.Customer.add().url)
@@ -69,7 +75,7 @@
                   <td>
 	                <a type="button" class="btn btn-default btn-xs" href="@routes.Customer.display(customer.id)"><span class="glyphicon glyphicon-user"></span></a>
 	                <a type="button" class="btn btn-primary btn-xs" href="@routes.Customer.edit(customer.id)"><span class="glyphicon glyphicon-edit"></span></a>
-	                <a type="button" class="btn btn-default btn-xs" href="@routes.CrudHelper.display("SimplifiedCustomers", customer.id)"><span class="glyphicon glyphicon-user"></span></a>
+	                <a type="button" class="btn btn-primary btn-xs" href="@routes.CrudHelper.display("SimplifiedCustomers", customer.id)"><span class="glyphicon glyphicon-user"></span></a>
                   </td>
                   <td class="hidden-xs">
                     @display_date(customer.creationDate, "dd/MM")
@@ -84,7 +90,7 @@
                     @customer.firstname
                   </td>
                   <td>
-                    @customer.email
+                    @display_clickable_customer_admin_only(customer)
                   </td>
                   <td>
                     @display_phonenumber(customer.phoneNumber)

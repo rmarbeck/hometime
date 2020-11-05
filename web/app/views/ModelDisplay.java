@@ -7,6 +7,7 @@ import java.util.List;
 import static fr.hometime.utils.ReflectionHelper.guessPossibleAccessorMethodsForAField;
 import static fr.hometime.utils.ReflectionHelper.getStringValue;
 import play.db.ebean.Model;
+import play.twirl.api.Html;
 
 /**
  * Definition of Model in order to be displayed
@@ -19,14 +20,20 @@ public class ModelDisplay {
 		public String fieldAccessorMethod;
 		public String labelKey;
 		public String renderingOption;
+		public Html content;
 		public boolean hideSmall;
 
-		protected Field(String fieldName, String fieldAccessorMethod, boolean hideSmall, String labelKey, String renderingOption) {
+		protected Field(String fieldName, String fieldAccessorMethod, boolean hideSmall, String labelKey, String renderingOption, Html content) {
 			this.fieldName = fieldName;
 			this.fieldAccessorMethod = fieldAccessorMethod;
 			this.labelKey = labelKey;
 			this.hideSmall = hideSmall;
 			this.renderingOption = renderingOption;
+			this.content = content;
+		}
+		
+		protected Field(String fieldName, String fieldAccessorMethod, boolean hideSmall, String labelKey, String renderingOption) {
+			this(fieldName, fieldAccessorMethod, false, labelKey, renderingOption, null);
 		}
 
 		protected Field(String fieldName, String fieldAccessorMethod, boolean hideSmall, String labelKey) {
@@ -77,10 +84,14 @@ public class ModelDisplay {
 		this.labelKey = labelKey;
 	}
 	
-	public void addField(String fieldName, String fieldAccessorMethod, boolean hideSmall, String labelKey, String renderingOption) {
+	public void addField(String fieldName, String fieldAccessorMethod, boolean hideSmall, String labelKey, String renderingOption, Html content) {
 		if (fields == null)
 			fields = new ArrayList<ModelDisplay.Field>();
-		fields.add(new Field(fieldName, fieldAccessorMethod, hideSmall, labelKey, renderingOption));
+		fields.add(new Field(fieldName, fieldAccessorMethod, hideSmall, labelKey, renderingOption, content));
+	}
+	
+	public void addField(String fieldName, String fieldAccessorMethod, boolean hideSmall, String labelKey, String renderingOption) {
+		addField(fieldName, fieldAccessorMethod, hideSmall, labelKey, renderingOption, null);
 	}
 	
 	public void addField(String fieldName, String fieldAccessorMethod, boolean hideSmall, String labelKey) {
@@ -97,6 +108,18 @@ public class ModelDisplay {
 	
 	public void addField(String fieldName) {
 		addField(fieldName, null, false, null);
+	}
+	
+	public void addSeparator() {
+		addField("-separator-", null, false, null, "-separator-");
+	}
+	
+	public void addTitle(String titleKey) {
+		addField(titleKey, null, false, labelKey+"."+titleKey, "-title-");
+	}
+	
+	public void addHtml(Html content) {
+		addField("-html-", null, false, null, "-html-", content);
 	}
 	
 	public Model getModel() {

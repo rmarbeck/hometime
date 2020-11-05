@@ -2112,6 +2112,7 @@ admin.navbar.link.text.payment.add.method=Nouveau paiement
 admin.navbar.link.text.payment=Paiement
 admin.navbar.link.text.watches=Montres
 admin.navbar.link.text.mail.templates=Templates de mails
+admin.navbar.link.text.watches.to.do=Montres à faire
 
 admin.navbar.link.text.quick.service.watches=Montres rapides
 admin.navbar.link.text.quick.service.new.watch=Nouvelle montre rapide
@@ -2978,7 +2979,7 @@ admin.watch.label.price=Prix de l''essai
 
 admin.action.label.add.new.default=&nbsp;Nouveau
 
-number.of.days={0,choice,-1#dans {0}- jours|0#aujourd''hui|1#hier|2<il y a {0} jours}
+number.of.days={0,choice,-1#dans {0} jours|0#aujourd''hui|1#hier|2<il y a {0} jours}
 
 admin.order.action.save=&nbsp;Créer
 admin.order.action.edit=&nbsp;Modifier
@@ -5526,6 +5527,51 @@ admin.quickservicewatch.customeremail.display.label=Email
 admin.quickservicewatch.customeraddress.display.label=Adresse
 admin.quickservicewatch.customerinfo.display.label=Informations sur le client
 admin.quickservicewatch.privateinfos.display.label=Informations internes 
+
+admin.customer.watch.collaborator.page=Montres à faire
+admin.customer.watch.collaborator.page.title=Montres à faire
+admin.customer.watch.collaborator.page.id=ID
+admin.customer.watch.collaborator.page.due.date=Date cible
+admin.customer.watch.collaborator.page.brand=Marque
+admin.customer.watch.collaborator.page.model=Modèle
+admin.customer.watch.collaborator.page.servicestatus=Avancement
+admin.customer.watch.collaborator.page.spareparttofind=Pièce
+admin.customer.watch.collaborator.page.sparepartfound=Trouvée
+admin.customer.watch.collaborator.page.needhelp=Aide
+admin.customer.watch.collaborator.page.nosolution=Bloqué
+admin.customer.watch.collaborator.page.lastmanagerchange=Depuis
+admin.customer.watch.collaborator.page.blockingstats=Bloquée ?
+admin.customer.watch.collaborator.page.expected.date=Date prévisionnelle	
+
+admin.customer.watch.for.collaborator=Montre à faire
+admin.customer.watch.for.collaborator.title=Montre à faire
+admin.customerwatch.serviceduedate.display.label=Date cible
+admin.customerwatch.emergencylevel.display.label=Niveau d''urgence
+admin.customerwatch.serviceinfos.display.label=Informations
+admin.customerwatch.otherinfos.display.label=Autres informations
+
+admin.customerwatch.expectedserviceending.display.label=Date de fin prévisionnelle
+admin.customerwatch.servicestatus.display.label=Niveau d''avancement
+admin.customerwatch.serviceinfofromwatchmaker.display.label=Commentaire de l''horloger
+
+admin.customerwatch.spareparttofind.display.label=Pièce détachée à trouver
+admin.customerwatch.sparepartfound.display.label=Pièce détachée trouvée en attente de réception
+admin.customerwatch.needhelp.display.label=Besoin d''aide
+admin.customerwatch.nosolution.display.label=Bloqué définitivement
+
+admin.customer.watch.for.collaborator.watch=Détail de la montre :
+admin.customer.watch.for.collaborator.service=A faire :
+admin.customer.watch.for.collaborator.status=Avancement :
+admin.customer.watch.for.collaborator.blocked=Raison du blocage :
+
+admin.customer.watch.work.in.progress.form.serviceinfofromwatchmaker.label.name=Informations à transmettre
+admin.customer.watch.work.in.progress.form.serviceinfofromwatchmaker.placeholder.name=Déroulement de l''entretien
+
+admin.customer.watch.work.in.progress.form.expectedserviceending.label.name=Date prévisonnelle de fin
+admin.customer.watch.work.in.progress.form.spareparttofind.label.name=Pièce détachée à trouver
+admin.customer.watch.work.in.progress.form.sparepartfound.label.name=Pièce détachée en attente de livraison
+admin.customer.watch.work.in.progress.form.needhelp.label.name=Besoin d''aide
+admin.customer.watch.work.in.progress.form.nosolution.label.name=Pas de solution
 
 
 #end

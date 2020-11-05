@@ -3,4 +3,4 @@
 @import java.text.SimpleDateFormat
 @import java.util.Locale
 
-@if(date == null) {@Messages(message_key_if_null)} else {@(new SimpleDateFormat(display_format, new Locale(locale1, locale2)).format(date)) (@Messages("number.of.days", DateHelper.nbDaysBetween(date)))}
+@if(date == null) {@Messages(message_key_if_null)} else {@(new SimpleDateFormat(display_format, new Locale(locale1, locale2)).format(date)) (@Messages("number.of.days", DateHelper.nbDaysBetween(date)).replace("-",""))}

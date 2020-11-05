@@ -679,6 +679,15 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
         			.getPage(page);
     }
     
+    public static Page<CustomerWatch> pageForCollaboratorWatchmaker(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
+   		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForCollaboratorWatchmaker(filter, status, session);
+    		
+   		return commonQuery.eq("serviceNeeded", true).eq("servicePriceAccepted", true)
+					.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+        			.getPage(page);
+    }
+    
     public static Page<CustomerWatch> pageForWatchmakerWaitingQuotation(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
 		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForWatchmaker(filter, status, session);
 		
@@ -709,6 +718,23 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 					  .ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.STORED_BY_OTHER_PARTNER)
 					  .ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.STORED_BY_STH)
 				.endJunction();
+    	
+    	if (status != null && ! "".equals(status))
+			query = query.eq("customer_watch_status", status);
+    	
+    	return query;
+    }
+    
+    private static ExpressionList<CustomerWatch> getCommonQueryForCollaboratorWatchmaker(String filter, String status, Session session) {
+    	ExpressionList<CustomerWatch> query = find.fetch("managedBy").where().conjunction()
+    			.disjunction().ilike("model", "%" + filter + "%").ilike("brand", "%" + filter + "%").ilike("CAST(id AS varchar(10))", "%" + filter + "%")
+    			.endJunction()
+    			.conjunction().ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.BACK_TO_CUSTOMER)
+					  .ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.STORED_BY_BRAND)
+					  .ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.STORED_BY_OTHER_PARTNER)
+					  .ne("customer_watch_status", CustomerWatch.CustomerWatchStatus.STORED_BY_STH)
+				.endJunction()
+				.eq("managedBy.firstname", PartnerAndCustomerHelper.getLoggedInCollaboratorFirstname(session));
     	
     	if (status != null && ! "".equals(status))
 			query = query.eq("customer_watch_status", status);
@@ -798,6 +824,8 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 		try {
 			if (previousStatusWasDifferent())
 				this.lastStatusUpdate = new Date();
+			if (previousManagerWasDifferent())
+				this.lastManagerChange = new Date();
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}
@@ -807,6 +835,15 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	private boolean previousStatusWasDifferent() {
 		CustomerWatch inDB = CustomerWatch.findById(this.id);
 		return !inDB.status.equals(this.status);
+	}
+	
+	private boolean previousManagerWasDifferent() {
+		CustomerWatch inDB = CustomerWatch.findById(this.id);
+		if (inDB.managedBy == null && this.managedBy == null)
+			return false;
+		if (this.managedBy != null)
+			return !this.managedBy.equals(inDB.managedBy);
+		return false;
 	}
 	
 	public String getBrand() {
@@ -966,5 +1003,18 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 		return customerHasConstraint;
 	}
 	
+	public boolean doesCollaboratorSayItIsBlocked() {
+		return sparepartFound || sparepartToFind || needHelp || noSolution;
+	}
+	
+	public String getBlockingSatus() {
+		return (doesCollaboratorSayItIsBlocked()?"Oui":"Non")+" -> ["+asStatus(sparepartFound)+"/"+asStatus(sparepartToFind)+"/"+asStatus(needHelp)+"/"+asStatus(noSolution)+"]";
+	}
+	
+	private String asStatus(boolean status) {
+		if (status)
+			return "o";
+		return "n";
+	}
 }
 

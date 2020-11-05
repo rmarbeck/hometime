@@ -433,6 +433,30 @@ public class CustomerWatchHelper {
 		watch.quotation = currentWatchInDB.quotation;
 		watch.serviceOnHold = currentWatchInDB.serviceOnHold;
 		
+		watch.type = currentWatchInDB.type;
+		
+		watch.update();
+	}
+	public static void updateWatchEnsuringOnlyEditableDataByCollaboratorWatchmasterAreChanged(models.CustomerWatch watch, Session session) {
+		models.CustomerWatch currentWatchInDB = CustomerWatch.findById(watch.id);
+		watch.emergencyLevel = currentWatchInDB.emergencyLevel;
+		watch.finalCustomerServicePrice = currentWatchInDB.finalCustomerServicePrice;
+		
+		watch.finalCustomerServicePaid = currentWatchInDB.finalCustomerServicePaid;
+		watch.newServicePriceNeeded = currentWatchInDB.newServicePriceNeeded;
+		watch.picturesDoneOnCollect = currentWatchInDB.picturesDoneOnCollect;
+		watch.serviceNeeded = currentWatchInDB.serviceNeeded;
+		watch.servicePaid = currentWatchInDB.servicePaid;
+		watch.servicePriceAccepted = currentWatchInDB.servicePriceAccepted;
+		watch.finalCustomerEmergencyLevel = currentWatchInDB.finalCustomerEmergencyLevel;
+		watch.status = currentWatchInDB.status;
+		watch.quotation = currentWatchInDB.quotation;
+		watch.serviceOnHold = currentWatchInDB.serviceOnHold;
+		
+		watch.managedBy = currentWatchInDB.managedBy;
+		
+		watch.type = currentWatchInDB.type;
+		
 		watch.update();
 	}
 	

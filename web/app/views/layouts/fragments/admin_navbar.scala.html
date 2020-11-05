@@ -79,6 +79,12 @@
                 	@li_activable(36, index) {<a href="@routes.SimplifiedCustomers.createNewCustomerByCustomer()">@Messages("admin.navbar.link.text.simplified.customers.by.customer")</a>}
                   </ul>
                 }
+                @li_activable(40, index, args = 'class -> "dropdown") {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Html(Messages("admin.navbar.link.text.watches")) <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                  	@li_activable(41, index) {<a href="@routes.CollaboratorWatchmaker.displayWatches()">@Messages("admin.navbar.link.text.watches.to.do")</a>}
+                  </ul>
+                }
                 }
                 @if_admin() {
                 @li_activable(30, index, args = 'class -> "dropdown") {

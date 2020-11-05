@@ -116,25 +116,30 @@ public class CustomerWatch extends Controller {
 	}
 	
 	public static Result duplicateBackToSAV(Long watchId) {
-		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
-		if (existingWatch != null) {
-			models.CustomerWatch newWatch = new models.CustomerWatch();
-			newWatch.additionnalModelInfos = "duplicate for SAV";
-			newWatch.customer = existingWatch.customer;
-			newWatch.brand = existingWatch.brand;
-			newWatch.model = existingWatch.model;
-			newWatch.reference = existingWatch.reference;
-			newWatch.serial = existingWatch.serial;
-			newWatch.serial2 = existingWatch.serial2;
-			newWatch.movement = existingWatch.movement;
-			newWatch.status = models.CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT;
-			newWatch.type = existingWatch.type;
-			newWatch.quotation = existingWatch.quotation;
-
-			return ok(customerWatchForm(Form.form(models.CustomerWatch.class).fill(newWatch), true));
-		}
+		models.CustomerWatch duplicatedWatch = duplicateBackToSAV(models.CustomerWatch.findById(watchId));
+		if (duplicatedWatch != null)
+			return ok(customerWatchForm(Form.form(models.CustomerWatch.class).fill(duplicatedWatch), true));
 		flash("error", "Unknown watch id");
 		return badRequest(emptyNewWatchForm());
+	}
+	
+	protected static models.CustomerWatch duplicateBackToSAV(models.CustomerWatch watchToDuplicate) {
+		if (watchToDuplicate != null) {
+			models.CustomerWatch newWatch = new models.CustomerWatch();
+			newWatch.additionnalModelInfos = "duplicate for SAV";
+			newWatch.customer = watchToDuplicate.customer;
+			newWatch.brand = watchToDuplicate.brand;
+			newWatch.model = watchToDuplicate.model;
+			newWatch.reference = watchToDuplicate.reference;
+			newWatch.serial = watchToDuplicate.serial;
+			newWatch.serial2 = watchToDuplicate.serial2;
+			newWatch.movement = watchToDuplicate.movement;
+			newWatch.status = models.CustomerWatch.CustomerWatchStatus.STORED_BY_WATCH_NEXT;
+			newWatch.type = watchToDuplicate.type;
+			newWatch.quotation = watchToDuplicate.quotation;
+			return newWatch;
+		}
+		return null;
 	}
 	
 	public static Result setQuotationSent(Long watchId) {

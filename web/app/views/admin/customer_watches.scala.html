@@ -39,7 +39,14 @@
     </th>
 }
 
-@layouts.admin("") {
+
+@end_scripts = {
+<script>
+	@fragments.script_copy_to_clipboard()
+</script> 
+}
+
+@layouts.admin("", end_scripts) {
   <div class="container">
 
     @admin.fragments.page_header(link(0, "lastStatusUpdate").toString, "model or brand", currentFilter, routes.CustomerWatch.add().url)
@@ -113,7 +120,7 @@
                   </td>
                   <td>
                     @if_not_null_nor_empty(watch.customer) {
-                    <a href="@routes.Customer.display(watch.customer.id)">@watch.customer.name @watch.customer.firstname</a>
+                    @display_clickable_customer_admin_only(watch.customer)
                     }
                   </td>
                 </tr>

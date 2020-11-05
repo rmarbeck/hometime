@@ -58,4 +58,14 @@ public class SimplifiedCustomerWatches extends Controller {
 		
 		return badRequest("error");
 	}
+	
+	public static Result duplicateBackToSAV(Long watchId) {
+		CustomerWatch instance = controllers.CustomerWatch.duplicateBackToSAV(CustomerWatch.findById(watchId));
+		if (instance != null) {
+			instance.save();
+			return SimplifiedCustomers.crud.display(instance.customer.id);
+		}
+		
+		return badRequest("error");
+	}
 }

@@ -7,6 +7,14 @@
 	}
 } else {
 	@rendering_option match {
+		  case "asId" => {
+		    #@to_render
+		  }
+		  
+		  case "boolean" => {
+		    @display_boolean(Boolean.valueOf(to_render))
+		  }
+		  
 		  case "price" => {
 		    @display_price(if(to_render == null || "null".equals(to_render)) {0} else {Float.parseFloat(to_render)})
 		  }
@@ -25,6 +33,14 @@
 		  		  
 		  case "date long" => {
 		    @display_date(views.Helper.parseDateInMillis(to_render)), "dd/MM/yyyy HH:mm")
+		  }
+		  
+		  case "date countdown" => {
+		  	@display_date_and_countdown(views.Helper.parseDateInMillis(to_render))
+		  }
+		  
+		  case "percent" => {
+		  	@to_render %
 		  }
 		  
 		  case "msisdn" => {
