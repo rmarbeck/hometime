@@ -5540,8 +5540,9 @@ admin.customer.watch.collaborator.page.sparepartfound=Trouvée
 admin.customer.watch.collaborator.page.needhelp=Aide
 admin.customer.watch.collaborator.page.nosolution=Bloqué
 admin.customer.watch.collaborator.page.lastmanagerchange=Depuis
-admin.customer.watch.collaborator.page.blockingstats=Bloquée ?
-admin.customer.watch.collaborator.page.expected.date=Date prévisionnelle	
+admin.customer.watch.collaborator.page.blockingstats=Blocage
+admin.customer.watch.collaborator.page.expected.date=Date prévisionnelle
+admin.customer.watch.collaborator.page.emergencylevel=Urgence
 
 admin.customer.watch.for.collaborator=Montre à faire
 admin.customer.watch.for.collaborator.title=Montre à faire

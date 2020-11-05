@@ -85,6 +85,7 @@
 			          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
 			          <th>@Html(Messages("admin.index.watches.head.model"))</th>
 			          <th>@Html(Messages("admin.index.watches.head.watchmaker"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.status"))</th>
 			        </tr>
 			      </thead>
 			      <tbody>
@@ -95,6 +96,7 @@
 			      		<td>@watch.brand</td>
 			      		<td>@takeif(watch.model)</td>
 			      		<td>@watch.managedBy.firstname</td>
+			      		<td>@watch.serviceStatus %</td>
 			      	</tr>
 			      	}
 				  </tbody>
