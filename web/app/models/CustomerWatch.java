@@ -682,7 +682,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     public static Page<CustomerWatch> pageForCollaboratorWatchmaker(int page, int pageSize, String sortBy, String order, String filter, String status, Session session) {
    		ExpressionList<CustomerWatch> commonQuery = getCommonQueryForCollaboratorWatchmaker(filter, status, session);
     		
-   		return commonQuery.eq("serviceNeeded", true).eq("servicePriceAccepted", true)
+   		return commonQuery.eq("serviceNeeded", true).eq("servicePriceAccepted", true).lt("serviceStatus", 100)
 					.orderBy(sortBy + " " + order)
 					.findPagingList(pageSize)
         			.getPage(page);
