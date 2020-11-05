@@ -90,7 +90,7 @@
 			      </thead>
 			      <tbody>
 			      	@for(watch <- bywatchmakers; statusClass = watch.getWatchStatusClass) {
-			      	<tr class="">
+			      	<tr class="blocking_status_@watch.doesCollaboratorSayItIsBlocked">
 			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
 			      		<td>@takeif(watch.customer.firstname+" "+watch.customer.name)</td>
 			      		<td>@watch.brand</td>
@@ -127,7 +127,7 @@
 			      </thead>
 			      <tbody>
 			      	@for(watch <- watches; statusClass = watch.getWatchStatusClass) {
-			      	<tr class="">
+			      	<tr class="customer_has_constraint_@watch.isCustomerHasConstraint customer_has_called_@watch.isCustomerHasCalledForDelay">
 			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
 			      		<td>@takeif(watch.customer.firstname+" "+watch.customer.name)</td>
 			      		<td>@watch.brand</td>
