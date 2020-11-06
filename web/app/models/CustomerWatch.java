@@ -1008,7 +1008,7 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	}
 	
 	public String getBlockingSatus() {
-		return (doesCollaboratorSayItIsBlocked()?"Oui":"Non")+" -> ["+asStatus(sparepartFound)+"/"+asStatus(sparepartToFind)+"/"+asStatus(needHelp)+"/"+asStatus(noSolution)+"]";
+		return (doesCollaboratorSayItIsBlocked()?"Oui":"Non")+" -> ["+asStatus(sparepartToFind)+"/"+asStatus(sparepartFound)+"/"+asStatus(needHelp)+"/"+asStatus(noSolution)+"]";
 	}
 	
 	private String asStatus(boolean status) {

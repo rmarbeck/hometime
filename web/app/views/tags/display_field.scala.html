@@ -39,6 +39,10 @@
 		  	@display_date_and_countdown(views.Helper.parseDateInMillis(to_render))
 		  }
 		  
+		  case "date number_of_days" => {
+		  	@display_number_of_days(views.Helper.parseDateInMillis(to_render))
+		  }
+		  
 		  case "percent" => {
 		  	@to_render %
 		  }

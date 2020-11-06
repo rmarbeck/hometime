@@ -20,10 +20,10 @@
     }
   
       @for(currentField <- modelDisplay.getFields) {
-	    <div class="row display @currentField.getRenderingOption">
+	    <div class="row display @Option(currentField.getRenderingOption).filter(!_.equals("pre"))">
 	    	@currentField.getRenderingOption match {
 			  	case "-separator-" => {
-			    	<br /><br />
+			    	<br />
 			  	}
 			  	
 			  	case "-title-" => {

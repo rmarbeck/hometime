@@ -1,0 +1,6 @@
+@(date: Date, message_key_if_null: String = "tags.date.unknown")
+@import fr.hometime.utils.DateHelper
+@import java.text.SimpleDateFormat
+@import java.util.Locale
+
+@if(date == null) {@Messages(message_key_if_null)} else {@Messages("number.of.days.only", DateHelper.nbDaysBetween(date)).replace("-","")}

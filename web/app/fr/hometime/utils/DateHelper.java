@@ -1,6 +1,7 @@
 package fr.hometime.utils;
 
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAmount;
+import java.time.temporal.TemporalUnit;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
@@ -57,6 +59,13 @@ public class DateHelper {
 		ZonedDateTime dateZ1 = ZonedDateTime.ofInstant(date1.toInstant(), ZoneId.systemDefault());
 		ZonedDateTime dateZ2 = ZonedDateTime.ofInstant(date2.toInstant(), ZoneId.systemDefault());
 		return dateZ1.getMonth() == dateZ2.getMonth();
+	}
+	
+	public static Date addOpenDays(int nbOfDays) {
+		LocalDate newDate = LocalDate.now().plusDays(nbOfDays);
+		if (newDate.getDayOfWeek().equals(DayOfWeek.SATURDAY) || newDate.getDayOfWeek().equals(DayOfWeek.SUNDAY))
+			newDate = newDate.plusDays(2);
+		return convertToDate(newDate.atStartOfDay());
 	}
 	
 	private static long differenceBetweenTwoDates(Date date1, Date date2) {

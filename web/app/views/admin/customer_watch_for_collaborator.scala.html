@@ -3,14 +3,38 @@
 
 
 @end_body = {
-
+		<div class="col-xs-12 text-center">
+			<a type="button" class="btn btn-info" href="@routes.CollaboratorWatchmaker.displayWatches()"><span class="glyphicon glyphicon-list"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.display.watches"))</a>
+        </div>
 }
 
-@test = {
-	<div class="toto">
-		<p>Essai</p>
-	</div>
+@actions = {
+		<div class="col-xs-12 text-left">
+			@if(template.serviceStatus == 0) {
+			<a type="button" class="btn btn-info" href="@routes.CollaboratorWatchmaker.startService(template.id, 1)"><span class="glyphicon glyphicon-log-in"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.start", 1))</a>
+        	<a type="button" class="btn btn-info" href="@routes.CollaboratorWatchmaker.startService(template.id, 2)"><span class="glyphicon glyphicon-log-in"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.start", 2))</a>
+        	} else {
+        	<a type="button" class="btn btn-info" href="@routes.CollaboratorWatchmaker.markServiceUpdate(template.id, 50)"><span class="glyphicon glyphicon-hand-right"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.markserviceupdate.50"))</a>
+        	<a type="button" class="btn btn-info" href="@routes.CollaboratorWatchmaker.markServiceUpdate(template.id, 99)"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.markserviceupdate.99"))</a>
+        	}
+        </div>
 }
+
+@blocking_actions = {
+        <div class="col-xs-12 text-left">
+			@if(template.serviceStatus != 0) {
+        	<a type="button" class="btn btn-warning" href="@routes.CollaboratorWatchmaker.markBlocked(template.id, 1)"><span class="glyphicon glyphicon-search"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.markblocked.1"))</a>
+        	<a type="button" class="btn btn-warning" href="@routes.CollaboratorWatchmaker.markBlocked(template.id, 2)"><span class="glyphicon glyphicon-time"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.markblocked.2"))</a>
+        	@if(template.needHelp) {
+        		<a type="button" class="btn btn-info" href="@routes.CollaboratorWatchmaker.markBlocked(template.id, 5)"><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.markblocked.5"))</a>
+        	} else {
+        		<a type="button" class="btn btn-warning" href="@routes.CollaboratorWatchmaker.markBlocked(template.id, 3)"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.markblocked.3"))</a>
+        	}
+        	<a type="button" class="btn btn-danger" href="@routes.CollaboratorWatchmaker.markBlocked(template.id, 4)"><span class="glyphicon glyphicon-minus-sign"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.markblocked.4"))</a>
+        	}
+        </div>
+}
+
 
 @defining(new views.ModelDisplay(template, "admin.customer.watch.for.collaborator")) { modelDisplay =>
 		@{ 	modelDisplay.addTitle("watch");
@@ -23,17 +47,25 @@
 			modelDisplay.addTitle("service");
 			modelDisplay.addField("serviceDueDate", "getServiceDueDate", false, null, "date countdown");
 			modelDisplay.addField("emergencyLevel", "getEmergencyLevel", false, null, "percent");
-			modelDisplay.addField("serviceInfos");
-			modelDisplay.addField("otherInfos");
+			modelDisplay.addField("serviceInfos", "getServiceInfos", false, null, "pre");
+			modelDisplay.addField("otherInfos", "getOtherInfos", false, null, "pre");
 			modelDisplay.addTitle("status");
 			modelDisplay.addField("expectedServiceEnding", "getExpectedServiceEnding", false, null, "date countdown");
 			modelDisplay.addField("serviceStatus", "getServiceStatus", false, null, "percent");
-			modelDisplay.addField("serviceInfoFromWatchmaker");
+			modelDisplay.addSeparator();
+			modelDisplay.addHtml(actions);
+			modelDisplay.addSeparator();
+			modelDisplay.addField("serviceInfoFromWatchmaker", "getServiceInfoFromWatchmaker", false, null, "pre");
+			
 			modelDisplay.addTitle("blocked");
 			modelDisplay.addField("sparepartToFind", "getSparepartToFind", false, null, "boolean");
 			modelDisplay.addField("sparepartFound", "getSparepartFound", false, null, "boolean");
 			modelDisplay.addField("needHelp", "getNeedHelp", false, null, "boolean");
 			modelDisplay.addField("noSolution", "getNoSolution", false, null, "boolean");
+			modelDisplay.addSeparator();
+			modelDisplay.addHtml(blocking_actions);
+			modelDisplay.addSeparator();
+			modelDisplay.addSeparator();
 			
 		}
 	

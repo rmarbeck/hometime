@@ -270,6 +270,9 @@ GET     /admin/display/customer-watch-collaborator/page/    			controllers.Colla
 GET     /admin/display/customer-watch-collaborator/:id					controllers.CollaboratorWatchmaker.displayWatch(id: Long)
 GET     /admin/edit/customer-watch-collaborator/:id						controllers.CollaboratorWatchmaker.prepareWatchUpdate(id: Long)
 POST    /admin/manage/customer-watch-collaborator						controllers.CollaboratorWatchmaker.manageWatchUpdate()
+GET    /admin/manage/start-service/:id/:days							controllers.CollaboratorWatchmaker.startService(id: Long, days: Int)
+GET    /admin/manage/mark-blocked/:id/:value							controllers.CollaboratorWatchmaker.markBlocked(id: Long, value: Int)
+GET    /admin/manage/mark-service-update/:id/:value						controllers.CollaboratorWatchmaker.markServiceUpdate(id: Long, value: Int)
 
 GET     /admin/edit/customer-watch-quotation-validation/:id				controllers.CustomerWatch.prepareQuotationValidation(id: Long)
 POST    /admin/manage/customer-watch-quotation-validation				controllers.CustomerWatch.manageQuotationValidation()

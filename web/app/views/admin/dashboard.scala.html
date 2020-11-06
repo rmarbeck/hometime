@@ -90,7 +90,7 @@
 			      </thead>
 			      <tbody>
 			      	@for(watch <- bywatchmakers; statusClass = watch.getWatchStatusClass) {
-			      	<tr class="blocking_status_@watch.doesCollaboratorSayItIsBlocked">
+			      	<tr class="nosolution_status_@watch.noSolution needhelp_status_@watch.needHelp sparetofind_status_@watch.sparepartToFind sparefound_status_@watch.sparepartFound ">
 			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
 			      		<td>@takeif(watch.customer.firstname+" "+watch.customer.name)</td>
 			      		<td>@watch.brand</td>

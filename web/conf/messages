@@ -2980,6 +2980,7 @@ admin.watch.label.price=Prix de l''essai
 admin.action.label.add.new.default=&nbsp;Nouveau
 
 number.of.days={0,choice,-1#dans {0} jours|0#aujourd''hui|1#hier|2<il y a {0} jours}
+number.of.days.only={0,choice,-1#dans {0} jours|0#aujourd''hui|1#hier|2<{0} jours}
 
 admin.order.action.save=&nbsp;Créer
 admin.order.action.edit=&nbsp;Modifier
@@ -5550,6 +5551,19 @@ admin.customerwatch.serviceduedate.display.label=Date cible
 admin.customerwatch.emergencylevel.display.label=Niveau d''urgence
 admin.customerwatch.serviceinfos.display.label=Informations
 admin.customerwatch.otherinfos.display.label=Autres informations
+
+admin.customer.watch.for.collaborator.action.start=Marquer démarrée (obtjectif {0,choice,1#1 jour|1<{0} jours})
+
+admin.customer.watch.for.collaborator.action.markserviceupdate.50=Marquer "à mi-chemin"
+admin.customer.watch.for.collaborator.action.markserviceupdate.99=Marquer "donnée à Simon"
+
+admin.customer.watch.for.collaborator.action.markblocked.1=Pièce à trouver
+admin.customer.watch.for.collaborator.action.markblocked.2=Pièce en attente
+admin.customer.watch.for.collaborator.action.markblocked.3=Besoin d''aide
+admin.customer.watch.for.collaborator.action.markblocked.4=Pas de solution
+admin.customer.watch.for.collaborator.action.markblocked.5=Plus besoin d''aide
+
+admin.customer.watch.for.collaborator.action.display.watches=Voir mes montres
 
 admin.customerwatch.expectedserviceending.display.label=Date de fin prévisionnelle
 admin.customerwatch.servicestatus.display.label=Niveau d''avancement
