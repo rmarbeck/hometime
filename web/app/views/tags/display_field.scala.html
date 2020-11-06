@@ -39,6 +39,10 @@
 		  	@display_date_and_countdown(views.Helper.parseDateInMillis(to_render))
 		  }
 		  
+		  case "date countdown_short" => {
+		  	@display_date_and_countdown(views.Helper.parseDateInMillis(to_render), "dd/MM")
+		  }
+		  
 		  case "date number_of_days" => {
 		  	@display_number_of_days(views.Helper.parseDateInMillis(to_render))
 		  }
