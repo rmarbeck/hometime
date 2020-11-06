@@ -16,9 +16,11 @@ public class AppointmentRequests extends Controller {
 	
 	public static Result validateAppointment(Long id) {
 		AppointmentRequest toValidate = AppointmentRequest.findById(id);
-		AppointmentRequestHelper.validate(toValidate.uniqueKey);
-		SMS.sendSMS(toValidate.customerPhoneNumber, Messages.get("sms.appointment.just.validated", toValidate.getNiceDisplayableDatetime()));
-		SMS.sendSMS(toValidate.customerPhoneNumber, Messages.get("sms.appointment.to.validate.from.admin.action", Application.FRONT_END_URL+Application.APPOINTMENT_VALIDATION_URL, toValidate.uniqueKey));
+		if (!toValidate.isValid()) {
+			AppointmentRequestHelper.validate(toValidate.uniqueKey);
+			SMS.sendSMS(toValidate.customerPhoneNumber, Messages.get("sms.appointment.just.validated", toValidate.getNiceDisplayableDatetime()));
+			SMS.sendSMS(toValidate.customerPhoneNumber, Messages.get("sms.appointment.to.validate.from.admin.action", Application.FRONT_END_URL+Application.APPOINTMENT_VALIDATION_URL, toValidate.uniqueKey));
+		}
 		return CrudHelper.displayAll("AppointmentRequests", 10);
 		
 	}
