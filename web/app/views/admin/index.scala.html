@@ -35,6 +35,13 @@
 	<div class="container">
 	@if_admin_or_watchmaker_or_collaborator() {
 	@if_admin_or_collaborator() {
+	
+	@if_collaborator() {
+		<div class="col-xs-12 text-center">
+			<a type="button" class="btn btn-info" href="@routes.CollaboratorWatchmaker.displayWatches()"><span class="glyphicon glyphicon-list"></span>&nbsp;@Html(Messages("admin.customer.watch.for.collaborator.action.display.watches"))</a>
+        </div>
+        <br />
+    }
 	@fragments.orderlist(unrepliedOrderRequests, true, "admin.index.order.requests")
 
     <br />

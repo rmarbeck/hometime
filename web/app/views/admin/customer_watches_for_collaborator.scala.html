@@ -16,14 +16,14 @@
 
 @defining(new views.PageDisplay(currentPage, "Modèle ou marque", "admin.customer.watch.collaborator.page")) { pageDisplay =>
 	@{	pageDisplay.addTableField("id", "id", "getId", false, "asId");
-	    pageDisplay.addTableField("lastManagerChange", "lastManagerChange", "getLastManagerChange", false, "date number_of_days");
+	    pageDisplay.addTableField("lastManagerChange", "lastManagerChange", "getLastManagerChange", true, "date number_of_days");
 	    pageDisplay.addTableField("serviceDueDate", "due.date", "getServiceDueDate", false, "date countdown_short");
-	    pageDisplay.addTableField("expectedServiceEnding", "expected.date", "getExpectedServiceEnding", false, "date countdown_short");
+	    pageDisplay.addTableField("expectedServiceEnding", "expected.date", "getExpectedServiceEnding", true, "date countdown_short");
 	    pageDisplay.addTableField("brand", "brand", "getBrand", false);
 	    pageDisplay.addTableField("model", "model", "getModel", false, "take 20");
 	    pageDisplay.addTableField("serviceStatus", "serviceStatus", "getServiceStatus", false, "percent");
-	    pageDisplay.addTableField("emergencyLevel", "emergencyLevel", "getEmergencyLevel", false, "percent");
-	    pageDisplay.addTableField("blockingStats", "blockingStats", "getBlockingSatus", false);  
+	    pageDisplay.addTableField("emergencyLevel", "emergencyLevel", "getEmergencyLevel", true, "percent");
+	    pageDisplay.addTableField("blockingStats", "blockingStats", "getBlockingSatus", true);  
 	}
 	
 	@admin.template.page_with_default_links(pageDisplay, "customer-watch-collaborator", null, currentSortBy, currentOrder, currentFilter, currentSize, false, false, end_scripts)
