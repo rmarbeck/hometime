@@ -69,7 +69,9 @@ public class DateHelper {
 	}
 	
 	private static long differenceBetweenTwoDates(Date date1, Date date2) {
-		return date1.getTime() - date2.getTime();
+		Long date1AsLong = convertToLocalDate(date1).toLocalDate().atStartOfDay().toEpochSecond(ZoneId.of("Europe/Paris").getRules().getOffset(LocalDateTime.now()));
+		Long date2AsLong = convertToLocalDate(date2).toLocalDate().atStartOfDay().toEpochSecond(ZoneId.of("Europe/Paris").getRules().getOffset(LocalDateTime.now()));
+		return date1AsLong - date2AsLong;
 	}
 	
 	private static long differenceBetweenNowAndADate(Date date) {
