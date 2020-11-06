@@ -41,7 +41,7 @@ public class DateHelper {
 	}
 	
 	public static int nbDaysBetween(Date date1, Date date2) {
-		return Math.round(((differenceBetweenTwoDates(date1, date2)) / 1000 / 3600 / 24));
+		return Math.round(((differenceBetweenTwoDates(date1, date2)) / 3600 / 24));
 	}
 	
 	public static boolean isBeforeNow(Date date) {
