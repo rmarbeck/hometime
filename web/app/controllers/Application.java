@@ -60,8 +60,8 @@ import views.html.mails.notify_contact;
 
 @With(SessionWatcher.class)
 public class Application extends Controller {
-	private static String FRONT_END_URL = "https://www.hometime.fr";
-	private static String APPOINTMENT_VALIDATION_URL = "/a/v/";
+	public static String FRONT_END_URL = "https://www.hometime.fr";
+	public static String APPOINTMENT_VALIDATION_URL = "/a/v/";
 
 	public static class LoginForm {
 		@Constraints.Email

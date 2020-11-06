@@ -1,7 +1,13 @@
 @(request: models.BuyRequest)
 @import tags._
 
-@layouts.admin() {
+@end_scripts = {
+<script>
+	@fragments.script_copy_to_clipboard()
+</script>
+}
+
+@layouts.admin("Demande de recherche de montre", end_scripts) {
   <div class="container">
     <div class="row">
         <div class="title"><h3>@request.nameOfCustomer le @display_date(request.requestDate, "dd/MM/yyyy")</h3></div>

@@ -471,6 +471,8 @@ GET		/admin/create-item/AccountingLinePreset/:id						controllers.AccountingLine
 
 GET		/admin/create-for-line/AccountingAnalytic/:id					controllers.AccountingLineAnalytics.createForAccountingLine(id: Long)
 
+GET		/admin/appointment/validate/:id									controllers.AppointmentRequests.validateAppointment(id: Long)
+
 # CUSTOMER ACCESS
 GET     /private/login                      							controllers.Application.customerLogin(origin: String ?= "")
 POST    /private/login                      							controllers.Application.customerAuthenticate()

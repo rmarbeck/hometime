@@ -37,7 +37,13 @@
     </th>
 }
 
-@layouts.admin() {
+@end_scripts = {
+<script>
+	@fragments.script_copy_to_clipboard()
+</script>
+}
+
+@layouts.admin("Demandes de devis", end_scripts) {
   <div class="container">
 
     @admin.fragments.page_header(link(0, "requestDate").toString, "email or name", currentFilter)

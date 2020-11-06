@@ -37,7 +37,13 @@
     </th>
 }
 
-@layouts.admin() {
+@end_scripts = {
+<script>
+	@fragments.script_copy_to_clipboard()
+</script>
+}
+
+@layouts.admin("Recherches de montres", end_scripts) {
   <div class="container">
 
     @admin.fragments.page_header(link(0, "requestDate").toString, "email or name", currentFilter)
@@ -53,6 +59,7 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  @header("id", "ID")
                   @header("requestDate", "Date")
                   @header("brand", "Marque")
                   @header("model", "Modèle")

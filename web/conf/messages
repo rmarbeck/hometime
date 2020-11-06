@@ -3815,6 +3815,12 @@ admin.appointment.request.action.save=Enregistrer
 admin.appointment.request.action.edit=Modifier
 admin.appointment.request.action.delete=Supprimer
 
+admin.appointment.request=Demande de rendez-vous
+admin.appointment.request.title=Demande de rendez-vous
+admin.appointmentrequest.id.display.label=ID
+admin.appointmentrequest.uniquekey.display.label=Clef
+admin.appointmentrequest.appointment.display.label=Créneau
+
 
 admin.appointment.request.page=Gestion des demandes de rendez-vous
 admin.appointment.request.page.title=Gestion des demandes de rendez-vous
@@ -5454,6 +5460,8 @@ admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vo
 sms.appointment.to.validate=Validez votre rendez-vous en cliquant ici : {0}{1}
 sms.appointment.just.validated=Votre rendez-vous est confirmé pour {0}
 sms.appointment.just.canceled=Votre rendez-vous est bien annulé
+
+sms.appointment.to.validate.from.admin.action=Retrouvez les informations ici : {0}{1}
 
 
 check.certificate.html.title=Vérification de certificat
