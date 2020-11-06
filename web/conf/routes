@@ -265,8 +265,8 @@ POST    /admin/manage/customer-watch-watchmaker-work-in-progress		controllers.Wa
 GET     /admin/display/customer-watch-watchmaker-waiting-quotation/:id	controllers.Watchmaker.displayWatch(id: Long)
 GET     /admin/display/customer-watch-watchmaker/:id					controllers.Watchmaker.displayWatchAlias(id: Long)
 
-GET     /admin/customer-watch-collaborator/all    						controllers.CollaboratorWatchmaker.displayAll(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0)
-GET     /admin/display/customer-watch-collaborator/page/    			controllers.CollaboratorWatchmaker.displayWatches(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
+GET     /admin/customer-watch-collaborator/all    						controllers.CollaboratorWatchmaker.displayAll(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "", size:Int ?= 0)
+GET     /admin/display/customer-watch-collaborator/page/    			controllers.CollaboratorWatchmaker.displayWatches(p:Int ?= 0, s ?= "id", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
 GET     /admin/display/customer-watch-collaborator/:id					controllers.CollaboratorWatchmaker.displayWatch(id: Long)
 GET     /admin/edit/customer-watch-collaborator/:id						controllers.CollaboratorWatchmaker.prepareWatchUpdate(id: Long)
 POST    /admin/manage/customer-watch-collaborator						controllers.CollaboratorWatchmaker.manageWatchUpdate()
