@@ -46,7 +46,7 @@ public class MailjetAdapterv3_1 {
 	private static String replyTo = null;
 	
 	
-	private static String startOfURLForCheckingCampaigns = "https://app.mailjet.com/campaigns/summary2/";
+	private static String startOfURLForCheckingCampaigns = "https://app.mailjet.com/campaigns/creation/";
 	
 	private static MailjetClient getClient() {
 		return getConfiguredClient(false);
