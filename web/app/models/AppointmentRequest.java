@@ -168,7 +168,7 @@ public class AppointmentRequest extends Model implements CrudReady<AppointmentRe
     }
     
     public static List<AppointmentRequest> findInFutureOnly() {
-    	return find.where().gt("appointmentAsDate", new Date()).findList();
+    	return find.where().gt("appointmentAsDate", new Date()).orderBy("appointmentAsDate ASC").findList();
     }
     
     public boolean isValid() {
