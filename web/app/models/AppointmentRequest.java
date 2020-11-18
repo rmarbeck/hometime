@@ -1,5 +1,6 @@
 package models;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +18,7 @@ import com.avaje.ebean.Page;
 import controllers.CrudReady;
 import fr.hometime.utils.AppointmentOptionHelper;
 import fr.hometime.utils.AppointmentRequestHelper;
+import fr.hometime.utils.DateHelper;
 import fr.hometime.utils.PhoneNumberHelper;
 import fr.hometime.utils.RandomHelper;
 import play.data.validation.Constraints;
@@ -169,6 +171,10 @@ public class AppointmentRequest extends Model implements CrudReady<AppointmentRe
     
     public static List<AppointmentRequest> findInFutureOnly() {
     	return find.where().gt("appointmentAsDate", new Date()).orderBy("appointmentAsDate ASC").findList();
+    }
+    
+    public static List<AppointmentRequest> findCurrentAndInFutureOnly() {
+    	return find.where().gt("appointmentAsDate", DateHelper.toDate(Instant.now().minusSeconds(60*30))).orderBy("appointmentAsDate ASC").findList();
     }
     
     public boolean isValid() {

@@ -18,8 +18,9 @@ public class AppointmentRequests extends Controller {
 		AppointmentRequest toValidate = AppointmentRequest.findById(id);
 		if (!toValidate.isValid()) {
 			AppointmentRequestHelper.validate(toValidate.uniqueKey);
-			SMS.sendSMS(toValidate.customerPhoneNumber, Messages.get("sms.appointment.just.validated", toValidate.getNiceDisplayableDatetime()));
-			SMS.sendSMS(toValidate.customerPhoneNumber, Messages.get("sms.appointment.to.validate.from.admin.action", Application.FRONT_END_URL+Application.APPOINTMENT_VALIDATION_URL, toValidate.uniqueKey));
+			SMS.sendSMS(toValidate.customerPhoneNumber, Messages.get("sms.appointment.just.validated", toValidate.getNiceDisplayableDatetime())).filter(sms -> sms.smsCount == 1).map(currentSMS -> {
+				return SMS.sendSMS(toValidate.customerPhoneNumber, Messages.get("sms.appointment.to.validate.from.admin.action", Application.FRONT_END_URL+Application.APPOINTMENT_VALIDATION_URL, toValidate.uniqueKey));
+				});
 		}
 		return CrudHelper.displayAll("AppointmentRequests", 10);
 		
