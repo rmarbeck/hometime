@@ -40,7 +40,7 @@ public class Webservices extends Controller {
 	}
 	
 	public static Result getLiveConfig() {
-		return ok(Json.toJson(LiveConfig.findAll()));
+		return sendIfAuthorized(Json.toJson(LiveConfig.findAll()));
 	}
 	
 	public static Result getAppointmentOptions() {
