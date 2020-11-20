@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Brand;
 import models.Feedback;
+import models.LiveConfig;
 import models.Price;
 import models.NewsAdapter;
 
@@ -36,6 +37,10 @@ public class Webservices extends Controller {
 	
 	public static Result getNews() {
 		return sendIfAuthorized(Json.toJson(NewsAdapter.findAll()));
+	}
+	
+	public static Result getLiveConfig() {
+		return ok(Json.toJson(LiveConfig.findAll()));
 	}
 	
 	public static Result getAppointmentOptions() {

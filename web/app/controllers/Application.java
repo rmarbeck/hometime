@@ -976,9 +976,9 @@ public class Application extends Controller {
 	}
 	
 	private static Optional<ObjectNode> validateAppointmentAndSendSMS(String uniqueKey) {
-		boolean alreadyValid = isItValid(uniqueKey);
+		boolean alreadyValid = isItValidated(uniqueKey);
 		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.validate(uniqueKey);
-		if (appointment.isPresent() && appointment.get().isValid()) {
+		if (isItValidated(appointment)) {
 			if (!alreadyValid) {
 				SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.validated", appointment.get().getNiceDisplayableDatetime()));
 				ActionHelper.asyncTryToNotifyTeamByEmail("Rendez-vous confirmé", getAppointementValidationMessage(appointment.get()));
@@ -999,12 +999,18 @@ public class Application extends Controller {
 		message.append("\n\n");
 		message.append("Motif de la demande : ");
 		message.append(appointment.reason);
+		message.append("\n\n");
+		message.append("Remarque : ");
+		message.append(appointment.customerRemark);
 		return message.toString();
 	}
 	
-	private static boolean isItValid(String uniqueKey) {
-		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.findByKey(uniqueKey);
-		return appointment.isPresent() && appointment.get().isValid();
+	private static boolean isItValidated(String uniqueKey) {
+		return isItValidated(AppointmentRequestHelper.findByKey(uniqueKey));
+	}
+	
+	private static boolean isItValidated(Optional<AppointmentRequest> appointment) {
+		return appointment.filter(AppointmentRequest::isValidated).map(x -> true).orElse(false);
 	}
 	
 	private static Optional<ObjectNode> cancelAppointmentAndSendSMS(String uniqueKey) {

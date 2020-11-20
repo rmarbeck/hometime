@@ -492,6 +492,7 @@ GET     /ws/brands/get/all												controllers.Webservices.getBrands()
 GET     /ws/feedbacks/get/all											controllers.Webservices.getFeedbacks()
 GET     /ws/prices/get/all												controllers.Webservices.getPrices()
 GET     /ws/news/get/all												controllers.Webservices.getNews()
+GET     /ws/live/config/get/all											controllers.Webservices.getLiveConfig()
 
 GET     /ws/appointment/options/get/all									controllers.Webservices.getAppointmentOptions()
 

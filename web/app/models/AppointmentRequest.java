@@ -177,7 +177,7 @@ public class AppointmentRequest extends Model implements CrudReady<AppointmentRe
     	return find.where().gt("appointmentAsDate", DateHelper.toDate(Instant.now().minusSeconds(60*30))).orderBy("appointmentAsDate ASC").findList();
     }
     
-    public boolean isValid() {
+    public boolean isValidated() {
     	return this.status.equals(Status.VALIDATED);
     }
     
