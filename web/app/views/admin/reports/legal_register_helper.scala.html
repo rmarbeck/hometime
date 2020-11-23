@@ -9,7 +9,7 @@
 			$('td[class~="action"]').each(function() {
 				var currentid  = $(this).parent().find('td[class~="key"]').text();
 				var currentwatchid  = $(this).parent().find('td[class~="action"]').text();
-				$(this).parent().attr('id', currentid);
+				$(this).parent().attr('id', currentwatchid);
 				$(this).html(function() {
 			       var link = $('<a/>');
 			       link.attr('href', ('@routes.Reporting.markInLegalRegister(0l)'+currentwatchid.trim()).replace('=0', '=')+'#'+currentid.trim());

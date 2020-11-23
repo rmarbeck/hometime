@@ -40,9 +40,8 @@ import views.html.admin.reports.current_orders_report;
 
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
-public class Reporting extends Controller {
-	public static Result GO_TO_DEFAULT_LEGAL_HELPER = ok(legal_register_helper.render(LegalRegisterReport.generateReport(1l)));
-	
+public class Reporting extends Controller { 
+
 	public static Result financialReportEnhanced() {
 		return ok(financial_report.render(AnalyticsReportEnhanced.generateReportEnhanced()));
     }
@@ -103,7 +102,9 @@ public class Reporting extends Controller {
 			watchFound.isInRegistry = true;
 			watchFound.update();
 		}
-		return GO_TO_DEFAULT_LEGAL_HELPER;
+		return redirect(
+				routes.Reporting.legalRegisterHelper(1l)+"#"+watchId
+				);
 	}
 	
 	public static Result addresses() {
