@@ -10,4 +10,5 @@
       document.execCommand("copy");
       // Remove it from the body
       document.body.removeChild(aux);
+      event.stopPropagation();
     }
