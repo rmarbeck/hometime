@@ -7,8 +7,8 @@
 	
 		$(document).ready(function(){
 			$('td[class~="action"]').each(function() {
-				var currentid  = $(this).parent().find('td[class~="key"]').text();
-				var currentwatchid  = $(this).parent().find('td[class~="action"]').text();
+				var currentid  = $(this).parent().find('td[class~="key"]').text().replace(/(\r\n|\n|\r)/gm," ").trim();
+				var currentwatchid  = $(this).parent().find('td[class~="action"]').text().replace(/(\r\n|\n|\r)/gm," ").trim();
 				$(this).parent().attr('id', currentwatchid);
 				$(this).html(function() {
 			       var link = $('<a/>');
