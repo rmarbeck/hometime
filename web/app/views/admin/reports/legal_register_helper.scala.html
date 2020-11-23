@@ -6,11 +6,11 @@
 	@admin.fragments.script_copy_to_clipboard()
 	
 		$(document).ready(function(){
-			$('td[class~="key"]').each(function() {
-				var text  = $(this).html();
+			$('td[class~="action"]').each(function() {
+				var currentid  = $(this).parent().find('td[class~="key"]').text();
 				$(this).html(function() {
 			       var link = $('<a/>');
-			       link.attr('href', ('@routes.Reporting.markInLegalRegister(0l)'+text.trim()).replace('=0', '='));
+			       link.attr('href', ('@routes.Reporting.markInLegalRegister(0l)'+currentid.trim()).replace('=0', '='));
 			       link.attr('type', 'button');
 			       link.attr('title', 'Marquer comme \'dans le registre\'');
 			       link.attr('class', 'btn btn-success btn-xs');
@@ -19,7 +19,7 @@
 		       });
 		       $(this).append(function() {
 			       var link = $('<a/>');
-			       link.attr('href', ('@routes.CrudHelper.edit("WatchesToSell", 0l)'+text.trim()).replace('/0', '/'));
+			       link.attr('href', ('@routes.CrudHelper.edit("WatchesToSell", 0l)'+currentid.trim()).replace('/0', '/'));
 			       link.attr('type', 'button');
 			       link.attr('title', 'Modifier la montre');
 			       link.attr('class', 'btn btn-primary btn-xs');
@@ -27,7 +27,7 @@
 			       return link;
 		       });
 		    });
-		    $('td[class~="key"]').each(function() {
+		    $('td[class~="action"]').each(function() {
 		       $(this).append(function() {
 			       var link = $('<a/>');
 			       link.attr('href', '#');
@@ -47,6 +47,7 @@
 @defining(new views.admin.reports.Report(lines, "admin.reporting.legal.register.page")) { report =>
 	@{  
 		report.addCol("num", "getNum", false, null, "key");
+		report.addCol("action", "", false, null, "action");
 		report.addCol("date.of.stock.entry", "getDateOfStockEntry", false, "date medium", null);
 		report.addCol("description", "getDescriptionForHelper", false, "pre", "content"); 	
 		report.addCol("seller", "getSeller", false);

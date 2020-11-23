@@ -4100,6 +4100,7 @@ admin.reporting.legal.register.page.seller=Vendeur
 admin.reporting.legal.register.page.price=Prix d''achat
 admin.reporting.legal.register.page.registry.warning=A ajouter ?
 admin.reporting.legal.register.page.num=#
+admin.reporting.legal.register.page.action=Actions
 
 admin.reporting.payments.page.title=Paiements
 admin.reporting.payments.page.date.of.bank.deposit=Date de remise
