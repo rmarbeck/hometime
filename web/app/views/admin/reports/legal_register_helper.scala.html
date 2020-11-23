@@ -1,20 +1,61 @@
 @(lines: List[models.LegalRegisterReport])
 @import tags._
 
-
+@end_scripts = {
+<script>
+	@admin.fragments.script_copy_to_clipboard()
+	
+		$(document).ready(function(){
+			$('td[class~="key"]').each(function() {
+				var text  = $(this).html();
+				$(this).html(function() {
+			       var link = $('<a/>');
+			       link.attr('href', ('@routes.Reporting.markInLegalRegister(0l)'+text.trim()).replace('=0', '='));
+			       link.attr('type', 'button');
+			       link.attr('title', 'Marquer comme \'dans le registre\'');
+			       link.attr('class', 'btn btn-success btn-xs');
+			       link.html('<span class="glyphicon glyphicon-ok"></span>');
+			       return link;
+		       });
+		       $(this).append(function() {
+			       var link = $('<a/>');
+			       link.attr('href', ('@routes.CrudHelper.edit("WatchesToSell", 0l)'+text.trim()).replace('/0', '/'));
+			       link.attr('type', 'button');
+			       link.attr('title', 'Modifier la montre');
+			       link.attr('class', 'btn btn-primary btn-xs');
+			       link.html('<span class="glyphicon glyphicon-edit"></span>');
+			       return link;
+		       });
+		    });
+		    $('td[class~="key"]').each(function() {
+		       $(this).append(function() {
+			       var link = $('<a/>');
+			       link.attr('href', '#');
+			       link.attr('onclick', 'copyToClipboard(\''+$(this).parent().find('td[class~="content"]').text().replace(/(\r\n|\n|\r)/gm," ").trim()+'\')');
+			       link.attr('title', 'Copier le texte');
+			       link.attr('type', 'button');
+			       link.attr('class', 'btn btn-info btn-xs');
+			       link.html('<span class="glyphicon glyphicon-new-window"></span>');
+			       return link;
+		       });
+		     });
+		})
+	
+</script>
+}
 
 @defining(new views.admin.reports.Report(lines, "admin.reporting.legal.register.page")) { report =>
 	@{  
-		report.addCol("num", "getNum", false);
+		report.addCol("num", "getNum", false, null, "key");
 		report.addCol("date.of.stock.entry", "getDateOfStockEntry", false, "date medium", null);
-		report.addCol("description", "getDescriptionForHelper", false, "pre", null); 	
+		report.addCol("description", "getDescriptionForHelper", false, "pre", "content"); 	
 		report.addCol("seller", "getSeller", false);
 		report.addCol("price", "getPurchasePrice", false, "price", null);
 		report.addCol("registry.warning", "getRegistryWarning", false);
 		report.setClass("getCssClass")
 	}
 	
-	@layouts.admin() {
+	@layouts.admin("Register Helper", end_scripts) {
 	    @admin.reports.fragments.report(report)
 	}
 }

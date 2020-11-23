@@ -5,6 +5,8 @@ import java.util.List;
 import models.LegalRegisterReport;
 import models.PaymentsReport;
 import models.StockReport;
+import models.Watch;
+import models.WatchToSell;
 import models.Invoice.InvoiceType;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -39,6 +41,8 @@ import views.html.admin.reports.current_orders_report;
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
 public class Reporting extends Controller {
+	public static Result GO_TO_DEFAULT_LEGAL_HELPER = ok(legal_register_helper.render(LegalRegisterReport.generateReport(1l)));
+	
 	public static Result financialReportEnhanced() {
 		return ok(financial_report.render(AnalyticsReportEnhanced.generateReportEnhanced()));
     }
@@ -90,6 +94,17 @@ public class Reporting extends Controller {
 	public static Result legalRegisterHelper(Long starting) {
 		return ok(legal_register_helper.render(LegalRegisterReport.generateReport(starting)));
     }
+	
+	public static Result markInLegalRegister(Long watchId) {
+		WatchToSell watchFound = WatchToSell.findById(watchId);
+		if (watchFound != null
+				&& watchFound.shouldBeInRegistry
+				&& !watchFound.isInRegistry) {
+			watchFound.isInRegistry = true;
+			watchFound.update();
+		}
+		return GO_TO_DEFAULT_LEGAL_HELPER;
+	}
 	
 	public static Result addresses() {
 		return ok(address_tab.render(getCustomers()));

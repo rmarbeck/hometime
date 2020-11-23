@@ -433,6 +433,7 @@ GET     /admin/addressbook		            							controllers.Reporting.addressBook
 GET     /admin/stock			            							controllers.Reporting.stock()
 GET     /admin/legal-register	            							controllers.Reporting.legalRegister(starting:Long ?=1)
 GET     /admin/legal-register-helper	            					controllers.Reporting.legalRegisterHelper(starting:Long ?=1)
+GET     /admin/mark-in-legal-register-helper	            			controllers.Reporting.markInLegalRegister(id:Long)
 GET     /admin/payments			            							controllers.Reporting.payments()
 GET     /admin/financialEnhancedOld            							controllers.Reporting.financialReportEnhanced()
 GET     /admin/financialEnhanced            							controllers.Reporting.financialReportEnhanced2()
