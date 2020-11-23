@@ -9,6 +9,7 @@ import fr.hometime.utils.DateHelper;
 public class LegalRegisterReport {
 	
 	public Long num;
+	public Long watchId;
 	public Date dateOfStockEntry;
 	public String description;
 	public String descriptionForHelper;
@@ -22,6 +23,7 @@ public class LegalRegisterReport {
 	private LegalRegisterReport(WatchToSell watchToSell, Long index) {
 		this();
 		this.num = index;
+		this.watchId = watchToSell.id;
 		this.description = generateDescription(watchToSell);
 		this.descriptionForHelper = generateDescriptionForHelper(watchToSell);
 		this.purchasePrice = (float) watchToSell.purchasingPrice;

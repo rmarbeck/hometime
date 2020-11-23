@@ -8,10 +8,11 @@
 		$(document).ready(function(){
 			$('td[class~="action"]').each(function() {
 				var currentid  = $(this).parent().find('td[class~="key"]').text();
+				var currentwatchid  = $(this).parent().find('td[class~="action"]').text();
 				$(this).parent().attr('id', currentid);
 				$(this).html(function() {
 			       var link = $('<a/>');
-			       link.attr('href', ('@routes.Reporting.markInLegalRegister(0l)'+currentid.trim()).replace('=0', '=')+'#'+currentid.trim());
+			       link.attr('href', ('@routes.Reporting.markInLegalRegister(0l)'+currentwatchid.trim()).replace('=0', '=')+'#'+currentid.trim());
 			       link.attr('type', 'button');
 			       link.attr('title', 'Marquer comme \'dans le registre\'');
 			       link.attr('class', 'btn btn-success btn-xs');
@@ -20,7 +21,7 @@
 		       });
 		       $(this).append(function() {
 			       var link = $('<a/>');
-			       link.attr('href', ('@routes.CrudHelper.edit("WatchesToSell", 0l)'+currentid.trim()).replace('/0', '/'));
+			       link.attr('href', ('@routes.CrudHelper.edit("WatchesToSell", 0l)'+currentwatchid.trim()).replace('/0', '/'));
 			       link.attr('type', 'button');
 			       link.attr('title', 'Modifier la montre');
 			       link.attr('class', 'btn btn-primary btn-xs');
@@ -48,7 +49,7 @@
 @defining(new views.admin.reports.Report(lines, "admin.reporting.legal.register.page")) { report =>
 	@{  
 		report.addCol("num", "getNum", false, null, "key");
-		report.addCol("action", "", false, null, "action");
+		report.addCol("action", "getWatchId", false, null, "action");
 		report.addCol("date.of.stock.entry", "getDateOfStockEntry", false, "date medium", null);
 		report.addCol("description", "getDescriptionForHelper", false, "pre", "content"); 	
 		report.addCol("seller", "getSeller", false);
