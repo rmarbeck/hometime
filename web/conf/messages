@@ -3247,6 +3247,7 @@ admin.index.appointment.requests.active.none=Aucun rendez-vous
 admin.index.appointment.requests.appointment=Créneau
 admin.index.appointment.requests.customer=Client
 admin.index.appointment.requests.status=Statut
+admin.index.appointment.requests.reason=Motif
 
 admin.index.order.requests.number.waiting=Et {0} marqués en attente de retour client
 admin.index.watches=Gérer les actions sur les montres en cours
@@ -5458,6 +5459,8 @@ admin.appointment.status.value.canceled=Annulé
 admin.appointment.status.value.expired=Expirée
 admin.appointment.status.value.no.more.available=Plus disponible
 admin.appointment.status.value.in.erreur=Erreur
+admin.appointment.reason.value.deposit=Dépôt
+admin.appointment.reason.value.pickup=Retrait
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751
 

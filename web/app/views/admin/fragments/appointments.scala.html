@@ -11,6 +11,7 @@
 	        <tr>
 	          <th>@Html(Messages(key+".appointment"))</th>
 	          <th>@Html(Messages(key+".customer"))</th>
+	          <th>@Html(Messages(key+".reason"))</th>
 	          <th>@Html(Messages(key+".status"))</th>
 	        </tr>
 	      </thead>
@@ -19,6 +20,7 @@
 	      	<tr class="">
 	      		<td>@request.getNiceDisplayableDatetime</td>
 	      		<td>@request.customerDetails</td>
+	      		<td>@display_i18n_value(request.reason.name, "admin.appointment.reason.value")</td>
 	      		<td>@display_i18n_value(request.status.name, "admin.appointment.status.value")</td>
 	      	</tr>
 	      	}
