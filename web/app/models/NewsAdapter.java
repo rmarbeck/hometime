@@ -2,8 +2,8 @@ package models;
 
 import java.util.Date;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+
+import fr.hometime.utils.NewsAdapterHelper;
 
 public class NewsAdapter {
 	public Long id;
@@ -37,9 +37,9 @@ public class NewsAdapter {
 		this.readMoreUrl = news.readMoreUrl;
 		this.active = news.active;
 		this.privateInfos = news.privateInfos;
-		this.categories = mapStrings(news.categories, NewsCategory::toString);
-		this.previewUrl = mapStrings(news.previewUrl, NewsUrl::toString);
-		this.previewAlt = mapStrings(news.previewAlt, NewsAlt::toString);
+		this.categories = NewsAdapterHelper.initCategories(news);
+		this.previewUrl = NewsAdapterHelper.initPreviewUrl(news);
+		this.previewAlt = NewsAdapterHelper.initPreviewAlt(news);
 	}
 	
 	public static NewsAdapter of(News news) {
@@ -47,10 +47,6 @@ public class NewsAdapter {
 	}
 	
 	public static List<NewsAdapter> findAll() {
-		return News.findAll().stream().map(NewsAdapter::of).collect(Collectors.toList());
-	}
-	
-	private <T> List<String> mapStrings(List<T> values, Function<T, String> mapper) {
-		return values.stream().map(mapper).collect(Collectors.toList());
+		return NewsAdapterHelper.findAll();
 	}
 }
