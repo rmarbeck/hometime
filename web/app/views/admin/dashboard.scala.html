@@ -1,4 +1,4 @@
-@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch], partsToReceive: List[models.SparePart], bywatchmakers: List[models.CustomerWatch], appointments: List[models.AppointmentRequest])
+@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch], partsToReceive: List[models.SparePart], bywatchmakers: List[models.CustomerWatch], appointments: List[models.AppointmentRequest], quickWins: List[models.CustomerWatch])
 @import tags._
 
 @import fr.hometime.utils._
@@ -69,6 +69,7 @@
 	            <h1 class="cover-heading">Nouvelles demandes</h1>
 	            @fragments.orderlist(unrepliedOrderRequests, false, "admin.index.order.requests", true)
 	            <br/><p>-</p><br/>
+	            <h1 class="cover-heading">Rendez-vous</h1>
 	            @fragments.appointments(appointments, false, "admin.index.appointment.requests", true)
 	        </div>
 	        <div class="col-lg-6">
@@ -110,42 +111,14 @@
 	     </div>
 	     <div class="row">
 	        <div class="col-lg-6">
+	        	<h1 class="cover-heading">Entretien rapides</h1>
+	            @fragments.watchlist_on_dash(quickWins, "admin.index.watches")
 	            <h1 class="cover-heading">Urgences</h1>
-	            @if(watches != null && watches.size >0) {
-		    	<h3>
-		    		@Html(Messages("admin.index.watches.active"))
-		    	</h3>
-		    	<table class="table table-condensed">
-		          <thead>
-			        <tr>
-			          <th>@Html(Messages("admin.index.watches.head.id"))</th>
-			          <th>@Html(Messages("admin.index.watches.head.name"))</th>
-			          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
-			          <th>@Html(Messages("admin.index.watches.head.model"))</th>
-			          <th>@Html(Messages("admin.index.watches.head.status"))</th>
-			        </tr>
-			      </thead>
-			      <tbody>
-			      	@for(watch <- watches; statusClass = watch.getWatchStatusClass) {
-			      	<tr class="customer_has_constraint_@watch.isCustomerHasConstraint customer_has_called_@watch.isCustomerHasCalledForDelay">
-			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
-			      		<td>@takeif(watch.customer.firstname+" "+watch.customer.name)</td>
-			      		<td>@watch.brand</td>
-			      		<td>@takeif(watch.model)</td>
-			      		<td>@if(watch.isCustomerHasConstraint) {<span class="glyphicon glyphicon-warning-sign"></span>} @if(watch.isCustomerHasCalledForDelay) {<span class="glyphicon glyphicon-earphone"></span>} @display_date_and_countdown(watch.getFirstKnownDate)</td>
-			      	</tr>
-			      	}
-				  </tbody>
-				</table>
-		    } else {
-		    	<h3>
-		    		@Html(Messages("admin.index.watches.active.none"))
-		    	</h3>
-		    }
+	            @fragments.watchlist_on_dash(watches, "admin.index.watches", true)
 	        </div>
 	        <div class="col-lg-6">
 	            <h1 class="cover-heading">Pièces détachées</h1>
-	            	@fragments.sparepartsmanageablelist(partsToReceive, "admin.spare.parts.to.receive", true)
+	            	@fragments.sparepartsmanageablelist(partsToReceive, "admin.spare.parts.to.receive", quickWins != null && quickWins.size >0)
 	        </div>
           </div>
 

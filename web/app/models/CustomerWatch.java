@@ -325,6 +325,8 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
 	
 	public boolean noSolution = false;
 	
+	public boolean quickWinPossible = false;
+	
 	public String serviceInfoFromWatchmaker = null;
 	
 	public CustomerWatch() {
@@ -399,6 +401,10 @@ public class CustomerWatch extends Model implements CrudReady<CustomerWatch, Cus
     
     public static List<CustomerWatch> findAllUnderOurResponsabilityOrderedByID() {
         return find.fetch("customer").where().ne("status", "BACK_TO_CUSTOMER").orderBy("id desc").findList();
+    }
+    
+    public static List<CustomerWatch> findAllUnderOurResponsabilityWithQuickWinPossibleOrderedByID() {
+        return find.fetch("customer").where().ne("status", "BACK_TO_CUSTOMER").eq("service_price_accepted", true).eq("serviceNeeded", true).eq("quickWinPossible", true).ne("service_status", 100).orderBy("id desc").findList();
     }
     
     public static List<CustomerWatch> findAllToTestOrderedByID() {

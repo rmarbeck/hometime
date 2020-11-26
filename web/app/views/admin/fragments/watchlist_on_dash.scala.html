@@ -1,0 +1,37 @@
+@(watches: List[models.CustomerWatch], key: String = "admin.index.watches", skipHeader: Boolean = false)
+@import tags._
+@import fr.hometime.utils._
+
+			@if(watches != null && watches.size >0) {
+				<h3>
+		    		@Html(Messages(key+".active"))
+		    	</h3>
+		    	<table class="table table-condensed">
+		    	  @if(!skipHeader) {
+		          <thead>
+			        <tr>
+			          <th>@Html(Messages(key+".head.id"))</th>
+			          <th>@Html(Messages(key+".head.name"))</th>
+			          <th>@Html(Messages(key+".head.brand"))</th>
+			          <th>@Html(Messages(key+".head.model"))</th>
+			          <th>@Html(Messages(key+".head.status"))</th>
+			        </tr>
+			      </thead>
+			      }
+			      <tbody>
+			      	@for(watch <- watches; statusClass = watch.getWatchStatusClass) {
+			      	<tr class="customer_has_constraint_@watch.isCustomerHasConstraint customer_has_called_@watch.isCustomerHasCalledForDelay">
+			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
+			      		<td>@takeif(watch.customer.firstname+" "+watch.customer.name)</td>
+			      		<td>@watch.brand</td>
+			      		<td>@takeif(watch.model)</td>
+			      		<td>@if(watch.isCustomerHasConstraint) {<span class="glyphicon glyphicon-warning-sign"></span>} @if(watch.isCustomerHasCalledForDelay) {<span class="glyphicon glyphicon-earphone"></span>} @display_date_and_countdown(watch.getFirstKnownDate)</td>
+			      	</tr>
+			      	}
+				  </tbody>
+				</table>
+		    } else {
+		    	<h3>
+		    		@Html(Messages(key+".active.none"))
+		    	</h3>
+		    }

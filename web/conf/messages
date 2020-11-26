@@ -2632,6 +2632,8 @@ admin.customer.watch.form.placeholder.authentication.private.infos=
 admin.customer.watch.form.label.authentication.watch.details=Détails spécifiques
 admin.customer.watch.form.placeholder.authentication.watch.details=
 
+admin.customer.watch.form.label.quick.win.possible=Entretien rapide
+
 admin.customer.watch.form.label.tester.email=Testeur
 admin.customer.watch.form.placeholder.tester.email=
 
