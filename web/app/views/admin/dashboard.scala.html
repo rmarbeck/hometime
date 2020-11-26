@@ -1,4 +1,4 @@
-@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch], partsToReceive: List[models.SparePart], bywatchmakers: List[models.CustomerWatch], appointments: List[models.AppointmentRequest], quickWins: List[models.CustomerWatch])
+@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch], partsToReceive: List[models.SparePart], bywatchmakers: List[models.CustomerWatch], appointments: List[models.AppointmentRequest], quickWins: List[models.CustomerWatch], page: Integer = 1)
 @import tags._
 
 @import fr.hometime.utils._
@@ -46,9 +46,9 @@
               
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Ecran 2</a></li>
-                  <li><a href="#">Ecran 3</a></li>
+                  <li @if(page==1) {class="active"}><a href="@routes.Admin.dash(1)">Home</a></li>
+                  <li @if(page==2) {class="active"}><a href="@routes.Admin.dash(2)">Ecran 2</a></li>
+                  <li @if(page==3) {class="active"}><a href="@routes.Admin.dash(3)">Ecran 3</a></li>
                 </ul>
               </nav>
               <a href="https://time.is/Paris" id="time_is_link" rel="nofollow" style="font-size:30px"></a>
@@ -63,7 +63,7 @@
           </div>
           
           <div class="cover-content">
-          
+          @if(page ==1) {
           <div class="row">
           	<div class="col-lg-6">
 	            <h1 class="cover-heading">Nouvelles demandes</h1>
@@ -118,9 +118,33 @@
 	        </div>
 	        <div class="col-lg-6">
 	            <h1 class="cover-heading">Pièces détachées</h1>
-	            	@fragments.sparepartsmanageablelist(partsToReceive, "admin.spare.parts.to.receive", true)
+	            @fragments.sparepartsmanageablelist(partsToReceive, "admin.spare.parts.to.receive", true)
 	        </div>
           </div>
+          }
+          @if(page == 2) {
+          <div class="row">
+      		<div class="col-lg-12">
+            	<h1 class="cover-heading">Urgences</h1>
+        	</div>
+          	@if(watches.drop(40).size == 0) {
+      		<div class="col-lg-12">
+            	@fragments.watchlist_on_dash(watches.take(40), "admin.index.watches", false)
+        	</div>
+          	} else {
+      		<div class="col-lg-6">
+	            @fragments.watchlist_on_dash(watches.take(40), "admin.index.watches", false)
+	        </div>
+	        <div class="col-lg-6">
+	            @fragments.watchlist_on_dash(watches.drop(40), "admin.index.watches.more", false)
+	        </div>
+          	}
+		        
+          </div>
+          }
+          @if(page == 3) {
+          	<h1>Page 3</h1>
+          }
 
           <div class="mastfoot">
             <div class="inner">

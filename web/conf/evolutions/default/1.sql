@@ -277,6 +277,7 @@ create table customer_watch (
   sparepart_found           boolean,
   need_help                 boolean,
   no_solution               boolean,
+  quick_win_possible        boolean,
   service_info_from_watchmaker varchar(255),
   constraint ck_customer_watch_customer_watch_status check (customer_watch_status in ('STORED_BY_WATCH_NEXT','STORED_BY_STH','STORED_BY_BRAND','STORED_BY_OTHER_PARTNER','STORED_BY_A_REGISTERED_PARTNER','BACK_TO_CUSTOMER','STORED_BY_WATCH_NEXT_OUTSIDE','STORED_BY_WATCH_NEXT_SECURED_1','STORED_BY_WATCH_NEXT_SECURED_2','STORED_BY_WATCH_NEXT_SECURED_3')),
   constraint ck_customer_watch_customer_watch_type check (customer_watch_type in ('MECA_SIMPLE','MECA_CHRONO','MECA_COMPLEX','AUTO_SIMPLE','AUTO_CHRONO','AUTO_COMPLEX','QUARTZ_SIMPLE','QUARTZ_COMPLEX','RESERVED_1','RESERVED_2','RESERVED_3','OTHER')),

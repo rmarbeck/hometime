@@ -3278,6 +3278,8 @@ admin.index.customers.value.status.real.customer=Client
 
 admin.index.watches.active=Montres de clients détenues
 admin.index.watches.active.none=Aucune montre détenue
+admin.index.watches.more.active=
+admin.index.watches.more.active.none=
 admin.index.watches.head.id=ID
 admin.index.watches.head.name=Client
 admin.index.watches.head.brand=Marque
@@ -3285,6 +3287,14 @@ admin.index.watches.head.model=Modèle
 admin.index.watches.head.watchmaker=Horloger
 admin.index.watches.head.last.communication.date=Date de changement de statut
 admin.index.watches.head.status=Statut
+admin.index.watches.more.head.id=ID
+admin.index.watches.more.head.name=Client
+admin.index.watches.more.head.brand=Marque
+admin.index.watches.more.head.model=Modèle
+admin.index.watches.more.head.watchmaker=Horloger
+admin.index.watches.more.head.last.communication.date=Date de changement de statut
+admin.index.watches.more.head.status=Statut
+
 admin.index.watches.head.actions=Actions
 admin.index.watches.value.status.stored.by.watch.next=Chez Nous
 admin.index.watches.value.status.stored.by.sth=Déprécié (ne pas utiliser)
