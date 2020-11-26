@@ -111,14 +111,14 @@
 	     </div>
 	     <div class="row">
 	        <div class="col-lg-6">
-	        	<h1 class="cover-heading">Entretien rapides</h1>
+	        	<h1 class="cover-heading">Entretiens rapides</h1>
 	            @fragments.watchlist_on_dash(quickWins, "admin.index.watches")
 	            <h1 class="cover-heading">Urgences</h1>
-	            @fragments.watchlist_on_dash(watches, "admin.index.watches", true)
+	            @fragments.watchlist_on_dash(watches, "admin.index.watches", quickWins != null && quickWins.size >0)
 	        </div>
 	        <div class="col-lg-6">
 	            <h1 class="cover-heading">Pièces détachées</h1>
-	            	@fragments.sparepartsmanageablelist(partsToReceive, "admin.spare.parts.to.receive", quickWins != null && quickWins.size >0)
+	            	@fragments.sparepartsmanageablelist(partsToReceive, "admin.spare.parts.to.receive", true)
 	        </div>
           </div>
 
