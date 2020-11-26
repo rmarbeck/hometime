@@ -129,14 +129,14 @@
         	</div>
           	@if(watches.drop(40).size == 0) {
       		<div class="col-lg-12">
-            	@fragments.watchlist_on_dash(watches.take(40), "admin.index.watches", false)
+            	@fragments.watchlist_on_dash(watches.take(31), "admin.index.watches", false)
         	</div>
           	} else {
       		<div class="col-lg-6">
-	            @fragments.watchlist_on_dash(watches.take(40), "admin.index.watches", false)
+	            @fragments.watchlist_on_dash(watches.take(31), "admin.index.watches", false)
 	        </div>
 	        <div class="col-lg-6">
-	            @fragments.watchlist_on_dash(watches.drop(40), "admin.index.watches.more", false)
+	            @fragments.watchlist_on_dash(watches.drop(31), "admin.index.watches.more", false)
 	        </div>
           	}
 		        
