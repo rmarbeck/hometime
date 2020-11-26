@@ -11,6 +11,14 @@
 		    #@to_render
 		  }
 		  
+		  case "html" => {
+		    @Html(to_render)
+		  }
+		  
+		  case "link" => {
+		    <a href="@to_render">@to_render</a>
+		  }
+		  
 		  case "boolean" => {
 		    @display_boolean(Boolean.valueOf(to_render))
 		  }

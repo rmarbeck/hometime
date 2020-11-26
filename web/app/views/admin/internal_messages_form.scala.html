@@ -1,0 +1,39 @@
+@(thisInstance: Form[models.InternalMessage], isItNew: Boolean)
+
+@import tags._
+
+@actionlink() = @{
+	routes.CrudHelper.manage("InternalMessages")
+}
+
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('button[value="delete"]').hide();
+			$('button[value="show"]').hide();
+		})
+	</script>
+}
+
+@before_form = {}
+
+
+@after_form = {
+
+}
+
+@defining(new views.FormDisplay(thisInstance, "InternalMessages", "admin.internal.messages.form")) { formDisplay =>
+		@{ formDisplay.addFormFieldForSelect("type", "admin.internal.messages.form.type.VARIABLE", models.InternalMessage.InternalMessageType.values.toList);
+		   formDisplay.addFormField("body", true, "textarea");
+		   formDisplay.addFormField("readMoreUrl", true, "input");
+
+		   formDisplay.addFormField("active", true, "checkbox");
+    	   formDisplay.addFormField("shouldDisplayOnDash", true, "checkbox");
+		   formDisplay.addFormField("deadLine", true, "input", 'type -> "date");
+
+		   formDisplay.addFormField("privateInfos", true, "textarea");
+		   
+		}
+	@admin.template.form(formDisplay, isItNew, actionlink, end_scripts, before_form, after_form)
+}

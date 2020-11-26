@@ -1,0 +1,23 @@
+@(currentPage: com.avaje.ebean.Page[models.InternalMessage], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
+@import tags._
+
+
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('a.btn-success.btn-xs').hide();
+		})
+	</script>
+}
+
+@defining(new views.PageDisplay(currentPage, "contenu", "admin.internal.messages.page")) { pageDisplay =>
+	@{  
+		pageDisplay.addTableField("body", "body", "getBody", false, "html");
+		pageDisplay.addTableField("type", "type", "getType", false);
+		pageDisplay.addTableField("active", "active", "getActive", false, "boolean");
+		pageDisplay.addTableField("shouldDisplayOnDash", "shouldDisplayOnDash", "getShouldDisplayOnDash", false, "boolean");
+		pageDisplay.addTableField("deadLine", "deadLine", "getDeadLine", false, "date number_of_days");
+	}
+	
+	@admin.template.page_with_default_links(pageDisplay, "InternalMessages", null, currentSortBy, currentOrder, currentFilter, currentSize, true, false, end_scripts)
+}

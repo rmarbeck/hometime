@@ -316,6 +316,22 @@ create table incoming_call (
   constraint pk_incoming_call primary key (id))
 ;
 
+create table internal_message (
+  id                        bigint not null,
+  body                      varchar(10000),
+  internal_message_type     varchar(40),
+  creation_date             timestamp,
+  dead_line                 timestamp,
+  auto_end_date             timestamp,
+  last_disabling_date       timestamp,
+  read_more_url             varchar(255),
+  active                    boolean,
+  should_display_on_dash    boolean,
+  private_infos             varchar(255),
+  constraint ck_internal_message_internal_message_type check (internal_message_type in ('ALERT','WARNING','TODO','INFO','RESERVED_1','RESERVED_2')),
+  constraint pk_internal_message primary key (id))
+;
+
 create table invoice (
   id                        bigint not null,
   description               varchar(10000),
@@ -872,6 +888,8 @@ create sequence feedback_seq;
 
 create sequence incoming_call_seq;
 
+create sequence internal_message_seq;
+
 create sequence invoice_seq;
 
 create sequence live_config_seq;
@@ -1055,6 +1073,8 @@ drop table if exists feedback;
 
 drop table if exists incoming_call;
 
+drop table if exists internal_message;
+
 drop table if exists invoice;
 
 drop table if exists live_config;
@@ -1150,6 +1170,8 @@ drop sequence if exists external_document_seq;
 drop sequence if exists feedback_seq;
 
 drop sequence if exists incoming_call_seq;
+
+drop sequence if exists internal_message_seq;
 
 drop sequence if exists invoice_seq;
 

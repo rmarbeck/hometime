@@ -1,0 +1,34 @@
+@(instance: models.InternalMessage)
+@import tags._
+
+@editlink(id:Long) = {
+    @routes.CrudHelper.edit("InternalMessages", id)
+}
+
+@newlink() = {
+    @routes.CrudHelper.create("InternalMessages")
+}
+
+@end_body = {
+		<div class="col-xs-12 text-center">
+			<a type="button" class="btn btn-info" href="@routes.CrudHelper.displayAll("InternalMessages")"><span class="glyphicon glyphicon-list"></span>&nbsp;@Html(Messages("admin.internal.message.action.display.internal.messages"))</a>
+        </div>
+}
+
+@defining(new views.ModelDisplay(instance, "admin.internal.message")) { modelDisplay =>
+		@{ 	modelDisplay.addField("body", "getBody", false, null, "html");
+			modelDisplay.addField("type");
+			modelDisplay.addSeparator();
+			modelDisplay.addTitle("details");
+			modelDisplay.addField("active", "getActive", false, null, "boolean");
+			modelDisplay.addField("shouldDisplayOnDash", "getShouldDisplayOnDash", false, null, "boolean");
+			modelDisplay.addSeparator();
+			modelDisplay.addTitle("options");
+			modelDisplay.addField("deadLine", "getDeadLine", false, null, "date short");
+			modelDisplay.addField("readMoreUrl", "getReadMoreUrl", false, null, "link");
+			modelDisplay.addField("privateInfos");
+		}
+	
+	@admin.template.display(modelDisplay, null, editlink, end_body)
+
+}

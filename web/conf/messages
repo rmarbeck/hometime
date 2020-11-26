@@ -5617,5 +5617,60 @@ admin.customer.watch.work.in.progress.form.needhelp.label.name=Besoin d''aide
 admin.customer.watch.work.in.progress.form.nosolution.label.name=Pas de solution
 
 
+
+admin.internal.messages.form=Messages internes
+admin.internal.messages.form.title=Messages internes
+admin.internalmessages.form.type.label.name=Type
+admin.internalmessages.form.type.default.name=Choisissez le type
+admin.internalmessages.form.body.label.name=Contenu
+admin.internalmessages.form.body.placeholder.name=...
+admin.internalmessages.form.readmoreurl.label.name=Lien utile
+admin.internalmessages.form.readmoreurl.placeholder.name=
+admin.internalmessages.form.active.label.name=Actif
+admin.internalmessages.form.shoulddisplayondash.label.name=Doit s''afficher sur le dash
+admin.internalmessages.form.deadline.label.name=Deadline
+admin.internalmessages.form.privateinfos.label.name=Infos privées
+admin.internalmessages.form.privateinfos.placeholder.name=...
+
+admin.internalmessages.form.type.value.name.alert=Urgent
+admin.internalmessages.form.type.value.name.warning=Alerte
+admin.internalmessages.form.type.value.name.todo=A faire
+admin.internalmessages.form.type.value.name.info=Info
+admin.internalmessages.form.type.value.name.reserved.1=Réservé
+admin.internalmessages.form.type.value.name.reserved.2=Réservé
+
+
+admin.internalmessages.action.save=Enregistrer
+admin.internalmessages.action.cancel=Annuler
+admin.internalmessages.action.edit=Modifier
+admin.internalmessages.action.delete=Supprimer
+
+
+admin.internal.messages.page=Messages internes
+admin.internal.messages.page.title=Messages internes
+admin.internal.messages.page.body=Contenu
+admin.internal.messages.page.active=Actif
+admin.internal.messages.page.shoulddisplayondash=A afficher
+admin.internal.messages.page.deadline=Deadline
+admin.internal.messages.page.type=Type
+
+admin.internal.message=Détail du message interne
+admin.internal.message.title=Détail du message interne
+admin.internalmessage.body.display.label=Contenu
+admin.internalmessage.readmoreurl.display.label=Url 
+admin.internalmessage.privateinfos.display.label=Infos privées
+admin.internalmessage.type.display.label=Type
+
+admin.internalmessage.active.display.label=Active
+admin.internalmessage.shoulddisplayondash.display.label=Doit s''afficher
+admin.internalmessage.deadline.display.label=Deadline
+
+admin.internal.message.details=Détails
+admin.internal.message.options=Options
+admin.internal.message.action.display.internal.messages=Afficher les messages
+
+
+
 #end
+
 
