@@ -2113,6 +2113,7 @@ admin.navbar.link.text.payment=Paiement
 admin.navbar.link.text.watches=Montres
 admin.navbar.link.text.mail.templates=Templates de mails
 admin.navbar.link.text.watches.to.do=Montres à faire
+admin.navbar.link.text.internal.messages=Messages internes
 
 admin.navbar.link.text.quick.service.watches=Montres rapides
 admin.navbar.link.text.quick.service.new.watch=Nouvelle montre rapide
@@ -5669,7 +5670,10 @@ admin.internal.message.details=Détails
 admin.internal.message.options=Options
 admin.internal.message.action.display.internal.messages=Afficher les messages
 
-
+admin.message.type.name.value.alert=exclamation-sign
+admin.message.type.name.value.warning=warning-sign
+admin.message.type.name.value.info=info-sign
+admin.message.type.name.value.todo=wrench
 
 #end
 

@@ -1,5 +1,30 @@
-@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch], partsToReceive: List[models.SparePart], bywatchmakers: List[models.CustomerWatch], appointments: List[models.AppointmentRequest], quickWins: List[models.CustomerWatch], page: Integer = 1)
+@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch], partsToReceive: List[models.SparePart], bywatchmakers: List[models.CustomerWatch], appointments: List[models.AppointmentRequest], quickWins: List[models.CustomerWatch], messages: List[models.InternalMessage], page: Integer = 1)
 @import tags._
+
+@end_script = {
+<script>
+$(document).ready(function(){
+		var delayInMS = 5000;
+		var nbMessages = @messages.size;
+		var counter = 0;
+		var today = new Date(new Date().setHours(0,0,0,0));
+		
+		
+		function myTimer() {
+			if(nbMessages!=0) {
+			var millis = new Date() - today; 
+			var indice = Math.floor(millis / delayInMS) % nbMessages;
+    		var textvalue = $('#content-'+indice).html();
+    		$('.message-holder').html(" - "+textvalue);
+    		}
+		}
+		
+		myTimer();
+
+		var myVar = setInterval(myTimer, 5000);
+		});
+</script>
+}
 
 @import fr.hometime.utils._
 
@@ -33,6 +58,12 @@
   </head>
 
   <body>
+          
+  <div class="hidden">
+	@for((message, index) <- messages.zipWithIndex) {
+		<span id="content-@index"><span class="glyphicon glyphicon-@display_i18n_value(message.getType().name,"admin.message.type.name.value")"></span> @Html(message.body)</span>
+	}
+  </div>
 
     <div class="site-wrapper">
 
@@ -42,8 +73,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Hometime / Dashboard@figure(quotation, "devis")@figure(tosend, "à envoyer")@figure(testing, "en test")</h3>
-              
+              <h3 class="masthead-brand">Hometime / Dashboard@figure(quotation, "devis")@figure(tosend, "à envoyer")@figure(testing, "en test")<span class="message-holder"></span></h3>
               <nav>
                 <ul class="nav masthead-nav">
                   <li @if(page==1) {class="active"}><a href="@routes.Admin.dash(1)">Home</a></li>
@@ -51,8 +81,10 @@
                   <li @if(page==3) {class="active"}><a href="@routes.Admin.dash(3)">Ecran 3</a></li>
                 </ul>
               </nav>
+              <span class="dash-clock">
               <a href="https://time.is/Paris" id="time_is_link" rel="nofollow" style="font-size:30px"></a>
 			  <span id="Paris_z71f" style="font-size:30px"></span>
+			  </span>
 			  <script src="//widget.time.is/t.js"></script>
 			  <script>
 				time_is_widget.init({Paris_z71f:{}});
@@ -61,6 +93,10 @@
               
             </div>
           </div>
+
+	
+          
+		  
           
           <div class="cover-content">
           @if(page ==1) {
@@ -165,6 +201,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="@remote_assets("javascripts/admin.js")"></script>
+    
+    @end_script
     
   </body>
 </html>

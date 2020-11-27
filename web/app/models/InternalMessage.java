@@ -99,6 +99,14 @@ public class InternalMessage extends Model implements CrudReady<InternalMessage,
     public static List<InternalMessage> findAll() {
         return find.all();
     }
+    
+    public static List<InternalMessage> findAllActive() {
+        return find.where().eq("active", true).orderBy("creationDate DESC").findList();
+    }
+    
+    public static List<InternalMessage> findAllActiveForDash() {
+        return find.where().eq("active", true).eq("shouldDisplayOnDash", true).orderBy("creationDate DESC").findList();
+    }
 
     public static InternalMessage findById(Long id) {
         return find.byId(id.toString());
