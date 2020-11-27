@@ -126,5 +126,9 @@ public class InternalMessage extends Model implements CrudReady<InternalMessage,
 	public Finder<String, InternalMessage> getFinder() {
 		return find;
 	}
+	
+	public String getTypeName() {
+		return type.name();
+	}
 }
 

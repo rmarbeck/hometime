@@ -61,7 +61,7 @@ $(document).ready(function(){
           
   <div class="hidden">
 	@for((message, index) <- messages.zipWithIndex) {
-		<span id="content-@index"><span class="glyphicon glyphicon-@display_i18n_value(message.type.name,"admin.message.type.name.value")"></span> @Html(message.body)</span>
+		<span id="content-@index"><span class="glyphicon glyphicon-@display_i18n_value(message.getTypeName(),"admin.message.type.name.value")"></span> @Html(message.body)</span>
 	}
   </div>
 
