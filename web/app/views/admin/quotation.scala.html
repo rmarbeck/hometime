@@ -61,13 +61,13 @@
 										</ul>
 										<p align="center">
 										@if(quotation.request!=null) {
-											<a class="btn" href="https://@{request.host()}@routes.Application.acceptQuotation(quotation.request.id, quotation.price, quotation.delay)" style="margin: 5px 0;padding: 10px 20px 10px 20px;font-family: Arial;color: #ffffff;background: #961b21;background-image: linear-gradient(to bottom, #dea6a6, #961b21);-webkit-border-radius: 4;-moz-border-radius: 4;border-radius: 4px;font-size: 14px;text-decoration: none;text-align: center;cursor: pointer;display: inline-block;">Accepter le devis&nbsp;!</a>
+											<a class="btn" href="@absolute_frontend_url(routes.Application.acceptQuotation(quotation.request.id, quotation.price, quotation.delay).url, true)" style="margin: 5px 0;padding: 10px 20px 10px 20px;font-family: Arial;color: #ffffff;background: #961b21;background-image: linear-gradient(to bottom, #dea6a6, #961b21);-webkit-border-radius: 4;-moz-border-radius: 4;border-radius: 4px;font-size: 14px;text-decoration: none;text-align: center;cursor: pointer;display: inline-block;">Accepter le devis&nbsp;!</a>
 										}
 										
 										@if(quotation.outsideZone) {										
-											<a class="btn" href="https://@{request.host()}@routes.Application.callRequest()" style="margin: 5px 0;padding: 10px 20px 10px 20px;font-family: Arial;color: #ffffff;background: #961b21;background-image: linear-gradient(to bottom, #dea6a6, #961b21);-webkit-border-radius: 4;-moz-border-radius: 4;border-radius: 4px;font-size: 14px;text-decoration: none;text-align: center;cursor: pointer;display: inline-block;">Etre rappelé&nbsp;!</a>
+											<a class="btn" href="@absolute_frontend_url(routes.Application.callRequest().url, true)" style="margin: 5px 0;padding: 10px 20px 10px 20px;font-family: Arial;color: #ffffff;background: #961b21;background-image: linear-gradient(to bottom, #dea6a6, #961b21);-webkit-border-radius: 4;-moz-border-radius: 4;border-radius: 4px;font-size: 14px;text-decoration: none;text-align: center;cursor: pointer;display: inline-block;">Etre rappelé&nbsp;!</a>
 										} else {
-											<a class="btn" href="https://@{request.host()}@routes.Application.appointment()" style="margin: 5px 0;padding: 10px 20px 10px 20px;font-family: Arial;color: #ffffff;background: #961b21;background-image: linear-gradient(to bottom, #dea6a6, #961b21);-webkit-border-radius: 4;-moz-border-radius: 4;border-radius: 4px;font-size: 14px;text-decoration: none;text-align: center;cursor: pointer;display: inline-block;">Venir nous voir&nbsp;!</a>
+											<a class="btn" href="@absolute_frontend_url(routes.Application.appointment().url, true)" style="margin: 5px 0;padding: 10px 20px 10px 20px;font-family: Arial;color: #ffffff;background: #961b21;background-image: linear-gradient(to bottom, #dea6a6, #961b21);-webkit-border-radius: 4;-moz-border-radius: 4;border-radius: 4px;font-size: 14px;text-decoration: none;text-align: center;cursor: pointer;display: inline-block;">Venir nous voir&nbsp;!</a>
 										}
 										</p>
 										<br>

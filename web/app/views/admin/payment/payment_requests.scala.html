@@ -2,7 +2,7 @@
 @import tags._
 
 @optionallink(id:Long) = {
-    @routes.PaymentRequestsFreeOfLogin.displayForm(models.PaymentRequest.findById(id).accessKey)
+    @absolute_frontend_url(routes.PaymentRequestsFreeOfLogin.displayForm(models.PaymentRequest.findById(id).accessKey).url, true)
 }
 
 @end_scripts = {
