@@ -204,10 +204,10 @@
               <ul class="nav navbar-nav navbar-right">
                 
                 @if_customer() {
-    				@li_activable(100, index) {<a href="@routes.Application.customerLogout()">@Messages("admin.customer.navbar.link.text.logout")</a>}
+    				@li_activable(100, index) {<a href="@routes.Application.customerLogout()"><span class="glyphicon glyphicon-log-out"></span></a>}
     		  	}
     		  	@if_admin_or_watchmaker_or_collaborator() {
-    		  		@li_activable(100, index) {<a href="@routes.Application.logout()">@Messages("admin.navbar.link.text.logout")</a>}
+    		  		@li_activable(100, index) {<a href="@routes.Application.logout()"><span class="glyphicon glyphicon-log-out"></span></a>}
     		  	}
               </ul>
             </div>
