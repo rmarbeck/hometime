@@ -101,13 +101,17 @@ $(document).ready(function(){
           <div class="cover-content">
           @if(page ==1) {
           <div class="row">
+          	
           	<div class="col-lg-6">
+          		@if(unrepliedOrderRequests != null && unrepliedOrderRequests.size > 0) {
 	            <h1 class="cover-heading">Nouvelles demandes</h1>
 	            @fragments.orderlist(unrepliedOrderRequests, false, "admin.index.order.requests", true)
 	            <br/><p>-</p><br/>
+	            }
 	            <h1 class="cover-heading">Rendez-vous</h1>
 	            @fragments.appointments(appointments, false, "admin.index.appointment.requests", true)
 	        </div>
+	        
 	        <div class="col-lg-6">
 	            <h1 class="cover-heading">Montres en cours</h1>
 	            @if(bywatchmakers != null && bywatchmakers.size >0) {
@@ -147,8 +151,10 @@ $(document).ready(function(){
 	     </div>
 	     <div class="row">
 	        <div class="col-lg-6">
+	        	@if(quickWins != null && quickWins.size > 0) {
 	        	<h1 class="cover-heading">Entretiens rapides</h1>
 	            @fragments.watchlist_on_dash(quickWins, "admin.index.watches")
+	            }
 	            <h1 class="cover-heading">Urgences</h1>
 	            @fragments.watchlist_on_dash(watches, "admin.index.watches", quickWins != null && quickWins.size >0)
 	        </div>
