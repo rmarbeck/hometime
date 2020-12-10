@@ -1,6 +1,27 @@
 @(currentPage: com.avaje.ebean.Page[models.Payment], currentSortBy: String, currentOrder: String, currentFilter: String, currentSize: Integer)
 @import tags._
 
+@end_scripts = {
+	<script>
+		$(document).ready(function(){
+			$('a.btn-default:contains("100")').parent().after(function() {
+				var content = $(this).clone().removeClass('disabled');
+				content.children().removeAttr('disabled');
+				//bug to resolve when it is disabled, no link is available to copy
+				content.html(content.html().replace(/100/g, '1000'));
+				return content;
+			});
+			$('a.btn-default:contains("1000")').parent().after(function() {
+				var content = $(this).clone().removeClass('disabled');
+				content.children().removeAttr('disabled');
+				content.html(content.html().replace(/1000/g, '2000'));
+				return content;
+			});
+		})
+	</script>
+}
+
+
 @defining(new views.PageDisplay(currentPage, "description ou numéro de facture", "admin.payment.page")) { pageDisplay =>
 	@{  pageDisplay.addTableField("creationDate", "creation.date", "getCreationDate", false, "date short");
 		pageDisplay.addTableField("paymentDate", "payment.date", "getPaymentDate", false, "date short");
@@ -10,5 +31,5 @@
 	    pageDisplay.addTableField("amountInEuros", "amount.in.euros", "getAmountInEuros", false, "price float");
 	}
 	
-	@admin.template.page_with_default_links(pageDisplay, "Payments", null, currentSortBy, currentOrder, currentFilter, currentSize)
+	@admin.template.page_with_default_links(pageDisplay, "Payments", null, currentSortBy, currentOrder, currentFilter, currentSize, true, false, end_scripts)
 }
