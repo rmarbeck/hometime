@@ -2137,6 +2137,8 @@ admin.navbar.link.text.reporting.payments=Rapport méthodes de paiement
 admin.navbar.link.text.reporting.financial.charts=Rapport financier (graphiques)
 admin.navbar.link.text.reporting.financial.enhanced=Rapport financier accéléré
 
+admin.navbar.link.text.reporting.invoices.to.pay=Factures avec montant à encaisser
+
 admin.navbar.link.text.reporting.financial.detailed=Rapport financier détaillé
 admin.navbar.link.text.reporting.current.orders=Rapport "Commandes en cours"
 
@@ -5674,6 +5676,15 @@ admin.message.type.name.value.alert=exclamation-sign
 admin.message.type.name.value.warning=warning-sign
 admin.message.type.name.value.info=info-sign
 admin.message.type.name.value.todo=wrench
+
+admin.invoices.page=Rapport de factures
+admin.invoices.page.title=Rapport de factures
+admin.invoices.page.empty=Aucune facture
+admin.invoices.page.date=Date
+admin.invoices.page.invoice.name=Numéro
+admin.invoices.page.invoice.amount.price=Montant total
+admin.invoices.page.invoice.remaining.amount.price=Reste à encaisser
+admin.invoices.page.purchase.invoice.method.name=Méthode de paiement
 
 #end
 

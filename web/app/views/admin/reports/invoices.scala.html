@@ -1,0 +1,18 @@
+@(lines: List[reporting.InvoicesReport])
+@import tags._
+
+
+
+@defining(new views.admin.reports.Report(lines, "admin.invoices.page")) { report =>
+	@{  report.addCol("date", "getDate", false, "date medium", null); 	
+		report.addCol("invoice.name", "getInvoiceName", false);
+		report.addCol("invoice.amount.price", "getInvoiceAmount", false, "price", null);
+		report.addCol("invoice.remaining.amount.price", "getRemainingAmountToPay", false, "price", null);
+		report.addCol("purchase.invoice.method.name", "getInvoicePaymentMethod", false);
+	}
+	
+	@layouts.admin() {
+	    @admin.reports.fragments.report(report)
+	}
+}
+

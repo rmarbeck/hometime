@@ -1,7 +1,9 @@
 package controllers;
 
 import java.util.List;
+import java.util.function.Predicate;
 
+import fr.hometime.utils.UniqueAccountingNumber;
 import models.LegalRegisterReport;
 import models.PaymentsReport;
 import models.StockReport;
@@ -20,6 +22,7 @@ import reporting.CurrentOrdersReport;
 import reporting.AnalyticsDetailedReport;
 import reporting.AnalyticsReportEnhanced2;
 import reporting.InvoiceLineReport;
+import reporting.InvoicesReport;
 import reporting.WatchSalesReport;
 import views.html.admin.reports.margin_vat;
 import views.html.admin.reports.with_vat;
@@ -28,6 +31,7 @@ import views.html.admin.reports.stock;
 import views.html.admin.reports.legal_register;
 import views.html.admin.reports.legal_register_helper;
 import views.html.admin.reports.invoice_lines;
+import views.html.admin.reports.invoices;
 import views.html.admin.reports.address_tab;
 import views.html.admin.reports.address_tab_table;
 import views.html.admin.reports.address_tab_alpha;
@@ -80,6 +84,10 @@ public class Reporting extends Controller {
 	
 	public static Result invoiceLinesEnhanced(Long nbOfMonthBack) {
 		return ok(invoice_lines.render(InvoiceLineReport.generateReportEnhanced(nbOfMonthBack)));
+    }
+	
+	public static Result invoicesStillToPay() {
+		return ok(invoices.render(InvoicesReport.generateReport(InvoicesReport.isAlreadyPayed().and((invoice) -> UniqueAccountingNumber.fromStringIfValidOnly(invoice.uniqueAccountingNumber, false).map(UniqueAccountingNumber::isInPreviousOrCurrentFinancialYear).orElse(false)))));
     }
 	
 	public static Result stock() {

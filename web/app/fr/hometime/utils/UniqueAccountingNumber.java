@@ -202,6 +202,10 @@ public class UniqueAccountingNumber {
 		return getFinancialYearSequenceNumberFromUAN(this).orElse(-1).equals(getCurrentFinancialYearSequenceNumber()-1);
 	}
 	
+	public boolean isInPreviousOrCurrentFinancialYear() {
+		return isInCurrentFinancialYear() || isInPreviousFinancialYear();
+	}
+	
 	public static Optional<Boolean> areTheseUANInSameFinancialYear(UniqueAccountingNumber uan1, UniqueAccountingNumber uan2) {
 		Optional<Integer> fYearOfUan1 = getFinancialYearSequenceNumberFromUAN(uan1);
 		Optional<Integer> fYearOfUan2 = getFinancialYearSequenceNumberFromUAN(uan2);
