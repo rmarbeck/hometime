@@ -335,8 +335,8 @@ public class WatchToSell extends Model implements CrudReady<WatchToSell, WatchTo
 
     public static Page<WatchToSell> page(int page, int pageSize, String sortBy, String order, String filter) {
     	if (sortBy == null || sortBy.equals("")) {
-    		sortBy = "brand.display_name";
-    		order = "ASC";
+    		sortBy = "creationDate";
+    		order = "DESC";
     	}
         return 
             find.fetch("brand").where().disjunction().add(Expr.ilike("model", "%" + filter + "%"))
