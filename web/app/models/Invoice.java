@@ -126,6 +126,10 @@ public class Invoice extends Model {
         return find.fetch("document.customer").orderBy("document.creationDate DESC").findList();
     }
     
+    public static List<Invoice> findAllByDescendingDateWithPayments() {
+        return find.fetch("document.customer").fetch("payments").orderBy("document.creationDate DESC").findList();
+    }
+    
     public static List<Long> findAllByDescendingDateIds() {
     	List<Long> ids = new ArrayList<Long>();
     	for (Invoice invoice : findAllByDescendingDate())

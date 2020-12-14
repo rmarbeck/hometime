@@ -20,7 +20,7 @@ public class InvoicesReport {
 	public String invoicePaymentMethod;
 	
 	public static List<InvoicesReport> generateReport(Predicate<Invoice> invoiceFilterIn) {
-		return streamFromNullableList(Invoice.findAllByDescendingDate()).filter(invoiceFilterIn).map(InvoicesReport::new).collect(Collectors.toList());
+		return streamFromNullableList(Invoice.findAllByDescendingDateWithPayments()).filter(invoiceFilterIn).map(InvoicesReport::new).collect(Collectors.toList());
 	}
 	
 	private InvoicesReport(Invoice invoice) {

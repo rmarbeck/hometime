@@ -60,7 +60,13 @@ public class Payments extends Controller {
 	}
 	
 	private static float existingPaymentsAmount(Invoice currentInvoice) {
-		Optional<List<Payment>> payments = PaymentHelper.findByInvoiceId(currentInvoice.id);
+		Optional<List<Payment>> payments = Optional.empty();
+		if (currentInvoice.payments != null && currentInvoice.payments.size() > 0) {
+			payments = Optional.of(currentInvoice.payments);
+		} else {
+			payments = PaymentHelper.findByInvoiceId(currentInvoice.id);
+		}
+		
 		if (payments.isPresent())
 			return (float) payments.get().stream().mapToDouble(p -> p.amountInEuros).sum();
 		return 0f;
