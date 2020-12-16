@@ -50,7 +50,7 @@ public class AppointmentOptionHelper {
 	}
 	
 	private static List<AppointmentOption> getExtendedAppointmentOptions() {
-		return Stream.iterate(getFirstPossibleAppointement(EXTENDED_APPOINTMENT_DEFAULT_DELAY_BEFORE_NEXT_AVAILABLE_IN_MINUTES), d -> d.plusMinutes(APPOINTMENT_DEFAULT_DURATION_IN_MINUTES)).filter(AppointmentOptionHelper::isOpenExtended).limit(60).map(d -> new AppointmentOption(d, true)).collect(Collectors.toList()); 
+		return Stream.iterate(getFirstPossibleAppointement(EXTENDED_APPOINTMENT_DEFAULT_DELAY_BEFORE_NEXT_AVAILABLE_IN_MINUTES), d -> d.plusMinutes(APPOINTMENT_DEFAULT_DURATION_IN_MINUTES)).filter(AppointmentOptionHelper::isOpenExtended).limit(200).map(d -> new AppointmentOption(d, true)).collect(Collectors.toList()); 
 	}
 	
 	private static List<AppointmentOption> getUnavailableOptions() {
