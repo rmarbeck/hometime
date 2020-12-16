@@ -4378,6 +4378,8 @@ admin.customer.watch.waiting.for.quotation.form.expectedserviceenddate.label.nam
 
 customer.watch.waiting.for.quotation.spare.parts=Pièces détachées nécessaires
 customer.watch.waiting.for.quotation.spare.parts.action.new=&nbsp;Ajouter une pièce détachée
+customer.watch.waiting.for.quotation.spare.parts.action.new.spring.mandatory=&nbsp;Ressort obligatoire
+customer.watch.waiting.for.quotation.spare.parts.action.new.spring=&nbsp;Ressort (option)
 
 admin.customer.watch.partner.waiting.quotation.page.service.price.status=Statut
 service.pricing.to.be.validated=En attente d''accord

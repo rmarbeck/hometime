@@ -101,9 +101,34 @@ public class SpareParts extends Controller {
 		return crud.create(Form.form(SparePart.class).fill(createForCustomerWatch(id, false)));
     }
 	
+	public static Result createSpringMandatoryForCustomerWatch(long id) {
+		return createSpring(id, true);
+    }
+	
+	public static Result createSpringForCustomerWatch(long id) {
+		return createSpring(id, false);
+    }
+	
 	public static Result createForCustomerWatchOrderNow(long id) {
 		return crud.create(Form.form(SparePart.class).fill(createForCustomerWatch(id, true)));
     }
+	
+	private static Result createSpring(long id, boolean isMandatory) {
+		SparePart instance = new SparePart();
+		models.CustomerWatch watch = models.CustomerWatch.findById(id);
+		
+		if (watch != null) {
+			instance.watch = watch;
+			instance.description = "Ressort de barillet";
+			instance.outPrice = 50l;
+			instance.expectedInPrice = isMandatory?20l:0l;
+			
+			instance.otherInfos = "createSpring -> "+isMandatory;
+			
+			instance.save();
+		}
+		return Watchmaker.prepareQuotation(id);
+	}
 	
 	private static SparePart createForCustomerWatch(long id, boolean toOrderNow) {
 		SparePart instance = new SparePart();
