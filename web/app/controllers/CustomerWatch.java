@@ -1,7 +1,9 @@
 package controllers;
 
 import java.util.Date;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 import fr.hometime.utils.CustomerWatchActions;
 import fr.hometime.utils.CustomerWatchHelper;
@@ -181,6 +183,15 @@ public class CustomerWatch extends Controller {
 		return Admin.INDEX;
 	}
 	
+	private static void updateWatch(models.CustomerWatch newValues, BiConsumer<models.CustomerWatch, models.CustomerWatch> toDo) {
+		models.CustomerWatch existingWatch = models.CustomerWatch.findById(newValues.id);
+		if (existingWatch != null) {
+			toDo.accept(existingWatch, newValues);
+			existingWatch.lastStatusUpdate = new Date();
+			existingWatch.update();
+		}
+	}
+	
 	public static Result manage() {
 		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
 		String action = Form.form().bindFromRequest().get("action");
@@ -216,14 +227,12 @@ public class CustomerWatch extends Controller {
 	}
 	
 	public static Result manageQuotationValidation() {
-		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
-		if (watchForm.hasErrors()) {
-			return badRequest(customerWatchForm(watchForm, false));
-		} else {
-			models.CustomerWatch watch = watchForm.get();
-			watch.update();
-		}
-		return LIST_CUSTOMER_WATCHES;
+		return doSpecificUpdate((existingWatch, newWatchValues) -> {
+			existingWatch.servicePriceAccepted = newWatchValues.servicePriceAccepted;
+			existingWatch.finalCustomerServicePriceAccepted = newWatchValues.finalCustomerServicePriceAccepted;
+			existingWatch.finalCustomerServicePriceAcceptedDate = newWatchValues.finalCustomerServicePriceAcceptedDate;
+			existingWatch.serviceDueDate = newWatchValues.serviceDueDate;
+			});
 	}
 	
 	public static Result preparePhoneCall(Long watchId) {
@@ -240,13 +249,22 @@ public class CustomerWatch extends Controller {
 	}
 	
 	public static Result managePhoneCall() {
+		return doSpecificUpdate((existingWatch, newWatchValues) -> {
+			existingWatch.customerHasCalledForDelay = newWatchValues.customerHasCalledForDelay;
+			existingWatch.lastCustomerCallDate = newWatchValues.lastCustomerCallDate;
+			existingWatch.lastDueDateCommunicated = newWatchValues.lastDueDateCommunicated;
+			existingWatch.lastCustomerCallInformation = newWatchValues.lastCustomerCallInformation;
+			});
+	}
+	
+	private static Result doSpecificUpdate(BiConsumer<models.CustomerWatch, models.CustomerWatch> toDo) {
 		final Form<models.CustomerWatch> watchForm = Form.form(models.CustomerWatch.class).bindFromRequest();
-		if (watchForm.hasErrors()) {
+		if (watchForm.hasErrors())
 			return badRequest(customerWatchForm(watchForm, false));
-		} else {
-			models.CustomerWatch watch = watchForm.get();
-			watch.update();
-		}
+
+		models.CustomerWatch newWatchValues = watchForm.get();
+		
+		updateWatch(newWatchValues, toDo);
 		return LIST_CUSTOMER_WATCHES;
 	}
 	

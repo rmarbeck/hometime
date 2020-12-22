@@ -363,8 +363,7 @@ public class CustomerWatchHelper {
    public static boolean isWorking(CustomerWatch watch) {
 	   return is(watch, CustomerWatchDetailedStatusForCustomer.WORKING);
    }
-   
-   
+      
 	public static void updateWatchEnsuringOnlyEditableDataByCustomerAreChanged(models.CustomerWatch watch) {
 		models.CustomerWatch currentWatchInDB = CustomerWatch.findById(watch.id);
 		watch.emergencyLevel = currentWatchInDB.emergencyLevel;
