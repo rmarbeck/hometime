@@ -1,8 +1,10 @@
 package fr.hometime.utils;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -32,6 +34,16 @@ public class AppointmentOptionHelper {
 	private static int EXTENDED_APPOINTMENT_DEFAULT_DELAY_BEFORE_NEXT_AVAILABLE_IN_MINUTES = 0;
 	private static LocalTime EXTENDED_APPOINTMENT_DEFAULT_FIRST_HOUR_AVAILABLE = LocalTime.MIDNIGHT.plusHours(8);
 	private static List<DayOfWeek> EXTENDED_DAYS_OPEN = Arrays.asList(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.FRIDAY, DayOfWeek.SATURDAY);
+	
+	private static List<LocalDate> HOLIDAYS = Arrays.asList(
+												LocalDate.of(LocalDate.now().getYear(), Month.MAY, 1),
+												LocalDate.of(LocalDate.now().getYear(), Month.MAY, 8),
+												LocalDate.of(LocalDate.now().getYear(), Month.JULY, 14),
+												LocalDate.of(LocalDate.now().getYear(), Month.AUGUST, 15),
+												LocalDate.of(LocalDate.now().getYear(), Month.NOVEMBER, 11),
+												LocalDate.of(LocalDate.now().getYear(), Month.DECEMBER, 25),
+												LocalDate.of(LocalDate.now().getYear(), Month.JANUARY, 1),
+												LocalDate.of(LocalDate.now().getYear()+1, Month.JANUARY, 1));
 	
 	public static List<AppointmentOption> getAvailableAppointmentOptions() {
 		List<AppointmentOption> allOptions = getAppointmentOptions();
@@ -69,7 +81,7 @@ public class AppointmentOptionHelper {
 	}
 	
 	private static boolean isOpen(LocalDateTime toTest, List<DayOfWeek> days, Predicate<LocalDateTime> openingHoursFilter) {
-		if (days.contains(toTest.getDayOfWeek()) && openingHoursFilter.test(toTest))
+		if (days.contains(toTest.getDayOfWeek()) && openingHoursFilter.test(toTest) && !HOLIDAYS.contains(toTest.toLocalTime()))
 			return true;
 		return false; 
 	}
