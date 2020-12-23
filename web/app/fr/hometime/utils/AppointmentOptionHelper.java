@@ -42,8 +42,7 @@ public class AppointmentOptionHelper {
 												LocalDate.of(LocalDate.now().getYear(), Month.AUGUST, 15),
 												LocalDate.of(LocalDate.now().getYear(), Month.NOVEMBER, 11),
 												LocalDate.of(LocalDate.now().getYear(), Month.DECEMBER, 25),
-												LocalDate.of(LocalDate.now().getYear(), Month.JANUARY, 1),
-												LocalDate.of(LocalDate.now().getYear()+1, Month.JANUARY, 1));
+												LocalDate.of(LocalDate.now().getYear(), Month.JANUARY, 1));
 	
 	public static List<AppointmentOption> getAvailableAppointmentOptions() {
 		List<AppointmentOption> allOptions = getAppointmentOptions();
@@ -80,8 +79,12 @@ public class AppointmentOptionHelper {
 		return isOpen(toTest, EXTENDED_DAYS_OPEN, AppointmentOptionHelper::isDuringExtendedOpenningHours);
 	}
 	
+	private static boolean isDuringHolidays(LocalDateTime toTest) {
+		return HOLIDAYS.stream().anyMatch(date -> date.withYear(0).atStartOfDay().equals(toTest.atZone(AppointmentOption.APPOINTMENT_ZONEID).withYear(0).toLocalDate().atStartOfDay()));
+	}
+	
 	private static boolean isOpen(LocalDateTime toTest, List<DayOfWeek> days, Predicate<LocalDateTime> openingHoursFilter) {
-		if (days.contains(toTest.getDayOfWeek()) && openingHoursFilter.test(toTest) && !HOLIDAYS.contains(toTest.toLocalTime()))
+		if (days.contains(toTest.getDayOfWeek()) && openingHoursFilter.test(toTest) && !isDuringHolidays(toTest))
 			return true;
 		return false; 
 	}
