@@ -42,6 +42,7 @@ public class AppointmentOptionHelper {
 												LocalDate.of(LocalDate.now().getYear(), Month.AUGUST, 15),
 												LocalDate.of(LocalDate.now().getYear(), Month.NOVEMBER, 11),
 												LocalDate.of(LocalDate.now().getYear(), Month.DECEMBER, 25),
+												LocalDate.of(LocalDate.now().getYear(), Month.DECEMBER, 31),
 												LocalDate.of(LocalDate.now().getYear(), Month.JANUARY, 1));
 	
 	public static List<AppointmentOption> getAvailableAppointmentOptions() {
