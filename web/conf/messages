@@ -3298,6 +3298,8 @@ admin.index.watches.more.head.watchmaker=Horloger
 admin.index.watches.more.head.last.communication.date=Date de changement de statut
 admin.index.watches.more.head.status=Statut
 
+admin.index.messages.active.none=Aucun message
+
 admin.index.watches.head.actions=Actions
 admin.index.watches.value.status.stored.by.watch.next=Chez Nous
 admin.index.watches.value.status.stored.by.sth=Déprécié (ne pas utiliser)
