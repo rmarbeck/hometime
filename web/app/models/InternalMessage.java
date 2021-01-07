@@ -130,5 +130,9 @@ public class InternalMessage extends Model implements CrudReady<InternalMessage,
 	public String getTypeName() {
 		return type.name();
 	}
+
+	public InternalMessageType getType() {
+		return type;
+	}
 }
 
