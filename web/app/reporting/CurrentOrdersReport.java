@@ -54,13 +54,6 @@ public class CurrentOrdersReport {
 		} else {
 			reportBuilder.put(key, newLine);
 		}
-		if (reportBuilder.containsKey("zzTotalzz")) {
-			reportBuilder.get("zzTotalzz").addPrice(newLine.price);
-			reportBuilder.get("zzTotalzz").addOne();
-			reportBuilder.get("zzTotalzz").addValue(newLine.watchValue);
-		} else {
-			reportBuilder.put("zzTotalzz", newLine);
-		}
 	}
 	
 	private static String evaluateKey(CurrentOrdersReport newLine) {
