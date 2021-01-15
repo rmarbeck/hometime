@@ -28,7 +28,7 @@ public class AppointmentOptionHelper {
 	private static int APPOINTMENT_DEFAULT_DURATION_IN_MINUTES = 30;
 	private static int APPOINTMENT_DEFAULT_DELAY_BEFORE_NEXT_AVAILABLE_IN_MINUTES = 90;
 	private static LocalTime APPOINTMENT_DEFAULT_FIRST_HOUR_AVAILABLE = LocalTime.MIDNIGHT.plusHours(10);
-	private static LocalTime APPOINTMENT_DEFAULT_LAST_HOUR_AVAILABLE = LocalTime.MIDNIGHT.plusHours(19);
+	private static LocalTime APPOINTMENT_DEFAULT_LAST_HOUR_AVAILABLE = LocalTime.MIDNIGHT.plusHours(18);
 	private static List<DayOfWeek> DAYS_OPEN = Arrays.asList(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.FRIDAY);
 	
 	private static int EXTENDED_APPOINTMENT_DEFAULT_DELAY_BEFORE_NEXT_AVAILABLE_IN_MINUTES = 0;
