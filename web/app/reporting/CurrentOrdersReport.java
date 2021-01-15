@@ -13,14 +13,20 @@ public class CurrentOrdersReport {
 	public String sStatus;
 	public Float price = 0f;
 	public int count = 1;
+	public long watchValue = 0;
 	
 	private CurrentOrdersReport(CustomerWatch currentWatch) {
 		sStatus = CustomerWatchHelper.getStatusName(currentWatch);
 		price = currentWatch.finalCustomerServicePrice.floatValue();
+		watchValue = currentWatch.quotation;
 	}
 	
 	private void addPrice(Float price) {
 		this.price+=price;
+	}
+	
+	private void addValue(long watchValue) {
+		this.watchValue+=watchValue;
 	}
 	
 	private void addOne() {
@@ -44,8 +50,16 @@ public class CurrentOrdersReport {
 		if (reportBuilder.containsKey(key)) {
 			reportBuilder.get(key).addPrice(newLine.price);
 			reportBuilder.get(key).addOne();
+			reportBuilder.get(key).addValue(newLine.watchValue);
 		} else {
 			reportBuilder.put(key, newLine);
+		}
+		if (reportBuilder.containsKey("zzTotalzz")) {
+			reportBuilder.get("zzTotalzz").addPrice(newLine.price);
+			reportBuilder.get("zzTotalzz").addOne();
+			reportBuilder.get("zzTotalzz").addValue(newLine.watchValue);
+		} else {
+			reportBuilder.put("zzTotalzz", newLine);
 		}
 	}
 	

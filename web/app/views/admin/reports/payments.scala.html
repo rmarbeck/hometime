@@ -4,6 +4,7 @@
 
 @defining(new views.admin.reports.Report(lines, "admin.reporting.payments.page")) { report =>
 	@{  report.addCol("date.of.bank.deposit", "getDate", false, "date medium", null);
+		report.addCol("creation.date", "getCreationDate", false, "date medium", null);
 		report.addCol("amount", "getAmount", false, "price", null);
 		report.addCol("payment.method", "getPaymentMethodName", false, "i18n", null);
 		report.addCol("invoice.name", "getInvoiceName", false);
