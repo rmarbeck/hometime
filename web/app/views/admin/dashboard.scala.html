@@ -77,8 +77,8 @@ $(document).ready(function(){
               <nav>
                 <ul class="nav masthead-nav">
                   <li @if(page==1) {class="active"}><a href="@routes.Admin.dash(1)">Home</a></li>
-                  <li @if(page==2) {class="active"}><a href="@routes.Admin.dash(2)">Ecran 2</a></li>
-                  <li @if(page==3) {class="active"}><a href="@routes.Admin.dash(3)">Ecran 3</a></li>
+                  <li @if(page==2) {class="active"}><a href="@routes.Admin.dash(2)">Priorités</a></li>
+                  <li @if(page==3) {class="active"}><a href="@routes.Admin.dash(3)">Messages</a></li>
                 </ul>
               </nav>
               <span class="dash-clock">
@@ -185,7 +185,22 @@ $(document).ready(function(){
           </div>
           }
           @if(page == 3) {
-          	<h1>Page 3</h1>
+          	<div class="row">
+      		<div class="col-lg-12">
+            	<h1 class="cover-heading">Messages</h1>
+        	</div>
+        	<div class="col-lg-12">
+          	@if(messages.size != 0) {
+          		<h4>
+	          	@messages.sortBy(m => (m.getType.toString, m.creationDate)).map{ case message => <div><span id="content-@index"><span class="glyphicon glyphicon-@display_i18n_value(message.getTypeName(),"admin.message.type.name.value")"></span> @Html(message.body)</span></div><br /> }
+	          	</h4>
+          	} else {
+          		<h3>
+          			@Html(Messages("admin.index.messages.active.none"))
+          		</h3>
+            }
+		    </div>    
+          </div>
           }
 
           <div class="mastfoot">
