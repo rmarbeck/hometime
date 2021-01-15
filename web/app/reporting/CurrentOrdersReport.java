@@ -18,7 +18,7 @@ public class CurrentOrdersReport {
 	private CurrentOrdersReport(CustomerWatch currentWatch) {
 		sStatus = CustomerWatchHelper.getStatusName(currentWatch);
 		price = currentWatch.finalCustomerServicePrice.floatValue();
-		watchValue = currentWatch.quotation;
+		watchValue = currentWatch.quotation!=null?currentWatch.quotation:0;
 	}
 	
 	private void addPrice(Float price) {

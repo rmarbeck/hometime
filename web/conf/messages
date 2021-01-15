@@ -4123,7 +4123,7 @@ admin.reporting.legal.register.page.action=Actions
 
 admin.reporting.payments.page.title=Paiements
 admin.reporting.payments.page.date.of.bank.deposit=Date de remise
-admin.reporting.payments.page.creation.date.deposit=Date de mise à jour
+admin.reporting.payments.page.creation.date=Date de mise à jour
 admin.reporting.payments.page.invoice.name=Facture
 admin.reporting.payments.page.customer.name=Client
 admin.reporting.payments.page.amount=Montant
