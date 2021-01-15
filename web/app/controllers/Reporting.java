@@ -128,7 +128,11 @@ public class Reporting extends Controller {
     }
 	
 	public static Result payments() {
-		return ok(payments.render(PaymentsReport.generateReport()));
+		return ok(payments.render(PaymentsReport.generateReportEnhanced()));
+    }
+	
+	public static Result paymentsByCreationDate() {
+		return ok(payments.render(PaymentsReport.generateReportEnhancedCreationDateDESC()));
     }
 	
 	private static List<models.Customer> getCustomers() {

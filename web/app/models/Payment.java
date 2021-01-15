@@ -121,6 +121,18 @@ public class Payment extends Model implements CrudReady<Payment, Payment> {
         return findAllByInBankDate("DESC");
     }
     
+    public static List<Payment> findAllByInBankDateDescForReporting() {
+        return findAllForReporting("inBankDate DESC");
+    }
+    
+    public static List<Payment> findAllByCreationDateDescForReporting() {
+        return findAllForReporting("creationDate DESC");
+    }
+    
+    private static List<Payment> findAllForReporting(String ordering) {
+    	return find.fetch("invoice").fetch("invoice.document").where().orderBy(ordering).findList();
+    }
+    
     public static List<Payment> findAllByInBankDate(String orderDirection) {
         return find.where().orderBy("inBankDate "+orderDirection).findList();
     }

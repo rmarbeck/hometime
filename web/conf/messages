@@ -2134,6 +2134,7 @@ admin.navbar.link.text.reporting.stock=Rapport de Stock
 admin.navbar.link.text.reporting.legal.register=Registre
 admin.navbar.link.text.reporting.legal.register.helper=Aide pour registre
 admin.navbar.link.text.reporting.payments=Rapport méthodes de paiement
+admin.navbar.link.text.reporting.payments.by.creation.date=Rapport méthodes de paiement par création
 admin.navbar.link.text.reporting.financial.charts=Rapport financier (graphiques)
 admin.navbar.link.text.reporting.financial.enhanced=Rapport financier accéléré
 
