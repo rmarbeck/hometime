@@ -10,7 +10,7 @@ import fr.hometime.utils.CustomerWatchHelper;
 import models.CustomerWatch;
 
 public class CurrentOrdersReport {
-	private static String TOTAL = "Total";
+	private static String TOTAL = "zzTotal";
 	public String sStatus;
 	public Float price = 0f;
 	public int count = 1;

@@ -1,6 +1,6 @@
 @(price: Float, label: String = "€")
 @if(price != null) {
-	@String.format(Locale.FRANCE, "%f",price) @label
+	@String.format(Locale.FRANCE, "% .0f",price) @label
 } else {
 	-
 }
