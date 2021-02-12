@@ -40,9 +40,20 @@ public class ListHelper<T> {
 	}
 	
 	public static <U> Stream<U> streamFromNullableList(List<U> list) {
+		return streamFromNullableList(list, false);
+	}
+
+	public static <U> Stream<U> parallelStreamFromNullableList(List<U> list) {
+		return streamFromNullableList(list, true);
+	}
+	
+	private static <U> Stream<U> streamFromNullableList(List<U> list, boolean shouldTryParallel) {
 		if (list == null)
 			return Stream.empty();
+		if (shouldTryParallel)
+			return list.parallelStream();
 		return list.stream();
+		
 	}
 
 }

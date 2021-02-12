@@ -1,6 +1,6 @@
 package reporting;
 
-import static fr.hometime.utils.ListHelper.streamFromNullableList;
+import static fr.hometime.utils.ListHelper.parallelStreamFromNullableList;
 
 import java.util.Date;
 import java.util.List;
@@ -20,7 +20,7 @@ public class InvoicesReport {
 	public String invoicePaymentMethod;
 	
 	public static List<InvoicesReport> generateReport(Predicate<Invoice> invoiceFilterIn) {
-		return streamFromNullableList(Invoice.findAllByDescendingDateWithPayments()).filter(invoiceFilterIn).map(InvoicesReport::new).collect(Collectors.toList());
+		return parallelStreamFromNullableList(Invoice.findAllByDescendingDateWithPayments()).filter(invoiceFilterIn).map(InvoicesReport::new).collect(Collectors.toList());
 	}
 	
 	private InvoicesReport(Invoice invoice) {
