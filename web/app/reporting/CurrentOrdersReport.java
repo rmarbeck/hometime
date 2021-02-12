@@ -10,11 +10,19 @@ import fr.hometime.utils.CustomerWatchHelper;
 import models.CustomerWatch;
 
 public class CurrentOrdersReport {
+	private static String TOTAL = "zzTotal";
 	public String sStatus;
 	public Float price = 0f;
 	public int count = 1;
 	public long watchValue = 0;
 	
+	
+	private CurrentOrdersReport() {
+		sStatus = TOTAL;
+		price = 0f;
+		watchValue = 0;
+	}
+
 	private CurrentOrdersReport(CustomerWatch currentWatch) {
 		sStatus = CustomerWatchHelper.getStatusName(currentWatch);
 		price = currentWatch.finalCustomerServicePrice.floatValue();
@@ -40,8 +48,7 @@ public class CurrentOrdersReport {
 	private static List<CurrentOrdersReport> generateReport(Supplier<List<CustomerWatch>> supplier) {
 		HashMap<String, CurrentOrdersReport> reportBuilder = new HashMap<>();
 		List<CustomerWatch> lines = supplier.get();
-		for(CustomerWatch line : lines)
-			addNewLine(new CurrentOrdersReport(line), reportBuilder);
+		lines.stream().forEach(line -> addNewLine(new CurrentOrdersReport(line), reportBuilder));
 		return reportBuilder.values().stream().sorted(Comparator.comparing(CurrentOrdersReport::evaluateKey).reversed()).collect(Collectors.toList());
 	}
 
@@ -54,6 +61,15 @@ public class CurrentOrdersReport {
 		} else {
 			reportBuilder.put(key, newLine);
 		}
+		addToTotal(newLine, reportBuilder);
+	}
+	
+	private static void addToTotal(CurrentOrdersReport newLine, HashMap<String, CurrentOrdersReport> reportBuilder) {
+		if (!reportBuilder.containsKey(TOTAL))
+			reportBuilder.put(TOTAL, new CurrentOrdersReport());
+		reportBuilder.get(TOTAL).addPrice(newLine.price);
+		reportBuilder.get(TOTAL).addOne();
+		reportBuilder.get(TOTAL).addValue(newLine.watchValue);
 	}
 	
 	private static String evaluateKey(CurrentOrdersReport newLine) {
