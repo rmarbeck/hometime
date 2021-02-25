@@ -5281,7 +5281,6 @@ admin.watches.by.status.page.watch=Montre
 admin.watches.by.status.page.customer=Client
 
 
-
 admin.quotation.request.main.message.in=Bonjour,<br><br>Veuillez trouver ci-dessous la proposition commerciale Hometime correspondant à votre demande pour une intervention dans le réseau officiel {0}. Nous vous en souhaitons bonne réception.<br>Pouvez-vous nous confirmer la bonne réception de ce mail ? Merci d''avance.<br><br>
 admin.quotation.request.main.message.out=Bonjour,<br><br>Veuillez trouver ci-dessous la proposition commerciale Hometime correspondant à un entretien auprès de l''un de nos horlogers diplômés. Nous vous en souhaitons bonne réception.<br>Pouvez-vous nous confirmer la bonne réception de ce mail ? Merci d''avance.<br><br>
 admin.quotation.request.main.message.out.both=Bonjour,<br><br>Veuillez trouver ci-dessous la proposition commerciale Hometime alternative correspondant à un entretien auprès de l''un de nos horlogers diplômés. Nous vous en souhaitons bonne réception.<br><br>
