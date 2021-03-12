@@ -122,7 +122,7 @@ public class News extends Model implements CrudReady<News, News> {
     }
 
 	@Override
-	public Finder<String, News> getFinder() {
+	public Model.Finder<String, News> getFinder() {
 		return find;
 	}
 }

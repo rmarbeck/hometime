@@ -192,6 +192,7 @@ GET     /admin/		                    								controllers.Admin.index()
 
 GET     /admin/dash	                    								controllers.Admin.defaultDash()
 GET     /admin/dash/:page	                    						controllers.Admin.dash(page: Integer)
+GET     /admin/dash2                    								controllers.Dashboard.display()
 
 GET     /admin/requests                    								controllers.Admin.currentOrderRequests()
 GET     /admin/watches                    								controllers.Admin.currentWatches()
@@ -505,9 +506,13 @@ GET     /ws/live/config/get/all											controllers.Webservices.getLiveConfig(
 
 GET     /ws/appointment/options/get/all									controllers.Webservices.getAppointmentOptions()
 
+# Websockets
+GET		/dashws															controllers.Dashboard.socket
+
 # Testing
 GET     /bootstrap4/test     											controllers.Application.test_new
 GET     /canvas/test     												controllers.Application.test_canvas
+GET     /websocket/test     											controllers.Dashboard.test_websocket
 
 
 # Sitemap

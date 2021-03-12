@@ -112,7 +112,7 @@ public class QuickServiceWatch extends Model implements CrudReady<QuickServiceWa
 	}
 
 	@Override
-	public Finder<String, QuickServiceWatch> getFinder() {
+	public Model.Finder<String, QuickServiceWatch> getFinder() {
 		return find;
 	}
 

@@ -11,9 +11,14 @@ import javax.persistence.ManyToOne;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import fr.hometime.utils.DateHelper;
 import fr.hometime.utils.SecurityHelper;
 import play.db.ebean.Model;
+import play.libs.Json;
 import play.mvc.Http.Session;
 
 /**
@@ -262,6 +267,21 @@ public class OrderRequest extends Model {
     
     public boolean isManagedByNobody() {
     	 return managedBy == null;
+    }
+    
+    public JsonNode toJson() {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode json = mapper.createObjectNode();
+        json.put("id", id)
+        	.put("date", DateHelper.asShortDate(requestDate))
+        	.put("brand", brand.toString())
+        	.put("model", model)
+        	.put("nameOfCustomer", nameOfCustomer)
+        	.put("city", city)
+        	.put("managedBy", managedBy!=null?managedBy.firstname:"");
+        
+    	//return Json.newObject().put("OrderRequest", "1");
+        return json;
     }
 }
 

@@ -1,13 +1,10 @@
-@(unrepliedOrderRequests: List[models.OrderRequest], displayLink: Boolean, key: String = "admin.customer.watch", darkMode: Boolean = false)
+@(unrepliedOrderRequests: List[models.OrderRequest], displayLink: Boolean, key: String = "admin.customer.watch", darkMode: Boolean = false, placeholder: Boolean = false)
 @import tags._
 @import fr.hometime.utils._
 
-    @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
-    	<h3>
-    		@Html(Messages(key+".active"))
-    	</h3>
-    	<table class="table table-condensed @if(!darkMode) {table-striped table-bordered}">
-          <thead>
+@header(content: Html) = {
+		<table class="table table-condensed @if(!darkMode) {table-striped table-bordered}">
+		  <thead>
 	        <tr>
 	          <th>@Html(Messages(key+".head.link.to"))</th>
 	          <th>@Html(Messages(key+".head.request.date"))</th>
@@ -20,6 +17,16 @@
 	        </tr>
 	      </thead>
 	      <tbody>
+	      @content
+	      </tbody>
+		</table>
+}
+
+    @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
+    	<h3>
+    		@Html(Messages(key+".active"))
+    	</h3>
+          @header{
 	      	@for(i <- 1 to 1) {
 	      	@for(request <- unrepliedOrderRequests) {
 	      	<tr class="feedback_asked_@request.feedbackAsked">
@@ -56,9 +63,18 @@
 	      		<td colspan="6"><a href="@routes.Admin.currentOrderRequests()">@Html(Messages("admin.index.order.requests.number.waiting", OrderRequest.numberOfFeedbacksWaited()))</a></td>
 	      	</tr>
 	      	}
-		  </tbody>
-		</table>
+	      	}
     } else {
+    	@if(placeholder) {
+	    	@header{
+		    	<tr class="feedback_asked_false hidden" id="order_ph">
+		    		<td class="ph_id"></td>
+		    		<td class="ph_date"></td>
+		    		<td class="ph_details"></td>
+		    		<td class="ph_name"></td>
+		    	</tr>
+	    	}
+    	} else {
     	<h3>
     	@if(displayLink) {
     		@Html(Messages("admin.index.order.requests.active.none")) <a href="@routes.Admin.currentOrderRequests()">@Html(Messages("admin.index.order.requests.number.waiting", OrderRequest.numberOfFeedbacksWaited()))</a>
@@ -66,6 +82,7 @@
     		@Html(Messages(key+".active.none"))
     	}
     	</h3>
+    	}
     }
     <br />
     

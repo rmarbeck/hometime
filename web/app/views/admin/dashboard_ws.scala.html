@@ -1,0 +1,234 @@
+@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch], partsToReceive: List[models.SparePart], bywatchmakers: List[models.CustomerWatch], appointments: List[models.AppointmentRequest], quickWins: List[models.CustomerWatch], messages: List[models.InternalMessage], page: Integer = 1)
+@import tags._
+
+@end_script = {
+<script>
+$(document).ready(function(){
+		var delayInMS = 5000;
+		var nbMessages = @messages.size;
+		var counter = 0;
+		var today = new Date(new Date().setHours(0,0,0,0));
+		
+		
+		function myTimer() {
+			if(nbMessages!=0) {
+			var millis = new Date() - today; 
+			var indice = Math.floor(millis / delayInMS) % nbMessages;
+    		var textvalue = $('#content-'+indice).html();
+    		$('.message-holder').html(" - "+textvalue);
+    		}
+		}
+		
+		myTimer();
+
+		var myVar = setInterval(myTimer, 5000);
+		});
+</script>
+}
+
+@import fr.hometime.utils._
+
+@import java.util.List; var quotation=CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatus(CustomerWatchHelper.CustomerWatchDetailedStatus.TO_QUOTE); var tosend=CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatus(CustomerWatchHelper.CustomerWatchDetailedStatus.QUOTATION_TO_SEND_TO_CUSTOMER); var testing=CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatus(CustomerWatchHelper.CustomerWatchDetailedStatus.TESTING)
+
+@figure(data: List[models.CustomerWatch], text: String) = {
+@if(data != null && data.size() > 0) { - <b>@data.size() @text</b>}
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="30" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hometime- Dashboard</title>
+    
+    @layouts.fragments.bootstrap_css()
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/admin.min.css")">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/cover.min.css")">
+
+  </head>
+
+  <body data-ws-url="@routes.Dashboard.socket">
+          
+  <div class="hidden">
+	@for((message, index) <- messages.zipWithIndex) {
+		<span id="content-@index"><span class="glyphicon glyphicon-@display_i18n_value(message.getTypeName(),"admin.message.type.name.value")"></span> @Html(message.body)</span>
+	}
+  </div>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Hometime / Dashboard@figure(quotation, "devis")@figure(tosend, "à envoyer")@figure(testing, "en test")<span class="message-holder"></span></h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li @if(page==1) {class="active"}><a href="@routes.Admin.dash(1)">Home</a></li>
+                  <li @if(page==2) {class="active"}><a href="@routes.Admin.dash(2)">Priorités</a></li>
+                  <li @if(page==3) {class="active"}><a href="@routes.Admin.dash(3)">Messages</a></li>
+                </ul>
+              </nav>
+              <span class="dash-clock">
+              <a href="https://time.is/Paris" id="time_is_link" rel="nofollow" style="font-size:30px"></a>
+			  <span id="Paris_z71f" style="font-size:30px"></span>
+			  </span>
+			  <script src="//widget.time.is/t.js"></script>
+			  <script>
+				time_is_widget.init({Paris_z71f:{}});
+			  </script>
+              
+              
+            </div>
+          </div>
+
+	
+          
+		  
+          
+          <div class="cover-content">
+          @if(page ==1) {
+          <div class="row">
+          	
+          	<div class="col-lg-6" id="unreplied">
+	          	@fragments.orderlist(null, false, "admin.index.order.requests", true, true)
+          	</div>
+          	
+          	<div class="col-lg-6">
+          		@if(unrepliedOrderRequests != null && unrepliedOrderRequests.size > 0) {
+	            <h1 class="cover-heading">Nouvelles demandes</h1>
+	            @fragments.orderlist(unrepliedOrderRequests, false, "admin.index.order.requests", true)
+	            <br/><p>-</p><br/>
+	            }
+	            <h1 class="cover-heading">Rendez-vous</h1>
+	            @fragments.appointments(appointments, false, "admin.index.appointment.requests", true)
+	        </div>
+	        
+	        <div class="col-lg-6">
+	            <h1 class="cover-heading">Montres en cours</h1>
+	            @if(bywatchmakers != null && bywatchmakers.size >0) {
+		    	<h3>
+		    		@Html(Messages("admin.index.watches.active"))
+		    	</h3>
+		    	<table class="table table-condensed">
+		          <thead>
+			        <tr>
+			          <th>@Html(Messages("admin.index.watches.head.id"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.name"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.model"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.watchmaker"))</th>
+			          <th>@Html(Messages("admin.index.watches.head.status"))</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	@for(watch <- bywatchmakers; statusClass = watch.getWatchStatusClass) {
+			      	<tr class="nosolution_status_@watch.noSolution needhelp_status_@watch.needHelp sparetofind_status_@watch.sparepartToFind sparefound_status_@watch.sparepartFound ">
+			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
+			      		<td>@takeif(watch.customer.firstname+" "+watch.customer.name)</td>
+			      		<td>@watch.brand</td>
+			      		<td>@takeif(watch.model)</td>
+			      		<td>@watch.managedBy.firstname</td>
+			      		<td>@watch.serviceStatus %</td>
+			      	</tr>
+			      	}
+				  </tbody>
+				</table>
+		    } else {
+		    	<h3>
+		    		@Html(Messages("admin.index.watches.active.none"))
+		    	</h3>
+		    }
+	        </div>
+	     </div>
+	     <div class="row">
+	        <div class="col-lg-6">
+	        	@if(quickWins != null && quickWins.size > 0) {
+	        	<h1 class="cover-heading">Entretiens rapides</h1>
+	            @fragments.watchlist_on_dash(quickWins, "admin.index.watches")
+	            }
+	            <h1 class="cover-heading">Urgences</h1>
+	            @fragments.watchlist_on_dash(watches, "admin.index.watches", quickWins != null && quickWins.size >0)
+	        </div>
+	        <div class="col-lg-6">
+	            <h1 class="cover-heading">Pièces détachées</h1>
+	            @fragments.sparepartsmanageablelist(partsToReceive, "admin.spare.parts.to.receive", true)
+	        </div>
+          </div>
+          }
+          @if(page == 2) {
+          <div class="row">
+      		<div class="col-lg-12">
+            	<h1 class="cover-heading">Urgences</h1>
+        	</div>
+          	@if(watches.drop(40).size == 0) {
+      		<div class="col-lg-12">
+            	@fragments.watchlist_on_dash(watches.take(31), "admin.index.watches", false)
+        	</div>
+          	} else {
+      		<div class="col-lg-6">
+	            @fragments.watchlist_on_dash(watches.take(31), "admin.index.watches", false)
+	        </div>
+	        <div class="col-lg-6">
+	            @fragments.watchlist_on_dash(watches.drop(31), "admin.index.watches.more", false)
+	        </div>
+          	}
+		        
+          </div>
+          }
+          @if(page == 3) {
+          	<div class="row">
+      		<div class="col-lg-12">
+            	<h1 class="cover-heading">Messages</h1>
+        	</div>
+        	<div class="col-lg-12">
+          	@if(messages.size != 0) {
+          		<h4>
+	          	@messages.sortBy(m => (m.getType.toString, m.creationDate)).map{ case message => <div><span id="content-@index"><span class="glyphicon glyphicon-@display_i18n_value(message.getTypeName(),"admin.message.type.name.value")"></span> @Html(message.body)</span></div><br /> }
+	          	</h4>
+          	} else {
+          		<h3>
+          			@Html(Messages("admin.index.messages.active.none"))
+          		</h3>
+            }
+		    </div>    
+          </div>
+          }
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>-</p>
+            </div>
+          </div>
+
+        </div>
+        
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="@remote_assets("javascripts/admin.js")"></script>
+    <script src="@remote_assets("javascripts/dashboard.js")"></script>
+    
+    @end_script
+    
+  </body>
+</html>

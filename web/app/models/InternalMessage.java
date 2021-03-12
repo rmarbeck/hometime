@@ -123,7 +123,7 @@ public class InternalMessage extends Model implements CrudReady<InternalMessage,
     }
 
 	@Override
-	public Finder<String, InternalMessage> getFinder() {
+	public Model.Finder<String, InternalMessage> getFinder() {
 		return find;
 	}
 	

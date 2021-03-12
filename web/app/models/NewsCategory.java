@@ -74,7 +74,7 @@ public class NewsCategory extends Model implements CrudReady<NewsCategory, NewsC
     }
 
 	@Override
-	public Finder<String, NewsCategory> getFinder() {
+	public Model.Finder<String, NewsCategory> getFinder() {
 		return find;
 	}
 
