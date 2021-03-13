@@ -14,6 +14,9 @@ import javax.persistence.Id;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.CrudReady;
 import fr.hometime.utils.AppointmentOptionHelper;
@@ -275,5 +278,16 @@ public class AppointmentRequest extends Model implements CrudReady<AppointmentRe
 			return appointmentAsString;
 		}
 	}
+	
+    public JsonNode toJson() {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode json = mapper.createObjectNode();
+        json.put("date", appointmentAsString)
+        	.put("name", customerDetails)
+        	.put("status", status.toString())
+        	.put("reason", reason.toString());
+
+        return json;
+    }
 }
 

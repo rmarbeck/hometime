@@ -1,8 +1,9 @@
-@(appointments: List[models.AppointmentRequest], displayLink: Boolean, key: String = "admin.customer.watch", darkMode: Boolean = false)
+@(appointments: List[models.AppointmentRequest], displayLink: Boolean, key: String = "admin.customer.watch", darkMode: Boolean = false, placeholder: Boolean = false)
 @import tags._
 @import fr.hometime.utils._
 
-    @if(appointments != null && appointments.size >0) {
+
+@header(content: Html) = {
     	<h3>
     		@Html(Messages(key+".active"))
     	</h3>
@@ -16,6 +17,13 @@
 	        </tr>
 	      </thead>
 	      <tbody>
+	      @content
+	      </tbody>
+		</table>
+}
+
+    @if(appointments != null && appointments.size >0) {
+		@header{
 	      	@for(request <- appointments) {
 	      	<tr class="">
 	      		<td>@request.getNiceDisplayableDatetime</td>
@@ -24,12 +32,22 @@
 	      		<td>@display_i18n_value(request.status.name, "admin.appointment.status.value")</td>
 	      	</tr>
 	      	}
-		  </tbody>
-		</table>
+	    }
     } else {
+    	@if(placeholder) {
+	    	@header{
+		    	<tr class="hidden" id="ph_line_template">
+		    		<td class="ph_date"></td>
+		    		<td class="ph_details"></td>
+		    		<td class="ph_reason"></td>
+		    		<td class="ph_status"></td>
+		    	</tr>
+	    	}
+    	} else {
     	<h3>
     		@Html(Messages(key+".active.none"))
     	</h3>
+    	}
     }
     <br />
     
