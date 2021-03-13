@@ -102,18 +102,16 @@ $(document).ready(function(){
           @if(page ==1) {
           <div class="row">
           	
-          	<div class="col-lg-6" id="unreplied">
-	          	@fragments.orderlist(null, false, "admin.index.order.requests", true, true)
-          	</div>
-          	
           	<div class="col-lg-6">
-          		@if(unrepliedOrderRequests != null && unrepliedOrderRequests.size > 0) {
+          		<div id="unreplied" class="hidden">
 	            <h1 class="cover-heading">Nouvelles demandes</h1>
-	            @fragments.orderlist(unrepliedOrderRequests, false, "admin.index.order.requests", true)
+	            @fragments.orderlist(null, false, "admin.index.order.requests", true, true)
 	            <br/><p>-</p><br/>
-	            }
+	            </div>
+	            <div id="appointments">
 	            <h1 class="cover-heading">Rendez-vous</h1>
 	            @fragments.appointments(appointments, false, "admin.index.appointment.requests", true)
+	            </div>
 	        </div>
 	        
 	        <div class="col-lg-6">

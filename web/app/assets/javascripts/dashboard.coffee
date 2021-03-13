@@ -17,7 +17,10 @@ $ ->
 
 populateUnreplied = (message) ->
 	$("#unreplied .cloned").remove()
+	if (JSON.parse(message.unmanaged).length == 0)
+     $("#unreplied").addClass("hidden")
 	$.each( JSON.parse(message.unmanaged), (i, item) ->
+     $("#unreplied").removeClass("hidden")
      clonedRow = $("#unreplied #order_ph").clone()
      $("td.ph_id", clonedRow).html('#'+item.id)
      $("td.ph_date", clonedRow).html(item.date)
@@ -27,4 +30,4 @@ populateUnreplied = (message) ->
      $(clonedRow).addClass("cloned")
      $(clonedRow).removeClass("hidden")
      clonedRow.appendTo("#unreplied tbody"))
-	console.log($("#unreplied").html())
+
