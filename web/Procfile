@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/web -Dhttp.port=${PORT} -Dconfig.resource=application-prod.conf -Dlogger.resource=logger-prod.xml -Ddb.default.url=${DATABASE_URL}?ssl=true&sslmode=require
+web: target/universal/stage/bin/web -Dhttp.port=${PORT} -Dconfig.resource=application-prod.conf -Dlogger.resource=logger-prod.xml -Ddb.default.url=${DATABASE_URL}
