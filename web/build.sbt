@@ -31,6 +31,8 @@ LessKeys.compress in Assets := true
 
 resolvers += "Secured Central Repository" at "https://repo1.maven.org/maven2"
 
+resolvers += "Secured Central Repository 2" at "https://mvnrepository.com/artifact"
+
 externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
 
 WebKeys.webTarget := target.value / "scala-web"
