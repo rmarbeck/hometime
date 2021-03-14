@@ -25,13 +25,7 @@ public class DashboardActor extends UntypedActor {
     public DashboardActor(ActorRef out) {
     	System.err.println("Starting actor {"+this.self().path().name()+"}");
         this.out = out;
-        Akka.system().scheduler().schedule(
-        		FiniteDuration.fromNanos(2000000000),
-        		FiniteDuration.fromNanos(2000000000),
-                this.getSelf(),
-                "tick : ",
-                Akka.system().dispatcher(),
-                null);
+        this.self().tell("tick", null);
     }
 	
 	@Override
