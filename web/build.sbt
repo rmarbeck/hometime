@@ -8,7 +8,7 @@ scalaVersion := "2.11.1"
 
 libraryDependencies ++= Seq(
   "com.typesafe.play.plugins" %% "play-plugins-mailer" % "2.3.1",
-  "postgresql" % "postgresql" % "9.1-901-1.jdbc4",
+  "postgresql" % "postgresql" % "9.3-1101-jdbc4",
   "commons-io" % "commons-io" % "2.4",
   "com.mailjet" % "mailjet-client" % "4.1.1",
   "com.google.zxing" % "core" % "3.4.0",
