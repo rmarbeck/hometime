@@ -31,12 +31,13 @@ import fr.hometime.utils.PartnerAndCustomerHelper;
 import fr.hometime.utils.Searcher;
 import fr.hometime.utils.SecurityHelper;
 import fr.hometime.utils.FormHelper.KeysAndValues;
+import fr.hometime.utils.ListenableModel;
 
 /**
  * Definition of a Watch belonging to a customer
  */
 @Entity 
-public class CustomerWatch extends Model implements CrudReady<CustomerWatch, CustomerWatch>, Searchable {
+public class CustomerWatch extends ListenableModel implements CrudReady<CustomerWatch, CustomerWatch>, Searchable {
 	private static final long serialVersionUID = -1122053555762637015L;
 	private static CustomerWatch singleton = null;
 	

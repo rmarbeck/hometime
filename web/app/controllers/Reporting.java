@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 
 import fr.hometime.utils.UniqueAccountingNumber;
 import models.LegalRegisterReport;
-import models.PaymentsReport;
 import models.StockReport;
 import models.Watch;
 import models.WatchToSell;
@@ -23,6 +22,7 @@ import reporting.AnalyticsDetailedReport;
 import reporting.AnalyticsReportEnhanced2;
 import reporting.InvoiceLineReport;
 import reporting.InvoicesReport;
+import reporting.PaymentsReport;
 import reporting.WatchSalesReport;
 import views.html.admin.reports.margin_vat;
 import views.html.admin.reports.with_vat;

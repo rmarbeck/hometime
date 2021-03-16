@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import fr.hometime.utils.DateHelper;
+import fr.hometime.utils.ListenableModel;
 import fr.hometime.utils.SecurityHelper;
 import play.db.ebean.Model;
 import play.libs.Json;
@@ -25,7 +26,7 @@ import play.mvc.Http.Session;
  * Definition of an OrderMy
  */
 @Entity 
-public class OrderRequest extends Model {
+public class OrderRequest extends ListenableModel {
 	private static final long serialVersionUID = 4099194457099968204L;
 
 	public enum OrderTypes {
