@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import fr.hometime.utils.DateHelper;
+import fr.hometime.utils.Jsonable;
 import fr.hometime.utils.ListenableModel;
 import fr.hometime.utils.SecurityHelper;
 import play.db.ebean.Model;
@@ -270,6 +271,7 @@ public class OrderRequest extends ListenableModel {
     	 return managedBy == null;
     }
     
+    @Override
     public JsonNode toJson() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode json = mapper.createObjectNode();
@@ -280,8 +282,7 @@ public class OrderRequest extends ListenableModel {
         	.put("nameOfCustomer", nameOfCustomer)
         	.put("city", city)
         	.put("managedBy", managedBy!=null?managedBy.firstname:"");
-        
-    	//return Json.newObject().put("OrderRequest", "1");
+
         return json;
     }
 }

@@ -10,8 +10,9 @@ import akka.actor.Props;
 import akka.actor.UntypedActor;
 import models.AppointmentRequest;
 import models.OrderRequest;
-import play.libs.Akka;
 import play.libs.Json;
+
+import play.Logger;
 
 public class DashboardActor extends UntypedActor {
 	
@@ -23,25 +24,11 @@ public class DashboardActor extends UntypedActor {
     private final ActorRef manager;
 
     public DashboardActor(ActorRef out, ActorRef manager) {
-    	System.err.println("Starting actor {"+this.self().path().name()+"}");
+    	Logger.debug("Starting actor {"+this.self().path()+"}");
         this.out = out;
         this.manager = manager;
-        /*System.err.println("?????> "+Akka.system().actorSelection("/application/user/DashBoardManager2").path());
-        System.err.println("?????> "+Akka.system().actorSelection("DashBoardManager2").path());
-        System.err.println("?????> "+Akka.system().actorSelection("/user/DashBoardManager2").anchor().path());
-        System.err.println("?????> "+Akka.system().actorSelection("user/DashBoardManager2").anchor().path());
-        
-        getContext().actorSelection("akka://application/user/DashBoardManager2").anchor().tell("test", this.self());
-        getContext().actorSelection("/application/user/DashBoardManager2").anchor().tell("test", this.self());
-        getContext().actorSelection("application/user/DashBoardManager2").anchor().tell("test", this.self());
-        getContext().actorSelection("/user/DashBoardManager2").anchor().tell("test", this.self());
-        getContext().actorSelection("user/DashBoardManager2").anchor().tell("test", this.self());
-        getContext().actorSelection("/DashBoardManager2").anchor().tell("test", this.self());
-        getContext().actorSelection("DashBoardManager2").anchor().tell("test", this.self());
-        getContext().actorSelection("DashBoardManager2").tell("test", this.self());
-        getContext().actorSelection("user/DashBoardManager2").tell("test", this.self());*/
-        
-        this.self().tell("tick", null);
+       
+        this.self().tell(new InitMessage(), null);
     }
     
     @Override
@@ -51,16 +38,22 @@ public class DashboardActor extends UntypedActor {
 	
 	@Override
 	public void onReceive(Object message) throws Exception {
-		ObjectMapper mapper = new ObjectMapper();
-		System.err.println("Receiving message");
-		out.tell(Json.newObject().put("type" , "unreplied").put("message", "I received your message: " + message + Instant.now()).put("unmanaged", mapper.writeValueAsString(OrderRequest.findAllUnManaged().stream().map(OrderRequest::toJson).collect(Collectors.toList()))), self());
-		out.tell(Json.newObject().put("type" , "appointments").put("appointments", mapper.writeValueAsString(models.AppointmentRequest.findCurrentAndInFutureOnly().stream().map(AppointmentRequest::toJson).collect(Collectors.toList()))), self());
+		Logger.debug("Actor is receiving a message");
+		if (message instanceof InitMessage) {
+			Logger.debug("Initing {"+this.self().path()+"}");
+		} else if (message instanceof ForwardJsonMessage){
+			Logger.debug("Forwarding message {"+this.self().path()+"}");
+			out.tell(((ForwardJsonMessage) message).getJsonMessage(), self());
+		} else {
+			ObjectMapper mapper = new ObjectMapper();
+			out.tell(Json.newObject().put("type" , "unreplied").put("message", "I received your message: " + message + Instant.now()).put("unmanaged", mapper.writeValueAsString(OrderRequest.findAllUnManaged().stream().map(OrderRequest::toJson).collect(Collectors.toList()))), self());
+			out.tell(Json.newObject().put("type" , "appointments").put("appointments", mapper.writeValueAsString(models.AppointmentRequest.findCurrentAndInFutureOnly().stream().map(AppointmentRequest::toJson).collect(Collectors.toList()))), self());	
+		}
 	}
 
 	@Override
 	public void postStop() throws Exception {
-		System.err.println("Actor Stopped {"+this.self().path().name()+"}");
-		
+		Logger.debug("Actor Stopped {"+this.self().path()+"}");
 		super.postStop();
 	}
 

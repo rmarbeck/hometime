@@ -22,6 +22,9 @@ import play.mvc.Http.Session;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Page;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.CrudReady;
 import fr.hometime.utils.CustomerWatchHelper;
@@ -1023,5 +1026,21 @@ public class CustomerWatch extends ListenableModel implements CrudReady<Customer
 			return "o";
 		return "n";
 	}
+
+    @Override
+    public JsonNode toJson() {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode json = mapper.createObjectNode();
+        json.put("id", id)
+        	.put("date", DateHelper.asShortDate(serviceDueDate))
+        	.put("brand", brand.toString())
+        	.put("model", model)
+        	.put("nameOfCustomer", customer.getFullName())
+        	.put("status", serviceStatus)
+        	.put("dueDate", DateHelper.asShortDate(lastDueDateCommunicated))
+        	.put("managedBy", managedBy!=null?managedBy.firstname:"");
+
+        return json;
+    }
 }
 

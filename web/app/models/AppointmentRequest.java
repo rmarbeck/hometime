@@ -22,6 +22,7 @@ import controllers.CrudReady;
 import fr.hometime.utils.AppointmentOptionHelper;
 import fr.hometime.utils.AppointmentRequestHelper;
 import fr.hometime.utils.DateHelper;
+import fr.hometime.utils.ListenableModel;
 import fr.hometime.utils.PhoneNumberHelper;
 import fr.hometime.utils.RandomHelper;
 import play.data.validation.Constraints;
@@ -33,7 +34,7 @@ import play.i18n.Messages;
  * Definition of an appointment option
  */
 @Entity
-public class AppointmentRequest extends Model implements CrudReady<AppointmentRequest, AppointmentRequest> {
+public class AppointmentRequest extends ListenableModel implements CrudReady<AppointmentRequest, AppointmentRequest> {
 	private static final long serialVersionUID = 3872701757909665792L;
 	
 	private static AppointmentRequest singleton = null;
@@ -279,6 +280,7 @@ public class AppointmentRequest extends Model implements CrudReady<AppointmentRe
 		}
 	}
 	
+	@Override
     public JsonNode toJson() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode json = mapper.createObjectNode();

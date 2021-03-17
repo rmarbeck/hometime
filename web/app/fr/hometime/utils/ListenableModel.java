@@ -2,10 +2,11 @@ package fr.hometime.utils;
 
 import javax.persistence.MappedSuperclass;
 
+import play.Logger;
 import play.db.ebean.Model;
 
 @MappedSuperclass
-public class ListenableModel extends Model {
+public abstract class ListenableModel extends Model implements Jsonable {
 	private static transient ModelUpdateListener listener = ModelUpdateListener.of();
 	
 	public ListenableModel() {
@@ -17,6 +18,7 @@ public class ListenableModel extends Model {
 	}
 	
 	private void fire(String action) {
+		Logger.debug("$$$$$$$$$$$$$$$ ->>>> firing after modification of "+this.getClass().getName()+" action is "+action);
 		listener.fireAsync(this, action);
 	}
 
@@ -67,5 +69,4 @@ public class ListenableModel extends Model {
 		super.update(arg0);
 		fire("updating");
 	}
-
 }
