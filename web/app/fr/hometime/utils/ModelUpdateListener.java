@@ -3,6 +3,7 @@ package fr.hometime.utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
 public class ModelUpdateListener {
@@ -27,9 +28,12 @@ public class ModelUpdateListener {
 		return new ModelUpdateListener();
 	}
 	
-	public void fire(ListenableModel model, String action) {
-		consumers.ifPresent(consumers -> System.err.println("--------LISTENER HAS "+consumers.parallelStream().count()+" consumers----------"));
-		consumers.ifPresent(consumers -> consumers.parallelStream().forEach((current) -> current.accept(model, action)));
+	public void fireAsync(ListenableModel model, String action) {
+		CompletableFuture.runAsync(() -> {
+			consumers.ifPresent(consumers -> System.err.println("--------LISTENER HAS "+consumers.parallelStream().count()+" consumers----------"));
+			consumers.ifPresent(consumers -> consumers.parallelStream().forEach((current) -> current.accept(model, action)));
+		});
+		
 	}
 	
 	public void defaultActions() {
