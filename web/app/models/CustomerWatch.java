@@ -1041,7 +1041,7 @@ public class CustomerWatch extends ListenableModel implements CrudReady<Customer
         	.put("noSolution", noSolution)
         	.put("needHelp", needHelp)
         	.put("sparepartToFind", sparepartToFind)
-        	.put("sparepartToFind", sparepartFound)
+        	.put("sparepartFound", sparepartFound)
         	.put("managedBy", managedBy!=null?managedBy.firstname:"");
 
         return json;
