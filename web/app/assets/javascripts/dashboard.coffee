@@ -103,7 +103,11 @@ populateCWatches = (cssid, JsonTab) ->
      $("td.ph_customer", clonedRow).html(item.nameOfCustomer)
      $("td.ph_brand", clonedRow).html(item.brand)
      $("td.ph_model", clonedRow).html(item.model)
-     $("td.ph_due_date", clonedRow).html(item.dueDate)
+     $("td.ph_due_date", clonedRow).html(item.firstKnownDate)
+     if(item.hasConstraint)
+        $("td.ph_due_date", clonedRow).prepend('<span class="glyphicon glyphicon-warning-sign"></span> ')
+     if(item.hasCalledForDelay)
+        $("td.ph_due_date", clonedRow).prepend('<span class="glyphicon glyphicon-earphone"></span> ')
      pushClonedRow(clonedRow, cssid, item.id))
 
 populateCWatchesQuickWins = (message) ->
