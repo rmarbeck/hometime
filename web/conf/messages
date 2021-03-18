@@ -5486,9 +5486,18 @@ admin.appointment.status.value.waiting.validation=En attente de validation
 admin.appointment.status.value.canceled=Annulé
 admin.appointment.status.value.expired=Expirée
 admin.appointment.status.value.no.more.available=Plus disponible
-admin.appointment.status.value.in.erreur=Erreur
+admin.appointment.status.value.in.error=Erreur
 admin.appointment.reason.value.deposit=Dépôt
 admin.appointment.reason.value.pickup=Retrait
+
+admin.index.appointment.requests.reason.value.deposit=Dépôt
+admin.index.appointment.requests.reason.value.pickup=Retrait
+admin.index.appointment.requests.status.value.validated=Confirmé
+admin.index.appointment.requests.status.value.waiting.validation=En attente de validation
+admin.index.appointment.requests.status.value.canceled=Annulé
+admin.index.appointment.requests.status.value.expired=Expirée
+admin.index.appointment.requests.status.value.no.more.available=Plus disponible
+admin.index.appointment.requests.status.value.in.error=Erreur
 
 admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vous a été envoyé par mail. Nous sommes à votre disposition au 0782434751
 

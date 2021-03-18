@@ -284,7 +284,8 @@ public class AppointmentRequest extends ListenableModel implements CrudReady<App
     public JsonNode toJson() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode json = mapper.createObjectNode();
-        json.put("date", appointmentAsString)
+        json.put("id", id)
+            .put("date", appointmentAsString)
         	.put("name", customerDetails)
         	.put("status", status.toString())
         	.put("reason", reason.toString());

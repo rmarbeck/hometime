@@ -46,8 +46,6 @@ public class DashboardActor extends UntypedActor {
 			out.tell(((ForwardJsonMessage) message).getJsonMessage(), self());
 		} else {
 			ObjectMapper mapper = new ObjectMapper();
-			out.tell(Json.newObject().put("type" , "unreplied").put("message", "I received your message: " + message + Instant.now()).put("unmanaged", mapper.writeValueAsString(OrderRequest.findAllUnManaged().stream().map(OrderRequest::toJson).collect(Collectors.toList()))), self());
-			out.tell(Json.newObject().put("type" , "appointments").put("appointments", mapper.writeValueAsString(models.AppointmentRequest.findCurrentAndInFutureOnly().stream().map(AppointmentRequest::toJson).collect(Collectors.toList()))), self());	
 		}
 	}
 

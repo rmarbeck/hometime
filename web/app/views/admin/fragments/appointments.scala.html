@@ -43,6 +43,17 @@
 		    		<td class="ph_status"></td>
 		    	</tr>
 	    	}
+	    	<div id="data_reason_dic" class="hidden">
+	    	@for(reason <- models.AppointmentRequest.Reason.values) {
+	    		<div data_key="@reason.name" data_value="@Html(Messages(key+".reason.value."+reason.name.toLowerCase.replace("_",".")))"/></div>
+	    	}
+	    	</div>
+	    	<div id="data_status_dic">
+	    	@for(status <- models.AppointmentRequest.Status.values) {
+	    		<div data_key="@status.name" data_value="@Html(Messages(key+".status.value."+status.name.toLowerCase.replace("_",".")))"></div>
+	    	}
+	    	</div>
+	    	
     	} else {
     	<h3>
     		@Html(Messages(key+".active.none"))

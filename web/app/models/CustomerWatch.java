@@ -1038,6 +1038,10 @@ public class CustomerWatch extends ListenableModel implements CrudReady<Customer
         	.put("nameOfCustomer", customer.getFullName())
         	.put("status", serviceStatus)
         	.put("dueDate", DateHelper.asShortDate(lastDueDateCommunicated))
+        	.put("noSolution", noSolution)
+        	.put("needHelp", needHelp)
+        	.put("sparepartToFind", sparepartToFind)
+        	.put("sparepartToFind", sparepartFound)
         	.put("managedBy", managedBy!=null?managedBy.firstname:"");
 
         return json;

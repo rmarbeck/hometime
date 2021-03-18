@@ -23,6 +23,7 @@ initWS = (protocol) ->
         , 5000
     ws.onmessage = (event) ->
       message = JSON.parse event.data
+      console.log(message)
       switch message.type
         when "orderRequest"
           populateOrderRequest(message)
@@ -35,7 +36,7 @@ initWS = (protocol) ->
         when "customerWatchesEmergencies"
           populateCWatchesEmergency(message)
         else
-          console.log(message)
+          console.log("not managed")
 
 preparingDisplay = (cssid, JsonTab) ->
     $("#"+cssid+" .cloned").remove()
@@ -46,6 +47,9 @@ preparingDisplay = (cssid, JsonTab) ->
 
 cloneRow = (cssid) ->
     return $("#"+cssid+" #ph_line_template").clone()
+
+getValueInDictionnary = (dictionary, key) ->
+    $("#data_"+dictionary+"_dic [data_key="+key+"]").attr("data_value")
 
 pushClonedRow = (clonedRow, cssid, itemId) ->
     $(clonedRow).attr("id", "#"+cssid+"_"+itemId)
@@ -69,8 +73,8 @@ populateAppointments = (message) ->
      clonedRow = cloneRow("appointments")
      $("td.ph_date", clonedRow).html(item.date)
      $("td.ph_details", clonedRow).html(item.name)
-     $("td.ph_reason", clonedRow).html(item.reason)
-     $("td.ph_status", clonedRow).html(item.status)
+     $("td.ph_reason", clonedRow).html(getValueInDictionnary("reason",item.reason))
+     $("td.ph_status", clonedRow).html(getValueInDictionnary("status",item.status))
      pushClonedRow(clonedRow, "appointments", item.id))
 
 populateCWatchesAllocated = (message) ->
@@ -83,6 +87,10 @@ populateCWatchesAllocated = (message) ->
      $("td.ph_model", clonedRow).html(item.model)
      $("td.ph_watchmaker", clonedRow).html(item.managedBy)
      $("td.ph_status", clonedRow).html(item.status+"%")
+     $(clonedRow).addClass("nosolution_status_"+item.noSolution)
+     $(clonedRow).addClass("needhelp_status_"+item.needHelp)
+     $(clonedRow).addClass("sparetofind_status_"+item.sparepartToFind)
+     $(clonedRow).addClass("sparefound_status_"+item.sparepartFound)
      pushClonedRow(clonedRow, "managed", item.id))
 
 populateCWatches = (cssid, JsonTab) ->
