@@ -30,7 +30,7 @@ public class DashboardActor extends UntypedActor {
         		FiniteDuration.apply(KEEP_ALIVE_FREQUENCY, KEEP_ALIVE_UNIT),
         		FiniteDuration.apply(KEEP_ALIVE_FREQUENCY, KEEP_ALIVE_UNIT),
                 this.getSelf(),
-                "ping",
+                new PingMessage(),
                 Akka.system().dispatcher(),
                 null);
     }
@@ -48,6 +48,9 @@ public class DashboardActor extends UntypedActor {
 		} else if (message instanceof ForwardJsonMessage){
 			Logger.debug("Forwarding message {"+this.self().path()+"}");
 			out.tell(((ForwardJsonMessage) message).getJsonMessage(), self());
+		} else if (message instanceof PingMessage){
+			Logger.debug("Pinging message {"+this.self().path()+"}");
+			out.tell("Ping", self());
 		} else {
 			Logger.info("Actor just recevied an unsupported message ["+message.getClass()+"]");
 		}
