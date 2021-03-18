@@ -1,0 +1,59 @@
+@(watches: List[models.CustomerWatch], displayLink: Boolean, key: String = "admin.customer.watch", darkMode: Boolean = false, placeholder: Boolean = false)
+@import tags._
+@import fr.hometime.utils._
+
+
+@header(content: Html) = {
+    	<h3>
+    		@Html(Messages(key+".active"))
+    	</h3>
+    	<table class="table table-condensed @if(!darkMode) {table-striped table-bordered}">
+          <thead>
+	        <tr>
+	          <th>@Html(Messages(key+".id"))</th>
+	          <th>@Html(Messages(key+".name"))</th>
+	          <th>@Html(Messages(key+".brand"))</th>
+	          <th>@Html(Messages(key+".model"))</th>
+	          <th>@Html(Messages(key+".watchmaker"))</th>
+	          <th>@Html(Messages(key+".status"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      @content
+	      </tbody>
+		</table>
+}
+
+    @if(watches != null && watches.size >0) {
+		@header{
+	      	@for(watch <- watches; statusClass = watch.getWatchStatusClass) {
+			      	<tr class="nosolution_status_@watch.noSolution needhelp_status_@watch.needHelp sparetofind_status_@watch.sparepartToFind sparefound_status_@watch.sparepartFound ">
+			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
+			      		<td>@takeif(watch.customer.firstname+" "+watch.customer.name)</td>
+			      		<td>@watch.brand</td>
+			      		<td>@takeif(watch.model)</td>
+			      		<td>@watch.managedBy.firstname</td>
+			      		<td>@watch.serviceStatus %</td>
+			      	</tr>
+	      	}
+	    }
+    } else {
+    	@if(placeholder) {
+	    	@header{
+		    	<tr class="hidden" id="ph_line_template">
+		    		<td class="ph_id"></td>
+		    		<td class="ph_customer"></td>
+		    		<td class="ph_brand"></td>
+		    		<td class="ph_model"></td>
+		    		<td class="ph_watchmaker"></td>
+		    		<td class="ph_status"></td>
+		    	</tr>
+	    	}
+    	} else {
+    	<h3>
+    		@Html(Messages(key+".active.none"))
+    	</h3>
+    	}
+    }
+    <br />
+    

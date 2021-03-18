@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -25,6 +22,14 @@ import play.Logger;
 import play.libs.Json;
 
 public class DashboardManagerHelper {
+	private static String JSON_TYPE = "type";
+	private static String ORDER_REQUESTS = "orderRequest";
+	private static String APPOINTMENTS = "appointments";
+	private static String C_WATCH_ALLOCATED = "customerWatchesAllocated";
+	private static String C_WATCH_PRIORITIZED = "customerWatchesPrioritized";
+	private static String C_WATCH_QUICK_WINS = "customerWatchesQuickWins";
+	private static String C_WATCH_EMERGENCY = "customerWatchesEmergencies";
+	
 	private static class ModelsProducer {
 		private Supplier<List<? extends Jsonable>> supplier;
 		private String key;
@@ -41,12 +46,6 @@ public class DashboardManagerHelper {
 		}
 		
 	}
-	
-	private static String JSON_TYPE = "type";
-	private static String ORDER_REQUESTS = "orderRequest";
-	private static String APPOINTMENTS = "appointments";
-	private static String C_WATCH_ALLOCATED = "customerWatchesAllocated";
-	private static String C_WATCH_PRIORITIZED = "customerWatchesPrioritized";
 	
 	private static Map<String, Integer> lastHashesSent = new HashMap<>();
 	
@@ -66,26 +65,34 @@ public class DashboardManagerHelper {
 		return ModelsProducer.of(CustomerWatch::findAllEmergencyOrderedByPriority, C_WATCH_PRIORITIZED, (model) -> model instanceof CustomerWatch);
 	}
 	
+	public static ModelsProducer customerWatchesQuickWins() {
+		return ModelsProducer.of(CustomerWatch::findAllUnderOurResponsabilityWithQuickWinPossibleOrderedByID, C_WATCH_QUICK_WINS, (model) -> model instanceof CustomerWatch);
+	}
+	
+	public static ModelsProducer customerWatchesEmergency() {
+		return ModelsProducer.of(CustomerWatch::findAllEmergencyOrderedByPriority, C_WATCH_EMERGENCY, (model) -> model instanceof CustomerWatch);
+	}
+	
 	public static TriConsumer<Supplier<List<? extends Jsonable>>, String, ActorRef> manage(Boolean forceUpdate) {
-		return (supplier, type, manager) -> {
+		return (supplier, type, destination) -> {
 			Logger.debug(type+" is updated, managing it ****************");
 			JsonNode node = createJson(supplier, type).get();
 			if (forceUpdate || hasChanged(node)) {
-				Logger.debug(type+" has changed ****************");
-				manager.tell(ForwardJsonMessage.of(node), manager);
+				Logger.debug(type+" has changed ****************, sending to "+destination.path());
+				destination.tell(ForwardJsonMessage.of(node), destination);
 			} else {
 				Logger.debug(type+" has NOT changed ****************");
 			}
 		};
 	}
 
-	public static void forceUpdate(ModelsProducer producer, ActorRef manager) {
-		manage(true).accept(producer.supplier, producer.key, manager);
+	public static void forceUpdate(ModelsProducer producer, ActorRef destination) {
+		manage(true).accept(producer.supplier, producer.key, destination);
 	}
 	
-	public static void manageUpdate(ModelsProducer producer, ActorRef manager, ListenableModel model) {
+	public static void manageUpdate(ModelsProducer producer, ActorRef destination, ListenableModel model) {
 		if (producer.filter.test(model))
-			manage(false).accept(producer.supplier, producer.key, manager);
+			manage(false).accept(producer.supplier, producer.key, destination);
 	}
 	
 	//return ok(dashboard.render("", null/*Customer.findWithOpenTopic()*/, OrderRequest.findAllUnManaged(), BuyRequest.findAllUnReplied(5), CustomerWatch.findAllEmergencyOrderedByPriority(), models.SparePart.findAllToReceiveByCreationDateDesc(), models.CustomerWatch.findAllByWatchmaker(), models.AppointmentRequest.findCurrentAndInFutureOnly(), models.CustomerWatch.findAllUnderOurResponsabilityWithQuickWinPossibleOrderedByID(), models.InternalMessage.findAllActiveForDash(), page));
@@ -116,7 +123,7 @@ public class DashboardManagerHelper {
 			Logger.error("Unable to create Json list for type {"+type+"}");
 			e.printStackTrace();
 		}
-		return Optional.of(Json.newObject().put(JSON_TYPE , type).put(type, mapper.createArrayNode()));
+		return Optional.of(Json.newObject().put(JSON_TYPE , type).put("error", "unable.to.create").put(type, mapper.createArrayNode()));
 	}
 
 }

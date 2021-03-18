@@ -9,12 +9,15 @@ import akka.actor.Props;
 import akka.actor.Terminated;
 import akka.actor.UntypedActor;
 import fr.hometime.utils.DashboardManagerHelper;
+import fr.hometime.utils.ListenableModel;
+
 import static fr.hometime.utils.DashboardManagerHelper.manageUpdate;
 import static fr.hometime.utils.DashboardManagerHelper.orderUpdate;
 import static fr.hometime.utils.DashboardManagerHelper.appointmentsUpdate;
 import static fr.hometime.utils.DashboardManagerHelper.customerWatchesAllocated;
 import static fr.hometime.utils.DashboardManagerHelper.customerWatchesPriorized;
-import models.OrderRequest;
+import static fr.hometime.utils.DashboardManagerHelper.customerWatchesEmergency;
+import static fr.hometime.utils.DashboardManagerHelper.customerWatchesQuickWins;
 
 import play.Logger;
 
@@ -24,10 +27,12 @@ public class DashboardManager extends UntypedActor {
 	private DashboardManager() {
 		Logger.debug("Starting DashboardManager");
 		
-		OrderRequest.getListener().addConsumer((model, action) -> manageUpdate(orderUpdate(), this.self(), model));
-		OrderRequest.getListener().addConsumer((model, action) -> manageUpdate(appointmentsUpdate(), this.self(), model));
-		OrderRequest.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesAllocated(), this.self(), model));
-		OrderRequest.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesPriorized(), this.self(), model));
+		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(orderUpdate(), this.self(), model));
+		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(appointmentsUpdate(), this.self(), model));
+		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesAllocated(), this.self(), model));
+		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesPriorized(), this.self(), model));
+		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesQuickWins(), this.self(), model));
+		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesEmergency(), this.self(), model));
 	}
 	
     public static Props props() {
@@ -48,14 +53,17 @@ public class DashboardManager extends UntypedActor {
     public void onReceive(Object message) throws Exception {
     	Logger.debug("--------------------------------------> DashboardManager is receiving a message");
         if (message instanceof JoinMessage) {
-        	Logger.debug("DashboardManager is joining an actor");
-        	addActor(sender());
-            getContext().watch(sender()); // Watch actor so we can detect when they die.
+        	Logger.debug("DashboardManager is joining an actor "+sender().path());
+        	ActorRef newActor = getSender();
+        	addActor(newActor);
+            getContext().watch(newActor); // Watch actor so we can detect when they die.
             CompletableFuture.runAsync(() -> {
-            	DashboardManagerHelper.forceUpdate(orderUpdate(), this.self());
-            	DashboardManagerHelper.forceUpdate(appointmentsUpdate(), this.self());
-            	DashboardManagerHelper.forceUpdate(customerWatchesAllocated(), this.self());
-            	DashboardManagerHelper.forceUpdate(customerWatchesPriorized(), this.self());
+            	DashboardManagerHelper.forceUpdate(orderUpdate(), newActor);
+            	DashboardManagerHelper.forceUpdate(appointmentsUpdate(), newActor);
+            	DashboardManagerHelper.forceUpdate(customerWatchesAllocated(), newActor);
+            	DashboardManagerHelper.forceUpdate(customerWatchesPriorized(), newActor);
+            	DashboardManagerHelper.forceUpdate(customerWatchesQuickWins(), newActor);
+            	DashboardManagerHelper.forceUpdate(customerWatchesEmergency(), newActor);
             });
         } else if (message instanceof Terminated) {
             // One of our watched actor has died.

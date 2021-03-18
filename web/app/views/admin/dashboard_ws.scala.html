@@ -26,6 +26,14 @@ $(document).ready(function(){
 </script>
 }
 
+@header(cssid: String, title: String)(content: Html) = {
+				<div id="@cssid" class="hidden">
+	            <h1 class="cover-heading">@title</h1>
+	            @content
+	            </div>
+}
+
+
 @import fr.hometime.utils._
 
 @import java.util.List; var quotation=CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatus(CustomerWatchHelper.CustomerWatchDetailedStatus.TO_QUOTE); var tosend=CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatus(CustomerWatchHelper.CustomerWatchDetailedStatus.QUOTATION_TO_SEND_TO_CUSTOMER); var testing=CustomerWatchHelper.findUnderOurResponsabilityFilteredByStatus(CustomerWatchHelper.CustomerWatchDetailedStatus.TESTING)
@@ -102,62 +110,30 @@ $(document).ready(function(){
           <div class="row">
           	
           	<div class="col-lg-6">
-          		<div id="order_requests" class="hidden">
-	            <h1 class="cover-heading">Nouvelles demandes</h1>
-	            @fragments.orderlist(null, false, "admin.index.order.requests", true, true)
+          		@header("order_requests", "Nouvelles demandes") {
+          		@fragments.orderlist(null, false, "admin.index.order.requests", true, true)
 	            <br/><p>-</p><br/>
-	            </div>
-	            <div id="appointments"  class="hidden">
-	            <h1 class="cover-heading">Rendez-vous</h1>
+          		}
+          		@header("appointments", "Rendez-vous") {
 	            @fragments.appointments(null, false, "admin.index.appointment.requests", true, true)
-	            </div>
+				}
 	        </div>
 	        
 	        <div class="col-lg-6">
-	            <h1 class="cover-heading">Montres en cours</h1>
-	            @if(bywatchmakers != null && bywatchmakers.size >0) {
-		    	<h3>
-		    		@Html(Messages("admin.index.watches.active"))
-		    	</h3>
-		    	<table class="table table-condensed">
-		          <thead>
-			        <tr>
-			          <th>@Html(Messages("admin.index.watches.head.id"))</th>
-			          <th>@Html(Messages("admin.index.watches.head.name"))</th>
-			          <th>@Html(Messages("admin.index.watches.head.brand"))</th>
-			          <th>@Html(Messages("admin.index.watches.head.model"))</th>
-			          <th>@Html(Messages("admin.index.watches.head.watchmaker"))</th>
-			          <th>@Html(Messages("admin.index.watches.head.status"))</th>
-			        </tr>
-			      </thead>
-			      <tbody>
-			      	@for(watch <- bywatchmakers; statusClass = watch.getWatchStatusClass) {
-			      	<tr class="nosolution_status_@watch.noSolution needhelp_status_@watch.needHelp sparetofind_status_@watch.sparepartToFind sparefound_status_@watch.sparepartFound ">
-			      		<td>@if_admin() {<a href="@routes.CustomerWatch.display(watch.id)">}#@watch.id@if_admin() {</a>}</td>
-			      		<td>@takeif(watch.customer.firstname+" "+watch.customer.name)</td>
-			      		<td>@watch.brand</td>
-			      		<td>@takeif(watch.model)</td>
-			      		<td>@watch.managedBy.firstname</td>
-			      		<td>@watch.serviceStatus %</td>
-			      	</tr>
-			      	}
-				  </tbody>
-				</table>
-		    } else {
-		    	<h3>
-		    		@Html(Messages("admin.index.watches.active.none"))
-		    	</h3>
-		    }
+		        @header("managed", "Montres en cours") {
+				@fragments.watchlistServicing(null, false, "admin.index.watches", true, true)
+				}
 	        </div>
 	     </div>
 	     <div class="row">
 	        <div class="col-lg-6">
-	        	@if(quickWins != null && quickWins.size > 0) {
-	        	<h1 class="cover-heading">Entretiens rapides</h1>
-	            @fragments.watchlist_on_dash(quickWins, "admin.index.watches")
-	            }
-	            <h1 class="cover-heading">Urgences</h1>
-	            @fragments.watchlist_on_dash(watches, "admin.index.watches", quickWins != null && quickWins.size >0)
+	            @header("quick_wins", "Entretiens rapides") {
+	            @fragments.watchlist_on_dash(null, "admin.index.watches", false, true)
+				}
+	            
+	            @header("emergencies", "Urgences") {
+	            @fragments.watchlist_on_dash(null, "admin.index.watches", false, true)
+				}
 	        </div>
 	        <div class="col-lg-6">
 	            <h1 class="cover-heading">Pièces détachées</h1>
