@@ -3,25 +3,39 @@ $ ->
   protocol = "wss://"
   if (location.protocol != 'https:')
    protocol="ws://"
-  ws = new WebSocket protocol+location.host+$("body").data("ws-url")
-  ws.onopen = () ->
+  initWS(protocol)
+
+initWS = (protocol) ->
+    ws = new WebSocket protocol+location.host+$("body").data("ws-url")
+    ws.onopen = () ->
         console.log(event)
         ws.send(JSON.stringify({starting: true}))
-  ws.onmessage = (event) ->
-    message = JSON.parse event.data
-    switch message.type
-      when "orderRequest"
-        populateOrderRequest(message)
-      when "appointments"
-        populateAppointments(message)
-      when "customerWatchesAllocated"
-        populateCWatchesAllocated(message)
-      when "customerWatchesQuickWins"
-        populateCWatchesQuickWins(message)
-      when "customerWatchesEmergencies"
-        populateCWatchesEmergency(message)
-      else
-        console.log(message)
+        $("#dialog").addClass("hidden");
+    ws.onerror = () ->
+        console.log(event)
+        $("#dialog").removeClass("hidden");
+        ws.close()
+    ws.onclose = () ->
+        console.log(event)
+        $("#dialog").removeClass("hidden");
+        setTimeout () ->
+          initWS(protocol)
+        , 5000
+    ws.onmessage = (event) ->
+      message = JSON.parse event.data
+      switch message.type
+        when "orderRequest"
+          populateOrderRequest(message)
+        when "appointments"
+          populateAppointments(message)
+        when "customerWatchesAllocated"
+          populateCWatchesAllocated(message)
+        when "customerWatchesQuickWins"
+          populateCWatchesQuickWins(message)
+        when "customerWatchesEmergencies"
+          populateCWatchesEmergency(message)
+        else
+          console.log(message)
 
 preparingDisplay = (cssid, JsonTab) ->
     $("#"+cssid+" .cloned").remove()
@@ -72,6 +86,8 @@ populateCWatchesAllocated = (message) ->
      pushClonedRow(clonedRow, "managed", item.id))
 
 populateCWatches = (cssid, JsonTab) ->
+    console.log("populating "+cssid)
+    console.log(JsonTab)
     preparingDisplay(cssid, JsonTab)
     $.each( JSON.parse(JsonTab), (i, item) ->
      clonedRow = cloneRow(cssid)
