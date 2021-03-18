@@ -16,41 +16,74 @@ $ ->
         populateAppointments(message)
       when "customerWatchesAllocated"
         populateCWatchesAllocated(message)
+      when "customerWatchesQuickWins"
+        populateCWatchesQuickWins(message)
+      when "customerWatchesEmergencies"
+        populateCWatchesEmergency(message)
       else
         console.log(message)
 
+preparingDisplay = (cssid, JsonTab) ->
+    $("#"+cssid+" .cloned").remove()
+    if(JSON.parse(JsonTab).length == 0)
+        $("#"+cssid).addClass("hidden")
+    else
+        $("#"+cssid).removeClass("hidden")
+
+cloneRow = (cssid) ->
+    return $("#"+cssid+" #ph_line_template").clone()
+
+pushClonedRow = (clonedRow, cssid, itemId) ->
+    $(clonedRow).attr("id", "#"+cssid+"_"+itemId)
+    $(clonedRow).addClass("cloned")
+    $(clonedRow).removeClass("hidden")
+    clonedRow.appendTo("#"+cssid+" tbody")
 
 populateOrderRequest = (message) ->
-    console.log("updating Order requests")
-    $("#order_requests .cloned").remove()
-    if (JSON.parse(message.orderRequest).length == 0)
-     $("#order_requests").addClass("hidden")
+    preparingDisplay("order_requests", message.orderRequest)
     $.each( JSON.parse(message.orderRequest), (i, item) ->
-     $("#order_requests").removeClass("hidden")
-     clonedRow = $("#order_requests #ph_line_template").clone()
+     clonedRow = cloneRow("order_requests")
      $("td.ph_id", clonedRow).html('#'+item.id)
      $("td.ph_date", clonedRow).html(item.date)
      $("td.ph_details", clonedRow).html(item.brand+", "+item.model+", "+item.city)
      $("td.ph_name", clonedRow).html(item.managedBy)
-     $(clonedRow).attr("id", "#order_"+item.id)
-     $(clonedRow).addClass("cloned")
-     $(clonedRow).removeClass("hidden")
-     clonedRow.appendTo("#order_requests tbody"))
-
+     pushClonedRow(clonedRow, "order_requests", item.id))
 
 populateAppointments = (message) ->
-    console.log("updating appointments")
-    $("#appointments .cloned").remove()
-    if (JSON.parse(message.appointments).length == 0)
-     $("#appointments").addClass("hidden")
+    preparingDisplay("appointments", message.appointments)
     $.each( JSON.parse(message.appointments), (i, item) ->
-     $("#appointments").removeClass("hidden")
-     clonedRow = $("#appointments #ph_line_template").clone()
+     clonedRow = cloneRow("appointments")
      $("td.ph_date", clonedRow).html(item.date)
      $("td.ph_details", clonedRow).html(item.name)
      $("td.ph_reason", clonedRow).html(item.reason)
      $("td.ph_status", clonedRow).html(item.status)
-     $(clonedRow).attr("id", "#appointment_"+item.id)
-     $(clonedRow).addClass("cloned")
-     $(clonedRow).removeClass("hidden")
-     clonedRow.appendTo("#appointments tbody"))
+     pushClonedRow(clonedRow, "appointments", item.id))
+
+populateCWatchesAllocated = (message) ->
+    preparingDisplay("managed", message.customerWatchesAllocated)
+    $.each( JSON.parse(message.customerWatchesAllocated), (i, item) ->
+     clonedRow = cloneRow("managed")
+     $("td.ph_id", clonedRow).html('#'+item.id)
+     $("td.ph_customer", clonedRow).html(item.nameOfCustomer)
+     $("td.ph_brand", clonedRow).html(item.brand)
+     $("td.ph_model", clonedRow).html(item.model)
+     $("td.ph_watchmaker", clonedRow).html(item.managedBy)
+     $("td.ph_status", clonedRow).html(item.status+"%")
+     pushClonedRow(clonedRow, "managed", item.id))
+
+populateCWatches = (cssid, JsonTab) ->
+    preparingDisplay(cssid, JsonTab)
+    $.each( JSON.parse(JsonTab), (i, item) ->
+     clonedRow = cloneRow(cssid)
+     $("td.ph_id", clonedRow).html('#'+item.id)
+     $("td.ph_customer", clonedRow).html(item.nameOfCustomer)
+     $("td.ph_brand", clonedRow).html(item.brand)
+     $("td.ph_model", clonedRow).html(item.model)
+     $("td.ph_due_date", clonedRow).html(item.dueDate)
+     pushClonedRow(clonedRow, cssid, item.id))
+
+populateCWatchesQuickWins = (message) ->
+    populateCWatches("quick_wins", message.customerWatchesQuickWins)
+
+populateCWatchesEmergency = (message) ->
+    populateCWatches("emergencies", message.customerWatchesEmergencies)
