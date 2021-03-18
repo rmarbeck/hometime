@@ -1,12 +1,11 @@
 package actors;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
 import play.Logger;
 import play.libs.Akka;
+import play.libs.Json;
 import scala.concurrent.duration.FiniteDuration;
 
 public class DashboardActor extends UntypedActor {
@@ -50,7 +49,7 @@ public class DashboardActor extends UntypedActor {
 			out.tell(((ForwardJsonMessage) message).getJsonMessage(), self());
 		} else if (message instanceof PingMessage){
 			Logger.debug("Pinging message {"+this.self().path()+"}");
-			out.tell("Ping", self());
+			out.tell(Json.newObject().put("ping" , "ping"), self());
 		} else {
 			Logger.info("Actor just recevied an unsupported message ["+message.getClass()+"]");
 		}

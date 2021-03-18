@@ -22,6 +22,7 @@ initWS = (protocol) ->
           initWS(protocol)
         , 5000
     ws.onmessage = (event) ->
+      console.log(message)
       message = JSON.parse event.data
       console.log(message)
       switch message.type
@@ -36,7 +37,7 @@ initWS = (protocol) ->
         when "customerWatchesEmergencies"
           populateCWatchesEmergency(message)
         else
-          console.log("not managed")
+          console.log("not managed "+message)
 
 preparingDisplay = (cssid, JsonTab) ->
     $("#"+cssid+" .cloned").remove()
