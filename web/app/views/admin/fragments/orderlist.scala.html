@@ -3,6 +3,9 @@
 @import fr.hometime.utils._
 
 @header(content: Html) = {
+		<h3>
+    		@Html(Messages(key+".active"))
+    	</h3>
 		<table class="table table-condensed @if(!darkMode) {table-striped table-bordered}">
 		  <thead>
 	        <tr>
@@ -23,9 +26,6 @@
 }
 
     @if(unrepliedOrderRequests != null && unrepliedOrderRequests.size >0) {
-    	<h3>
-    		@Html(Messages(key+".active"))
-    	</h3>
           @header{
 	      	@for(i <- 1 to 1) {
 	      	@for(request <- unrepliedOrderRequests) {
