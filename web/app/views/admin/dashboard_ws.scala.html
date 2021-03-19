@@ -2,28 +2,7 @@
 @import tags._
 
 @end_script = {
-<script>
-$(document).ready(function(){
-		var delayInMS = 5000;
-		var nbMessages = @messages.size;
-		var counter = 0;
-		var today = new Date(new Date().setHours(0,0,0,0));
-		
-		
-		function myTimer() {
-			if(nbMessages!=0) {
-			var millis = new Date() - today; 
-			var indice = Math.floor(millis / delayInMS) % nbMessages;
-    		var textvalue = $('#content-'+indice).html();
-    		$('.message-holder').html(" - "+textvalue);
-    		}
-		}
-		
-		myTimer();
 
-		var myVar = setInterval(myTimer, 5000);
-		});
-</script>
 }
 
 @header(cssid: String, title: String)(content: Html) = {
@@ -65,11 +44,15 @@ $(document).ready(function(){
   </head>
 
   <body data-ws-url="@routes.Dashboard.socket">
-          
-  <div class="hidden">
-	@for((message, index) <- messages.zipWithIndex) {
-		<span id="content-@index"><span class="glyphicon glyphicon-@display_i18n_value(message.getTypeName(),"admin.message.type.name.value")"></span> @Html(message.body)</span>
-	}
+  
+  <div id="data_internal_messages_dic" class="hidden">
+	    	@for(messageType <- models.InternalMessage.InternalMessageType.values) {
+	    		<div data_key="@messageType.name" data_value="@Html(Messages("admin.message.type.name.value."+messageType.name.toLowerCase.replace("_",".")))"/></div>
+	    	}
+  </div>
+  
+  <div id="internal_messages" class="hidden">
+  	
   </div>
 
     <div class="site-wrapper">
@@ -80,7 +63,7 @@ $(document).ready(function(){
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Hometime / Dashboard@figure(quotation, "devis")@figure(tosend, "à envoyer")@figure(testing, "en test")<span class="message-holder"></span></h3>
+              <h3 class="masthead-brand">Hometime / Dashboard<span id="stats"></span><span class="message-holder"></span></h3>
               <nav>
                 <ul class="nav masthead-nav">
                   <li @if(page==1) {class="active"}><a href="@routes.Admin.dash(1)">Home</a></li>
@@ -134,8 +117,9 @@ $(document).ready(function(){
 		        @header("managed", "Montres en cours") {
 				@fragments.watchlistServicing(null, false, "admin.index.watches", true, true)
 				}
-				<h1 class="cover-heading">Pièces détachées</h1>
-	            @fragments.sparepartsmanageablelist(partsToReceive, "admin.spare.parts.to.receive", true)
+				@header("spare_parts", "Pièces détachées") {
+				@fragments.sparepartsws(null, false, "admin.spare.parts.to.receive", true)
+				}
 	        </div>
 	     </div>
          }

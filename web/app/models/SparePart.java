@@ -10,8 +10,13 @@ import javax.persistence.ManyToOne;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Page;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.CrudReady;
+import fr.hometime.utils.DateHelper;
+import fr.hometime.utils.ListenableModel;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
@@ -21,7 +26,7 @@ import play.db.ebean.Model.Finder;
  */
 @SuppressWarnings("unused")
 @Entity 
-public class SparePart extends Model implements CrudReady<SparePart, SparePart> {
+public class SparePart extends ListenableModel implements CrudReady<SparePart, SparePart> {
 	private static final long serialVersionUID = 1423684174998061395L;
 
 	private static SparePart singleton = null;
@@ -258,5 +263,17 @@ public class SparePart extends Model implements CrudReady<SparePart, SparePart> 
 
 		return "spare_open";
 	}
+
+    @Override
+    public JsonNode toJson() {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode json = mapper.createObjectNode();
+        json.put("id", getWatchId())
+        	.put("watch", getWatchDescription())
+        	.put("description", description)
+        	.put("reference", partReference);
+
+        return json;
+    }
 }
 

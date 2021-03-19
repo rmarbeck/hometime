@@ -1,14 +1,15 @@
-
+nbMessages = 0
+delayInMS = 5000
+today = new Date(new Date().setHours(0,0,0,0))
+protocol = "wss://"
 $ ->
-  protocol = "wss://"
   if (location.protocol != 'https:')
    protocol="ws://"
-  initWS(protocol)
+  initWS()
 
-initWS = (protocol) ->
+initWS = () ->
     ws = new WebSocket protocol+location.host+$("body").data("ws-url")
     ws.onopen = () ->
-        console.log(event)
         ws.send(JSON.stringify({starting: true}))
         $("#dialog").addClass("hidden");
     ws.onerror = () ->
@@ -19,7 +20,7 @@ initWS = (protocol) ->
         console.log(event)
         $("#dialog").removeClass("hidden");
         setTimeout () ->
-          initWS(protocol)
+          initWS()
         , 5000
     ws.onmessage = (event) ->
       console.log(message)
@@ -36,6 +37,12 @@ initWS = (protocol) ->
           populateCWatchesQuickWins(message)
         when "customerWatchesEmergencies"
           populateCWatchesEmergency(message)
+        when "spareParts"
+          populateSpareParts(message)
+        when "statistics"
+          populateStats(message)
+        when "internalMessages"
+          populateInternalMessages(message)
         else
           console.log("not managed "+message)
 
@@ -116,3 +123,44 @@ populateCWatchesQuickWins = (message) ->
 
 populateCWatchesEmergency = (message) ->
     populateCWatches("emergencies", message.customerWatchesEmergencies)
+
+populateSpareParts = (message) ->
+    preparingDisplay("spare_parts", message.spareParts)
+    $.each( JSON.parse(message.spareParts), (i, item) ->
+     clonedRow = cloneRow("spare_parts")
+     $("td.ph_id", clonedRow).html('#'+item.id)
+     $("td.ph_watch", clonedRow).html(item.watch)
+     $("td.ph_description", clonedRow).html(item.description)
+     $("td.ph_reference", clonedRow).html(item.reference)
+     pushClonedRow(clonedRow, "spare_parts", item.id))
+
+populateStats = (message) ->
+    $("span#stats").html("")
+    $.each( JSON.parse(message.statistics), (i, item) ->
+     if(item.toQuote != 0)
+       $("span#stats").append(" - "+item.toQuote+" devis")
+     if(item.toSend != 0)
+       $("span#stats").append(" - "+item.toSend+" à envoyer")
+     if(item.toTest != 0)
+       $("span#stats").append(" - "+item.toTest+" en test"))
+
+populateInternalMessages = (message) ->
+    $("div#internal_messages").html("")
+    $.each( JSON.parse(message.internalMessages), (i, item) ->
+      $("div#internal_messages").append('<span id="content-'+i+'"><span class="glyphicon glyphicon-'+getValueInDictionnary("internal_messages",item.type)+'"></span> '+item.body+'</span>'))
+    displayMessages()
+
+displayMessages = () ->
+    nbMessages = $("div#internal_messages span[id^=content]").length
+    counter = 0
+    today = new Date(new Date().setHours(0,0,0,0))
+    myTimer()
+    setInterval(myTimer, delayInMS)
+
+myTimer = () ->
+    console.log("myTimer ")
+    if(nbMessages!=0)
+      millis = new Date() - today; 
+      indice = Math.floor(millis / delayInMS) % nbMessages
+      textvalue = $('#content-'+indice).html()
+      $('.message-holder').html(" - "+textvalue)

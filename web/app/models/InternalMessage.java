@@ -10,15 +10,20 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import com.avaje.ebean.Page;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.CrudReady;
+import fr.hometime.utils.DateHelper;
+import fr.hometime.utils.ListenableModel;
 import play.db.ebean.Model;
 
 /**
  * Definition of an Internal Message
  */
 @Entity 
-public class InternalMessage extends Model implements CrudReady<InternalMessage, InternalMessage> {
+public class InternalMessage extends ListenableModel implements CrudReady<InternalMessage, InternalMessage> {
 	private static final long serialVersionUID = 7745524066076193537L;
 
 	private static InternalMessage singleton = null;
@@ -134,5 +139,16 @@ public class InternalMessage extends Model implements CrudReady<InternalMessage,
 	public InternalMessageType getType() {
 		return type;
 	}
+
+    @Override
+    public JsonNode toJson() {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode json = mapper.createObjectNode();
+        json.put("id", id)
+        	.put("type", type.name)
+        	.put("body", body);
+
+        return json;
+    }
 }
 

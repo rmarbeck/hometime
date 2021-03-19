@@ -1,0 +1,54 @@
+@(spareparts: List[models.SparePart], displayLink: Boolean, key: String = "admin.spare.part", placeholder: Boolean = false)
+@import tags._
+@import fr.hometime.utils._
+
+
+@header(content: Html) = {
+    	<h3>
+    		@Html(Messages(key+".active"))
+    	</h3>
+    	<table class="table table-condensed">
+          <thead>
+	        <tr>
+              <th>@Html(Messages(key+".header.id"))</th>
+              <th>@Html(Messages(key+".header.watch"))</th>
+              <th>@Html(Messages(key+".header.description"))</th>
+              <th>@Html(Messages(key+".header.part.reference"))</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      @content
+	      </tbody>
+		</table>
+}
+
+    @if(spareparts != null && spareparts.size >0) {
+		@header{
+	      	@for((part, index) <- spareparts.zipWithIndex) {
+	      	<tr class="">
+	      		  <td>@part.getWatchId</td>
+                  <td>@part.getWatchDescription</td>
+                  <td>@part.description</td>
+                  <td>@part.partReference</td>
+	      	</tr>
+	      	}
+	    }
+    } else {
+    	@if(placeholder) {
+	    	@header{
+		    	<tr class="hidden" id="ph_line_template">
+		    		<td class="ph_id"></td>
+		    		<td class="ph_watch"></td>
+		    		<td class="ph_description"></td>
+		    		<td class="ph_reference"></td>
+		    	</tr>
+	    	}
+    	} else {
+    	<h3>
+    		@Html(Messages(key+".active.none"))
+    	</h3>
+    	}
+    }
+    <br />
+    
+    

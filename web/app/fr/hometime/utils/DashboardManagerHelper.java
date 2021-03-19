@@ -17,7 +17,9 @@ import akka.actor.ActorRef;
 import controllers.Accounting.TriConsumer;
 import models.AppointmentRequest;
 import models.CustomerWatch;
+import models.InternalMessage;
 import models.OrderRequest;
+import models.SparePart;
 import play.Logger;
 import play.libs.Json;
 
@@ -29,8 +31,11 @@ public class DashboardManagerHelper {
 	private static String C_WATCH_PRIORITIZED = "customerWatchesPrioritized";
 	private static String C_WATCH_QUICK_WINS = "customerWatchesQuickWins";
 	private static String C_WATCH_EMERGENCY = "customerWatchesEmergencies";
+	private static String SPARE_PARTS = "spareParts";
+	private static String INTERNAL_MESSAGES = "internalMessages";
+	private static String STATS = "statistics";
 	
-	private static class ModelsProducer {
+	public static class ModelsProducer {
 		private Supplier<List<? extends Jsonable>> supplier;
 		private String key;
 		private Predicate<ListenableModel> filter;
@@ -73,6 +78,18 @@ public class DashboardManagerHelper {
 		return ModelsProducer.of(CustomerWatch::findAllEmergencyOrderedByPriority, C_WATCH_EMERGENCY, (model) -> model instanceof CustomerWatch);
 	}
 	
+	public static ModelsProducer spareParts() {
+		return ModelsProducer.of(SparePart::findAllToReceiveByCreationDateDesc, SPARE_PARTS, (model) -> model instanceof SparePart);
+	}
+	
+	public static ModelsProducer internalMessages() {
+		return ModelsProducer.of(InternalMessage::findAllActiveForDash, INTERNAL_MESSAGES, (model) -> model instanceof InternalMessage);
+	}
+	
+	public static ModelsProducer stats() {
+		return ModelsProducer.of(DashboardStats::getStats, STATS, (model) -> model instanceof CustomerWatch);
+	}
+	
 	public static TriConsumer<Supplier<List<? extends Jsonable>>, String, ActorRef> manage(Boolean forceUpdate) {
 		return (supplier, type, destination) -> {
 			Logger.debug(type+" is updated, managing it ****************");
@@ -90,9 +107,13 @@ public class DashboardManagerHelper {
 		manage(true).accept(producer.supplier, producer.key, destination);
 	}
 	
+	public static void updateIfNeeded(ModelsProducer producer, ActorRef destination) {
+		manage(false).accept(producer.supplier, producer.key, destination);
+	}
+	
 	public static void manageUpdate(ModelsProducer producer, ActorRef destination, ListenableModel model) {
 		if (producer.filter.test(model))
-			manage(false).accept(producer.supplier, producer.key, destination);
+			updateIfNeeded(producer, destination);
 	}
 	
 	//return ok(dashboard.render("", null/*Customer.findWithOpenTopic()*/, OrderRequest.findAllUnManaged(), BuyRequest.findAllUnReplied(5), CustomerWatch.findAllEmergencyOrderedByPriority(), models.SparePart.findAllToReceiveByCreationDateDesc(), models.CustomerWatch.findAllByWatchmaker(), models.AppointmentRequest.findCurrentAndInFutureOnly(), models.CustomerWatch.findAllUnderOurResponsabilityWithQuickWinPossibleOrderedByID(), models.InternalMessage.findAllActiveForDash(), page));
