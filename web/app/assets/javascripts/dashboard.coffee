@@ -1,5 +1,8 @@
 nbMessages = 0
-delayInMS = 5000
+messageDisplayDelayInMS = 5000
+currentDelayForRetryingWebSocketInMs = 0
+defaultDelayForRetryingWebSocketInMs = 5000
+maxDelayForRetryingWebSocketInMs = 60000
 today = new Date(new Date().setHours(0,0,0,0))
 protocol = "wss://"
 $ ->
@@ -8,24 +11,27 @@ $ ->
   initWS()
 
 initWS = () ->
+    console.log("Initing WebSocket")
+    setInterval(myTimer, messageDisplayDelayInMS)
     ws = new WebSocket protocol+location.host+$("body").data("ws-url")
     ws.onopen = () ->
         ws.send(JSON.stringify({starting: true}))
         $("#dialog").addClass("hidden");
+        currentDelayForRetryingWebSocketInMs = 0
     ws.onerror = () ->
+        console.log("error in message found")
         console.log(event)
-        $("#dialog").removeClass("hidden");
+        $("#dialog").removeClass("hidden")
         ws.close()
     ws.onclose = () ->
+        console.log("closing web socket")
         console.log(event)
-        $("#dialog").removeClass("hidden");
+        $("#dialog").removeClass("hidden")
         setTimeout () ->
           initWS()
-        , 5000
+        , getDelayForRetry()
     ws.onmessage = (event) ->
-      console.log(message)
       message = JSON.parse event.data
-      console.log(message)
       switch message.type
         when "orderRequest"
           populateOrderRequest(message)
@@ -44,7 +50,18 @@ initWS = () ->
         when "internalMessages"
           populateInternalMessages(message)
         else
-          console.log("not managed "+message)
+          if(message.ping)
+            console.log("PING")
+          else
+            console.log("not managed")
+            console.log(message)
+
+getDelayForRetry = () ->
+    if(currentDelayForRetryingWebSocketInMs >= maxDelayForRetryingWebSocketInMs)
+       currentDelayForRetryingWebSocketInMs = maxDelayForRetryingWebSocketInMs
+    else
+       currentDelayForRetryingWebSocketInMs = currentDelayForRetryingWebSocketInMs + defaultDelayForRetryingWebSocketInMs
+    currentDelayForRetryingWebSocketInMs
 
 preparingDisplay = (cssid, JsonTab) ->
     $("#"+cssid+" .cloned").remove()
@@ -102,8 +119,6 @@ populateCWatchesAllocated = (message) ->
      pushClonedRow(clonedRow, "managed", item.id))
 
 populateCWatches = (cssid, JsonTab) ->
-    console.log("populating "+cssid)
-    console.log(JsonTab)
     preparingDisplay(cssid, JsonTab)
     $.each( JSON.parse(JsonTab), (i, item) ->
      clonedRow = cloneRow(cssid)
@@ -114,8 +129,10 @@ populateCWatches = (cssid, JsonTab) ->
      $("td.ph_due_date", clonedRow).html(item.firstKnownDate)
      if(item.hasConstraint)
         $("td.ph_due_date", clonedRow).prepend('<span class="glyphicon glyphicon-warning-sign"></span> ')
+        $(clonedRow).addClass("customer_has_constraint_true")
      if(item.hasCalledForDelay)
         $("td.ph_due_date", clonedRow).prepend('<span class="glyphicon glyphicon-earphone"></span> ')
+        $(clonedRow).addClass("customer_has_called_true")
      pushClonedRow(clonedRow, cssid, item.id))
 
 populateCWatchesQuickWins = (message) ->
@@ -152,15 +169,12 @@ populateInternalMessages = (message) ->
 
 displayMessages = () ->
     nbMessages = $("div#internal_messages span[id^=content]").length
-    counter = 0
     today = new Date(new Date().setHours(0,0,0,0))
     myTimer()
-    setInterval(myTimer, delayInMS)
 
 myTimer = () ->
-    console.log("myTimer ")
     if(nbMessages!=0)
       millis = new Date() - today; 
-      indice = Math.floor(millis / delayInMS) % nbMessages
+      indice = Math.floor(millis / messageDisplayDelayInMS) % nbMessages
       textvalue = $('#content-'+indice).html()
       $('.message-holder').html(" - "+textvalue)

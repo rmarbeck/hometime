@@ -28,7 +28,6 @@ public class DashboardManagerHelper {
 	private static String ORDER_REQUESTS = "orderRequest";
 	private static String APPOINTMENTS = "appointments";
 	private static String C_WATCH_ALLOCATED = "customerWatchesAllocated";
-	private static String C_WATCH_PRIORITIZED = "customerWatchesPrioritized";
 	private static String C_WATCH_QUICK_WINS = "customerWatchesQuickWins";
 	private static String C_WATCH_EMERGENCY = "customerWatchesEmergencies";
 	private static String SPARE_PARTS = "spareParts";
@@ -64,10 +63,6 @@ public class DashboardManagerHelper {
 	
 	public static ModelsProducer customerWatchesAllocated() {
 		return ModelsProducer.of(CustomerWatch::findAllByWatchmaker, C_WATCH_ALLOCATED, (model) -> model instanceof CustomerWatch);
-	}
-	
-	public static ModelsProducer customerWatchesPriorized() {
-		return ModelsProducer.of(CustomerWatch::findAllEmergencyOrderedByPriority, C_WATCH_PRIORITIZED, (model) -> model instanceof CustomerWatch);
 	}
 	
 	public static ModelsProducer customerWatchesQuickWins() {

@@ -20,7 +20,6 @@ import static fr.hometime.utils.DashboardManagerHelper.orderUpdate;
 import static fr.hometime.utils.DashboardManagerHelper.updateIfNeeded;
 import static fr.hometime.utils.DashboardManagerHelper.appointmentsUpdate;
 import static fr.hometime.utils.DashboardManagerHelper.customerWatchesAllocated;
-import static fr.hometime.utils.DashboardManagerHelper.customerWatchesPriorized;
 import static fr.hometime.utils.DashboardManagerHelper.customerWatchesEmergency;
 import static fr.hometime.utils.DashboardManagerHelper.customerWatchesQuickWins;
 import static fr.hometime.utils.DashboardManagerHelper.internalMessages;
@@ -35,15 +34,15 @@ public class DashboardManager extends UntypedActor {
 	private static final long APPOINTMENT_REFRESH_FREQUENCY = 10l;
 	private static final String APPOINTMENT_REFRESH_UNIT = "minutes";
 	
-	private static List<Supplier<ModelsProducer>> producers =  Arrays.asList(	() -> orderUpdate(),
-			() -> appointmentsUpdate(),
-			() -> customerWatchesAllocated(),
-			() -> customerWatchesPriorized(),
-			() -> customerWatchesQuickWins(),
-			() -> customerWatchesEmergency(),
-			() -> internalMessages(),
-			() -> spareParts(),
-			() -> stats());
+	private static List<Supplier<ModelsProducer>> producers =  Arrays.asList(
+			DashboardManagerHelper::orderUpdate,
+			DashboardManagerHelper::appointmentsUpdate,
+			DashboardManagerHelper::customerWatchesAllocated,
+			DashboardManagerHelper::customerWatchesQuickWins,
+			DashboardManagerHelper::customerWatchesEmergency,
+			DashboardManagerHelper::internalMessages,
+			DashboardManagerHelper::spareParts,
+			DashboardManagerHelper::stats);
 
 	private final Set<ActorRef> dashActors = new HashSet<>();
 	
@@ -52,15 +51,6 @@ public class DashboardManager extends UntypedActor {
 
 		producers.stream().forEach(producer -> ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(producer.get(), this.self(), model)));
 		
-		/*ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(orderUpdate(), this.self(), model));
-		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(appointmentsUpdate(), this.self(), model));
-		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesAllocated(), this.self(), model));
-		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesPriorized(), this.self(), model));
-		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesQuickWins(), this.self(), model));
-		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(customerWatchesEmergency(), this.self(), model));
-		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(internalMessages(), this.self(), model));
-		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(spareParts(), this.self(), model));
-		ListenableModel.getListener().addConsumer((model, action) -> manageUpdate(stats(), this.self(), model));*/
         Akka.system().scheduler().schedule(
         		FiniteDuration.apply(APPOINTMENT_REFRESH_FREQUENCY, APPOINTMENT_REFRESH_UNIT),
         		FiniteDuration.apply(APPOINTMENT_REFRESH_FREQUENCY, APPOINTMENT_REFRESH_UNIT),
@@ -91,16 +81,7 @@ public class DashboardManager extends UntypedActor {
         	addActor(newActor);
             getContext().watch(newActor); // Watch actor so we can detect when they die.
             CompletableFuture.runAsync(() -> {
-            	
             	producers.stream().forEach(producer -> DashboardManagerHelper.forceUpdate(producer.get(), newActor));
-            	/*DashboardManagerHelper.forceUpdate(orderUpdate(), newActor);
-            	DashboardManagerHelper.forceUpdate(appointmentsUpdate(), newActor);
-            	DashboardManagerHelper.forceUpdate(customerWatchesAllocated(), newActor);
-            	DashboardManagerHelper.forceUpdate(customerWatchesPriorized(), newActor);
-            	DashboardManagerHelper.forceUpdate(customerWatchesQuickWins(), newActor);
-            	DashboardManagerHelper.forceUpdate(customerWatchesEmergency(), newActor);
-            	DashboardManagerHelper.forceUpdate(internalMessages(), newActor);
-            	DashboardManagerHelper.forceUpdate(spareParts(), newActor);*/
             });
         } else if (message instanceof Terminated) {
             // One of our watched actor has died.
