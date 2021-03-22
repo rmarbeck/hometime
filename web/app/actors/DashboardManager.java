@@ -16,15 +16,9 @@ import fr.hometime.utils.DashboardManagerHelper.ModelsProducer;
 import fr.hometime.utils.ListenableModel;
 
 import static fr.hometime.utils.DashboardManagerHelper.manageUpdate;
-import static fr.hometime.utils.DashboardManagerHelper.orderUpdate;
 import static fr.hometime.utils.DashboardManagerHelper.updateIfNeeded;
 import static fr.hometime.utils.DashboardManagerHelper.appointmentsUpdate;
-import static fr.hometime.utils.DashboardManagerHelper.customerWatchesAllocated;
-import static fr.hometime.utils.DashboardManagerHelper.customerWatchesEmergency;
-import static fr.hometime.utils.DashboardManagerHelper.customerWatchesQuickWins;
-import static fr.hometime.utils.DashboardManagerHelper.internalMessages;
-import static fr.hometime.utils.DashboardManagerHelper.spareParts;
-import static fr.hometime.utils.DashboardManagerHelper.stats;
+
 
 import play.Logger;
 import play.libs.Akka;

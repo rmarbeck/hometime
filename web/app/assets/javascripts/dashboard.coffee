@@ -135,11 +135,31 @@ populateCWatches = (cssid, JsonTab) ->
         $(clonedRow).addClass("customer_has_called_true")
      pushClonedRow(clonedRow, cssid, item.id))
 
+manageOverFlow = (cssid, size, maxSizeColOne) ->
+    $('.overflow').remove()
+    if(size > maxSizeColOne)
+      newDiv = $('#'+cssid+' div[class^=col-lg]').clone()
+      newDiv.addClass("overflow")
+      $(' table > tbody > tr', newDiv).each( (i, row) ->
+        if (i < maxSizeColOne)
+          row.remove())
+      $('#'+cssid+' div[class^=col-lg] table > tbody > tr').each( (i, row) ->
+        if (i >= maxSizeColOne)
+          row.remove())
+      newDiv.appendTo("#"+cssid)
+      $('#'+cssid+' div[class^=col-lg]').addClass("col-lg-6")
+      $('#'+cssid+' div[class^=col-lg]').removeClass("col-lg-12")
+    else
+      $('#'+cssid+' div[class^=col-lg]').addClass("col-lg-12")
+      $('#'+cssid+' div[class^=col-lg]').removeClass("col-lg-6")
+
 populateCWatchesQuickWins = (message) ->
     populateCWatches("quick_wins", message.customerWatchesQuickWins)
 
 populateCWatchesEmergency = (message) ->
     populateCWatches("emergencies", message.customerWatchesEmergencies)
+    populateCWatches("emergencies_full", message.customerWatchesEmergencies)
+    manageOverFlow("emergencies_full", JSON.parse(message.customerWatchesEmergencies).length, 4)
 
 populateSpareParts = (message) ->
     preparingDisplay("spare_parts", message.spareParts)
@@ -162,9 +182,15 @@ populateStats = (message) ->
        $("span#stats").append(" - "+item.toTest+" en test"))
 
 populateInternalMessages = (message) ->
+    preparingDisplay("display_messages", message.internalMessages)
     $("div#internal_messages").html("")
+    if(JSON.parse(message.internalMessages).length == 0)
+      $("div#no-messages").removeClass("hidden")
+      $("div#display_messages").removeClass("hidden")
+    else
+      $("div#no-messages").addClass("hidden")
     $.each( JSON.parse(message.internalMessages), (i, item) ->
-      $("div#internal_messages").append('<span id="content-'+i+'"><span class="glyphicon glyphicon-'+getValueInDictionnary("internal_messages",item.type)+'"></span> '+item.body+'</span>'))
+      $("div#internal_messages").append('<h4><span id="content-'+i+'"><span class="glyphicon glyphicon-'+getValueInDictionnary("internal_messages",item.type)+'"></span> '+item.body+'</span></h4>'))
     displayMessages()
 
 displayMessages = () ->

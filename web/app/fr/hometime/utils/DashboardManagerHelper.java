@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -14,7 +15,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import actors.ForwardJsonMessage;
 import akka.actor.ActorRef;
-import controllers.Accounting.TriConsumer;
 import models.AppointmentRequest;
 import models.CustomerWatch;
 import models.InternalMessage;
@@ -85,25 +85,25 @@ public class DashboardManagerHelper {
 		return ModelsProducer.of(DashboardStats::getStats, STATS, (model) -> model instanceof CustomerWatch);
 	}
 	
-	public static TriConsumer<Supplier<List<? extends Jsonable>>, String, ActorRef> manage(Boolean forceUpdate) {
-		return (supplier, type, destination) -> {
-			Logger.debug(type+" is updated, managing it ****************");
-			JsonNode node = createJson(supplier, type).get();
+	public static BiConsumer<ModelsProducer, ActorRef> manage(Boolean forceUpdate) {
+		return (producer, destination) -> {
+			Logger.debug(producer.key+" is updated, managing it ****************");
+			JsonNode node = createJson(producer.supplier, producer.key).get();
 			if (forceUpdate || hasChanged(node)) {
-				Logger.debug(type+" has changed ****************, sending to "+destination.path());
+				Logger.debug(producer.key+" has changed ****************, sending to "+destination.path());
 				destination.tell(ForwardJsonMessage.of(node), destination);
 			} else {
-				Logger.debug(type+" has NOT changed ****************");
+				Logger.debug(producer.key+" has NOT changed ****************");
 			}
 		};
 	}
 
 	public static void forceUpdate(ModelsProducer producer, ActorRef destination) {
-		manage(true).accept(producer.supplier, producer.key, destination);
+		manage(true).accept(producer, destination);
 	}
 	
 	public static void updateIfNeeded(ModelsProducer producer, ActorRef destination) {
-		manage(false).accept(producer.supplier, producer.key, destination);
+		manage(false).accept(producer, destination);
 	}
 	
 	public static void manageUpdate(ModelsProducer producer, ActorRef destination, ListenableModel model) {

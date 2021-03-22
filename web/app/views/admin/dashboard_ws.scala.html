@@ -1,7 +1,24 @@
-@(message: String = "", activeCustomers: List[models.Customer], unrepliedOrderRequests: List[models.OrderRequest], unrepliedBuyRequests: List[models.BuyRequest], watches: List[models.CustomerWatch], partsToReceive: List[models.SparePart], bywatchmakers: List[models.CustomerWatch], appointments: List[models.AppointmentRequest], quickWins: List[models.CustomerWatch], messages: List[models.InternalMessage], page: Integer = 1)
+@(message: String = "", page: Integer = 1)
 @import tags._
 
 @end_script = {
+<script>
+$(document).ready(function(){
+		var initialPage = @page;
+		displayPage(initialPage);
+		
+		$('a#a-page-1').click( function(e) {e.preventDefault(); displayPage(1); return false; } );
+		$('a#a-page-2').click( function(e) {e.preventDefault(); displayPage(2); return false; } );
+		$('a#a-page-3').click( function(e) {e.preventDefault(); displayPage(3); return false; } );
+		
+		function displayPage(page) {
+			$('[id^=page-].page-section').addClass("hidden");
+			$('[id^=a-page-]').parent().removeClass("active");
+    		$('#page-'+page+'.page-section').removeClass("hidden");
+    		$('a#a-page-'+page).parent().addClass("active");
+		}
+});
+</script>
 
 }
 
@@ -50,8 +67,6 @@
 	    		<div data_key="@messageType.name" data_value="@Html(Messages("admin.message.type.name.value."+messageType.name.toLowerCase.replace("_",".")))"/></div>
 	    	}
   </div>
-  
-  <div id="internal_messages" class="hidden">
   	
   </div>
 
@@ -66,9 +81,9 @@
               <h3 class="masthead-brand">Hometime / Dashboard<span id="stats"></span><span class="message-holder"></span></h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li @if(page==1) {class="active"}><a href="@routes.Admin.dash(1)">Home</a></li>
-                  <li @if(page==2) {class="active"}><a href="@routes.Admin.dash(2)">Priorités</a></li>
-                  <li @if(page==3) {class="active"}><a href="@routes.Admin.dash(3)">Messages</a></li>
+                  <li @if(page==1) {class="active"}><a href="#" id="a-page-1">Home</a></li>
+                  <li @if(page==2) {class="active"}><a href="#" id="a-page-2">Priorités</a></li>
+                  <li @if(page==3) {class="active"}><a href="#" id="a-page-3">Messages</a></li>
                 </ul>
               </nav>
               <span class="dash-clock">
@@ -94,8 +109,9 @@
 			  <p>Offline...</p>
 			</div>
           
-          @if(page ==1) {
-          <div class="row">
+          <!-- Page 1 -->
+          <div class="page-section hidden" id="page-1">
+           <div class="row">
           	
           	<div class="col-lg-6">
           		@header("order_requests", "Nouvelles demandes") {
@@ -121,46 +137,37 @@
 				@fragments.sparepartsws(null, false, "admin.spare.parts.to.receive", true)
 				}
 	        </div>
+	      </div>
 	     </div>
-         }
-          @if(page == 2) {
+         <!-- Fin page 1 -->
+         <!-- Page 2 -->
+         <div class="page-section hidden" id="page-2">
           <div class="row">
-      		<div class="col-lg-12">
-            	<h1 class="cover-heading">Urgences</h1>
-        	</div>
-          	@if(watches.drop(40).size == 0) {
-      		<div class="col-lg-12">
-            	@fragments.watchlist_on_dash(watches.take(31), "admin.index.watches", false)
-        	</div>
-          	} else {
-      		<div class="col-lg-6">
-	            @fragments.watchlist_on_dash(watches.take(31), "admin.index.watches", false)
-	        </div>
-	        <div class="col-lg-6">
-	            @fragments.watchlist_on_dash(watches.drop(31), "admin.index.watches.more", false)
-	        </div>
-          	}
-		        
+          		@header("emergencies_full", "Urgences") {
+          			<div class="col-lg-12">
+	            	@fragments.watchlist_on_dash(null, "admin.index.watches", false, true)
+	            	</div>
+				}
           </div>
-          }
-          @if(page == 3) {
+         </div>
+         <!-- Fin page 2 -->
+         <!-- Page 3 -->
+         <div class="page-section hidden" id="page-3">
           	<div class="row">
-      		<div class="col-lg-12">
-            	<h1 class="cover-heading">Messages</h1>
-        	</div>
-        	<div class="col-lg-12">
-          	@if(messages.size != 0) {
-          		<h4>
-	          	@messages.sortBy(m => (m.getType.toString, m.creationDate)).map{ case message => <div><span id="content-@index"><span class="glyphicon glyphicon-@display_i18n_value(message.getTypeName(),"admin.message.type.name.value")"></span> @Html(message.body)</span></div><br /> }
-	          	</h4>
-          	} else {
-          		<h3>
-          			@Html(Messages("admin.index.messages.active.none"))
-          		</h3>
-            }
+          		@header("display_messages", "Messages") {
+          			<div class="" id="internal_messages">
+          			</div>
+          			<div class="hidden" id="no-messages">
+	          			<h3>
+        	  				@Html(Messages("admin.index.messages.active.none"))
+    	      			</h3>
+          			</div>
+
+				}
 		    </div>    
           </div>
-          }
+         </div>
+         <!-- Fin page 3 -->
 
           <div class="mastfoot">
             <div class="inner">
