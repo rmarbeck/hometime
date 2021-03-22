@@ -82,7 +82,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  @header("document.creationDate", "Date", false)
+                  @header("document.creationDate", "Date", true)
                   @header("uniqueAccountingNumber", "Numéro", false)
                   @header("description", "Description", false)
                   @header("document.customer", "Client", false)
@@ -112,7 +112,7 @@
                     @invoice.retrieveUniqueAccountingNumber
                   </td>
                   <td>
-                    @invoice.description
+                    @takeif(invoice.description,40)
                   </td>
                   <td>
                     @display_clickable_customer_admin_only(invoice.document.customer)

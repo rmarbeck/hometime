@@ -159,7 +159,7 @@ populateCWatchesQuickWins = (message) ->
 populateCWatchesEmergency = (message) ->
     populateCWatches("emergencies", message.customerWatchesEmergencies)
     populateCWatches("emergencies_full", message.customerWatchesEmergencies)
-    manageOverFlow("emergencies_full", JSON.parse(message.customerWatchesEmergencies).length, 4)
+    manageOverFlow("emergencies_full", JSON.parse(message.customerWatchesEmergencies).length, 30)
 
 populateSpareParts = (message) ->
     preparingDisplay("spare_parts", message.spareParts)
