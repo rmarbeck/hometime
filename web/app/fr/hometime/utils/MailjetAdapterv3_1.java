@@ -59,7 +59,7 @@ public class MailjetAdapterv3_1 {
 	private static MailjetClient getConfiguredClient(boolean shouldBe31) {
 		prepareClient();
 		MailjetClient client = provideClient(shouldBe31);
-		client.setDebug(MailjetClient.VERBOSE_DEBUG);
+		//client.setDebug(MailjetClient.VERBOSE_DEBUG);
 		return client;
 	}
 	
