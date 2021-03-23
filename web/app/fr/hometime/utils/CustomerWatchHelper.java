@@ -5,17 +5,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import play.mvc.Http.Session;
-import models.CustomerWatch;
 import models.Customer;
+import models.CustomerWatch;
 import models.Partner;
 import models.SparePart;
 import models.User;
-import models.CustomerWatch.CustomerWatchStatus;
+import play.mvc.Http.Session;
 
 /**
  * Helper for Customer Watch
@@ -66,6 +63,8 @@ public class CustomerWatchHelper {
 	    QUOTATION_TO_SEND_TO_CUSTOMER ("QUOTATION_TO_SEND_TO_CUSTOMER"),
 	    WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER ("WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER"),
 	    WAITING_FOR_QUOTATION_ACCEPTATION ("CUSTOMER_WATCH_STATUS_WAITING_FOR_QUOTATION_ACCEPTATION"),
+	    TO_CHECK_IF_WARANTY_APPLIES ("CUSTOMER_WATCH_STATUS_TO_CHECK_IF_WARANTY_APPLIES"),
+	    WORK_TO_DO_UNDERWARANTY ("CUSTOMER_WATCH_STATUS_WORK_TO_DO_UNDERWARANTY"),
 	    WORK_TO_START ("CUSTOMER_WATCH_STATUS_WORK_TO_START"),
 	    WORKING ("CUSTOMER_WATCH_STATUS_WORKING"),
 	    TESTING ("CUSTOMER_WATCH_STATUS_TESTING"),
@@ -168,13 +167,15 @@ public class CustomerWatchHelper {
     private static CustomerWatchDetailedStatusForCustomer evaluateStatusForCustomer(CustomerWatch watch) {
     	switch(evaluateStatus(watch)) {
     		case UNCONSISTENT: return CustomerWatchDetailedStatusForCustomer.UNCONSISTENT;
-    		case TO_BE_ACCEPTED: return CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED;
+    		case TO_BE_ACCEPTED: 
+    		case TO_CHECK_IF_WARANTY_APPLIES: return CustomerWatchDetailedStatusForCustomer.TO_BE_ACCEPTED;
     		case TO_QUOTE: return CustomerWatchDetailedStatusForCustomer.TO_QUOTE;
     		case WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER: return CustomerWatchDetailedStatusForCustomer.WAITING_FOR_QUOTATION_ACCEPTATION;
     		case WAITING_FOR_QUOTATION_ACCEPTATION:
     		case WORK_TO_START:
     		case WORKING:
     		case TESTING:
+    		case WORK_TO_DO_UNDERWARANTY:
     			return CustomerWatchDetailedStatusForCustomer.WORKING;
     		case FINISHED_STORED_BY_US_TO_DELIVER:
     		case FINISHED_TO_BILL_BEFORE_DELIVERY:
@@ -201,6 +202,14 @@ public class CustomerWatchHelper {
     	
     	if (byCustomerOrbackToCustomer(watch) && watch.serviceNeeded)
     		return CustomerWatchDetailedStatus.TO_BE_ACCEPTED;
+    	
+    	if (watch.serviceNeeded && watch.enteredUnderWaranty) {
+    		if (!watch.toWorkOnUnderWaranty && !watch.warantyIsVoid) {
+    			return CustomerWatchDetailedStatus.TO_CHECK_IF_WARANTY_APPLIES;
+    		} else if (!watch.warantyIsVoid) {
+    			return CustomerWatchDetailedStatus.WORK_TO_DO_UNDERWARANTY;
+    		}
+    	}
     	
     	if (watch.serviceNeeded && watch.finalCustomerServicePrice == 0)
     		return CustomerWatchDetailedStatus.TO_QUOTE;
@@ -310,11 +319,13 @@ public class CustomerWatchHelper {
     public static Float getStatusAsFloat(CustomerWatch watch) {
     	switch(evaluateStatus(watch)) {
     		case TO_BE_ACCEPTED: return 1F;
+    		case TO_CHECK_IF_WARANTY_APPLIES: return 1.5F;
     		case TO_QUOTE: return 2F;
     		case QUOTATION_TO_SEND_TO_CUSTOMER: return 2.5F;
     		case WAITING_FOR_QUOTATION_ACCEPTATION_FROM_FINAL_CUSTOMER: return 3F;
     		case WAITING_FOR_QUOTATION_ACCEPTATION: return 4F;
     		case WORK_TO_START: return 5F;
+    		case WORK_TO_DO_UNDERWARANTY: return 5.5F;
     		case WORKING: return 6F;
     		case TESTING: return 7F;
     		case FINISHED_STORED_BY_US_TO_DELIVER: return 8F;
@@ -327,12 +338,6 @@ public class CustomerWatchHelper {
     		default: return 0F;
     	}
     }
-    
-   private static boolean is(Long watchId, CustomerWatchDetailedStatusForCustomer toTest) {
-	   if (watchId != null)
-		   return is(CustomerWatch.findById(watchId), toTest);
-	   return false;
-   }
    
    private static boolean is(CustomerWatch watch, CustomerWatchDetailedStatusForCustomer toTest) {
 	   if (watch != null)

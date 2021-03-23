@@ -34,6 +34,7 @@ public class DashboardManager extends UntypedActor {
 			DashboardManagerHelper::customerWatchesAllocated,
 			DashboardManagerHelper::customerWatchesQuickWins,
 			DashboardManagerHelper::customerWatchesEmergency,
+			DashboardManagerHelper::customerWatchesUnderWaranty,
 			DashboardManagerHelper::internalMessages,
 			DashboardManagerHelper::spareParts,
 			DashboardManagerHelper::stats);

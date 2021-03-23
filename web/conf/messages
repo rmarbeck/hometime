@@ -2619,6 +2619,10 @@ admin.customer.watch.form.placeholder.quotation=
 admin.customer.watch.form.placeholder.final.customer.from.infos=
 admin.customer.watch.form.placeholder.final.customer.to.infos=
 
+admin.customer.watch.form.label.entered.under.waranty=Arrivée sous garantie
+admin.customer.watch.form.label.to.work.on.under.waranty=Prise en charge sous garantie confirmée
+admin.customer.watch.form.label.waranty.is.void=Prise en charge sous garantie impossible
+
 admin.customer.watch.form.label.customer.has.constraint=Contrainte forte
 admin.customer.watch.form.label.service.due.date.must.have=Date butoir
 admin.customer.watch.form.label.customer.has.called.for.delay=Relance client sur délai
@@ -4976,6 +4980,9 @@ customer.watch.status.close=Montre terminée et rendue
 customer.watch.status.unconsistent=Statut anormal
 customer.watch.status.to.be.accepted=Montre à accepter
 customer.watch.status.finished.to.bill.before.delivery=En attente de paiement avant livraison
+
+customer.watch.status.to.check.if.waranty.applies=Sous garantie (à contrôler)
+customer.watch.status.work.to.do.underwaranty=A faire sous garantie
 
 admin.forward.servicing=CA montres à faire
 admin.waiting.feedback=CA montres en attente d''accord

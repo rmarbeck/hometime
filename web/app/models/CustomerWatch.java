@@ -2,10 +2,8 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,11 +11,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import play.data.validation.Constraints;
-import play.db.ebean.Model;
-import play.db.ebean.Model.Finder;
-import play.mvc.Http.Session;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
@@ -30,11 +23,12 @@ import controllers.CrudReady;
 import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.DateHelper;
 import fr.hometime.utils.FormHelper;
+import fr.hometime.utils.ListenableModel;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import fr.hometime.utils.Searcher;
-import fr.hometime.utils.SecurityHelper;
-import fr.hometime.utils.FormHelper.KeysAndValues;
-import fr.hometime.utils.ListenableModel;
+import play.data.validation.Constraints;
+import play.db.ebean.Model;
+import play.mvc.Http.Session;
 
 /**
  * Definition of a Watch belonging to a customer
@@ -333,6 +327,12 @@ public class CustomerWatch extends ListenableModel implements CrudReady<Customer
 	
 	public String serviceInfoFromWatchmaker = null;
 	
+	public boolean enteredUnderWaranty = false;
+	
+	public boolean toWorkOnUnderWaranty = false;
+	
+	public boolean warantyIsVoid = false;
+	
 	public CustomerWatch() {
 		this.creationDate = new Date();
 		this.lastStatusUpdate = creationDate;
@@ -425,6 +425,10 @@ public class CustomerWatch extends ListenableModel implements CrudReady<Customer
     
     public static List<CustomerWatch> findAllEmergencyOrderedByPriority() {
         return CustomerWatchHelper.sortByPriorityWatches(findAllEmergencyOrderedByID());
+    }
+    
+    public static List<CustomerWatch> findAllUnderWaranty() {
+    	return find.fetch("customer").where().eq("enteredUnderWaranty", true).eq("warantyIsVoid", false).eq("serviceNeeded", true).ne("status", "BACK_TO_CUSTOMER").ne("service_status", 100).orderBy("id desc").findList();
     }
     
 
@@ -1046,9 +1050,10 @@ public class CustomerWatch extends ListenableModel implements CrudReady<Customer
         	.put("needHelp", needHelp)
         	.put("sparepartToFind", sparepartToFind)
         	.put("sparepartFound", sparepartFound)
+        	.put("enteredUnderWaranty", enteredUnderWaranty)
+        	.put("toWorkOnUnderWaranty", toWorkOnUnderWaranty)
         	.put("managedBy", managedBy!=null?managedBy.firstname:"");
 
         return json;
     }
 }
-

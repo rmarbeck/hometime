@@ -120,6 +120,9 @@ $(document).ready(function(){
           		@header("appointments", "Rendez-vous") {
 	            @fragments.appointments(null, false, "admin.index.appointment.requests", true, true)
 				}
+				@header("sav", "Retours SAV") {
+	            @fragments.watchlist_on_dash(null, "admin.index.watches", false, true)
+				}
 				@header("quick_wins", "Entretiens rapides") {
 	            @fragments.watchlist_on_dash(null, "admin.index.watches", false, true)
 				}

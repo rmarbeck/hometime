@@ -30,6 +30,7 @@ public class DashboardManagerHelper {
 	private static String C_WATCH_ALLOCATED = "customerWatchesAllocated";
 	private static String C_WATCH_QUICK_WINS = "customerWatchesQuickWins";
 	private static String C_WATCH_EMERGENCY = "customerWatchesEmergencies";
+	private static String C_WATCH_UNDERWARANTY = "customerWatchesUnderWaranty";
 	private static String SPARE_PARTS = "spareParts";
 	private static String INTERNAL_MESSAGES = "internalMessages";
 	private static String STATS = "statistics";
@@ -71,6 +72,10 @@ public class DashboardManagerHelper {
 	
 	public static ModelsProducer customerWatchesEmergency() {
 		return ModelsProducer.of(CustomerWatch::findAllEmergencyOrderedByPriority, C_WATCH_EMERGENCY, (model) -> model instanceof CustomerWatch);
+	}
+	
+	public static ModelsProducer customerWatchesUnderWaranty() {
+		return ModelsProducer.of(CustomerWatch::findAllUnderWaranty, C_WATCH_UNDERWARANTY, (model) -> model instanceof CustomerWatch);
 	}
 	
 	public static ModelsProducer spareParts() {

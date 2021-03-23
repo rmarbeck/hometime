@@ -43,6 +43,8 @@ initWS = () ->
           populateCWatchesQuickWins(message)
         when "customerWatchesEmergencies"
           populateCWatchesEmergency(message)
+        when "customerWatchesUnderWaranty"
+          populateCWatchesUnderWaranty(message)
         when "spareParts"
           populateSpareParts(message)
         when "statistics"
@@ -133,6 +135,8 @@ populateCWatches = (cssid, JsonTab) ->
      if(item.hasCalledForDelay)
         $("td.ph_due_date", clonedRow).prepend('<span class="glyphicon glyphicon-earphone"></span> ')
         $(clonedRow).addClass("customer_has_called_true")
+     if(item.enteredUnderWaranty is true and item.toWorkOnUnderWaranty is false)
+        $(clonedRow).addClass("to_check_under_waranty")
      pushClonedRow(clonedRow, cssid, item.id))
 
 manageOverFlow = (cssid, size, maxSizeColOne) ->
@@ -155,6 +159,9 @@ manageOverFlow = (cssid, size, maxSizeColOne) ->
 
 populateCWatchesQuickWins = (message) ->
     populateCWatches("quick_wins", message.customerWatchesQuickWins)
+    
+populateCWatchesUnderWaranty = (message) ->
+    populateCWatches("sav", message.customerWatchesUnderWaranty)
 
 populateCWatchesEmergency = (message) ->
     populateCWatches("emergencies", message.customerWatchesEmergencies)
