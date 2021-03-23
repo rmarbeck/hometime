@@ -254,6 +254,8 @@ public class CustomerWatch extends Controller {
 			existingWatch.lastCustomerCallDate = newWatchValues.lastCustomerCallDate;
 			existingWatch.lastDueDateCommunicated = newWatchValues.lastDueDateCommunicated;
 			existingWatch.lastCustomerCallInformation = newWatchValues.lastCustomerCallInformation;
+			existingWatch.serviceDueDateMustHave = newWatchValues.serviceDueDateMustHave;
+			existingWatch.customerHasConstraint = newWatchValues.customerHasConstraint;
 			});
 	}
 	
