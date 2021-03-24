@@ -22,6 +22,7 @@ import fr.hometime.utils.ListHelper;
 import fr.hometime.utils.LiveConfigHelper;
 import fr.hometime.utils.PhoneNumberHelper;
 import fr.hometime.utils.RandomHelper;
+import fr.hometime.utils.RegisteredEmailHelper;
 import fr.hometime.utils.SecurityHelper;
 import fr.hometime.utils.ServiceTestHelper;
 import models.AppointmentRequest;
@@ -206,6 +207,23 @@ public class Application extends Controller {
 	    	request.privateInfos = this.privateInfos;
 	    	
 	    	return request;
+	    }
+	}
+	
+	public static class EmailForm {
+		@Constraints.Required
+		@Constraints.Email
+		public String email;
+
+	    public List<ValidationError> validate() {
+	    	List<ValidationError> errors = new ArrayList<ValidationError>();
+	    	if (RegisteredEmailHelper.doesAlreadyExist(email))
+	    		errors.add(new ValidationError("email", Messages.get("email.validation.error.already.exists")));
+	    	return errors.isEmpty() ? null : errors;
+	    }
+	    
+	    public EmailForm() {
+	    	super();
 	    }
 	}
 
@@ -750,6 +768,19 @@ public class Application extends Controller {
 				return badRequest();
 			} else {
 				manageOrderForm(orderForm);
+				return ok();
+			}
+		});
+	}
+	
+	public static Result registerEmailFromFriendlyLocation() {
+		return doIfComesFromFriendlyLocation(() -> {
+			Form<EmailForm> emailForm = Form.form(EmailForm.class).bindFromRequest();
+			if(emailForm.hasErrors()) {
+				logFormErrors(emailForm);
+				return badRequest();
+			} else {
+				RegisteredEmailHelper.createNewRegisteredEmail(emailForm.get().email);
 				return ok();
 			}
 		});

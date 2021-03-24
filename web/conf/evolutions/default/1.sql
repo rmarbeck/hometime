@@ -670,6 +670,16 @@ create table quick_service_watch (
   constraint pk_quick_service_watch primary key (id))
 ;
 
+create table registered_email (
+  id                        bigint not null,
+  email                     varchar(255),
+  creation_date             timestamp,
+  active                    boolean,
+  modification_date         timestamp,
+  constraint uq_registered_email_email unique (email),
+  constraint pk_registered_email primary key (id))
+;
+
 create table sms (
   id                        bigint not null,
   phone_number              varchar(255),
@@ -933,6 +943,8 @@ create sequence price_seq;
 
 create sequence quick_service_watch_seq;
 
+create sequence registered_email_seq;
+
 create sequence sms_seq;
 
 create sequence selling_document_seq;
@@ -1120,6 +1132,8 @@ drop table if exists price;
 
 drop table if exists quick_service_watch;
 
+drop table if exists registered_email;
+
 drop table if exists sms;
 
 drop table if exists selling_document;
@@ -1215,6 +1229,8 @@ drop sequence if exists preset_quotation_for_brand_seq;
 drop sequence if exists price_seq;
 
 drop sequence if exists quick_service_watch_seq;
+
+drop sequence if exists registered_email_seq;
 
 drop sequence if exists sms_seq;
 
