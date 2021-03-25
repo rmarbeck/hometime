@@ -5715,6 +5715,16 @@ admin.invoices.page.invoice.amount.price=Montant total
 admin.invoices.page.invoice.remaining.amount.price=Reste à encaisser
 admin.invoices.page.purchase.invoice.method.name=Méthode de paiement
 
+
+admin.navbar.link.text.reporting.possible.watches.just.gone=Montres déjà livrées ?
+admin.possible.watches.just.gone.page.title=Montres déjà livrées&nbsp;?
+admin.possible.watches.just.gone.page.date=Date de facture
+admin.possible.watches.just.gone.page.invoice.name=Numéro de facture
+admin.possible.watches.just.gone.page.invoice.description=Description
+admin.possible.watches.just.gone.page.invoice.customer=Client
+admin.possible.watches.just.gone.page.invoice.watches=Montres
+admin.possible.watches.just.gone.page.empty=Pas de résultat
+
 #end
 
 

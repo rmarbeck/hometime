@@ -780,7 +780,7 @@ public class Application extends Controller {
 				logFormErrors(emailForm);
 				return badRequest();
 			} else {
-				RegisteredEmailHelper.createNewRegisteredEmail(emailForm.get().email);
+				RegisteredEmailHelper.createNewRegisteredEmailIfAuthorized(emailForm.get().email);
 				return ok();
 			}
 		});

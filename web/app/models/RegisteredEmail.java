@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import fr.hometime.utils.DateHelper;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -44,6 +45,10 @@ public class RegisteredEmail extends Model {
     
     public static List<RegisteredEmail> findAll() {
         return find.all();
+    }
+    
+    public static List<RegisteredEmail> findAllRegisteredToday() {
+        return find.where().gt("creationDate", DateHelper.toDate(DateHelper.beginningOfTheDay(new Date()))).findList();
     }
     
     public static RegisteredEmail findByEmail(String email) {

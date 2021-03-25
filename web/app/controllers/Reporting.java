@@ -23,6 +23,7 @@ import reporting.AnalyticsReportEnhanced2;
 import reporting.InvoiceLineReport;
 import reporting.InvoicesReport;
 import reporting.PaymentsReport;
+import reporting.PossibleWatchesJustGoneReport;
 import reporting.WatchSalesReport;
 import views.html.admin.reports.margin_vat;
 import views.html.admin.reports.with_vat;
@@ -41,6 +42,7 @@ import views.html.admin.reports.financial_report2;
 import views.html.admin.reports.financial_charts_report;
 import views.html.admin.reports.financial_detailed_report;
 import views.html.admin.reports.current_orders_report;
+import views.html.admin.reports.watches_just_gone;
 
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
@@ -64,6 +66,10 @@ public class Reporting extends Controller {
 	
 	public static Result currentOrdersReport() {
 		return ok(current_orders_report.render(CurrentOrdersReport.generateReport()));
+    }
+	
+	public static Result possibleWatchesJustGoneReport() {
+		return ok(watches_just_gone.render(PossibleWatchesJustGoneReport.generateReport(PossibleWatchesJustGoneReport.atLeastAWatchIsStillMarkedBeingHere())));
     }
 	
 	public static Result marginVat() {

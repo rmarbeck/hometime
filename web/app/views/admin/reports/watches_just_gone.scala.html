@@ -1,0 +1,16 @@
+@(lines: List[reporting.PossibleWatchesJustGoneReport])
+@import tags._
+
+@defining(new views.admin.reports.Report(lines, "admin.possible.watches.just.gone.page")) { report =>
+	@{  report.addCol("date", "getDate", false, "date medium", null); 	
+		report.addCol("invoice.name", "getInvoiceName", false);
+		report.addCol("invoice.description", "getInvoiceDescription", false);
+		report.addCol("invoice.customer", "getCustomerName", false);
+		report.addCol("invoice.watches", "listWatches", false);
+	}
+	
+	@layouts.admin() {
+	    @admin.reports.fragments.report(report)
+	}
+}
+
