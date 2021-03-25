@@ -35,6 +35,7 @@ import models.Feedback;
 import models.IncomingCall;
 import models.OrderRequest;
 import models.Picture;
+import models.RegisteredEmail;
 import models.ServiceTest;
 import models.UsefullLink;
 import models.User;
@@ -780,8 +781,10 @@ public class Application extends Controller {
 				logFormErrors(emailForm);
 				return badRequest();
 			} else {
-				RegisteredEmailHelper.createNewRegisteredEmailIfAuthorized(emailForm.get().email);
-				return ok();
+				Optional<RegisteredEmail> result = RegisteredEmailHelper.createNewRegisteredEmailIfAuthorized(emailForm.get().email);
+				if (result.isPresent())
+					return ok();
+				return badRequest();
 			}
 		});
 	}
@@ -796,7 +799,7 @@ public class Application extends Controller {
 	
 	private static OrderRequest manageOrderForm(Form<OrderForm> orderForm) {
 		OrderRequest orderRequest = orderForm.get().getRequest();
-		System.err.println("ùùùùùùùùùùùù About to save ùùùùùùùùùùùùùùù");
+		System.err.println("About to save");
 		orderRequest.save();
 		
 		ActionHelper.asyncTryToSendHtmlEmail("["+orderRequest.id+"] Nouvelle demande de devis", notify_order.render(orderRequest).body().toString());

@@ -112,7 +112,7 @@ public class Global extends GlobalSettings {
     @SuppressWarnings("rawtypes")
 	public Action onRequest(Request request, Method actionMethod) {
     	Instant startOfRequest = DateHelper.startTimer();
-        Logger.info("Before each request... {} secured ? {}", request.toString(), request.secure());
+        Logger.debug("Before each request... {} secured ? {}", request.toString(), request.secure());
         if (isUserAgentBlocked(request))
         	throw new RuntimeException("User agent blocked");
         
@@ -134,7 +134,7 @@ public class Global extends GlobalSettings {
     	return new Action.Simple() {
     		public Promise<Result> call(Http.Context ctx) throws Throwable {
                 return 	delegate.call(ctx).map(result -> {
-                	Logger.info("---------> Request {} duration : {} ms  <---------", request.toString(), DateHelper.getTimeFromInMillis(startOfRequest));
+                	Logger.debug("---------> Request {} duration : {} ms  <---------", request.toString(), DateHelper.getTimeFromInMillis(startOfRequest));
                 	return result;
                 });
             }
