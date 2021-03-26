@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/web -Dhttp.port=${PORT} -Dconfig.resource=application-prod.conf -Dlogger.resource=logger-prod.xml -Ddb.default.url=${DATABASE_URL} -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
+web: target/universal/stage/bin/web -Dhttp.port=${PORT} -Dconfig.resource=application-prod.conf -Dlogger.resource=logger-prod.xml -Ddb.default.url=${DATABASE_URL}
