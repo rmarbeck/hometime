@@ -48,6 +48,7 @@ public class AppointmentOptionHelper {
 												LocalDate.of(LocalDate.now().getYear(), Month.JANUARY, 1),
 												LocalDate.of(2021, Month.APRIL, 5));
 	
+	
 	public static List<AppointmentOption> getAvailableAppointmentOptions() {
 		List<AppointmentOption> allOptions = getAppointmentOptions();
 		allOptions.removeAll(getUnavailableOptions());
