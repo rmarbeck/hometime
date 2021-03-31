@@ -1,0 +1,12 @@
+@(data: reporting.ReportWithStats, report: views.admin.reports.Report[_])
+@import tags._
+
+	@layouts.admin() {
+	    @admin.reports.fragments.report(report)
+	    
+	    <div class="container">
+		    <div class="stats pull-right">
+		    	@Html(Messages("admin.reporting.stats", data.getCalculationTime, data.getMemoryDelta))
+		    </div>
+	    </div>
+	}

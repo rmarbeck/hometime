@@ -5725,6 +5725,8 @@ admin.possible.watches.just.gone.page.invoice.customer=Client
 admin.possible.watches.just.gone.page.invoice.watches=Montres
 admin.possible.watches.just.gone.page.empty=Pas de résultat
 
+admin.reporting.stats=Rapport généré en {0,number,#} ms, mémoire utilisée {1}
+
 #end
 
 

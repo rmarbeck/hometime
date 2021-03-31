@@ -1,0 +1,14 @@
+@(data: reporting.ReportWithStats)
+@import tags._
+
+@defining(new views.admin.reports.Report(data.getReport, "admin.possible.watches.just.gone.page")) { report =>
+	@{  report.addCol("date", "getDate", false, "date medium", null); 	
+		report.addCol("invoice.name", "getInvoiceName", false);
+		report.addCol("invoice.description", "getInvoiceDescription", false);
+		report.addCol("invoice.customer", "getCustomerName", false);
+		report.addCol("invoice.watches", "listWatches", false);
+	}
+	
+	@admin.reports.fragments.report_with_stats(data, report)
+}
+

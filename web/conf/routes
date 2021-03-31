@@ -434,7 +434,7 @@ GET     /admin/margin-vat-report            							controllers.Reporting.marginV
 GET     /admin/export-sales-report            							controllers.Reporting.exportSales()
 GET     /admin/with-vat-report            								controllers.Reporting.withVat()
 GET     /admin/invoice-lines											controllers.Reporting.invoiceLines()
-GET     /admin/invoices-to-pay											controllers.Reporting.invoicesStillToPay()
+GET     /admin/invoices-to-pay											controllers.Reporting.invoicesStillToPayWithStats()
 GET     /admin/invoice-lines-enhanced									controllers.Reporting.invoiceLinesEnhanced(month: Long ?= 12)
 GET     /admin/addresses		            							controllers.Reporting.addresses()
 GET     /admin/addresses-table	            							controllers.Reporting.addressesAlt()
@@ -450,7 +450,7 @@ GET     /admin/financialEnhanced            							controllers.Reporting.financi
 GET     /admin/financialCharts            								controllers.Reporting.financialChartsReport()
 GET     /admin/detailed-financial		            					controllers.Reporting.financialDetailedReport()
 GET     /admin/current-orders			            					controllers.Reporting.currentOrdersReport()
-GET     /admin/watches-just-gone			            				controllers.Reporting.possibleWatchesJustGoneReport()
+GET     /admin/watches-just-gone			            				controllers.Reporting.possibleWatchesJustGoneReportWithStats()
 
 
 GET     /admin/test			            								controllers.Admin.test()

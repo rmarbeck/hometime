@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import controllers.Payments;
 import models.Invoice;
 
-public class InvoicesReport {
+public class InvoicesReport implements MesurableReport {
 	public Date date;
 	public Invoice invoice;
 	public String invoiceName;

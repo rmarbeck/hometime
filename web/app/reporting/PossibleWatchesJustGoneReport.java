@@ -11,7 +11,7 @@ import models.Customer;
 import models.CustomerWatch;
 import models.Invoice;
 
-public class PossibleWatchesJustGoneReport {
+public class PossibleWatchesJustGoneReport implements MesurableReport {
 	public Date date;
 	public Invoice invoice;
 	public String invoiceName;
