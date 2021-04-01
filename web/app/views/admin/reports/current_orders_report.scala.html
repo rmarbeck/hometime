@@ -1,6 +1,6 @@
-@(lines: List[reporting.CurrentOrdersReport])
-@import tags._
+@(data: reporting.ReportWithStats)
 
+@import tags._
 
 @end_scripts = {
 	<script>
@@ -14,6 +14,8 @@
 			       return link;
 		       });
 		    });
+		    
+		    $('td:contains("zztotal")').not('[class~="toLink"]').html('@Html(Messages("admin.current.orders.total"))');
 		})
 	</script>
 }
@@ -21,7 +23,7 @@
 
 
 
-@defining(new views.admin.reports.Report(lines, "admin.current.orders.line.page")) { report =>
+@defining(new views.admin.reports.Report(data.getReport, "admin.current.orders.line.page")) { report =>
 	@{  
 		report.addCol("link", "getSStatus", false, null, "toLink");
 		report.addCol("sStatus", "getSStatus", false, "i18n", null);
@@ -29,8 +31,6 @@
 		report.addCol("count", "getCount", false);
 		report.addCol("watchValue", "getWatchValue", false, "price", null);
 	}
-	
-	@layouts.admin("", end_scripts) {
-	    @admin.reports.fragments.report(report)
-	}
+
+	@admin.reports.fragments.report_with_stats(data, report, "Reporting", end_scripts)
 }

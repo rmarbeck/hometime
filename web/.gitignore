@@ -19,3 +19,5 @@ Thumbs.db
 /launch_play.bat
 /activator-sbt-echo-akka-shim.sbt
 /bin/
+/launchInteg.sh
+/launchProxyProd.sh

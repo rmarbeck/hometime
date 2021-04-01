@@ -1,7 +1,7 @@
-@(data: reporting.ReportWithStats, report: views.admin.reports.Report[_])
+@(data: reporting.ReportWithStats, report: views.admin.reports.Report[_], title: String="Reporting", endScript: Html= Html(""))
 @import tags._
 
-	@layouts.admin() {
+	@layouts.admin(title, endScript) {
 	    @admin.reports.fragments.report(report)
 	    
 	    <div class="container">

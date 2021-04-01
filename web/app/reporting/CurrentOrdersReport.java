@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import fr.hometime.utils.CustomerWatchHelper;
 import models.CustomerWatch;
 
-public class CurrentOrdersReport {
+public class CurrentOrdersReport implements MesurableReport {
 	private static String TOTAL = "zzTotal";
 	public String sStatus;
 	public Float price = 0f;

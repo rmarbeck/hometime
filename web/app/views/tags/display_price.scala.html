@@ -1,6 +1,6 @@
-@(price: Float, label: String = "€")
+@(price: Float)
 @if(price != null) {
-	@String.format(Locale.FRANCE, "% .0f",price) @label
+	@fr.hometime.utils.FormatHelper.noDigitCurrency(price)
 } else {
 	-
 }

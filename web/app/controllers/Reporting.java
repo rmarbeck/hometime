@@ -67,7 +67,7 @@ public class Reporting extends Controller {
     }
 	
 	public static Result currentOrdersReport() {
-		return ok(current_orders_report.render(CurrentOrdersReport.generateReport()));
+		return ok(current_orders_report.render(ReportWithStats.mesure(() -> CurrentOrdersReport.generateReport())));
     }
 	
 	public static Result possibleWatchesJustGoneReportWithStats() {
