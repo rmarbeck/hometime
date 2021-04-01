@@ -5,7 +5,9 @@
 
 
 @display_price_formated(price: Float) = {
-@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price)
+	@if_not_null_nor_empty(price) {
+		@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price)
+	}
 }
 
 @display(periodN: String, filter: String, figure: String) = {
@@ -14,14 +16,23 @@
 
 @display_with_evolution(periodN: String, periodNMinus1: String, filter: String, figure: String) = {
 <div>&nbsp;&nbsp;@getKey(periodN, filter, figure) : @display_price_formated_with_evolution(report.figures.getValue(periodN, filter, figure), report.figures.getValue(periodNMinus1, filter, figure))</div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="@report.figures.getValue(periodN, filter, figure)" aria-valuemin="0" aria-valuemax="@report.figures.getValue(periodNMinus1, filter, figure)" style="min-width: 2em; width: 2%;">
+    @report.figures.getValue(periodN, filter, figure)
+  </div>
+</div>
 }
 
 @display_price_formated_with_evolution(price: Float, old: Float) = {
-@if(old != 0) {
-@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price) @display_evolution((price - old)/old*100)
-} else {
-@display_price_formated(price)
-}
+	@if_not_null_nor_empty(price) {
+		@if_not_null_nor_empty(old) {
+			@if(old != 0 && price !=0) {
+				@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price) @display_evolution((price - old)/old*100)
+			} else {
+				@display_price_formated(price)
+			}
+		}
+	}
 }
 
 @display_evolution(value: Float) = {

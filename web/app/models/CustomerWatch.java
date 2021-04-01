@@ -976,7 +976,7 @@ public class CustomerWatch extends ListenableModel implements CrudReady<Customer
 	}
 
 	@Override
-	public Finder<String, CustomerWatch> getFinder() {
+	public Model.Finder<String, CustomerWatch> getFinder() {
 		return find;
 	}
 
