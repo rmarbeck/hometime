@@ -5727,6 +5727,13 @@ admin.possible.watches.just.gone.page.empty=Pas de résultat
 
 admin.reporting.stats=Rapport généré en {0,number,#} ms, mémoire utilisée {1}
 
+admin.financial.reporting.all=Chiffres globaux
+admin.financial.reporting.localservicing=Chiffres entretien
+admin.financial.reporting.sellingonly=Chiffres vente
+admin.financial.reporting.sellingnewonly=Chiffres vente neuf
+admin.financial.reporting.sellingusedonly=Chiffres vente occasion
+admin.financial.reporting.simplequartzonly=Chiffres quartz
+
 #end
 
 

@@ -1,33 +1,59 @@
 @(report: reporting.AnalyticsReportEnhanced2)
 @import tags._
+@import fr.hometime.utils.FormatHelper
 @import reporting.AnalyticsReportEnhanced2._
 @import scala.collection.immutable._
 
 
 @display_price_formated(price: Float) = {
 	@if_not_null_nor_empty(price) {
-		@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price)
+		@FormatHelper.noDigitCurrency(price)
 	}
 }
 
 @display(periodN: String, filter: String, figure: String) = {
-<div>&nbsp;&nbsp;@getKey(periodN, filter, figure) : @display_price_formated(report.figures.getValue(periodN, filter, figure))</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div>&nbsp;&nbsp;@getKey(periodN, filter, figure) : @display_price_formated(report.figures.getValue(periodN, filter, figure))</div>
+	</div>
+</div>
 }
 
 @display_with_evolution(periodN: String, periodNMinus1: String, filter: String, figure: String) = {
-<div>&nbsp;&nbsp;@getKey(periodN, filter, figure) : @display_price_formated_with_evolution(report.figures.getValue(periodN, filter, figure), report.figures.getValue(periodNMinus1, filter, figure))</div>
-<div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="@report.figures.getValue(periodN, filter, figure)" aria-valuemin="0" aria-valuemax="@report.figures.getValue(periodNMinus1, filter, figure)" style="min-width: 2em; width: 2%;">
-    @report.figures.getValue(periodN, filter, figure)
-  </div>
+<div class="row">
+	<div class="col-xs-12">
+		<div>&nbsp;&nbsp;@getKey(periodN, filter, figure) : @display_price_formated_with_evolution(report.figures.getValue(periodN, filter, figure), report.figures.getValue(periodNMinus1, filter, figure))</div>
+	</div>
 </div>
+}
+
+@display_progress(periodN: String, periodNMinus1: String, filter: String, figure: String, index: Int) = {
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1">
+		<div class="progress">
+		  <div class="progress-bar @computeProgressClass(index)" role="progressbar" aria-valuenow="@report.figures.getValue(periodN, filter, figure)" aria-valuemin="0" aria-valuemax="@report.figures.getValue(periodNMinus1, filter, figure)" style="min-width: 10em; width: @calcProgress(report.figures.getValue(periodN, filter, figure), report.figures.getValue(periodNMinus1, filter, figure));">
+		    @display_price_formated_with_evolution(report.figures.getValue(periodN, filter, figure), report.figures.getValue(periodNMinus1, filter, figure))
+		  </div>  
+  		</div>
+	</div>
+</div>
+}
+
+@computeProgressClass(index: Int) = {
+	@(index%4) match {
+		case 0 => {progress-bar-success}
+		case 1 => {progress-bar-info}
+		case 2 => {progress-bar-danger}
+		case 3 => {progress-bar-error}
+		case _ => {strange}
+	}
 }
 
 @display_price_formated_with_evolution(price: Float, old: Float) = {
 	@if_not_null_nor_empty(price) {
 		@if_not_null_nor_empty(old) {
 			@if(old != 0 && price !=0) {
-				@java.text.NumberFormat.getCurrencyInstance(Locale.FRANCE).format(price) @display_evolution((price - old)/old*100)
+				@display_price_formated(price) @display_evolution((price - old)/old*100)
 			} else {
 				@display_price_formated(price)
 			}
@@ -35,20 +61,28 @@
 	}
 }
 
+@calcProgress(newFigure: Float, oldFigure: Float) = {
+	@if_not_null_nor_empty(newFigure) {	@if_not_null_nor_empty(oldFigure) {	@if(newFigure < oldFigure) { @(100+((newFigure - oldFigure)/oldFigure*100))% } else { 100% } } }
+}
+
 @display_evolution(value: Float) = {
 (@if(value > 0) {+} @value.toInt%)
 }
 
 @layouts.admin() {
+	<div class="container">
 
-	@List(FILTER_ALL, FILTER_LOCAL_SERVICING, FILTER_SELLING_ONLY, FILTER_SELLING_NEW_ONLY, FILTER_SELLING_USED_ONLY, FILTER_SIMPLE_QUARTZ_ONLY).map { filter =>
-		@List(FIGURE_MARGIN, FIGURE_TURNOVER).map { figure =>
+	@List(FILTER_ALL, FILTER_LOCAL_SERVICING, FILTER_SELLING_ONLY, FILTER_SELLING_NEW_ONLY, FILTER_SELLING_USED_ONLY, FILTER_SIMPLE_QUARTZ_ONLY).zipWithIndex.map { case (filter, index) =>
+		<h2 class="text-center">@Html(Messages("admin.financial.reporting."+filter.toString.toLowerCase.replace('_','.')))</h2>
+		@List(FIGURE_MARGIN, FIGURE_TURNOVER).zipWithIndex.map { case (figure,innerIndex) =>
 			@display_with_evolution(PERIOD_CURRENT_MONTH, PERIOD_LAST_YEAR_SAME_MONTH, filter, figure)
 			@display(PERIOD_LAST_MONTH, filter, figure)
 			@display(PERIOD_LAST_YEAR_SAME_MONTH, filter, figure)
+			@display_progress(PERIOD_CURRENT_MONTH, PERIOD_LAST_YEAR_SAME_MONTH, filter, figure, innerIndex*2 + index*4)
 			@display_with_evolution(PERIOD_CURRENT_ACCOUNTING, PERIOD_LAST_YEAR_SAME_MONTH_ACCOUNTING, filter, figure)
 			@display(PERIOD_LAST_ACCOUNTING, filter, figure)
 			@display(PERIOD_LAST_YEAR_SAME_MONTH_ACCOUNTING, filter, figure)
+			@display_progress(PERIOD_CURRENT_ACCOUNTING, PERIOD_LAST_YEAR_SAME_MONTH_ACCOUNTING, filter, figure, innerIndex*2 + index*4 + 1)
 			<br />
 		}
 		
@@ -56,5 +90,6 @@
     	<hr />
     	<br />
 	}
+	</div>
 
 }

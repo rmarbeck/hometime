@@ -32,7 +32,7 @@ public class AnalyticsReportEnhanced2 {
 	public final static String PERIOD_LAST_ACCOUNTING = "lastAccounting";
 	public final static String PERIOD_LAST_YEAR_SAME_MONTH_ACCOUNTING = "lastYearSameMonthAccounting";
 	
-	public final static String FILTER_ALL = "";
+	public final static String FILTER_ALL = "all";
 	public final static String FILTER_LOCAL_SERVICING = "localServicing";
 	public final static String FILTER_SELLING_ONLY = "sellingOnly";
 	public final static String FILTER_SIMPLE_QUARTZ_ONLY = "simpleQuartzOnly";
