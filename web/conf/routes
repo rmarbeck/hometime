@@ -450,6 +450,7 @@ GET     /admin/financialEnhanced            							controllers.Reporting.financi
 GET     /admin/financialCharts            								controllers.Reporting.financialChartsReport()
 GET     /admin/detailed-financial		            					controllers.Reporting.financialDetailedReport()
 GET     /admin/current-orders			            					controllers.Reporting.currentOrdersReport()
+GET     /admin/watchmaker-production	            					controllers.Reporting.watchmakerProductionReport()
 GET     /admin/watches-just-gone			            				controllers.Reporting.possibleWatchesJustGoneReportWithStats()
 
 

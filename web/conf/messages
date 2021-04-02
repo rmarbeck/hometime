@@ -2137,6 +2137,7 @@ admin.navbar.link.text.reporting.payments=Rapport méthodes de paiement
 admin.navbar.link.text.reporting.payments.by.creation.date=Rapport méthodes de paiement par création
 admin.navbar.link.text.reporting.financial.charts=Rapport financier (graphiques)
 admin.navbar.link.text.reporting.financial.enhanced=Rapport financier accéléré
+admin.navbar.link.text.reporting.watchmaker.production=Horlogers
 
 admin.navbar.link.text.reporting.invoices.to.pay=Factures avec montant à encaisser
 
@@ -5735,6 +5736,28 @@ admin.financial.reporting.sellingonly=Chiffres vente
 admin.financial.reporting.sellingnewonly=Chiffres vente neuf
 admin.financial.reporting.sellingusedonly=Chiffres vente occasion
 admin.financial.reporting.simplequartzonly=Chiffres quartz
+admin.financial.reporting.current.month.margin=Marge du mois
+admin.financial.reporting.last.month.margin=Marge du mois dernier
+admin.financial.reporting.last.year.same.month.margin=Marge du même mois l''année dernière
+admin.financial.reporting.current.accounting.margin=Marge de l''exercice
+admin.financial.reporting.last.accounting.margin=Marge du précédent exercice
+admin.financial.reporting.last.year.same.month.accounting.margin=Marge du précédent exercice (au même mois)
+
+admin.financial.reporting.current.month.turnover=CA du mois
+admin.financial.reporting.last.month.turnover=CA du mois dernier
+admin.financial.reporting.last.year.same.month.turnover=CA du même mois l''année dernière
+admin.financial.reporting.current.accounting.turnover=CA de l''exercice
+admin.financial.reporting.last.accounting.turnover=CA du précédent exercice
+admin.financial.reporting.last.year.same.month.accounting.turnover=CA du précédent exercice (au même mois)
+
+
+admin.watchmaker.production.line.page.title=Rapport de production
+admin.watchmaker.production.line.page.period.as.string=Période
+admin.watchmaker.production.line.page.second.count=Lou nb
+admin.watchmaker.production.line.page.second.turnover=Lou CA
+admin.watchmaker.production.line.page.first.count=Andy nb
+admin.watchmaker.production.line.page.first.turnover=Andy CA
+
 
 #end
 

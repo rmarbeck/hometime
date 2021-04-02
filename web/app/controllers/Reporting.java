@@ -1,50 +1,46 @@
 package controllers;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 import fr.hometime.utils.UniqueAccountingNumber;
+import models.Invoice.InvoiceType;
 import models.LegalRegisterReport;
 import models.StockReport;
-import models.Watch;
 import models.WatchToSell;
-import models.Invoice.InvoiceType;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.With;
-import reporting.AnalyticsReport;
+import reporting.AnalyticsChartsReport;
+import reporting.AnalyticsDetailedReport;
 import reporting.AnalyticsReportEnhanced;
 import reporting.AnalyticsReportEnhanced2;
-import reporting.AnalyticsChartsReport;
 import reporting.CurrentOrdersReport;
-import reporting.AnalyticsDetailedReport;
-import reporting.AnalyticsReportEnhanced2;
 import reporting.InvoiceLineReport;
 import reporting.InvoicesReport;
-import reporting.MesurableReport;
 import reporting.PaymentsReport;
 import reporting.PossibleWatchesJustGoneReport;
 import reporting.ReportWithStats;
 import reporting.WatchSalesReport;
-import views.html.admin.reports.margin_vat;
-import views.html.admin.reports.with_vat;
-import views.html.admin.reports.export_sales;
-import views.html.admin.reports.stock;
-import views.html.admin.reports.legal_register;
-import views.html.admin.reports.legal_register_helper;
-import views.html.admin.reports.invoice_lines;
-import views.html.admin.reports.invoices;
+import reporting.WatchmakerProductionReport;
 import views.html.admin.reports.address_tab;
-import views.html.admin.reports.address_tab_table;
 import views.html.admin.reports.address_tab_alpha;
-import views.html.admin.reports.payments;
-import views.html.admin.reports.financial_report;
-import views.html.admin.reports.financial_report2;
+import views.html.admin.reports.address_tab_table;
+import views.html.admin.reports.current_orders_report;
+import views.html.admin.reports.export_sales;
 import views.html.admin.reports.financial_charts_report;
 import views.html.admin.reports.financial_detailed_report;
-import views.html.admin.reports.current_orders_report;
+import views.html.admin.reports.financial_report;
+import views.html.admin.reports.financial_report2;
+import views.html.admin.reports.invoice_lines;
+import views.html.admin.reports.invoices;
+import views.html.admin.reports.legal_register;
+import views.html.admin.reports.legal_register_helper;
+import views.html.admin.reports.margin_vat;
+import views.html.admin.reports.payments;
+import views.html.admin.reports.stock;
 import views.html.admin.reports.watches_just_gone_mesured;
+import views.html.admin.reports.with_vat;
+import views.html.admin.reports.watchmaker_production_report;
 
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
@@ -68,6 +64,10 @@ public class Reporting extends Controller {
 	
 	public static Result currentOrdersReport() {
 		return ok(current_orders_report.render(ReportWithStats.mesure(() -> CurrentOrdersReport.generateReport())));
+    }
+	
+	public static Result watchmakerProductionReport() {
+		return ok(watchmaker_production_report.render(ReportWithStats.mesure(() -> WatchmakerProductionReport.generateReport())));
     }
 	
 	public static Result possibleWatchesJustGoneReportWithStats() {

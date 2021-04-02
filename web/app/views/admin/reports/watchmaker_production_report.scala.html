@@ -1,0 +1,22 @@
+@(data: reporting.ReportWithStats)
+
+@import tags._
+
+@end_scripts = {
+
+}
+
+
+
+
+@defining(new views.admin.reports.Report(data.getReport, "admin.watchmaker.production.line.page")) { report =>
+	@{  
+		report.addCol("period.as.string", "getPeriodAsString", false);
+		report.addCol("second.count", "getSecondCount", false, null, "text-right");
+		report.addCol("second.turnover", "getSecondTurnover", false, "price", "text-right");
+		report.addCol("first.count", "getFirstCount", false, null, "text-right");
+		report.addCol("first.turnover", "getFirstTurnover", false, "price", "text-right");
+	}
+
+	@admin.reports.fragments.report_with_stats(data, report, "Reporting", end_scripts)
+}

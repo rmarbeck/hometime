@@ -3,7 +3,7 @@
 @import fr.hometime.utils.FormatHelper
 @import reporting.AnalyticsReportEnhanced2._
 @import scala.collection.immutable._
-
+@key = {admin.financial.reporting.}
 
 @display_price_formated(price: Float) = {
 	@if_not_null_nor_empty(price) {
@@ -11,10 +11,12 @@
 	}
 }
 
+@flatten(toflat: String) = {@Html(Messages(key+("""([A-Z])""".r.replaceAllIn(toflat, m => ("."+m.group(0).toLowerCase)))))}
+
 @display(periodN: String, filter: String, figure: String) = {
 <div class="row">
 	<div class="col-xs-12">
-		<div>&nbsp;&nbsp;@getKey(periodN, filter, figure) : @display_price_formated(report.figures.getValue(periodN, filter, figure))</div>
+		<div>&nbsp;&nbsp;@flatten(getKey(periodN, "", figure)) : @display_price_formated(report.figures.getValue(periodN, filter, figure))</div>
 	</div>
 </div>
 }
@@ -22,7 +24,7 @@
 @display_with_evolution(periodN: String, periodNMinus1: String, filter: String, figure: String) = {
 <div class="row">
 	<div class="col-xs-12">
-		<div>&nbsp;&nbsp;@getKey(periodN, filter, figure) : @display_price_formated_with_evolution(report.figures.getValue(periodN, filter, figure), report.figures.getValue(periodNMinus1, filter, figure))</div>
+		<div>&nbsp;&nbsp;@flatten(getKey(periodN, "", figure)) : @display_price_formated_with_evolution(report.figures.getValue(periodN, filter, figure), report.figures.getValue(periodNMinus1, filter, figure))</div>
 	</div>
 </div>
 }
@@ -73,7 +75,7 @@
 	<div class="container">
 
 	@List(FILTER_ALL, FILTER_LOCAL_SERVICING, FILTER_SELLING_ONLY, FILTER_SELLING_NEW_ONLY, FILTER_SELLING_USED_ONLY, FILTER_SIMPLE_QUARTZ_ONLY).zipWithIndex.map { case (filter, index) =>
-		<h2 class="text-center">@Html(Messages("admin.financial.reporting."+filter.toString.toLowerCase.replace('_','.')))</h2>
+		<h2 class="text-center">@Html(Messages(key+filter.toString.toLowerCase.replace('_','.')))</h2>
 		@List(FIGURE_MARGIN, FIGURE_TURNOVER).zipWithIndex.map { case (figure,innerIndex) =>
 			@display_with_evolution(PERIOD_CURRENT_MONTH, PERIOD_LAST_YEAR_SAME_MONTH, filter, figure)
 			@display(PERIOD_LAST_MONTH, filter, figure)

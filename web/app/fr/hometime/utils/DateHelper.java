@@ -104,6 +104,12 @@ public class DateHelper {
 		return "?";
 	}
 	
+	public static String asMonthYear(Date date) {
+		if (date != null)
+			return new SimpleDateFormat("yyyy-MM", new Locale("fr", "FR")).format(date).toString();
+		return "?";
+	}
+	
 	public static Instant startTimer() {
 		return Instant.now();
 	}
