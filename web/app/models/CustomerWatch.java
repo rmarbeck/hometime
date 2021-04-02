@@ -400,11 +400,11 @@ public class CustomerWatch extends ListenableModel implements CrudReady<Customer
     }
     
     public static List<CustomerWatch> findAllByWatchmaker() {
-    	return find.fetch("customer").where().eq("service_price_accepted", true).eq("serviceNeeded", true).ne("status", "BACK_TO_CUSTOMER").isNotNull("managedBy").ne("service_status", 100).orderBy("managedBy desc, id DESC").findList();
+    	return find.fetch("customer").fetch("managedBy").where().eq("service_price_accepted", true).eq("serviceNeeded", true).ne("status", "BACK_TO_CUSTOMER").isNotNull("managedBy").ne("service_status", 100).orderBy("managedBy desc, id DESC").findList();
     }
     
     public static List<CustomerWatch> findFinishedByWatchmaker() {
-    	return find.fetch("customer").where().eq("status", "BACK_TO_CUSTOMER").isNotNull("managedBy").eq("service_status", 100).orderBy("managedBy desc, id DESC").findList();
+    	return find.fetch("customer").fetch("managedBy").where().isNotNull("managedBy").eq("service_status", 100).orderBy("managedBy desc, id DESC").findList();
     }
     
     public static List<CustomerWatch> findAllUnderOurResponsabilityOrderedByID() {

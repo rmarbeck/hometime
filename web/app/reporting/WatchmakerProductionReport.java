@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import fr.hometime.utils.DateHelper;
 import models.CustomerWatch;
+import models.CustomerWatch.CustomerWatchStatus;
 
 public class WatchmakerProductionReport implements MesurableReport {
 	class ProductionStats {
@@ -41,14 +42,27 @@ public class WatchmakerProductionReport implements MesurableReport {
 	private WatchmakerProductionReport(CustomerWatch currentWatch) {
 		stats = new HashMap<>();
 		stats.put(findStatsMergeKey(currentWatch), new ProductionStats(currentWatch));
-		periodAsString = DateHelper.asMonthYear(currentWatch.lastStatusUpdate);
+		periodAsString = calculateKey(currentWatch);
 	}
 	
 	private void mergeStats(WatchmakerProductionReport newReport) {
 		if (periodAsString.equals(newReport.periodAsString))
-			newReport.stats.entrySet().stream().forEach(entry -> this.stats.get(entry.getKey()).absorb(entry.getValue()));
+			newReport.stats.entrySet().stream().forEach(entry -> this.stats.compute(entry.getKey(), (key, value) -> {
+				if (value == null) {
+					stats.put(key, entry.getValue());
+				} else {
+					value.absorb(entry.getValue());
+				}
+				return value;
+			}));
 	}
-		
+	
+	private static String calculateKey(CustomerWatch currentWatch) {
+		if (currentWatch.status.equals(CustomerWatchStatus.BACK_TO_CUSTOMER))
+			return DateHelper.asMonthYear(currentWatch.lastStatusUpdate);
+		return "A venir";
+	}
+
 	public static List<WatchmakerProductionReport> generateReport() {
 		return generateReport(() -> CustomerWatch.findFinishedByWatchmaker());
 	}
@@ -78,18 +92,18 @@ public class WatchmakerProductionReport implements MesurableReport {
 	}
 	
 	public int getFirstCount() {
-		return stats.values().stream().findFirst().map(ProductionStats::getCount).orElse(0);
+		return stats.values().stream().findFirst().map(ProductionStats::getCount).orElse(-1);
 	}
 	
 	public long getSecondCount() {
-		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getCount).orElse(0);
+		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getCount).orElse(-1);
 	}
 	
 	public long getFirstTurnover() {
-		return stats.values().stream().findFirst().map(ProductionStats::getTurnover).orElse(0l);
+		return stats.values().stream().findFirst().map(ProductionStats::getTurnover).orElse(-1l);
 	}
 	
 	public long getSecondTurnover() {
-		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getTurnover).orElse(0l);
+		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getTurnover).orElse(-1l);
 	}
 }
