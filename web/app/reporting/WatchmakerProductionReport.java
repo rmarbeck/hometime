@@ -4,6 +4,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -91,19 +93,39 @@ public class WatchmakerProductionReport implements MesurableReport {
 		return newLine.periodAsString;
 	}
 	
+	public int getLouCount() {
+		return getValueByFirstname("Lou", ProductionStats::getCount, 0);
+	}
+	
+	public int getAndyCount() {
+		return getValueByFirstname("Andy", ProductionStats::getCount, 0);
+	}
+	
+	public long getLouTurnover() {
+		return getValueByFirstname("Lou", ProductionStats::getTurnover, 0l);
+	}
+	
+	public long getAndyTurnover() {
+		return getValueByFirstname("Andy", ProductionStats::getTurnover, 0l);
+	}
+	
+	private <T> T getValueByFirstname(String name, Function<ProductionStats, T> getter, T defaultValue) {
+		return stats.entrySet().stream().filter((entry) -> entry.getKey().equals(name)).findFirst().map(Entry::getValue).map(getter).orElse(defaultValue);
+	}
+	
 	public int getFirstCount() {
-		return stats.values().stream().findFirst().map(ProductionStats::getCount).orElse(-1);
+		return stats.values().stream().findFirst().map(ProductionStats::getCount).orElse(0);
 	}
 	
 	public long getSecondCount() {
-		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getCount).orElse(-1);
+		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getCount).orElse(0);
 	}
 	
 	public long getFirstTurnover() {
-		return stats.values().stream().findFirst().map(ProductionStats::getTurnover).orElse(-1l);
+		return stats.values().stream().findFirst().map(ProductionStats::getTurnover).orElse(0l);
 	}
 	
 	public long getSecondTurnover() {
-		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getTurnover).orElse(-1l);
+		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getTurnover).orElse(0l);
 	}
 }
