@@ -1,8 +1,7 @@
 package reporting;
 
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
+import java.util.LongSummaryStatistics;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
@@ -14,55 +13,22 @@ import models.CustomerWatch;
 import models.CustomerWatch.CustomerWatchStatus;
 
 public class WatchmakerProductionReport implements MesurableReport {
-	class ProductionStats {
-		public int count = 0;
-		public long turnover = 0;
-		
-		public ProductionStats(CustomerWatch currentWatch) {
-			count = 1;
-			turnover = currentWatch.finalCustomerServicePrice;
-		}
-		
-		public ProductionStats absorb(ProductionStats statsToMergeIn) {
-			count = count + statsToMergeIn.count;
-			turnover = turnover + statsToMergeIn.turnover;
-			return this;
-		}
-		
-		public int getCount() {
-			return count;
-		}
-		
-		public long getTurnover() {
-			return turnover;
-		}
-	}
-		
 	public String periodAsString;
-	public Map<String, ProductionStats> stats;
+	public Map<String, LongSummaryStatistics> stats;
 	
-	private WatchmakerProductionReport(CustomerWatch currentWatch) {
-		stats = new HashMap<>();
-		stats.put(findStatsMergeKey(currentWatch), new ProductionStats(currentWatch));
-		periodAsString = calculateKey(currentWatch);
+	private WatchmakerProductionReport(String periodAsString, Map<String, LongSummaryStatistics> stats) {
+		this.periodAsString = periodAsString;
+		this.stats = stats;
 	}
 	
-	private void mergeStats(WatchmakerProductionReport newReport) {
-		if (periodAsString.equals(newReport.periodAsString))
-			newReport.stats.entrySet().stream().forEach(entry -> this.stats.compute(entry.getKey(), (key, value) -> {
-				if (value == null) {
-					stats.put(key, entry.getValue());
-				} else {
-					value.absorb(entry.getValue());
-				}
-				return value;
-			}));
-	}
-	
-	private static String calculateKey(CustomerWatch currentWatch) {
+	private static String calculatePeriod(CustomerWatch currentWatch) {
 		if (currentWatch.status.equals(CustomerWatchStatus.BACK_TO_CUSTOMER))
 			return DateHelper.asMonthYear(currentWatch.lastStatusUpdate);
 		return "A venir";
+	}
+	
+	private static String findWatchMaker(CustomerWatch newWatch) {
+		return newWatch.managedBy.firstname;
 	}
 
 	public static List<WatchmakerProductionReport> generateReport() {
@@ -70,62 +36,37 @@ public class WatchmakerProductionReport implements MesurableReport {
 	}
 	
 	private static List<WatchmakerProductionReport> generateReport(Supplier<List<CustomerWatch>> supplier) {
-		HashMap<String, WatchmakerProductionReport> reportBuilder = new HashMap<>();
-		List<CustomerWatch> lines = supplier.get();
-		lines.stream().forEach(line -> addNewLine(new WatchmakerProductionReport(line), reportBuilder));
-		return reportBuilder.values().stream().sorted(Comparator.comparing(WatchmakerProductionReport::evaluateKey).reversed()).collect(Collectors.toList());
-	}
-
-	private static void addNewLine(WatchmakerProductionReport newLine, HashMap<String, WatchmakerProductionReport> reportBuilder) {
-		String key = newLine.periodAsString;
-		if (reportBuilder.containsKey(key)) {
-			reportBuilder.get(key).mergeStats(newLine);
-		} else {
-			reportBuilder.put(key, newLine);
-		}
-	}
-	
-	private static String findStatsMergeKey(CustomerWatch newWatch) {
-		return newWatch.managedBy.firstname;
-	}
-	
-	private static String evaluateKey(WatchmakerProductionReport newLine) {
-		return newLine.periodAsString;
+		Map<String, Map<String, LongSummaryStatistics>> result = supplier.get().parallelStream().collect(Collectors.groupingByConcurrent(WatchmakerProductionReport::calculatePeriod,
+													Collectors.groupingBy(WatchmakerProductionReport::findWatchMaker, Collectors.summarizingLong((watch) -> watch.finalCustomerServicePrice))));
+		
+		return result.entrySet().stream().sorted(Entry.<String, Map<String, LongSummaryStatistics>>comparingByKey().reversed()).map((entry) -> new WatchmakerProductionReport(entry.getKey(), entry.getValue())).collect(Collectors.toList());
 	}
 	
 	public int getLouCount() {
-		return getValueByFirstname("Lou", ProductionStats::getCount, 0);
+		return getCountByFirstname("Lou");
 	}
 	
 	public int getAndyCount() {
-		return getValueByFirstname("Andy", ProductionStats::getCount, 0);
+		return getCountByFirstname("Andy");
 	}
 	
 	public long getLouTurnover() {
-		return getValueByFirstname("Lou", ProductionStats::getTurnover, 0l);
+		return getTurnoverByFirstname("Lou");
 	}
 	
 	public long getAndyTurnover() {
-		return getValueByFirstname("Andy", ProductionStats::getTurnover, 0l);
+		return getTurnoverByFirstname("Andy");
 	}
 	
-	private <T> T getValueByFirstname(String name, Function<ProductionStats, T> getter, T defaultValue) {
+	private int getCountByFirstname(String firstname) {
+		return getValueByFirstname(firstname, LongSummaryStatistics::getCount, 0l).intValue();
+	}
+	
+	private long getTurnoverByFirstname(String firstname) {
+		return getValueByFirstname(firstname, LongSummaryStatistics::getSum, 0l);
+	}
+	
+	private <T> T getValueByFirstname(String name, Function<LongSummaryStatistics, T> getter, T defaultValue) {
 		return stats.entrySet().stream().filter((entry) -> entry.getKey().equals(name)).findFirst().map(Entry::getValue).map(getter).orElse(defaultValue);
-	}
-	
-	public int getFirstCount() {
-		return stats.values().stream().findFirst().map(ProductionStats::getCount).orElse(0);
-	}
-	
-	public long getSecondCount() {
-		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getCount).orElse(0);
-	}
-	
-	public long getFirstTurnover() {
-		return stats.values().stream().findFirst().map(ProductionStats::getTurnover).orElse(0l);
-	}
-	
-	public long getSecondTurnover() {
-		return stats.values().stream().skip(1).findFirst().map(ProductionStats::getTurnover).orElse(0l);
 	}
 }

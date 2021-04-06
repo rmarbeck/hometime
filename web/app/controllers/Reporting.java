@@ -39,8 +39,8 @@ import views.html.admin.reports.margin_vat;
 import views.html.admin.reports.payments;
 import views.html.admin.reports.stock;
 import views.html.admin.reports.watches_just_gone_mesured;
-import views.html.admin.reports.with_vat;
 import views.html.admin.reports.watchmaker_production_report;
+import views.html.admin.reports.with_vat;
 
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 @With(NoCacheAction.class)
