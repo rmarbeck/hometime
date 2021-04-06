@@ -36,10 +36,15 @@ public class WatchmakerProductionReport implements MesurableReport {
 	}
 	
 	private static List<WatchmakerProductionReport> generateReport(Supplier<List<CustomerWatch>> supplier) {
-		Map<String, Map<String, LongSummaryStatistics>> result = supplier.get().parallelStream().collect(Collectors.groupingByConcurrent(WatchmakerProductionReport::calculatePeriod,
-													Collectors.groupingBy(WatchmakerProductionReport::findWatchMaker, Collectors.summarizingLong((watch) -> watch.finalCustomerServicePrice))));
-		
-		return result.entrySet().stream().sorted(Entry.<String, Map<String, LongSummaryStatistics>>comparingByKey().reversed()).map((entry) -> new WatchmakerProductionReport(entry.getKey(), entry.getValue())).collect(Collectors.toList());
+		return statsGroupedByPeriodAndWatchMaker(supplier.get()).entrySet().parallelStream()
+																.sorted(Entry.<String, Map<String, LongSummaryStatistics>>comparingByKey().reversed())
+																.map((entry) -> new WatchmakerProductionReport(entry.getKey(), entry.getValue()))
+																.collect(Collectors.toList());
+	}
+	
+	private static Map<String, Map<String, LongSummaryStatistics>> statsGroupedByPeriodAndWatchMaker(List<CustomerWatch> watches) {
+		return watches.parallelStream().collect(Collectors.groupingByConcurrent(WatchmakerProductionReport::calculatePeriod,
+				Collectors.groupingBy(WatchmakerProductionReport::findWatchMaker, Collectors.summarizingLong((watch) -> watch.finalCustomerServicePrice))));
 	}
 	
 	public int getLouCount() {
