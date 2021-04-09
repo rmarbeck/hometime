@@ -5766,6 +5766,9 @@ finished.stored.by.us=Montre terminée
 finished.to.bill=Montre à payer
 close=Rendue et payée
 
+admin.customer.watch.false=Non
+admin.customer.watch.true=Oui
+
 #end
 
 
