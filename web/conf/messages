@@ -5758,6 +5758,13 @@ admin.watchmaker.production.line.page.second.turnover=Lou CA
 admin.watchmaker.production.line.page.first.count=Andy nb
 admin.watchmaker.production.line.page.first.turnover=Andy CA
 
+to.be.accepted=A accepter par Hometime
+to.quote=En attente de devis
+waiting.for.quotation.acceptation=Devis à accepter
+working=Travail en cours
+finished.stored.by.us=Montre terminée
+finished.to.bill=Montre à payer
+close=Rendue et payée
 
 #end
 

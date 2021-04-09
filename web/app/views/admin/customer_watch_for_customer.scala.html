@@ -49,8 +49,8 @@
 					modelDisplay.addField("finalCustomerServicePriceAccepted", "getFinalCustomerServicePriceAcceptedAsMessageKey", false, "", "customer_service_price_accepted");
 				}
 			}
-			modelDisplay.addField("customerStatus", "getStatusForCustomer", false, "", "customer_status");
-			modelDisplay.addField("customerNextStep", "getNextStepForCustomer");
+			modelDisplay.addField("customerStatus", "getStatusForCustomer", false, "", "i18n");
+			modelDisplay.addField("customerNextStep", "getNextStepForCustomer", false, "", "i18n");
 			if(!CustomerWatchHelper.isToBeAccepted(template)) {
 				modelDisplay.addField("finalCustomerToInfos", "getFinalCustomerToInfos", false, "" , "to_customer_info");
 			}
