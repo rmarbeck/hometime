@@ -10,12 +10,14 @@ import fr.hometime.utils.CustomerWatchHelper;
 import fr.hometime.utils.DateHelper;
 import fr.hometime.utils.PartnerAndCustomerHelper;
 import models.CustomerWatch.CustomerWatchStatus;
+import models.User;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.With;
 import play.twirl.api.Html;
 import views.html.admin.customer_watch;
+import views.html.admin.customer_watch_contextual;
 import views.html.admin.customer_watch_form;
 import views.html.admin.customer_watch_quotation_validation_form;
 import views.html.admin.customer_watch_phonecall_form;
@@ -40,6 +42,14 @@ public class CustomerWatch extends Controller {
 		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
 		if (existingWatch != null)
 			return ok(customer_watch.render(existingWatch));
+		flash("error", "Unknown watch id");
+		return LIST_CUSTOMER_WATCHES;
+    }
+	
+	public static Result displayContextual(Long watchId) {
+		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
+		if (existingWatch != null)
+			return ok(customer_watch_contextual.render(existingWatch));
 		flash("error", "Unknown watch id");
 		return LIST_CUSTOMER_WATCHES;
     }
@@ -95,8 +105,17 @@ public class CustomerWatch extends Controller {
 	
 	@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.COLLABORATOR})
 	public static Result doAction(String actionName, Long watchId) {
+		return doActionAndGo(actionName, watchId, LIST_CUSTOMER_WATCHES);
+	}
+	
+	@SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN, models.User.Role.COLLABORATOR})
+	public static Result doActionContextual(String actionName, Long watchId) {
+		return doActionAndGo(actionName, watchId, displayContextual(watchId));
+	}
+	
+	private static Result doActionAndGo(String actionName, Long watchId, Result nextPage) {
 		CustomerWatchActions.doAction(CustomerWatchActions.CustomerWatchActionList.fromString(actionName), models.CustomerWatch.findById(watchId), session());
-		return LIST_CUSTOMER_WATCHES;
+		return nextPage;
 	}
 	
 	public static Result edit(Long watchId) {
@@ -148,13 +167,34 @@ public class CustomerWatch extends Controller {
 		return updateWatch(watchId, (watch) -> {watch.finalCustomerQuotationSent = true;});
 	}
 	
+	public static Result setQuotationSentContextual(Long watchId) {
+		return updateWatchContextual(watchId, (watch) -> {watch.finalCustomerQuotationSent = true;});
+	}
+	
+	public static Result setQuickServiceContextual(Long watchId) {
+		return updateWatchContextual(watchId, (watch) -> {watch.quickWinPossible = true;});
+	}
+	
+	public static Result setAllocatedToContextual(Long watchId, Long watchmakerId) {
+		return updateWatchContextual(watchId, (watch) -> {watch.managedBy = User.findById(watchmakerId);});
+	}
+	
 	public static Result setQuotationAccepted(Long watchId) {
+		return doAction(CustomerWatchActions.CustomerWatchActionList.MARK_SERVICE_PRICE_ACCEPTED_AND_START_SERVICE.name(), watchId);
+	}
+	
+	public static Result setQuotationAcceptedContextual(Long watchId) {
 		return doAction(CustomerWatchActions.CustomerWatchActionList.MARK_SERVICE_PRICE_ACCEPTED_AND_START_SERVICE.name(), watchId);
 	}
 	
 	public static Result setBackToCustomer(Long watchId) {
 		SpareParts.markAllRelatedToCustomerWatchClosed(watchId);
 		return updateStatus(watchId, CustomerWatchStatus.BACK_TO_CUSTOMER);
+	}
+	
+	public static Result setBackToCustomerContextual(Long watchId) {
+		SpareParts.markAllRelatedToCustomerWatchClosed(watchId);
+		return updateStatusContextual(watchId, CustomerWatchStatus.BACK_TO_CUSTOMER);
 	}
 	
 	public static Result setStoredByPartner(Long watchId) {
@@ -173,14 +213,26 @@ public class CustomerWatch extends Controller {
 		return updateWatch(watchId, (watch) -> {watch.status = newStatus;});
 	}
 	
+	private static Result updateStatusContextual(Long watchId, CustomerWatchStatus newStatus) {
+		return updateWatchContextual(watchId, (watch) -> {watch.status = newStatus;});
+	}
+	
 	private static Result updateWatch(Long watchId, Consumer<models.CustomerWatch> toDo) {
+		return updateWatchAndGo(watchId, toDo, Admin.INDEX);
+	}
+	
+	private static Result updateWatchContextual(Long watchId, Consumer<models.CustomerWatch> toDo) {
+		return updateWatchAndGo(watchId, toDo, displayContextual(watchId));
+	}
+	
+	private static Result updateWatchAndGo(Long watchId, Consumer<models.CustomerWatch> toDo, Result nextPage) {
 		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
 		if (existingWatch != null) {
 			toDo.accept(existingWatch);
 			existingWatch.lastStatusUpdate = new Date();
 			existingWatch.update();
 		}
-		return Admin.INDEX;
+		return nextPage;
 	}
 	
 	private static void updateWatch(models.CustomerWatch newValues, BiConsumer<models.CustomerWatch, models.CustomerWatch> toDo) {

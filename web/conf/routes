@@ -239,6 +239,7 @@ GET     /admin/customer/edit/:id 										controllers.Customer.edit(id: Long)
 POST    /admin/manage-customer 											controllers.Customer.manage()
 
 GET     /admin/customer-watch/display/:id								controllers.CustomerWatch.display(id: Long)
+GET     /admin/customer-watch/display/contextual/:id					controllers.CustomerWatch.displayContextual(id: Long)
 GET     /admin/customer-watch/all    									controllers.CustomerWatch.displayAll(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", status ?= "")
 GET     /admin/customer-watch-part/all    								controllers.Partner.displayAll(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0)
 GET     /admin/display/customer-watch-part/page/    					controllers.Partner.displayWatches(p:Int ?= 0, s ?= "lastStatusUpdate", o ?= "desc", f ?= "", size:Int ?= 0, status ?= "")
@@ -302,6 +303,14 @@ GET     /admin/customer-watch/set-stored-by-partner/:id 				controllers.Customer
 GET     /admin/customer-watch/set-stored-by-us/:id 						controllers.CustomerWatch.setStoredByUs(id: Long)
 GET     /admin/customer-watch/set-stored-by-us-outside/:id 				controllers.CustomerWatch.setStoredByUsOutside(id: Long)
 GET     /admin/customer-watch/set-quotation-accepted-by-customer/:id 	controllers.CustomerWatch.setQuotationAccepted(id: Long)
+
+
+GET     /admin/customer-watch/contextual/set-quotation-sent/:id 					controllers.CustomerWatch.setQuotationSentContextual(id: Long)
+GET     /admin/customer-watch/contextual/set-back-to-customer/:id 					controllers.CustomerWatch.setBackToCustomerContextual(id: Long)
+GET     /admin/customer-watch/contextual/set-quotation-accepted-by-customer/:id 	controllers.CustomerWatch.setQuotationAcceptedContextual(id: Long)
+GET     /admin/customer-watch/contextual/set-managed-by/:id/:watchmaker 	controllers.CustomerWatch.setAllocatedToContextual(id: Long, watchmaker: Long)
+GET     /admin/customer-watch/contextual/set-quick-service/:id 					controllers.CustomerWatch.setQuickServiceContextual(id: Long)
+
 
 GET     /admin/customer-watch/accept/:id			 					controllers.CustomerWatch.acceptWatchFromCustomer(id: Long)
 POST    /admin/manage-customer-watch 									controllers.CustomerWatch.manage()

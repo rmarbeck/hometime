@@ -2754,11 +2754,18 @@ admin.customer.watch.action.stored.by.us.secured.1=&nbsp;Sécurisé (103)
 admin.customer.watch.action.stored.by.us.secured.2=&nbsp;Sécurisé (9)
 admin.customer.watch.action.stored.by.us.secured.3=&nbsp;Sécurisé (réservé)
 
+admin.customer.watch.action.allocate.to.watchmaker=Allouer à
+admin.customer.watch.action.allocate.to={0}
+
+admin.customer.watch.action.detail=&nbsp;Détail
+admin.customer.watch.action.context=&nbsp;Context
+
 admin.customer.watch.action.new.orders=Créer un devis
 
 admin.customer.watch.action.quotation.sent=&nbsp;Marquer devis envoyé
 admin.customer.watch.action.quotation.accepted=&nbsp;Marquer accepté
 admin.customer.watch.action.phonecall=&nbsp;Appel
+admin.customer.watch.action.quick.service=&nbsp;Marquer entretien partiel
 
 admin.customer.watch.action.print.servicing=&nbsp;Fiche de service
 admin.customer.watch.action.print.testing=&nbsp;Fiche de test
@@ -2817,6 +2824,10 @@ admin.customer.watch.watches.value.status.stored.by.watch.next.secured.2=Sécuri
 admin.customer.watch.watches.value.status.stored.by.watch.next.secured.3=Sécurisé (réservé)
 admin.customer.watch.label.service.price=Prix partenaire
 admin.customer.watch.label.service.accepted=Accepté
+
+admin.customer.watch.label.managed.by=Entretenue par
+admin.customer.watch.label.last.service.beginning=Début entretien
+admin.customer.watch.label.last.expected.service.ending=Fin prévue
 
 admin.customer.watch.label.customer.has.constraint=Contrainte de délai client
 admin.customer.watch.label.service.due.date.must.have=Date butoir
