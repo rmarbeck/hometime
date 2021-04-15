@@ -308,8 +308,12 @@ GET     /admin/customer-watch/set-quotation-accepted-by-customer/:id 	controller
 GET     /admin/customer-watch/contextual/set-quotation-sent/:id 					controllers.CustomerWatch.setQuotationSentContextual(id: Long)
 GET     /admin/customer-watch/contextual/set-back-to-customer/:id 					controllers.CustomerWatch.setBackToCustomerContextual(id: Long)
 GET     /admin/customer-watch/contextual/set-quotation-accepted-by-customer/:id 	controllers.CustomerWatch.setQuotationAcceptedContextual(id: Long)
-GET     /admin/customer-watch/contextual/set-managed-by/:id/:watchmaker 	controllers.CustomerWatch.setAllocatedToContextual(id: Long, watchmaker: Long)
-GET     /admin/customer-watch/contextual/set-quick-service/:id 					controllers.CustomerWatch.setQuickServiceContextual(id: Long)
+GET     /admin/customer-watch/contextual/set-managed-by/:id/:watchmaker 			controllers.CustomerWatch.setAllocatedToContextual(id: Long, watchmaker: Long)
+GET     /admin/customer-watch/contextual/set-quick-service/:id 						controllers.CustomerWatch.setQuickServiceContextual(id: Long)
+
+GET     /admin/customer-watch/contextual/set-entered-under-waranty/:id 				controllers.CustomerWatch.setEnteredUnderWarantyContextual(id: Long)
+GET     /admin/customer-watch/contextual/set-to-do-under-waranty/:id 				controllers.CustomerWatch.setToDoUnderWarantyContextual(id: Long)
+GET     /admin/customer-watch/contextual/set-waranty-void/:id 						controllers.CustomerWatch.setWarantyIsVoidContextual(id: Long)
 
 
 GET     /admin/customer-watch/accept/:id			 					controllers.CustomerWatch.acceptWatchFromCustomer(id: Long)

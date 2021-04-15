@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import fr.hometime.utils.CustomerWatchActions;
 import fr.hometime.utils.CustomerWatchHelper;
@@ -168,15 +169,27 @@ public class CustomerWatch extends Controller {
 	}
 	
 	public static Result setQuotationSentContextual(Long watchId) {
-		return updateWatchContextual(watchId, (watch) -> {watch.finalCustomerQuotationSent = true;});
+		return contextual(watchId, () -> setQuotationSent(watchId));
 	}
 	
 	public static Result setQuickServiceContextual(Long watchId) {
-		return updateWatchContextual(watchId, (watch) -> {watch.quickWinPossible = true;});
+		return contextual(watchId, () -> updateWatch(watchId, (watch) -> {watch.quickWinPossible = !models.CustomerWatch.findById(watchId).quickWinPossible;}));
 	}
 	
 	public static Result setAllocatedToContextual(Long watchId, Long watchmakerId) {
-		return updateWatchContextual(watchId, (watch) -> {watch.managedBy = User.findById(watchmakerId);});
+		return contextual(watchId, () -> updateWatch(watchId, (watch) -> {watch.managedBy = User.findById(watchmakerId);}));
+	}
+	
+	public static Result setEnteredUnderWarantyContextual(Long watchId) {
+		return contextual(watchId, () -> updateWatch(watchId, (watch) -> {watch.enteredUnderWaranty = true;}));
+	}
+	
+	public static Result setToDoUnderWarantyContextual(Long watchId) {
+		return contextual(watchId, () -> updateWatch(watchId, (watch) -> {watch.toWorkOnUnderWaranty = true;}));
+	}
+	
+	public static Result setWarantyIsVoidContextual(Long watchId, Long watchmakerId) {
+		return contextual(watchId, () -> updateWatch(watchId, (watch) -> {watch.warantyIsVoid = true;}));
 	}
 	
 	public static Result setQuotationAccepted(Long watchId) {
@@ -184,7 +197,7 @@ public class CustomerWatch extends Controller {
 	}
 	
 	public static Result setQuotationAcceptedContextual(Long watchId) {
-		return doAction(CustomerWatchActions.CustomerWatchActionList.MARK_SERVICE_PRICE_ACCEPTED_AND_START_SERVICE.name(), watchId);
+		return contextual(watchId, () -> setQuotationAccepted(watchId));
 	}
 	
 	public static Result setBackToCustomer(Long watchId) {
@@ -193,8 +206,7 @@ public class CustomerWatch extends Controller {
 	}
 	
 	public static Result setBackToCustomerContextual(Long watchId) {
-		SpareParts.markAllRelatedToCustomerWatchClosed(watchId);
-		return updateStatusContextual(watchId, CustomerWatchStatus.BACK_TO_CUSTOMER);
+		return contextual(watchId, () -> setBackToCustomer(watchId));
 	}
 	
 	public static Result setStoredByPartner(Long watchId) {
@@ -213,18 +225,10 @@ public class CustomerWatch extends Controller {
 		return updateWatch(watchId, (watch) -> {watch.status = newStatus;});
 	}
 	
-	private static Result updateStatusContextual(Long watchId, CustomerWatchStatus newStatus) {
-		return updateWatchContextual(watchId, (watch) -> {watch.status = newStatus;});
-	}
-	
 	private static Result updateWatch(Long watchId, Consumer<models.CustomerWatch> toDo) {
 		return updateWatchAndGo(watchId, toDo, Admin.INDEX);
 	}
-	
-	private static Result updateWatchContextual(Long watchId, Consumer<models.CustomerWatch> toDo) {
-		return updateWatchAndGo(watchId, toDo, displayContextual(watchId));
-	}
-	
+		
 	private static Result updateWatchAndGo(Long watchId, Consumer<models.CustomerWatch> toDo, Result nextPage) {
 		models.CustomerWatch existingWatch = models.CustomerWatch.findById(watchId);
 		if (existingWatch != null) {
@@ -242,6 +246,11 @@ public class CustomerWatch extends Controller {
 			existingWatch.lastStatusUpdate = new Date();
 			existingWatch.update();
 		}
+	}
+	
+	private static Result contextual(Long watchId, Runnable toDo) {
+		toDo.run();
+		return displayContextual(watchId);
 	}
 	
 	public static Result manage() {

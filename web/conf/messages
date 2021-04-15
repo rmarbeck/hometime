@@ -2765,7 +2765,12 @@ admin.customer.watch.action.new.orders=Créer un devis
 admin.customer.watch.action.quotation.sent=&nbsp;Marquer devis envoyé
 admin.customer.watch.action.quotation.accepted=&nbsp;Marquer accepté
 admin.customer.watch.action.phonecall=&nbsp;Appel
-admin.customer.watch.action.quick.service=&nbsp;Marquer entretien partiel
+admin.customer.watch.action.quick.service.false=&nbsp;Marquer entretien partiel
+admin.customer.watch.action.quick.service.true=&nbsp;Supprimer entretien partiel
+
+admin.customer.watch.action.entered.under.waranty=&nbsp;Entrer sous garantie
+admin.customer.watch.action.to.do.under.waranty=&nbsp;A faire sous garantie
+admin.customer.watch.action.waranty.is.void=&nbsp;Marquer exclue de la garantie
 
 admin.customer.watch.action.print.servicing=&nbsp;Fiche de service
 admin.customer.watch.action.print.testing=&nbsp;Fiche de test
@@ -5112,8 +5117,7 @@ admin.spare.parts.to.receive.header.watch=Montre
 admin.spare.parts.to.receive.header.description=Desc.
 admin.spare.parts.to.receive.header.part.reference=Ref
 
-
-
+admin.spare.parts.to.receive.active=A recevoir
 
 admin.spare.parts.to.check.title=Pièces détachées à contrôler
 admin.spare.parts.to.check.nothing.to.display=Aucune pièce à contrôler

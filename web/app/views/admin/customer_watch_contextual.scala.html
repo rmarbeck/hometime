@@ -78,6 +78,7 @@
 		  }
 		  
 		  case "CUSTOMER_WATCH_STATUS_TO_QUOTE" => {
+				  @button("warning", routes.CustomerWatch.setEnteredUnderWarantyContextual(watch.id).url, "hand-left", "entered.under.waranty")
 		  }
 	
 		  case "QUOTATION_TO_SEND_TO_CUSTOMER" => {
@@ -89,10 +90,12 @@
 		  }
 		  
 		  case "CUSTOMER_WATCH_STATUS_TO_CHECK_IF_WARANTY_APPLIES" => {
+		  		@button("primary", routes.CustomerWatch.setToDoUnderWarantyContextual(watch.id).url, "thumbs-up", "to.do.under.waranty")
+		  		@button("error", routes.CustomerWatch.setWarantyIsVoidContextual(watch.id).url, "thumbs-down", "waranty.is.void")
 		  }
 		  
 		  case "CUSTOMER_WATCH_STATUS_WORK_TO_DO_UNDERWARANTY" | "CUSTOMER_WATCH_STATUS_WORK_TO_START" => {
-		  	    		@button("info", routes.CustomerWatch.setQuickServiceContextual(watch.id).url, "time", "quick.service")
+		  	    		@button("info", routes.CustomerWatch.setQuickServiceContextual(watch.id).url, "time", "quick.service."+watch.quickWinPossible)
 				<!-- Split button -->
 		    <div class="btn-group text-left dropup">
 		      <span class="btn btn-success">@Html(Messages("admin.customer.watch.action.allocate.to.watchmaker"))</span>
