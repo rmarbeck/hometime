@@ -188,7 +188,7 @@ public class CustomerWatch extends Controller {
 		return contextual(watchId, () -> updateWatch(watchId, (watch) -> {watch.toWorkOnUnderWaranty = true;}));
 	}
 	
-	public static Result setWarantyIsVoidContextual(Long watchId, Long watchmakerId) {
+	public static Result setWarantyIsVoidContextual(Long watchId) {
 		return contextual(watchId, () -> updateWatch(watchId, (watch) -> {watch.warantyIsVoid = true;}));
 	}
 	
