@@ -203,7 +203,7 @@ public class AppointmentRequest extends ListenableModel implements CrudReady<App
     
     public static Page<AppointmentRequest> page(int page, int pageSize, String sortBy, String order, String filter) {
     	if (sortBy == null || sortBy.equals("")) {
-    		sortBy = "creation_date";
+    		sortBy = "appointmentAsDate";
     		order = "DESC";
     	}
         return 

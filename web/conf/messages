@@ -3872,6 +3872,11 @@ admin.appointmentrequest.id.display.label=ID
 admin.appointmentrequest.uniquekey.display.label=Clef
 admin.appointmentrequest.appointment.display.label=Créneau
 
+admin.appointmentrequest.appointmentasstring.display.label=Créneau
+admin.appointmentrequest.customerremark.display.label=Commentaire
+admin.appointmentrequest.privateremark.display.label=Commentaire interne
+admin.appointmentrequest.status.display.label=Statut
+
 
 admin.appointment.request.page=Gestion des demandes de rendez-vous
 admin.appointment.request.page.title=Gestion des demandes de rendez-vous

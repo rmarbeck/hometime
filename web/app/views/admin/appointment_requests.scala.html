@@ -9,10 +9,30 @@
 	<script>
 		$(document).ready(function(){
 			$('a.btn-success.btn-xs').hide();
+			
+			$('table > tbody  > tr').each(function(){
+				addButtonForAction($(this).children("td:first"));
+			});
+			
+			updateIds();
+			
+			function guessIDFromTd(location) {
+    			return $(location).children("a:first").attr('href').split('/').slice(-1)[0];
+   			}
+			
+			function addButtonForAction(location) {
+    			location.append('<a id="'+guessIDFromTd(location)+'" type="button" class="btn btn-success btn-xs action-js" href="@routes.SimplifiedCustomers.createNewCustomerFromAppointment(-1)"><span class="glyphicon glyphicon-user"></span></a>');
+   			}
+   			
+   			function updateIds() {
+	   			$('.action-js').each(function(){
+					$(this).attr('href', $(this).attr('href').substring(0, $(this).attr('href').length -2)+$(this).attr('id'));
+				});
+   			}
+			
 		})
 	</script>
 }
-
 
 
 @defining(new views.PageDisplay(currentPage, "uniqueKey", "admin.appointment.request.page")) { pageDisplay =>

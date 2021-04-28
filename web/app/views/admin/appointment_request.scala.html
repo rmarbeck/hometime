@@ -15,8 +15,14 @@
 
 @defining(new views.ModelDisplay(instance, "admin.appointment.request")) { modelDisplay =>
 		@{ 	modelDisplay.addField("id");
+			modelDisplay.addSeparator();
 			modelDisplay.addField("uniqueKey");
-			modelDisplay.addField("appointment");
+			modelDisplay.addField("appointmentAsString");
+			modelDisplay.addSeparator();
+			modelDisplay.addField("customerRemark", "getCustomerRemark", false, null, "pre");
+			modelDisplay.addField("privateRemark", "getPrivateRemark", false, null, "pre");
+			modelDisplay.addSeparator();
+			modelDisplay.addField("status");
 		}
 	
 	@admin.template.display(modelDisplay, null, editlink, end_body)

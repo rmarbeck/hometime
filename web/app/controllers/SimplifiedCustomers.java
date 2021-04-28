@@ -4,6 +4,7 @@ import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
 import static play.mvc.Results.redirect;
 
+import models.AppointmentRequest;
 import models.Customer;
 import play.Logger;
 import play.data.Form;
@@ -26,6 +27,17 @@ public class SimplifiedCustomers extends Controller {
     
 	public static Result createNewCustomerByCustomer() {
 		return ok(simplified_customer_form_for_customer.render(crud.getInstance().fillForm(Form.form(Customer.class), false), true));
+    }
+	
+	public static Result createNewCustomerFromAppointment(long appointmentId) {
+		AppointmentRequest foundAppointment = AppointmentRequest.findById(appointmentId);
+		Customer preFilledCustomer = new Customer();
+		if (foundAppointment != null) {
+			preFilledCustomer.phoneNumber = foundAppointment.customerPhoneNumber;
+			preFilledCustomer.firstname = foundAppointment.customerDetails;
+			preFilledCustomer.name = foundAppointment.customerDetails;
+		}
+		return ok(simplified_customer_form_for_customer.render(crud.getInstance().fillForm(Form.form(Customer.class).fill(preFilledCustomer), false), true));
     }
 	
     public static Result manageNewCustomerByCustomer() {
