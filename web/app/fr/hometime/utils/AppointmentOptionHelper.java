@@ -61,6 +61,13 @@ public class AppointmentOptionHelper {
 		return allOptions;
 	}
 	
+	public static List<AppointmentOption> getExtendedAppointmentOptionsWithAvailabilitySet() {
+		List<AppointmentOption> allOptions = getExtendedAppointmentOptions();
+		List<AppointmentOption> unavailableOnes = getUnavailableOptions();
+		
+		return allOptions.stream().map(currentOption -> AppointmentOption.clone(currentOption, !unavailableOnes.contains(currentOption))).collect(Collectors.toList());
+	}
+	
 	private static List<AppointmentOption> getAppointmentOptions() {
 		return Stream.iterate(getFirstPossibleAppointement(APPOINTMENT_DEFAULT_DELAY_BEFORE_NEXT_AVAILABLE_IN_MINUTES), d -> d.plusMinutes(APPOINTMENT_DEFAULT_DURATION_IN_MINUTES)).filter(AppointmentOptionHelper::isOpenNormal).limit(60).map(d -> new AppointmentOption(d, true)).collect(Collectors.toList()); 
 	}

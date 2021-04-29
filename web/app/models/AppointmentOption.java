@@ -41,6 +41,18 @@ public class AppointmentOption {
 		this.datetime = option;
 		this.available = available;
 	}
+	
+	public static AppointmentOption cloneAsAvailable(AppointmentOption toClone) {
+		return clone(toClone, true);
+	}
+	
+	public static AppointmentOption cloneAsUnAvailable(AppointmentOption toClone) {
+		return clone(toClone, false);
+	}
+	
+	public static AppointmentOption clone(AppointmentOption toClone, boolean forceAvailability) {
+		return new AppointmentOption(toClone.id, toClone.datetime, forceAvailability);
+	}
 
 	@Override
 	public boolean equals(Object obj) {
