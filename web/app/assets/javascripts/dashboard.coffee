@@ -90,7 +90,7 @@ populateOrderRequest = (message) ->
      clonedRow = cloneRow("order_requests")
      $("td.ph_id", clonedRow).html('#'+item.id)
      $("td.ph_date", clonedRow).html(item.date)
-     $("td.ph_details", clonedRow).html(item.brand+", "+item.model+", "+item.city)
+     $("td.ph_details", clonedRow).html((item.brand+", "+item.model+", "+item.city).substring(0,50))
      $("td.ph_name", clonedRow).html(item.managedBy)
      pushClonedRow(clonedRow, "order_requests", item.id))
 
