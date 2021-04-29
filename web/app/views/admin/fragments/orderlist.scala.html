@@ -9,8 +9,8 @@
 		<table class="table table-condensed @if(!darkMode) {table-striped table-bordered}">
 		  <thead>
 	        <tr>
-	          <th>@Html(Messages(key+".head.link.to"))</th>
-	          <th>@Html(Messages(key+".head.request.date"))</th>
+	          <th class="hidden-xs">@Html(Messages(key+".head.link.to"))</th>
+	          <th class="hidden-xs">@Html(Messages(key+".head.request.date"))</th>
 	          @if(!darkMode) {<th>@Html(Messages(key+".head.email"))</th>}
 	          <th>@Html(Messages(key+".head.details"))</th>
 	          <th>@Html(Messages(key+".head.managed.by"))</th>
@@ -68,8 +68,8 @@
     	@if(placeholder) {
 	    	@header{
 		    	<tr class="feedback_asked_false hidden" id="ph_line_template">
-		    		<td class="ph_id"></td>
-		    		<td class="ph_date"></td>
+		    		<td class="ph_id hidden-xs"></td>
+		    		<td class="ph_date hidden-xs"></td>
 		    		<td class="ph_details"></td>
 		    		<td class="ph_name"></td>
 		    	</tr>

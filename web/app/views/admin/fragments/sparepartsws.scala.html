@@ -13,7 +13,7 @@
               <th>@Html(Messages(key+".header.id"))</th>
               <th>@Html(Messages(key+".header.watch"))</th>
               <th>@Html(Messages(key+".header.description"))</th>
-              <th>@Html(Messages(key+".header.part.reference"))</th>
+              <th class="hidden-xs">@Html(Messages(key+".header.part.reference"))</th>
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -40,7 +40,7 @@
 		    		<td class="ph_id"></td>
 		    		<td class="ph_watch"></td>
 		    		<td class="ph_description"></td>
-		    		<td class="ph_reference"></td>
+		    		<td class="ph_reference hidden-xs"></td>
 		    	</tr>
 	    	}
     	} else {
