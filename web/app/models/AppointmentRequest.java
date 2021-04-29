@@ -228,6 +228,7 @@ public class AppointmentRequest extends ListenableModel implements CrudReady<App
 
 	@Override
 	public void update() {
+		this.appointmentAsDate = AppointmentOptionHelper.convertToDateFromString(appointmentAsString);
 		checkBeforeSaving();
 		super.update();
 	}
