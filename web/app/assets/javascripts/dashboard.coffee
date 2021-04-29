@@ -102,7 +102,7 @@ populateAppointments = (message) ->
      $("td.ph_details", clonedRow).html(item.name)
      $("td.ph_reason", clonedRow).html(getValueInDictionnary("reason",item.reason))
      $("td.ph_status", clonedRow).html(getValueInDictionnary("status",item.status))
-     $(clonedRow).addClass("appointment_status_"+item.status)
+     $(clonedRow).addClass("appointment_status_"+item.status.toLowerCase())
      pushClonedRow(clonedRow, "appointments", item.id))
 
 populateCWatchesAllocated = (message) ->
