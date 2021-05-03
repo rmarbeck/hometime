@@ -12,8 +12,8 @@
 		          <th>@Html(Messages(key+".head.id"))</th>
 		          <th>@Html(Messages(key+".head.name"))</th>
 		          <th>@Html(Messages(key+".head.brand"))</th>
-		          <th>@Html(Messages(key+".head.model"))</th>
-		          <th>@Html(Messages(key+".head.status"))</th>
+		          <th class="hidden-xs">@Html(Messages(key+".head.model"))</th>
+		          <th class="hidden-xs">@Html(Messages(key+".head.status"))</th>
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -41,8 +41,8 @@
 					    		<td class="ph_id"></td>
 					    		<td class="ph_customer"></td>
 					    		<td class="ph_brand"></td>
-					    		<td class="ph_model"></td>
-					    		<td class="ph_due_date"></td>
+					    		<td class="ph_model hidden-xs"></td>
+					    		<td class="ph_due_date hidden-xs"></td>
 					    	</tr>
 				    	}
 			    	} else {

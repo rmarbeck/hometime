@@ -152,11 +152,11 @@ body {
 	margin-bottom: -90px;
 }
 
-.customer_has_called_true, .sparefound_status_true, .to_check_under_waranty {
+.customer_has_called_true, .sparefound_status_true, .to_check_under_waranty, .appointment_status_waiting_validation {
 	background-color: rgba(245, 171, 53, 0.5);
 }
 
-.nosolution_status_true, .needhelp_status_true, .sparetofind_status_true, .customer_has_constraint_true {
+.nosolution_status_true, .needhelp_status_true, .sparetofind_status_true, .customer_has_constraint_true, .appointment_status_canceled {
 	background-color: rgba(207, 0, 15, 0.5);
 }
 
@@ -204,6 +204,33 @@ body {
   }
   
   	table,
+	thead,
+	tr,
+	tbody,
+	th,
+	td {
+	  text-align: center;
+	}
+	
+	.table td {
+	  text-align: center;
+	}
+}
+
+
+/* 
+ * Smartphones
+ */
+ 
+@media screen and (max-width: 767px) {
+	.cover-container .dash-clock {
+	  position:absolute;
+	  top: 45px;
+	  left: 40%;
+	  transform: translate(10%, -50%); /* décalage de 50% de sa propre taille */
+	}
+	
+	table,
 	thead,
 	tr,
 	tbody,

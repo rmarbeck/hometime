@@ -24,7 +24,7 @@
 }
 
 @defining(new views.FormDisplay(thisInstance, "appointment.request", "admin.appointment.request.form")) { formDisplay =>
-		@{ formDisplay.addFormFieldForSelect("appointmentAsString", true, AppointmentOptionHelper.getExtendedAvailableAppointmentOptions().map(_.id), AppointmentOptionHelper.getExtendedAvailableAppointmentOptions().map(_.datetimeWithAvailability));
+		@{ formDisplay.addFormFieldForSelect("appointmentAsString", true, AppointmentOptionHelper.getExtendedAppointmentOptionsWithAvailabilitySet().map(_.id), AppointmentOptionHelper.getExtendedAppointmentOptionsWithAvailabilitySet().map(_.datetimeWithAvailability));
 		   formDisplay.addFormFieldForSelect("reason", models.AppointmentRequest.Reason.values.toList);
 		   formDisplay.addFormField("customerDetails", true, "input");
 		   formDisplay.addFormField("customerPhoneNumber", true, "input");
