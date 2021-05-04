@@ -114,9 +114,6 @@ $(document).ready(function(){
            <div class="row">
           	
           	<div class="col-lg-6">
-          		@header("order_requests", "Nouvelles demandes") {
-          		@fragments.orderlist(null, false, "admin.index.order.requests", true, true)
-          		}
           		@header("appointments", "Rendez-vous") {
 	            @fragments.appointments(null, false, "admin.index.appointment.requests", true, true)
 				}
@@ -133,6 +130,9 @@ $(document).ready(function(){
 	        </div>
 	        
 	        <div class="col-lg-6">
+	            @header("order_requests", "Nouvelles demandes") {
+          		@fragments.orderlist(null, false, "admin.index.order.requests", true, true)
+          		}
 		        @header("managed", "Montres en cours") {
 				@fragments.watchlistServicing(null, false, "admin.index.watches", true, true)
 				}
