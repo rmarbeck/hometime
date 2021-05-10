@@ -37,7 +37,7 @@ public class SimplifiedCustomers extends Controller {
 			preFilledCustomer.firstname = foundAppointment.customerDetails;
 			preFilledCustomer.name = foundAppointment.customerDetails;
 		}
-		return ok(simplified_customer_form_for_customer.render(crud.getInstance().fillForm(Form.form(Customer.class).fill(preFilledCustomer), false), true));
+		return ok(views.html.admin.simplified_customer_form.render(crud.getInstance().fillForm(Form.form(Customer.class).fill(preFilledCustomer), false), true));
     }
 	
     public static Result manageNewCustomerByCustomer() {
