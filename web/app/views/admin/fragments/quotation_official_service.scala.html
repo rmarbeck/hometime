@@ -44,30 +44,11 @@ Ainsi, sans pouvoir s’engager formellement, Hometime envisage un délai <stron
 <br><br>
 @if(quotation.priceIsNotFinal) {
   @if(quotation.delayIsNotSure) {De la même façon, }Hometime ne peut s’engager formellement sur le tarif de l’ensemble des prestations tant que le devis n'a pas été fourni par @quotation.brand.
-   @if(quotation.watchChosen != null) {
-Cependant, Hometime vous propose pour la prestation de prise en charge à domicile et d'entretien un tarif @{quotation.priceService}.
-<br><br>
-Pour le prêt de la montre à l'essai, le tarif est ferme :
-<ul>
-    <li>Essai @quotation.watchChosen pendant toute la durée de l’entretien : @{quotation.priceLoan}.</li>
-</ul>
-Ainsi, nous vous proposons un tarif total <strong>@{quotation.price}</strong>.
-   } else {
 Cependant, Hometime vous propose pour la prestation de prise en charge à domicile et d'entretien un tarif <strong>@{quotation.price}</strong>.
-  }
 <br><br>
 Le tarif précis vous sera communiqué dès réception du devis @quotation.brand. Nous nous engageons à vous faire bénéficier du meilleur prix.
 } else {
-  @if(quotation.watchChosen != null) {
-Hometime vous propose pour l'ensemble de la prestation les tarifs suivants :
-<ul>
-    <li>@Html(Messages("admin.quotation.request.service.type.value."+quotation.serviceType.intValue, quotation.watch)) : @{quotation.priceService}.</li>
-    <li>Essai @quotation.watchChosen pendant toute la durée de l’entretien : @{quotation.priceLoan}.</li>
-</ul>
-Ainsi, nous vous proposons un tarif total <strong>@{quotation.price}</strong>.
-  } else {
 Pour l’ensemble des prestations ci-dessus, Hometime vous propose un tarif <strong>@{quotation.price}</strong>.
-  }
 }
 <br><br>
 Les opérations sont garanties @quotation.warantyTime par @quotation.brand.

@@ -124,16 +124,7 @@ Hometime vous propose de réaliser la prestation sous un délai <strong>@quotati
 Le délai comprend la vérification du bon fonctionnement pour tester les performances chronométriques de la montre.
 @if(quotation.delayCanBeReduced) {Ce délai peut être légèrement raccourci si vous le souhaitez.}
 <br><br>
-@if(quotation.watchChosen != null) {
-Hometime vous propose pour l'ensemble de la prestation les tarifs suivants :
-<ul>
-    <li>@Html(Messages("admin.quotation.request.service.type.value."+quotation.serviceType.intValue, quotation.watch)) : @{quotation.priceService}.</li>
-    <li>Essai @quotation.watchChosen pendant toute la durée de l’entretien : @{quotation.priceLoan}.</li>
-</ul>
-Ainsi, nous vous proposons un tarif total <strong>@{quotation.price}</strong>.
-} else {
 Pour l’ensemble des prestations ci-dessus, Hometime vous propose un tarif <strong>@{quotation.price}</strong>.
-}
 @quotation.serviceType match {
   case OrderRequest.OrderTypes.SETTINGUP => {
 

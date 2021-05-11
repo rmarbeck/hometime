@@ -82,11 +82,6 @@
 											<li>Entretien par l'un des horlogers Hometime.</li>
 										  }
 										}
-										@if(quotation.watchChosen != null) {
-											<li>Essai d'une @quotation.watchChosen pendant toute la durée de l'entretien.</li>
-										} else {
-											<li>Pas d'essai de montre pendant l'entretien.</li>
-										}
 										</ul>
 										<br>
 										@if(quotation.infosGivenByCustomer1 != null) {
@@ -127,21 +122,12 @@
     													<ul>
     														<li>@Html(Messages("admin.quotation.request.first.date"))</li>
     														<li>Photographie de la montre lors de la prise en charge et mise à disposition des photos au client,</li>
-    														@if(quotation.watchChosen != null) {
-    														<li>Remise en main de la montre de prêt (avec mise à la taille du bracelet) : @quotation.watchChosen,</li>
-    														<li>Signature du contrat incluant l’ensemble des remarques formulées sur l’état des montres.</li>
-    														} else {
     														<li>Signature du contrat incluant l’ensemble des remarques formulées sur l’état de la montre.</li>
-    														}
     													</ul>
     												</li>
     												<li>Deuxième rendez-vous :
     													<ul>
-    													@if(quotation.watchChosen != null) {
-    														<li>Restitution de la montre entretenue et restitution de la montre de prêt,</li>
-    														} else {
     														<li>Restitution de la montre entretenue,</li>
-    														}
     														<li>Dépôt des documents certifiant les opérations menées durant l'entretien et de la garantie@if(quotation.shouldTalkAboutWaterResistance) { (yc étanchéité)}.</li>
     													</ul>
     												</li>
