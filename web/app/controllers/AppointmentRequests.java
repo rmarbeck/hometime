@@ -1,11 +1,12 @@
 package controllers;
 
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
 import fr.hometime.utils.AppointmentRequestHelper;
 import models.AppointmentRequest;
-import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.libs.F.Promise;
 
 @SecurityEnhanced.Authenticated(value=SecuredEnhanced.class, rolesAuthorized =  {models.User.Role.ADMIN})
 public class AppointmentRequests extends Controller {
@@ -16,30 +17,49 @@ public class AppointmentRequests extends Controller {
 			views.html.admin.appointment_requests.ref());
 	
 	public static Result validateAppointment(Long id) {
-		AppointmentRequest toValidate = AppointmentRequest.findById(id);
-		if (!toValidate.isValidated()) {
-			AppointmentRequestHelper.validate(toValidate.uniqueKey);
-			sendFirstSMS(toValidate)
+		return doActionOnAppointment(id, AppointmentRequest::isWaitingValidation, (request) -> {
+			AppointmentRequestHelper.validate(request);
+			AppointmentRequestHelper.sendFirstSMSAfterValidation(request)
 				.filter(AppointmentRequests::isSMSSentCorrectly)
-					.map(currentSMS -> sendSecondSMS(toValidate));
-		}
+					.map(currentSMS -> AppointmentRequestHelper.sendSecondSMSAfterValidation(request));
+		});
+	}
+	
+	public static Result sendValidationLink(Long id) {
+		return doActionOnAppointment(id, AppointmentRequest::isWaitingValidation, (request) -> AppointmentRequestHelper.sendSMSForAskingValidation(request));
+	}
+	
+	public static Result cancelAppointment(Long id) {
+		return doActionOnAppointment(id, AppointmentRequest::isValidated, (request) -> {
+			request.updateAfterCancelation();
+			AppointmentRequestHelper.sendCancellationSMS(request);
+		});
+	}
+	
+	private static Result doActionOnAppointment(Long id, Predicate<AppointmentRequest> filter, Consumer<AppointmentRequest> toDo) {
+		AppointmentRequest toOperateOn= AppointmentRequest.findById(id);
+		if (filter.test(toOperateOn))
+			toDo.accept(toOperateOn);
 		return CrudHelper.displayAll("AppointmentRequests", 10);
-		
 	}
 	
 	private static boolean isSMSSentCorrectly(models.SMS currentSMS) {
 		return currentSMS.smsCount == 1;
 	}
 	
-	private static Promise<models.SMS> sendFirstSMS(AppointmentRequest currentAppointment) {
-		return sendSMS(currentAppointment, Messages.get("sms.appointment.just.validated", currentAppointment.getNiceDisplayableDatetime()));
+	/**
+	private static Optional<ObjectNode> cancelAppointmentAndSendSMS(String uniqueKey) {
+		boolean alreadyCanceled = isItCanceled(uniqueKey);
+		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.cancel(uniqueKey);
+		if (appointment.isPresent() && appointment.get().isCanceled()) {
+			if (!alreadyCanceled) {
+				AppointmentRequestHelper.sendCancellationSMS(appointment.get());
+				ActionHelper.asyncTryToNotifyTeamByEmail("Rendez-vous annulé", getAppointementValidationMessage(appointment.get()));
+			}
+			return Optional.of(getAppointmentAsJsonNode(appointment.get()));
+		}
+		return Optional.empty();
 	}
-	
-	private static Promise<models.SMS> sendSecondSMS(AppointmentRequest currentAppointment) {
-		return sendSMS(currentAppointment, Messages.get("sms.appointment.to.validate.from.admin.action", Application.FRONT_END_URL+Application.APPOINTMENT_VALIDATION_URL, currentAppointment.uniqueKey));
-	}
-	
-	private static Promise<models.SMS> sendSMS(AppointmentRequest currentAppointment, String message) {
-		return SMS.sendSMS(currentAppointment.customerPhoneNumber, message);
-	}
+	 * 
+	 */
 }

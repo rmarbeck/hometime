@@ -501,6 +501,8 @@ GET		/admin/create-item/AccountingLinePreset/:id						controllers.AccountingLine
 GET		/admin/create-for-line/AccountingAnalytic/:id					controllers.AccountingLineAnalytics.createForAccountingLine(id: Long)
 
 GET		/admin/appointment/validate/:id									controllers.AppointmentRequests.validateAppointment(id: Long)
+GET		/admin/appointment/send/validation/sms/:id						controllers.AppointmentRequests.sendValidationLink(id: Long)
+GET		/admin/appointment/cancel/:id									controllers.AppointmentRequests.cancelAppointment(id: Long)
 
 # CUSTOMER ACCESS
 GET     /private/login                      							controllers.Application.customerLogin(origin: String ?= "")

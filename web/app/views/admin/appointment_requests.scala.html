@@ -21,12 +21,14 @@
    			}
 			
 			function addButtonForAction(location) {
-    			location.append('<a id="'+guessIDFromTd(location)+'" type="button" class="btn btn-success btn-xs action-js" href="@routes.SimplifiedCustomers.createNewCustomerFromAppointment(-1)"><span class="glyphicon glyphicon-user"></span></a>');
+				location.prepend('<a data_id="'+guessIDFromTd(location).replace(/(\r\n|\n|\r)/gm, "")+'" type="button" title="Créer client" class="btn btn-success btn-xs action-js" href="@routes.SimplifiedCustomers.createNewCustomerFromAppointment(-1)"><span class="glyphicon glyphicon-user"></span></a>');
+				location.append('<a data_id="'+guessIDFromTd(location).replace(/(\r\n|\n|\r)/gm, "")+'" type="button" title="Envoyer SMS validation" class="btn btn-primary btn-xs action-js" href="@routes.AppointmentRequests.sendValidationLink(-1)"><span class="glyphicon glyphicon-log-in"></span></a>');
+    			location.append('<span> </span><a data_id="'+guessIDFromTd(location).replace(/(\r\n|\n|\r)/gm, "")+'" type="button" title="Annuler rendez-vous" class="btn btn-danger btn-xs action-js" href="@routes.AppointmentRequests.cancelAppointment(-1)"><span class="glyphicon glyphicon-remove"></span></a>');
    			}
    			
    			function updateIds() {
 	   			$('.action-js').each(function(){
-					$(this).attr('href', $(this).attr('href').substring(0, $(this).attr('href').length -2)+$(this).attr('id'));
+					$(this).attr('href', $(this).attr('href').substring(0, $(this).attr('href').length -2)+$(this).attr('data_id'));
 				});
    			}
 			

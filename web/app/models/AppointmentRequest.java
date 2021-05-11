@@ -185,6 +185,10 @@ public class AppointmentRequest extends ListenableModel implements CrudReady<App
     	return this.status.equals(Status.VALIDATED);
     }
     
+    public boolean isWaitingValidation() {
+    	return this.status.equals(Status.WAITING_VALIDATION);
+    }
+    
     public boolean isCanceled() {
     	return this.status.equals(Status.CANCELED);
     }

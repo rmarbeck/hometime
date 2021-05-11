@@ -62,9 +62,6 @@ import views.html.mails.notify_contact;
 
 @With(SessionWatcher.class)
 public class Application extends Controller {
-	public static String FRONT_END_URL = "https://www.hometime.fr";
-	public static String APPOINTMENT_VALIDATION_URL = "/a/v/";
-
 	public static class LoginForm {
 		@Constraints.Email
 		@Constraints.Required
@@ -974,7 +971,7 @@ public class Application extends Controller {
 			} else {
 				AppointmentRequest newRequest = appointmentForm.get().getRequest();
 				newRequest.save();
-				SMS.sendSMS(newRequest.customerPhoneNumber, Messages.get("sms.appointment.to.validate", FRONT_END_URL+APPOINTMENT_VALIDATION_URL, newRequest.uniqueKey));
+				AppointmentRequestHelper.sendSMSForAskingValidation(newRequest);
 				return ok(getAppointmentAsJsonNode(newRequest));
 			}
 		});
@@ -1015,7 +1012,7 @@ public class Application extends Controller {
 		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.validate(uniqueKey);
 		if (isItValidated(appointment)) {
 			if (!alreadyValid) {
-				SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.validated", appointment.get().getNiceDisplayableDatetime()));
+				AppointmentRequestHelper.sendFirstSMSAfterValidation(appointment.get());
 				ActionHelper.asyncTryToNotifyTeamByEmail("Rendez-vous confirmé", getAppointementValidationMessage(appointment.get()));
 			}
 			return Optional.of(getAppointmentAsJsonNode(appointment.get()));
@@ -1053,7 +1050,7 @@ public class Application extends Controller {
 		Optional<AppointmentRequest> appointment = AppointmentRequestHelper.cancel(uniqueKey);
 		if (appointment.isPresent() && appointment.get().isCanceled()) {
 			if (!alreadyCanceled) {
-				SMS.sendSMS(appointment.get().customerPhoneNumber, Messages.get("sms.appointment.just.canceled"));
+				AppointmentRequestHelper.sendCancellationSMS(appointment.get());
 				ActionHelper.asyncTryToNotifyTeamByEmail("Rendez-vous annulé", getAppointementValidationMessage(appointment.get()));
 			}
 			return Optional.of(getAppointmentAsJsonNode(appointment.get()));
