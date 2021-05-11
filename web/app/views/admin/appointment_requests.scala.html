@@ -17,7 +17,7 @@
 			updateIds();
 			
 			function guessIDFromTd(location) {
-    			return $(location).children("a:first").attr('href').split('/').slice(-1)[0];
+    			return $(location).children("a:nth-of-type(2)").attr('href').split('/').slice(-1)[0];
    			}
 			
 			function addButtonForAction(location) {
