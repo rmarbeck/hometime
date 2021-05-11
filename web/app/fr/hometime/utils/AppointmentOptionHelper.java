@@ -46,7 +46,10 @@ public class AppointmentOptionHelper {
 												LocalDate.of(LocalDate.now().getYear(), Month.DECEMBER, 25),
 												LocalDate.of(LocalDate.now().getYear(), Month.DECEMBER, 31),
 												LocalDate.of(LocalDate.now().getYear(), Month.JANUARY, 1),
-												LocalDate.of(2021, Month.APRIL, 5));
+												LocalDate.of(2021, Month.APRIL, 5),
+												LocalDate.of(2021, Month.MAY, 13),
+												LocalDate.of(2021, Month.MAY, 14),
+												LocalDate.of(2021, Month.MAY, 24));
 	
 	
 	public static List<AppointmentOption> getAvailableAppointmentOptions() {
