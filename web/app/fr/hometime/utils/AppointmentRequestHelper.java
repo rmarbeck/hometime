@@ -82,6 +82,10 @@ public class AppointmentRequestHelper {
 		return sendSMS(currentAppointment, Messages.get("sms.appointment.just.validated", currentAppointment.getNiceDisplayableDatetime()));
 	}
 	
+	public static Promise<models.SMS> sendRecallSMS(AppointmentRequest currentAppointment) {
+		return sendSMS(currentAppointment, Messages.get("sms.appointment.recall", currentAppointment.getNiceDisplayableDatetime()));
+	}
+	
 	public static Promise<models.SMS> sendSecondSMSAfterValidation(AppointmentRequest currentAppointment) {
 		return sendSMS(currentAppointment, Messages.get("sms.appointment.to.validate.from.admin.action", FRONT_END_URL+APPOINTMENT_VALIDATION_URL, currentAppointment.uniqueKey));
 	}

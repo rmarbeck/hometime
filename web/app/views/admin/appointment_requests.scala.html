@@ -24,6 +24,8 @@
 				location.prepend('<a data_id="'+guessIDFromTd(location).replace(/(\r\n|\n|\r)/gm, "")+'" type="button" title="Créer client" class="btn btn-success btn-xs action-js" href="@routes.SimplifiedCustomers.createNewCustomerFromAppointment(-1)"><span class="glyphicon glyphicon-user"></span></a>');
 				location.append('<a data_id="'+guessIDFromTd(location).replace(/(\r\n|\n|\r)/gm, "")+'" type="button" title="Envoyer SMS validation" class="btn btn-primary btn-xs action-js" href="@routes.AppointmentRequests.sendValidationLink(-1)"><span class="glyphicon glyphicon-log-in"></span></a>');
     			location.append('<span> </span><a data_id="'+guessIDFromTd(location).replace(/(\r\n|\n|\r)/gm, "")+'" type="button" title="Annuler rendez-vous" class="btn btn-danger btn-xs action-js" href="@routes.AppointmentRequests.cancelAppointment(-1)"><span class="glyphicon glyphicon-remove"></span></a>');
+    			location.append('<span> </span><a data_id="'+guessIDFromTd(location).replace(/(\r\n|\n|\r)/gm, "")+'" type="button" title="Rappeler rendez-vous" class="btn btn-warning btn-xs action-js" href="@routes.AppointmentRequests.sendRecallSMS(-1)"><span class="glyphicon glyphicon-calendar"></span></a>');
+    			
    			}
    			
    			function updateIds() {

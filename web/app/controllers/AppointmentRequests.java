@@ -29,6 +29,10 @@ public class AppointmentRequests extends Controller {
 		return doActionOnAppointment(id, AppointmentRequest::isWaitingValidation, (request) -> AppointmentRequestHelper.sendSMSForAskingValidation(request));
 	}
 	
+	public static Result sendRecallSMS(Long id) {
+		return doActionOnAppointment(id, AppointmentRequest::isValidated, (request) -> AppointmentRequestHelper.sendRecallSMS(request));
+	}
+	
 	public static Result cancelAppointment(Long id) {
 		return doActionOnAppointment(id, AppointmentRequest::isValidated, (request) -> {
 			request.updateAfterCancelation();

@@ -5535,6 +5535,7 @@ admin.default.sms.after.quotation.sent=Bonjour, notre devis pour votre montre vo
 sms.appointment.to.validate=Validez votre rendez-vous en cliquant ici : {0}{1}
 sms.appointment.just.validated=Votre rendez-vous est confirmé pour {0}
 sms.appointment.just.canceled=Votre rendez-vous est bien annulé
+sms.appointment.recall=Nous vous rappelons votre rendez-vous du {0}
 
 sms.appointment.to.validate.from.admin.action=Retrouvez les informations ici : {0}{1}
 
